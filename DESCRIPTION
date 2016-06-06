@@ -1,0 +1,8 @@
+Package: kwb.utils
+Version: 0.2.1
+Title: some basic functions used by other kwb packages
+Maintainer: Hauke Sonnenberg <hauke.sonnenberg@kompetenz-wasser.de>
+Author: Hauke Sonnenberg
+Imports: PKI
+Description: some basic functions used by other kwb packages.
+License: GPL

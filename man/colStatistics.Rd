@@ -1,0 +1,25 @@
+\name{colStatistics}
+\alias{colStatistics}
+\title{colStatistics}
+\description{applies statistical functions to all columns of a data frame}
+\usage{colStatistics(dataFrame, functions = c("sum", "mean", "min", 
+    "max", "number.na", "length"), na.rm = FALSE, functionColumn = FALSE)}
+\arguments{
+  \item{dataFrame}{data frame with numeric columns only}
+  \item{functions}{vector of statistical functions to be applied on each column of dataFrame
+possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
+values), "length" (number of values)}
+  \item{na.rm}{if TRUE, NA values are removed before applying the statistical function(s)}
+  \item{functionColumn}{if TRUE, a column containing the function name is contained in the
+result data frame, otherwise the function names become the row names
+of the result data frame}
+}
+
+
+
+\author{Hauke Sonnenberg}
+
+
+
+
+

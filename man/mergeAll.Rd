@@ -1,0 +1,32 @@
+\name{mergeAll}
+\alias{mergeAll}
+\title{merge multiple data frames }
+\description{merge multiple data frames, given in a list}
+\usage{mergeAll(dataFrames, by, ...)}
+\arguments{
+  \item{dataFrames}{list of data frames. If the list elements are named, the element names
+are used as suffixes in the column names, otherwise suffixes ".1", ".2",
+etc are used}
+  \item{by}{vector of column names to be merged by, passed on to \code{merge}}
+  \item{\dots}{additional arguments passed to \code{merge}}
+}
+
+\value{data frame being the result of merging all the data frames given in 
+\emph{dataFrames} by  consecutively calling \code{merge}}
+
+\author{Hauke Sonnenberg}
+
+
+
+
+\examples{
+peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
+paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
+mary <- data.frame(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
+
+# By default only categories that are in all data frames are returned  
+mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit")
+
+# Use the arguments supported by merge to change that behaviour
+mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit", all = TRUE)
+}

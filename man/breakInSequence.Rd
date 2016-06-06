@@ -1,0 +1,20 @@
+\name{breakInSequence}
+\alias{breakInSequence}
+\title{breakInSequence}
+\description{breakInSequence}
+\usage{breakInSequence(x, expectedDiff = 1)}
+\arguments{
+  \item{x}{vector of numeric}
+  \item{expectedDiff}{expected difference between elements in x. A bigger difference is
+recognised as a break. Default: 1 }
+}
+
+\value{index of elements after which a break occurs or integer(0) if no break
+occurs at all}
+
+\author{Hauke Sonnenberg}
+
+
+
+
+

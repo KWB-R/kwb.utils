@@ -1,0 +1,21 @@
+\name{getGlobally}
+\alias{getGlobally}
+\title{getGlobally}
+\description{gat variable from .GlobalEnv}
+\usage{getGlobally(x, default = NULL, create.if.not.existing = TRUE)}
+\arguments{
+  \item{x}{name of variable}
+  \item{default}{default value to which the variable is assigned (if create.if.not.existing
+= TRUE) in case that it does not yet exist. Default: NULL}
+  \item{create.if.not.existing}{if TRUE and if the variable does not yet exist, it is created and
+initialised with the value given in \emph{default}. Default: TRUE  }
+}
+
+
+
+\author{Hauke Sonnenberg}
+
+
+
+
+

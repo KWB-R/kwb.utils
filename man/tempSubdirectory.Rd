@@ -1,0 +1,17 @@
+\name{tempSubdirectory}
+\alias{tempSubdirectory}
+\title{create and return path of subdirectory in temp()}
+\description{create and return path of subdirectory in temp()}
+\usage{tempSubdirectory(subdir)}
+\arguments{
+  \item{subdir}{name of subdirectory to be created}
+}
+
+\value{full path to created directory}
+
+\author{Hauke Sonnenberg}
+
+
+
+
+

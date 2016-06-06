@@ -1,0 +1,64 @@
+\name{extractRowRanges}
+\alias{extractRowRanges}
+\title{extract row ranges by pattern}
+\description{extract row ranges by pattern}
+\usage{extractRowRanges(dataFrame, columnName, pattern, startOffset = 1, 
+    stopOffset = 1, nameByMatch = FALSE, nameColumnsByMatch = TRUE, 
+    renumber = TRUE)}
+\arguments{
+  \item{dataFrame}{data frame}
+  \item{columnName}{name of column in which to search for \emph{pattern}}
+  \item{pattern}{pattern to be searched for in \code{dataFrame[[columnNa,e]]}}
+  \item{startOffset}{row offset to be added to row number in which the pattern matches}
+  \item{stopOffset}{row offset to be subtracted from row number in which the pattern matches}
+  \item{nameByMatch}{logical. if TRUE, the elements in the result list are named by the 
+matching values in \code{dataFrame[[columnName]]}. Defaults to FALSE.}
+  \item{nameColumnsByMatch}{
+}
+  \item{renumber}{
+}
+}
+
+\value{list of data frames containing the rows of \emph{dataFrame} between
+rows matching \emph{pattern} in \code{dataFrame[[columnName]]}.}
+
+\author{Hauke Sonnenberg}
+
+
+
+
+\examples{
+dataFrame <- as.data.frame(
+  matrix(
+    c("Date", "Value",
+      "1.1.", "1",
+      "2.1.", "2",
+      "", "",
+      "Date", "Value",
+      "3.1.", "3",
+      "4.1.", "4"), 
+    ncol = 2, 
+    byrow = TRUE
+  ),
+  stringsAsFactors = FALSE
+)
+
+y <- extractRowRanges(
+  dataFrame, columnName = "V1", pattern = "Date", stopOffset = 2
+)
+
+expected <- list(
+  data.frame(
+    Date = c("1.1.", "2.1."),
+    Value = c("1", "2"),
+    stringsAsFactors = FALSE
+  ),
+  data.frame(
+    Date = c("3.1.", "4.1."),
+    Value = c("3", "4"),
+    stringsAsFactors = FALSE
+  )
+)
+
+identical(y, expected)
+}
