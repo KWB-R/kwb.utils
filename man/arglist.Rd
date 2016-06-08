@@ -6,11 +6,13 @@ This function allows to create argument lists for function calls. You may
 start with some basic argument list and then merge other argument lists or
 single argument assignments into this list. Merging means that elements of
 the same name are overriden and elements with new names are appended.}
-\usage{arglist(...)}
+\usage{arglist(..., warn.on.NULL = FALSE)}
 \arguments{
   \item{\dots}{list of arguments to this function. All unnamed arguments are assumed to
 be argument lists which are merged using \code{\link{merge.lists}} first. 
 All named arguments are then merged into this list.}
+  \item{warn.on.NULL}{if TRUE (default is FALSE) a warning is given if any of the arguments
+given to this function is NULL}
 }
 
 \value{merged list of arguments}

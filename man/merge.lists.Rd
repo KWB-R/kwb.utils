@@ -2,9 +2,11 @@
 \alias{merge.lists}
 \title{merge lists overriding elements of the same name}
 \description{merge lists overriding elements of the same name}
-\usage{\method{merge}{lists}(...)}
+\usage{\method{merge}{lists}(..., warn.on.NULL = TRUE)}
 \arguments{
   \item{\dots}{lists}
+  \item{warn.on.NULL}{if TRUE (default) a warning is given if any of the arguments given to
+this function is NULL}
 }
 
 \value{list containing the elements given in \code{...} }
