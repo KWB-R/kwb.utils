@@ -1,2 +1,4 @@
+importFrom("grDevices", "dev.cur", "dev.off", "dev.set", "pdf")
 import(PKI)
+importFrom("utils", "capture.output", "head", "read.table", "str","tail")
 exportPattern(".*")
