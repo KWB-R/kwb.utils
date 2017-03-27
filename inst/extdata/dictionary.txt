@@ -1,0 +1,22 @@
+# This is an example file defining a "dictionary". Each non-empty non-comment
+# line is expected to be a "<key> = <value>" assignment. Each assignment assigns
+# a value to a key. The value may contain placeholders that are marked by 
+# angle brackets, such as "<placeholder.1>", "<placeholder.2>". If a value
+# contains placeholders, they will be substituted with the resolved values for
+# the corresponding keys. 
+# 
+# Example: The line "message = What a nice <object>" consists of the key 
+# "message" and the value "What a nice <object>". The value contains the 
+# placeholder "<object>". If the dictionary contains a line such as 
+# "object = "summer", the dictionary key "message" will be resolved to 
+# "What a nice summer".
+
+dir.project = <dir.root>/<project>
+dir.out = <dir.project>/out
+
+# Empty rows are allowed to separate blocks of lines
+file.out = <dir.out>/example_file.<extension>
+
+# Set "leafs" to example values
+project = example_project
+dir.root = /root
