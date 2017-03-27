@@ -1,59 +1,170 @@
-# printLines -------------------------------------------------------------------
-printLines <- function # printLines
-### printLines
-(x)
+# readPackageFile --------------------------------------------------------------
+
+#' read file from package's extdata folder
+#' 
+#' read file from package's "extdata" folder
+#' 
+#' @param file name of file (without path)
+#' @param package name of the package from which to read the file
+#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default: \code{FALSE})
+#' @param \dots further arguments passed to \code{\link[utils]{read.csv}}
+#' 
+#' @return result of reading \code{file} with \code{\link[utils]{read.csv}}
+#' 
+readPackageFile <- function # read file from package's extdata folder
+### read file from package's "extdata" folder
+(
+  file,
+  ### name of file (without path)
+  package,
+  ### name of the package from which to read the file
+  stringsAsFactors = FALSE,
+  ### passed to \code{\link[utils]{read.csv}} (default: \code{FALSE})
+  ...
+  ### further arguments passed to \code{\link[utils]{read.csv}}
+)
 {
-  cat(paste(x, collapse="\n"))
+  file <- safePath(system.file("extdata", package = package), file)
+
+  utils::read.csv(file = file, stringsAsFactors = stringsAsFactors, ...)
+  ### result of reading \code{file} with \code{\link[utils]{read.csv}}
 }
 
-# lastElement ------------------------------------------------------------------
-lastElement <- function # lastElement
-### lastElement
+# getObjectFromRDataFile -------------------------------------------------------
+
+#' load R object from .RData file
+#' 
+#' load R object from a .RData file
+#' 
+#' @param file path to .RData file
+#' @param objectname name of object to be loaded
+#' @param dbg if \code{TRUE} a message about which object is loaded from which 
+#'   file is shown
+#' @return R object as specified in \emph{objectname}. If an object of that name does
+#'   not exist in the .RData file an error is thrown
+#' 
+getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
+{
+  envir <- new.env()
+
+  catIf(dbg, sprintf("Loading '%s' from '%s'... ", objectname, file))
+  load(safePath(file), envir = envir)
+
+  # Get the names of the contained objects
+  objectnames <- ls(envir = envir)
+
+  if (is.null(objectname) || (! objectname %in% objectnames)) {
+
+    messageText <- if (is.null(objectname)) {
+      "Please give an 'objectname'."
+    } else {
+      sprintf("Object '%s' not found.", objectname)
+    }
+
+    messageText <- sprintf(
+      "%s Available objects in '%s':\n%s",
+      messageText, file, collapsed(hsQuoteChr(objectnames), ", ")
+    )
+
+    stop(messageText, call. = FALSE)
+  }
+
+  catIf(dbg, "ok.\n")
+
+  # Return the object
+  get(objectname, envir = envir)
+
+  ### R object as specified in \emph{objectname}. If an object of that name does
+  ### not exist in the .RData file an error is thrown
+}
+
+# catLines ---------------------------------------------------------------------
+
+#' print character vector to the console
+#' 
+#' call cat on character vector, pasted with collapse = <new line>
+#' 
+#' @param x vector of character representing text lines to be printed
+catLines <- function # print character vector to the console
+### call cat on character vector, pasted with collapse = <new line>
 (x)
 {
-  x[length(x)]
+  cat(paste0(paste0(x, collapse = "\n"), "\n"))
 }
 
 # .logstart --------------------------------------------------------------------
+
+#'  logstart
+#' 
+#' 
 .logstart <- function(dbg = TRUE, ...)
 {
   catIf(dbg, "***", ..., "... ")
 }
 
 # .logok -----------------------------------------------------------------------
+
+#'  logok
+#' 
+#' 
 .logok <- function(dbg = TRUE)
 {
   catIf(dbg, "*** ok.\n")
 }
 
 # .log -------------------------------------------------------------------------
+
+#'  log
+#' 
+#' 
 .log <- function(...)
 {
   cat("***", ...)
 }
 
 # .logline ---------------------------------------------------------------------
+
+#'  logline
+#' 
+#' 
 .logline <- function(...)
 {
-  cat("***", ..., "\n")  
+  cat("***", ..., "\n")
 }
 
 # catIf ------------------------------------------------------------------------
+
+#' call cat if condition is met
+#' 
+#' call cat if condition is met
+#' 
+#' @param condition if TRUE, cat is called, else not
+#' @param \dots arguments passed to cat
+#' 
 catIf <- function # call cat if condition is met
 ### call cat if condition is met
 (
-  condition, 
+  condition,
   ### if TRUE, cat is called, else not
   ...
   ### arguments passed to cat
-) 
+)
 {
   if (condition) {
     cat(...)
-  }  
+  }
 }
 
 # printIf ----------------------------------------------------------------------
+
+#' call print if condition is met
+#' 
+#' call print if condition is met
+#' 
+#' @param condition if TRUE, print is called, else not
+#' @param x object to be printed
+#' @param caption optional. Caption line to be printed with cat before printing \emph{x}
+#' 
 printIf <- function # call print if condition is met
 ### call print if condition is met
 (
@@ -61,9 +172,9 @@ printIf <- function # call print if condition is met
   ### if TRUE, print is called, else not
   x,
   ### object to be printed
-  caption = ""
+  caption = deparse(substitute(x))
   ### optional. Caption line to be printed with cat before printing \emph{x}
-) 
+)
 {
   if (condition) {
     catIf(caption != "", paste0(caption, ":\n"))
@@ -72,6 +183,11 @@ printIf <- function # call print if condition is met
 }
 
 # clearConsole -----------------------------------------------------------------
+
+#' Clear the R Console
+#' 
+#' Clear the R Console
+#' 
 clearConsole <- function # Clear the R Console
 ### Clear the R Console
 (
@@ -81,6 +197,15 @@ clearConsole <- function # Clear the R Console
 }
 
 # containsNulString ------------------------------------------------------------
+
+#' Check for nul String in File
+#' 
+#' check for nul string in file
+#' 
+#' @param filepath full path to file to be checked
+#' @return \code{TRUE} if first two bytes of file are \code{<FF><FE>}, else 
+#'   \code{FALSE}
+#' 
 containsNulString <- function # containsNulString
 ### check for nul string in file
 (
@@ -88,7 +213,6 @@ containsNulString <- function # containsNulString
 )
 {
   x <- readBin(filepath, "raw", 2)
-  x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)  
+  x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)
   ### TRUE if first two bytes of file are FF FE, else FALSE
 }
-

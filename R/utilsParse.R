@@ -1,4 +1,8 @@
 # .test_guessSeparator ---------------------------------------------------------
+
+#'  test guessSeparator
+#' 
+#' 
 .test_guessSeparator <- function()
 {
   csvFiles <- dir(
@@ -20,13 +24,20 @@
 }
 
 # guessSeparator ---------------------------------------------------------------
-guessSeparator <- function # guess column separator from file
-### guess column separator from file
+
+#' guess column separator from file
+#' 
+#' guess column separator from file
+#' 
+#' @param csvFile full path to text file containing 'comma separated values'
+#' @param n number of first lines in the file to be looked at
+#' @param separators vector of possible column separator characters the file is to be
+#'   checked for
+#' 
+guessSeparator <- function
 (
   csvFile, 
-  ### full path to text file containing 'comma separated values'
   n = 10,
-  ### number of first lines in the file to be looked at
   separators = c(";", ",", "\t")
 )
 { 
@@ -75,6 +86,10 @@ guessSeparator <- function # guess column separator from file
 }
 
 # .guessSeparator.1 ------------------------------------------------------------
+
+#' Guess Column Separator (Version 1)
+#' 
+#' 
 .guessSeparator.1 <- function(textlines, separators, comment.char = "#")
 {
   #
@@ -104,6 +119,10 @@ guessSeparator <- function # guess column separator from file
 }
 
 # .guessSeparator.2 ------------------------------------------------------------
+
+#' Guess Column Separator (Version 2)
+#' 
+#' 
 .guessSeparator.2 <- function(textlines, separators)
 {
   # Which of the separators occurs most?
@@ -117,6 +136,21 @@ guessSeparator <- function # guess column separator from file
 }
 
 # getKeywordPositions ----------------------------------------------------------
+
+#' localise keywords in data frame
+#' 
+#' localise keywords in data frame
+#' 
+#' @param dataFrame data frame or matrix in which to search for given keywords
+#' @param keywords (list of) keywords to be looked for in \emph{data frame}
+#' @param asDataFrame if TRUE (default), a data frame is returned, otherwise a matrix
+#' 
+#' @return data frame (if \emph{asDataFrame} = TRUE) or matrix with one column per 
+#'   keyword that was given in \emph{keywords}. The first row contains the row
+#'   numbers and the second row contains the column numbers, respectively, of
+#'   the fields in \emph{dataFrame} in which the corresponding keywords were
+#'   found.
+#' 
 getKeywordPositions <- function # localise keywords in data frame
 ### localise keywords in data frame
 (
@@ -128,12 +162,14 @@ getKeywordPositions <- function # localise keywords in data frame
   ### if TRUE (default), a data frame is returned, otherwise a matrix
 )
 {
+  textValues <- as.matrix(dataFrame)
+  
   keywordPositions <- sapply(keywords, function(x) {
-    which(dataFrame == x, arr.ind = TRUE)
+    which(textValues == x, arr.ind = TRUE)
   })
   
   # the result must be a matrix, otherwise a keyword was not found exacly once
-  if (!is.matrix(keywordPositions)) {
+  if (! is.matrix(keywordPositions)) {
     stop(
       "\n*** I could not find all of these keywords that I was looking for:\n",
       paste("'", as.character(keywords), "'", sep = "", collapse = ", "))
@@ -153,4 +189,3 @@ getKeywordPositions <- function # localise keywords in data frame
   ### the fields in \emph{dataFrame} in which the corresponding keywords were
   ### found.
 }
-

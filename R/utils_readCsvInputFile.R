@@ -1,8 +1,17 @@
 # columnDescriptor -------------------------------------------------------------
+
+#' columnDescriptor
+#' 
+#' columnDescriptor
+#' 
+#' @param match pattern or fixed text to match in header line
+#' @param fixed if TRUE, \emph{match} is taken as a fixed string to be looked for in the
+#'   header line, otherwise it is interpreded as a regular expression
+#' 
 columnDescriptor <- function # columnDescriptor
 ### columnDescriptor
 (
-  match = ".*", 
+  match = ".*",
   ### pattern or fixed text to match in header line
   fixed = FALSE
   ### if TRUE, \emph{match} is taken as a fixed string to be looked for in the
@@ -13,16 +22,37 @@ columnDescriptor <- function # columnDescriptor
 }
 
 # readCsvInputFile -------------------------------------------------------------
+
+#' read CSV file
+#' 
+#' read CSV file giving column descriptions
+#' 
+#' @param csv full path to CSV file
+#' @param sep column separator
+#' @param dec decimal character
+#' @param headerRow number row in which the header  (containing column captions) is found
+#' @param headerPattern pattern matching the header row. If \emph{headerPattern} is given
+#'   \emph{headerRow} is not considered
+#' @param columnDescription list of column descriptors. The list elements are named with the name
+#'   of the list elements being the names that shall be used in the returned
+#'   data frame. Each list element is a list with elements \emph{match}
+#'   (pattern to be looked for in the header fields), ...
+#' @param maxRowToLookForHeader maximum number of rows to be considered when looking for the header row
+#' @param stopOnMissingColumns if TRUE (default) the program stops if not all columns defined in
+#'   \emph{columnDescription} are found
+#' @param encoding passed to readLines, "Latin-1" or "UTF-8"
+#' @param \dots further arguments passed to read.table
+#' 
 readCsvInputFile <- function # read CSV file
 ### read CSV file giving column descriptions
 (
-  csv, 
+  csv,
   ### full path to CSV file
   sep,
   ### column separator
   dec,
   ### decimal character
-  headerRow = 1, 
+  headerRow = 1,
   ### number row in which the header  (containing column captions) is found
   headerPattern = "",
   ### pattern matching the header row. If \emph{headerPattern} is given
@@ -35,7 +65,7 @@ readCsvInputFile <- function # read CSV file
   maxRowToLookForHeader = 10,
   ### maximum number of rows to be considered when looking for the header row
   stopOnMissingColumns = TRUE,
-  ### if TRUE (default) the program stops if not all columns defined in 
+  ### if TRUE (default) the program stops if not all columns defined in
   ### \emph{columnDescription} are found
   encoding = "unknown",
   ### passed to readLines, "Latin-1" or "UTF-8"
@@ -45,120 +75,141 @@ readCsvInputFile <- function # read CSV file
 {
   if (!file.exists(csv)) {
     stop("No such file: ", csv)
-  }  
-  
+  }
+
   if (headerPattern != "") {
-    
+
     fileLines <- readLines(
       csv, n = maxRowToLookForHeader, warn = FALSE, encoding = encoding)
-    
+
     headerRow <- grep(headerPattern, fileLines)
   }
-  
+
   if (isNullOrEmpty(headerRow)) {
     stop(
-      "I could not find the header row within the first", maxRowToLookForHeader, 
+      "I could not find the header row within the first", maxRowToLookForHeader,
       "lines!\n  I was looking for: ", hsQuoteChr(headerPattern)
-    )    
+    )
   }
-  
+
   headerFields <- .readAndSplitRowInFile(
     csv, headerRow, sep, encoding = encoding
   )
-  
+
   if (is.null(columnDescription)) {
     columnDescription <- .defaultColumnDescription(headerFields)
   }
-  
+
   if (stopOnMissingColumns) {
-    .stopIfNotEnoughColumns(headerFields, columnDescription, sep)    
+    .stopIfNotEnoughColumns(headerFields, columnDescription, sep)
   }
-  
+
   newColumnDescription <- .findColumnNumbersByMatchingPatterns(
     headerFields, columnDescription
   )
-  
+
   if (stopOnMissingColumns) {
-    .stopIfNotAllColumnsFound(newColumnDescription, headerFields)    
+    .stopIfNotAllColumnsFound(newColumnDescription, headerFields)
   }
-  
+
   .warnOnMultipleMatches(newColumnDescription, headerFields)
-  
+
   # if there is a duplicate caption, take only the first!
   colNumbers <- as.integer(
     sapply(newColumnDescription, function(x){x[["colNumber"]][1]})
   )
-  
+
   # remove indices of described columns that were not found
   colNames <- names(columnDescription)[!is.na(colNumbers)]
   colNumbers <- colNumbers[!is.na(colNumbers)]
-  
+
   if (length(colNumbers) == 0) {
     warning("Not at least one of the described columns found.\n",
-            .msgAvailableFields(headerFields))
+            msgAvailableFields(headerFields))
     return()
-  } 
-  
-  myData <- read.table(csv, sep=sep, dec=dec, header=FALSE, skip=headerRow, ...)
-  myData <- myData[, colNumbers, drop=FALSE]
-  
+  }
+
+  myData <- utils::read.table(csv, sep = sep, dec = dec, header = FALSE,
+                              skip = headerRow, ...)
+  myData <- myData[, colNumbers, drop = FALSE]
+
   names(myData) <- colNames
-  
+
   myData
 }
 
-# .msgAvailableFields ----------------------------------------------------------
-.msgAvailableFields <- function(headerFields)
+# msgAvailableFields -----------------------------------------------------------
+
+#' Message Listing Available Fields
+#' 
+#' Message to be shown if fields/columns are missing
+#' 
+#' @param x vector of character
+#' 
+msgAvailableFields <- function # Message Listing Available Fields
+### Message to be shown if fields/columns are missing
+(
+  x
+  ### vector of character
+)
 {
-  sprintf("\nAvailable columns:\n  %s", .numberedEnumeration(headerFields))
+  sprintf("\nAvailable columns:\n  %s", .numberedEnumeration(x))
 }
 
 # .readAndSplitRowInFile -------------------------------------------------------
+
+#'  readAndSplitRowInFile
+#' 
+#' 
 .readAndSplitRowInFile <- function(csv, rowNumber, sep, encoding, version = 2)
 {
   if (version == 1 ) {
-    
-    fields <- read.table(
-      file = csv, 
-      sep = sep, 
-      nrows = rowNumber, 
-      fill = TRUE, 
-      header = FALSE, 
+
+    fields <- utils::read.table(
+      file = csv,
+      sep = sep,
+      nrows = rowNumber,
+      fill = TRUE,
+      header = FALSE,
       encoding = encoding
-    )  
-    
-    fields <- tail(fields, 1)
-  } 
+    )
+
+    fields <- utils::tail(fields, 1)
+  }
   else {
-    
-    fields <- read.table(
-      file = csv, 
-      sep = sep, 
-      skip = rowNumber - 1, 
-      nrows = 1, 
+
+    fields <- utils::read.table(
+      file = csv,
+      sep = sep,
+      skip = rowNumber - 1,
+      nrows = 1,
       header = FALSE,
       encoding = encoding
     )
   }
-  
+
   as.character(as.matrix(fields))
 }
 
 # .defaultColumnDescription ----------------------------------------------------
+
+#'  defaultColumnDescription
+#' 
+#' 
 .defaultColumnDescription <- function
 (
   headerFields
 )
 {
   columnDescription <- list()
-  
+
   for (headerField in headerFields) {
-    
+
     # ignore NA header fields
     if (!is.na(headerField)) {
-      
+
       columnDescription[[.toColumnName(headerField)]] <- columnDescriptor(
-        match = headerField, 
+        match = headerField,
         fixed = TRUE
       )
     }
@@ -167,34 +218,50 @@ readCsvInputFile <- function # read CSV file
 }
 
 # .toColumnName ----------------------------------------------------------------
+
+#'  toColumnName
+#' 
+#' 
 .toColumnName <- function(x)
 {
   hsSubstSpecChars(x)
 }
 
 # .stopIfNotEnoughColumns ------------------------------------------------------
+
+#'  stopIfNotEnoughColumns
+#' 
+#' 
 .stopIfNotEnoughColumns <- function(headerFields, columnDescription, sep)
 {
-  ncol <- length(headerFields)  
+  ncol <- length(headerFields)
   ncolRequired <- length(columnDescription)
-  
+
   if (ncol < ncolRequired) {
     stop(sprintf(
       paste("I found only %d of %d required column(s).",
             "Is '%s' the correct column separator?",
-            "I read the following header fields:\n  %s"), 
+            "I read the following header fields:\n  %s"),
       ncol, ncolRequired, sep, .numberedEnumeration(headerFields))
     )
   }
 }
 
 # .numberedEnumeration ---------------------------------------------------------
+
+#'  numberedEnumeration
+#' 
+#' 
 .numberedEnumeration <- function(x)
 {
   paste0(seq_len(length(x)), ". ", hsQuoteChr(x), collapse = "\n  ")
 }
 
 # .findColumnNumbersByMatchingPatterns -----------------------------------------
+
+#'  findColumnNumbersByMatchingPatterns
+#' 
+#' 
 .findColumnNumbersByMatchingPatterns <- function(headerFields, columnDescription)
 {
   for (colName in names(columnDescription)) {
@@ -207,36 +274,44 @@ readCsvInputFile <- function # read CSV file
 }
 
 # .stopIfNotAllColumnsFound ----------------------------------------------------
-.stopIfNotAllColumnsFound <- function(columnDescription, headerFields) 
+
+#'  stopIfNotAllColumnsFound
+#' 
+#' 
+.stopIfNotAllColumnsFound <- function(columnDescription, headerFields)
 {
   notFound <- sapply(
     columnDescription, FUN = function(x) { length(x$colNumber) == 0 }
   )
-  
+
   if (any(notFound)) {
     msg <- "The following columns could not be found with the given patterns:\n  "
-    stop(msg, 
+    stop(msg,
          paste(sprintf("%s: '%s'", names(columnDescription)[notFound],
                        sapply(columnDescription[notFound], "[[", "match")),
-               collapse="\n  "), 
-         .msgAvailableFields(headerFields))
+               collapse="\n  "),
+         msgAvailableFields(headerFields))
   }
 }
 
 # .warnOnMultipleMatches -------------------------------------------------------
-.warnOnMultipleMatches <- function(columnDescription, headerFields) 
+
+#'  warnOnMultipleMatches
+#' 
+#' 
+.warnOnMultipleMatches <- function(columnDescription, headerFields)
 {
   ambiguous <- sapply(
     columnDescription, FUN = function(x) { length(x$colNumber) > 1 }
   )
-  
+
   if (any(ambiguous)) {
     msg <- paste(
       "For the following patterns more than one columns were found.",
       "The first match is used in each case:\n  ",
       paste(
         sprintf(
-          "'%s' matches %s", 
+          "'%s' matches %s",
           sapply(columnDescription[ambiguous], "[[", "match"),
           sapply(columnDescription[ambiguous], function(x) {
             commaCollapsed(hsQuoteChr(headerFields[x$colNumber]))
@@ -244,8 +319,8 @@ readCsvInputFile <- function # read CSV file
         )
       ),
       collapse = "\n  "
-    )    
-    
-    warning(msg)    
+    )
+
+    warning(msg)
   }
 }

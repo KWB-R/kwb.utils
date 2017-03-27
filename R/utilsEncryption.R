@@ -1,8 +1,13 @@
-#
 # The functions defined in this file need package "PKI"
-#
 
 # generateKeyFile --------------------------------------------------------------
+
+#' generate a decryption key file
+#' 
+#' generate a decryption key file
+#' 
+#' @param target full path to the file to which the key shall be written
+#' 
 generateKeyFile <- function # generate a decryption key file
 ### generate a decryption key file
 (
@@ -10,30 +15,56 @@ generateKeyFile <- function # generate a decryption key file
   ### full path to the file to which the key shall be written
 )
 {
-  PKI.save.key(key = PKI.genRSAkey(), target = target) 
+  .checkNamespace("PKI", "generateKeyFile")
+  
+  PKI::PKI.save.key(key = PKI::PKI.genRSAkey(), target = target) 
+}
+
+# .checkNamespace --------------------------------------------------------------
+
+#'  checkNamespace
+#' 
+#' 
+.checkNamespace <- function(packageName, functionName)
+{
+  if (! requireNamespace(packageName, quietly = TRUE)) {
+    stop("Please install the package ", hsQuoteChr(packageName), " to use ", 
+         "this function: ", hsQuoteChr(functionName), call. = FALSE)
+  }
 }
 
 # createPasswordFile -----------------------------------------------------------
-createPasswordFile <- function # create encrypted password file for account
-### create encrypted password file for account
+
+#' create encrypted password file for account
+#' 
+#' create encrypted password file for account
+#' 
+#' @param account name of account the user is asked to enter the password for
+#' @param keyFile path to the file containing the encryption/decryption key
+#' @param passwordFile path to the password file
+createPasswordFile <- function
 (
   account,
-  ### name of account the user is asked to enter the password for
   keyFile,
-  ### file containing the encryption/decryption key
   passwordFile
 )
 {
+  .checkNamespace("PKI", "createPasswordFile")
+  
   password <- .askForPassword(account)
   
-  password.encrypted <- PKI.encrypt(
-    charToRaw(password), key = PKI.load.key(file = keyFile)
+  password.encrypted <- PKI::PKI.encrypt(
+    charToRaw(password), key = PKI::PKI.load.key(file = keyFile)
   )
   
   writeBin(password.encrypted, passwordFile)
 }
 
 # .askForPassword --------------------------------------------------------------
+
+#'  askForPassword
+#' 
+#' 
 .askForPassword <- function(account)
 {
   clearConsole()
@@ -45,21 +76,30 @@ createPasswordFile <- function # create encrypted password file for account
 }
 
 # getPassword ------------------------------------------------------------------
-getPassword <- function # get encrypted password from file using key
-### get encrypted password from file using key
-(
-  passwordFile, keyFile
-) 
+
+#' get encrypted password from file using key
+#' 
+#' get encrypted password from file using key
+#' 
+#' @param passwordFile path to the password file
+#' @param keyFile path to the key file
+#' 
+#' @return NA if no password is stored  
+#' 
+getPassword <- function(passwordFile, keyFile) 
 {
-  if (!file.exists(passwordFile)) {
+  .checkNamespace("PKI", "getPassword")
+  
+  if (! file.exists(passwordFile)) {
     stop("Password file '", passwordFile, "' does not exist.")  
   }
   
   password.encrypted <- readBin(passwordFile, what = "raw", n = 256)
   
-  rawToChar(
-    PKI.decrypt(password.encrypted, key = PKI.load.key(file = keyFile))
-  )
+  rawToChar(PKI::PKI.decrypt(
+    what = password.encrypted, 
+    key = PKI::PKI.load.key(file = keyFile)
+  ))
   
   ### NA if no password is stored  
 }

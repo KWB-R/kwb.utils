@@ -1,28 +1,30 @@
-# M A I N ----------------------------------------------------------------------
-if (FALSE)
-{
-  stopifnot(identical(
-    arglist(a = 1, b = 2, c = 3),
-    list(a = 1, b = 2,c = 3)
-  ))
-
-  stopifnot(identical(
-    arglist(list(a = 1, b = 2), list(b = 3), c = 4),
-    list(a = 1, b = 3, c = 4)
-  ))
-  
-  stopifnot(identical(
-    arglist(list(xlim = c(0, 20), ylim = c(0, 100)), xlim = c(20, 40)),
-    list(xlim = c(20, 40), ylim = c(0, 100))
-  ))  
-  
-  stopifnot(identical(
-    arglist(list(xlim = c(0, 20), ylim = c(0, 100)), zlim = c(-1, 1)),
-    list(xlim = c(0, 20), ylim = c(0, 100), zlim = c(-1, 1))
-  ))
-}
-
 # callWith ---------------------------------------------------------------------
+
+#' call a function with given arguments
+#' 
+#' call a function with the given arguments. Unnamed arguments are expected to
+#'   be lists containing further argument assignments. Multiple argument lists
+#'   are merged using \code{\link{arglist}} in the order of their appearence.
+#' 
+#' @param FUN function to be called
+#' @param ... (unnamed) lists containing argument assignments passed to
+#'   \code{FUN} or (named) arguments passed to \code{FUN}
+#' 
+#' @return the return value is the return value of the function \code{FUN}.
+#' 
+#' @seealso \code{\link{arglist}}
+#' 
+#' @examples 
+#'   # define some default arguments
+#'   args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
+#'   
+#'   # call plot with the default arguments
+#'   callWith(plot, x = 1:10, args.default)
+#'   
+#'   # call plot with the default arguments but override the colour
+#'   callWith(plot, x = 1:10, args.default, col = "blue")
+#'   
+#' 
 callWith <- structure(
   function # call a function with given arguments
 ### call a function with the given arguments. Unnamed arguments are expected to
@@ -46,7 +48,37 @@ callWith <- structure(
   callWith(plot, x = 1:10, args.default, col = "blue")
 })
 
-# arglist -----------------------------------------------------------------------
+# arglist ----------------------------------------------------------------------
+
+#' merge argument lists or arguments
+#' 
+#' creates a list of arguments from given argument lists and arguments.
+#'   This function allows to create argument lists for function calls. You may
+#'   start with some basic argument list and then merge other argument lists or
+#'   single argument assignments into this list. Merging means that elements of
+#'   the same name are overriden and elements with new names are appended.
+#' 
+#' @param \dots list of arguments to this function. All unnamed arguments are assumed to
+#'   be argument lists which are merged using \code{\link{mergeLists}} first. 
+#'   All named arguments are then merged into this list.
+#' @param warn.on.NULL if TRUE (default is FALSE) a warning is given if any of the arguments
+#'   given to this function is NULL
+#' 
+#' @return merged list of arguments
+#' 
+#' @seealso \code{\link{callWith}}
+#' 
+#' @examples 
+#'   # define some default arguments
+#'   args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
+#'   
+#'   # call plot with the default arguments
+#'   do.call(plot, arglist(args.default, x = 1:10))
+#'   
+#'   # call plot with the default arguments but override the colour
+#'   do.call(plot, arglist(args.default, x = 1:10, col = "blue"))
+#'   
+#' 
 arglist <- structure(
   function # merge argument lists or arguments
 ### creates a list of arguments from given argument lists and arguments.
@@ -57,7 +89,7 @@ arglist <- structure(
 (
   ...,
   ### list of arguments to this function. All unnamed arguments are assumed to
-  ### be argument lists which are merged using \code{\link{merge.lists}} first. 
+  ### be argument lists which are merged using \code{\link{mergeLists}} first. 
   ### All named arguments are then merged into this list.
   warn.on.NULL = FALSE
   ### if TRUE (default is FALSE) a warning is given if any of the arguments
@@ -74,9 +106,9 @@ arglist <- structure(
   if (any(unnamed)) {
     
     # merge all argument lists
-    relisted <- do.call(merge.lists, c(args[unnamed], warn.on.NULL = warn.on.NULL))
+    relisted <- do.call(mergeLists, c(args[unnamed], warn.on.NULL = warn.on.NULL))
     
-    named.args <- merge.lists(relisted, named.args, warn.on.NULL = warn.on.NULL)
+    named.args <- mergeLists(relisted, named.args, warn.on.NULL = warn.on.NULL)
   } 
 
   named.args
@@ -93,6 +125,24 @@ arglist <- structure(
 })
 
 # is.unnamed -------------------------------------------------------------------
+
+#' are list elements unnamed?
+#' 
+#' returns a vector of logical as long as \emph{x} holding TRUE at indices
+#'   where the list element at the same indices are named and FALSE at positions
+#'   where the list element at the same indices are not named.
+#' 
+#' @param x list
+#' 
+#' @return vector of logical
+#' 
+#' @examples 
+#'   is.unnamed(list(1, b = 2)) # TRUE FALSE
+#'   is.unnamed(list(a = 1, 2)) # FALSE TRUE
+#'   is.unnamed(list()) # logical(0)
+#'   is.unnamed(list(a = 1, 2, c = 3)) # FALSE  TRUE FALSE
+#'   
+#' 
 is.unnamed <- structure(
   function # are list elements unnamed?
 ### returns a vector of logical as long as \emph{x} holding TRUE at indices
@@ -122,8 +172,29 @@ is.unnamed <- structure(
   is.unnamed(list(a = 1, 2, c = 3)) # FALSE  TRUE FALSE
 })
 
-# merge.lists ------------------------------------------------------------------
-merge.lists <- structure(
+# mergeLists -------------------------------------------------------------------
+
+#' merge lists overriding elements of the same name
+#' 
+#' merge lists overriding elements of the same name
+#' 
+#' @param \dots lists
+#' @param warn.on.NULL if TRUE (default) a warning is given if any of the arguments given to
+#'   this function is NULL
+#' 
+#' @return list containing the elements given in \code{...} 
+#' 
+#' @seealso \code{\link{arglist}}
+#' 
+#' @examples 
+#'   # merge two lists with different elements
+#'   mergeLists(list(a = 1), list(b = 2))
+#'   
+#'   # merge two lists with one element of the same name: override element "b"
+#'   mergeLists(list(a = 1, b = 2), list(b = 3, c = 4))
+#'   
+#' 
+mergeLists <- structure(
   function # merge lists overriding elements of the same name
 ### merge lists overriding elements of the same name
 (
@@ -144,7 +215,7 @@ merge.lists <- structure(
   if (any(isNull) && isTRUE(warn.on.NULL)) {
     plural <- sum(isNull) > 1
     argvalues <- sub("^list", "", deparse(substitute(lists)))
-    warning(sprintf("%d argument%s given to merge.lists%s %s NULL",
+    warning(sprintf("%d argument%s given to mergeLists%s %s NULL",
                     sum(isNull), 
                     ifelse(plural, "s", ""), 
                     argvalues,
@@ -170,10 +241,10 @@ merge.lists <- structure(
     relisted <- lists[[1]]
   } 
   else {
-    relisted <- .merge.2.lists(lists[[1]], lists[[2]])
+    relisted <- .mergeTwoLists(lists[[1]], lists[[2]])
 
     if (N > 2) {
-      relisted <- do.call(merge.lists, c(list(relisted), lists[-(1:2)]))
+      relisted <- do.call(mergeLists, c(list(relisted), lists[-(1:2)]))
     }
   } 
 
@@ -181,14 +252,18 @@ merge.lists <- structure(
   ### list containing the elements given in \code{...} 
 }, ex = function() {
   # merge two lists with different elements
-  merge.lists(list(a = 1), list(b = 2))
+  mergeLists(list(a = 1), list(b = 2))
   
   # merge two lists with one element of the same name: override element "b"
-  merge.lists(list(a = 1, b = 2), list(b = 3, c = 4))
+  mergeLists(list(a = 1, b = 2), list(b = 3, c = 4))
 })
 
-# .merge.2.lists ---------------------------------------------------------------
-.merge.2.lists <- function(list.1, list.2)
+# .mergeTwoLists ---------------------------------------------------------------
+
+#'  mergeTwoLists
+#' 
+#' 
+.mergeTwoLists <- function(list.1, list.2)
 {
   stopifnot(is.list(list.1))
   stopifnot(is.list(list.2))
