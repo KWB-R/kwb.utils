@@ -23,7 +23,7 @@ safePath <- function # stop if path does not exit
 
     if (! file.exists(dirpath)) {
       
-      stop("No such directory: ", dirpath)
+      stop("No such directory: ", dirpath, call. = FALSE)
       
     } else {
       
