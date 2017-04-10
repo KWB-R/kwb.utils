@@ -1251,45 +1251,43 @@ hsDelEmptyCols <- function
 #' Remove empty columns from a data frame.
 #' 
 #' @param x data frame
-#' @param drop if TRUE and only one column remains the column is returned as a vector
-#' @param FUN function called on each column to determine if all values in the column
-#'   are empty. Default: \code{function(x) all(is.na(x))}
+#' @param drop if \code{TRUE} and only one column remains the column is returned
+#'   as a vector
+#' @param FUN function called on each column to determine if all values in the
+#'   column are empty. Default: \code{function(x) all(is.na(x))}
+#' @param dbg if \code{TRUE} debug messages are shown
 #' 
-#' @return data frame \code{x} with empty columns (columns with NA in all rows)
+#' @return data frame \code{x} with empty columns (columns with NA in all rows) 
 #'   being removed
-#' 
+#'   
 #' @seealso \code{\link{hsDelEmptyCols}}
 #' 
 removeEmptyColumns <- function # Remove empty columns from a data frame
 ### Remove empty columns from a data frame.
 (
   x,
-  ### data frame
   drop = FALSE,
-  ### if TRUE and only one column remains the column is returned as a vector
-  FUN = function(x) all(is.na(x))
-  ### function called on each column to determine if all values in the column
-  ### are empty. Default: \code{function(x) all(is.na(x))}
+  FUN = function(x) all(is.na(x)),
+  dbg = TRUE
 )
 {
-  ##seealso<< \code{\link{hsDelEmptyCols}}
-
   objectName <- as.character(substitute(x))
 
   isEmpty <- sapply(x, FUN)
 
   if (any(isEmpty)) {
-    cat(sprintf("%s: %d empty columns removed: %s\n",
-                objectName,
-                sum(isEmpty),
-                paste(names(x)[isEmpty], collapse = ", ")))
+    
+    catIf(dbg, sprintf("%s: %d empty columns removed: %s\n",
+                       objectName,
+                       sum(isEmpty),
+                       paste(names(x)[isEmpty], collapse = ", ")))
+    
   } else {
-    cat(sprintf("%s: No empty columns.\n", objectName))
+    
+    catIf(dbg, sprintf("%s: No empty columns.\n", objectName))
   }
 
   x[, ! isEmpty, drop = drop]
-  ### data frame \code{x} with empty columns (columns with NA in all rows)
-  ### being removed
 }
 
 # removeColumns ----------------------------------------------------------------
