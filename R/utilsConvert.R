@@ -274,7 +274,7 @@ hsChrToNum <- function
     )
     
     if (stopOnError) {
-      stop(text)  
+      stop(text, call. = FALSE)
     }
     else {
       warning(text)
