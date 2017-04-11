@@ -259,8 +259,9 @@ hsChrToNum <- function
   ## all elements must contain valid numeric representations in given country
   isValid <- hsValidValue(x, lng = country)
   
-  .truncated <- function(x, n = 6L) {
-    if (length(x) > n) c(head(x, n), "...") else x
+  .shortList <- function(x, n = 6L) {
+    out <- stringList(head(x, n), collapse = ", ")
+    if (length(x) > n) paste0(out, ", ...") else out
   }
     
   if (! all(isValid)) {
@@ -269,9 +270,7 @@ hsChrToNum <- function
     
     text <- sprintf(
       "%d values are not in acceptable format for country %s: %s", 
-      length(invalidValues), 
-      country, 
-      stringList(.truncated(invalidValues), collapse = ", ")
+      length(invalidValues), country, .shortList(invalidValues)
     )
     
     if (stopOnError) {
