@@ -4,10 +4,14 @@
 \alias{hsSubstSpecChars}
 \title{Substitution of Special Characters}
 \usage{
-hsSubstSpecChars(x)
+hsSubstSpecChars(x, version = 1)
 }
 \arguments{
 \item{x}{string containing special characters to be substituted}
+
+\item{version}{integer number switching between different implementations.
+version = 1 (default) uses double backslashes whether version = 2 uses
+single backslashes in the replacement patterns.}
 }
 \value{
 input string \emph{x} with special characters being substituted by 

@@ -4,18 +4,22 @@
 \alias{removeEmptyColumns}
 \title{Remove empty columns from a data frame}
 \usage{
-removeEmptyColumns(x, drop = FALSE, FUN = function(x) all(is.na(x)))
+removeEmptyColumns(x, drop = FALSE, FUN = function(x) all(is.na(x)),
+  dbg = TRUE)
 }
 \arguments{
 \item{x}{data frame}
 
-\item{drop}{if TRUE and only one column remains the column is returned as a vector}
+\item{drop}{if \code{TRUE} and only one column remains the column is returned
+as a vector}
 
-\item{FUN}{function called on each column to determine if all values in the column
-are empty. Default: \code{function(x) all(is.na(x))}}
+\item{FUN}{function called on each column to determine if all values in the
+column are empty. Default: \code{function(x) all(is.na(x))}}
+
+\item{dbg}{if \code{TRUE} debug messages are shown}
 }
 \value{
-data frame \code{x} with empty columns (columns with NA in all rows)
+data frame \code{x} with empty columns (columns with NA in all rows) 
   being removed
 }
 \description{
