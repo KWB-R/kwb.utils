@@ -390,24 +390,27 @@ removeSpaces <- function # remove all spaces in string(s)
 #' Substitution of special characters
 #' 
 #' @param x string containing special characters to be substituted
-#' 
+#' @param version integer number switching between different implementations.
+#'   version = 1 (default) uses double backslashes whether version = 2 uses
+#'   single backslashes in the replacement patterns.
 #' @return input string \emph{x} with special characters being substituted by 
 #'   a meaningful represenation or underscore, multiple underscores replaced
 #'   by a single underscore and multiple underscores at the end removed.
 #' 
-hsSubstSpecChars <- function # Substitution of Special Characters
-### Substitution of special characters
-(
-  x
-  ### string containing special characters to be substituted
-) 
-{  
-  replacements <- list(
-    "\\xe4" = "ae",
-    "\\xf6" = "oe", 
-    "\\xfc" = "ue",
-    "\\xdf" = "ss",
-    "\\xb5" = "my",
+hsSubstSpecChars <- function(x, version = 1)
+{
+  replacements.x <- if (version == 1) {
+    list(
+      "\\xe4" = "ae", "\\xf6" = "oe", "\\xfc" = "ue", "\\xdf" = "ss", 
+      "\\xb5" = "my"
+    )
+  } else {
+    list(
+      "\xe4" = "ae", "\xf6" = "oe", "\xfc" = "ue", "\xdf" = "ss", "\xb5" = "my"
+    )
+  }
+  
+  replacements.other <- list(
     "%" = "proz",
     "\\\\" = "_",        # Replace backslash with underscore
     "[() -/.,;?]" = "_", # Replace special characters with underscore
@@ -417,10 +420,7 @@ hsSubstSpecChars <- function # Substitution of Special Characters
     "_$" = ""            # Remove underscore at the end
   )
   
-  multiSubstitute(x, replacements)
-  ### input string \emph{x} with special characters being substituted by 
-  ### a meaningful represenation or underscore, multiple underscores replaced
-  ### by a single underscore and multiple underscores at the end removed.
+  multiSubstitute(x, c(replacements.x, replacements.other))
 }
 
 # stringToExpression -----------------------------------------------------------

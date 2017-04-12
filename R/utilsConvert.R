@@ -260,7 +260,7 @@ hsChrToNum <- function
   isValid <- hsValidValue(x, lng = country)
   
   .shortList <- function(x, n = 6L) {
-    out <- stringList(head(x, n), collapse = ", ")
+    out <- stringList(utils::head(x, n), collapse = ", ")
     if (length(x) > n) paste0(out, ", ...") else out
   }
     
