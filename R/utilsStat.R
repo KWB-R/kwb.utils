@@ -205,6 +205,50 @@ relativeCumulatedSum <- function # relativeCumulatedSum
   100 * cumulated / maxCumulated
 }
 
+# columnwisePercentage ---------------------------------------------------------
+#' Columnwise Percentage
+#' 
+#' Calculate the percentage (value divided by sum of values in the column) for 
+#' each column
+#' 
+#' @param x two dimensional numeric data structure
+#' @param default default value to be used if the calculated percentage is 
+#'   \code{NA}.
+#' @param digits number of digits (default: 1) to which the resulting 
+#'   percentages are to be rounded. Set to \code{NA} to suppress rounding
+#'   
+#' @examples 
+#' # Create a random matrix of integer values
+#' M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
+#' 
+#' # Introduce some NA
+#' values <- as.numeric(M1)
+#' values[sample(length(values), 3)] <- NA
+#' M2 <- matrix(values, nrow = nrow(M1), dimnames = dimnames(M1))
+#' 
+#' M1
+#' columnwisePercentage(M1)
+#' 
+#' M2
+#' columnwisePercentage(M2)
+#' columnwisePercentage(M2, default = 0)
+columnwisePercentage <- function(x, default = 0, digits = 1)
+{
+  stopifnot(length(dim(x)) == 2)
+  
+  # Copy row and column names from the input x
+  fractions <- structure(
+    defaultIfNA(apply(x, 2, FUN = percentageOfSum), default),
+    dimnames = dimnames(x)
+  )
+
+  if (! is.na(digits)) {
+    round(fractions, digits) 
+  } else {
+    fractions
+  }
+}
+
 # colStatistics ----------------------------------------------------------------
 
 #' colStatistics
