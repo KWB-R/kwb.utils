@@ -1,3 +1,35 @@
+# countOrSum -------------------------------------------------------------------
+#' Count or Sum Up Values Within Groups of rows
+#'
+#' @param x data frame
+#' @param by vector of names of columns in \code{x} to be grouped by
+#' @param sum.up name of column in \code{x} containing numeric values to be
+#'   summed up. If \code{NULL} (default) rows within groups are counted instead
+#'   of summing up values within each group
+#' @return object of class \code{xtabs} with as many dimensions as there are
+#'   values in \code{by}
+#' @examples
+#' # Create a data frame with example data
+#' x <- data.frame(
+#'   Group = rep(c("A", "B", "C"), 4),
+#'   Even = rep(c(FALSE, TRUE), 6),
+#'   Value = seq_len(12)
+#' )
+#'
+#' # Count the number of rows for each group
+#' countOrSum(x, "Group")
+#' countOrSum(x, c("Group", "Even"))
+#'
+#' # Sum up the values in column "Value" for each group
+#' countOrSum(x, "Group", sum.up = "Value")
+#' countOrSum(x, c("Group", "Even"), sum.up = "Value")
+countOrSum <- function(x, by = NULL, sum.up = NULL)
+{
+  checkForMissingColumns(x, c(by, sum.up))
+  
+  xtabs(toFormula(sum.up, by), x)
+}
+
 # hsMovingMean -----------------------------------------------------------------
 
 #' moving mean
