@@ -1,3 +1,29 @@
+# limitToRange -----------------------------------------------------------------
+
+#' limit values to lie within [left, right]
+#'
+#' limit the values in \code{x} so that each value lies within the closed
+#' interval \code{[left, right]}
+#'
+#' @param x vector of numeric values
+#' @param left lower boundary
+#' @param right upper boundary
+#' 
+#' @examples
+#' limitToRange(1:20, left = 5, right = 15)
+limitToRange <- function(x, left = .Machine$double.eps, right = 1.0)
+{
+  if (length(left) != 1 || length(right) != 1) {
+    
+    stop("length of left or right is not one")
+  }
+  
+  x[x < left] <- left
+  x[x > right] <- right
+  
+  x
+}
+
 # toKeysAndValues --------------------------------------------------------------
 
 #' key value string to list of keys and values

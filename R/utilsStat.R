@@ -27,7 +27,7 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
 {
   checkForMissingColumns(x, c(by, sum.up))
   
-  xtabs(toFormula(sum.up, by), x)
+  stats::xtabs(toFormula(sum.up, by), x)
 }
 
 # hsMovingMean -----------------------------------------------------------------
