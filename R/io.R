@@ -1,3 +1,45 @@
+# headtail ---------------------------------------------------------------------
+
+#' Print First and Last Rows of a Data Frame
+#' 
+#' Print the first and last rows of a data frame using head and tail, 
+#' respectively. Print the number of omitted rows
+#' 
+#' @param x data frame
+#' @param n total number of rows to be printed. 
+#' @pattern pattern given to \code{sprintf} containing a \code{%d} placeholder
+#'   to print the number of omitted rows
+#' @return number of omitted rows, invisibly
+#' @examples 
+#' x <- data.frame(number = 1:26, letter = LETTERS)
+#' headtail(x)
+#' headtail(x, 10)
+#' headtail(x, 16)
+#' headtail(x[10:20, ], 10)
+headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
+{
+  if (! is.data.frame(x)) {
+    stop("headtail() is currently only defined for data frames")
+  }
+  
+  if (nrow(x) <= n) {
+    
+    print(x)
+    n_omitted <- 0
+    
+  } else {
+    
+    n2 <- n %/% 2
+    n_omitted <- nrow(x) - 2 * n2
+    
+    print(head(x, n2))
+    cat(sprintf(pattern, n_omitted), "\n")
+    print(tail(x, n2))
+  }
+  
+  invisible(n_omitted)
+}
+
 # readPackageFile --------------------------------------------------------------
 
 #' read file from package's extdata folder
