@@ -1158,6 +1158,19 @@ assignAll <- function # call assign for each list element
   }
 }
 
+# assignPackageObjects ---------------------------------------------------------
+#' Assign all Package Objects to the Global Environment
+#' 
+#' @param package package name
+#' @example assignPackageObjects("kwb.utils")
+assignPackageObjects <- function(package)
+{
+  for (name in ls(getNamespace(package))) {
+    object <- get(name, envir = asNamespace(package), inherits = FALSE)
+    assignGlobally(name, object)  
+  }
+}
+
 # assignGlobally ---------------------------------------------------------------
 
 #' assignGlobally
