@@ -768,6 +768,71 @@ addRowWithName <- function # addRowWithName
 # Functions on data frames: column-related -------------------------------------
 #
 
+# unmerge ----------------------------------------------------------------------
+#' Invert the Merging of two Data Frames
+#' 
+#' Split a data frame \code{z} into two data frames \code{x} and \code{y} so
+#' that \code{merge(x, y)} is \code{z}.
+#' 
+#' @param z data frame
+#' @param by vector of names of columns in \code{z} that are used to build 
+#' groups of rows of \code{z} so that within each group the values in these 
+#' columns do not change. For each group the columns being constant over all
+#' rows are identified. Columns that are constant in each group will appear 
+#' in the data frame \code{x} whereas the remaining columns will appear in the
+#' data frame \code{y} of the returned list.
+#' @return list with two elements \code{x} and \code{y} each of which are data 
+#' frames containing at least the columns given in \code{by}.
+#' @examples 
+#' z <- data.frame(
+#'   name = c("peter", "peter", "paul", "mary", "paul", "mary"),
+#'   age = c(42, 42, 31, 28, 31, 28),
+#'   height = c(181, 181, 178, 172, 178, 172),
+#'   subject = c("maths", "bio", "bio", "bio", "chem", "maths"),
+#'   year = c(2016, 2017, 2017, 2017, 2015, 2016),
+#'   mark = c("A", "B", "B", "A", "C", "b")
+#' )
+#'   
+#' # What fields seem to be properties of objects identified by name?
+#' # -> Age and height are fix properties of the persons identified by name
+#' (result1 <- unmerge(z, "name"))
+#' 
+#' # What fields seem to be properties of objects identified by subject?
+#' # -> It seems that the subjects have been tested in different years
+#' (result2 <- unmerge(z, "subject"))
+#' 
+#' # Test if merge(result$x, result$y) results in z
+#' y1 <- merge(result1$x, result1$y)
+#' y2 <- merge(result2$x, result2$y)
+#' 
+#' columns <- sort(names(z))
+#' 
+#' identical(fullySorted(z[, columns]), fullySorted(y1[, columns])) # TRUE
+#' identical(fullySorted(z[, columns]), fullySorted(y2[, columns])) # TRUE
+unmerge <- function(z, by)
+{
+  groups <- split(z, kwb.utils::selectColumns(z, by, drop = FALSE))
+  
+  fixColumnList <- kwb.utils::excludeNULL(lapply(groups, function(x) {
+    if (nrow(x) > 0) {
+      y <- kwb.utils::removeColumns(x, by)
+      names(y)[sapply(y, kwb.utils::allAreEqual)]
+    }
+  }))
+  
+  fixColumns <- Reduce(intersect, fixColumnList, init = names(z))
+  
+  xColumns <- c(by, fixColumns)
+  yColumns <- c(by, setdiff(names(z), c(by, fixColumns)))
+  
+  xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
+  ydata <- kwb.utils::selectColumns(z, yColumns, drop = FALSE)
+  
+  stopifnot(identical(ydata, unique(ydata)))
+  
+  list(x = xdata, y = ydata)
+}
+
 # mergeAll ---------------------------------------------------------------------
 
 #' merge multiple data frames
