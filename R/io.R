@@ -32,9 +32,9 @@ headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
     n2 <- n %/% 2
     n_omitted <- nrow(x) - 2 * n2
     
-    print(head(x, n2))
+    print(utils::head(x, n2))
     cat(sprintf(pattern, n_omitted), "\n")
-    print(tail(x, n2))
+    print(utils::tail(x, n2))
   }
   
   invisible(n_omitted)

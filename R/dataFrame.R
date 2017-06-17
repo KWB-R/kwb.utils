@@ -1,3 +1,30 @@
+# fullySorted ------------------------------------------------------------------
+#' Sort a Data Frame by all of its Columns
+#'
+#' @param x data frame
+#' @param decreasing passed to \code{\link[base]{order}}
+#' @param ... further arguments passed to \code{\link[base]{order}}
+#' @param renumber.rows if \code{TRUE} (default) the rows in the returned 
+#' data frame are renumbered from 1 to the number of rows in \code{x}
+#' @examples
+#' fullySorted(head(iris))
+#' fullySorted(head(iris), decreasing = TRUE)
+#' fullySorted(head(iris[, 5:1]))
+#' fullySorted(head(iris[, 5:1]), decreasing = TRUE)
+fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
+{
+  stopifnot(is.data.frame(x))
+  
+  roworder <- do.call(order, c(x, list(decreasing = decreasing, ...)))
+  x <- x[roworder, , drop = FALSE]
+  
+  if (renumber.rows) {
+    resetRowNames(x)
+  } else {
+    x
+  }
+}
+
 # pasteColumns0 ----------------------------------------------------------------
 
 #' Paste Columns of Data Frame without Separator
