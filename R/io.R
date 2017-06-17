@@ -7,8 +7,8 @@
 #' 
 #' @param x data frame
 #' @param n total number of rows to be printed. 
-#' @pattern pattern given to \code{sprintf} containing a \code{%d} placeholder
-#'   to print the number of omitted rows
+#' @param pattern pattern given to \code{sprintf} containing a \code{\%d}
+#'   placeholder to print the number of omitted rows
 #' @return number of omitted rows, invisibly
 #' @examples 
 #' x <- data.frame(number = 1:26, letter = LETTERS)
