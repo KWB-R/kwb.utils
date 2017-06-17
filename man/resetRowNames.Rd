@@ -21,8 +21,7 @@ Reset the row names of a data frame x to 1:nrow(x) by setting the
   # Original row names
   persons.ordered
   
-  # Resetted row names
+  # Reset row names
   resetRowNames(persons.ordered)
   
-
 }

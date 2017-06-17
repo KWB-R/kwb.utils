@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{moveToFront}
 \alias{moveToFront}
-\title{move elements to the start of a vector}
+\title{Move elements to the start of a vector}
 \usage{
 moveToFront(x, elements)
 }
@@ -15,11 +15,10 @@ moveToFront(x, elements)
 vector with \code{elements} coming first
 }
 \description{
-move elements to the start of a vector
+Move elements to the start of a vector
 }
 \examples{
   moveToFront(1:10, 5)
   moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
   
-
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{compareDataFrames}
 \alias{compareDataFrames}
-\title{compare two data frames by columns}
+\title{Compare two data frames by columns}
 \usage{
 compareDataFrames(x, y)
 }
@@ -15,7 +15,7 @@ compareDataFrames(x, y)
 list of logical
 }
 \description{
-compare two data frames by columns
+Compare two data frames by columns
 }
 \examples{
   x <- data.frame(a = 1:2, b = 2:3)
@@ -29,5 +29,4 @@ compare two data frames by columns
   
   test1 && test2
   
-
 }

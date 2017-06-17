@@ -1,4 +1,5 @@
 # fullySorted ------------------------------------------------------------------
+
 #' Sort a Data Frame by all of its Columns
 #'
 #' @param x data frame
@@ -11,6 +12,7 @@
 #' fullySorted(head(iris), decreasing = TRUE)
 #' fullySorted(head(iris[, 5:1]))
 #' fullySorted(head(iris[, 5:1]), decreasing = TRUE)
+#' 
 fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
 {
   stopifnot(is.data.frame(x))
@@ -27,26 +29,18 @@ fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
 
 # splitIntoFixSizedBlocks ------------------------------------------------------
 
-#' split into blocks of same size
+#' Split into blocks of same size
 #' 
-#' split a data frame or matrix into blocks of the same size (= data frames of
-#'   matrices with the same number ofrows)
+#' Split a data frame or matrix into blocks of the same size (= data frames of 
+#' matrices with the same number of rows)
 #' 
 #' @param data data frame or matrix
 #' @param blocksize number of rows in each block into which \code{data} is split
-#' 
-#' @return list of data frames (if \code{data} is a data frame) or list of matrices
-#'   (if \code{data} is a matrix)
-#' 
-splitIntoFixSizedBlocks <- function # split into blocks of same size
-### split a data frame or matrix into blocks of the same size (= data frames of
-### matrices with the same number ofrows)
-(
-  data,
-  ### data frame or matrix
-  blocksize
-  ### number of rows in each block into which \code{data} is split
-)
+#'   
+#' @return list of data frames (if \code{data} is a data frame) or list of
+#'   matrices (if \code{data} is a matrix)
+#'   
+splitIntoFixSizedBlocks <- function(data, blocksize)
 {
   stopifnot(length(dim(data)) == 2)
 
@@ -79,17 +73,10 @@ splitIntoFixSizedBlocks <- function # split into blocks of same size
 #'   # Original row names
 #'   persons.ordered
 #'   
-#'   # Resetted row names
+#'   # Reset row names
 #'   resetRowNames(persons.ordered)
 #'   
-#' 
-resetRowNames <- structure(function # Reset row names to 1:n
-### Reset the row names of a data frame x to 1:nrow(x) by setting the
-### \code{row.names} attribute to \code{NULL}.
-(
-  x
-  ### data frame or matrix
-)
+resetRowNames <- function(x)
 {
   if (length(dim(x)) != 2) {
     stop(deparse(substitute(x)), " must be have two dimensions", call. = FALSE)
@@ -97,43 +84,33 @@ resetRowNames <- structure(function # Reset row names to 1:n
 
   row.names(x) <- NULL
   x
-}, ex = function() {
-  persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
-
-  persons.ordered <- persons[order(persons$name), ]
-
-  # Original row names
-  persons.ordered
-
-  # Resetted row names
-  resetRowNames(persons.ordered)
-})
+}
 
 # frequencyTable ---------------------------------------------------------------
 
-#' number of value occurrences in columns
+#' Number of value occurrences in columns
 #' 
-#' Counts the number of occurrences of the different values in each
-#'   column of a data frame
+#' Counts the number of occurrences of the different values in each column of a
+#' data frame
 #' 
 #' @param data data frame
-#' @param columns columns of \code{data} to be included in the frequency analysis.
-#'   Default: all columns of \code{data}
-#' @param orderByLeastLevels if TRUE (default) the list elements in the output list each of which
-#'   represents one column of \code{data} or the sections of rows in the
-#'   output data frame are orderd by \code{length(unique(data[[column]]))}
-#' @param as.data.frame if TRUE (default) the result is a data frame, otherwise a list (see
-#'   below)
+#' @param columns columns of \code{data} to be included in the frequency
+#'   analysis. Default: all columns of \code{data}
+#' @param orderByLeastLevels if TRUE (default) the list elements in the output
+#'   list each of which represents one column of \code{data} or the sections of
+#'   rows in the output data frame are orderd by
+#'   \code{length(unique(data[[column]]))}
+#' @param as.data.frame if TRUE (default) the result is a data frame, otherwise
+#'   a list (see below)
 #' @param useNA passed to \code{table} see there. Default: "ifany"
-#' 
-#' @return for \code{as.data.frame = FALSE} a list of data frames each of which
-#'   represents the frequency statistics for one column of \code{data}. Each
-#'   data frame has columns \emph{column} (name of the column of
-#'   \code{data}), \emph{value} (value occurring in \emph{column} of
-#'   \code{data}), \emph{count} (number of occurrences). For
-#'   \code{as.data.frame = TRUE} one data frame being the result of
-#'   \code{rbind}-ing together these data frames.
-#' 
+#'   
+#' @return for \code{as.data.frame = FALSE} a list of data frames each of which 
+#'   represents the frequency statistics for one column of \code{data}. Each 
+#'   data frame has columns \emph{column} (name of the column of \code{data}),
+#'   \emph{value} (value occurring in \emph{column} of \code{data}),
+#'   \emph{count} (number of occurrences). For \code{as.data.frame = TRUE} one
+#'   data frame being the result of \code{rbind}-ing together these data frames.
+#'   
 #' @examples 
 #'   # Some example data
 #'   (data <- data.frame(
@@ -145,62 +122,27 @@ resetRowNames <- structure(function # Reset row names to 1:n
 #'   
 #'   frequencyTable(data, as.data.frame = FALSE) # results in a list
 #'   
-#' 
-frequencyTable <- structure(
-  function # number of value occurrences in columns
-  ### Counts the number of occurrences of the different values in each
-  ### column of a data frame
-  (
-    data,
-    ### data frame
-    columns = names(data),
-    ### columns of \code{data} to be included in the frequency analysis.
-    ### Default: all columns of \code{data}
-    orderByLeastLevels = TRUE,
-    ### if TRUE (default) the list elements in the output list each of which
-    ### represents one column of \code{data} or the sections of rows in the
-    ### output data frame are orderd by \code{length(unique(data[[column]]))}
-    as.data.frame = TRUE,
-    ### if TRUE (default) the result is a data frame, otherwise a list (see
-    ### below)
-    useNA = c("no", "ifany", "always")[2]
-    ### passed to \code{table} see there. Default: "ifany"
-  )
-  {
-    L <- .frequencyTableList(data, columns = columns, useNA = useNA)
-
-    if (isTRUE(orderByLeastLevels)) {
-      L <- L[order(sapply(L, nrow))]
-    }
-
-    if (isTRUE(as.data.frame)) {
-      rbindAll(L)
-    } else {
-      L
-    }
-    ### for \code{as.data.frame = FALSE} a list of data frames each of which
-    ### represents the frequency statistics for one column of \code{data}. Each
-    ### data frame has columns \emph{column} (name of the column of
-    ### \code{data}), \emph{value} (value occurring in \emph{column} of
-    ### \code{data}), \emph{count} (number of occurrences). For
-    ### \code{as.data.frame = TRUE} one data frame being the result of
-    ### \code{rbind}-ing together these data frames.
-  }, ex = function() {
-    # Some example data
-    (data <- data.frame(
-      A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
-      B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
-    ))
-
-    frequencyTable(data) # results in a data frame
-
-    frequencyTable(data, as.data.frame = FALSE) # results in a list
-  })
+frequencyTable <- function(
+  data, columns = names(data), orderByLeastLevels = TRUE, as.data.frame = TRUE,
+  useNA = c("no", "ifany", "always")[2]
+)
+{
+  L <- .frequencyTableList(data, columns = columns, useNA = useNA)
+  
+  if (isTRUE(orderByLeastLevels)) {
+    L <- L[order(sapply(L, nrow))]
+  }
+  
+  if (isTRUE(as.data.frame)) {
+    rbindAll(L)
+  } else {
+    L
+  }
+}
 
 # .frequencyTableList ----------------------------------------------------------
 
-#'  frequencyTableList
-#' 
+#' .frequencyTableList
 #' 
 .frequencyTableList <- function(data, columns = names(data), useNA = "ifany")
 {
@@ -228,8 +170,7 @@ frequencyTable <- structure(
 
 # .test_compareDataFrames ------------------------------------------------------
 
-#'  test compareDataFrames
-#' 
+#' .test compareDataFrames
 #' 
 .test_compareDataFrames <- function()
 {
@@ -247,9 +188,7 @@ frequencyTable <- structure(
 
 # compareDataFrames ------------------------------------------------------------
 
-#' compare two data frames by columns
-#' 
-#' compare two data frames by columns
+#' Compare two data frames by columns
 #' 
 #' @param x first data frame
 #' @param y second data frame
@@ -268,74 +207,62 @@ frequencyTable <- structure(
 #'   
 #'   test1 && test2
 #'   
-#' 
-compareDataFrames <- structure(
-  function # compare two data frames by columns
-  ### compare two data frames by columns
-  (
-    x,
-    ### first data frame
-    y
-    ### second data frame
+compareDataFrames <- function(x, y)
+{
+  stopifnot(is.data.frame(x))
+  stopifnot(is.data.frame(y))
+  
+  typeToName <- c(Column = "names", Row = "row.names")
+  
+  names.x <- names(x)
+  names.y <- names(y)
+  
+  row.names.x <- row.names(x)
+  row.names.y <- row.names(y)
+  
+  result <- list()
+  
+  result$identical <- identical(x, y)
+  
+  result$identicalExceptAttributes <- identical(
+    kwb.utils::removeAttributes(x),
+    kwb.utils::removeAttributes(y)
   )
-  {
-    stopifnot(is.data.frame(x))
-    stopifnot(is.data.frame(y))
-
-    typeToName <- c(Column = "names", Row = "row.names")
-
-    names.x <- names(x)
-    names.y <- names(y)
-
-    row.names.x <- row.names(x)
-    row.names.y <- row.names(y)
-
-    result <- list()
-
-    result$identical <- identical(x, y)
-
-    result$identicalExceptAttributes <- identical(
-      kwb.utils::removeAttributes(x),
-      kwb.utils::removeAttributes(y)
-    )
-
-    result$equalNumberOfRows <- (nrow(x) == nrow(y))
-
-    result$equalNumberOfColumns <- (ncol(x) == ncol(y))
-
-    for (type in names(typeToName)) {
-
-      if (result[[sprintf("equalNumberOf%ss", type)]]) {
-
-        objects.x <- get(paste0(typeToName[type], ".x"))
-        objects.y <- get(paste0(typeToName[type], ".y"))
-
-        check <- all(objects.x == objects.y)
-        result[[sprintf("same%sNames", type)]] <- check
-
-        check <- (length(setdiff(objects.x, objects.y)) == 0)
-        result[[sprintf("same%sNamesOrdered", type)]] <- check
-      }
+  
+  result$equalNumberOfRows <- (nrow(x) == nrow(y))
+  
+  result$equalNumberOfColumns <- (ncol(x) == ncol(y))
+  
+  for (type in names(typeToName)) {
+    
+    if (result[[sprintf("equalNumberOf%ss", type)]]) {
+      
+      objects.x <- get(paste0(typeToName[type], ".x"))
+      objects.y <- get(paste0(typeToName[type], ".y"))
+      
+      check <- all(objects.x == objects.y)
+      result[[sprintf("same%sNames", type)]] <- check
+      
+      check <- (length(setdiff(objects.x, objects.y)) == 0)
+      result[[sprintf("same%sNamesOrdered", type)]] <- check
     }
-
-    check <- sapply(unique(c(names.x, names.y)), function(column) {
-      c(
-        identical = identical(x[[column]], y[[column]]),
-        identicalExceptAttributes = identical(
-          kwb.utils::removeAttributes(x[[column]]),
-          kwb.utils::removeAttributes(y[[column]])
-        ),
-        equalValues = all(x[[column]] == y[[column]])
-      )
-    })
-
-    result$byColumn <- check
-
-    result
-    ### list of logical
-  },
-  ex = .test_compareDataFrames
-)
+  }
+  
+  check <- sapply(unique(c(names.x, names.y)), function(column) {
+    c(
+      identical = identical(x[[column]], y[[column]]),
+      identicalExceptAttributes = identical(
+        kwb.utils::removeAttributes(x[[column]]),
+        kwb.utils::removeAttributes(y[[column]])
+      ),
+      equalValues = all(x[[column]] == y[[column]])
+    )
+  })
+  
+  result$byColumn <- check
+  
+  result
+}
 
 #
 # Functions on data frames: row-related ----------------------------------------
@@ -343,26 +270,20 @@ compareDataFrames <- structure(
 
 # atLeastOneRowIn --------------------------------------------------------------
 
-#' at least one row in data frame
+#' At least one row in data frame
 #' 
 #' returns TRUE if data frame has at least one row, else FALSE
 #' 
 #' @param dframe data frame
 #' 
-atLeastOneRowIn <- function # at least one row in data frame
-### returns TRUE if data frame has at least one row, else FALSE
-(
-  dframe
-  ### data frame
-)
+atLeastOneRowIn <- function(dframe)
 {
   nrow(dframe) > 0
 }
 
 # .test_rbindAll ---------------------------------------------------------------
 
-#'  test rbindAll
-#' 
+#' .test rbindAll
 #' 
 .test_rbindAll <- function()
 {
@@ -406,8 +327,6 @@ atLeastOneRowIn <- function # at least one row in data frame
 
 # rbindAll ---------------------------------------------------------------------
 
-#' rbind all data frames given in a list
-#' 
 #' rbind all data frames given in a list
 #' 
 #' @param x list of data frames to be passed to \code{rbind}
@@ -457,64 +376,44 @@ atLeastOneRowIn <- function # at least one row in data frame
 #'     identical(y3, expected3) &&
 #'     identical(y4, expected4)
 #'   
-#' 
-rbindAll <- structure(
-  function # rbind all data frames given in a list
-  ### rbind all data frames given in a list
-  (
-    x,
-    ### list of data frames to be passed to \code{rbind}
-    nameColumn = "",
-    ### optional. If given, an additional column of that name is added to the
-    ### resulting data frame containing the name (or number if \emph{args} is
-    ### an unnamed list) of the element in \emph{x} that the corresponding rows
-    ### belong to
-    remove.row.names = TRUE,
-    ### if TRUE (default) row names are reset in the output data frame
-    namesAsFactor = TRUE
-    ### if TRUE (default) and \emph{nameColumn} is given the values in
-    ### column \emph{nameColumn} are converted to a factor
-  )
-  {
-    result <- do.call(rbind, x)
-
-    if (nameColumn != "") {
-
-      xnames <- names(x)
-
-      if (is.null(xnames)) {
-        xnames <- seq_len(length(x))
-      }
-
-      times <- sapply(x, FUN = function(x) {
-        if (is.null(x)) {
-          0
-        } else {
-          nrow(x)
-        }
-      })
-
-      nameValues <- rep(xnames, times = times)
-
-      if (namesAsFactor) {
-        nameValues <- as.factor(nameValues)
-      }
-
-      result[[nameColumn]] <- nameValues
+rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor = TRUE)
+{
+  result <- do.call(rbind, x)
+  
+  if (nameColumn != "") {
+    
+    xnames <- names(x)
+    
+    if (is.null(xnames)) {
+      xnames <- seq_len(length(x))
     }
-
-    if (remove.row.names) {
-      row.names(result) <- NULL
+    
+    times <- sapply(x, FUN = function(x) {
+      if (is.null(x)) {
+        0
+      } else {
+        nrow(x)
+      }
+    })
+    
+    nameValues <- rep(xnames, times = times)
+    
+    if (namesAsFactor) {
+      nameValues <- as.factor(nameValues)
     }
-
-    result
-  }, ex = .test_rbindAll
-)
+    
+    result[[nameColumn]] <- nameValues
+  }
+  
+  if (remove.row.names) {
+    row.names(result) <- NULL
+  }
+  
+  result
+}
 
 # safeRowBindOfListElements ----------------------------------------------------
 
-#' row-bind data frames in a list of lists
-#' 
 #' row-bind data frames in a list of lists
 #' 
 #' @param x list of lists each of which contains a data frame in element
@@ -542,49 +441,19 @@ rbindAll <- structure(
 #'   ## differ.
 #'   x[[1]]$data$z = 13:14
 #'   safeRowBindOfListElements(x, "data")
-#'   
-#' 
-safeRowBindOfListElements <- structure(
-  function # row-bind data frames in a list of lists
-  ### row-bind data frames in a list of lists
-  (
-    x,
-    ### list of lists each of which contains a data frame in element
-    ### \emph{elementName}
-    elementName
-    ### name of list element in each sublist of \emph{x} which contains a
-    ### data frame
-  )
-  {
-    x.list <- lapply(x, "[[", elementName)
-
-    result <- NULL
-
-    for (dataFrame in x.list) {
-      result <- safeRowBind(result, dataFrame)
-    }
-
-    result
-    ### data frame resulting from "row-binding" data frames.
-  }, ex = function() {
-    x <- list(
-      list(
-        number = 1,
-        data = data.frame(x = 1:2, y = 2:3)
-      ),
-      list(
-        number = 2,
-        data = data.frame(x = 11:12, y = 12:13)
-      )
-    )
-
-    safeRowBindOfListElements(x, "data")
-
-    ## also working if the column names of the data frames in the "data" elements
-    ## differ.
-    x[[1]]$data$z = 13:14
-    safeRowBindOfListElements(x, "data")
-  })
+#'
+safeRowBindOfListElements <- function(x, elementName)
+{
+  x.list <- lapply(x, "[[", elementName)
+  
+  result <- NULL
+  
+  for (dataFrame in x.list) {
+    result <- safeRowBind(result, dataFrame)
+  }
+  
+  result
+}
 
 # safeRowBind ------------------------------------------------------------------
 
@@ -629,12 +498,7 @@ safeRowBind <- function(dataFrame1, dataFrame2)
 #' 
 #' @return data frame resulting from "rbind"-ing all data frames in \code{x}
 #' 
-safeRowBindAll <- function # "safe" rbind of all data frames in a list
-### rbind all data frames in a list using \code{\link{safeRowBind}}
-(
-  x
-  ### list of data frames
-)
+safeRowBindAll <- function(x)
 {
   result <- NULL
 
@@ -648,7 +512,7 @@ safeRowBindAll <- function # "safe" rbind of all data frames in a list
 
 # addRowWithName ---------------------------------------------------------------
 
-#' addRowWithName
+#' Add a Row with a Name
 #' 
 #' add row to data frame and give a row name at the same time
 #' 
@@ -658,16 +522,7 @@ safeRowBindAll <- function # "safe" rbind of all data frames in a list
 #' 
 #' @return \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
 #' 
-addRowWithName <- function # addRowWithName
-### add row to data frame and give a row name at the same time
-(
-  x,
-  ### data frame to which row is to be appended
-  y,
-  ### data frame containing the row to be appended (exacly one row expected)
-  row.name
-  ### name of row to be given in result data frame
-)
+addRowWithName <- function(x, y, row.name)
 {
   stopifnot(nrow(y) == 1)
 
@@ -677,10 +532,6 @@ addRowWithName <- function # addRowWithName
   return(x)
   ### \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
 }
-
-#
-# Functions on data frames: column-related -------------------------------------
-#
 
 # unmerge ----------------------------------------------------------------------
 #' Invert the Merging of two Data Frames
@@ -749,21 +600,21 @@ unmerge <- function(z, by)
 
 # mergeAll ---------------------------------------------------------------------
 
-#' merge multiple data frames
+#' Merge multiple Data Frames
 #' 
-#' merge multiple data frames, given in a list
+#' Merge multiple data frames, given in a list
 #' 
-#' @param dataFrames list of data frames. If the list elements are named, the element names
-#'   are used as suffixes in the column names, otherwise suffixes ".1", ".2",
-#'   etc are used
+#' @param dataFrames list of data frames. If the list elements are named, the
+#'   element names are used as suffixes in the column names, otherwise suffixes
+#'   ".1", ".2", etc are used
 #' @param by vector of column names to be merged by, passed on to \code{merge}
 #' @param \dots additional arguments passed to \code{merge}
-#' @param dbg if \code{TRUE} (default) debug messages showing the process of
+#' @param dbg if \code{TRUE} (default) debug messages showing the process of 
 #'   merging are shown
-#' 
-#' @return data frame being the result of merging all the data frames given in
+#'   
+#' @return data frame being the result of merging all the data frames given in 
 #'   \emph{dataFrames} by  consecutively calling \code{merge}
-#' 
+#'   
 #' @examples 
 #'   peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
 #'   paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
@@ -835,14 +686,8 @@ mergeAll <- function(dataFrames, by, ..., dbg = TRUE)
 #' @param by.y just as in \code{\link[base]{merge}}
 #' @param \dots additional arguments passed to \code{\link[base]{merge}}
 #' 
-safeMerge <- function
-(
-  x,
-  y,
-  by = intersect(names(x), names(y)),
-  by.x = by,
-  by.y = by,
-  ...
+safeMerge <- function(
+  x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by, ...
 )
 {
   checkForMissingColumns(x, by.x)
@@ -853,9 +698,7 @@ safeMerge <- function
 
 # moveToFront ------------------------------------------------------------------
 
-#' move elements to the start of a vector
-#' 
-#' move elements to the start of a vector
+#' Move elements to the start of a vector
 #' 
 #' @param x vector
 #' @param elements elements out of \code{x} to be moved to the front
@@ -866,21 +709,7 @@ safeMerge <- function
 #'   moveToFront(1:10, 5)
 #'   moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
 #'   
-#' 
-moveToFront <- structure(
-  function # move elements to the start of a vector
-  ### move elements to the start of a vector
-  (
-    x,
-    ### vector
-    elements
-    ### elements out of \code{x} to be moved to the front
-  )
-  {
-    c(elements, setdiff(x, elements))
-    ### vector with \code{elements} coming first
-  }, ex = function() {
-    moveToFront(1:10, 5)
-    moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
-  })
-
+moveToFront <- function(x, elements)
+{
+  c(elements, setdiff(x, elements))
+}

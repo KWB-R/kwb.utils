@@ -61,5 +61,4 @@ rbind all data frames given in a list
     identical(y3, expected3) &&
     identical(y4, expected4)
   
-
 }

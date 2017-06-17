@@ -24,4 +24,5 @@ fullySorted(head(iris))
 fullySorted(head(iris), decreasing = TRUE)
 fullySorted(head(iris[, 5:1]))
 fullySorted(head(iris[, 5:1]), decreasing = TRUE)
+
 }

@@ -37,6 +37,5 @@ row-bind data frames in a list of lists
   ## differ.
   x[[1]]$data$z = 13:14
   safeRowBindOfListElements(x, "data")
-  
 
 }

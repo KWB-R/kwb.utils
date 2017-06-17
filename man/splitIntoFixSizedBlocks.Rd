@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{splitIntoFixSizedBlocks}
 \alias{splitIntoFixSizedBlocks}
-\title{split into blocks of same size}
+\title{Split into blocks of same size}
 \usage{
 splitIntoFixSizedBlocks(data, blocksize)
 }
@@ -12,10 +12,10 @@ splitIntoFixSizedBlocks(data, blocksize)
 \item{blocksize}{number of rows in each block into which \code{data} is split}
 }
 \value{
-list of data frames (if \code{data} is a data frame) or list of matrices
-  (if \code{data} is a matrix)
+list of data frames (if \code{data} is a data frame) or list of
+  matrices (if \code{data} is a matrix)
 }
 \description{
-split a data frame or matrix into blocks of the same size (= data frames of
-  matrices with the same number ofrows)
+Split a data frame or matrix into blocks of the same size (= data frames of 
+matrices with the same number of rows)
 }

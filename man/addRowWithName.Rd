@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{addRowWithName}
 \alias{addRowWithName}
-\title{addRowWithName}
+\title{Add a Row with a Name}
 \usage{
 addRowWithName(x, y, row.name)
 }

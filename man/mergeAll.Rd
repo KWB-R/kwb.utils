@@ -2,28 +2,28 @@
 % Please edit documentation in R/dataFrame.R
 \name{mergeAll}
 \alias{mergeAll}
-\title{merge multiple data frames}
+\title{Merge multiple Data Frames}
 \usage{
 mergeAll(dataFrames, by, ..., dbg = TRUE)
 }
 \arguments{
-\item{dataFrames}{list of data frames. If the list elements are named, the element names
-are used as suffixes in the column names, otherwise suffixes ".1", ".2",
-etc are used}
+\item{dataFrames}{list of data frames. If the list elements are named, the
+element names are used as suffixes in the column names, otherwise suffixes
+".1", ".2", etc are used}
 
 \item{by}{vector of column names to be merged by, passed on to \code{merge}}
 
 \item{\dots}{additional arguments passed to \code{merge}}
 
-\item{dbg}{if \code{TRUE} (default) debug messages showing the process of
+\item{dbg}{if \code{TRUE} (default) debug messages showing the process of 
 merging are shown}
 }
 \value{
-data frame being the result of merging all the data frames given in
+data frame being the result of merging all the data frames given in 
   \emph{dataFrames} by  consecutively calling \code{merge}
 }
 \description{
-merge multiple data frames, given in a list
+Merge multiple data frames, given in a list
 }
 \examples{
   peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)

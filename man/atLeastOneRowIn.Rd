@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{atLeastOneRowIn}
 \alias{atLeastOneRowIn}
-\title{at least one row in data frame}
+\title{At least one row in data frame}
 \usage{
 atLeastOneRowIn(dframe)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dataFrame.R
 \name{frequencyTable}
 \alias{frequencyTable}
-\title{number of value occurrences in columns}
+\title{Number of value occurrences in columns}
 \usage{
 frequencyTable(data, columns = names(data), orderByLeastLevels = TRUE,
   as.data.frame = TRUE, useNA = c("no", "ifany", "always")[2])
@@ -10,30 +10,30 @@ frequencyTable(data, columns = names(data), orderByLeastLevels = TRUE,
 \arguments{
 \item{data}{data frame}
 
-\item{columns}{columns of \code{data} to be included in the frequency analysis.
-Default: all columns of \code{data}}
+\item{columns}{columns of \code{data} to be included in the frequency
+analysis. Default: all columns of \code{data}}
 
-\item{orderByLeastLevels}{if TRUE (default) the list elements in the output list each of which
-represents one column of \code{data} or the sections of rows in the
-output data frame are orderd by \code{length(unique(data[[column]]))}}
+\item{orderByLeastLevels}{if TRUE (default) the list elements in the output
+list each of which represents one column of \code{data} or the sections of
+rows in the output data frame are orderd by
+\code{length(unique(data[[column]]))}}
 
-\item{as.data.frame}{if TRUE (default) the result is a data frame, otherwise a list (see
-below)}
+\item{as.data.frame}{if TRUE (default) the result is a data frame, otherwise
+a list (see below)}
 
 \item{useNA}{passed to \code{table} see there. Default: "ifany"}
 }
 \value{
-for \code{as.data.frame = FALSE} a list of data frames each of which
-  represents the frequency statistics for one column of \code{data}. Each
-  data frame has columns \emph{column} (name of the column of
-  \code{data}), \emph{value} (value occurring in \emph{column} of
-  \code{data}), \emph{count} (number of occurrences). For
-  \code{as.data.frame = TRUE} one data frame being the result of
-  \code{rbind}-ing together these data frames.
+for \code{as.data.frame = FALSE} a list of data frames each of which 
+  represents the frequency statistics for one column of \code{data}. Each 
+  data frame has columns \emph{column} (name of the column of \code{data}),
+  \emph{value} (value occurring in \emph{column} of \code{data}),
+  \emph{count} (number of occurrences). For \code{as.data.frame = TRUE} one
+  data frame being the result of \code{rbind}-ing together these data frames.
 }
 \description{
-Counts the number of occurrences of the different values in each
-  column of a data frame
+Counts the number of occurrences of the different values in each column of a
+data frame
 }
 \examples{
   # Some example data
@@ -46,5 +46,4 @@ Counts the number of occurrences of the different values in each
   
   frequencyTable(data, as.data.frame = FALSE) # results in a list
   
-
 }
