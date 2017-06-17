@@ -39,6 +39,7 @@
 #' 
 #' identical(fullySorted(z[, columns]), fullySorted(y1[, columns])) # TRUE
 #' identical(fullySorted(z[, columns]), fullySorted(y2[, columns])) # TRUE
+#' 
 unmerge <- function(z, by)
 {
   groups <- split(z, kwb.utils::selectColumns(z, by, drop = FALSE))
@@ -53,7 +54,7 @@ unmerge <- function(z, by)
   fixColumns <- Reduce(intersect, fixColumnList, init = names(z))
   
   xColumns <- c(by, fixColumns)
-  yColumns <- c(by, setdiff(names(z), c(by, fixColumns)))
+  yColumns <- c(by, setdiff(names(z), xColumns))
   
   xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
   ydata <- kwb.utils::selectColumns(z, yColumns, drop = FALSE)
