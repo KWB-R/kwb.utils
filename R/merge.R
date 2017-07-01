@@ -42,8 +42,12 @@
 #' 
 unmerge <- function(z, by)
 {
+  stopfinot(is.data.frame(z))
+  
+  # Build groups of rows for each value combination in "by"-columns
   groups <- split(z, kwb.utils::selectColumns(z, by, drop = FALSE))
   
+  # Find "fix" columns in which the values do not change within any group
   fixColumnList <- kwb.utils::excludeNULL(lapply(groups, function(x) {
     if (nrow(x) > 0) {
       y <- kwb.utils::removeColumns(x, by)
@@ -53,9 +57,16 @@ unmerge <- function(z, by)
   
   fixColumns <- Reduce(intersect, fixColumnList, init = names(z))
   
-  xColumns <- c(by, fixColumns)
-  yColumns <- c(by, setdiff(names(z), xColumns))
-  
+  .splitDataFrame(
+    z, 
+    xColumns = c(by, fixColumns),
+    yColumns = c(by, setdiff(names(z), xColumns))
+  )
+}
+
+# .splitDataFrame --------------------------------------------------------------
+.splitDataFrame <- function(z, xColumns, yColumns)
+{
   xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
   ydata <- kwb.utils::selectColumns(z, yColumns, drop = FALSE)
   
