@@ -42,7 +42,7 @@
 #' 
 unmerge <- function(z, by)
 {
-  stopfinot(is.data.frame(z))
+  stopifnot(is.data.frame(z))
   
   # Build groups of rows for each value combination in "by"-columns
   groups <- split(z, kwb.utils::selectColumns(z, by, drop = FALSE))
@@ -57,11 +57,9 @@ unmerge <- function(z, by)
   
   fixColumns <- Reduce(intersect, fixColumnList, init = names(z))
   
-  .splitDataFrame(
-    z, 
-    xColumns = c(by, fixColumns),
-    yColumns = c(by, setdiff(names(z), xColumns))
-  )
+  xColumns <- c(by, fixColumns)
+  
+  .splitDataFrame(z, xColumns, yColumns = c(by, setdiff(names(z), xColumns)))
 }
 
 # .splitDataFrame --------------------------------------------------------------

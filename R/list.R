@@ -1,3 +1,28 @@
+# copyListElements -------------------------------------------------------------
+#' Copy list elements into a list of lists
+#'
+#' @param x list of lists
+#' @param y list of elements
+#' @param name name of target list element
+#' @return \code{x} with each sublist being extended by list element \code{name}
+#' having been taken from \code{y}
+#' @examples 
+#' x <- list(list(a = 1), list(b = 2), list(c = 3))
+#' y <- list("b1", "b2", "b3")
+#' str(copyListElements(x, y, "b"))
+copyListElements <- function(x, y, name) {
+  
+  stopifnot(is.list(x), is.list(y), is.character((name)))
+  stopifnot(all(sapply(x, is.list)))
+  stopifnot(length(x) == length(y))
+  
+  lapply(seq_along(x), function(i) {
+    result <- x[[i]]
+    result[[name]] <- y[[i]]
+    result
+  })
+}
+
 # excludeNULL ------------------------------------------------------------------
 
 #' Exclude all NULL entries from a list
