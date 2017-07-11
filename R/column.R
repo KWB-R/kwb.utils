@@ -480,25 +480,46 @@ insertColumns <- function(
 
 # hsRenameColumns --------------------------------------------------------------
 
+#' Rename Columns in a Data Frame (deprecated)
+#' 
+#' Rename Columns in a Data Frame (deprecated, use renameColumns instead)
+#' 
+#' @param dframe data.frame
+#' @param renames list with named elements each of which defines a column rename
+#'   in the form <old-name> = <new-name>
+hsRenameColumns <- function(dframe, renames)
+{
+  renameColumns(x = dframe, renamings = renames)
+}
+
+# renameColumns ----------------------------------------------------------------
+
 #' Rename Columns in a Data Frame
 #' 
 #' rename columns in a data frame giving tupels of original name
 #'   and substitute name as named elements in list "renames"
 #' 
-#' @param dframe data.frame,
-#' @param renames list with named elements each of which defines a column rename in the form
-#'   <old-name> = <new-name>
+#' @param x data.frame
+#' @param renamings list with named elements each of which defines a column
+#'   rename in the form <old-name> = <new-name>
 #' 
 #' @return \emph{dframe} with columns renamed as specified in \emph{renames}
 #' 
-hsRenameColumns <- function(dframe, renames)
+renameColumns <- function(x, renamings = NULL)
 {
-  columnNames <- names(dframe)
-  for (columnName in names(renames)) {
-    columnNames[columnNames == columnName] <- renames[[columnName]]
+  if (is.null(renamings)) {
+    
+    return(x)
   }
-  names(dframe) <- columnNames
-  dframe
+  
+  columns <- names(x)
+  
+  for (column in names(renamings)) {
+    
+    columns[columns == column] <- renamings[[column]]
+  }
+  
+  structure(x, names = columns)
 }
 
 # renameAndSelect --------------------------------------------------------------

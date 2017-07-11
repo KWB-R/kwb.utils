@@ -2,20 +2,16 @@
 % Please edit documentation in R/column.R
 \name{hsRenameColumns}
 \alias{hsRenameColumns}
-\title{Rename Columns in a Data Frame}
+\title{Rename Columns in a Data Frame (deprecated)}
 \usage{
 hsRenameColumns(dframe, renames)
 }
 \arguments{
-\item{dframe}{data.frame,}
+\item{dframe}{data.frame}
 
-\item{renames}{list with named elements each of which defines a column rename in the form
-<old-name> = <new-name>}
-}
-\value{
-\emph{dframe} with columns renamed as specified in \emph{renames}
+\item{renames}{list with named elements each of which defines a column rename
+in the form <old-name> = <new-name>}
 }
 \description{
-rename columns in a data frame giving tupels of original name
-  and substitute name as named elements in list "renames"
+Rename Columns in a Data Frame (deprecated, use renameColumns instead)
 }
