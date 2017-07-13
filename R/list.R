@@ -10,7 +10,7 @@
 #' x <- list(list(a = 1), list(b = 2), list(c = 3))
 #' y <- list("b1", "b2", "b3")
 #' str(copyListElements(x, y, "b"))
-copyListElements <- function(x, y, name) {
+copyListElements <- function(x, y, name = deparse(substitute(y))) {
   
   stopifnot(is.list(x), is.list(y), is.character((name)))
   stopifnot(all(sapply(x, is.list)))
