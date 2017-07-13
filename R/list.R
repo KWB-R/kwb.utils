@@ -15,10 +15,11 @@ copyListElements <- function(x, y, name) {
   stopifnot(is.list(x), is.list(y), is.character((name)))
   stopifnot(all(sapply(x, is.list)))
   stopifnot(length(x) == length(y))
-  
+  stopifnot(length(name) == 1)
+
   lapply(seq_along(x), function(i) {
     result <- x[[i]]
-    result[[name]] <- y[[i]]
+    result[name] <- y[i]
     result
   })
 }
