@@ -7,7 +7,7 @@
 renameColumns(x, renamings = NULL)
 }
 \arguments{
-\item{x}{data.frame,}
+\item{x}{data.frame}
 
 \item{renamings}{list with named elements each of which defines a column
 rename in the form <old-name> = <new-name>}

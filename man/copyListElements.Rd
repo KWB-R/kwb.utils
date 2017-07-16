@@ -4,7 +4,7 @@
 \alias{copyListElements}
 \title{Copy list elements into a list of lists}
 \usage{
-copyListElements(x, y, name)
+copyListElements(x, y, name = deparse(substitute(y)))
 }
 \arguments{
 \item{x}{list of lists}
