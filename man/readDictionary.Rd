@@ -2,7 +2,7 @@
 % Please edit documentation in R/dictionary.R
 \name{readDictionary}
 \alias{readDictionary}
-\title{read dictionary from text file}
+\title{Read Dictionary from Text File}
 \usage{
 readDictionary(file, sorted = TRUE)
 }
@@ -13,7 +13,7 @@ readDictionary(file, sorted = TRUE)
 keys}
 }
 \description{
-reads a dictionary (a list of "key = value"-pairs) from a text file.
+Reads a dictionary (a list of "key = value"-pairs) from a text file.
 }
 \examples{
   file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
@@ -23,5 +23,7 @@ reads a dictionary (a list of "key = value"-pairs) from a text file.
   resolve("file.out", dictionary, extension = "csv")
   resolve("file.out", dictionary, extension = "pdf")
   
-
+}
+\seealso{
+\code{\link{readDictionaries}}
 }

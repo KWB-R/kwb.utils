@@ -1,8 +1,67 @@
+# writeDictionary --------------------------------------------------------------
+
+#' Write a Dictionary (List) to a Text File
+#' 
+#' @param dictionary list of character vectors of length one defining 
+#' \code{key = value} pairs forming a dictionary.
+#' @param file full path to the file to which \code{dictionary} is to be written
+#' @seealso \code{\link{readDictionary}, \link{readDictionaries}}
+writeDictionary <- function(dictionary, file)
+{
+  header_lines <- c(
+    "This file defines a dictionary of paths where each left-hand-side (LHS)", 
+    "expression can be used as a shortcut to the right-hand-side (RHS)",
+    "expression. If a LHS appears in angle brackets within the RHS expression",
+    "as the expression 'where' in '<where>/hand/side/expression' it is", 
+    "replaced with the RHS expression that can be found for the LHS expression",
+    "'where' (as in 'where = left') if there is such an assignment.",
+    "Use kwb.utils::readDictionary() to read this dictionary from this file", 
+    "into an R list and use kwb.utils::resolve() to resolve the expressions", 
+    "in angle brackets (placeholders) in the RHS expressions."
+  )
+  
+  header_lines <- c(
+    header_lines,
+    "This file has been generated using kwb.utils::writeDictionary()", 
+    sprintf("on %s by user %s", Sys.Date(), kwb.utils::user())
+  )
+  
+  header_lines <- paste("#", header_lines)
+  body_lines <- paste(names(dictionary), "=", as.character(dictionary))
+  
+  text_lines <- c(header_lines, "", body_lines)
+  
+  writeLines(text_lines, con = file)
+}
+
+# readDictionaries -------------------------------------------------------------
+
+#' Read Dictionary Files into a List of Dictionaries
+#' 
+#' Read files from a folder, specified by a file name pattern, into a list
+#' of dictionaries
+#' 
+#' @param folder path to the folder containing the files to be read
+#' @param pattern regular expression to match the names of the files to be read.
+#' The pattern is expected to contain a pair of parentheses around the part
+#' of the file that shall be used as element name in the returned list
+#' @seealso \code{\link{readDictionary}}
+readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
+{
+  files <- dir(folder, pattern, full.names = TRUE)
+  
+  dictionaries <- lapply(files, kwb.utils::readDictionary, sorted = FALSE)
+  
+  config_names <- kwb.utils::subExpressionMatches(pattern, basename(files))
+  
+  structure(dictionaries, names = sapply(config_names, "[[", 1))
+}
+
 # readDictionary ---------------------------------------------------------------
 
-#' read dictionary from text file
+#' Read Dictionary from Text File
 #' 
-#' reads a dictionary (a list of "key = value"-pairs) from a text file.
+#' Reads a dictionary (a list of "key = value"-pairs) from a text file.
 #' 
 #' @param file full path to dictionary file
 #' @param sorted if TRUE (default) the entries in the dictionary will be sorted by their
@@ -16,7 +75,7 @@
 #'   resolve("file.out", dictionary, extension = "csv")
 #'   resolve("file.out", dictionary, extension = "pdf")
 #'   
-#' 
+#' @seealso \code{\link{readDictionaries}}
 readDictionary <- structure(
   function # read dictionary from text file
 ### reads a dictionary (a list of "key = value"-pairs) from a text file.
