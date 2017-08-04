@@ -2,19 +2,19 @@
 % Please edit documentation in R/dictionary.R
 \name{resolveAll}
 \alias{resolveAll}
-\title{resolve all placeholders in a dictionary}
+\title{Resolve all Placeholders in a Dictionary}
 \usage{
 resolveAll(dictionary, ...)
 }
 \arguments{
-\item{dictionary}{list with named elements where the element name represents the key and
-the element value represents the value assigned to the key.}
+\item{dictionary}{list with named elements where the element name represents
+the key and the element value represents the value assigned to the key.}
 
-\item{\dots}{additional assignments of the form <key> = <value> that are temporarily
-added to the \code{dictionary} before doing the resolving}
+\item{\dots}{additional assignments of the form <key> = <value> that are
+temporarily added to the \code{dictionary} before doing the resolving}
 }
 \description{
-resolve all placeholders in a dictionary
+Resolve all placeholders in a dictionary
 }
 \examples{
   # Define a dictionary in the form of a list
@@ -36,6 +36,5 @@ resolve all placeholders in a dictionary
   # Resolve the entries using the two different dictionaries
   resolve(keys, dictionary.1)
   resolve(keys, dictionary.2)
-  
 
 }

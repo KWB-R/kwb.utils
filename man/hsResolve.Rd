@@ -10,10 +10,12 @@ hsResolve(x, dict = NULL, ..., dbg = FALSE)
 \item{x}{(vector of) string expression(s) to be resolved using the dictionary
 \code{dict}.}
 
-\item{dict}{dictionary: list with named elements where the element name represents
-the key and the element value represents the value assigned to the key.}
+\item{dict}{dictionary: list with named elements where the element name
+represents the key and the element value represents the value assigned to
+the key.}
 
-\item{\dots}{additional named arguments that are added to \code{dict} before resolving}
+\item{\dots}{additional named arguments that are added to \code{dict} before
+resolving}
 
 \item{dbg}{if \code{TRUE} (the default is \code{FALSE}) debug messages are 
 shown}

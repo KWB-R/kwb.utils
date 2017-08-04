@@ -7,13 +7,13 @@
 resolve(x, ...)
 }
 \arguments{
-\item{x}{vector of character to be resolved or a list of which all elements will be
-resolved using itself as a "dictionary". A dictionary is a list of 
+\item{x}{vector of character to be resolved or a list of which all elements
+will be resolved using itself as a "dictionary". A dictionary is a list of 
 \code{key = value} pairs defining string replacements.}
 
-\item{\dots}{Unnamed arguments are treated as (further) dictionaries. These are merged
-first to one dictionary before merging further (named) \code{key = value} 
-pairs.}
+\item{\dots}{Unnamed arguments are treated as (further) dictionaries. These
+are merged first to one dictionary before merging further (named) \code{key
+= value} pairs.}
 }
 \description{
 Resolve string(s) using a dictionary
@@ -41,6 +41,5 @@ Resolve string(s) using a dictionary
   
   # Resolve a vector of strings
   resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
-  
 
 }

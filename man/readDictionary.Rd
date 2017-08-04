@@ -9,8 +9,8 @@ readDictionary(file, sorted = TRUE)
 \arguments{
 \item{file}{full path to dictionary file}
 
-\item{sorted}{if TRUE (default) the entries in the dictionary will be sorted by their
-keys}
+\item{sorted}{if TRUE (default) the entries in the dictionary will be sorted
+by their keys}
 }
 \description{
 Reads a dictionary (a list of "key = value"-pairs) from a text file.

@@ -20,3 +20,6 @@ file.out = <dir.out>/example_file.<extension>
 # Set "leafs" to example values
 project = example_project
 dir.root = /root
+
+# The key must not contain the equal sign however the value may contain it
+equation = a = b + c

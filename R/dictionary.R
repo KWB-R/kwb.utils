@@ -64,8 +64,8 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' Reads a dictionary (a list of "key = value"-pairs) from a text file.
 #' 
 #' @param file full path to dictionary file
-#' @param sorted if TRUE (default) the entries in the dictionary will be sorted by their
-#'   keys
+#' @param sorted if TRUE (default) the entries in the dictionary will be sorted
+#'   by their keys
 #' 
 #' @examples 
 #'   file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
@@ -76,34 +76,35 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #'   resolve("file.out", dictionary, extension = "pdf")
 #'   
 #' @seealso \code{\link{readDictionaries}}
-readDictionary <- structure(
-  function # read dictionary from text file
-### reads a dictionary (a list of "key = value"-pairs) from a text file.
-(
-  file,
-  ### full path to dictionary file
-  sorted = TRUE
-  ### if TRUE (default) the entries in the dictionary will be sorted by their
-  ### keys
-)
+#' 
+readDictionary <- function(file, sorted = TRUE)
 {
-  content <- utils::read.table(file, sep = "=", stringsAsFactors = FALSE)
-       
-  dictionary <- do.call(toLookupList, lapply(unname(content[, 1:2]), hsTrim))
+  # Read the lines of the text file
+  content <- readLines(safePath(file))
+  
+  # Trim all lines
+  content <- unlist(lapply(content, hsTrim))
+  
+  # Remove empty rows and comment lines
+  content <- content[content != "" & ! grepl("^\\s*#", content)]
+  
+  # Split the lines at the first equal sign
+  key_value_pairs <- subExpressionMatches(
+    "^([^= ]+)\\s*=\\s*(.*)$", content, match.names = c("key", "value")
+  )
+
+  # Create the dictionary
+  dictionary <- toLookupList(
+    keys = sapply(key_value_pairs, selectElements, "key"),
+    values = sapply(key_value_pairs, selectElements, "value")  
+  )
 
   if (sorted) {
     dictionary[order(names(dictionary))]
   } else {
     dictionary
   }
-}, ex = function() {
-  file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-  
-  dictionary <- readDictionary(file)
-  
-  resolve("file.out", dictionary, extension = "csv")
-  resolve("file.out", dictionary, extension = "pdf")
-})
+}
 
 # resolve ----------------------------------------------------------------------
 
@@ -111,12 +112,12 @@ readDictionary <- structure(
 #' 
 #' Resolve string(s) using a dictionary
 #' 
-#' @param x vector of character to be resolved or a list of which all elements will be
-#'   resolved using itself as a "dictionary". A dictionary is a list of 
+#' @param x vector of character to be resolved or a list of which all elements
+#'   will be resolved using itself as a "dictionary". A dictionary is a list of 
 #'   \code{key = value} pairs defining string replacements.
-#' @param \dots Unnamed arguments are treated as (further) dictionaries. These are merged
-#'   first to one dictionary before merging further (named) \code{key = value} 
-#'   pairs.
+#' @param \dots Unnamed arguments are treated as (further) dictionaries. These
+#'   are merged first to one dictionary before merging further (named) \code{key
+#'   = value} pairs.
 #' 
 #' @examples 
 #'   
@@ -141,64 +142,29 @@ readDictionary <- structure(
 #'   
 #'   # Resolve a vector of strings
 #'   resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
-#'   
-#' 
-resolve <- structure(function # Resolve string(s) using a dictionary
-### Resolve string(s) using a dictionary
-(
-  x,
-  ### vector of character to be resolved or a list of which all elements will be
-  ### resolved using itself as a "dictionary". A dictionary is a list of 
-  ### \code{key = value} pairs defining string replacements.
-  ...
-  ### Unnamed arguments are treated as (further) dictionaries. These are merged
-  ### first to one dictionary before merging further (named) \code{key = value} 
-  ### pairs.
-)
+#'
+resolve <- function(x, ...)
 {
   if (is.list(x)) {
     
     resolveAll(x, ...)
-  } 
-  else {
+    
+  } else {
     
     hsResolve(x, ...)
   }
-}, ex = function() {
-  
-  file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-  
-  dictionary <- readDictionary(file)
-  
-  # Resolve the dictionary
-  resolve(dictionary)
-  
-  # Resolve the dictionary by setting an undefined placeholder
-  resolve(dictionary, extension = "pdf")
-    
-  # Resolve a string
-  resolve("dir.project", dictionary)
-
-  # Set a placeholder "on-the-fly"
-  resolve("file.out", dictionary, extension = "pdf")
-  
-  # Override a placeholder "on-the-fly"
-  resolve("dir.project", dictionary, project = "new_project")
-  
-  # Resolve a vector of strings
-  resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
-})
+}
 
 # resolveAll -------------------------------------------------------------------
 
-#' resolve all placeholders in a dictionary
+#' Resolve all Placeholders in a Dictionary
 #' 
-#' resolve all placeholders in a dictionary
+#' Resolve all placeholders in a dictionary
 #' 
-#' @param dictionary list with named elements where the element name represents the key and
-#'   the element value represents the value assigned to the key.
-#' @param \dots additional assignments of the form <key> = <value> that are temporarily
-#'   added to the \code{dictionary} before doing the resolving
+#' @param dictionary list with named elements where the element name represents
+#'   the key and the element value represents the value assigned to the key.
+#' @param \dots additional assignments of the form <key> = <value> that are
+#'   temporarily added to the \code{dictionary} before doing the resolving
 #' 
 #' @examples 
 #'   # Define a dictionary in the form of a list
@@ -220,45 +186,13 @@ resolve <- structure(function # Resolve string(s) using a dictionary
 #'   # Resolve the entries using the two different dictionaries
 #'   resolve(keys, dictionary.1)
 #'   resolve(keys, dictionary.2)
-#'   
-#' 
-resolveAll <- structure(
-  function # resolve all placeholders in a dictionary
-  ### resolve all placeholders in a dictionary
-  (
-    dictionary,
-    ### list with named elements where the element name represents the key and
-    ### the element value represents the value assigned to the key.
-    ...
-    ### additional assignments of the form <key> = <value> that are temporarily
-    ### added to the \code{dictionary} before doing the resolving
-  )
-  {
-    stopifnot(is.list(dictionary))
-    
-    lapply(dictionary, hsResolve, dictionary, ...)
-  },
-  ex = function() {
-    # Define a dictionary in the form of a list
-    dictionary <- list(
-      basedir = "C:/myNicefolder",
-      projectdir = "<basedir>/projects/<project_name>",
-      inputdir = "<projectdir>/input",
-      outputdir = "<projectdir>/output"
-    )
-    
-    # Resolve all entries in the dictionary, with different values for the
-    # placeholder "<project_name> which is undefined in the original dictionary
-    dictionary.1 <- resolveAll(dictionary, project_name = "project_1")
-    dictionary.2 <- resolveAll(dictionary, project_name = "project_2")
-    
-    # Define entries of the dictionary to resolve
-    keys <- c("inputdir", "outputdir")
-    
-    # Resolve the entries using the two different dictionaries
-    resolve(keys, dictionary.1)
-    resolve(keys, dictionary.2)
-  })
+#'
+resolveAll <- function(dictionary, ...)
+{
+  stopifnot(is.list(dictionary))
+  
+  lapply(dictionary, hsResolve, dictionary, ...)
+}
 
 # hsResolve --------------------------------------------------------------------
 
@@ -268,18 +202,14 @@ resolveAll <- structure(
 #' 
 #' @param x (vector of) string expression(s) to be resolved using the dictionary
 #'   \code{dict}.
-#' @param dict dictionary: list with named elements where the element name represents
-#'   the key and the element value represents the value assigned to the key.
-#' @param \dots additional named arguments that are added to \code{dict} before resolving
+#' @param dict dictionary: list with named elements where the element name
+#'   represents the key and the element value represents the value assigned to
+#'   the key.
+#' @param \dots additional named arguments that are added to \code{dict} before
+#'   resolving
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}) debug messages are 
 #'   shown
-hsResolve <- function
-(
-  x, 
-  dict = NULL, 
-  ...,
-  dbg = FALSE
-) 
+hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
 {
   # Apply hsResolve to each element if more than one element in x 
   if (length(x) > 1) {
@@ -373,12 +303,8 @@ hsResolve <- function
 #' @param expected.length if given and different from the length of \code{x}
 #'   an error is thrown
 #' 
-getTagNames <- function
-(
-  x,
-  bt = c("<>", "[]")[1],
-  dbg = FALSE,
-  expected.length = length(x)
+getTagNames <- function(
+  x, bt = c("<>", "[]")[1], dbg = FALSE, expected.length = length(x)
 ) 
 {
   if (! is.character(x)) {
