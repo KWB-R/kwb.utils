@@ -1,19 +1,15 @@
 # safePath ---------------------------------------------------------------------
 
-#' stop if path does not exit
+#' Stop if Path does not Exist
 #' 
-#' stop if path does not exit and return the path
+#' Check if file or folder path exists and return the path or stop if the path
+#' does not exist
 #' 
 #' @param \dots character vectors passed to \code{file.path}
 #' 
 #' @return path as given in \code{path}
 #' 
-safePath <- function # stop if path does not exit
-### stop if path does not exit and return the path
-(
-  ...
-  ### character vectors passed to \code{file.path}
-)
+safePath <- function(...)
 {
   file <- file.path(...)
 
@@ -27,14 +23,17 @@ safePath <- function # stop if path does not exit
       
     } else {
       
-      stop("No such file: ", hsQuoteChr(basename(file)), " in ", 
-           hsQuoteChr(dirpath), "\nAvailable files: ", stringList(dir(dirpath)), 
-           call. = FALSE)
+      stop(
+        sprintf(
+          "No such file: '%s' in\n  '%s'.\nAvailable files:\n  %s", 
+          basename(file), dirpath, stringList(dir(dirpath), collapse = "\n  ")
+        ), 
+        call. = FALSE
+      )
     }
   }
 
   file
-  ### path as given in \code{path}
 }
 
 # .OStype ----------------------------------------------------------------------
@@ -45,29 +44,22 @@ safePath <- function # stop if path does not exit
 #'   be used within this package. R CMD build would complain if I used
 #'   tools:::.OStype!
 #' 
-.OStype <- function # see tools:::.OStype
-### This is a copy of tools:::.OStype. It is redefined here so that it can
-### be used within this package. R CMD build would complain if I used
-### tools:::.OStype!
-()
+.OStype <- function()
 {
   OS <- Sys.getenv("R_OSTYPE")
-  if (nzchar(OS))
-    OS
-  else .Platform$OS.type
+  
+  if (nzchar(OS)) OS else .Platform$OS.type
 }
 
 # desktop ----------------------------------------------------------------------
 
-#' path to your desktop
+#' Path to Your Desktop
 #' 
-#' get the path to your desktop
+#' Get the path to your desktop
 #' 
 #' @return character string representing the path to your desktop
 #' 
-desktop <- function # path to your desktop
-### get the path to your desktop
-()
+desktop <- function()
 {
   osType <- .OStype()
 
@@ -81,20 +73,17 @@ desktop <- function # path to your desktop
   }
 
   hsResolve("desktop", dict = list(desktop = desktops[osType]), user = user())
-  ### character string representing the path to your desktop
 }
 
 # user -------------------------------------------------------------------------
 
-#' name of the current user
+#' Name of the Current User
 #' 
 #' Get the name of the current user from the environment variables
 #' 
 #' @return character string represenging the name of the current user
 #' 
-user <- function # name of the current user
-### Get the name of the current user from the environment variables
-()
+user <- function()
 {
   osType <- .OStype()
 
@@ -105,67 +94,54 @@ user <- function # name of the current user
   }
 
   user
-  ### character string represenging the name of the current user
 }
 
 # sourceScripts ----------------------------------------------------------------
 
-#' load R scripts with \code{source}
+#' Load R Scripts with \code{source}
 #' 
-#' load R scripts with \code{source}
+#' Load R scripts with \code{source}
 #' 
 #' @param scripts full paths to R scripts
 #' @param dbg if TRUE (default) log messages ("loading... ok") are shown
 #' 
 #' @return the vector of script paths is returned invisibly
 #' 
-sourceScripts <- function # load R scripts with \code{source}
-### load R scripts with \code{source}
-(
-  scripts, 
-  ### full paths to R scripts
-  dbg = TRUE
-  ### if TRUE (default) log messages ("loading... ok") are shown
-)
+sourceScripts <- function(scripts, dbg = TRUE)
 {
   for (script in scripts) {
-    cat("loading functions from ", basename(script), "... ")
+    
+    catIf(dbg, "loading functions from ", basename(script), "... ")
+    
     if (file.exists(script)) {
       source(script)      
     } else {
       warning("Skipping non-existing script: ", script)
     }
-    cat("ok.\n")
+    
+    catIf(dbg, "ok.\n")
   }
   
   invisible(scripts)
-  ### the vector of script paths is returned invisibly
 }
 
 # runInDirectory ---------------------------------------------------------------
 
-#' change working dir and run function 
+#' Change Working Directory and Run Function 
 #' 
-#' change working directory and run function 
+#' Change working directory and run function 
 #' 
-#' @param target.dir target directory. Default: tempdir()
+#' @param target.dir target directory. Default: \code{tempdir()}
 #' @param FUN function to be invoked
 #' @param \dots arguments to be passed to function FUN
-#' @param .dbg if TRUE, debug messages on changing the directory are shown. Default:
-#'   \code{FALSE}
+#' @param .dbg if TRUE, debug messages on changing the directory are shown.
+#'   Default: \code{FALSE}
 #' 
-runInDirectory <- function # change working dir and run function 
-### change working directory and run function 
-(
+runInDirectory <- function(
   target.dir = tempdir(), 
-  ### target directory. Default: tempdir()
   FUN,
-  ### function to be invoked
   ...,
-  ### arguments to be passed to function FUN
   .dbg = FALSE
-  ### if TRUE, debug messages on changing the directory are shown. Default:
-  ### \code{FALSE}
 ) 
 {
   # Save current working directory, set working directory to tdir
@@ -185,14 +161,9 @@ runInDirectory <- function # change working dir and run function
 
 # defaultWindowsProgramFolders -------------------------------------------------
 
-#' default windows program folders
+#' Default Windows Program Folders
 #' 
-#' default windows program folders
-#' 
-defaultWindowsProgramFolders <- function # default windows program folders
-### default windows program folders
-(
-)
+defaultWindowsProgramFolders <- function()
 {
   directories <- c(
     english = "C:/Program Files", # English / Dutch / Russian / Polish / Czech / Chinese
@@ -231,25 +202,15 @@ mySystemTime <- function(FUN, args)
 
 # runBatchfileInDirectory ------------------------------------------------------
 
-#' runBatchfileInDirectory
-#' 
-#' runBatchfileInDirectory
+#' Run a Batch File in a given Directory
 #' 
 #' @param batchfile full path to Windows batch file
-#' @param directory directory from which batchfile is to be invoked. Default: directory
-#'   of batch file
+#' @param directory directory from which batchfile is to be invoked. Default:
+#'   directory of batch file
 #' @param \dots arguments passed to shell.exec
 #' 
-runBatchfileInDirectory <- function # runBatchfileInDirectory
-### runBatchfileInDirectory
-(
-  batchfile, 
-  ### full path to Windows batch file
-  directory = dirname(batchfile),
-  ### directory from which batchfile is to be invoked. Default: directory
-  ### of batch file
-  ...
-  ### arguments passed to shell.exec
+runBatchfileInDirectory <- function(
+  batchfile, directory = dirname(batchfile), ...
 )
 {
   currentdir <- getwd()
@@ -266,11 +227,7 @@ runBatchfileInDirectory <- function # runBatchfileInDirectory
 #' Set the given path in quotes so that in can be used in a command line
 #' #' 
 #' @param x path to be quoted
-cmdLinePath <- function # cmdLinePath
-### cmdLinePath
-(
-  x
-)
+cmdLinePath <- function(x)
 {
   hsQuoteChr(windowsPath(x), '"')
 }
@@ -278,7 +235,6 @@ cmdLinePath <- function # cmdLinePath
 # .debugMessageIf --------------------------------------------------------------
 
 #'  debugMessageIf
-#' 
 #' 
 .debugMessageIf <- function(dbg, ...)
 {
@@ -289,36 +245,28 @@ cmdLinePath <- function # cmdLinePath
 
 # copyDirectoryStructure -------------------------------------------------------
 
-#' copy directory structure
+#' Copy Directory Structure
 #' 
-#' copy the full directory structure from a source directory to a target
+#' Copy the full directory structure from a source directory to a target
 #'   directory
 #' 
 #' @param sourcedir path to the source directory
 #' @param targetdir path to the target directory
-#' @param excludePattern pattern matching directory names to be excluded from the copying process
-#' @param recursive if TRUE (default) the full tree of directories and subdirectories is
-#'   copied, otherwise only the top-level directories
+#' @param excludePattern pattern matching directory names to be excluded from
+#'   the copying process
+#' @param recursive if TRUE (default) the full tree of directories and
+#'   subdirectories is copied, otherwise only the top-level directories
 #' @param dbg if TRUE (default) debug messages are shown
+#'   
+#' @return This function invisibly returns a vector of character containing the
+#'   full paths of the directories that were created.
 #' 
-#' @return This function invisibly returns a vector of character containing the full
-#'   paths of the directories that were created.
-#' 
-copyDirectoryStructure <- function # copy directory structure
-### copy the full directory structure from a source directory to a target
-### directory
-(
+copyDirectoryStructure <- function(
   sourcedir, 
-  ### path to the source directory
   targetdir, 
-  ### path to the target directory
   excludePattern = "^$", 
-  ### pattern matching directory names to be excluded from the copying process
   recursive = TRUE,
-  ### if TRUE (default) the full tree of directories and subdirectories is
-  ### copied, otherwise only the top-level directories
   dbg = TRUE
-  ### if TRUE (default) debug messages are shown
 )
 {
   subdirs <- list.dirs(sourcedir, recursive = recursive, full.names = FALSE)
@@ -346,12 +294,7 @@ copyDirectoryStructure <- function # copy directory structure
 #'   shown
 #' @param confirm if \code{TRUE} (the default is \code{FALSE}!) the user is
 #'   asked to confirm the creation of a directory
-createDirAndReturnPath <- function
-(
-  dir.to.create,
-  dbg = TRUE,
-  confirm = FALSE  
-) 
+createDirAndReturnPath <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 { 
   stopifnot(length(dir.to.create) == 1 && is.character(dir.to.create))
   
@@ -401,28 +344,24 @@ createDirAndReturnPath <- function
 
 # tempSubdirectory -------------------------------------------------------------
 
-#' create and return path of subdirectory in temp()
+#' Create and return Path of Subdirectory in temp()
 #' 
-#' create and return path of subdirectory in temp()
+#' Create and return path of subdirectory in temp()
 #' 
 #' @param subdir name of subdirectory to be created
 #' 
 #' @return full path to created directory
 #' 
-tempSubdirectory <- function # create and return path of subdirectory in temp()
-### create and return path of subdirectory in temp()
-(
-  subdir
-  ### name of subdirectory to be created
-)
+tempSubdirectory <- function(subdir)
 {
   sdir <- file.path(tempdir(), subdir)
-  if (! file.exists(sdir)){
+  
+  if (! file.exists(sdir)) {
+    
     dir.create(sdir)    
   }
   
   sdir
-  ### full path to created directory
 }
 
 # hsOpenWindowsExplorer --------------------------------------------------------
@@ -442,10 +381,11 @@ hsOpenWindowsExplorer <- function
 )
 {
   if (use.shell.exec) {
+    
     shell.exec(file = startdir)
-  }
-  else {
-    #hsShell(sprintf("explorer /e,/root,\"%s\"", windowsPath(startdir)))    
+
+  } else {
+    
     system(paste("cmd /C explorer", windowsPath(startdir)))
   }  
 }
@@ -453,7 +393,6 @@ hsOpenWindowsExplorer <- function
 # .isNetworkPath ---------------------------------------------------------------
 
 #'  isNetworkPath
-#' 
 #' 
 .isNetworkPath <- function(x) 
 {
@@ -495,7 +434,6 @@ rStylePath <- function(path)
 
 #'  showCommand
 #' 
-#' 
 .showCommand <- function(commandLine)
 {
   cat(sprintf("Running command: >>>%s<<<\n", commandLine))  
@@ -505,7 +443,7 @@ rStylePath <- function(path)
 
 #' Wrapper around "system"
 #' 
-#' wrapper around "system"
+#' Wrapper around "system"
 #' 
 #' @param commandLine character string passed to \code{system}
 #' @param ... additional arguments passed to \code{system}
@@ -517,9 +455,9 @@ hsSystem <- function(commandLine, ...)
 
 # hsShell ----------------------------------------------------------------------
 
-#' wrapper around "shell"
+#' Wrapper around "shell"
 #' 
-#' wrapper around "shell"
+#' Wrapper around "shell"
 #' 
 #' @param commandLine character string passed to \code{shell}
 #' @param ... additional arguments passed to \code{shell}

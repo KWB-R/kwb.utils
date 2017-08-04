@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{hsShell}
 \alias{hsShell}
-\title{wrapper around "shell"}
+\title{Wrapper around "shell"}
 \usage{
 hsShell(commandLine, ...)
 }
@@ -12,5 +12,5 @@ hsShell(commandLine, ...)
 \item{...}{additional arguments passed to \code{shell}}
 }
 \description{
-wrapper around "shell"
+Wrapper around "shell"
 }

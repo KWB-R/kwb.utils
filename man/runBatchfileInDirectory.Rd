@@ -2,18 +2,18 @@
 % Please edit documentation in R/system.R
 \name{runBatchfileInDirectory}
 \alias{runBatchfileInDirectory}
-\title{runBatchfileInDirectory}
+\title{Run a Batch File in a given Directory}
 \usage{
 runBatchfileInDirectory(batchfile, directory = dirname(batchfile), ...)
 }
 \arguments{
 \item{batchfile}{full path to Windows batch file}
 
-\item{directory}{directory from which batchfile is to be invoked. Default: directory
-of batch file}
+\item{directory}{directory from which batchfile is to be invoked. Default:
+directory of batch file}
 
 \item{\dots}{arguments passed to shell.exec}
 }
 \description{
-runBatchfileInDirectory
+Run a Batch File in a given Directory
 }

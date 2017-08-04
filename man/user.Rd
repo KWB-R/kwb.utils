@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{user}
 \alias{user}
-\title{name of the current user}
+\title{Name of the Current User}
 \usage{
 user()
 }

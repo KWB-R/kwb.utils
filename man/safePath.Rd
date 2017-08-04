@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{safePath}
 \alias{safePath}
-\title{stop if path does not exit}
+\title{Stop if Path does not Exist}
 \usage{
 safePath(...)
 }
@@ -13,5 +13,6 @@ safePath(...)
 path as given in \code{path}
 }
 \description{
-stop if path does not exit and return the path
+Check if file or folder path exists and return the path or stop if the path
+does not exist
 }

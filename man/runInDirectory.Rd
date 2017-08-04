@@ -2,20 +2,20 @@
 % Please edit documentation in R/system.R
 \name{runInDirectory}
 \alias{runInDirectory}
-\title{change working dir and run function}
+\title{Change Working Directory and Run Function}
 \usage{
 runInDirectory(target.dir = tempdir(), FUN, ..., .dbg = FALSE)
 }
 \arguments{
-\item{target.dir}{target directory. Default: tempdir()}
+\item{target.dir}{target directory. Default: \code{tempdir()}}
 
 \item{FUN}{function to be invoked}
 
 \item{\dots}{arguments to be passed to function FUN}
 
-\item{.dbg}{if TRUE, debug messages on changing the directory are shown. Default:
-\code{FALSE}}
+\item{.dbg}{if TRUE, debug messages on changing the directory are shown.
+Default: \code{FALSE}}
 }
 \description{
-change working directory and run function
+Change working directory and run function
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{copyDirectoryStructure}
 \alias{copyDirectoryStructure}
-\title{copy directory structure}
+\title{Copy Directory Structure}
 \usage{
 copyDirectoryStructure(sourcedir, targetdir, excludePattern = "^$",
   recursive = TRUE, dbg = TRUE)
@@ -12,18 +12,19 @@ copyDirectoryStructure(sourcedir, targetdir, excludePattern = "^$",
 
 \item{targetdir}{path to the target directory}
 
-\item{excludePattern}{pattern matching directory names to be excluded from the copying process}
+\item{excludePattern}{pattern matching directory names to be excluded from
+the copying process}
 
-\item{recursive}{if TRUE (default) the full tree of directories and subdirectories is
-copied, otherwise only the top-level directories}
+\item{recursive}{if TRUE (default) the full tree of directories and
+subdirectories is copied, otherwise only the top-level directories}
 
 \item{dbg}{if TRUE (default) debug messages are shown}
 }
 \value{
-This function invisibly returns a vector of character containing the full
-  paths of the directories that were created.
+This function invisibly returns a vector of character containing the
+  full paths of the directories that were created.
 }
 \description{
-copy the full directory structure from a source directory to a target
+Copy the full directory structure from a source directory to a target
   directory
 }

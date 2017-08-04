@@ -2,10 +2,10 @@
 % Please edit documentation in R/system.R
 \name{defaultWindowsProgramFolders}
 \alias{defaultWindowsProgramFolders}
-\title{default windows program folders}
+\title{Default Windows Program Folders}
 \usage{
 defaultWindowsProgramFolders()
 }
 \description{
-default windows program folders
+Default Windows Program Folders
 }

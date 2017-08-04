@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{sourceScripts}
 \alias{sourceScripts}
-\title{load R scripts with \code{source}}
+\title{Load R Scripts with \code{source}}
 \usage{
 sourceScripts(scripts, dbg = TRUE)
 }
@@ -15,5 +15,5 @@ sourceScripts(scripts, dbg = TRUE)
 the vector of script paths is returned invisibly
 }
 \description{
-load R scripts with \code{source}
+Load R scripts with \code{source}
 }

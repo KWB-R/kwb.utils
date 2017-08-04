@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{desktop}
 \alias{desktop}
-\title{path to your desktop}
+\title{Path to Your Desktop}
 \usage{
 desktop()
 }
@@ -10,5 +10,5 @@ desktop()
 character string representing the path to your desktop
 }
 \description{
-get the path to your desktop
+Get the path to your desktop
 }

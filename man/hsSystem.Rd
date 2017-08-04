@@ -12,5 +12,5 @@ hsSystem(commandLine, ...)
 \item{...}{additional arguments passed to \code{system}}
 }
 \description{
-wrapper around "system"
+Wrapper around "system"
 }
