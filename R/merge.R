@@ -63,12 +63,14 @@ unmerge <- function(z, by)
 }
 
 # .splitDataFrame --------------------------------------------------------------
-.splitDataFrame <- function(z, xColumns, yColumns)
+.splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
 {
   xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
   ydata <- kwb.utils::selectColumns(z, yColumns, drop = FALSE)
   
-  stopifnot(identical(ydata, unique(ydata)))
+  if (check) {
+    stopifnot(identical(ydata, unique(ydata)))
+  }
   
   list(x = xdata, y = ydata)
 }
