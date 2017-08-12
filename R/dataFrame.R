@@ -26,12 +26,17 @@
 #' str(grid_2)
 expandGrid <- function(..., stringsAsFactors = FALSE)
 {
-  args_1 <- list(...)
+  args_1 <- rev(list(...))
   args_2 <- list(stringsAsFactors = stringsAsFactors)
   
-  grid <- do.call(expand.grid, c(rev(args_1), args_2))
+  grid <- do.call(expand.grid, c(args_1, args_2))
+
+  # Unnamed arguments are given default names "Var1", "Var2", ... by expand.grid  
+  # Reverse the order of these names so that "Var1" appears first
+  unnamed <- is.unnamed(args_1)
+  names(grid)[unnamed] <- paste0("Var", rev(seq_len(sum(unnamed))))
   
-  structure(grid[, rev(seq_along(grid))], names = names(grid))
+  structure(grid[, rev(seq_along(grid))])
 }
 
 # fullySorted ------------------------------------------------------------------
