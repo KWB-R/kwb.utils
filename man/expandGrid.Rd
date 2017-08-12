@@ -25,11 +25,12 @@ fruits <- c("apple", "pear")
 (grid_1 <- expand.grid(person = persons, fruit = fruits))
 
 #... with expandGrid() they change last.
-grid_2 <- expandGrid(person = persons, fruit = fruits)
+(grid_2 <- expandGrid(person = persons, fruit = fruits))
 
 # With expand.grid() character strings are converted to factors by default...
 str(grid_1)
 
 # ... with expandGrid() character strings are not converted by default.
+# Also, there is no attribute "out.attrs" as it is set by expand.grid().
 str(grid_2)
 }
