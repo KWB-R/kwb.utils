@@ -1,3 +1,38 @@
+# expandGrid ------------------------------------------------------------------
+
+#' Wrapper around expand.grid
+#' 
+#' Same as \code{\link[base]{expand.grid}} but with \code{stringsAsFactors =
+#' FALSE} by default and with the values of the first argument being changed
+#' last, not first.
+#' @param ... arguments passed to \code{\link[base]{expand.grid}}, but in 
+#'   reversed order
+#' @param stringsAsFactors passed to \code{\link[base]{expand.grid}}
+#' @examples 
+#' persons <- c("Peter", "Paul", "Mary")
+#' fruits <- c("apple", "pear")
+#' 
+#' # With expand.grid() the values of the first argument change first...
+#' (grid_1 <- expand.grid(person = persons, fruit = fruits))
+#' 
+#' #... with expandGrid() they change last.
+#' grid_2 <- expandGrid(person = persons, fruit = fruits)
+#' 
+#' # With expand.grid() character strings are converted to factors by default...
+#' str(grid_1)
+#' 
+#' # ... with expandGrid() character strings are not converted by default.
+#' str(grid_2)
+expandGrid <- function(..., stringsAsFactors = FALSE)
+{
+  args_1 <- list(...)
+  args_2 <- list(stringsAsFactors = stringsAsFactors)
+  
+  grid <- do.call(expand.grid, c(rev(args_1), args_2))
+  
+  structure(grid[, rev(seq_along(grid))], names = names(grid))
+}
+
 # fullySorted ------------------------------------------------------------------
 
 #' Sort a Data Frame by all of its Columns
