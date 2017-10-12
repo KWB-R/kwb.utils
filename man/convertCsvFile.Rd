@@ -28,7 +28,7 @@ convertCsvFile(file_in, sep_in = formals(utils::read.table)$sep,
 
 \item{file_out}{path to output file}
 
-\item{header}{to \code{\link{read.table}}}
+\item{header}{passed to \code{\link{read.table}}}
 
 \item{quote_in}{passed as \code{quote} to \code{\link{read.table}}}
 
@@ -84,5 +84,7 @@ unlink(csv_out)
 
 # Convert the column separator and the decimal character
 csv_out <- convertCsvFile(csv_in, sep_out = ";", dec_out = ",")
-readLines(csv_out, 6)
+
+# Review the result
+catLines(readLines(csv_out, 6))
 }

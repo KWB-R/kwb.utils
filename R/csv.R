@@ -16,7 +16,7 @@
 #' @param dec_in decimal character in input file
 #' @param dec_out decimal character inoutput file
 #' @param file_out path to output file
-#' @param header to \code{\link{read.table}}
+#' @param header passed to \code{\link{read.table}}
 #' @param quote_in passed as \code{quote} to \code{\link{read.table}}
 #' @param quote_out passed as \code{quote} to \code{\link{write.table}}
 #' @param row.names_in passed as \code{row.names} to \code{\link{read.table}}
@@ -50,7 +50,9 @@
 #' 
 #' # Convert the column separator and the decimal character
 #' csv_out <- convertCsvFile(csv_in, sep_out = ";", dec_out = ",")
-#' readLines(csv_out, 6)
+#' 
+#' # Review the result
+#' catLines(readLines(csv_out, 6))
 convertCsvFile <- function(
   file_in,
   sep_in = formals(utils::read.table)$sep,
