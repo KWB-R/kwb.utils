@@ -27,7 +27,7 @@ fileExtension <- function(x)
     if (pos == -1) {
       ""
     } else {
-      substr(x[[i]], pos, nchar(x[[i]]))
+      substr(x[[i]], pos + 1, nchar(x[[i]]))
     }
   })
 }
