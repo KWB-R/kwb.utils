@@ -1,6 +1,6 @@
 # fileExtension ----------------------------------------------------------------
 
-#' Get File Extension of Full Paths(s)
+#' Get Extension of Full File Paths
 #' 
 #' @param x vector of file paths
 #' @export
