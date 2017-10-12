@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{fileExtension}
 \alias{fileExtension}
-\title{Get File Extension of Full Paths(s)}
+\title{Get Extension of Full File Paths}
 \usage{
 fileExtension(x)
 }
@@ -10,7 +10,7 @@ fileExtension(x)
 \item{x}{vector of file paths}
 }
 \description{
-Get File Extension of Full Paths(s)
+Get Extension of Full File Paths
 }
 \examples{
 # Define example paths
