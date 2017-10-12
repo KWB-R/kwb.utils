@@ -1,3 +1,37 @@
+# fileExtension ----------------------------------------------------------------
+
+#' Get File Extension of Full Paths(s)
+#' 
+#' @param x vector of file paths
+#' @export
+#' 
+#' @examples 
+#' # Define example paths
+#' paths <- c("C:/example/file.csv", "file2.txt", "D:/e/f/ghi.jkl.zip")
+#' 
+#' # Get the file name extensions
+#' fileExtension(paths)
+#' 
+#' # Empty string is returned for paths without file name extensions
+#' fileExtension("C:/NEWS")
+fileExtension <- function(x)
+{
+  x <- basename(x)
+  
+  match_infos <- regexec("\\.[^.]+$", x)
+  
+  sapply(seq_along(match_infos), function(i) {
+    
+    pos <- match_infos[[i]]
+    
+    if (pos == -1) {
+      ""
+    } else {
+      substr(x[[i]], pos, nchar(x[[i]]))
+    }
+  })
+}
+
 # pairwise ---------------------------------------------------------------------
 
 #' reorder strings so that matching strings are neighbours
