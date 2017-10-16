@@ -1343,24 +1343,40 @@ getAttribute <- function # safely get the attribute of an object
 
 #' Returns object without attributes
 #' 
-#' Returns object without attributes
-#' 
 #' @param x object
+#' @param names names of attributes to be removed. If \code{NULL} (default),
+#'   all attributes are removed.
 #' 
 #' @return \emph{x}, but with its attributes removed
 #' 
-removeAttributes <- function # Returns object without attributes
-### Returns object without attributes
-(
-  x
-  ### object
-)
+removeAttributes <- function(x, names = NULL)
 {
-  attributes(x) <- NULL
+  if (is.null(names)) {
+    
+    attributes(x) <- NULL  
+    
+  } else {
+    
+    for (name in names) {
+      
+      attr(x, name) <- NULL
+    }
+  }
 
   x
   ### \emph{x}, but with its attributes removed
 }
+
+# .removeAttributes ------------------------------------------------------------
+.removeAttributes <- function(x)
+{
+  for (name in c("sums", "means", "gauges", "files")) {
+    attr(x, name) <- NULL
+  }
+  
+  x
+}
+
 
 # hsMatrixToListForm -----------------------------------------------------------
 

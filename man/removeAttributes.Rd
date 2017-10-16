@@ -4,10 +4,13 @@
 \alias{removeAttributes}
 \title{Returns object without attributes}
 \usage{
-removeAttributes(x)
+removeAttributes(x, names = NULL)
 }
 \arguments{
 \item{x}{object}
+
+\item{names}{names of attributes to be removed. If \code{NULL} (default),
+all attributes are removed.}
 }
 \value{
 \emph{x}, but with its attributes removed
