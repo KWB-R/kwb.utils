@@ -235,6 +235,10 @@ frequencyTable <- function(
 #' @param y second data frame
 #' @param dbg if \code{TRUE} (default) the result of comparing the dimensions and the
 #'   column names is printed on the screen
+#' @param xname name of first data frame to appear in the output if \code{dbg =
+#'   TRUE}
+#' @param yname name of second data frame to appear in the output if \code{dbg =
+#'   TRUE}
 #' @return list of logical
 #' 
 #' @examples 
@@ -249,11 +253,11 @@ frequencyTable <- function(
 #'   
 #'   test1 && test2
 #'   
-compareDataFrames <- function(x, y, dbg = FALSE)
+compareDataFrames <- function(
+  x, y, dbg = FALSE, xname = deparse(substitute(x)), 
+  yname = deparse(substitute(y))
+)
 {
-  xname <- deparse(substitute(x))
-  yname <- deparse(substitute(y))
-
   stopifnot(is.data.frame(x))
   stopifnot(is.data.frame(y))
   

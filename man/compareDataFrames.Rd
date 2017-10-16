@@ -4,7 +4,8 @@
 \alias{compareDataFrames}
 \title{Compare two data frames by columns}
 \usage{
-compareDataFrames(x, y, dbg = FALSE)
+compareDataFrames(x, y, dbg = FALSE, xname = deparse(substitute(x)),
+  yname = deparse(substitute(y)))
 }
 \arguments{
 \item{x}{first data frame}
@@ -13,6 +14,12 @@ compareDataFrames(x, y, dbg = FALSE)
 
 \item{dbg}{if \code{TRUE} (default) the result of comparing the dimensions and the
 column names is printed on the screen}
+
+\item{xname}{name of first data frame to appear in the output if \code{dbg =
+TRUE}}
+
+\item{yname}{name of second data frame to appear in the output if \code{dbg =
+TRUE}}
 }
 \value{
 list of logical
