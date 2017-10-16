@@ -4,12 +4,15 @@
 \alias{compareDataFrames}
 \title{Compare two data frames by columns}
 \usage{
-compareDataFrames(x, y)
+compareDataFrames(x, y, dbg = FALSE)
 }
 \arguments{
 \item{x}{first data frame}
 
 \item{y}{second data frame}
+
+\item{dbg}{if \code{TRUE} (default) the result of comparing the dimensions and the
+column names is printed on the screen}
 }
 \value{
 list of logical

@@ -233,7 +233,8 @@ frequencyTable <- function(
 #' 
 #' @param x first data frame
 #' @param y second data frame
-#' 
+#' @param dbg if \code{TRUE} (default) the result of comparing the dimensions and the
+#'   column names is printed on the screen
 #' @return list of logical
 #' 
 #' @examples 
@@ -248,31 +249,46 @@ frequencyTable <- function(
 #'   
 #'   test1 && test2
 #'   
-compareDataFrames <- function(x, y)
+compareDataFrames <- function(x, y, dbg = FALSE)
 {
+  xname <- deparse(substitute(x))
+  yname <- deparse(substitute(y))
+
   stopifnot(is.data.frame(x))
   stopifnot(is.data.frame(y))
   
-  typeToName <- c(Column = "names", Row = "row.names")
-  
+  catIf(dbg, sprintf("Dimension of %s: %s\n", xname, collapsed(dim(x))))
+  catIf(dbg, sprintf("Dimension of %s: %s\n", yname, collapsed(dim(y))))
+
   names.x <- names(x)
   names.y <- names(y)
   
+  if (dbg) {
+    
+    compareSets(names.x, names.y, "Columns", xname, yname)
+  }
+
   row.names.x <- row.names(x)
   row.names.y <- row.names(y)
   
   result <- list()
   
+  # Are the data frames identical?
   result$identical <- identical(x, y)
   
+  # Are the data frames identical after removing all attributes?
   result$identicalExceptAttributes <- identical(
     kwb.utils::removeAttributes(x),
     kwb.utils::removeAttributes(y)
   )
   
+  # Do the data frames have the same number of rows?
   result$equalNumberOfRows <- (nrow(x) == nrow(y))
   
+  # Do the data frames have the same number of columns?
   result$equalNumberOfColumns <- (ncol(x) == ncol(y))
+  
+  typeToName <- c(Column = "names", Row = "row.names")
   
   for (type in names(typeToName)) {
     
@@ -303,6 +319,36 @@ compareDataFrames <- function(x, y)
   result$byColumn <- check
   
   result
+}
+
+# compareSets ------------------------------------------------------------------
+
+#' Compare the values in two vectors
+#' 
+#' Prints the result of comparing the values of two vectors with each other 
+#' (which values are in the first vector but not in the second one and which 
+#' values are in the second vector but not in the first one) on the screen.
+#' 
+#' @param x first vector
+#' @param y second vector
+#' @param subject name of objects to be compared that will appear in the 
+#'   message. Default: \code{"Values"}.
+#' @param xname optional name of the first vector that will be used in the
+#'   message
+#' @param yname optional name of the second vector that will be used in the
+#'   message
+#' @examples
+#' compareSets(1:10, 3:13)
+#' compareSets(1:10, 3:13, "numbers", "set 1", "set 2")
+compareSets <- function(
+  x, y, subject = "Values", xname = deparse(substitute(x)), 
+  yname = deparse(substitute(y))
+)
+{
+  stringFormat <- "%s in %s that are not in %s: %s\n"
+  
+  cat(sprintf(stringFormat, subject, xname, yname, stringList(setdiff(x, y))))
+  cat(sprintf(stringFormat, subject, yname, xname, stringList(setdiff(y, x))))
 }
 
 #
