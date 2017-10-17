@@ -188,52 +188,6 @@ enlargeVector <- structure(
   kwb.utils::enlargeVector(c("a", "b", "c"), 10, fill.with = "?")
 })
 
-# setMatrixColumns -------------------------------------------------------------
-
-#' set matrix column to value
-#' 
-#' set matrix columns of given name to fix values
-#' 
-#' @param m matrix
-#' @param columnValuePairs list of elements each of which defines an assignment in the form
-#'   <column-name> = <value>
-#' @param warn if TRUE, warnings are given if columns named in \emph{columnValuePairs}
-#'   do not exist in matrix \emph{m}
-#' 
-setMatrixColumns <- function # set matrix column to value
-### set matrix columns of given name to fix values
-(
-  m,
-  ### matrix
-  columnValuePairs,
-  ### list of elements each of which defines an assignment in the form
-  ### <column-name> = <value>
-  warn = TRUE
-  ### if TRUE, warnings are given if columns named in \emph{columnValuePairs}
-  ### do not exist in matrix \emph{m}
-)
-{
-  stopifnot(is.list(columnValuePairs))
-  stopifnot(is.matrix(m))
-
-  names.list <- names(columnValuePairs)
-  names.matrix <- colnames(m)
-
-  columns.missing <- setdiff(names.list, names.matrix)
-
-  if (isTRUE(warn) && length(columns.missing) > 0) {
-    warning("No such column(s) in matrix 'm': ", commaCollapsed(columns.missing))
-  }
-
-  columns <- intersect(names.list, names.matrix)
-
-  for (column in columns) {
-    m[, column] <- columnValuePairs[[column]]
-  }
-
-  m
-}
-
 # parallelNonNA ----------------------------------------------------------------
 
 #' merge two vectors selecting non-NA values

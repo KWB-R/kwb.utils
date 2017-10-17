@@ -190,3 +190,40 @@ createMatrix <- structure(
     ## Give a name to the row dimension
     createMatrix(c("A", "B", "C"), name.row = "Letters")
   })
+
+# setMatrixColumns -------------------------------------------------------------
+
+#' Set Matrix Columns to Values
+#' 
+#' Set matrix columns of given names to fix values
+#' 
+#' @param m matrix
+#' @param columnValuePairs list of elements each of which defines an assignment
+#'   in the form \code{<column-name> = <value>}
+#' @param warn if \code{TRUE}, warnings are given if columns named in
+#'   \code{columnValuePairs} do not exist in matrix \code{m}
+#' 
+setMatrixColumns <- function(m, columnValuePairs, warn = TRUE)
+{
+  stopifnot(is.list(columnValuePairs))
+  stopifnot(is.matrix(m))
+  
+  names.list <- names(columnValuePairs)
+  names.matrix <- colnames(m)
+  
+  columns.missing <- setdiff(names.list, names.matrix)
+  
+  if (isTRUE(warn) && length(columns.missing) > 0) {
+    
+    warning("No such column(s) in matrix 'm': ", stringList(columns.missing))
+  }
+  
+  columns <- intersect(names.list, names.matrix)
+  
+  for (column in columns) {
+    
+    m[, column] <- columnValuePairs[[column]]
+  }
+  
+  m
+}
