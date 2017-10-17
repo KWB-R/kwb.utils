@@ -435,51 +435,6 @@ getFunctionName <- function # get the name of a function
   deparse(quote(FUN))
 }
 
-# getFunctionValueOrDefault ----------------------------------------------------
-
-#' take function value or default if NA
-#' 
-#' take the function value or a default value if the function value is NA
-#' 
-#' @param values vector of values given to \emph{FUN}
-#' @param FUN function to which values are passed and which offers the argument "na.rm"
-#' @param default default value to be returned if all values are NA
-#' @param warningMessage Warning message given if the default was taken
-#' 
-getFunctionValueOrDefault <- function # take function value or default if NA
-### take the function value or a default value if the function value is NA
-(
-  values,
-  ### vector of values given to \emph{FUN}
-  FUN,
-  ### function to which values are passed and which offers the argument "na.rm"
-  default,
-  ### default value to be returned if all values are NA
-  warningMessage = NA
-  ### Warning message given if the default was taken
-)
-{
-  if (all(is.na(values))) {
-
-    if (is.na(warningMessage)) {
-      warningMessage <- paste(
-        "All values to which", hsQuoteChr(getFunctionName(FUN)),
-        "should be applied are NA. The default is taken:", default)
-    }
-
-    if (warningMessage != "") {
-      warning(warningMessage)
-    }
-
-    functionValue <- default
-  }
-  else {
-    functionValue <- FUN(values, na.rm = TRUE)
-  }
-
-  functionValue
-}
-
 # getOddNumbers ----------------------------------------------------------------
 
 #' getOddNumbers
