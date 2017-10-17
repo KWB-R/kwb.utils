@@ -72,11 +72,81 @@ readPackageFile <- function # read file from package's extdata folder
   ### result of reading \code{file} with \code{\link[utils]{read.csv}}
 }
 
+# getNamesOfObjectsInRDataFiles ------------------------------------------------
+
+#' Deprecated. Use \code{\link{listObjects}} instead.
+#'  
+#' @param files.rdata vector of full paths to .RData files
+#' 
+getNamesOfObjectsInRDataFiles <- function(files.rdata)
+{
+  .warningDeprecated("getNamesOfObjectsInRDataFiles", "listObjects")
+  
+  listObjects(files.rdata)
+}
+
+# listObjects ------------------------------------------------------------------
+
+#' Get Names of Objects in .RData files
+#' 
+#' get names of objects in .RData files
+#' 
+#' @param files vector of full paths to .RData files
+#' 
+#' @examples 
+#' ## Not run
+#'   
+#' ## Search for available .RData files below "searchdir"
+#' #searchdir <- "//poseidon/projekte$/SUW_Department/Projects/SEMA/WP/20_Braunschweig"
+#' #files <- dir(searchdir, pattern = "\\\\.RData$", recursive = TRUE, full.names = TRUE)
+#'   
+#' ## Get the names of the objects in the .RData files
+#' #objectsInFiles <- listObjects(files)
+#'   
+#' ## Which file contains the object "DataQ"?
+#' #dataQ.found <- sapply(objectsInFiles, function(x) {"DataQ" %in% x})
+#'   
+#' #cat("DataQ was found in the following files:",
+#' #    paste(files[dataQ.found], collapse = "\n  "))
+#' 
+listObjects <- function(files)
+{
+  # Create new environment into which the .RData files are to be loaded
+  # temporarily
+  testenvironment <- new.env(parent = .GlobalEnv)
+  
+  # Prepare result list
+  objectsInFiles <- list()
+  
+  # Loop through .RData files
+  for (i in seq_len(length(files))) {
+    
+    cat(sprintf(
+      "Loading %d/%d: %s... ", i, length(files), basename(files[i])
+    ))
+    load(file = files[i], envir = testenvironment)
+    cat("ok. ")
+    
+    objectnames <- ls(envir = testenvironment)
+    objectsInFiles[[i]] <- objectnames
+    
+    cat(length(objectnames), "objects found. ")
+    
+    cat("Clearing workspace... ")
+    rm(list = ls(envir = testenvironment), envir = testenvironment)
+    cat("ok.\n")
+  }
+  
+  # Delete the testenvironment
+  rm("testenvironment")
+  
+  # Return the list of object names
+  structure(objectsInFiles, files = files)
+}
+
 # getObjectFromRDataFile -------------------------------------------------------
 
-#' Load R object from .RData file
-#' 
-#' This function is deprecated. Please use \code{\link{loadObject}} instead.
+#' Deprecated. Please use \code{\link{loadObject}} instead.
 #' 
 #' @param file path to .RData file
 #' @param objectname name of object to be loaded
@@ -87,13 +157,19 @@ readPackageFile <- function # read file from package's extdata folder
 #' 
 getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 {
-  warning(
-    "The function getObjectFromRDataFile() is deprecated. Please use ", 
-    "loadObject() instead."
-  )
+  .warningDeprecated("getObjectFromRDataFile", "loadObject")
   
   loadObject(file, objectname, dbg)
 }  
+
+# .warningDeprecated -----------------------------------------------------------
+.warningDeprecated <- function(old_name, new_name)
+{
+  warning(
+    "The function ", old_name, "() is deprecated. Please use ", new_name, 
+    "() instead."
+  )
+}
 
 # loadObject -------------------------------------------------------------------
 

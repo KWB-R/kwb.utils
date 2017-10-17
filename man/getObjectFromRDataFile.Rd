@@ -2,7 +2,7 @@
 % Please edit documentation in R/io.R
 \name{getObjectFromRDataFile}
 \alias{getObjectFromRDataFile}
-\title{Load R object from .RData file}
+\title{Deprecated. Please use \code{\link{loadObject}} instead.}
 \usage{
 getObjectFromRDataFile(file, objectname = NULL, dbg = TRUE)
 }
@@ -19,5 +19,5 @@ R object as specified in \emph{objectname}. If an object of that name does
   not exist in the .RData file an error is thrown
 }
 \description{
-This function is deprecated. Please use \code{\link{loadObject}} instead.
+Deprecated. Please use \code{\link{loadObject}} instead.
 }
