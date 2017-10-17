@@ -455,27 +455,6 @@ getByPositiveOrNegativeIndex <- function # getByPositiveOrNegativeIndex
   ### \emph{index}
 }
 
-# toPositiveIndices ------------------------------------------------------------
-
-#' Negative Indices to Positive Indices
-#' 
-#' Convert negative indices to positive indices where negative indices are 
-#' interpreted as indices counting from the back of the vector
-#' 
-#' @param indices vector of integer indices
-#' @param n maximum index. The index -1 is mapped to \code{n}, the index -2 to
-#'   \code{n - 1}, etc.
-#' 
-toPositiveIndices <- function
-(
-  indices, n
-)
-{
-  negativeIndices <- which(indices < 0)
-  indices[negativeIndices] <- indices[negativeIndices] + n + 1
-  indices
-}
-
 # quotient ---------------------------------------------------------------------
 
 #' quotient
@@ -538,28 +517,6 @@ recycle <- function # "recycle" vector to given length
 )
 {
   rep(x, length.out = n)
-}
-
-# toInches ---------------------------------------------------------------------
-
-#' convert cm to inches
-#' 
-#' # convert cm to inches
-#' 
-#' @param cm vector of numeric representing length(s) in cm
-#' 
-#' @return vector of numeric representing length(s) in inches
-#' 
-toInches <- function # convert cm to inches
-#### convert cm to inches
-(
-  cm
-  ### vector of numeric representing length(s) in cm
-)
-{
-  cm.per.inch <- 2.54
-  cm / cm.per.inch
-  ### vector of numeric representing length(s) in inches
 }
 
 # firstElement -----------------------------------------------------------------

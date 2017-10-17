@@ -1,3 +1,37 @@
+# toPositiveIndices ------------------------------------------------------------
+
+#' Negative Indices to Positive Indices
+#' 
+#' Convert negative indices to positive indices where negative indices are 
+#' interpreted as indices counting from the back of the vector
+#' 
+#' @param indices vector of integer indices
+#' @param n maximum index. The index -1 is mapped to \code{n}, the index -2 to
+#'   \code{n - 1}, etc.
+#' 
+toPositiveIndices <- function
+(
+  indices, n
+)
+{
+  negativeIndices <- which(indices < 0)
+  indices[negativeIndices] <- indices[negativeIndices] + n + 1
+  indices
+}
+
+# toInches ---------------------------------------------------------------------
+
+#' Convert Centimeters to Inches
+#' 
+#' @param cm vector of numeric representing length(s) in cm
+#' 
+#' @return vector of numeric representing length(s) in inches
+#' 
+toInches <- function(cm)
+{
+  cm / 2.54
+}
+
 # limitToRange -----------------------------------------------------------------
 
 #' limit values to lie within [left, right]
