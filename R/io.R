@@ -74,9 +74,9 @@ readPackageFile <- function # read file from package's extdata folder
 
 # getObjectFromRDataFile -------------------------------------------------------
 
-#' load R object from .RData file
+#' Load R object from .RData file
 #' 
-#' load R object from a .RData file
+#' This function is deprecated. Please use \code{\link{loadObject}} instead.
 #' 
 #' @param file path to .RData file
 #' @param objectname name of object to be loaded
@@ -87,9 +87,33 @@ readPackageFile <- function # read file from package's extdata folder
 #' 
 getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 {
+  warning(
+    "The function getObjectFromRDataFile() is deprecated. Please use ", 
+    "loadObject() instead."
+  )
+  
+  loadObject(file, objectname, dbg)
+}  
+
+# loadObject -------------------------------------------------------------------
+
+#' Load R object from .RData file
+#' 
+#' Load an R object of given name from a .RData file
+#' 
+#' @param file path to .RData file
+#' @param objectname name of object to be loaded
+#' @param dbg if \code{TRUE} a message about which object is loaded from which 
+#'   file is shown
+#' @return R object as specified in \emph{objectname}. If an object of that name does
+#'   not exist in the .RData file an error is thrown
+#' 
+loadObject <- function(file, objectname = NULL, dbg = TRUE)
+{
   envir <- new.env()
 
   catIf(dbg, sprintf("Loading '%s' from '%s'... ", objectname, file))
+  
   load(safePath(file), envir = envir)
 
   # Get the names of the contained objects
@@ -97,18 +121,17 @@ getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 
   if (is.null(objectname) || (! objectname %in% objectnames)) {
 
-    messageText <- if (is.null(objectname)) {
-      "Please give an 'objectname'."
+    message_1 <- if (is.null(objectname)) {
+      "Please give an 'objectname'. "
     } else {
-      sprintf("Object '%s' not found.", objectname)
+      sprintf("Object '%s' not found. ", objectname)
     }
 
-    messageText <- sprintf(
-      "%s Available objects in '%s':\n%s",
-      messageText, file, collapsed(hsQuoteChr(objectnames), ", ")
+    message_2 <- sprintf(
+      "Available objects in '%s':\n%s", file, stringList(objectnames)
     )
 
-    stop(messageText, call. = FALSE)
+    stop(message_1, message_2, call. = FALSE)
   }
 
   catIf(dbg, "ok.\n")
