@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{hsMatrixToListForm}
 \alias{hsMatrixToListForm}
-\title{convert "matrix form" to "list form"}
+\title{Convert "Matrix Form" (wide format) to "List Form" (long format)}
 \usage{
 hsMatrixToListForm(df, keyFields, parFields = setdiff(names(df), keyFields),
   colNamePar = "parName", colNameVal = "parVal", stringsAsFactors = FALSE)
@@ -12,21 +12,23 @@ hsMatrixToListForm(df, keyFields, parFields = setdiff(names(df), keyFields),
 
 \item{keyFields}{names of key fields (e.g. date/time)}
 
-\item{parFields}{names of fields representing differen parameters. Default: column names
-that are not in \emph{keyFields}}
+\item{parFields}{names of fields representing differen parameters. Default:
+column names that are not in \emph{keyFields}}
 
-\item{colNamePar}{name of column in result data frame that will contain the parameter names}
+\item{colNamePar}{name of column in result data frame that will contain the
+parameter names}
 
-\item{colNameVal}{name of column in result data frame that will contain the parameter values}
+\item{colNameVal}{name of column in result data frame that will contain the
+parameter values}
 
-\item{stringsAsFactors}{if TRUE, columns of type character in the result data frame are converted
-to factors. Parameter is passed to cbind, rbind.}
+\item{stringsAsFactors}{if TRUE, columns of type character in the result data
+frame are converted to factors. Parameter is passed to cbind, rbind.}
 }
 \value{
-data frame in "list form"
+data frame in "list form" (long format)
 }
 \description{
-converts a data frame in "matrix form" to a data frame in "list form"
+Converts a data frame in "matrix form" to a data frame in "list form"
 }
 \seealso{
 \code{\link[stats]{reshape}}

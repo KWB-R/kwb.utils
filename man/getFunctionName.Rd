@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{getFunctionName}
 \alias{getFunctionName}
-\title{get the name of a function}
+\title{Get the Name of a Function}
 \usage{
 getFunctionName(FUN)
 }
@@ -10,5 +10,5 @@ getFunctionName(FUN)
 \item{FUN}{R object representing a function}
 }
 \description{
-get the name of a function
+Get the Name of a Function
 }

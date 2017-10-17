@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{randomValuesWithSum}
 \alias{randomValuesWithSum}
-\title{vector of random integer values of given sum}
+\title{Vector of random Integer Values of given Sum}
 \usage{
 randomValuesWithSum(n, sumOfValues, names = seq_len(n))
 }
@@ -11,11 +11,12 @@ randomValuesWithSum(n, sumOfValues, names = seq_len(n))
 
 \item{sumOfValues}{sum of values in the result vector}
 
-\item{names}{names of elements in the result vector. Default: \code{seq_len(n)}}
+\item{names}{names of elements in the result vector. Default:
+\code{seq_len(n)}}
 }
 \value{
 named vector of integer values with \code{sum(values) == sumOfValues}
 }
 \description{
-vector of random integer values of given sum
+Vector of random Integer Values of given Sum
 }

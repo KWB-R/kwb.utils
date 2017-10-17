@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{assignAll}
 \alias{assignAll}
-\title{call assign for each list element}
+\title{Call assign for each List Element}
 \usage{
 assignAll(x, pos = 1, ...)
 }

@@ -14,4 +14,5 @@ Assign all Package Objects to the Global Environment
 }
 \examples{
 assignPackageObjects("kwb.utils")
+
 }

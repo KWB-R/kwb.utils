@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{extendLimits}
 \alias{extendLimits}
-\title{extendLimits}
+\title{Extend the Limits of a Range Vector}
 \usage{
 extendLimits(limits, left = 0.05, right = left, absolute = FALSE)
 }
@@ -19,5 +19,5 @@ right.}
 \item{absolute}{Default: FALSE}
 }
 \description{
-extendLimits
+Extend the Limits of a Range Vector
 }

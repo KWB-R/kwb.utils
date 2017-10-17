@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{getEvenNumbers}
 \alias{getEvenNumbers}
-\title{getEvenNumbers}
+\title{Get even Numbers out of a Vector of Integers}
 \usage{
 getEvenNumbers(x)
 }
@@ -10,5 +10,5 @@ getEvenNumbers(x)
 \item{x}{vector of integer}
 }
 \description{
-getEvenNumbers
+Get even Numbers out of a Vector of Integers
 }

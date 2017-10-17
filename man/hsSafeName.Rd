@@ -21,12 +21,11 @@ Returns a name that is not yet contained in a vector \emph{myNames}
   of existing names.
 }
 \examples{
-  existing <- c("a", "b")
-  myName <- hsSafeName("c", existing)
-  myName                               # "c"
-  myName <- hsSafeName("a", existing)
-  myName                               # "a_1"
-  hsSafeName("a", c(existing, myName)) # "a_2"
+existing <- c("a", "b")
+myName <- hsSafeName("c", existing)
+myName                               # "c"
+myName <- hsSafeName("a", existing)
+myName                               # "a_1"
+hsSafeName("a", c(existing, myName)) # "a_2"
   
-
 }

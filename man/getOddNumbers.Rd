@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{getOddNumbers}
 \alias{getOddNumbers}
-\title{getOddNumbers}
+\title{Get odd Numbers out of a Vector of Integers}
 \usage{
 getOddNumbers(x)
 }
@@ -10,5 +10,5 @@ getOddNumbers(x)
 \item{x}{vector of integer}
 }
 \description{
-getOddNumbers
+Get odd Numbers out of a Vector of Integers
 }

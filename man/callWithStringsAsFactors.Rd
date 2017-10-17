@@ -2,14 +2,14 @@
 % Please edit documentation in R/main.R
 \name{callWithStringsAsFactors}
 \alias{callWithStringsAsFactors}
-\title{Call a function with option "stringsAsFactors" set temporarily}
+\title{Call a Function with Option "stringsAsFactors" set temporarily}
 \usage{
 callWithStringsAsFactors(stringsAsFactors, FUN, ...)
 }
 \arguments{
-\item{stringsAsFactors}{TRUE or FALSE. Before calling \code{FUN} the option "stringsAsFactors" is
-set to the value given here. After the function call the option is reset
-to what it was before.}
+\item{stringsAsFactors}{TRUE or FALSE. Before calling \code{FUN} the option
+"stringsAsFactors" is set to the value given here. After the function call
+the option is reset to what it was before.}
 
 \item{FUN}{function to be called}
 
@@ -23,30 +23,28 @@ This function returns what \code{FUN} returns when called with the
 Set the option "stringsAsFactors", run a function and reset the option.
 }
 \examples{
+option.bak <- getOption("stringsAsFactors")
   
-  option.bak <- getOption("stringsAsFactors")
+d1 <- callWithStringsAsFactors(
+  TRUE,
+  rbind,
+  data.frame(id = 1, name = "Peter"),
+  data.frame(id = 2, name = "Paul"),
+  data.frame(id = 3, name = "Mary")
+)
   
-  d1 <- callWithStringsAsFactors(
-    TRUE,
-    rbind,
-    data.frame(id = 1, name = "Peter"),
-    data.frame(id = 2, name = "Paul"),
-    data.frame(id = 3, name = "Mary")
-  )
+d2 <- callWithStringsAsFactors(
+  FALSE,
+  rbind,
+  data.frame(id = 1, name = "Peter"),
+  data.frame(id = 2, name = "Paul"),
+  data.frame(id = 3, name = "Mary")
+)
   
-  d2 <- callWithStringsAsFactors(
-    FALSE,
-    rbind,
-    data.frame(id = 1, name = "Peter"),
-    data.frame(id = 2, name = "Paul"),
-    data.frame(id = 3, name = "Mary")
-  )
+str(d1)
+str(d2)
   
-  str(d1)
-  str(d2)
+# The option "stringsAsFactors" has not changed!
+stopifnot(option.bak == getOption("stringsAsFactors"))
   
-  # The option "stringsAsFactors" has not changed!
-  stopifnot(option.bak == getOption("stringsAsFactors"))
-  
-
 }

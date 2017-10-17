@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{parallelNonNA}
 \alias{parallelNonNA}
-\title{merge two vectors selecting non-NA values}
+\title{Merge two Vectors selecting non-NA Values}
 \usage{
 parallelNonNA(a, b)
 }
@@ -15,25 +15,23 @@ parallelNonNA(a, b)
 character vector of same length as \emph{a} and \emph{b}
 }
 \description{
-two vectors \emph{a} and \emph{b} of same length are merged in such a way
-  that at index i the result vector contains
-  (1) a[i] if a[i] is not NA and b[i] is NA or b[i] == a[i],
-  (2) b[i] if b[i] is not NA and a[i] is NA or a[i] == b[i],
-  (3) "" if a[i] is not NA and b[i] is not NA and a[i] != b[i] or if both
-  a[i] and b[i] are NA
+two vectors \emph{a} and \emph{b} of same length are merged in such a way 
+that at index i the result vector contains (1) a[i] if a[i] is not NA and
+b[i] is NA or b[i] == a[i], (2) b[i] if b[i] is not NA and a[i] is NA or a[i]
+== b[i], (3) "" if a[i] is not NA and b[i] is not NA and a[i] != b[i] or if
+both a[i] and b[i] are NA
 }
 \examples{
-  parallelNonNA(c(1, NA, 3), c(NA, 2, NA))  # "1" "2" "3"
+parallelNonNA(c(1, NA, 3), c(NA, 2, NA))  # "1" "2" "3"
   
-  parallelNonNA(c(1, NA, NA), c(NA, 2, NA)) # "1" "2" ""
+parallelNonNA(c(1, NA, NA), c(NA, 2, NA)) # "1" "2" ""
   
-  ## A warning is given if (non-NA) values at the same index differ
-  y <- parallelNonNA(c(1, 2, 3), c(1, 2, 4))
+## A warning is given if (non-NA) values at the same index differ
+y <- parallelNonNA(c(1, 2, 3), c(1, 2, 4))
   
-  y # "1" "2" ""
+y # "1" "2" ""
   
-  ## attribute "invalid" contains the index and values of the differing values
-  attr(y, "invalid")
+## attribute "invalid" contains the index and values of the differing values
+attr(y, "invalid")
   
-
 }
