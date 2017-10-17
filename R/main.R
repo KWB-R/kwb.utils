@@ -142,52 +142,6 @@ callWithStringsAsFactors <- structure(
   stopifnot(option.bak == getOption("stringsAsFactors"))
 })
 
-# enlargeVector ----------------------------------------------------------------
-
-#' enlarge a vector to given length
-#' 
-#' enlarge a vector to the given length, filling with given element
-#' 
-#' @param x vector
-#' @param length.out desired length of output vector
-#' @param fill.with element to fill the vector up with (default: "")
-#' 
-#' @return \code{x}, filled up with \code{fill.with} to a final length of
-#'   \code{length.out}
-#' 
-#' @examples 
-#'   kwb.utils::enlargeVector(1:5, 10, fill.with = 0)
-#'   kwb.utils::enlargeVector(1:5, 10, fill.with = NA)
-#'   kwb.utils::enlargeVector(c("a", "b", "c"), 10)
-#'   kwb.utils::enlargeVector(c("a", "b", "c"), 10, fill.with = "?")
-#'   
-#' 
-enlargeVector <- structure(
-  function # enlarge a vector to given length
-### enlarge a vector to the given length, filling with given element
-(
-  x,
-  ### vector
-  length.out,
-  ### desired length of output vector
-  fill.with = ""
-  ### element to fill the vector up with (default: "")
-)
-{
-  N <- length(x)
-
-  stopifnot (N <= length.out)
-
-  c(x, rep(fill.with, length.out - N))
-  ### \code{x}, filled up with \code{fill.with} to a final length of
-  ### \code{length.out}
-}, ex = function() {
-  kwb.utils::enlargeVector(1:5, 10, fill.with = 0)
-  kwb.utils::enlargeVector(1:5, 10, fill.with = NA)
-  kwb.utils::enlargeVector(c("a", "b", "c"), 10)
-  kwb.utils::enlargeVector(c("a", "b", "c"), 10, fill.with = "?")
-})
-
 # parallelNonNA ----------------------------------------------------------------
 
 #' merge two vectors selecting non-NA values
@@ -420,41 +374,6 @@ recursiveNames <- function # names of all sublists of a list
   elementNames
 }
 
-# getByPositiveOrNegativeIndex -------------------------------------------------
-
-#' getByPositiveOrNegativeIndex
-#' 
-#' get element from vector, counting from head or tail
-#' 
-#' @param elements vector of elements
-#' @param index positive or negative index(es) with absolute value between 1 and
-#'   length(\emph{elements})
-#' 
-#' @return element(s) out of \emph{elements} corresponding to the index(es) given in
-#'   \emph{index}
-#' 
-getByPositiveOrNegativeIndex <- function # getByPositiveOrNegativeIndex
-### get element from vector, counting from head or tail
-(
-  elements,
-  ### vector of elements
-  index
-  ### positive or negative index(es) with absolute value between 1 and
-  ### length(\emph{elements})
-)
-{
-  n <- length(elements)
-
-  if (!all(inRange(values = abs(index), min.value = 1, max.value = n))) {
-    stop("There are invalid indices. The maximum allowed (absolute) value of ",
-         "an index is ", n, " (number of elements).")
-  }
-
-  elements[toPositiveIndices(index, n = n)]
-  ### element(s) out of \emph{elements} corresponding to the index(es) given in
-  ### \emph{index}
-}
-
 # quotient ---------------------------------------------------------------------
 
 #' quotient
@@ -496,69 +415,6 @@ quotient <- function # quotient
 
   result
   ### quotient of dividend and divisor: dividend/divisor
-}
-
-# recycle ----------------------------------------------------------------------
-
-#' "recycle" vector to given length
-#' 
-#' recycle vector to given length
-#' 
-#' @param x vector to be "recycled"
-#' @param n target length
-#' 
-recycle <- function # "recycle" vector to given length
-### recycle vector to given length
-(
-  x,
-  ### vector to be "recycled"
-  n
-  ### target length
-)
-{
-  rep(x, length.out = n)
-}
-
-# firstElement -----------------------------------------------------------------
-
-#' first element
-#' 
-#' Returns the first element using the function head
-#' 
-#' @param x object
-#' 
-#' @return first element: x[1]
-#' 
-firstElement <- function # first element
-### Returns the first element using the function head
-(
-  x
-  ### object
-)
-{
-  utils::head(x, 1)
-  ### first element: x[1]
-}
-
-# lastElement ------------------------------------------------------------------
-
-#' last element
-#' 
-#' Returns the last element using the function tail
-#' 
-#' @param x object
-#' 
-#' @return last element: x[length(x)]
-#' 
-lastElement <- function # last element
-### Returns the last element using the function tail
-(
-  x
-  ### object
-)
-{
-  utils::tail(x, 1)
-  ### last element: x[length(x)]
 }
 
 # getFunctionName --------------------------------------------------------------
