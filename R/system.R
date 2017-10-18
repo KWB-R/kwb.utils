@@ -232,17 +232,6 @@ cmdLinePath <- function(x)
   hsQuoteChr(windowsPath(x), '"')
 }
 
-# .debugMessageIf --------------------------------------------------------------
-
-#'  debugMessageIf
-#' 
-.debugMessageIf <- function(dbg, ...)
-{
-  if (dbg) {
-    cat(...)
-  }  
-}
-
 # copyDirectoryStructure -------------------------------------------------------
 
 #' Copy Directory Structure
@@ -284,9 +273,26 @@ copyDirectoryStructure <- function(
 
 # createDirAndReturnPath -------------------------------------------------------
 
-#' create directory if it does not exist
+#' Create a Directory including required "upward" Folders
 #' 
-#' create directory if it does not exist
+#' @param path character string representing the path to the directory to be
+#'   created
+#' @param dbg if \code{TRUE} messages about created or found directories are 
+#'   shown
+#' @param confirm if \code{TRUE} (the default is \code{FALSE}!) the user is 
+#'   asked to confirm the creation of a directory
+#' @return created path or \code{NULL} if the path could not be created
+#'   
+createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
+{
+  kwb.utils:::.warningDeprecated("createDirAndReturnPath", "createDirectory")
+  
+  createDirectory(dir.to.create, dbg = TRUE, confirm = FALSE)
+}
+
+# createDirectory --------------------------------------------------------------
+
+#' Create Directory if it does not exist
 #' 
 #' @param dir.to.create character string representing the path to the directory
 #'   to be created
@@ -294,15 +300,19 @@ copyDirectoryStructure <- function(
 #'   shown
 #' @param confirm if \code{TRUE} (the default is \code{FALSE}!) the user is
 #'   asked to confirm the creation of a directory
-createDirAndReturnPath <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
+#' @return created path or \code{NULL} if the path could not be created
+#'   
+createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 { 
-  stopifnot(length(dir.to.create) == 1 && is.character(dir.to.create))
+  stopifnot(length(dir.to.create) == 1, is.character(dir.to.create))
   
   dir.name <- sprintf("The directory \"%s\"", dir.to.create)
   
   # Return the directory name if it already exists
   if (file.exists(dir.to.create)) {
-    .debugMessageIf(dbg, dir.name, "already exists.\n")
+    
+    catIf(dbg, dir.name, "already exists.\n")
+    
     return(dir.to.create)
   }
   
@@ -310,35 +320,45 @@ createDirAndReturnPath <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
   parentDir <- dirname(dir.to.create)
   
   if (! file.exists(parentDir)) {
-    .debugMessageIf(dbg, "The parent directory", parentDir, 
-                    "needs to be created first.\n")
+    
+    catIf(
+      dbg, "The parent directory", parentDir, "needs to be created first.\n"
+    )
+    
     parentDir <- createDirAndReturnPath(parentDir, dbg, confirm)
   }
   
   # Return NULL if the parent directory could not be created
   if (is.null(parentDir)) {
+    
     return (NULL)
   }
   
   # Continue ony if continuation was confirmed
-  if (confirm) {
-    continue <- (readline(paste("Create folder", hsQuoteChr(dir.to.create), 
-                                "(Y,n)? ")) == "Y")
-  }
-  else {
-    continue <- TRUE
+  continue <- if (confirm) {
+    
+    prompt <- paste("Create folder", hsQuoteChr(dir.to.create), "(Y,n)? ")
+    
+    readline(prompt) == "Y"
+    
+  } else {
+    
+    TRUE
   }
   
   # Return NULL if user does not want to continue
-  if (!continue) {
+  if (! continue) {
+    
     return (NULL)
   }
   
   if (! dir.create(dir.to.create)) {
+    
     stop(dir.name, " could not be created.")
   }
   
-  .debugMessageIf(dbg, dir.name, "was created.\n")        
+  catIf(dbg, dir.name, "was created.\n")
+  
   return (dir.to.create)
 }
 

@@ -2,20 +2,23 @@
 % Please edit documentation in R/system.R
 \name{createDirAndReturnPath}
 \alias{createDirAndReturnPath}
-\title{create directory if it does not exist}
+\title{Create a Directory including required "upward" Folders}
 \usage{
-createDirAndReturnPath(dir.to.create, dbg = TRUE, confirm = FALSE)
+createDirAndReturnPath(path, dbg = TRUE, confirm = FALSE)
 }
 \arguments{
-\item{dir.to.create}{character string representing the path to the directory
-to be created}
+\item{path}{character string representing the path to the directory to be
+created}
 
-\item{dbg}{if \code{TRUE} messages about created or found directories are
+\item{dbg}{if \code{TRUE} messages about created or found directories are 
 shown}
 
-\item{confirm}{if \code{TRUE} (the default is \code{FALSE}!) the user is
+\item{confirm}{if \code{TRUE} (the default is \code{FALSE}!) the user is 
 asked to confirm the creation of a directory}
 }
+\value{
+created path or \code{NULL} if the path could not be created
+}
 \description{
-create directory if it does not exist
+Create a Directory including required "upward" Folders
 }
