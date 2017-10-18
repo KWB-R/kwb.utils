@@ -167,7 +167,7 @@ getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 {
   warning(
     "The function ", old_name, "() is deprecated. Please use ", new_name, 
-    "() instead."
+    "() instead.", call. = FALSE
   )
 }
 
