@@ -287,7 +287,7 @@ createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
 {
   kwb.utils:::.warningDeprecated("createDirAndReturnPath", "createDirectory")
   
-  createDirectory(dir.to.create, dbg = TRUE, confirm = FALSE)
+  createDirectory(path, dbg = TRUE, confirm = FALSE)
 }
 
 # createDirectory --------------------------------------------------------------
