@@ -1,3 +1,24 @@
+# toFactor ---------------------------------------------------------------------
+
+#' Convert to Factor with unique Values as Levels
+#' 
+#' In contrast to the default behaviour of \code{\link[base]{as.factor}}, this 
+#' function uses the unsorted unique values of \code{x} as levels and not sorted
+#' unique values.
+#' 
+#' @param x vector to be converted to factor
+#' 
+#' @examples 
+#' x <- c("b", "c", "a")
+#' 
+#' as.factor(x) # Levels: a b c
+#' 
+#' toFactor(x) # Levels: b c a
+toFactor <- function(x)
+{
+  if (! is.factor(x)) factor(x, levels = unique(x)) else x
+}
+
 # toPositiveIndices ------------------------------------------------------------
 
 #' Negative Indices to Positive Indices
