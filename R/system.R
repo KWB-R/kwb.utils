@@ -64,15 +64,25 @@ desktop <- function()
   osType <- .OStype()
 
   desktops <- c(
-    windows = "C:/Users/<user>/Desktop",
+    windows = "<userprofile>/Desktop",
     unix = "/home/<user>/Desktop"
   )
 
   if (isNaOrEmpty(desktops[osType])) {
+    
     stop("I do not know where the desktop is in: ", osType)
   }
 
-  hsResolve("desktop", dict = list(desktop = desktops[osType]), user = user())
+  dict <- list(desktop = desktops[osType])
+  
+  if (osType == "windows") {
+    hsResolve(
+      "desktop", dict, 
+      userprofile = kwb.utils::rStylePath(Sys.getenv("USERPROFILE"))
+    )
+  } else {
+    hsResolve("desktop", dict, user = user())  
+  }
 }
 
 # user -------------------------------------------------------------------------
