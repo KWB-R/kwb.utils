@@ -3,7 +3,6 @@
 #' Get Extension of Full File Paths
 #' 
 #' @param x vector of file paths
-#' @export
 #' 
 #' @examples 
 #' # Define example paths
