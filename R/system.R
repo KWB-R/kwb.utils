@@ -274,7 +274,7 @@ copyDirectoryStructure <- function(
   
   targetpaths <- file.path(targetdir, subdirs)
   
-  paths <- as.character(lapply(targetpaths, createDirAndReturnPath, dbg = dbg))
+  paths <- as.character(lapply(targetpaths, createDirectory, dbg = dbg))
   
   invisible(paths)
   ### This function invisibly returns a vector of character containing the full
@@ -335,7 +335,7 @@ createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
       dbg, "The parent directory", parentDir, "needs to be created first.\n"
     )
     
-    parentDir <- createDirAndReturnPath(parentDir, dbg, confirm)
+    parentDir <- createDirectory(parentDir, dbg, confirm)
   }
   
   # Return NULL if the parent directory could not be created
