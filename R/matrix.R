@@ -227,3 +227,146 @@ setMatrixColumns <- function(m, columnValuePairs, warn = TRUE)
   
   m
 }
+
+# assertRowsAndColumns ---------------------------------------------------------
+
+#' Assert Row and Column Names of a Matrix
+#'
+#' Make sure that a matrix contains rows and columns of the given names in the
+#' given order.
+#'
+#' @param x A matrix
+#' @param row_names character vector of row names
+#' @param col_names character vector of column names
+#' @param fill_value value to fill a row or column with if a row or column does
+#'   not exist in \code{x}
+#'
+#' @examples
+#' m <- matrix(1:12, nrow = 3, ncol = 4, dimnames = list(
+#'   rows = paste0("row", 1:3), cols = paste0("col", 1:4)
+#' ))
+#'
+#' # Add two rows, reverse order of rows, add one column, remove one column
+#' assertRowsAndColumns(
+#'   m,
+#'   row_names = paste0("row", 4:0),
+#'   col_names = paste0("col", 0:2)
+#' )
+#'
+assertRowsAndColumns <- function(
+  x, row_names = NULL, col_names = NULL, fill_value = 0
+)
+{
+  kwb.utils::stopIfNotMatrix(x)
+  
+  if (is.null(row_names) && is.null(col_names)) {
+    
+    return (x)
+  }
+  
+  row_names <- kwb.utils::defaultIfNULL(row_names, rownames(x))
+  col_names <- kwb.utils::defaultIfNULL(col_names, colnames(x))
+  
+  y <- matrix(
+    fill_value, nrow = length(row_names), ncol = length(col_names),
+    dimnames = structure(list(row_names, col_names), names = names(dimnames(x)))
+  )
+  
+  rows <- intersect(rownames(x), row_names)
+  cols <- intersect(colnames(x), col_names)
+  
+  y[rows, cols] <- x[rows, cols]
+  
+  y
+}
+
+# stopIfNotMatrix --------------------------------------------------------------
+
+#' Stop with a Message if Input is not a Matrix
+#' 
+#' @param x object to be checked with \code{\link{is.matrix}}
+#' 
+#' @export
+#' 
+stopIfNotMatrix <- function(x)
+{
+  if (! is.matrix(x)) {
+    
+    stop("x ist not a matrix but:\n", utils::capture.output(utils::str(x)))
+  }
+}
+
+# diffrows ---------------------------------------------------------------------
+
+#' Differences between Matrix Rows
+#' 
+#' @param x matrix
+#' 
+#' @return matrix with one row less than in input matrix \code{x} and each row 
+#'   \code{i} representing the difference \code{x[i+1, ]-x[i, ]} between rows
+#'   \code{i+1} and \code{i} in \code{x}
+#'   
+#' @export
+#' 
+#' @examples 
+#' x <- matrix(1:12, nrow = 3)
+#' 
+#' d <- diffrows(x)
+#' 
+#' x[2, ] - x[1, ] == d[1, ]
+#' x[3, ] - x[2, ] == d[2, ]
+#' 
+diffrows <- function(x)
+{
+  kwb.utils::stopIfNotMatrix(x)
+  
+  do.call(rbind, lapply(seq_len(nrow(x) - 1), function(i) x[i + 1, ] - x[i, ]))
+}
+
+# asColumnList -----------------------------------------------------------------
+
+#' Matrix to List of Matrix Columns
+#' 
+#' @param x matrix
+#' 
+#' @return list with as many elements as there are columns in \code{x} and each
+#'   element representing one column
+#'   
+#' @export
+#' 
+#' @examples
+#' x <- matrix(1:12, nrow = 3)
+#' 
+#' column_list <- asColumnList(x)
+#' 
+#' for (i in 1:ncol(x)) print(identical(column_list[[i]], x[, i]))
+#' 
+asColumnList <- function(x)
+{
+  kwb.utils::stopIfNotMatrix(x)
+  structure(lapply(seq_len(ncol(x)), function(i) x[, i]), names = colnames(x))
+}
+
+# asRowList --------------------------------------------------------------------
+
+#' Matrix to List of Matrix Rows
+#' 
+#' @param x matrix
+#' 
+#' @return list with as many elements as there are rows in \code{x} and each
+#'   element representing one row
+#'   
+#' @export
+#' 
+#' @examples
+#' x <- matrix(1:12, nrow = 3)
+#' 
+#' row_list <- asRowList(x)
+#' 
+#' for (i in 1:nrow(x)) print(identical(row_list[[i]], x[i, ]))
+#' 
+asRowList <- function(x)
+{
+  kwb.utils::stopIfNotMatrix(x)
+  structure(lapply(seq_len(nrow(x)), function(i) x[i, ]), names = rownames(x))
+}

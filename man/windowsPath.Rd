@@ -10,6 +10,6 @@ windowsPath(path)
 \item{path}{vector of character representing file paths}
 }
 \description{
-create MS Windows-compatible path by substituting forward slashes with 
+create MS Windows-compatible path by substituting forward slashes with
   backslashes
 }

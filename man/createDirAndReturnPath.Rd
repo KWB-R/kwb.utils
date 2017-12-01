@@ -10,10 +10,10 @@ createDirAndReturnPath(path, dbg = TRUE, confirm = FALSE)
 \item{path}{character string representing the path to the directory to be
 created}
 
-\item{dbg}{if \code{TRUE} messages about created or found directories are 
+\item{dbg}{if \code{TRUE} messages about created or found directories are
 shown}
 
-\item{confirm}{if \code{TRUE} (the default is \code{FALSE}!) the user is 
+\item{confirm}{if \code{TRUE} (the default is \code{FALSE}!) the user is
 asked to confirm the creation of a directory}
 }
 \value{
