@@ -11,8 +11,10 @@ test_that("columnwisePercentage() works as expected", {
   P1 <- columnwisePercentage(M1, digits = NA)
   P2 <- columnwisePercentage(M2, default = 0, digits = NA)
   
-  expect_true(all(colSums(P1) == 100))
-  expect_true(all(colSums(P2) == 100))
+  all_correct <- function(x) all(almostEqual(colSums(x), rep(100, ncol(x))))
+  
+  expect_true(all_correct(P1))
+  expect_true(all_correct(P2))
   
   expect_identical(dimnames(M1), dimnames(P1))
   expect_identical(dimnames(M2), dimnames(P2))
