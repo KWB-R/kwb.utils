@@ -492,6 +492,11 @@ rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor 
     if (namesAsFactor) {
       nameValues <- as.factor(nameValues)
     }
+   
+    if (! is.data.frame(result)) {
+      
+      result <- data.frame(result)
+    }
     
     result[[nameColumn]] <- nameValues
   }
