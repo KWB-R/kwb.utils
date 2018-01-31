@@ -1,3 +1,40 @@
+# shorten ----------------------------------------------------------------------
+
+#' Shorten Strings to a Maximum Length
+#' 
+#' @param x vector of character
+#' @param max_chars maximum number of characters to which the strings in 
+#'   \code{x} are to be shortened
+#' @param delimiter string to be used as separater between the start and the end 
+#'   of the strings in \code{x} that are longer than \code{max_chars} characters
+#' 
+#' @return \code{x} with strings longer than \code{max_chars} characters being
+#'   shortend by replacing characters in the centre by the \code{delimiter}
+#'   string.
+#' 
+shorten <- function(x, max_chars = 10, delimiter = "...")
+{
+  stopifnot(is.character(x))
+  
+  too_long <- nchar(x) > max_chars
+  
+  n_delimiter <- nchar(delimiter)
+  n_available <- max_chars - n_delimiter
+  n_left <- ceiling(n_available /2)
+  n_right <- n_available - n_left
+  
+  stopifnot(n_left + n_right + n_delimiter == max_chars)
+  
+  n <- nchar(x[too_long])
+  
+  left_side <- substr(x[too_long], 1, n_left)
+  right_side <- substr(x[too_long], n - n_right + 1, n)
+  
+  x[too_long] <- paste0(left_side, delimiter, right_side)
+  
+  x
+}
+
 # fileExtension ----------------------------------------------------------------
 
 #' Get Extension of Full File Paths
