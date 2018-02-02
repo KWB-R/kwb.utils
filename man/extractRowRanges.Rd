@@ -15,12 +15,15 @@ extractRowRanges(dataFrame, columnName, pattern, startOffset = 1,
 
 \item{pattern}{pattern to be searched for in \code{dataFrame[, columnName]}}
 
-\item{startOffset}{row offset to be added to row number in which the pattern matches}
+\item{startOffset}{row offset to be added to row number in which the pattern
+matches}
 
-\item{stopOffset}{row offset to be subtracted from row number in which the pattern matches}
+\item{stopOffset}{row offset to be subtracted from row number in which the
+pattern matches}
 
-\item{nameByMatch}{logical. if TRUE, the elements in the result list are named by the 
-matching values in \code{dataFrame[[columnName]]}. Defaults to FALSE.}
+\item{nameByMatch}{logical. if TRUE, the elements in the result list are
+named by the matching values in \code{dataFrame[[columnName]]}. Defaults to
+FALSE.}
 
 \item{nameColumnsByMatch}{if \code{TRUE} (default) the columns of the result
 data frame are named}

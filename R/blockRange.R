@@ -7,10 +7,13 @@
 #' @param dataFrame data frame
 #' @param columnName name of column in which to search for \emph{pattern}
 #' @param pattern pattern to be searched for in \code{dataFrame[, columnName]}
-#' @param startOffset row offset to be added to row number in which the pattern matches
-#' @param stopOffset row offset to be subtracted from row number in which the pattern matches
-#' @param nameByMatch logical. if TRUE, the elements in the result list are named by the 
-#'   matching values in \code{dataFrame[[columnName]]}. Defaults to FALSE.
+#' @param startOffset row offset to be added to row number in which the pattern
+#'   matches
+#' @param stopOffset row offset to be subtracted from row number in which the
+#'   pattern matches
+#' @param nameByMatch logical. if TRUE, the elements in the result list are
+#'   named by the matching values in \code{dataFrame[[columnName]]}. Defaults to
+#'   FALSE.
 #' @param nameColumnsByMatch if \code{TRUE} (default) the columns of the result
 #'   data frame are named
 #' @param renumber if \code{TRUE} (default) the result data frame is renumbered
@@ -76,13 +79,25 @@ extractRowRanges <- function
   )
   
   result <- lapply(seq_len(nrow(ranges)), function(i) {
-    result <- dataFrame[ranges$from[i]:ranges$to[i], ]
-    if (nameColumnsByMatch) {
-      names(result) <- as.character(dataFrame[starts[i], ])
+    
+    from <- ranges$from[i]
+    to <- ranges$to[i]
+    
+    result <- if (from <= to) {
+      dataFrame[from:to, ]
+    } # else NULL implicitly
+    
+    if (! is.null(result)) {
+
+      if (nameColumnsByMatch) {
+        names(result) <- as.character(dataFrame[starts[i], ])
+      }
+      
+      if (renumber) {
+        row.names(result) <- NULL  
+      }
     }
-    if (renumber) {
-      row.names(result) <- NULL  
-    }      
+    
     result
   })
   
