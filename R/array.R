@@ -38,3 +38,37 @@ dropDim <- function(x, dimension = which(dim(x) == 1))
 
   array(x, dim = dim(x)[dim_keep], dimnames = dimnames(x)[dim_keep])
 }
+
+#' Split Array Along a Dimension
+#' 
+#' Split an array along its n-th dimension. The implementation was found here:
+#' https://stackoverflow.com/questions/20198751/three-dimensional-array-to-list
+#' 
+#' @param a an array
+#' @param n number of the dimension along which to split the array
+#' 
+#' @return array of one dimension less than \code{a}
+#' 
+#' # Define an array
+#' A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
+#'   paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
+#' ))
+#' 
+#' splitAlongDim(A, 1)
+#' splitAlongDim(A, 2)
+#' splitAlongDim(A, 3)
+#'
+splitAlongDim <- function(a, n)
+{
+  stopifnot(is.array(a), n <= length(dim(a)))
+  
+  setNames(
+    lapply(
+      split(a, arrayInd(seq_along(a), dim(a))[, n]),
+      array, 
+      dim = dim(a)[-n], 
+      dimnames(a)[-n]
+    ),
+    dimnames(a)[[n]]
+  )
+}
