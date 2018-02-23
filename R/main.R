@@ -179,6 +179,7 @@ naToLastNonNa <- function(x, method = 2)
   if (method == 1) {
     
     if (is.na(x[1])) {
+      
       stop("The first element must not be NA")
     }
 
@@ -198,23 +199,10 @@ naToLastNonNa <- function(x, method = 2)
     x
     
   } else { # method = 2
-    
-    nonNaValues <- x[!is.na(x)]
 
-    nonNaIndices <- which(x %in% nonNaValues)
-
-    times <- diff(c(nonNaIndices, length(x) + 1))
-
-    repeatedIndices <- rep(nonNaIndices, times = times)
-
-    offsetIndex <- nonNaIndices[1] - 1
-
-    indices <- seq_along(repeatedIndices) + offsetIndex
-
-    result <- NA
-    result[indices] <- x[repeatedIndices]
-
-    result
+    indices <- which(! is.na(x))
+    rep_indices <- rep(indices, times = diff(c(indices, length(x) + 1)))
+    "[<-"(x, seq_along(rep_indices) + indices[1] - 1, x[rep_indices])
   }
 }
 
