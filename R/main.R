@@ -202,7 +202,9 @@ naToLastNonNa <- function(x, method = 2)
 
     indices <- which(! is.na(x))
     rep_indices <- rep(indices, times = diff(c(indices, length(x) + 1)))
-    "[<-"(x, seq_along(rep_indices) + indices[1] - 1, x[rep_indices])
+    x[seq_along(rep_indices) + indices[1] - 1] <- x[rep_indices]
+    
+    x
   }
 }
 

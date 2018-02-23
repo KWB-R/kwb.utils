@@ -62,7 +62,7 @@ splitAlongDim <- function(a, n)
 {
   stopifnot(is.array(a), n <= length(dim(a)))
   
-  setNames(
+  stats::setNames(
     lapply(
       split(a, arrayInd(seq_along(a), dim(a))[, n]),
       array, 
