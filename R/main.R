@@ -176,36 +176,33 @@ parallelNonNA <- function(a, b)
 #'   
 naToLastNonNa <- function(x, method = 2)
 {
+  is_na <- is.na(x)
+  
+  if (method == 1 && is_na[1]) {
+    
+    stop("The first element must not be NA")
+  }
+  
+  indices_ok <- which(! is_na)
+  
   if (method == 1) {
     
-    if (is.na(x[1])) {
-      
-      stop("The first element must not be NA")
-    }
-
-    not.na <- !is.na(x)
-
-    indices.ok <- which(not.na)
-    indices.na <- which(!not.na)
-
-    indices.lookup <- sapply(indices.na, function(i) {
-      lastElement(indices.ok[indices.ok < i])
+    indices_to <- which(is_na)
+    
+    indices_from <- sapply(indices_to, function(index_ok) {
+      lastElement(indices_ok[indices_ok < index_ok])
     })
 
-    replacements <- x[indices.lookup]
-
-    x[indices.na] <- replacements
-
-    x
-    
   } else { # method = 2
 
-    indices <- which(! is.na(x))
-    rep_indices <- rep(indices, times = diff(c(indices, length(x) + 1)))
-    x[seq_along(rep_indices) + indices[1] - 1] <- x[rep_indices]
+    indices_from <- rep(indices_ok, times = diff(c(indices_ok, length(x) + 1)))
     
-    x
+    indices_to <- seq_along(indices_from) + indices_ok[1] - 1
   }
+  
+  x[indices_to] <- x[indices_from]
+
+  x
 }
 
 # makeUnique -------------------------------------------------------------------
