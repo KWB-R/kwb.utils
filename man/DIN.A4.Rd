@@ -2,10 +2,10 @@
 % Please edit documentation in R/pdf.R
 \name{DIN.A4}
 \alias{DIN.A4}
-\title{width and height of a DIN A4 paper}
+\title{Width and Height of a DIN A4 Paper}
 \usage{
 DIN.A4()
 }
 \description{
-width and height of a DIN A4 paper
+Width and Height of a DIN A4 Paper
 }

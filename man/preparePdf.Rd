@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf.R
 \name{preparePdf}
 \alias{preparePdf}
-\title{Open PDF Device with DIN A4 Dimensions}
+\title{Open PDF Device with DIN A4 Dimensions by Default}
 \usage{
 preparePdf(pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE,
   borderWidth.cm = 2, borderHeight.cm = 2,
@@ -28,7 +28,8 @@ landscape, else portrait}
 current device}
 
 \item{paper}{passed to \code{\link[grDevices]{pdf}}. By default "A4" (if
-\code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE})}
+\code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE}). Use
+\code{paper = "special"} to use the dimensions of the plot.}
 
 \item{\dots}{further arguments passed to \code{\link[grDevices]{pdf}}}
 }
@@ -36,5 +37,5 @@ current device}
 full path to pdf file
 }
 \description{
-Open PDF Device with DIN A4 Dimensions
+Open PDF Device with DIN A4 Dimensions by Default
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf.R
 \name{preparePdfIf}
 \alias{preparePdfIf}
-\title{preparePdfIf}
+\title{Prepare PDF File if Condition is Met}
 \usage{
 preparePdfIf(to.pdf, PDF = "", ...)
 }
@@ -19,5 +19,5 @@ temporary file is created and its path returned}
 full path to pdf file created if condition is met or "" else
 }
 \description{
-prepare pdf file if condition is met
+Prepare PDF File if Condition is Met
 }

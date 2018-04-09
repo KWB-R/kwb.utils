@@ -18,19 +18,19 @@ Opens the PDF file of which the full path is given in \emph{Pdf} in a
 }
 \examples{
   
-  # Set path to PDF file and open PDF device
-  tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
-  hsPrepPdf(tmpPdf)
-  
-  ## Plot something
-  plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
-  
-  ## Finish PDF file.
-  grDevices::dev.off()
-  
-  ## Open PDF file in viewer.
-  hsShowPdf(tmpPdf)
-  
+# Set path to PDF file and open PDF device
+tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
+hsPrepPdf(tmpPdf)
+
+## Plot something
+plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
+
+## Finish PDF file.
+grDevices::dev.off()
+
+## Open PDF file in viewer.
+hsShowPdf(tmpPdf)
+
 }
 \seealso{
 \code{\link{hsPrepPdf}}

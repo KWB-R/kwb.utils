@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf.R
 \name{finishAndShowPdfIf}
 \alias{finishAndShowPdfIf}
-\title{finishAndShowPdfIf}
+\title{Finish and Display PDF File if Condition is Met}
 \usage{
 finishAndShowPdfIf(to.pdf, PDF, ...)
 }
@@ -15,5 +15,5 @@ opened in a viewer}
 \item{...}{arguments passed to \code{\link{finishAndShowPdf}}}
 }
 \description{
-finish and display pdf file if condition is met
+Finish and Display PDF File if Condition is Met
 }

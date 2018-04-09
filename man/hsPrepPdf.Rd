@@ -2,7 +2,7 @@
 % Please edit documentation in R/pdf.R
 \name{hsPrepPdf}
 \alias{hsPrepPdf}
-\title{Prepare writing of PDF file}
+\title{Prepare Writing of PDF File}
 \usage{
 hsPrepPdf(strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE,
   bordW = 2, bordH = 2, makeCur = TRUE, ...)
@@ -10,38 +10,38 @@ hsPrepPdf(strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE,
 \arguments{
 \item{strPdf}{Full path to PDF file to be created}
 
-\item{boolLandscape}{If TRUE, orientation in PDF file will be landscape, else portrait}
+\item{boolLandscape}{If TRUE, orientation in PDF file will be landscape, else
+portrait}
 
 \item{bordW}{(Total) border width in "width" direction in cm}
 
 \item{bordH}{(Total) border width in "height" direction in cm}
 
-\item{makeCur}{if TRUE, the new pdf device will become the current device, otherwise
-the current device will be restored}
+\item{makeCur}{if TRUE, the new pdf device will become the current device,
+otherwise the current device will be restored}
 
-\item{\dots}{further arguments passed to \code{pdf}}
+\item{\dots}{further arguments passed to \code{\link[grDevices]{pdf}}}
 }
 \description{
-Opens a PDF device in A4 paper format. After calling this function all
-  plots go into the specified PDF file in \eqn{strPdf}. Important: The PDF
-  file needs to be closed explicitely with grDevices::dev.off() after all
-  desired plots have been made.
+Opens a PDF device in A4 paper format. After calling this function all plots
+go into the specified PDF file in \eqn{strPdf}. Important: The PDF file needs
+to be closed explicitely with grDevices::dev.off() after all desired plots
+have been made.
 }
 \examples{
   
-  # Set path to PDF file and open PDF device
-  pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
-  hsPrepPdf(pdfFile)
-  
-  ## Plot something
-  plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
-  
-  ## Close PDF device
-  grDevices::dev.off()
-  
-  ## Open PDF file in viewer
-  hsShowPdf(pdfFile)
-  
+# Set path to PDF file and open PDF device
+pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
+hsPrepPdf(pdfFile)
+
+## Plot something
+plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
+
+## Close PDF device
+grDevices::dev.off()
+
+## Open PDF file in viewer
+hsShowPdf(pdfFile)
 
 }
 \seealso{

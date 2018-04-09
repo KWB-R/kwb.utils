@@ -2,18 +2,18 @@
 % Please edit documentation in R/pdf.R
 \name{finishAndShowPdf}
 \alias{finishAndShowPdf}
-\title{close device and open PDF file in viewer}
+\title{Close Device and Open PDF File in Viewer}
 \usage{
 finishAndShowPdf(PDF, which = grDevices::dev.cur(), ...)
 }
 \arguments{
-\item{PDF}{full path to the PDF file to be opened in}
+\item{PDF}{full path to the PDF file to be opened in the PDF Viewer}
 
-\item{which}{passed to \code{grDevices::dev.off}}
+\item{which}{passed to \code{\link[grDevices]{dev.off}}}
 
 \item{\dots}{further arguments passed to \code{hsShowPdf}}
 }
 \description{
-close the PDF device (default: \code{dev.cur()}) and open the PDF file in a
-  PDF viewer
+Close the PDF device (default: \code{dev.cur()}) and open the PDF file in a
+PDF viewer
 }
