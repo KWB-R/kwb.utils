@@ -29,19 +29,21 @@ preparePdfIf <- function(to.pdf, PDF = "", ...)
 
 # preparePdf -------------------------------------------------------------------
 
-#' open PDF device with DIN A4 dimensions
-#' 
-#' open PDF device with DIN A4 dimensions
+#' Open PDF Device with DIN A4 Dimensions
 #' 
 #' @param pdfFile Full path to PDF file to be created
-#' @param landscape If TRUE (default), orientation in PDF file will be landscape, else
-#'   portrait  
+#' @param landscape If TRUE (default), orientation in PDF file will be
+#'   landscape, else portrait
 #' @param borderWidth.cm (Total) border width in "width" direction in cm
 #' @param borderHeight.cm (Total) border width in "height" direction in cm
 #' @param width.cm page width in cm. Default according to DIN A4
 #' @param height.cm page height in cm. Default according to DIN A4
-#' @param makeCurrent if TRUE (default), the opened PDF device will become the current device
-#' @param \dots further arguments passed to \code{pdf}
+#' @param makeCurrent if TRUE (default), the opened PDF device will become the
+#'   current device
+#' @param paper passed to \code{\link[grDevices]{pdf}}. By default "A4" (if
+#'   \code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE}). Use
+#'   \code{paper = "special"} to use the dimensions of the plot.
+#' @param \dots further arguments passed to \code{\link[grDevices]{pdf}}
 #' 
 #' @return full path to pdf file
 #' 
@@ -49,22 +51,14 @@ preparePdf <- function # open PDF device with DIN A4 dimensions
 ### open PDF device with DIN A4 dimensions
 (
   pdfFile = tempfile(fileext = ".pdf"), 
-  ### Full path to PDF file to be created
   landscape = TRUE, 
-  ### If TRUE (default), orientation in PDF file will be landscape, else
-  ### portrait  
   borderWidth.cm = 2, 
-  ### (Total) border width in "width" direction in cm
   borderHeight.cm = 2,
-  ### (Total) border width in "height" direction in cm
   width.cm = .defaultWidth(landscape, borderWidth.cm, borderHeight.cm),
-  ### page width in cm. Default according to DIN A4
   height.cm = .defaultHeight(landscape, borderWidth.cm, borderHeight.cm),
-  ### page height in cm. Default according to DIN A4
   makeCurrent = TRUE,
-  ### if TRUE (default), the opened PDF device will become the current device
+  paper = paste0("a4", ifelse(landscape, "r", "")),
   ...
-  ### further arguments passed to \code{pdf}
 )   
 {
   ## save current device
@@ -74,7 +68,7 @@ preparePdf <- function # open PDF device with DIN A4 dimensions
   grDevices::pdf(
     file = pdfFile, 
     # "r" = rotated (landscape)
-    paper = paste0("a4", ifelse(landscape, "r", "")), 
+    paper = paper, 
     width = toInches(width.cm), 
     height = toInches(height.cm), 
     ...

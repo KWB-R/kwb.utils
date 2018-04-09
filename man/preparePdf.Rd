@@ -2,19 +2,19 @@
 % Please edit documentation in R/pdf.R
 \name{preparePdf}
 \alias{preparePdf}
-\title{open PDF device with DIN A4 dimensions}
+\title{Open PDF Device with DIN A4 Dimensions}
 \usage{
 preparePdf(pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE,
   borderWidth.cm = 2, borderHeight.cm = 2,
   width.cm = .defaultWidth(landscape, borderWidth.cm, borderHeight.cm),
   height.cm = .defaultHeight(landscape, borderWidth.cm, borderHeight.cm),
-  makeCurrent = TRUE, ...)
+  makeCurrent = TRUE, paper = paste0("a4", ifelse(landscape, "r", "")), ...)
 }
 \arguments{
 \item{pdfFile}{Full path to PDF file to be created}
 
-\item{landscape}{If TRUE (default), orientation in PDF file will be landscape, else
-portrait}
+\item{landscape}{If TRUE (default), orientation in PDF file will be
+landscape, else portrait}
 
 \item{borderWidth.cm}{(Total) border width in "width" direction in cm}
 
@@ -24,13 +24,17 @@ portrait}
 
 \item{height.cm}{page height in cm. Default according to DIN A4}
 
-\item{makeCurrent}{if TRUE (default), the opened PDF device will become the current device}
+\item{makeCurrent}{if TRUE (default), the opened PDF device will become the
+current device}
 
-\item{\dots}{further arguments passed to \code{pdf}}
+\item{paper}{passed to \code{\link[grDevices]{pdf}}. By default "A4" (if
+\code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE})}
+
+\item{\dots}{further arguments passed to \code{\link[grDevices]{pdf}}}
 }
 \value{
 full path to pdf file
 }
 \description{
-open PDF device with DIN A4 dimensions
+Open PDF Device with DIN A4 Dimensions
 }
