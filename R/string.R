@@ -70,161 +70,109 @@ fileExtension <- function(x)
 
 # pairwise ---------------------------------------------------------------------
 
-#' reorder strings so that matching strings are neighbours
+#' Reorder Strings So That Matching Strings are Neighbours
 #' 
-#' reorder strings so that strings that start with the same characters
-#'   appear next to each other
+#' Reorder strings so that strings that start with the same characters appear 
+#' next to each other
 #' 
 #' @param x vector of character
-#' @param starts vector of character defining the start strings that are looked for in 
-#'   \code{x} to find strings that belong together. The default is to take
-#'   the unique strings appearing before a \code{split} character (if any)
+#' @param starts vector of character defining the start strings that are looked
+#'   for in \code{x} to find strings that belong together. The default is to
+#'   take the unique strings appearing before a \code{split} character (if any)
 #' @param split split character used to create default \code{start} strings
 #' 
 #' @examples 
-#'   x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
-#'   
-#'   # You have the most control when setting the starts argument
-#'   pairwise(x, starts = c("a.", "b_"))
-#'   
-#'   # Use default starts resulting from splitting at a split character
-#'   pairwise(x, split = "_")
-#'   
-#'   # This is actually the default
-#'   pairwise(x)
-#'   
-#'   # Note that the split parameter is interpreted as a pattern where the
-#'   # dot has a special meaning unless it is escaped or enclosed in []
-#'   pairwise(x, split = "[.]")
-#'   
-#'   # Same result as in the first example
-#'   pairwise(x, split = "[._]")
-#'   
+#' x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
 #' 
-pairwise <- structure(
-  function # reorder strings so that matching strings are neighbours
-  ### reorder strings so that strings that start with the same characters
-  ### appear next to each other
-  (
-    x, 
-    ### vector of character
-    starts = .defaultStarts(x, split), 
-    ### vector of character defining the start strings that are looked for in 
-    ### \code{x} to find strings that belong together. The default is to take
-    ### the unique strings appearing before a \code{split} character (if any)
-    split = "_"
-    ### split character used to create default \code{start} strings
-  )
-  {
-    # Generate column order so that duplicated columns appear next to each other
-    columns <- character()
+#' # You have the most control when setting the starts argument
+#' pairwise(x, starts = c("a.", "b_"))
+#' 
+#' # Use default starts resulting from splitting at a split character
+#' pairwise(x, split = "_")
+#' 
+#' # This is actually the default
+#' pairwise(x)
+#' 
+#' # Note that the split parameter is interpreted as a pattern where the
+#' # dot has a special meaning unless it is escaped or enclosed in []
+#' pairwise(x, split = "[.]")
+#' 
+#' # Same result as in the first example
+#' pairwise(x, split = "[._]")
+#' 
+pairwise <- function(x, starts = .defaultStarts(x, split), split = "_")
+{
+  # Generate column order so that duplicated columns appear next to each other
+  columns <- character()
+  
+  # Do while x is not empty
+  while (length(x) > 0) {
     
-    # Do while x is not empty
-    while(length(x) > 0) {
+    # Do the given start strings match the currently first element of x?
+    match <- sapply(starts, stringStartsWith, x = x[1])
+    
+    # If there is a match find the positions in x at which the elements start
+    # with the same string as given in the first matching start
+    positions <- if (any(match)) {
       
-      # Do the given start strings match the currently first element of x?
-      match <- sapply(starts, function(start) {stringStartsWith(x[1], start)})
+      which(stringStartsWith(x, names(which(match)[1])))
       
-      # If there is a match find the positions in x at which the elements start
-      # with the same string as given in the first matching start
-      if (any(match)) {
-        positions <- which(stringStartsWith(x, names(which(match)[1])))
-      } else {
-        positions <- 1
-      }
+    } else {
       
-      # Add the elements of x at the given positions to the result vector
-      columns <- c(columns, x[positions])
-      
-      # ... and remove the elements at the given positions from x
-      x <- x[-positions]
+      1
     }
     
-    columns
-  }, ex = function() {
-    x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
+    # Add the elements of x at the given positions to the result vector
+    columns <- c(columns, x[positions])
     
-    # You have the most control when setting the starts argument
-    pairwise(x, starts = c("a.", "b_"))
-    
-    # Use default starts resulting from splitting at a split character
-    pairwise(x, split = "_")
-    
-    # This is actually the default
-    pairwise(x)
-    
-    # Note that the split parameter is interpreted as a pattern where the
-    # dot has a special meaning unless it is escaped or enclosed in []
-    pairwise(x, split = "[.]")
-    
-    # Same result as in the first example
-    pairwise(x, split = "[._]")
-  })
+    # ... and remove the elements at the given positions from x
+    x <- x[-positions]
+  }
+  
+  columns
+}
 
 # .defaultStarts ---------------------------------------------------------------
 
-#'  defaultStarts
-#' 
-#' 
 .defaultStarts <- function(x, split = "_")
 {
   # split the strings
   parts <- strsplit(x, split)
+  
   unique(sapply(parts[sapply(parts, length) > 1], "[", 1))
 }
 
 # appendSuffix -----------------------------------------------------------------
 
-#' append suffix to (selected) character values
+#' Append Suffix to (Selected) Character Values
 #' 
-#' append suffix to (selected) character values
-#' 
-#' @param values vector of character values to which \emph{suffix} is to be appended
-#' @param suffix (character) suffix to be pasted to \emph{values} that are not in
-#'   \emph{valuesToOmit}
-#' @param valuesToOmit vector of values in \emph{values} to which no suffix is to be appended
-#' 
-#' @return \emph{values} with \emph{suffix} appended to those values that are not in
-#'   \emph{valuesToOmit}
+#' @param values vector of character values to which \emph{suffix} is to be
+#'   appended
+#' @param suffix (character) suffix to be pasted to \emph{values} that are not
+#'   in \emph{valuesToOmit}
+#' @param valuesToOmit vector of values in \emph{values} to which no suffix is
+#'   to be appended
+#'   
+#' @return \emph{values} with \emph{suffix} appended to those values that are
+#'   not in \emph{valuesToOmit}
 #' 
 #' @examples 
-#'   values <- c("a", "b", "c")
+#' values <- c("a", "b", "c")
 #'   
-#'   # Append ".1" to all values
-#'   appendSuffix(values, ".1")
+#' # Append ".1" to all values
+#' appendSuffix(values, ".1")
 #'   
-#'   # Append ".1" to all values but "c"
-#'   appendSuffix(values, ".1", valuesToOmit = "c")
+#' # Append ".1" to all values but "c"
+#' appendSuffix(values, ".1", valuesToOmit = "c")
 #'   
-#' 
-appendSuffix <- structure(
-  function # append suffix to (selected) character values
-  ### append suffix to (selected) character values
-  (
-    values, 
-    ### vector of character values to which \emph{suffix} is to be appended
-    suffix, 
-    ### (character) suffix to be pasted to \emph{values} that are not in
-    ### \emph{valuesToOmit}
-    valuesToOmit = NULL
-    ### vector of values in \emph{values} to which no suffix is to be appended
-  )
-  {
-    doNotOmit <- ! (values %in% valuesToOmit)  
-    values[doNotOmit] <- paste0(values[doNotOmit], suffix)
-    values
-    ### \emph{values} with \emph{suffix} appended to those values that are not in
-    ### \emph{valuesToOmit}
-  }, 
-  ex = function() {
-    values <- c("a", "b", "c")
-    
-    # Append ".1" to all values
-    appendSuffix(values, ".1")
-    
-    # Append ".1" to all values but "c"
-    appendSuffix(values, ".1", valuesToOmit = "c")
-  })
+appendSuffix <- function(values, suffix, valuesToOmit = NULL)
+{
+  doNotOmit <- ! (values %in% valuesToOmit)  
+  
+  values[doNotOmit] <- paste0(values[doNotOmit], suffix)
+  
+  values
+}
 
 # hsCountInStr -----------------------------------------------------------------
 
@@ -240,33 +188,25 @@ appendSuffix <- structure(
 hsCountInStr <- function(chr, str) 
 {
   g <- gregexpr(chr, str)
+  
   sapply(g, function(x) {sum(x != -1)})
 }
 
 # csvTextToDataFrame -----------------------------------------------------------
 
-#' csvTextToDataFrame
-#' 
-#' csvTextToDataFrame
+#' CSV Text to Data Frame
 #' 
 #' @param text character vector representing lines of comma separated values
-#' @param \dots arguments passed to \code{utils::read.table}
+#' @param \dots arguments passed to \code{\link[utils]{read.table}}
 #' 
-csvTextToDataFrame <- function # csvTextToDataFrame
-### csvTextToDataFrame
-(
-  text, 
-  ### character vector representing lines of comma separated values
-  ...
-  ### arguments passed to \code{utils::read.table}
-)
+csvTextToDataFrame <- function(text, ...)
 {
   utils::read.table(text = text, ...)
 }
 
 # stringList -------------------------------------------------------------------
 
-#' string of comma separated quoted strings
+#' String of Comma Separated Quoted Strings
 #' 
 #' create a string of comma separated quoted strings
 #' 
@@ -283,21 +223,16 @@ stringList <- function(x, qchar = "'", collapse = ", ")
 
 #' Paste With Collapse = ","
 #' 
-#' paste with collapse = ","
-#' 
 #' @param x vector of character
-
-commaCollapsed <- function
-(
-  x
-)
+#' 
+commaCollapsed <- function(x)
 {
   collapsed(x, ",")
 }
 
 # collapsed --------------------------------------------------------------------
 
-#' shortcut to paste(x, collapse = collapse)
+#' Shortcut to paste(x, collapse = collapse)
 #' 
 #' This is just a shortcut to paste(x, collapse = collapse)
 #'
@@ -305,14 +240,9 @@ commaCollapsed <- function
 #' @param collapse character string to separate the elements in x (passed to 
 #'   \code{\link[base]{paste}})
 #'   
-collapsed <- function # shortcut to paste(x, collapse = collapse)
-### This is just a shortcut to paste(x, collapse = collapse)
-(
-  x,
-  collapse = " "
-)
+collapsed <- function(x, collapse = " ")
 {
-    paste(as.character(x), collapse = collapse)
+  paste(as.character(x), collapse = collapse)
 }
 
 # hsQuoteChr -------------------------------------------------------------------
@@ -328,27 +258,32 @@ collapsed <- function # shortcut to paste(x, collapse = collapse)
 #'   quoted
 #' 
 hsQuoteChr <- function(
-  x,
-  qchar = "'",
-  escapeMethod = c("double", "backslash", "none")
+  x, qchar = "'", escapeMethod = c("double", "backslash", "none")
 ) 
 {
   if (mode(x) == "list") {
+    
     len <- length(x)
-    if (len == 0) return(NULL)
-    if (len == 1) return(hsQuoteChr(x[[1]]))
-    return(c(hsQuoteChr(x[[1]]), hsQuoteChr(x[-1])))
+    
+    if (len == 0) return (NULL)
+    
+    if (len == 1) return (hsQuoteChr(x[[1]]))
+    
+    return (c(hsQuoteChr(x[[1]]), hsQuoteChr(x[-1])))
   }
   
   escapeChars <- list(double = qchar, backslash = '\\', none = "")
   
   if (mode(x) == "character") {
+    
     escapeChar <- escapeChars[[escapeMethod[1]]]
-    x.escaped <- gsub(qchar, paste(escapeChar, qchar, sep=""), x)
-    return(paste(qchar, x.escaped, qchar, sep = ""))
+    
+    x.escaped <- gsub(qchar, paste0(escapeChar, qchar), x)
+    
+    return (paste0(qchar, x.escaped, qchar))
   }
   
-  return(x)
+  x
 }
 
 # multiSubstitute --------------------------------------------------------------
@@ -399,65 +334,47 @@ multiSubstitute <- function(strings, replacements, ..., dbg = FALSE)
 
 # hsTrim -----------------------------------------------------------------------
 
-#' Remove leading and trailing spaces
+#' Remove Leading and Trailing Spaces
 #' 
 #' Remove leading, trailing (and, if requested, duplicate) spaces
 #' 
 #' @param str vector of character containing the strings to be trimmed
-#' @param trim.multiple.spaces if TRUE (default), multiple consecutive spaces are replaced by one space
-#' @param dbg if \code{TRUE} (the default is \code{FALSE}) debut messages
-#'   are shown
+#' @param trim.multiple.spaces if TRUE (default), multiple consecutive spaces
+#'   are replaced by one space
+#' @param dbg if \code{TRUE} (the default is \code{FALSE}) debut messages are
+#'   shown
 #' 
 #' @return input string \emph{str} without leading or trailing spaces and with
 #'   multiple consecutive spaces being replaced by a single space
 #' 
-hsTrim <- function(
-  str,
-  trim.multiple.spaces = TRUE,
-  dbg = FALSE
-) 
+hsTrim <- function(str, trim.multiple.spaces = TRUE, dbg = FALSE) 
 {
-  replacements <- list(
-    "^\\s+" = "", 
-    "\\s+$" = ""
-  )
+  replacements <- list("^\\s+" = "", "\\s+$" = "")
   
   if (trim.multiple.spaces) {
+    
     replacements <- c(replacements, "\\s+" = " ")
   }
   
   multiSubstitute(str, replacements, dbg = dbg)
-  
-  ### input string \emph{str} without leading or trailing spaces and with
-  ### multiple consecutive spaces being replaced by a single space
 }
 
 # removeSpaces -----------------------------------------------------------------
 
-#' remove all spaces in string(s)
-#' 
-#' remove all spaces in string(s)
+#' Remove all Spaces in String(s)
 #' 
 #' @param x (vector of) character
 #' 
 #' @return \emph{x} with all spaces removed
 #' 
-removeSpaces <- function # remove all spaces in string(s)
-### remove all spaces in string(s)
-(
-  x
-  ### (vector of) character
-)
+removeSpaces <- function(x)
 {
   gsub("\\s+", "", x)
-  ### \emph{x} with all spaces removed
 }
 
 # hsSubstSpecChars -------------------------------------------------------------
 
 #' Substitution of Special Characters
-#' 
-#' Substitution of special characters
 #' 
 #' @param x string containing special characters to be substituted
 #' @return input string \emph{x} with special characters being substituted by 
@@ -466,12 +383,12 @@ removeSpaces <- function # remove all spaces in string(s)
 #' 
 hsSubstSpecChars <- function(x)
 {
-  replacements.x <- list(
+  replacements_x <- list(
     "\\xe4" = "ae", "\\xf6" = "oe", "\\xfc" = "ue", "\\xdf" = "ss", 
     "\\xb5" = "my"
   )
   
-  replacements.other <- list(
+  replacements_other <- list(
     "%" = "proz",
     "\\\\" = "_",        # Replace backslash with underscore
     "[() -/.,;?]" = "_", # Replace special characters with underscore
@@ -481,7 +398,7 @@ hsSubstSpecChars <- function(x)
     "_$" = ""            # Remove underscore at the end
   )
   
-  multiSubstitute(x, c(replacements.x, replacements.other))
+  multiSubstitute(x, c(replacements_x, replacements_other))
 }
 
 # stringToExpression -----------------------------------------------------------
@@ -489,6 +406,7 @@ hsSubstSpecChars <- function(x)
 #' Convert String to Expression
 #' 
 #' @param expressionString character string to be converted to an expression
+#' 
 stringToExpression <- function(expressionString)
 {
   parse(text = expressionString)
@@ -498,24 +416,20 @@ stringToExpression <- function(expressionString)
 
 #' stringContains
 #' 
-#' stringContains
-#'
 #' @param x vector of character
 #' @param contains vector of character
 #'  
 #' @examples 
-#'   stringContains(c("abc", "Kabeljau", "Arabella"), "ab")
-#'   stringContains(c("abc", "Kabeljau", "Arabella"), "abc")
+#' stringContains(c("abc", "Kabeljau", "Arabella"), "ab")
+#' stringContains(c("abc", "Kabeljau", "Arabella"), "abc")
 #'   
 stringContains <- function(x, contains)
 {
-  seq_along(x) %in% grep(contains, x)
+  grepl(contains, x)
 }
 
 # stringStartsWith -------------------------------------------------------------
 
-#' stringStartsWith
-#' 
 #' stringStartsWith
 #' 
 #' @param x vector of character to be checked if they start with
@@ -524,18 +438,16 @@ stringContains <- function(x, contains)
 #'   in \code{x}
 #'   
 #' @examples 
-#'   stringStartsWith(c("abc", "Kabeljau", "Arabella"), "ab")
-#'   stringStartsWith(c("abc", "Kabeljau", "Arabella"), "A")
+#' stringStartsWith(c("abc", "Kabeljau", "Arabella"), "ab")
+#' stringStartsWith(c("abc", "Kabeljau", "Arabella"), "A")
 #'   
 stringStartsWith <- function(x, startsWith)
 {
-  seq_along(x) %in% grep(paste("^", startsWith, sep=""), x)
+  grepl(paste0("^", startsWith), x)
 }
 
 # stringEndsWith ---------------------------------------------------------------
 
-#' stringEndsWith
-#' 
 #' stringEndsWith
 #' 
 #' @param x vector of character to be checked if they end with \code{endsWith}
@@ -543,19 +455,16 @@ stringStartsWith <- function(x, startsWith)
 #'   \code{x}
 #' 
 #' @examples 
-#'   stringEndsWith(c("abc", "Kabeljau", "Arabella"), "a")
-#'   stringEndsWith(c("abc", "Kabeljau", "Arabella"), "jau")
+#' stringEndsWith(c("abc", "Kabeljau", "Arabella"), "a")
+#' stringEndsWith(c("abc", "Kabeljau", "Arabella"), "jau")
 #'   
 stringEndsWith <- function(x, endsWith)
 {
-  seq_along(x) %in% grep(paste(endsWith, "$", sep=""), x)
+  grepl(paste0(endsWith, "$"), x)
 }
 
 # .test_subExpressionMatches ---------------------------------------------------
 
-#'  test subExpressionMatches
-#' 
-#' 
 .test_subExpressionMatches <- function()
 {
   y1 <- subExpressionMatches(
@@ -611,76 +520,61 @@ stringEndsWith <- function(x, endsWith)
 
 # extractSubstring -------------------------------------------------------------
 
-#' extract substrings defined by regular expressions
+#' Extract Substrings Defined by Regular Expressions
 #' 
-#' extract substrings defined by regular expressions from a vector of strings
+#' Extract substrings defined by regular expressions from a vector of strings
 #' 
-#' @param pattern regular expression containing parts in pairs of opening and closing 
-#'   parentheses defining the part(s) to be extracted
+#' @param pattern regular expression containing parts in pairs of opening and
+#'   closing parentheses defining the part(s) to be extracted
 #' @param x vector of character strings
-#' @param index index(es) of parenthesized subexpression(s) to be extracted. If the length
-#'   of \code{x} is greater than one a data frame is returned with each column
-#'   containing the substrings matching the subexpression at the corresponding
-#'   index. If \code{index} is named, the names will be used as column names.
-#' @param stringsAsFactors if \code{TRUE} (default is {FALSE}) and a data frame is returned then the
-#'   columns in the returned data frame are of factors, otherwise vectors of
-#'   character.
+#' @param index index(es) of parenthesized subexpression(s) to be extracted. If
+#'   the length of \code{x} is greater than one a data frame is returned with
+#'   each column containing the substrings matching the subexpression at the
+#'   corresponding index. If \code{index} is named, the names will be used as
+#'   column names.
+#' @param stringsAsFactors if \code{TRUE} (default is {FALSE}) and a data frame
+#'   is returned then the columns in the returned data frame are of factors,
+#'   otherwise vectors of character.
 #' 
 #' @examples 
-#'   # Define pattern matching a date
-#'   pattern <- "([^ ]+), ([0-9]+) of ([^ ]+)"
-#'   
-#'   # Extract single sub expressions from one string
-#'   datestring <- "Thursday, 8 of December"
-#'   extractSubstring(pattern, datestring, 1) # ""Thursday""
-#'   extractSubstring(pattern, datestring, 2) # "8"
-#'   extractSubstring(pattern, datestring, 3) # "December"
-#'   
-#'   # Extract single sub expressions from a vector of strings
-#'   datestrings <- c("Thursday, 8 of December", "Tuesday, 14 of January")
-#'   extractSubstring(pattern, datestrings, 1) # "Thursday" "Tuesday"
-#'   extractSubstring(pattern, datestrings, 2) # "8"  "14"
-#'   extractSubstring(pattern, datestrings, 3) # "December" "January" 
-#'   
-#'   # Extract more than one subexpression at once -> data.frame
-#'   extractSubstring(pattern, datestrings, 1:3)
-#'   
-#'   #   subexp.1 subexp.2 subexp.3
-#'   #   1 Thursday        8 December
-#'   #   2  Tuesday       14  January
-#'   
-#'   # Name the sub expressions by naming their number in index (3rd argument)
-#'   extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
-#'   #   weekday subexp.2    month
-#'   #   1 Thursday        8 December
-#'   #   2  Tuesday       14  January
-#'   
+#' # Define pattern matching a date
+#' pattern <- "([^ ]+), ([0-9]+) of ([^ ]+)"
 #' 
-extractSubstring <- structure(
-  function # extract substrings defined by regular expressions
-  ### extract substrings defined by regular expressions from a vector of strings
-(
-  pattern, 
-  ### regular expression containing parts in pairs of opening and closing 
-  ### parentheses defining the part(s) to be extracted
-  x, 
-  ### vector of character strings
-  index,
-  ### index(es) of parenthesized subexpression(s) to be extracted. If the length
-  ### of \code{x} is greater than one a data frame is returned with each column
-  ### containing the substrings matching the subexpression at the corresponding
-  ### index. If \code{index} is named, the names will be used as column names.
-  stringsAsFactors = FALSE
-  ### if \code{TRUE} (default is {FALSE}) and a data frame is returned then the
-  ### columns in the returned data frame are of factors, otherwise vectors of
-  ### character.
-)
+#' # Extract single sub expressions from one string
+#' datestring <- "Thursday, 8 of December"
+#' extractSubstring(pattern, datestring, 1) # ""Thursday""
+#' extractSubstring(pattern, datestring, 2) # "8"
+#' extractSubstring(pattern, datestring, 3) # "December"
+#' 
+#' # Extract single sub expressions from a vector of strings
+#' datestrings <- c("Thursday, 8 of December", "Tuesday, 14 of January")
+#' extractSubstring(pattern, datestrings, 1) # "Thursday" "Tuesday"
+#' extractSubstring(pattern, datestrings, 2) # "8"  "14"
+#' extractSubstring(pattern, datestrings, 3) # "December" "January" 
+#' 
+#' # Extract more than one subexpression at once -> data.frame
+#' extractSubstring(pattern, datestrings, 1:3)
+#' 
+#' #   subexp.1 subexp.2 subexp.3
+#' #   1 Thursday        8 December
+#' #   2  Tuesday       14  January
+#' 
+#' # Name the sub expressions by naming their number in index (3rd argument)
+#' extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
+#' #   weekday subexp.2    month
+#' #   1 Thursday        8 December
+#' #   2  Tuesday       14  January
+#' 
+extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 {
   if (length(index) > 1) {
+    
     names.index <- defaultIfNULL(names(index), rep("", length(index)))
+    
     names.default <- paste0("subexp.", seq_along(index))
     
     isEmpty <- names.index == ""
+    
     names.index[isEmpty] <- names.default[isEmpty]
     
     names(index) <- names.index
@@ -688,158 +582,83 @@ extractSubstring <- structure(
     args <- lapply(index, extractSubstring, pattern = pattern, x = x)
     
     callWithStringsAsFactors(stringsAsFactors, data.frame, args)
-  }
-  else {
+    
+  } else {
+    
     parts <- subExpressionMatches(pattern, x, simplify = FALSE)
+    
     sapply(parts, function(p) defaultIfNULL(p[[index]], ""))
   }
-  
-}, ex = function() {
-  # Define pattern matching a date
-  pattern <- "([^ ]+), ([0-9]+) of ([^ ]+)"
-  
-  # Extract single sub expressions from one string
-  datestring <- "Thursday, 8 of December"
-  extractSubstring(pattern, datestring, 1) # ""Thursday""
-  extractSubstring(pattern, datestring, 2) # "8"
-  extractSubstring(pattern, datestring, 3) # "December"
-  
-  # Extract single sub expressions from a vector of strings
-  datestrings <- c("Thursday, 8 of December", "Tuesday, 14 of January")
-  extractSubstring(pattern, datestrings, 1) # "Thursday" "Tuesday"
-  extractSubstring(pattern, datestrings, 2) # "8"  "14"
-  extractSubstring(pattern, datestrings, 3) # "December" "January" 
-  
-  # Extract more than one subexpression at once -> data.frame
-  extractSubstring(pattern, datestrings, 1:3)
-  
-  #   subexp.1 subexp.2 subexp.3
-  #   1 Thursday        8 December
-  #   2  Tuesday       14  January
-  
-  # Name the sub expressions by naming their number in index (3rd argument)
-  extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
-  #   weekday subexp.2    month
-  #   1 Thursday        8 December
-  #   2  Tuesday       14  January
-})
+}
 
 # subExpressionMatches ---------------------------------------------------------
 
-#' find and extract regular expressions from strings
+#' Find and Extract Regular Expressions from Strings
 #' 
-#' find and extract regular expressions from strings
-#' 
-#' @param regularExpression regular expression containing parts in parentheses that are to be 
-#'   extracted from \emph{text}
+#' @param regularExpression regular expression containing parts in parentheses
+#'   that are to be extracted from \emph{text}
 #' @param text text to be matched against the regular expression
-#' @param match.names optional. Names that are to be given to the extracted parts in the result
-#'   list,
-#' @param select named vector of numbers specifying the subexpressions in parentheses to
-#'   be extracted.
-#' @param simplify if TRUE (default) and \emph{text} has only one element, the output 
-#'   structure will be a list instead a list of lists
-#' 
-#' @return If \code{length(text) > 1} a list is returned with as many 
-#'   elements as there are strings in \emph{text} each of which is itself a 
-#'   list containing the strings matching the subpatterns (enclosed in 
-#'   parentheses in \emph{regularExpression}) or NULL for strings that did
-#'   not match. If \emph{match.names} are given, the elements of these lists
-#'   are named according to the names given in \emph{match.names}. If
-#'   \emph{text} is of length 1 and \emph{simplify} = TRUE (default) the top
-#'   level list structure described above is omitted, i.e. the list of
-#'   substrings matching the subpatterns is returned.
-#' 
+#' @param match.names optional. Names that are to be given to the extracted
+#'   parts in the result list.
+#' @param select named vector of numbers specifying the subexpressions in
+#'   parentheses to be extracted.
+#' @param simplify if TRUE (default) and \emph{text} has only one element, the
+#'   output structure will be a list instead a list of lists
+#'   
+#' @return If \code{length(text) > 1} a list is returned with as many elements
+#'   as there are strings in \emph{text} each of which is itself a list
+#'   containing the strings matching the subpatterns (enclosed in parentheses in
+#'   \emph{regularExpression}) or NULL for strings that did not match. If
+#'   \emph{match.names} are given, the elements of these lists are named
+#'   according to the names given in \emph{match.names}. If \emph{text} is of
+#'   length 1 and \emph{simplify} = TRUE (default) the top level list structure
+#'   described above is omitted, i.e. the list of substrings matching the
+#'   subpatterns is returned.
+#'   
 #' @examples 
-#'   # split date into year, month and day
-#'   subExpressionMatches("(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23")
-#'   
-#'   # split date into year, month and day (give names to the resulting elements)
-#'   x <- subExpressionMatches(
-#'     regularExpression = "(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23",
-#'     match.names = c("year", "month", "day")
-#'   )
-#'   
-#'   cat(paste("Today is ", x$day, "/", x$month, " of ", x$year, "\n", sep=""))
-#'   
+#' # split date into year, month and day
+#' subExpressionMatches("(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23")
 #' 
-subExpressionMatches <- structure(
-  function # find and extract regular expressions from strings
-  ### find and extract regular expressions from strings
-  (
-    regularExpression, 
-    ### regular expression containing parts in parentheses that are to be 
-    ### extracted from \emph{text}
-    text, 
-    ### text to be matched against the regular expression
-    match.names = NULL,
-    ### optional. Names that are to be given to the extracted parts in the result
-    ### list,
-    select = structure(seq_along(match.names), names = match.names),
-    ### named vector of numbers specifying the subexpressions in parentheses to
-    ### be extracted.
-    simplify = TRUE
-    ### if TRUE (default) and \emph{text} has only one element, the output 
-    ### structure will be a list instead a list of lists
+#' # split date into year, month and day (give names to the resulting elements)
+#' x <- subExpressionMatches(
+#'   regularExpression = "(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23",
+#'   match.names = c("year", "month", "day")
+#' )
+#' 
+#' cat(paste0("Today is ", x$day, "/", x$month, " of ", x$year, "\n"))
+#' 
+subExpressionMatches <- function(
+  regularExpression, text, match.names = NULL,
+  select = stats::setNames(seq_along(match.names), match.names),
+  simplify = TRUE
+)
+{
+  match_infos <- regexec(regularExpression, text)
+  
+  result <- lapply(regmatches(text, match_infos), function(x) {
     
-  )
-  {
-    match.infos <- regexec(regularExpression, text)
-    
-    x <- lapply(seq_along(match.infos), function(i) {
+    if (length(x)) {
       
-      match.info <- match.infos[[i]]
+      x <- as.list(x[-1])
       
-      if (match.info[1] != -1) {
+      # If numbers of subexpressions to select are given, select and name the
+      # corresponding subexpressions
+      
+      if (length(select)) {
         
-        start.pos <- match.info[-1]
-        match.len <- attr(match.info, "match.length")[-1]
-        stop.pos <- start.pos + match.len - 1
-        
-        matches <- lapply(seq_along(start.pos), FUN = function(j) {
-          substr(text[i], start.pos[j], stop.pos[j])
-        })
-        
-        # If numbers of subexpressions to select are given, select and name the
-        # corresponding subexpressions
-        if (length(select) > 0) {
-          matches <- matches[select]
-          names(matches) <- names(select)
-        }
-        else {
-          names(matches) <- match.names  
-        }        
-      }
-      else {
-        matches <- NULL
+        x <- x[select]
       }
       
-      matches  
-    })
-    
-    if (simplify && length(x) == 1) {
-      x <- x[[1]]
+      stats::setNames(x, if (length(select)) names(select) else match.names)
     }
-    
-    x    
-    ### If \code{length(text) > 1} a list is returned with as many 
-    ### elements as there are strings in \emph{text} each of which is itself a 
-    ### list containing the strings matching the subpatterns (enclosed in 
-    ### parentheses in \emph{regularExpression}) or NULL for strings that did
-    ### not match. If \emph{match.names} are given, the elements of these lists
-    ### are named according to the names given in \emph{match.names}. If
-    ### \emph{text} is of length 1 and \emph{simplify} = TRUE (default) the top
-    ### level list structure described above is omitted, i.e. the list of
-    ### substrings matching the subpatterns is returned.
-  }, ex = function() {
-    # split date into year, month and day
-    subExpressionMatches("(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23")
-    
-    # split date into year, month and day (give names to the resulting elements)
-    x <- subExpressionMatches(
-      regularExpression = "(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23",
-      match.names = c("year", "month", "day")
-    )
-    
-    cat(paste("Today is ", x$day, "/", x$month, " of ", x$year, "\n", sep=""))
   })
+
+  if (simplify && length(result) == 1) {
+    
+    result[[1]]
+    
+  } else {
+    
+    result
+  }
+}

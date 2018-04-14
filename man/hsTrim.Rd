@@ -2,17 +2,18 @@
 % Please edit documentation in R/string.R
 \name{hsTrim}
 \alias{hsTrim}
-\title{Remove leading and trailing spaces}
+\title{Remove Leading and Trailing Spaces}
 \usage{
 hsTrim(str, trim.multiple.spaces = TRUE, dbg = FALSE)
 }
 \arguments{
 \item{str}{vector of character containing the strings to be trimmed}
 
-\item{trim.multiple.spaces}{if TRUE (default), multiple consecutive spaces are replaced by one space}
+\item{trim.multiple.spaces}{if TRUE (default), multiple consecutive spaces
+are replaced by one space}
 
-\item{dbg}{if \code{TRUE} (the default is \code{FALSE}) debut messages
-are shown}
+\item{dbg}{if \code{TRUE} (the default is \code{FALSE}) debut messages are
+shown}
 }
 \value{
 input string \emph{str} without leading or trailing spaces and with

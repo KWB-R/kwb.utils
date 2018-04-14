@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{collapsed}
 \alias{collapsed}
-\title{shortcut to paste(x, collapse = collapse)}
+\title{Shortcut to paste(x, collapse = collapse)}
 \usage{
 collapsed(x, collapse = " ")
 }

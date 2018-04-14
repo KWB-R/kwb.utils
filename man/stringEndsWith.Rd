@@ -16,7 +16,7 @@ stringEndsWith(x, endsWith)
 stringEndsWith
 }
 \examples{
-  stringEndsWith(c("abc", "Kabeljau", "Arabella"), "a")
-  stringEndsWith(c("abc", "Kabeljau", "Arabella"), "jau")
+stringEndsWith(c("abc", "Kabeljau", "Arabella"), "a")
+stringEndsWith(c("abc", "Kabeljau", "Arabella"), "jau")
   
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{removeSpaces}
 \alias{removeSpaces}
-\title{remove all spaces in string(s)}
+\title{Remove all Spaces in String(s)}
 \usage{
 removeSpaces(x)
 }
@@ -13,5 +13,5 @@ removeSpaces(x)
 \emph{x} with all spaces removed
 }
 \description{
-remove all spaces in string(s)
+Remove all Spaces in String(s)
 }

@@ -15,7 +15,7 @@ stringContains(x, contains)
 stringContains
 }
 \examples{
-  stringContains(c("abc", "Kabeljau", "Arabella"), "ab")
-  stringContains(c("abc", "Kabeljau", "Arabella"), "abc")
+stringContains(c("abc", "Kabeljau", "Arabella"), "ab")
+stringContains(c("abc", "Kabeljau", "Arabella"), "abc")
   
 }

@@ -10,5 +10,5 @@ commaCollapsed(x)
 \item{x}{vector of character}
 }
 \description{
-paste with collapse = ","
+Paste With Collapse = ","
 }

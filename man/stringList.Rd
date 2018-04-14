@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{stringList}
 \alias{stringList}
-\title{string of comma separated quoted strings}
+\title{String of Comma Separated Quoted Strings}
 \usage{
 stringList(x, qchar = "'", collapse = ", ")
 }

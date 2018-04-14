@@ -2,41 +2,40 @@
 % Please edit documentation in R/string.R
 \name{pairwise}
 \alias{pairwise}
-\title{reorder strings so that matching strings are neighbours}
+\title{Reorder Strings So That Matching Strings are Neighbours}
 \usage{
 pairwise(x, starts = .defaultStarts(x, split), split = "_")
 }
 \arguments{
 \item{x}{vector of character}
 
-\item{starts}{vector of character defining the start strings that are looked for in 
-\code{x} to find strings that belong together. The default is to take
-the unique strings appearing before a \code{split} character (if any)}
+\item{starts}{vector of character defining the start strings that are looked
+for in \code{x} to find strings that belong together. The default is to
+take the unique strings appearing before a \code{split} character (if any)}
 
 \item{split}{split character used to create default \code{start} strings}
 }
 \description{
-reorder strings so that strings that start with the same characters
-  appear next to each other
+Reorder strings so that strings that start with the same characters appear 
+next to each other
 }
 \examples{
-  x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
-  
-  # You have the most control when setting the starts argument
-  pairwise(x, starts = c("a.", "b_"))
-  
-  # Use default starts resulting from splitting at a split character
-  pairwise(x, split = "_")
-  
-  # This is actually the default
-  pairwise(x)
-  
-  # Note that the split parameter is interpreted as a pattern where the
-  # dot has a special meaning unless it is escaped or enclosed in []
-  pairwise(x, split = "[.]")
-  
-  # Same result as in the first example
-  pairwise(x, split = "[._]")
-  
+x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
+
+# You have the most control when setting the starts argument
+pairwise(x, starts = c("a.", "b_"))
+
+# Use default starts resulting from splitting at a split character
+pairwise(x, split = "_")
+
+# This is actually the default
+pairwise(x)
+
+# Note that the split parameter is interpreted as a pattern where the
+# dot has a special meaning unless it is escaped or enclosed in []
+pairwise(x, split = "[.]")
+
+# Same result as in the first example
+pairwise(x, split = "[._]")
 
 }

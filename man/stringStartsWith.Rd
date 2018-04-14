@@ -17,7 +17,7 @@ in \code{x}}
 stringStartsWith
 }
 \examples{
-  stringStartsWith(c("abc", "Kabeljau", "Arabella"), "ab")
-  stringStartsWith(c("abc", "Kabeljau", "Arabella"), "A")
+stringStartsWith(c("abc", "Kabeljau", "Arabella"), "ab")
+stringStartsWith(c("abc", "Kabeljau", "Arabella"), "A")
   
 }

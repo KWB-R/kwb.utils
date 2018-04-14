@@ -15,5 +15,5 @@ input string \emph{x} with special characters being substituted by
   by a single underscore and multiple underscores at the end removed.
 }
 \description{
-Substitution of special characters
+Substitution of Special Characters
 }

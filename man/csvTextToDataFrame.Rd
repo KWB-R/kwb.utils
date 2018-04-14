@@ -2,15 +2,15 @@
 % Please edit documentation in R/string.R
 \name{csvTextToDataFrame}
 \alias{csvTextToDataFrame}
-\title{csvTextToDataFrame}
+\title{CSV Text to Data Frame}
 \usage{
 csvTextToDataFrame(text, ...)
 }
 \arguments{
 \item{text}{character vector representing lines of comma separated values}
 
-\item{\dots}{arguments passed to \code{utils::read.table}}
+\item{\dots}{arguments passed to \code{\link[utils]{read.table}}}
 }
 \description{
-csvTextToDataFrame
+CSV Text to Data Frame
 }
