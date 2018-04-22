@@ -21,12 +21,17 @@ addClass <- function(x, className, first = TRUE, dbg = FALSE)
   # given name
   if (! inherits(x, className)) {
     
-    catIf(dbg, "Adding class", hsQuoteChr(className), "to object",
-          hsQuoteChr(deparse(substitute(x))))
+    catIf(
+      dbg, "Adding class", hsQuoteChr(className), "to object",
+      hsQuoteChr(deparse(substitute(x)))
+    )
     
     class(x) <- if (isTRUE(first)) {
+      
       c(className, class(x))
+      
     } else {
+      
       c(class(x), className)
     }
   }
@@ -47,6 +52,7 @@ addClass <- function(x, className, first = TRUE, dbg = FALSE)
 hsRestoreAttributes <- function(x, attribs)
 {
   for (attrib in setdiff(names(attribs), names(attributes(x)))) {
+    
     attr(x, attrib) <- attribs[[attrib]]
   }
   
