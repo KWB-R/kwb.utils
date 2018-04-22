@@ -1,8 +1,6 @@
 # pasteColumns0 ----------------------------------------------------------------
 
-#' Paste Columns of Data Frame without Separator
-#' 
-#' Paste the columns of a data frame without a separator
+#' Paste Columns of Data Frame Without Separator
 #' 
 #' @param x data frame
 #' @param columns names of columns to be pasted. Default: all columns
@@ -22,7 +20,7 @@ pasteColumns0 <- function(x, columns = names(x), ...)
 
 # pasteColumns -----------------------------------------------------------------
 
-#' Paste the Columns of a Data Frame with a Separator
+#' Paste Columns of Data Frame With Separator
 #' 
 #' @param x data frame
 #' @param columns names of columns to be pasted. Default: all columns
@@ -34,15 +32,19 @@ pasteColumns0 <- function(x, columns = names(x), ...)
 #'   selected columns of one row, being pasted with the separator character
 #' 
 #' @examples 
-#'   x <- data.frame(A = 1:3, B = 2:4)
-#'   pasteColumns(x, sep = ";")
+#' x <- data.frame(A = 1:3, B = 2:4)
+#' pasteColumns(x, sep = ";")
 #'   
 pasteColumns <- function(x, columns = names(x), sep = " ", ...)
 {
   if (length(columns) > 1) {
+    
     args <- selectColumns(x, columns, ...)
+    
     do.call(paste, c(args, sep = sep))
+    
   } else {
+    
     selectColumns(x, columns, ...)
   }
 }
@@ -76,9 +78,11 @@ pasteColumns <- function(x, columns = names(x), sep = " ", ...)
 safeColumnBind <- function(x1, x2)
 {
   if (is.null(x1)) {
+    
     x2
-  }
-  else {
+    
+  } else {
+    
     cbind(x1, x2)
   }
 }
@@ -93,12 +97,14 @@ posixColumnAtPosition <- function(x)
 {
   # find a POSIXt-column
   FUN <- function(colname) {
+    
     "POSIXct" %in% class(x[[colname]])
   }
   
   tcol <- which(sapply(names(x), FUN))
   
   if (isNullOrEmpty(tcol)) {
+    
     warning("No POSIXt-column in data frame.")
   }
   
@@ -125,41 +131,47 @@ firstPosixColumn <- function(x)
 #' @param dframe data frame containing numeric columns to be rounded
 #' @param columnNames names of (numeric) columns in \emph{dframe} to be rounded.
 #' @param digits number of digits to be rounded to (vector of length 1 expected)
-#'   or list of assignments in the form: \emph{columnName} =
-#'   \emph{numberOfDigits}. If you give a list here, then there is no need to
+#'   or list of assignments in the form: \emph{columnName} = 
+#'   \emph{numberOfDigits}. If you give a list here, then there is no need to 
 #'   set the argument \emph{columnNames}
-#' 
-#' @return \emph{dframe} with columns given in \emph{columnNames} being rounded to
-#'   \emph{digits} digits.
+#'   
+#' @return \emph{dframe} with columns given in \emph{columnNames} being rounded
+#'   to \emph{digits} digits.
 #' 
 roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
 {
   # if column names are given we expect that all these columns are rounded to
   # one and the same number of digits
-  if (!is.null(columnNames)) {
+  if (! is.null(columnNames)) {
+    
     stopifnot(length(digits) == 1)
   }
   
-  if (!is.null(digits)) {
+  if (! is.null(digits)) {
     
     if (is.null(columnNames)) {
+      
       columnNames <- names(digits)
     }
     
     for (columnName in columnNames) {
       
-      if (is.list(digits)) {
-        numberOfDigits <- digits[[columnName]]
-      }
-      else {
-        numberOfDigits <- digits
+      numberOfDigits <- if (is.list(digits)) {
+        
+        digits[[columnName]]
+        
+      } else {
+        
+        digits
       }
       
-      dframe[[columnName]] <- round(dframe[[columnName]], digits = numberOfDigits)
+      dframe[[columnName]] <- round(
+        dframe[[columnName]], digits = numberOfDigits
+      )
     }
   }
   
-  return(dframe)
+  dframe
 }
 
 # selectColumns ----------------------------------------------------------------
@@ -193,6 +205,7 @@ selectColumns <- function(
   stopifnot(is.data.frame(x))
   
   if (is.null(columns) || length(columns) == 0 || all(is.na(columns))) {
+    
     return(x)
   }
   
@@ -201,6 +214,7 @@ selectColumns <- function(
   )
   
   if (! ok) {
+    
     warning("Only the existing columns are selected.")
     columns <- intersect(columns, names(x))
   }
@@ -220,10 +234,10 @@ selectColumns <- function(
 #' @return data frame or matrix with \code{columns} being the leftmost columns
 #' 
 #' @examples 
-#'   x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
+#' x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
 #'   
-#'   moveColumnsToFront(x, "b")
-#'   moveColumnsToFront(x, c("b", "a"))
+#' moveColumnsToFront(x, "b")
+#' moveColumnsToFront(x, c("b", "a"))
 #'   
 moveColumnsToFront <- function(x, columns = NULL)
 {
@@ -232,7 +246,7 @@ moveColumnsToFront <- function(x, columns = NULL)
 
 # checkForMissingColumns -------------------------------------------------------
 
-#' Check for column existence
+#' Check for Column Existence
 #' 
 #' Stops if data frame \emph{frm} does not contain all columns of which the 
 #' names are given in \emph{reqCols}.
@@ -270,7 +284,7 @@ checkForMissingColumns <- function(
     do.call(ifelse(do.stop, "stop", "warning"), list(infotext, call. = FALSE))
   }
   
-  return (isNullOrEmpty(missing))
+  isNullOrEmpty(missing)
 }
 
 # hsAddMissingCols -------------------------------------------------------------
@@ -292,11 +306,15 @@ checkForMissingColumns <- function(
 hsAddMissingCols <- function(dataFrame, colNames, fill.value = NA)
 {
   n <- nrow(dataFrame)
+  
   for (col in colNames) {
+    
     if (! col %in% names(dataFrame)) {
+      
       dataFrame[[col]] <- rep(fill.value, n)
     }
   }
+  
   dataFrame
 }
 
@@ -351,10 +369,12 @@ removeEmptyColumns <- function(
   
   if (any(isEmpty)) {
     
-    catIf(dbg, sprintf("%s: %d empty columns removed: %s\n",
-                       objectName,
-                       sum(isEmpty),
-                       paste(names(x)[isEmpty], collapse = ", ")))
+    catIf(dbg, sprintf(
+      "%s: %d empty columns removed: %s\n",
+      objectName,
+      sum(isEmpty),
+      paste(names(x)[isEmpty], collapse = ", ")
+    ))
     
   } else {
     
@@ -370,15 +390,16 @@ removeEmptyColumns <- function(
 #' 
 #' @param dframe data frame,
 #' @param columnsToRemove vector of column names giving the columns to remove
-#' @param drop if FALSE, a data frame is returned in any case, otherwise the result may
-#'   be a vector if only one column remains
-#' 
-#' @return \emph{dframe} with columns given in \emph{columnsToRemove} being removed.
-#'   User attributes of \emph{dframe} are restored.
+#' @param drop if FALSE, a data frame is returned in any case, otherwise the
+#'   result may be a vector if only one column remains
+#'
+#' @return \emph{dframe} with columns given in \emph{columnsToRemove} being
+#'   removed. User attributes of \emph{dframe} are restored.
 #' 
 removeColumns <- function(dframe, columnsToRemove, drop = FALSE)
 {
   remainingColumns <- setdiff(names(dframe), columnsToRemove)
+  
   hsRestoreAttributes(dframe[, remainingColumns, drop = drop], attributes(dframe))
 }
 
@@ -401,19 +422,19 @@ removeColumns <- function(dframe, columnsToRemove, drop = FALSE)
 #'   \code{after}
 #'   
 #' @examples 
-#'   Data <- data.frame(A = 1:5, B = 2:6)
-#'   
-#'   # Insert new columns X and Y before column "B"
-#'   insertColumns(Data, before = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-#'   
-#'   # This is the same as inserting new columns X and Y after column "A":
-#'   insertColumns(Data, after = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-#'   
-#'   # You may also insert before the first...
-#'   insertColumns(Data, before = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-#'   
-#'   # ... or after the last column
-#'   insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+#' Data <- data.frame(A = 1:5, B = 2:6)
+#' 
+#' # Insert new columns X and Y before column "B"
+#' insertColumns(Data, before = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+#' 
+#' # This is the same as inserting new columns X and Y after column "A":
+#' insertColumns(Data, after = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+#' 
+#' # You may also insert before the first...
+#' insertColumns(Data, before = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+#' 
+#' # ... or after the last column
+#' insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
 #'   
 insertColumns <- function(
   Data, ..., before = "", after = "", 
@@ -426,47 +447,68 @@ insertColumns <- function(
   
   # Exactly one of before or after must be given
   if (sum(c(before, after) != "") != 1) {
+    
     stop("Exactly one of before and after must be given!")
   }
   
   # The reference column (named in before or after) must be given; get its index
   refColumn <- ifelse(before != "", before, after)
+  
   checkForMissingColumns(Data, refColumn)
   
   # All new columns must be named
   newColumns <- list(...)
+  
   columnNames <- names(newColumns)
   
   if (is.null(columnNames) ||
       length(columnNames[columnNames != ""]) != length(newColumns)) {
-    stop("All new columns must be named, i.e. given in the form 'name = values'")
+    
+    stop(
+      "All new columns must be named, i.e. given in the form 'name = values'"
+    )
   }
   
   # All new columns must be of equal length
   equalLength <- (sapply(newColumns, length) == nrow(Data))
   
   if (! all(equalLength)) {
-    stop("All new columns must have as many elements as Data has rows. ",
-         "This is not the case for: ", commaCollapsed(columnNames[! equalLength]))
+    
+    stop(
+      "All new columns must have as many elements as Data has rows. ",
+      "This is not the case for: ", commaCollapsed(columnNames[! equalLength])
+    )
   }
   
   i <- which(refColumn == names(Data))
   
   n.col <- ncol(Data)
+  
   partBetween <- data.frame(..., stringsAsFactors = stringsAsFactors)
   
   if (before != "") {
+    
     part1 <- if (i == 1) {
+      
       partBetween
+      
     } else {
+      
       cbind(Data[, 1:(i-1), drop = FALSE], partBetween)
     }
+    
     part2 <- Data[, i:n.col, drop = FALSE]
+    
   } else {
+    
     part1 <- Data[, 1:i, drop = FALSE]
+    
     part2 <- if (i == n.col) {
+      
       partBetween
+      
     } else {
+      
       cbind(
         partBetween,
         Data[, (i+1):n.col, drop = FALSE],
@@ -496,8 +538,8 @@ hsRenameColumns <- function(dframe, renames)
 
 #' Rename Columns in a Data Frame
 #' 
-#' rename columns in a data frame giving tupels of original name
-#'   and substitute name as named elements in list "renames"
+#' Rename columns in a data frame giving tupels of original name and substitute
+#' name as named elements in list "renames"
 #' 
 #' @param x data.frame
 #' @param renamings list with named elements each of which defines a column
@@ -524,7 +566,7 @@ renameColumns <- function(x, renamings = NULL)
 
 # renameAndSelect --------------------------------------------------------------
 
-#' Rename and select Columns of a Data Frame
+#' Rename and Select Columns of a Data Frame
 #' 
 #' @param data data frame
 #' @param renames list defining renames in the form of "oldName" = "newName"
@@ -554,26 +596,26 @@ renameAndSelect <- function(data, renames, columns = unlist(renames))
 #'   \code{assignments}
 #'   
 #' @examples 
-#'   
-#'   # Create a data frame
-#'   x <- data.frame(a = 1:5)
-#'   
-#'   # Option 1: use the "$" operator
-#'   x1 <- x
-#'   x1$b <- 2:6
-#'   x1$c <- 3:7
-#'   
-#'   # Option 2: use setColumns
-#'   x2 <- setColumns(x, b = 2:6, c = 3:7)
-#'   
-#'   # The result is the same
-#'   identical(x1, x2)
-#'   
-#'   # but the creation of columns has been reported on the console (dbg = TRUE by
-#'   # default)
-#'   
-#'   ## Provide column 'b' to data frame 'x'... ok.
-#'   ## Provide column 'c' to data frame 'x'... ok.
+#'
+#' # Create a data frame
+#' x <- data.frame(a = 1:5)
+#'
+#' # Option 1: use the "$" operator
+#' x1 <- x
+#' x1$b <- 2:6
+#' x1$c <- 3:7
+#'
+#' # Option 2: use setColumns
+#' x2 <- setColumns(x, b = 2:6, c = 3:7)
+#'
+#' # The result is the same
+#' identical(x1, x2)
+#'
+#' # but the creation of columns has been reported on the console (dbg = TRUE by
+#' # default)
+#'
+#' ## Provide column 'b' to data frame 'x'... ok.
+#' ## Provide column 'c' to data frame 'x'... ok.
 #'   
 setColumns <- function(.x, ..., dbg = TRUE)
 {
@@ -584,13 +626,15 @@ setColumns <- function(.x, ..., dbg = TRUE)
   assignments <- list(...)
   
   if (any(is.unnamed(assignments))) {
+    
     stop("All column assignments be named!", call. = FALSE)
   }
   
   for (columnName in names(assignments)) {
     
-    catIf(dbg, sprintf("Provide column '%s' to data frame '%s'... ",
-                       columnName, name.x))
+    catIf(dbg, sprintf(
+      "Provide column '%s' to data frame '%s'... ", columnName, name.x
+    ))
     
     .x[[columnName]] <- assignments[[columnName]]
     
