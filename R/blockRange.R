@@ -1,8 +1,6 @@
 # extractRowRanges -------------------------------------------------------------
 
-#' extract row ranges by pattern
-#' 
-#' extract row ranges by pattern
+#' Extract Row Ranges by Pattern
 #' 
 #' @param dataFrame data frame
 #' @param columnName name of column in which to search for \emph{pattern}
@@ -55,16 +53,9 @@
 #'   
 #'   identical(y, expected)
 #'   
-extractRowRanges <- function
-(
-  dataFrame, 
-  columnName, 
-  pattern, 
-  startOffset = 1, 
-  stopOffset = 1,
-  nameByMatch = FALSE,
-  nameColumnsByMatch = TRUE,
-  renumber = TRUE
+extractRowRanges <- function(
+  dataFrame, columnName, pattern, startOffset = 1, stopOffset = 1,
+  nameByMatch = FALSE, nameColumnsByMatch = TRUE, renumber = TRUE
 )
 {
   checkForMissingColumns(dataFrame, columnName)
@@ -81,19 +72,23 @@ extractRowRanges <- function
   result <- lapply(seq_len(nrow(ranges)), function(i) {
     
     from <- ranges$from[i]
+    
     to <- ranges$to[i]
     
     result <- if (from <= to) {
+      
       dataFrame[from:to, ]
     } # else NULL implicitly
     
     if (! is.null(result)) {
 
       if (nameColumnsByMatch) {
+        
         names(result) <- as.character(dataFrame[starts[i], ])
       }
       
       if (renumber) {
+        
         row.names(result) <- NULL  
       }
     }
@@ -102,6 +97,7 @@ extractRowRanges <- function
   })
   
   if (nameByMatch) {
+    
     names(result) <- dataFrame[starts, columnName]
   }
   
@@ -110,97 +106,76 @@ extractRowRanges <- function
 
 # startsToRanges ---------------------------------------------------------------
 
-#' row numbers of start rows to from/to row ranges
+#' Row Numbers of Start Rows to From/To Row Ranges
 #' 
-#' a vector of row numbers is transformed to a data frame describing 
-#'   row ranges by numbers of  first and last rows
+#' A vector of row numbers is transformed to a data frame describing row ranges 
+#' by numbers of  first and last rows
 #' 
 #' @param starts integer vector of start indices
 #' @param lastStop integer value of the last stop index
 #' @param startOffset integer offset applied to the starts
 #' @param stopOffset integer offsets applied to the ends
 #' 
+#' @return data frame with columns \code{from} and \code{to}
+#' 
 #' @examples 
-#'   starts <- c(1, 10, 20, 35)
+#' starts <- c(1, 10, 20, 35)
+#' 
+#' ok <- identical(
+#'   startsToRanges(starts, lastStop = 50), 
+#'   data.frame(
+#'     from = c(2, 11, 21, 36),
+#'     to = c(9, 19, 34, 50)
+#'   )
+#' )
 #'   
-#'   ok <- identical(startsToRanges(starts, lastStop = 50), 
-#'                   data.frame(
-#'                     from = c(2, 11, 21, 36),
-#'                     to = c(9, 19, 34, 50)
-#'                   ))
+#' ok <- ok && identical(
+#'   startsToRanges(starts, lastStop = 55, startOffset = 2, stopOffset = 2), 
+#'   data.frame(
+#'     from = c(3, 12, 22, 37),
+#'     to = c(8, 18, 33, 55)
+#'   )
+#' )
 #'   
-#'   ok <- ok && identical(
-#'     startsToRanges(starts, lastStop = 55, startOffset = 2, stopOffset = 2), 
-#'     data.frame(
-#'       from = c(3, 12, 22, 37),
-#'       to = c(8, 18, 33, 55)
-#'     ))
+#' ok
 #'   
-#'   ok
-#'   
-startsToRanges <- function
-(
-  starts, 
-  lastStop, 
-  startOffset = 1, 
-  stopOffset = 1
-)
+startsToRanges <- function(starts, lastStop, startOffset = 1, stopOffset = 1)
 {
   data.frame(
     from = starts + startOffset,
     to = startsToEnds(starts, lastStop, stopOffset)
   )
-  
-  # data frame with columns \emph{from} and \emph{to}
 }
 
 # startsToEnds -----------------------------------------------------------------
 
-#' helper function: start indices to end indices
+#' Helper Function: Start Indices to End Indices
 #' 
 #' helper function to convert start indices to end indices
 #' 
 #' @param starts vector of integer
 #' @param lastStop number to be returned as last element of the result vector
-#' @param stopOffset number to be subtracted from (all but the first elements in) \emph{starts}
-#'   in order to find the ends
+#' @param stopOffset number to be subtracted from (all but the first elements
+#'   in) \emph{starts} in order to find the ends
 #' 
 #' @return vector of integer
 #' 
 #' @examples 
-#'   starts <- c(1, 10, 20, 35)
-#'   
-#'   ok <- identical(startsToEnds(starts, lastStop = 50), 
-#'                   c(9, 19, 34, 50)) 
-#'   
-#'   ok <- ok && identical(startsToEnds(starts, lastStop = 50, stopOffset = 2), 
-#'                         c(8, 18, 33, 50))
-#'   ok
-#'   
+#' starts <- c(1, 10, 20, 35)
 #' 
-startsToEnds <- structure(
-  function # helper function: start indices to end indices
-  ### helper function to convert start indices to end indices
-  (
-    starts, 
-    ### vector of integer
-    lastStop, 
-    ### number to be returned as last element of the result vector
-    stopOffset = 1
-    ### number to be subtracted from (all but the first elements in) \emph{starts}
-    ### in order to find the ends
-  )
-  {
-    c(starts[-1] - stopOffset, lastStop)
-    ### vector of integer
-  }, 
-  ex = function() {
-    starts <- c(1, 10, 20, 35)
-    
-    ok <- identical(startsToEnds(starts, lastStop = 50), 
-                    c(9, 19, 34, 50)) 
-    
-    ok <- ok && identical(startsToEnds(starts, lastStop = 50, stopOffset = 2), 
-                          c(8, 18, 33, 50))
-    ok
-  })
+#' ok <- identical(
+#'   startsToEnds(starts, lastStop = 50), 
+#'   c(9, 19, 34, 50)
+#' )
+#'   
+#' ok <- ok && identical(
+#'   startsToEnds(starts, lastStop = 50, stopOffset = 2), 
+#'   c(8, 18, 33, 50)
+#' )
+#' 
+#' ok
+#' 
+startsToEnds <- function(starts, lastStop, stopOffset = 1)
+{
+  c(starts[-1] - stopOffset, lastStop)
+}
