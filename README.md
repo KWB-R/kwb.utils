@@ -6,9 +6,10 @@
 
 **Cite as:** [![DOI](https://zenodo.org/badge/23293/KWB-R/kwb.utils.svg)](https://zenodo.org/badge/latestdoi/23293/KWB-R/kwb.utils)
 
-##1. Install from GitHub 
+## Install from GitHub 
 
 ```r
-if(!require("devtools")) { install.packages("devtools") }
-devtools::install_github(repo = "KWB-R/kwb.utils", dependencies = TRUE)
+# install.packages("devtools")
+
+devtools::install_github(repo = "kwb-r/kwb.utils", dependencies = TRUE)
 ```
