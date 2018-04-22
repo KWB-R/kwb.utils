@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert.R
 \name{frenchToAscii}
 \alias{frenchToAscii}
-\title{French unicode letter to ASCII letter(s)}
+\title{French Unicode Letter to ASCII Letter(s)}
 \usage{
 frenchToAscii()
 }
@@ -11,5 +11,5 @@ list of ASCII characters (list elements) replacing unicode characters
   (element names)
 }
 \description{
-French unicode letter to ASCII letter(s)
+French Unicode Letter to ASCII Letter(s)
 }

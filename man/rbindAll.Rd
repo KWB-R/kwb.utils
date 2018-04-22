@@ -24,41 +24,41 @@ column \emph{nameColumn} are converted to a factor}
 rbind all data frames given in a list
 }
 \examples{
-  L <- list(
-    A = data.frame(x = 1:2, y = 2:3),
-    B = data.frame(x = 1:3, y = 2:4)
-  )
-  
-  L.unnamed <- L
-  names(L.unnamed) <- NULL
-  
-  y1 <- rbindAll(L)
-  y2 <- rbindAll(L, nameColumn = "group")
-  y3 <- rbindAll(L.unnamed, nameColumn = "group", namesAsFactor = FALSE)
-  y4 <- rbindAll(L.unnamed, nameColumn = "group")
-  
-  expected1 <- data.frame(
-    x = c(L$A$x, L$B$x),
-    y = c(L$A$y, L$B$y)
-  )
-  
-  expected2 <- cbind(
-    expected1,
-    group = as.factor(c(rep("A", nrow(L$A)), rep("B", nrow(L$B)))),
-    stringsAsFactors = FALSE
-  )
-  
-  expected3 <- cbind(
-    expected1,
-    group = c(rep(1L, nrow(L$A)), rep(2L, nrow(L$B)))
-  )
-  
-  expected4 <- expected3
-  expected4$group <- as.factor(expected4$group)
-  
-  identical(y1, expected1) &&
-    identical(y2, expected2) &&
-    identical(y3, expected3) &&
-    identical(y4, expected4)
-  
+L <- list(
+  A = data.frame(x = 1:2, y = 2:3),
+  B = data.frame(x = 1:3, y = 2:4)
+)
+
+L.unnamed <- L
+names(L.unnamed) <- NULL
+
+y1 <- rbindAll(L)
+y2 <- rbindAll(L, nameColumn = "group")
+y3 <- rbindAll(L.unnamed, nameColumn = "group", namesAsFactor = FALSE)
+y4 <- rbindAll(L.unnamed, nameColumn = "group")
+
+expected1 <- data.frame(
+  x = c(L$A$x, L$B$x),
+  y = c(L$A$y, L$B$y)
+)
+
+expected2 <- cbind(
+  expected1,
+  group = as.factor(c(rep("A", nrow(L$A)), rep("B", nrow(L$B)))),
+  stringsAsFactors = FALSE
+)
+
+expected3 <- cbind(
+  expected1,
+  group = c(rep(1L, nrow(L$A)), rep(2L, nrow(L$B)))
+)
+
+expected4 <- expected3
+expected4$group <- as.factor(expected4$group)
+
+identical(y1, expected1) &&
+  identical(y2, expected2) &&
+  identical(y3, expected3) &&
+  identical(y4, expected4)
+
 }

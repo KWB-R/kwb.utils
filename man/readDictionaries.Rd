@@ -10,8 +10,8 @@ readDictionaries(folder, pattern = "^dictionary_(.*)[.]txt$")
 \item{folder}{path to the folder containing the files to be read}
 
 \item{pattern}{regular expression to match the names of the files to be read.
-The pattern is expected to contain a pair of parentheses around the part
-of the file that shall be used as element name in the returned list}
+The pattern is expected to contain a pair of parentheses around the part of
+the file that shall be used as element name in the returned list}
 }
 \description{
 Read files from a folder, specified by a file name pattern, into a list

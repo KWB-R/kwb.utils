@@ -29,7 +29,6 @@ to be closed explicitely with grDevices::dev.off() after all desired plots
 have been made.
 }
 \examples{
-  
 # Set path to PDF file and open PDF device
 pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
 hsPrepPdf(pdfFile)

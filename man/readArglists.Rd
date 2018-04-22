@@ -9,10 +9,11 @@ readArglists(file = NULL,
   dbg = FALSE)
 }
 \arguments{
-\item{file}{full path to comma separated file containing the argument specification}
+\item{file}{full path to comma separated file containing the argument
+specification}
 
-\item{configTable}{Instead of the file you may provide a data frame containing the
-configuration}
+\item{configTable}{Instead of the file you may provide a data frame
+containing the configuration}
 
 \item{dbg}{if \code{TRUE}, debug messages are shown}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert.R
 \name{limitToRange}
 \alias{limitToRange}
-\title{limit values to lie within [left, right]}
+\title{Limit Values to Interval}
 \usage{
 limitToRange(x, left = .Machine$double.eps, right = 1)
 }
@@ -19,4 +19,5 @@ interval \code{[left, right]}
 }
 \examples{
 limitToRange(1:20, left = 5, right = 15)
+
 }

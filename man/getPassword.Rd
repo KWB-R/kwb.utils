@@ -2,7 +2,7 @@
 % Please edit documentation in R/encryption.R
 \name{getPassword}
 \alias{getPassword}
-\title{get encrypted password from file using key}
+\title{Get Encrypted Password from File Using Key}
 \usage{
 getPassword(passwordFile, keyFile)
 }
@@ -15,5 +15,5 @@ getPassword(passwordFile, keyFile)
 NA if no password is stored
 }
 \description{
-get encrypted password from file using key
+Get Encrypted Password from File Using Key
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/matrix.R
 \name{randomMatrix}
 \alias{randomMatrix}
-\title{Create a matrix with random integer values}
+\title{Create a Matrix with Random Integer Values}
 \usage{
 randomMatrix(dim = c(sample(10, 1), sample(10, 1)), values = seq_len(100))
 }
@@ -16,15 +16,15 @@ columns, respectively, that the output matrix shall contain}
 Create a matrix of given dimension and fill it with random integer values
 }
 \examples{
-  
-  # By default, the matrix has a random number of rows between 1 and 10 and
-  # a random number of columns between 1 and 10 and random values of 1:100
-  randomMatrix()
-  
-  # You may specify the dimensions (here: 5 rows, 3 columns)...
-  randomMatrix(dim = c(5, 3))
-  
-  # ... and the set of values to be used within the matrix
-  randomMatrix(dim = c(5, 3), values = c(0, 0.5, 1, NA))
+
+# By default, the matrix has a random number of rows between 1 and 10 and
+# a random number of columns between 1 and 10 and random values of 1:100
+randomMatrix()
+
+# You may specify the dimensions (here: 5 rows, 3 columns)...
+randomMatrix(dim = c(5, 3))
+
+# ... and the set of values to be used within the matrix
+randomMatrix(dim = c(5, 3), values = c(0, 0.5, 1, NA))
 
 }

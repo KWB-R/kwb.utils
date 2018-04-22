@@ -14,27 +14,27 @@ the key and the element value represents the value assigned to the key.}
 temporarily added to the \code{dictionary} before doing the resolving}
 }
 \description{
-Resolve all placeholders in a dictionary
+Resolve all Placeholders in a Dictionary
 }
 \examples{
-  # Define a dictionary in the form of a list
-  dictionary <- list(
-    basedir = "C:/myNicefolder",
-    projectdir = "<basedir>/projects/<project_name>",
-    inputdir = "<projectdir>/input",
-    outputdir = "<projectdir>/output"
-  )
-  
-  # Resolve all entries in the dictionary, with different values for the
-  # placeholder "<project_name> which is undefined in the original dictionary
-  dictionary.1 <- resolveAll(dictionary, project_name = "project_1")
-  dictionary.2 <- resolveAll(dictionary, project_name = "project_2")
-  
-  # Define entries of the dictionary to resolve
-  keys <- c("inputdir", "outputdir")
-  
-  # Resolve the entries using the two different dictionaries
-  resolve(keys, dictionary.1)
-  resolve(keys, dictionary.2)
+# Define a dictionary in the form of a list
+dictionary <- list(
+  basedir = "C:/myNicefolder",
+  projectdir = "<basedir>/projects/<project_name>",
+  inputdir = "<projectdir>/input",
+  outputdir = "<projectdir>/output"
+)
+
+# Resolve all entries in the dictionary, with different values for the
+# placeholder "<project_name> which is undefined in the original dictionary
+dictionary.1 <- resolveAll(dictionary, project_name = "project_1")
+dictionary.2 <- resolveAll(dictionary, project_name = "project_2")
+
+# Define entries of the dictionary to resolve
+keys <- c("inputdir", "outputdir")
+
+# Resolve the entries using the two different dictionaries
+resolve(keys, dictionary.1)
+resolve(keys, dictionary.2)
 
 }

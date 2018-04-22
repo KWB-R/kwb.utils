@@ -2,7 +2,7 @@
 % Please edit documentation in R/load.R
 \name{isLoaded}
 \alias{isLoaded}
-\title{Has a script been loaded (with source)?}
+\title{Has a Script Been Loaded (with source)?}
 \usage{
 isLoaded(scriptName)
 }
@@ -10,19 +10,18 @@ isLoaded(scriptName)
 \item{scriptName}{name of the script for which to get the "loaded" state}
 }
 \description{
-Check whether a script has been loaded (with source) or not. The information
-  is read from a list that stores a logical value (\code{TRUE} or \code{FALSE}) for 
-  each script name for which \code{\link{setLoaded}} has been called.
+Check whether a script has been loaded (with source) or not. The information 
+is read from a list that stores a logical value (\code{TRUE} or \code{FALSE})
+for each script name for which \code{\link{setLoaded}} has been called.
 }
 \examples{
-  # For an example see kwb.utils::setLoaded()...
-  
-  # In fact, the information about loaded scripts is stored in the
-  # R option "kwb.utils.loaded":
-  setLoaded("myScript")
-  
-  options("kwb.utils.loaded")[[1]]
-  
+# For an example see kwb.utils::setLoaded()...
+
+# In fact, the information about loaded scripts is stored in the
+# R option "kwb.utils.loaded":
+setLoaded("myScript")
+
+options("kwb.utils.loaded")[[1]]
 
 }
 \seealso{

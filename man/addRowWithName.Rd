@@ -9,7 +9,8 @@ addRowWithName(x, y, row.name)
 \arguments{
 \item{x}{data frame to which row is to be appended}
 
-\item{y}{data frame containing the row to be appended (exacly one row expected)}
+\item{y}{data frame containing the row to be appended (exacly one row
+expected)}
 
 \item{row.name}{name of row to be given in result data frame}
 }

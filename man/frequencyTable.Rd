@@ -36,14 +36,14 @@ Counts the number of occurrences of the different values in each column of a
 data frame
 }
 \examples{
-  # Some example data
-  (data <- data.frame(
-    A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
-    B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
-  ))
-  
-  frequencyTable(data) # results in a data frame
-  
-  frequencyTable(data, as.data.frame = FALSE) # results in a list
-  
+# Some example data
+(data <- data.frame(
+  A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
+  B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
+))
+
+frequencyTable(data) # results in a data frame
+
+frequencyTable(data, as.data.frame = FALSE) # results in a list
+
 }

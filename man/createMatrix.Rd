@@ -2,7 +2,7 @@
 % Please edit documentation in R/matrix.R
 \name{createMatrix}
 \alias{createMatrix}
-\title{matrix with row and column names}
+\title{Matrix with Row and Column Names}
 \usage{
 createMatrix(rowNames, colNames = rowNames, value = 0, name.row = "",
   name.col = "")
@@ -19,25 +19,24 @@ createMatrix(rowNames, colNames = rowNames, value = 0, name.row = "",
 \item{name.col}{name to be given to the column dimension (default: "")}
 }
 \value{
-matrix with \code{rowNames} as row names and \code{colNames} as column
-  names, filled with \emph{value} at each position
+matrix with \code{rowNames} as row names and \code{colNames} as
+  column names, filled with \emph{value} at each position
 }
 \description{
-Create a matrix by giving row and column names and with all elements being
-  set to a default value
+Create a matrix by giving row and column names and with all elements being 
+set to a default value
 }
 \examples{
-  ## Initialise a matrix with rows A to E and columns x to z of value -1
-  createMatrix(c("A", "B", "C", "D", "E"), c("x", "y", "z"), -1)
-  
-  ## By default the column names are assumed to be equal to the row names
-  createMatrix(c("A", "B", "C"))
-  
-  ## Initialise a square matrix with NA
-  createMatrix(c("A", "B", "C"), value = NA)
-  
-  ## Give a name to the row dimension
-  createMatrix(c("A", "B", "C"), name.row = "Letters")
-  
+## Initialise a matrix with rows A to E and columns x to z of value -1
+createMatrix(c("A", "B", "C", "D", "E"), c("x", "y", "z"), -1)
+
+## By default the column names are assumed to be equal to the row names
+createMatrix(c("A", "B", "C"))
+
+## Initialise a square matrix with NA
+createMatrix(c("A", "B", "C"), value = NA)
+
+## Give a name to the row dimension
+createMatrix(c("A", "B", "C"), name.row = "Letters")
 
 }

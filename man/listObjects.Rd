@@ -10,7 +10,7 @@ listObjects(files)
 \item{files}{vector of full paths to .RData files}
 }
 \description{
-get names of objects in .RData files
+Get Names of Objects in .RData files
 }
 \examples{
 ## Not run

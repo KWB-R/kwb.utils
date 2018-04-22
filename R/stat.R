@@ -1,4 +1,5 @@
 # countOrSum -------------------------------------------------------------------
+
 #' Count or Sum Up Values Within Groups of rows
 #'
 #' @param x data frame
@@ -23,6 +24,7 @@
 #' # Sum up the values in column "Value" for each group
 #' countOrSum(x, "Group", sum.up = "Value")
 #' countOrSum(x, c("Group", "Even"), sum.up = "Value")
+#' 
 countOrSum <- function(x, by = NULL, sum.up = NULL)
 {
   checkForMissingColumns(x, c(by, sum.up))
@@ -32,116 +34,83 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
 
 # hsMovingMean -----------------------------------------------------------------
 
-#' moving mean
+#' Moving Mean
 #' 
 #' Calculate moving mean of \emph{n} values "around" values
 #' 
 #' @param x vector of values of which moving mean is to be calculated
-#' @param n number of values "around" the values in \emph{x}, including the values in 
-#'   \emph{x}, of which the mean is calculated. Only odd numbers 1, 3, 5, ...
-#'   allowed. For each x[i] in x the moving mean is calculated by: 
+#' @param n number of values "around" the values in \emph{x}, including the
+#'   values in \emph{x}, of which the mean is calculated. Only odd numbers 1, 3,
+#'   5, ... allowed. For each x[i] in x the moving mean is calculated by: 
 #'   (x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]) / n
-#' @param na.rm logical. Should missing values (including NaN) be omitted from the
-#'   calculations?
-#' 
-#' @return Vector of moving means with the same number of values as there are in 
-#'   \emph{x}. If na.rm is FALSE, the first \emph{(n-1)/2} values and the last
-#'   \emph{(n-1)/2} values are NA since there are not enough values at the
-#'   start and the end of the vector to calculate the mean.
+#' @param na.rm logical. Should missing values (including NaN) be omitted from
+#'   the calculations?
+#'   
+#' @return Vector of moving means with the same number of values as there are in
+#'   \emph{x}. If na.rm is FALSE, the first \emph{(n-1)/2} values and the last 
+#'   \emph{(n-1)/2} values are NA since there are not enough values at the start
+#'   and the end of the vector to calculate the mean.
 #' 
 #' @examples 
-#'   x <- rnorm(30)
-#'   
-#'   plot(x, type = "b", main = "Moving mean over 3, 5, 7 points")
-#'   
-#'   times <- 2:4
-#'   
-#'   for (i in times) {
-#'     lines(hsMovingMean(x, n = 2*i - 1), col = i, type = "b", lwd =  2)
-#'   }
-#'   
-#'   legend("topright", fill = times, legend = sprintf("n = %d", 2*times - 1)) 
-#'   
+#' x <- rnorm(30)
 #' 
-hsMovingMean <- structure(
-  function # moving mean
-### Calculate moving mean of \emph{n} values "around" values
-(
-  x,
-  ### vector of values of which moving mean is to be calculated
-  n,
-  ### number of values "around" the values in \emph{x}, including the values in 
-  ### \emph{x}, of which the mean is calculated. Only odd numbers 1, 3, 5, ...
-  ### allowed. For each x[i] in x the moving mean is calculated by: 
-  ### (x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]) / n
-  na.rm = FALSE
-  ### logical. Should missing values (including NaN) be omitted from the
-  ### calculations?
-)
+#' plot(x, type = "b", main = "Moving mean over 3, 5, 7 points")
+#' 
+#' times <- 2:4
+#' 
+#' for (i in times) {
+#'   lines(hsMovingMean(x, n = 2*i - 1), col = i, type = "b", lwd =  2)
+#' }
+#' 
+#' legend("topright", fill = times, legend = sprintf("n = %d", 2*times - 1)) 
+#' 
+hsMovingMean <- function(x, n, na.rm = FALSE)
 {
-  if (!isOddNumber(n)) {
-    stop(paste("The number n of values to be taken into account for the mean",
-               "needs to be an odd number."))
+  if (! isOddNumber(n)) {
+    
+    stop(paste(
+      "The number n of values to be taken into account for the mean",
+      "needs to be an odd number."
+    ))
   }
-  matrix.values <- c(rep(c(x, rep(NA, n)), n-1), x)
-  m <- matrix(matrix.values, ncol = n)
-  means <- rowSums(m, na.rm=na.rm)/rowSums(!is.na(m))
   
-  n.remove <- (n-1)/2  
+  matrix.values <- c(rep(c(x, rep(NA, n)), n-1), x)
+  
+  m <- matrix(matrix.values, ncol = n)
+  
+  means <- rowSums(m, na.rm = na.rm) / rowSums( ! is.na(m))
+  
+  n.remove <- (n-1)/2
+  
   if (n.remove > 0) {
-    i.at.beg <- seq(1, by=1, length.out=n.remove)
-    i.at.end <- seq(nrow(m), by=-1, length.out=n.remove)
+    
+    i.at.beg <- seq(1, by = 1, length.out = n.remove)
+    
+    i.at.end <- seq(nrow(m), by = -1, length.out = n.remove)
+    
     means <- means[-c(i.at.beg, i.at.end)]
   }
   
   means
-  ### Vector of moving means with the same number of values as there are in 
-  ### \emph{x}. If na.rm is FALSE, the first \emph{(n-1)/2} values and the last
-  ### \emph{(n-1)/2} values are NA since there are not enough values at the
-  ### start and the end of the vector to calculate the mean.
-}, ex = function() {
-  x <- rnorm(30)
-  
-  plot(x, type = "b", main = "Moving mean over 3, 5, 7 points")
-  
-  times <- 2:4
-  
-  for (i in times) {
-    lines(hsMovingMean(x, n = 2*i - 1), col = i, type = "b", lwd =  2)
-  }
-  
-  legend("topright", fill = times, legend = sprintf("n = %d", 2*times - 1)) 
-})
+}
 
 # percentageOfMaximum ----------------------------------------------------------
 
-#' percentageOfMaximum
-#' 
-#' percentageOfMaximum
+#' Percentage of Maximum
 #' 
 #' @param x vector of numeric values
 #' @param na.rm passed to \code{max}
 #' 
 #' @return 100 * x / max(x)
 #' 
-percentageOfMaximum <- function # percentageOfMaximum
-### percentageOfMaximum
-(
-  x,
-  ### vector of numeric values
-  na.rm = TRUE
-  ### passed to \code{max}
-)
+percentageOfMaximum <- function(x, na.rm = TRUE)
 {
   percentage(x, max(x, na.rm = na.rm))
-  ### 100 * x / max(x)
 }
 
 # percentageOfSum --------------------------------------------------------------
 
-#' percentage of the sum of values
-#' 
-#' percentage of the sum of values
+#' Percentage of the Sum of Values
 #' 
 #' @param x vector of numeric values
 #' @param na.rm passed to \code{max}
@@ -149,29 +118,17 @@ percentageOfMaximum <- function # percentageOfMaximum
 #' @return 100 * x / sum(x)
 #' 
 #' @examples 
-#'   p <- percentageOfSum(1:10)
-#'   stopifnot(sum(p) == 100)
-#'   
+#' p <- percentageOfSum(1:10)
+#' stopifnot(sum(p) == 100)
 #' 
-percentageOfSum <- structure(function # percentage of the sum of values
-### percentage of the sum of values
-(
-  x,
-  ### vector of numeric values
-  na.rm = TRUE
-  ### passed to \code{max}
-)
+percentageOfSum <- function(x, na.rm = TRUE)
 {
   percentage(x, sum(x, na.rm = na.rm))
-  ### 100 * x / sum(x)
-}, ex = function() {
-  p <- percentageOfSum(1:10)
-  stopifnot(sum(p) == 100)
-})
+}
 
 # percentage -------------------------------------------------------------------
 
-#' percentage
+#' Percentage
 #' 
 #' \code{x / basis}, in percent
 #' 
@@ -187,25 +144,23 @@ percentage <- function(x, basis)
 
 # relativeCumulatedSum ---------------------------------------------------------
 
-#' relativeCumulatedSum
+#' Relative Cumulated Sum
 #' 
 #' relative cumulated sum of a vector of values
 #' 
 #' @param values vector of numeric values
 #' 
-relativeCumulatedSum <- function # relativeCumulatedSum
-### relative cumulated sum of a vector of values
-(
-  values
-  ### vector of numeric values
-) 
+relativeCumulatedSum <- function(values) 
 {
   cumulated <- cumsum(values)
-  maxCumulated <- utils::tail(cumulated, 1)
+  
+  maxCumulated <- lastElement(cumulated)
+  
   100 * cumulated / maxCumulated
 }
 
 # columnwisePercentage ---------------------------------------------------------
+
 #' Columnwise Percentage
 #' 
 #' Calculate the percentage (value divided by sum of values in the column) for 
@@ -232,6 +187,7 @@ relativeCumulatedSum <- function # relativeCumulatedSum
 #' M2
 #' columnwisePercentage(M2)
 #' columnwisePercentage(M2, default = 0)
+#' 
 columnwisePercentage <- function(x, default = 0, digits = 1)
 {
   stopifnot(length(dim(x)) == 2)
@@ -243,42 +199,34 @@ columnwisePercentage <- function(x, default = 0, digits = 1)
   )
 
   if (! is.na(digits)) {
+    
     round(fractions, digits) 
+    
   } else {
+    
     fractions
   }
 }
 
 # colStatistics ----------------------------------------------------------------
 
-#' colStatistics
+#' Column Statistics
 #' 
 #' applies statistical functions to all columns of a data frame
 #' 
 #' @param dataFrame data frame with numeric columns only
-#' @param functions vector of statistical functions to be applied on each column of dataFrame
-#'   possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
-#'   values), "length" (number of values)
-#' @param na.rm if TRUE, NA values are removed before applying the statistical function(s)
-#' @param functionColumn if TRUE, a column containing the function name is contained in the
-#'   result data frame, otherwise the function names become the row names
-#'   of the result data frame
+#' @param functions vector of statistical functions to be applied on each column
+#'   of dataFrame possible values: "sum", "mean", "min", "max", "number.na"
+#'   (number of NA values), "length" (number of values)
+#' @param na.rm if TRUE, NA values are removed before applying the statistical
+#'   function(s)
+#' @param functionColumn if TRUE, a column containing the function name is
+#'   contained in the result data frame, otherwise the function names become the
+#'   row names of the result data frame
 #' 
-colStatistics <- function # colStatistics
-### applies statistical functions to all columns of a data frame
-(
-  dataFrame,
-  ### data frame with numeric columns only
-  functions = c("sum", "mean", "min", "max", "number.na", "length"),
-  ### vector of statistical functions to be applied on each column of dataFrame
-  ### possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
-  ### values), "length" (number of values)
-  na.rm = FALSE,
-  ### if TRUE, NA values are removed before applying the statistical function(s)
-  functionColumn = FALSE
-  ### if TRUE, a column containing the function name is contained in the
-  ### result data frame, otherwise the function names become the row names
-  ### of the result data frame
+colStatistics <- function(
+  dataFrame, functions = c("sum", "mean", "min", "max", "number.na", "length"),
+  na.rm = FALSE, functionColumn = FALSE
 )
 {
   statistics <- NULL
@@ -287,22 +235,28 @@ colStatistics <- function # colStatistics
     
     functionStatistics <- colStatisticOneFunction(dataFrame, FUN, na.rm = na.rm)
     
-    if (is.null(statistics)) {
-      statistics <- functionStatistics
-    }
-    else {
-      statistics <- cbind(statistics, functionStatistics)
+    statistics <- if (is.null(statistics)) {
+      
+      functionStatistics
+      
+    } else {
+      
+      cbind(statistics, functionStatistics)
     }
   } 
   
   statistics <- t(statistics)
   
   if (functionColumn) {
+    
     rownames(statistics) <- NULL
+    
     data.frame(FUN = functions, t(statistics), stringsAsFactors = FALSE)
-  }
-  else {
+    
+  } else {
+    
     rownames(statistics) <- functions
+    
     data.frame(t(statistics))
   }  
 }
@@ -311,47 +265,47 @@ colStatistics <- function # colStatistics
 
 #' Apply Function to All Columns
 #' 
-#' applies a statistical function to all columns of a data frame
-#'
-#' @param dataFrame a data frame of which statistics are to be calculated
-#' @param FUN statistical function to be applied on each column of dataFrame
-#'   possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
-#'   values), "length" (number of values)  
-#' @param na.rm if TRUE, NA values are removed before applying the statistical function  
+#' Applies a statistical function to all columns of a data frame
 #' 
-colStatisticOneFunction <- function # colStatisticOneFunction
-### applies a statistical function to all columns of a data frame
-(
-  dataFrame, 
-  FUN,
-  ### statistical function to be applied on each column of dataFrame
-  ### possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
-  ### values), "length" (number of values)  
-  na.rm = FALSE
-  ### if TRUE, NA values are removed before applying the statistical function  
-)
+#' @param dataFrame a data frame of which statistics are to be calculated
+#' @param FUN statistical function to be applied on each column of dataFrame 
+#'   possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
+#'   values), "length" (number of values)
+#' @param na.rm if TRUE, NA values are removed before applying the statistical
+#'   function
+#'   
+colStatisticOneFunction <- function(dataFrame, FUN, na.rm = FALSE)
 {
   if (FUN == "sum") {
+    
     colSums(dataFrame, na.rm = na.rm)
-  } 
-  else if (FUN == "mean") {
+
+  } else if (FUN == "mean") {
+    
     colMeans(dataFrame, na.rm = na.rm)
-  }
-  else if (FUN == "min") {
+    
+  } else if (FUN == "min") {
+    
     colMinima(dataFrame, na.rm = na.rm)
-  }
-  else if (FUN == "max") {
+    
+  } else if (FUN == "max") {
+    
     colMaxima(dataFrame, na.rm = na.rm)
-  }
-  else if (FUN == "number.na") {
+    
+  } else if (FUN == "number.na") {
+    
     colNaNumbers(dataFrame)
-  }
-  else if (FUN == "length") {
+    
+  } else if (FUN == "length") {
+    
     nrow(dataFrame)
-  }  
-  else {
-    stop("Unknown function '", FUN, 
-         "' (must be one of 'sum', 'mean', 'min', 'max', 'number.na', 'length')!")
+    
+  } else {
+    
+    stop(
+      "Unknown function '", FUN, 
+      "' (must be one of 'sum', 'mean', 'min', 'max', 'number.na', 'length')!"
+    )
   }
 }
 
@@ -364,11 +318,7 @@ colStatisticOneFunction <- function # colStatisticOneFunction
 #' @param dataFrame data frame of which to calculate columnwise minima
 #' @param na.rm passed to the \code{min} function
 #' 
-colMinima <- function
-(
-  dataFrame, 
-  na.rm = FALSE
-) 
+colMinima <- function(dataFrame, na.rm = FALSE) 
 {
   apply(dataFrame, 2, min, na.rm = na.rm)
 }
@@ -382,11 +332,7 @@ colMinima <- function
 #' @param dataFrame data frame of which to calculate columnwise maxima
 #' @param na.rm passed to the \code{max} function
 #' 
-colMaxima <- function
-(
-  dataFrame, 
-  na.rm = FALSE
-) 
+colMaxima <- function(dataFrame, na.rm = FALSE) 
 {
   apply(dataFrame, 2, max, na.rm = na.rm)
 }
@@ -399,12 +345,7 @@ colMaxima <- function
 #' 
 #' @param dataFrame data frame of which to calculate columnwise NA values
 #' 
-colNaNumbers <- function
-(
-  dataFrame
-) 
+colNaNumbers <- function(dataFrame)
 {
-  apply(dataFrame, 2, function(x) {
-    sum(is.na(x))
-  })
+  apply(dataFrame, 2, function(x) sum(is.na(x)))
 }

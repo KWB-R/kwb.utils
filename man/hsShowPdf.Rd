@@ -17,7 +17,6 @@ Opens the PDF file of which the full path is given in \emph{Pdf} in a
   PDF viewer.
 }
 \examples{
-  
 # Set path to PDF file and open PDF device
 tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
 hsPrepPdf(tmpPdf)

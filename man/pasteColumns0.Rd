@@ -2,7 +2,7 @@
 % Please edit documentation in R/column.R
 \name{pasteColumns0}
 \alias{pasteColumns0}
-\title{Paste Columns of Data Frame without Separator}
+\title{Paste Columns of Data Frame Without Separator}
 \usage{
 pasteColumns0(x, columns = names(x), ...)
 }
@@ -18,7 +18,7 @@ vector of character with each element representing the values of the
   selected columns of one row, being pasted without a separator
 }
 \description{
-Paste the columns of a data frame without a separator
+Paste Columns of Data Frame Without Separator
 }
 \examples{
 x <- data.frame(A = 1:3, B = 2:4)

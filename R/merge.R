@@ -1,4 +1,5 @@
 # unmerge ----------------------------------------------------------------------
+
 #' Invert the Merging of two Data Frames
 #' 
 #' Split a data frame \code{z} into two data frames \code{x} and \code{y} so
@@ -6,13 +7,13 @@
 #' 
 #' @param z data frame
 #' @param by vector of names of columns in \code{z} that are used to build 
-#' groups of rows of \code{z} so that within each group the values in these 
-#' columns do not change. For each group the columns being constant over all
-#' rows are identified. Columns that are constant in each group will appear 
-#' in the data frame \code{x} whereas the remaining columns will appear in the
-#' data frame \code{y} of the returned list.
+#'   groups of rows of \code{z} so that within each group the values in these 
+#'   columns do not change. For each group the columns being constant over all 
+#'   rows are identified. Columns that are constant in each group will appear in
+#'   the data frame \code{x} whereas the remaining columns will appear in the 
+#'   data frame \code{y} of the returned list.
 #' @return list with two elements \code{x} and \code{y} each of which are data 
-#' frames containing at least the columns given in \code{by}.
+#'   frames containing at least the columns given in \code{by}.
 #' @examples 
 #' z <- data.frame(
 #'   name = c("peter", "peter", "paul", "mary", "paul", "mary"),
@@ -77,7 +78,7 @@ unmerge <- function(z, by)
 
 # mergeAll ---------------------------------------------------------------------
 
-#' Merge multiple Data Frames
+#' Merge Multiple Data Frames
 #' 
 #' Merge multiple data frames, given in a list
 #' 
@@ -93,15 +94,15 @@ unmerge <- function(z, by)
 #'   \emph{dataFrames} by  consecutively calling \code{merge}
 #'   
 #' @examples 
-#'   peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
-#'   paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
-#'   mary <- data.frame(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
-#'   
-#'   # By default only categories that are in all data frames are returned
-#'   mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit")
-#'   
-#'   # Use the arguments supported by merge to change that behaviour
-#'   mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit", all = TRUE)
+#' peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
+#' paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
+#' mary <- data.frame(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
+#'
+#' # By default only categories that are in all data frames are returned
+#' mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit")
+#'
+#' # Use the arguments supported by merge to change that behaviour
+#' mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit", all = TRUE)
 #'   
 mergeAll <- function(dataFrames, by, ..., dbg = TRUE)
 {

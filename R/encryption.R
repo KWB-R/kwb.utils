@@ -2,18 +2,11 @@
 
 # generateKeyFile --------------------------------------------------------------
 
-#' generate a decryption key file
-#' 
-#' generate a decryption key file
+#' Generate a Decryption Key File
 #' 
 #' @param target full path to the file to which the key shall be written
 #' 
-generateKeyFile <- function # generate a decryption key file
-### generate a decryption key file
-(
-  target
-  ### full path to the file to which the key shall be written
-)
+generateKeyFile <- function(target)
 {
   .checkNamespace("PKI", "generateKeyFile")
   
@@ -22,32 +15,26 @@ generateKeyFile <- function # generate a decryption key file
 
 # .checkNamespace --------------------------------------------------------------
 
-#'  checkNamespace
-#' 
-#' 
 .checkNamespace <- function(packageName, functionName)
 {
   if (! requireNamespace(packageName, quietly = TRUE)) {
-    stop("Please install the package ", hsQuoteChr(packageName), " to use ", 
-         "this function: ", hsQuoteChr(functionName), call. = FALSE)
+    
+    stop(
+      "Please install the package ", hsQuoteChr(packageName), " to use ", 
+      "this function: ", hsQuoteChr(functionName), call. = FALSE
+    )
   }
 }
 
 # createPasswordFile -----------------------------------------------------------
 
-#' create encrypted password file for account
-#' 
-#' create encrypted password file for account
+#' Create Encrypted Password File for Account
 #' 
 #' @param account name of account the user is asked to enter the password for
 #' @param keyFile path to the file containing the encryption/decryption key
 #' @param passwordFile path to the password file
-createPasswordFile <- function
-(
-  account,
-  keyFile,
-  passwordFile
-)
+#' 
+createPasswordFile <- function(account, keyFile, passwordFile)
 {
   .checkNamespace("PKI", "createPasswordFile")
   
@@ -62,14 +49,12 @@ createPasswordFile <- function
 
 # .askForPassword --------------------------------------------------------------
 
-#'  askForPassword
-#' 
-#' 
 .askForPassword <- function(account)
 {
   clearConsole()
-  userInput <- readline(
-    paste0("Enter password for account '", account, "': "))
+  
+  userInput <- readline(paste0("Enter password for account '", account, "': "))
+  
   clearConsole()
   
   userInput
@@ -77,9 +62,7 @@ createPasswordFile <- function
 
 # getPassword ------------------------------------------------------------------
 
-#' get encrypted password from file using key
-#' 
-#' get encrypted password from file using key
+#' Get Encrypted Password from File Using Key
 #' 
 #' @param passwordFile path to the password file
 #' @param keyFile path to the key file
@@ -91,6 +74,7 @@ getPassword <- function(passwordFile, keyFile)
   .checkNamespace("PKI", "getPassword")
   
   if (! file.exists(passwordFile)) {
+    
     stop("Password file '", passwordFile, "' does not exist.")  
   }
   
@@ -100,6 +84,4 @@ getPassword <- function(passwordFile, keyFile)
     what = password.encrypted, 
     key = PKI::PKI.load.key(file = keyFile)
   ))
-  
-  ### NA if no password is stored  
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vector.R
 \name{getByPositiveOrNegativeIndex}
 \alias{getByPositiveOrNegativeIndex}
-\title{Get Vector Elements by positive or negative Index}
+\title{Get Vector Elements by Positive or Negative Index}
 \usage{
 getByPositiveOrNegativeIndex(elements, index)
 }

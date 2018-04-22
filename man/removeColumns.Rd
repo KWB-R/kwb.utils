@@ -11,12 +11,12 @@ removeColumns(dframe, columnsToRemove, drop = FALSE)
 
 \item{columnsToRemove}{vector of column names giving the columns to remove}
 
-\item{drop}{if FALSE, a data frame is returned in any case, otherwise the result may
-be a vector if only one column remains}
+\item{drop}{if FALSE, a data frame is returned in any case, otherwise the
+result may be a vector if only one column remains}
 }
 \value{
-\emph{dframe} with columns given in \emph{columnsToRemove} being removed.
-  User attributes of \emph{dframe} are restored.
+\emph{dframe} with columns given in \emph{columnsToRemove} being
+  removed. User attributes of \emph{dframe} are restored.
 }
 \description{
 Remove Columns from a Data Frame

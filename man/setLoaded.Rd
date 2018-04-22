@@ -2,49 +2,50 @@
 % Please edit documentation in R/load.R
 \name{setLoaded}
 \alias{setLoaded}
-\title{set the "loaded" status for a script}
+\title{Set the "loaded" Status for a Script}
 \usage{
 setLoaded(scriptName, isLoaded = TRUE)
 }
 \arguments{
-\item{scriptName}{name of the script for which we want to set the "loaded" state}
+\item{scriptName}{name of the script for which we want to set the "loaded"
+state}
 
-\item{isLoaded}{logical. Use \code{TRUE} to indicate that the script \code{scriptName}
-has been loaded and use \code{FALSE} to indicate that the script is not
-loaded (e.g. because you cleared the workspace in the meanwhile).}
+\item{isLoaded}{logical. Use \code{TRUE} to indicate that the script
+\code{scriptName} has been loaded and use \code{FALSE} to indicate that the
+script is not loaded (e.g. because you cleared the workspace in the
+meanwhile).}
 }
 \description{
-You may use this function at the last line of your script to indicate that
-  this script has already been loaded. This information is stored in the R
-  option "kwb.utils.loaded" from which you may read the information back with
-  \code{\link{isLoaded}}.
+You may use this function at the last line of your script to indicate that 
+this script has already been loaded. This information is stored in the R 
+option "kwb.utils.loaded" from which you may read the information back with 
+\code{\link{isLoaded}}.
 }
 \examples{
-  # If you have a script with the main part on top and the required functions
-  # defined below (as recommended by Robert C. Martin, the author of "Clean
-  # Code") your script may look like this:
-  
-  # Main part -----
-  
-  # Check if the script has already been loaded (i.e. if setLoaded() has been 
-  # called, see end of script). If yes, we can enter the main section. Otherwise
-  # we have to skip the main section since the function sayHello() is not yet
-  # defined.
-  if (isLoaded("welcome")) {
-    sayHello(who = "Hauke")
-  }
-  
-  # Functions -----
-  sayHello <- function(who) {
-    clearConsole()
-    cat("***\\n***\\n*** Hello", who, "how are you?\\n***\\n***\\n")
-  }
-  
-  # At the end of your script, call setLoaded() to indicate that your script is
-  # loaded now. If you "source" the script a second time, isLoaded("welcome") 
-  # will return TRUE and thus the main section will be entered...
-  setLoaded("welcome")
-  
+# If you have a script with the main part on top and the required functions
+# defined below (as recommended by Robert C. Martin, the author of "Clean
+# Code") your script may look like this:
+
+# Main part -----
+
+# Check if the script has already been loaded (i.e. if setLoaded() has been 
+# called, see end of script). If yes, we can enter the main section. Otherwise
+# we have to skip the main section since the function sayHello() is not yet
+# defined.
+if (isLoaded("welcome")) {
+  sayHello(who = "Hauke")
+}
+
+# Functions -----
+sayHello <- function(who) {
+  clearConsole()
+  cat("***\\n***\\n*** Hello", who, "how are you?\\n***\\n***\\n")
+}
+
+# At the end of your script, call setLoaded() to indicate that your script is
+# loaded now. If you "source" the script a second time, isLoaded("welcome") 
+# will return TRUE and thus the main section will be entered...
+setLoaded("welcome")
 
 }
 \seealso{

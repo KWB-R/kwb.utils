@@ -2,7 +2,7 @@
 % Please edit documentation in R/list.R
 \name{toNamedList}
 \alias{toNamedList}
-\title{convert to list with names equal to list elements}
+\title{Convert to List with Names Equal to List Elements}
 \usage{
 toNamedList(x)
 }
@@ -10,23 +10,21 @@ toNamedList(x)
 \item{x}{R object, preferably vector of character}
 }
 \value{
-result of calling \code{as.list} on \code{x} with list element names being
-  set to the elements of \code{x}.
+result of calling \code{as.list} on \code{x} with list element names
+  being set to the elements of \code{x}.
 }
 \description{
-convert to list with names equal to list elements
+Convert to List with Names Equal to List Elements
 }
 \examples{
-  
-  x.vector <- c("Peter", "Paul", "Mary")
-  x.list <- toNamedList(x.vector)
-  all(names(x.list) == x.vector)
-  
-  # You may use toNamedList in a call of lapply in order to get a named result
-  lapply(toNamedList(x.vector), function(x) sprintf("Hello, \%s", x))
-  
-  # Compare with
-  lapply(x.vector, function(x) sprintf("Hello, \%s", x))
-  
+x.vector <- c("Peter", "Paul", "Mary")
+x.list <- toNamedList(x.vector)
+all(names(x.list) == x.vector)
+
+# You may use toNamedList in a call of lapply in order to get a named result
+lapply(toNamedList(x.vector), function(x) sprintf("Hello, \%s", x))
+
+# Compare with
+lapply(x.vector, function(x) sprintf("Hello, \%s", x))
 
 }

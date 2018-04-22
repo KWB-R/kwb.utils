@@ -2,7 +2,7 @@
 % Please edit documentation in R/dictionary.R
 \name{resolve}
 \alias{resolve}
-\title{Resolve string(s) using a dictionary}
+\title{Resolve String(s) Using a Dictionary}
 \usage{
 resolve(x, ...)
 }
@@ -16,30 +16,29 @@ are merged first to one dictionary before merging further (named) \code{key
 = value} pairs.}
 }
 \description{
-Resolve string(s) using a dictionary
+Resolve String(s) Using a Dictionary
 }
 \examples{
+file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
+
+dictionary <- readDictionary(file)
+
+# Resolve the dictionary
+resolve(dictionary)
+
+# Resolve the dictionary by setting an undefined placeholder
+resolve(dictionary, extension = "pdf")
   
-  file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-  
-  dictionary <- readDictionary(file)
-  
-  # Resolve the dictionary
-  resolve(dictionary)
-  
-  # Resolve the dictionary by setting an undefined placeholder
-  resolve(dictionary, extension = "pdf")
-    
-  # Resolve a string
-  resolve("dir.project", dictionary)
-  
-  # Set a placeholder "on-the-fly"
-  resolve("file.out", dictionary, extension = "pdf")
-  
-  # Override a placeholder "on-the-fly"
-  resolve("dir.project", dictionary, project = "new_project")
-  
-  # Resolve a vector of strings
-  resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
+# Resolve a string
+resolve("dir.project", dictionary)
+
+# Set a placeholder "on-the-fly"
+resolve("file.out", dictionary, extension = "pdf")
+
+# Override a placeholder "on-the-fly"
+resolve("dir.project", dictionary, project = "new_project")
+
+# Resolve a vector of strings
+resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
 
 }

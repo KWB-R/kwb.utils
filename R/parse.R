@@ -1,8 +1,5 @@
 # .test_guessSeparator ---------------------------------------------------------
 
-#'  test guessSeparator
-#' 
-#' 
 .test_guessSeparator <- function()
 {
   csvFiles <- dir(
@@ -15,36 +12,37 @@
   csvFile <- csvFiles[12]
   
   for (csvFile in csvFiles) {
-    print(which(csvFile==csvFiles))
+    
+    print(which(csvFile == csvFiles))
+    
     sep <- guessSeparator(csvFile)
-    cat(sprintf("\n\nExpected separator in '%s': '%s'\n", 
-                basename(csvFile), sep))
+    
+    cat(sprintf(
+      "\n\nExpected separator in '%s': '%s'\n", 
+      basename(csvFile), sep
+    ))
+    
     print(readLines(csvFile, 6))
   }  
 }
 
 # guessSeparator ---------------------------------------------------------------
 
-#' guess column separator from file
-#' 
-#' guess column separator from file
+#' Guess Column Separator Used in File
 #' 
 #' @param csvFile full path to text file containing 'comma separated values'
 #' @param n number of first lines in the file to be looked at
-#' @param separators vector of possible column separator characters the file is to be
-#'   checked for
+#' @param separators vector of possible column separator characters the file is
+#'   to be checked for
 #' 
-guessSeparator <- function
-(
-  csvFile, 
-  n = 10,
-  separators = c(";", ",", "\t")
-)
+guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 { 
   if (length(csvFile) > 1) {
+    
     structure(sapply(csvFile, guessSeparator, n = n), names = NULL)
-  }
-  else {
+    
+  } else {
+    
     stopifnot(file.exists(csvFile))    
     
     textlines <- readLines(csvFile, n)
@@ -53,6 +51,7 @@ guessSeparator <- function
     candidates <- .guessSeparator.1(textlines, separators)
     
     if (length(candidates) == 1) {
+      
       return(candidates)
     }
     
@@ -60,26 +59,31 @@ guessSeparator <- function
     candidates <- .guessSeparator.2(textlines, separators)
     
     if (length(candidates) == 1) {
+      
       return(candidates)
     }
 
     # Try other methods...
     if (length(candidates) == 0) {
-      messageText <- paste("None of the separators results in the same number",
-                           "of columns for each row")
-    }
-    else if (length(candidates) > 1) {
-      messageText <- paste("I cannot decide between these separators:", 
-                           paste0("'", candidates, "'", collapse = ", "))
+      
+      messageText <- paste(
+        "None of the separators results in the same number",
+        "of columns for each row"
+      )
+      
+    } else if (length(candidates) > 1) {
+      
+      messageText <- paste(
+        "I cannot decide between these separators:", 
+        paste0("'", candidates, "'", collapse = ", ")
+      )
     }
     
-    warning(
-      sprintf(
-        paste("When guessing the separator of '%s': %s.",
-              "Returning the first separator '%s'!"),
-        csvFile, messageText, separators[1]
-      )
-    )
+    warning(sprintf(
+      paste("When guessing the separator of '%s': %s.",
+            "Returning the first separator '%s'!"),
+      csvFile, messageText, separators[1]
+    ))
     
     separators[1]
   }
@@ -100,18 +104,22 @@ guessSeparator <- function
   #
   
   numberOfColumns <- lapply(separators, function(sep) {
+    
     unlist(lapply(textlines, function(line) {
+      
       if (grepl("^\\s*$", line) || 
             comment.char != "" && stringStartsWith(hsTrim(line), comment.char)) {
         0
-      }
-      else {
+        
+      } else {
+        
         ncol(csvTextToDataFrame(line, sep = sep, comment.char = comment.char))
       }
     }))
   })
   
   selected <- sapply(numberOfColumns, function(x) {
+    
     x[1] > 1 && allAreEqual(x)
   })
   
@@ -122,13 +130,13 @@ guessSeparator <- function
 
 #' Guess Column Separator (Version 2)
 #' 
-#' 
 .guessSeparator.2 <- function(textlines, separators)
 {
   # Which of the separators occurs most?
   characters <- strsplit(paste(textlines, collapse = ""), "")[[1]]
   
   count <- sapply(separators, function(sep) {
+    
     sum(characters == sep)
   })
   
@@ -137,39 +145,31 @@ guessSeparator <- function
 
 # getKeywordPositions ----------------------------------------------------------
 
-#' localise keywords in data frame
-#' 
-#' localise keywords in data frame
+#' Localise Keywords in Data Frame
 #' 
 #' @param dataFrame data frame or matrix in which to search for given keywords
 #' @param keywords (list of) keywords to be looked for in \emph{data frame}
-#' @param asDataFrame if TRUE (default), a data frame is returned, otherwise a matrix
-#' 
-#' @return data frame (if \emph{asDataFrame} = TRUE) or matrix with one column per 
-#'   keyword that was given in \emph{keywords}. The first row contains the row
-#'   numbers and the second row contains the column numbers, respectively, of
-#'   the fields in \emph{dataFrame} in which the corresponding keywords were
+#' @param asDataFrame if TRUE (default), a data frame is returned, otherwise a
+#'   matrix
+#'   
+#' @return data frame (if \emph{asDataFrame} = TRUE) or matrix with one column
+#'   per keyword that was given in \emph{keywords}. The first row contains the
+#'   row numbers and the second row contains the column numbers, respectively,
+#'   of the fields in \emph{dataFrame} in which the corresponding keywords were 
 #'   found.
 #' 
-getKeywordPositions <- function # localise keywords in data frame
-### localise keywords in data frame
-(
-  dataFrame, 
-  ### data frame or matrix in which to search for given keywords
-  keywords, 
-  ### (list of) keywords to be looked for in \emph{data frame}
-  asDataFrame = TRUE
-  ### if TRUE (default), a data frame is returned, otherwise a matrix
-)
+getKeywordPositions <- function(dataFrame, keywords, asDataFrame = TRUE)
 {
   textValues <- as.matrix(dataFrame)
   
   keywordPositions <- sapply(keywords, function(x) {
+    
     which(textValues == x, arr.ind = TRUE)
   })
   
   # the result must be a matrix, otherwise a keyword was not found exacly once
   if (! is.matrix(keywordPositions)) {
+    
     stop(
       "\n*** I could not find all of these keywords that I was looking for:\n",
       paste("'", as.character(keywords), "'", sep = "", collapse = ", "))
@@ -177,15 +177,11 @@ getKeywordPositions <- function # localise keywords in data frame
   
   # data frame allows for the $ operator later
   if (asDataFrame) {
+    
     as.data.frame(keywordPositions)  
-  }
-  else {
+    
+  } else {
+    
     keywordPositions
   }
-  
-  ### data frame (if \emph{asDataFrame} = TRUE) or matrix with one column per 
-  ### keyword that was given in \emph{keywords}. The first row contains the row
-  ### numbers and the second row contains the column numbers, respectively, of
-  ### the fields in \emph{dataFrame} in which the corresponding keywords were
-  ### found.
 }

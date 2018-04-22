@@ -33,4 +33,5 @@ str(grid_1)
 # ... with expandGrid() character strings are not converted by default.
 # Also, there is no attribute "out.attrs" as it is set by expand.grid().
 str(grid_2)
+
 }

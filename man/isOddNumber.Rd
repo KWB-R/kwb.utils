@@ -10,5 +10,5 @@ isOddNumber(x)
 \item{x}{vector of numeric}
 }
 \description{
-check for odd numbers
+Check for Odd Numbers
 }

@@ -9,12 +9,13 @@ colStatisticOneFunction(dataFrame, FUN, na.rm = FALSE)
 \arguments{
 \item{dataFrame}{a data frame of which statistics are to be calculated}
 
-\item{FUN}{statistical function to be applied on each column of dataFrame
+\item{FUN}{statistical function to be applied on each column of dataFrame 
 possible values: "sum", "mean", "min", "max", "number.na" (number of NA 
 values), "length" (number of values)}
 
-\item{na.rm}{if TRUE, NA values are removed before applying the statistical function}
+\item{na.rm}{if TRUE, NA values are removed before applying the statistical
+function}
 }
 \description{
-applies a statistical function to all columns of a data frame
+Applies a statistical function to all columns of a data frame
 }

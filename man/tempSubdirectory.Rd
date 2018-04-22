@@ -2,7 +2,7 @@
 % Please edit documentation in R/system.R
 \name{tempSubdirectory}
 \alias{tempSubdirectory}
-\title{Create and return Path of Subdirectory in temp()}
+\title{Create and Return Path of Subdirectory in temp()}
 \usage{
 tempSubdirectory(subdir)
 }
@@ -13,5 +13,5 @@ tempSubdirectory(subdir)
 full path to created directory
 }
 \description{
-Create and return path of subdirectory in temp()
+Create and Return Path of Subdirectory in temp()
 }

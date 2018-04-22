@@ -2,7 +2,7 @@
 % Please edit documentation in R/list.R
 \name{copyListElements}
 \alias{copyListElements}
-\title{Copy list elements into a list of lists}
+\title{Copy List Elements into a List of Lists}
 \usage{
 copyListElements(x, y, name = deparse(substitute(y)))
 }
@@ -15,13 +15,14 @@ copyListElements(x, y, name = deparse(substitute(y)))
 }
 \value{
 \code{x} with each sublist being extended by list element \code{name}
-having been taken from \code{y}
+  having been taken from \code{y}
 }
 \description{
-Copy list elements into a list of lists
+Copy List Elements into a List of Lists
 }
 \examples{
 x <- list(list(a = 1), list(b = 2), list(c = 3))
 y <- list("b1", "b2", "b3")
 str(copyListElements(x, y, "b"))
+
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/parse.R
 \name{getKeywordPositions}
 \alias{getKeywordPositions}
-\title{localise keywords in data frame}
+\title{Localise Keywords in Data Frame}
 \usage{
 getKeywordPositions(dataFrame, keywords, asDataFrame = TRUE)
 }
@@ -11,15 +11,16 @@ getKeywordPositions(dataFrame, keywords, asDataFrame = TRUE)
 
 \item{keywords}{(list of) keywords to be looked for in \emph{data frame}}
 
-\item{asDataFrame}{if TRUE (default), a data frame is returned, otherwise a matrix}
+\item{asDataFrame}{if TRUE (default), a data frame is returned, otherwise a
+matrix}
 }
 \value{
-data frame (if \emph{asDataFrame} = TRUE) or matrix with one column per 
-  keyword that was given in \emph{keywords}. The first row contains the row
-  numbers and the second row contains the column numbers, respectively, of
-  the fields in \emph{dataFrame} in which the corresponding keywords were
+data frame (if \emph{asDataFrame} = TRUE) or matrix with one column
+  per keyword that was given in \emph{keywords}. The first row contains the
+  row numbers and the second row contains the column numbers, respectively,
+  of the fields in \emph{dataFrame} in which the corresponding keywords were 
   found.
 }
 \description{
-localise keywords in data frame
+Localise Keywords in Data Frame
 }

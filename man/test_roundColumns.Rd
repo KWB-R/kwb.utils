@@ -7,5 +7,5 @@
 test_roundColumns()
 }
 \description{
-test_roundColumns
+test roundColumns
 }

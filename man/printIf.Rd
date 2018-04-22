@@ -2,7 +2,7 @@
 % Please edit documentation in R/io.R
 \name{printIf}
 \alias{printIf}
-\title{call print if condition is met}
+\title{Call Print If Condition Is Met}
 \usage{
 printIf(condition, x, caption = deparse(substitute(x)))
 }
@@ -11,8 +11,9 @@ printIf(condition, x, caption = deparse(substitute(x)))
 
 \item{x}{object to be printed}
 
-\item{caption}{optional. Caption line to be printed with cat before printing \emph{x}}
+\item{caption}{optional. Caption line to be printed with cat before printing
+\emph{x}}
 }
 \description{
-call print if condition is met
+Call Print If Condition Is Met
 }

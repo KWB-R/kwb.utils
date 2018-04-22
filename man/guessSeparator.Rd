@@ -2,7 +2,7 @@
 % Please edit documentation in R/parse.R
 \name{guessSeparator}
 \alias{guessSeparator}
-\title{guess column separator from file}
+\title{Guess Column Separator Used in File}
 \usage{
 guessSeparator(csvFile, n = 10, separators = c(";", ",", "\\t"))
 }
@@ -11,9 +11,9 @@ guessSeparator(csvFile, n = 10, separators = c(";", ",", "\\t"))
 
 \item{n}{number of first lines in the file to be looked at}
 
-\item{separators}{vector of possible column separator characters the file is to be
-checked for}
+\item{separators}{vector of possible column separator characters the file is
+to be checked for}
 }
 \description{
-guess column separator from file
+Guess Column Separator Used in File
 }

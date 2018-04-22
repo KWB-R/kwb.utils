@@ -16,6 +16,6 @@ rename in the form <old-name> = <new-name>}
 \emph{dframe} with columns renamed as specified in \emph{renames}
 }
 \description{
-rename columns in a data frame giving tupels of original name
-  and substitute name as named elements in list "renames"
+Rename columns in a data frame giving tupels of original name and substitute
+name as named elements in list "renames"
 }

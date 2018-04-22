@@ -63,13 +63,10 @@ safePath <- function(...)
 
     } else {
 
-      stop(
-        sprintf(
-          "No such file: '%s' in\n  '%s'.\nAvailable files:\n  %s",
-          basename(file), dirpath, stringList(dir(dirpath), collapse = "\n  ")
-        ),
-        call. = FALSE
-      )
+      stop(call. = FALSE, sprintf(
+        "No such file: '%s' in\n  '%s'.\nAvailable files:\n  %s",
+        basename(file), dirpath, stringList(dir(dirpath), collapse = "\n  ")
+      ))
     }
   }
 
@@ -116,11 +113,14 @@ desktop <- function()
   dict <- list(desktop = desktops[osType])
 
   if (osType == "windows") {
+    
     hsResolve(
       "desktop", dict,
       userprofile = kwb.utils::rStylePath(Sys.getenv("USERPROFILE"))
     )
+
   } else {
+    
     hsResolve("desktop", dict, user = user())
   }
 }
@@ -140,6 +140,7 @@ user <- function()
   user <- Sys.getenv(c(windows = "USERNAME", unix = "USER")[osType])
 
   if (isNaOrEmpty(user)) {
+    
     stop("I do not know how to get the user name in: ", osType)
   }
 
@@ -149,8 +150,6 @@ user <- function()
 # sourceScripts ----------------------------------------------------------------
 
 #' Load R Scripts with \code{source}
-#'
-#' Load R scripts with \code{source}
 #'
 #' @param scripts full paths to R scripts
 #' @param dbg if TRUE (default) log messages ("loading... ok") are shown
@@ -164,8 +163,11 @@ sourceScripts <- function(scripts, dbg = TRUE)
     catIf(dbg, "loading functions from ", basename(script), "... ")
 
     if (file.exists(script)) {
+      
       source(script)
+      
     } else {
+      
       warning("Skipping non-existing script: ", script)
     }
 
@@ -179,20 +181,13 @@ sourceScripts <- function(scripts, dbg = TRUE)
 
 #' Change Working Directory and Run Function
 #'
-#' Change working directory and run function
-#'
 #' @param target.dir target directory. Default: \code{tempdir()}
 #' @param FUN function to be invoked
 #' @param \dots arguments to be passed to function FUN
 #' @param .dbg if TRUE, debug messages on changing the directory are shown.
 #'   Default: \code{FALSE}
 #'
-runInDirectory <- function(
-  target.dir = tempdir(),
-  FUN,
-  ...,
-  .dbg = FALSE
-)
+runInDirectory <- function(target.dir = tempdir(), FUN, ..., .dbg = FALSE)
 {
   # Save current working directory, set working directory to tdir
   # and reset working directory on exit
@@ -229,6 +224,7 @@ defaultWindowsProgramFolders <- function()
   )
 
   directories.x86 <- paste(directories, "(x86)")
+  
   names(directories.x86) <- names(directories)
 
   c(directories, directories.x86)
@@ -246,7 +242,9 @@ defaultWindowsProgramFolders <- function()
 mySystemTime <- function(FUN, args)
 {
   stime <- system.time(returnValue <- do.call(FUN, args))
+  
   cat(sprintf("Elapsed time: %0.2f s\n", stime["elapsed"]))
+  
   returnValue
 }
 
@@ -264,9 +262,11 @@ runBatchfileInDirectory <- function(
 )
 {
   currentdir <- getwd()
+  
   on.exit(setwd(currentdir))
 
   setwd(directory)
+  
   shell.exec(batchfile, ...)
 }
 
@@ -275,8 +275,9 @@ runBatchfileInDirectory <- function(
 #' Path in Quotes for Usage in Command Line
 #'
 #' Set the given path in quotes so that in can be used in a command line
-#' #'
+#' 
 #' @param x path to be quoted
+#' 
 cmdLinePath <- function(x)
 {
   hsQuoteChr(windowsPath(x), '"')
@@ -285,9 +286,9 @@ cmdLinePath <- function(x)
 # copyDirectoryStructure -------------------------------------------------------
 
 #' Copy Directory Structure
-#'
-#' Copy the full directory structure from a source directory to a target
-#'   directory
+#' 
+#' Copy the full directory structure from a source directory to a target 
+#' directory
 #'
 #' @param sourcedir path to the source directory
 #' @param targetdir path to the target directory
@@ -301,11 +302,7 @@ cmdLinePath <- function(x)
 #'   full paths of the directories that were created.
 #'
 copyDirectoryStructure <- function(
-  sourcedir,
-  targetdir,
-  excludePattern = "^$",
-  recursive = TRUE,
-  dbg = TRUE
+  sourcedir, targetdir, excludePattern = "^$", recursive = TRUE, dbg = TRUE
 )
 {
   subdirs <- list.dirs(sourcedir, recursive = recursive, full.names = FALSE)
@@ -317,8 +314,6 @@ copyDirectoryStructure <- function(
   paths <- as.character(lapply(targetpaths, createDirectory, dbg = dbg))
 
   invisible(paths)
-  ### This function invisibly returns a vector of character containing the full
-  ### paths of the directories that were created.
 }
 
 # createDirAndReturnPath -------------------------------------------------------
@@ -414,9 +409,7 @@ createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 
 # tempSubdirectory -------------------------------------------------------------
 
-#' Create and return Path of Subdirectory in temp()
-#'
-#' Create and return path of subdirectory in temp()
+#' Create and Return Path of Subdirectory in temp()
 #'
 #' @param subdir name of subdirectory to be created
 #'
@@ -438,16 +431,12 @@ tempSubdirectory <- function(subdir)
 
 #' Open Windows Explorer
 #'
-#' open Windows Explorer
-#'
 #' @param startdir directory to be opened in Windows Explorer
 #' @param use.shell.exec if \code{TRUE} \code{shell.exec} is used instead of
 #'   running the system command \code{cmd /C explorer}
 #'
-hsOpenWindowsExplorer <- function
-(
-  startdir = tempdir(),
-  use.shell.exec = ! .isNetworkPath(startdir)
+hsOpenWindowsExplorer <- function(
+  startdir = tempdir(), use.shell.exec = ! .isNetworkPath(startdir)
 )
 {
   if (use.shell.exec) {
@@ -477,10 +466,8 @@ hsOpenWindowsExplorer <- function
 #'   backslashes
 #'
 #' @param path vector of character representing file paths
-windowsPath <- function
-(
-  path
-)
+#' 
+windowsPath <- function(path)
 {
   gsub("/", "\\\\", path)
 }
@@ -502,8 +489,6 @@ rStylePath <- function(path)
 
 # .showCommand -----------------------------------------------------------------
 
-#'  showCommand
-#'
 .showCommand <- function(commandLine)
 {
   cat(sprintf("Running command: >>>%s<<<\n", commandLine))
@@ -513,20 +498,18 @@ rStylePath <- function(path)
 
 #' Wrapper around "system"
 #'
-#' Wrapper around "system"
-#'
 #' @param commandLine character string passed to \code{system}
 #' @param ... additional arguments passed to \code{system}
+#' 
 hsSystem <- function(commandLine, ...)
 {
   .showCommand(commandLine)
-  system(command=commandLine, ...)
+  
+  system(command = commandLine, ...)
 }
 
 # hsShell ----------------------------------------------------------------------
 
-#' Wrapper around "shell"
-#'
 #' Wrapper around "shell"
 #'
 #' @param commandLine character string passed to \code{shell}
@@ -535,5 +518,6 @@ hsSystem <- function(commandLine, ...)
 hsShell <- function(commandLine, ...)
 {
   .showCommand(commandLine)
+  
   shell(commandLine, ...)
 }

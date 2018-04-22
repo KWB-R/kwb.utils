@@ -2,16 +2,16 @@
 % Please edit documentation in R/readCsvInputFile.R
 \name{columnDescriptor}
 \alias{columnDescriptor}
-\title{columnDescriptor}
+\title{Column Descriptor}
 \usage{
 columnDescriptor(match = ".*", fixed = FALSE)
 }
 \arguments{
 \item{match}{pattern or fixed text to match in header line}
 
-\item{fixed}{if TRUE, \emph{match} is taken as a fixed string to be looked for in the
-header line, otherwise it is interpreded as a regular expression}
+\item{fixed}{if TRUE, \emph{match} is taken as a fixed string to be looked
+for in the header line, otherwise it is interpreded as a regular expression}
 }
 \description{
-columnDescriptor
+Column Descriptor
 }

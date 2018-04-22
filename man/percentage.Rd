@@ -2,7 +2,7 @@
 % Please edit documentation in R/stat.R
 \name{percentage}
 \alias{percentage}
-\title{percentage}
+\title{Percentage}
 \usage{
 percentage(x, basis)
 }

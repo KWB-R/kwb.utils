@@ -20,22 +20,22 @@ data frame resulting from "row-binding" data frames.
 row-bind data frames in a list of lists
 }
 \examples{
-  x <- list(
-    list(
-      number = 1,
-      data = data.frame(x = 1:2, y = 2:3)
-    ),
-    list(
-      number = 2,
-      data = data.frame(x = 11:12, y = 12:13)
-    )
+x <- list(
+  list(
+    number = 1,
+    data = data.frame(x = 1:2, y = 2:3)
+  ),
+  list(
+    number = 2,
+    data = data.frame(x = 11:12, y = 12:13)
   )
+)
   
-  safeRowBindOfListElements(x, "data")
+safeRowBindOfListElements(x, "data")
   
-  ## also working if the column names of the data frames in the "data" elements
-  ## differ.
-  x[[1]]$data$z = 13:14
-  safeRowBindOfListElements(x, "data")
+# also working if the column names of the data frames in the "data" elements
+# differ.
+x[[1]]$data$z = 13:14
+safeRowBindOfListElements(x, "data")
 
 }

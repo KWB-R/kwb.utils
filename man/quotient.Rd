@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{quotient}
 \alias{quotient}
-\title{quotient}
+\title{Quotient}
 \usage{
 quotient(dividend, divisor, substitute.value = Inf, warn = TRUE)
 }
@@ -19,5 +19,5 @@ quotient(dividend, divisor, substitute.value = Inf, warn = TRUE)
 quotient of dividend and divisor: dividend/divisor
 }
 \description{
-calculate the quotient of two numbers
+Calculate the quotient of two numbers
 }

@@ -18,9 +18,9 @@ data frame or matrix with \code{columns} being the leftmost columns
 move columns to the start of a data frame or matrix
 }
 \examples{
-  x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
+x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
   
-  moveColumnsToFront(x, "b")
-  moveColumnsToFront(x, c("b", "a"))
+moveColumnsToFront(x, "b")
+moveColumnsToFront(x, c("b", "a"))
   
 }

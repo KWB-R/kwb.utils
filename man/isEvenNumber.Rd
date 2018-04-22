@@ -10,5 +10,5 @@ isEvenNumber(x)
 \item{x}{vector of numeric}
 }
 \description{
-check for even numbers
+Check for Even Numbers
 }

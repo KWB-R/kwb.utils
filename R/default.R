@@ -15,18 +15,22 @@ getFunctionValueOrDefault <- function(values, FUN, default, warningMessage = NA)
   if (all(is.na(values))) {
     
     if (is.na(warningMessage)) {
+      
       warningMessage <- paste(
         "All values to which", hsQuoteChr(getFunctionName(FUN)),
-        "should be applied are NA. The default is taken:", default)
+        "should be applied are NA. The default is taken:", default
+      )
     }
     
     if (warningMessage != "") {
+      
       warning(warningMessage)
     }
     
     functionValue <- default
-  }
-  else {
+    
+  } else {
+    
     functionValue <- FUN(values, na.rm = TRUE)
   }
   
@@ -157,22 +161,28 @@ defaultIfZero <- function(x, default, count = FALSE)
 .defaultIf <- function(FUN.test, x, default, count = FALSE)
 {
   selected <- if (length(x) > 1) {
+    
     sapply(x, FUN.test)
+    
   } else {
+    
     FUN.test(x)
   }
   
   if (any(selected)) {
     
     if (is.null(x)) {
+      
       x <- default
-    }
-    else {
+      
+    } else {
+      
       x[selected] <- default
     }
   }
   
   if (count) {
+    
     x <- structure(x, count = sum(selected, na.rm = TRUE))
   }
   

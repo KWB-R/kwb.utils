@@ -17,5 +17,5 @@ runInDirectory(target.dir = tempdir(), FUN, ..., .dbg = FALSE)
 Default: \code{FALSE}}
 }
 \description{
-Change working directory and run function
+Change Working Directory and Run Function
 }

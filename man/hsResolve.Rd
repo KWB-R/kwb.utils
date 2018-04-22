@@ -20,6 +20,9 @@ resolving}
 \item{dbg}{if \code{TRUE} (the default is \code{FALSE}) debug messages are 
 shown}
 }
+\value{
+The (resolved) value is returned
+}
 \description{
 Resolve strings according to substitutions defined in dictionary
 }

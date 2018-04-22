@@ -14,14 +14,14 @@ Reset the row names of a data frame x to 1:nrow(x) by setting the
   \code{row.names} attribute to \code{NULL}.
 }
 \examples{
-  persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
-  
-  persons.ordered <- persons[order(persons$name), ]
-  
-  # Original row names
-  persons.ordered
-  
-  # Reset row names
-  resetRowNames(persons.ordered)
-  
+persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
+
+persons.ordered <- persons[order(persons$name), ]
+
+# Original row names
+persons.ordered
+
+# Reset row names
+resetRowNames(persons.ordered)
+
 }

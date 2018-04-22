@@ -1,6 +1,6 @@
 # enlargeVector ----------------------------------------------------------------
 
-#' Enlarge a Vector to given Length
+#' Enlarge a Vector to Given Length
 #' 
 #' Enlarge a vector to the given length, filling with given element
 #' 
@@ -70,7 +70,7 @@ lastElement <- function(x)
 
 # getByPositiveOrNegativeIndex -------------------------------------------------
 
-#' Get Vector Elements by positive or negative Index
+#' Get Vector Elements by Positive or Negative Index
 #' 
 #' Get element from vector, counting from head or tail
 #' 

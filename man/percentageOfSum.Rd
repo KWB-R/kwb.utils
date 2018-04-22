@@ -2,7 +2,7 @@
 % Please edit documentation in R/stat.R
 \name{percentageOfSum}
 \alias{percentageOfSum}
-\title{percentage of the sum of values}
+\title{Percentage of the Sum of Values}
 \usage{
 percentageOfSum(x, na.rm = TRUE)
 }
@@ -15,11 +15,10 @@ percentageOfSum(x, na.rm = TRUE)
 100 * x / sum(x)
 }
 \description{
-percentage of the sum of values
+Percentage of the Sum of Values
 }
 \examples{
-  p <- percentageOfSum(1:10)
-  stopifnot(sum(p) == 100)
-  
+p <- percentageOfSum(1:10)
+stopifnot(sum(p) == 100)
 
 }

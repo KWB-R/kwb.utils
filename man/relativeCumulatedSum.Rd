@@ -2,7 +2,7 @@
 % Please edit documentation in R/stat.R
 \name{relativeCumulatedSum}
 \alias{relativeCumulatedSum}
-\title{relativeCumulatedSum}
+\title{Relative Cumulated Sum}
 \usage{
 relativeCumulatedSum(values)
 }

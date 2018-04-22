@@ -2,7 +2,7 @@
 % Please edit documentation in R/stat.R
 \name{percentageOfMaximum}
 \alias{percentageOfMaximum}
-\title{percentageOfMaximum}
+\title{Percentage of Maximum}
 \usage{
 percentageOfMaximum(x, na.rm = TRUE)
 }
@@ -15,5 +15,5 @@ percentageOfMaximum(x, na.rm = TRUE)
 100 * x / max(x)
 }
 \description{
-percentageOfMaximum
+Percentage of Maximum
 }

@@ -24,6 +24,7 @@
 #' # ... with expandGrid() character strings are not converted by default.
 #' # Also, there is no attribute "out.attrs" as it is set by expand.grid().
 #' str(grid_2)
+#' 
 expandGrid <- function(..., stringsAsFactors = FALSE)
 {
   args_1 <- rev(list(...))
@@ -59,13 +60,10 @@ fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
   stopifnot(is.data.frame(x))
   
   roworder <- do.call(order, c(x, list(decreasing = decreasing, ...)))
+  
   x <- x[roworder, , drop = FALSE]
   
-  if (renumber.rows) {
-    resetRowNames(x)
-  } else {
-    x
-  }
+  if (renumber.rows) resetRowNames(x) else x
 }
 
 # splitIntoFixSizedBlocks ------------------------------------------------------
@@ -88,13 +86,13 @@ splitIntoFixSizedBlocks <- function(data, blocksize)
   n <- nrow(data)
 
   lapply(0:as.integer(n/blocksize), function(i) {
+    
     firstIndex <- i * blocksize + 1
+    
     lastIndex <- (i + 1) * blocksize
+    
     data[firstIndex:min(lastIndex, n), ]
   })
-
-  ### list of data frames (if \code{data} is a data frame) or list of matrices
-  ### (if \code{data} is a matrix)
 }
 
 # resetRowNames ----------------------------------------------------------------
@@ -107,23 +105,25 @@ splitIntoFixSizedBlocks <- function(data, blocksize)
 #' @param x data frame or matrix
 #' 
 #' @examples 
-#'   persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
-#'   
-#'   persons.ordered <- persons[order(persons$name), ]
-#'   
-#'   # Original row names
-#'   persons.ordered
-#'   
-#'   # Reset row names
-#'   resetRowNames(persons.ordered)
-#'   
+#' persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
+#' 
+#' persons.ordered <- persons[order(persons$name), ]
+#' 
+#' # Original row names
+#' persons.ordered
+#' 
+#' # Reset row names
+#' resetRowNames(persons.ordered)
+#'
 resetRowNames <- function(x)
 {
   if (length(dim(x)) != 2) {
+    
     stop(deparse(substitute(x)), " must be have two dimensions", call. = FALSE)
   }
 
   row.names(x) <- NULL
+  
   x
 }
 
@@ -153,16 +153,16 @@ resetRowNames <- function(x)
 #'   data frame being the result of \code{rbind}-ing together these data frames.
 #'   
 #' @examples 
-#'   # Some example data
-#'   (data <- data.frame(
-#'     A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
-#'     B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
-#'   ))
-#'   
-#'   frequencyTable(data) # results in a data frame
-#'   
-#'   frequencyTable(data, as.data.frame = FALSE) # results in a list
-#'   
+#' # Some example data
+#' (data <- data.frame(
+#'   A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
+#'   B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
+#' ))
+#' 
+#' frequencyTable(data) # results in a data frame
+#' 
+#' frequencyTable(data, as.data.frame = FALSE) # results in a list
+#'
 frequencyTable <- function(
   data, columns = names(data), orderByLeastLevels = TRUE, as.data.frame = TRUE,
   useNA = c("no", "ifany", "always")[2]
@@ -171,14 +171,11 @@ frequencyTable <- function(
   L <- .frequencyTableList(data, columns = columns, useNA = useNA)
   
   if (isTRUE(orderByLeastLevels)) {
+    
     L <- L[order(sapply(L, nrow))]
   }
   
-  if (isTRUE(as.data.frame)) {
-    rbindAll(L)
-  } else {
-    L
-  }
+  if (isTRUE(as.data.frame)) rbindAll(L) else L
 }
 
 # .frequencyTableList ----------------------------------------------------------
@@ -242,17 +239,17 @@ frequencyTable <- function(
 #' @return list of logical
 #' 
 #' @examples 
-#'   x <- data.frame(a = 1:2, b = 2:3)
-#'   y <- x
-#'   
-#'   test1 <- all(unlist(compareDataFrames(x, y)))
-#'   
-#'   z <- compareDataFrames(x, y[, c("b", "a")])
-#'   expectedFalse <- c("identical", "identicalExceptAttributes", "sameColumnNames")
-#'   test2 <- all(names(which(!unlist(z))) == expectedFalse)
-#'   
-#'   test1 && test2
-#'   
+#' x <- data.frame(a = 1:2, b = 2:3)
+#' y <- x
+#' 
+#' test1 <- all(unlist(compareDataFrames(x, y)))
+#' 
+#' z <- compareDataFrames(x, y[, c("b", "a")])
+#' expectedFalse <- c("identical", "identicalExceptAttributes", "sameColumnNames")
+#' test2 <- all(names(which(!unlist(z))) == expectedFalse)
+#' 
+#' test1 && test2
+#'
 compareDataFrames <- function(
   x, y, dbg = FALSE, xname = deparse(substitute(x)), 
   yname = deparse(substitute(y))
@@ -341,9 +338,11 @@ compareDataFrames <- function(
 #'   message
 #' @param yname optional name of the second vector that will be used in the
 #'   message
+#'   
 #' @examples
 #' compareSets(1:10, 3:13)
 #' compareSets(1:10, 3:13, "numbers", "set 1", "set 2")
+#' 
 compareSets <- function(
   x, y, subject = "Values", xname = deparse(substitute(x)), 
   yname = deparse(substitute(y))
@@ -352,6 +351,7 @@ compareSets <- function(
   stringFormat <- "%s in %s that are not in %s: %s\n"
   
   cat(sprintf(stringFormat, subject, xname, yname, stringList(setdiff(x, y))))
+  
   cat(sprintf(stringFormat, subject, yname, xname, stringList(setdiff(y, x))))
 }
 
@@ -430,44 +430,46 @@ atLeastOneRowIn <- function(dframe)
 #'   column \emph{nameColumn} are converted to a factor
 #' 
 #' @examples 
-#'   L <- list(
-#'     A = data.frame(x = 1:2, y = 2:3),
-#'     B = data.frame(x = 1:3, y = 2:4)
-#'   )
-#'   
-#'   L.unnamed <- L
-#'   names(L.unnamed) <- NULL
-#'   
-#'   y1 <- rbindAll(L)
-#'   y2 <- rbindAll(L, nameColumn = "group")
-#'   y3 <- rbindAll(L.unnamed, nameColumn = "group", namesAsFactor = FALSE)
-#'   y4 <- rbindAll(L.unnamed, nameColumn = "group")
-#'   
-#'   expected1 <- data.frame(
-#'     x = c(L$A$x, L$B$x),
-#'     y = c(L$A$y, L$B$y)
-#'   )
-#'   
-#'   expected2 <- cbind(
-#'     expected1,
-#'     group = as.factor(c(rep("A", nrow(L$A)), rep("B", nrow(L$B)))),
-#'     stringsAsFactors = FALSE
-#'   )
-#'   
-#'   expected3 <- cbind(
-#'     expected1,
-#'     group = c(rep(1L, nrow(L$A)), rep(2L, nrow(L$B)))
-#'   )
-#'   
-#'   expected4 <- expected3
-#'   expected4$group <- as.factor(expected4$group)
-#'   
-#'   identical(y1, expected1) &&
-#'     identical(y2, expected2) &&
-#'     identical(y3, expected3) &&
-#'     identical(y4, expected4)
-#'   
-rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor = TRUE)
+#' L <- list(
+#'   A = data.frame(x = 1:2, y = 2:3),
+#'   B = data.frame(x = 1:3, y = 2:4)
+#' )
+#' 
+#' L.unnamed <- L
+#' names(L.unnamed) <- NULL
+#' 
+#' y1 <- rbindAll(L)
+#' y2 <- rbindAll(L, nameColumn = "group")
+#' y3 <- rbindAll(L.unnamed, nameColumn = "group", namesAsFactor = FALSE)
+#' y4 <- rbindAll(L.unnamed, nameColumn = "group")
+#' 
+#' expected1 <- data.frame(
+#'   x = c(L$A$x, L$B$x),
+#'   y = c(L$A$y, L$B$y)
+#' )
+#' 
+#' expected2 <- cbind(
+#'   expected1,
+#'   group = as.factor(c(rep("A", nrow(L$A)), rep("B", nrow(L$B)))),
+#'   stringsAsFactors = FALSE
+#' )
+#' 
+#' expected3 <- cbind(
+#'   expected1,
+#'   group = c(rep(1L, nrow(L$A)), rep(2L, nrow(L$B)))
+#' )
+#' 
+#' expected4 <- expected3
+#' expected4$group <- as.factor(expected4$group)
+#' 
+#' identical(y1, expected1) &&
+#'   identical(y2, expected2) &&
+#'   identical(y3, expected3) &&
+#'   identical(y4, expected4)
+#' 
+rbindAll <- function(
+  x, nameColumn = "", remove.row.names = TRUE, namesAsFactor = TRUE
+)
 {
   result <- do.call(rbind, x)
   
@@ -476,20 +478,16 @@ rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor 
     xnames <- names(x)
     
     if (is.null(xnames)) {
+      
       xnames <- seq_len(length(x))
     }
     
-    times <- sapply(x, FUN = function(x) {
-      if (is.null(x)) {
-        0
-      } else {
-        nrow(x)
-      }
-    })
+    times <- sapply(x, FUN = function(x) if (is.null(x)) 0 else nrow(x))
     
     nameValues <- rep(xnames, times = times)
     
     if (namesAsFactor) {
+      
       nameValues <- as.factor(nameValues)
     }
    
@@ -502,6 +500,7 @@ rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor 
   }
   
   if (remove.row.names) {
+    
     row.names(result) <- NULL
   }
   
@@ -520,23 +519,23 @@ rbindAll <- function(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor 
 #' @return data frame resulting from "row-binding" data frames.
 #' 
 #' @examples 
-#'   x <- list(
-#'     list(
-#'       number = 1,
-#'       data = data.frame(x = 1:2, y = 2:3)
-#'     ),
-#'     list(
-#'       number = 2,
-#'       data = data.frame(x = 11:12, y = 12:13)
-#'     )
+#' x <- list(
+#'   list(
+#'     number = 1,
+#'     data = data.frame(x = 1:2, y = 2:3)
+#'   ),
+#'   list(
+#'     number = 2,
+#'     data = data.frame(x = 11:12, y = 12:13)
 #'   )
+#' )
 #'   
-#'   safeRowBindOfListElements(x, "data")
+#' safeRowBindOfListElements(x, "data")
 #'   
-#'   ## also working if the column names of the data frames in the "data" elements
-#'   ## differ.
-#'   x[[1]]$data$z = 13:14
-#'   safeRowBindOfListElements(x, "data")
+#' # also working if the column names of the data frames in the "data" elements
+#' # differ.
+#' x[[1]]$data$z = 13:14
+#' safeRowBindOfListElements(x, "data")
 #'
 safeRowBindOfListElements <- function(x, elementName)
 {
@@ -545,6 +544,7 @@ safeRowBindOfListElements <- function(x, elementName)
   result <- NULL
   
   for (dataFrame in x.list) {
+    
     result <- safeRowBind(result, dataFrame)
   }
   
@@ -559,26 +559,34 @@ safeRowBindOfListElements <- function(x, elementName)
 #' 
 #' @param dataFrame1 first data frame 
 #' @param dataFrame2 second data frame
+#' 
 #' @examples 
-#'   kwb.utils::safeRowBind(data.frame(A = 1:2, B = 2:3),
-#'                          data.frame(B = 3:4, C = 4:5))
+#' kwb.utils::safeRowBind(
+#'   data.frame(A = 1:2, B = 2:3),
+#'   data.frame(B = 3:4, C = 4:5)
+#' )
 #'   
 safeRowBind <- function(dataFrame1, dataFrame2)
 {
-  stopifnot((is.null(dataFrame1) || is.data.frame(dataFrame1)) &&
-              (is.null(dataFrame2) || is.data.frame(dataFrame2)))
+  stopifnot(
+    is.null(dataFrame1) || is.data.frame(dataFrame1),
+    is.null(dataFrame2) || is.data.frame(dataFrame2)
+  )
 
   if (is.null(dataFrame1)) {
+    
     return(dataFrame2)
   }
 
   if (is.null(dataFrame2)) {
+    
     return(dataFrame1)
   }
 
   allColumnNames <- unique(c(names(dataFrame1), names(dataFrame2)))
 
   dataFrame1 <- hsAddMissingCols(dataFrame1, allColumnNames)
+  
   dataFrame2 <- hsAddMissingCols(dataFrame2, allColumnNames)
 
   rbind(dataFrame1, dataFrame2)
@@ -599,11 +607,11 @@ safeRowBindAll <- function(x)
   result <- NULL
 
   for (element in x) {
+    
     result <- safeRowBind(dataFrame1 = result, dataFrame2 = element)
   }
 
   result
-  ### data frame resulting from "rbind"-ing all data frames in \code{x}
 }
 
 # addRowWithName ---------------------------------------------------------------
@@ -613,9 +621,10 @@ safeRowBindAll <- function(x)
 #' add row to data frame and give a row name at the same time
 #' 
 #' @param x data frame to which row is to be appended
-#' @param y data frame containing the row to be appended (exacly one row expected)
+#' @param y data frame containing the row to be appended (exacly one row
+#'   expected)
 #' @param row.name name of row to be given in result data frame
-#' 
+#'   
 #' @return \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
 #' 
 addRowWithName <- function(x, y, row.name)
@@ -626,7 +635,6 @@ addRowWithName <- function(x, y, row.name)
   row.names(x)[nrow(x)] <- row.name
 
   return(x)
-  ### \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
 }
 
 # moveToFront ------------------------------------------------------------------
@@ -639,8 +647,8 @@ addRowWithName <- function(x, y, row.name)
 #' @return vector with \code{elements} coming first
 #' 
 #' @examples 
-#'   moveToFront(1:10, 5)
-#'   moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
+#' moveToFront(1:10, 5)
+#' moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
 #'   
 moveToFront <- function(x, elements)
 {

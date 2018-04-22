@@ -16,13 +16,13 @@ by their keys}
 Reads a dictionary (a list of "key = value"-pairs) from a text file.
 }
 \examples{
-  file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-  
-  dictionary <- readDictionary(file)
-  
-  resolve("file.out", dictionary, extension = "csv")
-  resolve("file.out", dictionary, extension = "pdf")
-  
+file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
+
+dictionary <- readDictionary(file)
+
+resolve("file.out", dictionary, extension = "csv")
+resolve("file.out", dictionary, extension = "pdf")
+
 }
 \seealso{
 \code{\link{readDictionaries}}

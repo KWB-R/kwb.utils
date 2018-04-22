@@ -15,7 +15,9 @@ safeRowBind(dataFrame1, dataFrame2)
 rbind two data frames even if column names differ
 }
 \examples{
-  kwb.utils::safeRowBind(data.frame(A = 1:2, B = 2:3),
-                         data.frame(B = 3:4, C = 4:5))
+kwb.utils::safeRowBind(
+  data.frame(A = 1:2, B = 2:3),
+  data.frame(B = 3:4, C = 4:5)
+)
   
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookup.R
 \name{toLookupTable}
 \alias{toLookupTable}
-\title{keys and values or list to lookup table}
+\title{Keys and Values or List to Lookup Table}
 \usage{
 toLookupTable(keys = NULL, values = NULL, List = NULL,
   as.twoColumnTable = FALSE, stringsAsFactors = FALSE)
@@ -12,21 +12,20 @@ toLookupTable(keys = NULL, values = NULL, List = NULL,
 
 \item{values}{values of the lookup table}
 
-\item{List}{list of named elements with the names representing the keys
-and the values representing the values of the lookup table}
+\item{List}{list of named elements with the names representing the keys and
+the values representing the values of the lookup table}
 
-\item{as.twoColumnTable}{if TRUE (the default is FALSE) the result is a data frame with two columns
-\emph{keys} and \emph{values}, respectively.}
+\item{as.twoColumnTable}{if TRUE (the default is FALSE) the result is a data
+frame with two columns \emph{keys} and \emph{values}, respectively.}
 
 \item{stringsAsFactors}{passed to \code{\link[base]{data.frame}}}
 }
 \value{
 data frame with one row containing \code{values} in columns named 
-  \code{keys} or, if \code{as.twoColumnTable = TRUE}, a data frame with the
-  \code{keys} in column \emph{key} and the \code{values} in column
+  \code{keys} or, if \code{as.twoColumnTable = TRUE}, a data frame with the 
+  \code{keys} in column \emph{key} and the \code{values} in column 
   \emph{value}
 }
 \description{
-convert vectors of keys and values or a list into a lookup table (data 
-  frame)
+Convert vectors of keys and values or a list into a lookup table (data frame)
 }

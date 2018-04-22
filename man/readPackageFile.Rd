@@ -2,7 +2,7 @@
 % Please edit documentation in R/io.R
 \name{readPackageFile}
 \alias{readPackageFile}
-\title{read file from package's extdata folder}
+\title{Read File from Package's extdata Folder}
 \usage{
 readPackageFile(file, package, stringsAsFactors = FALSE, ...)
 }
@@ -11,7 +11,8 @@ readPackageFile(file, package, stringsAsFactors = FALSE, ...)
 
 \item{package}{name of the package from which to read the file}
 
-\item{stringsAsFactors}{passed to \code{\link[utils]{read.csv}} (default: \code{FALSE})}
+\item{stringsAsFactors}{passed to \code{\link[utils]{read.csv}} (default:
+\code{FALSE})}
 
 \item{\dots}{further arguments passed to \code{\link[utils]{read.csv}}}
 }
@@ -19,5 +20,5 @@ readPackageFile(file, package, stringsAsFactors = FALSE, ...)
 result of reading \code{file} with \code{\link[utils]{read.csv}}
 }
 \description{
-read file from package's "extdata" folder
+Read File from Package's extdata Folder
 }

@@ -10,7 +10,7 @@ underscoreToPercent(x)
 \item{x}{character vector containing underscores}
 }
 \description{
-Replace underscore with percent sign. May be used to define time format
-  strings as defaults in function declarations which are not supported
-  by inlinedocs.
+Replace underscore with percent sign. May be used to define time format 
+strings as defaults in function declarations which are not supported by
+inlinedocs.
 }

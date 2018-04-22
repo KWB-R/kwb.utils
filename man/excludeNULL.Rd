@@ -2,7 +2,7 @@
 % Please edit documentation in R/list.R
 \name{excludeNULL}
 \alias{excludeNULL}
-\title{Exclude all NULL entries from a list}
+\title{Exclude all NULL Entries from a List}
 \usage{
 excludeNULL(x)
 }
@@ -13,13 +13,12 @@ excludeNULL(x)
 list \code{x} with all \code{NULL} entries excluded
 }
 \description{
-Exclude all null entries from a list
+Exclude all NULL Entries from a List
 }
 \examples{
-  L <- list(a = 1, b = NULL, c = "three")
-  L
-  
-  excludeNULL(L)
-  
+L <- list(a = 1, b = NULL, c = "three")
+L
+
+excludeNULL(L)
 
 }

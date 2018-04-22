@@ -2,7 +2,7 @@
 % Please edit documentation in R/encryption.R
 \name{generateKeyFile}
 \alias{generateKeyFile}
-\title{generate a decryption key file}
+\title{Generate a Decryption Key File}
 \usage{
 generateKeyFile(target)
 }
@@ -10,5 +10,5 @@ generateKeyFile(target)
 \item{target}{full path to the file to which the key shall be written}
 }
 \description{
-generate a decryption key file
+Generate a Decryption Key File
 }

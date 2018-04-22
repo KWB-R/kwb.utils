@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookup.R
 \name{toLookupClass}
 \alias{toLookupClass}
-\title{keys and values to lookup structure}
+\title{Keys and Values to Lookup Structure}
 \usage{
 toLookupClass(keys, values, class = c("data.frame.1", "data.frame.2", "list",
   "vector")[1])
@@ -12,12 +12,12 @@ toLookupClass(keys, values, class = c("data.frame.1", "data.frame.2", "list",
 
 \item{values}{vector of values}
 
-\item{class}{character string determining the class of the structure returned: 
-"data.frame.1": data frame with the \code{keys} as column names and the
-\code{values} in the first row; "data.frame.2": data frame with
-\code{keys} in the first and \code{values} in the second column; "list":
-list with \code{values} as elements and \code{keys} as element names;
-"vector": named vector with \code{values} as elements and \code{keys} as
+\item{class}{character string determining the class of the structure
+returned: "data.frame.1": data frame with the \code{keys} as column names
+and the \code{values} in the first row; "data.frame.2": data frame with 
+\code{keys} in the first and \code{values} in the second column; "list": 
+list with \code{values} as elements and \code{keys} as element names; 
+"vector": named vector with \code{values} as elements and \code{keys} as 
 names.}
 }
 \value{
@@ -25,26 +25,25 @@ object according to the chosen \code{class}. See description of the
   \code{class} argument.
 }
 \description{
-provide the mapping between keys and values in a structure of choice
+Provide the mapping between keys and values in a structure of choice
 }
 \examples{
-  keys <- c("A", "B", "C")
-  values <- c("Apple", "Banana", "Cherry")
-  
-  fruits.df1 <- toLookupClass(keys, values)
-  fruits.df2 <- toLookupClass(keys, values, class = "data.frame.2")
-  fruits.list <- toLookupClass(keys, values, class = "list")
-  fruits.vector <- toLookupClass(keys, values, class = "vector")
-  
-  # Note how you may use the results differently
-  
-  fruits.df1$A
-  fruits.list$A
-  fruits.vector["A"]
-  
-  fruits.df1[c("A", "C")]
-  fruits.list[c("A", "C")]
-  fruits.vector[c("A", "C")]
-  
+keys <- c("A", "B", "C")
+values <- c("Apple", "Banana", "Cherry")
+
+fruits.df1 <- toLookupClass(keys, values)
+fruits.df2 <- toLookupClass(keys, values, class = "data.frame.2")
+fruits.list <- toLookupClass(keys, values, class = "list")
+fruits.vector <- toLookupClass(keys, values, class = "vector")
+
+# Note how you may use the results differently
+
+fruits.df1$A
+fruits.list$A
+fruits.vector["A"]
+
+fruits.df1[c("A", "C")]
+fruits.list[c("A", "C")]
+fruits.vector[c("A", "C")]
 
 }

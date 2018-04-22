@@ -2,20 +2,26 @@
 % Please edit documentation in R/convert.R
 \name{hsChrToNum}
 \alias{hsChrToNum}
-\title{hsChrToNum}
+\title{Character to Numeric}
 \usage{
 hsChrToNum(x, country, stopOnError = TRUE)
 }
 \arguments{
 \item{x}{(vector of) text value(s) to be converted to numeric}
 
-\item{country}{"en" if value(s) in \emph{x} is (are)  given in English format (decimal
-point ".", thousands separator ",") or "de" if value is given in German
-format (decimal point ",", thousands separator ".").}
+\item{country}{"en" if value(s) in \emph{x} is (are)  given in English format
+(decimal point ".", thousands separator ",") or "de" if value is given in
+German format (decimal point ",", thousands separator ".").}
 
-\item{stopOnError}{if TRUE (default) the program stops if any of the given values could not
-be converted.}
+\item{stopOnError}{if TRUE (default) the program stops if any of the given
+values could not be converted.}
+}
+\value{
+vector of numeric(s). In case of conversion the function stops (if 
+  \code{stopOnError = TRUE}) or returns \code{NA} for those indices for which
+  the conversion failed. In the latter case an attribute "errorIndices" 
+  containing the corresponding indices is assigned to the result vector.
 }
 \description{
-conversion of text representing a number to a valid number
+Conversion of text representing a number to a valid number
 }

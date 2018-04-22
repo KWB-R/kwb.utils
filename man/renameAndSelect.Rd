@@ -2,7 +2,7 @@
 % Please edit documentation in R/column.R
 \name{renameAndSelect}
 \alias{renameAndSelect}
-\title{Rename and select Columns of a Data Frame}
+\title{Rename and Select Columns of a Data Frame}
 \usage{
 renameAndSelect(data, renames, columns = unlist(renames))
 }
@@ -15,5 +15,5 @@ pairs}
 \item{columns}{(new) names of colums to be selected}
 }
 \description{
-Rename and select Columns of a Data Frame
+Rename and Select Columns of a Data Frame
 }

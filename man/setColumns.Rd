@@ -23,25 +23,25 @@ data frame with columns modified or appended as specified with the
 Set the (new or existing) column(s) of a data frame.
 }
 \examples{
-  
-  # Create a data frame
-  x <- data.frame(a = 1:5)
-  
-  # Option 1: use the "$" operator
-  x1 <- x
-  x1$b <- 2:6
-  x1$c <- 3:7
-  
-  # Option 2: use setColumns
-  x2 <- setColumns(x, b = 2:6, c = 3:7)
-  
-  # The result is the same
-  identical(x1, x2)
-  
-  # but the creation of columns has been reported on the console (dbg = TRUE by
-  # default)
-  
-  ## Provide column 'b' to data frame 'x'... ok.
-  ## Provide column 'c' to data frame 'x'... ok.
+
+# Create a data frame
+x <- data.frame(a = 1:5)
+
+# Option 1: use the "$" operator
+x1 <- x
+x1$b <- 2:6
+x1$c <- 3:7
+
+# Option 2: use setColumns
+x2 <- setColumns(x, b = 2:6, c = 3:7)
+
+# The result is the same
+identical(x1, x2)
+
+# but the creation of columns has been reported on the console (dbg = TRUE by
+# default)
+
+## Provide column 'b' to data frame 'x'... ok.
+## Provide column 'c' to data frame 'x'... ok.
   
 }

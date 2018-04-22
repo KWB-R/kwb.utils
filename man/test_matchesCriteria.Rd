@@ -7,5 +7,5 @@
 test_matchesCriteria()
 }
 \description{
-test_matchesCriteria
+test matchesCriteria
 }

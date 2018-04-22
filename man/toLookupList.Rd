@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookup.R
 \name{toLookupList}
 \alias{toLookupList}
-\title{keys and values to lookup list}
+\title{Keys and Values to Lookup List}
 \usage{
 toLookupList(keys, values, data = NULL)
 }
@@ -11,14 +11,15 @@ toLookupList(keys, values, data = NULL)
 
 \item{values}{vector of character representing the values of the dictionary}
 
-\item{data}{Optional. Data frame with two columns of which the first is assumed to
-contain the keys and the second is assumed to contain the values of the
-dictionary}
+\item{data}{Optional. Data frame with two columns of which the first is
+assumed to contain the keys and the second is assumed to contain the values
+of the dictionary}
 }
 \value{
-dictionary: list with \emph{values} as elements and \emph{keys} as names
+dictionary: list with \emph{values} as elements and \emph{keys} as
+  names
 }
 \description{
-keys and values to lookup list (list with elements representing the values
-  and the names of the list elements representing the corresponding keys)
+Keys and values to lookup list (list with elements representing the values 
+and the names of the list elements representing the corresponding keys)
 }

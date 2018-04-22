@@ -2,7 +2,7 @@
 % Please edit documentation in R/column.R
 \name{checkForMissingColumns}
 \alias{checkForMissingColumns}
-\title{Check for column existence}
+\title{Check for Column Existence}
 \usage{
 checkForMissingColumns(frm, reqCols, do.stop = TRUE,
   dataFrameName = deparse(substitute(frm)))

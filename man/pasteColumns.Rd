@@ -2,7 +2,7 @@
 % Please edit documentation in R/column.R
 \name{pasteColumns}
 \alias{pasteColumns}
-\title{Paste the Columns of a Data Frame with a Separator}
+\title{Paste Columns of Data Frame With Separator}
 \usage{
 pasteColumns(x, columns = names(x), sep = " ", ...)
 }
@@ -21,10 +21,10 @@ vector of character with each element representing the values of the
   selected columns of one row, being pasted with the separator character
 }
 \description{
-Paste the Columns of a Data Frame with a Separator
+Paste Columns of Data Frame With Separator
 }
 \examples{
-  x <- data.frame(A = 1:3, B = 2:4)
-  pasteColumns(x, sep = ";")
+x <- data.frame(A = 1:3, B = 2:4)
+pasteColumns(x, sep = ";")
   
 }

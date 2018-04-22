@@ -2,7 +2,7 @@
 % Please edit documentation in R/list.R
 \name{removeElements}
 \alias{removeElements}
-\title{remove elements from a list}
+\title{Remove Elements from a List}
 \usage{
 removeElements(x, elements)
 }
@@ -12,9 +12,9 @@ removeElements(x, elements)
 \item{elements}{names of elements to remove}
 }
 \value{
-\code{x} with elements with names given in \code{elements} being removed.
-  User attributes of \emph{x} are restored.
+\code{x} with elements with names given in \code{elements} being
+  removed. User attributes of \emph{x} are restored.
 }
 \description{
-remove elements from a list
+Remove Elements from a List
 }

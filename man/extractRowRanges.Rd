@@ -2,7 +2,7 @@
 % Please edit documentation in R/blockRange.R
 \name{extractRowRanges}
 \alias{extractRowRanges}
-\title{extract row ranges by pattern}
+\title{Extract Row Ranges by Pattern}
 \usage{
 extractRowRanges(dataFrame, columnName, pattern, startOffset = 1,
   stopOffset = 1, nameByMatch = FALSE, nameColumnsByMatch = TRUE,
@@ -35,7 +35,7 @@ list of data frames containing the rows of \emph{dataFrame} between
   rows matching \emph{pattern} in \code{dataFrame[[columnName]]}.
 }
 \description{
-extract row ranges by pattern
+Extract Row Ranges by Pattern
 }
 \examples{
   dataFrame <- as.data.frame(

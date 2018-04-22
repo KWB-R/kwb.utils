@@ -27,4 +27,5 @@ headtail(x)
 headtail(x, 10)
 headtail(x, 16)
 headtail(x[10:20, ], 10)
+
 }

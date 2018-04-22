@@ -29,18 +29,18 @@ Insert one or more new columns into a data frame before or after the given
 column
 }
 \examples{
-  Data <- data.frame(A = 1:5, B = 2:6)
-  
-  # Insert new columns X and Y before column "B"
-  insertColumns(Data, before = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-  
-  # This is the same as inserting new columns X and Y after column "A":
-  insertColumns(Data, after = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-  
-  # You may also insert before the first...
-  insertColumns(Data, before = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
-  
-  # ... or after the last column
-  insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+Data <- data.frame(A = 1:5, B = 2:6)
+
+# Insert new columns X and Y before column "B"
+insertColumns(Data, before = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+
+# This is the same as inserting new columns X and Y after column "A":
+insertColumns(Data, after = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+
+# You may also insert before the first...
+insertColumns(Data, before = "A", X = paste0("x", 1:5), Y = paste0("y", 1:5))
+
+# ... or after the last column
+insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
   
 }

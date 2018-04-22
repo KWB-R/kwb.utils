@@ -2,7 +2,7 @@
 % Please edit documentation in R/merge.R
 \name{mergeAll}
 \alias{mergeAll}
-\title{Merge multiple Data Frames}
+\title{Merge Multiple Data Frames}
 \usage{
 mergeAll(dataFrames, by, ..., dbg = TRUE)
 }
@@ -26,14 +26,14 @@ data frame being the result of merging all the data frames given in
 Merge multiple data frames, given in a list
 }
 \examples{
-  peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
-  paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
-  mary <- data.frame(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
-  
-  # By default only categories that are in all data frames are returned
-  mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit")
-  
-  # Use the arguments supported by merge to change that behaviour
-  mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit", all = TRUE)
+peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
+paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
+mary <- data.frame(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
+
+# By default only categories that are in all data frames are returned
+mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit")
+
+# Use the arguments supported by merge to change that behaviour
+mergeAll(list(peter = peter, paul = paul, mary = mary), by = "fruit", all = TRUE)
   
 }

@@ -29,4 +29,5 @@ values are in the second vector but not in the first one) on the screen.
 \examples{
 compareSets(1:10, 3:13)
 compareSets(1:10, 3:13, "numbers", "set 1", "set 2")
+
 }

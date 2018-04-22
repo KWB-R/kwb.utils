@@ -2,7 +2,7 @@
 % Please edit documentation in R/vector.R
 \name{enlargeVector}
 \alias{enlargeVector}
-\title{Enlarge a Vector to given Length}
+\title{Enlarge a Vector to Given Length}
 \usage{
 enlargeVector(x, length.out, fill.with = "")
 }

@@ -2,10 +2,12 @@
 
 #' Write a Dictionary (List) to a Text File
 #' 
-#' @param dictionary list of character vectors of length one defining 
-#' \code{key = value} pairs forming a dictionary.
+#' @param dictionary list of character vectors of length one defining \code{key
+#'   = value} pairs forming a dictionary.
 #' @param file full path to the file to which \code{dictionary} is to be written
+#' 
 #' @seealso \code{\link{readDictionary}, \link{readDictionaries}}
+#' 
 writeDictionary <- function(dictionary, file)
 {
   header_lines <- c(
@@ -27,6 +29,7 @@ writeDictionary <- function(dictionary, file)
   )
   
   header_lines <- paste("#", header_lines)
+  
   body_lines <- paste(names(dictionary), "=", as.character(dictionary))
   
   text_lines <- c(header_lines, "", body_lines)
@@ -43,9 +46,11 @@ writeDictionary <- function(dictionary, file)
 #' 
 #' @param folder path to the folder containing the files to be read
 #' @param pattern regular expression to match the names of the files to be read.
-#' The pattern is expected to contain a pair of parentheses around the part
-#' of the file that shall be used as element name in the returned list
+#'   The pattern is expected to contain a pair of parentheses around the part of
+#'   the file that shall be used as element name in the returned list
+#' 
 #' @seealso \code{\link{readDictionary}}
+#' 
 readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 {
   files <- dir(folder, pattern, full.names = TRUE)
@@ -68,13 +73,13 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #'   by their keys
 #' 
 #' @examples 
-#'   file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-#'   
-#'   dictionary <- readDictionary(file)
-#'   
-#'   resolve("file.out", dictionary, extension = "csv")
-#'   resolve("file.out", dictionary, extension = "pdf")
-#'   
+#' file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
+#' 
+#' dictionary <- readDictionary(file)
+#' 
+#' resolve("file.out", dictionary, extension = "csv")
+#' resolve("file.out", dictionary, extension = "pdf")
+#' 
 #' @seealso \code{\link{readDictionaries}}
 #' 
 readDictionary <- function(file, sorted = TRUE)
@@ -100,17 +105,18 @@ readDictionary <- function(file, sorted = TRUE)
   )
 
   if (sorted) {
+    
     dictionary[order(names(dictionary))]
+    
   } else {
+    
     dictionary
   }
 }
 
 # resolve ----------------------------------------------------------------------
 
-#' Resolve string(s) using a dictionary
-#' 
-#' Resolve string(s) using a dictionary
+#' Resolve String(s) Using a Dictionary
 #' 
 #' @param x vector of character to be resolved or a list of which all elements
 #'   will be resolved using itself as a "dictionary". A dictionary is a list of 
@@ -120,28 +126,27 @@ readDictionary <- function(file, sorted = TRUE)
 #'   = value} pairs.
 #' 
 #' @examples 
+#' file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
+#' 
+#' dictionary <- readDictionary(file)
+#' 
+#' # Resolve the dictionary
+#' resolve(dictionary)
+#' 
+#' # Resolve the dictionary by setting an undefined placeholder
+#' resolve(dictionary, extension = "pdf")
 #'   
-#'   file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-#'   
-#'   dictionary <- readDictionary(file)
-#'   
-#'   # Resolve the dictionary
-#'   resolve(dictionary)
-#'   
-#'   # Resolve the dictionary by setting an undefined placeholder
-#'   resolve(dictionary, extension = "pdf")
-#'     
-#'   # Resolve a string
-#'   resolve("dir.project", dictionary)
-#'   
-#'   # Set a placeholder "on-the-fly"
-#'   resolve("file.out", dictionary, extension = "pdf")
-#'   
-#'   # Override a placeholder "on-the-fly"
-#'   resolve("dir.project", dictionary, project = "new_project")
-#'   
-#'   # Resolve a vector of strings
-#'   resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
+#' # Resolve a string
+#' resolve("dir.project", dictionary)
+#' 
+#' # Set a placeholder "on-the-fly"
+#' resolve("file.out", dictionary, extension = "pdf")
+#' 
+#' # Override a placeholder "on-the-fly"
+#' resolve("dir.project", dictionary, project = "new_project")
+#' 
+#' # Resolve a vector of strings
+#' resolve(c("dir.root", "dir.project"), dictionary, project = "vector")
 #'
 resolve <- function(x, ...)
 {
@@ -159,33 +164,31 @@ resolve <- function(x, ...)
 
 #' Resolve all Placeholders in a Dictionary
 #' 
-#' Resolve all placeholders in a dictionary
-#' 
 #' @param dictionary list with named elements where the element name represents
 #'   the key and the element value represents the value assigned to the key.
 #' @param \dots additional assignments of the form <key> = <value> that are
 #'   temporarily added to the \code{dictionary} before doing the resolving
 #' 
 #' @examples 
-#'   # Define a dictionary in the form of a list
-#'   dictionary <- list(
-#'     basedir = "C:/myNicefolder",
-#'     projectdir = "<basedir>/projects/<project_name>",
-#'     inputdir = "<projectdir>/input",
-#'     outputdir = "<projectdir>/output"
-#'   )
-#'   
-#'   # Resolve all entries in the dictionary, with different values for the
-#'   # placeholder "<project_name> which is undefined in the original dictionary
-#'   dictionary.1 <- resolveAll(dictionary, project_name = "project_1")
-#'   dictionary.2 <- resolveAll(dictionary, project_name = "project_2")
-#'   
-#'   # Define entries of the dictionary to resolve
-#'   keys <- c("inputdir", "outputdir")
-#'   
-#'   # Resolve the entries using the two different dictionaries
-#'   resolve(keys, dictionary.1)
-#'   resolve(keys, dictionary.2)
+#' # Define a dictionary in the form of a list
+#' dictionary <- list(
+#'   basedir = "C:/myNicefolder",
+#'   projectdir = "<basedir>/projects/<project_name>",
+#'   inputdir = "<projectdir>/input",
+#'   outputdir = "<projectdir>/output"
+#' )
+#' 
+#' # Resolve all entries in the dictionary, with different values for the
+#' # placeholder "<project_name> which is undefined in the original dictionary
+#' dictionary.1 <- resolveAll(dictionary, project_name = "project_1")
+#' dictionary.2 <- resolveAll(dictionary, project_name = "project_2")
+#' 
+#' # Define entries of the dictionary to resolve
+#' keys <- c("inputdir", "outputdir")
+#' 
+#' # Resolve the entries using the two different dictionaries
+#' resolve(keys, dictionary.1)
+#' resolve(keys, dictionary.2)
 #'
 resolveAll <- function(dictionary, ...)
 {
@@ -209,6 +212,9 @@ resolveAll <- function(dictionary, ...)
 #'   resolving
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}) debug messages are 
 #'   shown
+#'   
+#' @return The (resolved) value is returned
+#' 
 hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
 {
   # Apply hsResolve to each element if more than one element in x 
@@ -242,10 +248,10 @@ hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
   # with the (remaining) named assignments
   dict <- arglist(dict, assignments)
   
-  ## Lookup the key in the dictionary
+  # Lookup the key in the dictionary
   value <- as.character(dict[[x]]) ## just in case: convert factor to string
   
-  ## If there was a value found for the key, resolve the value and not the key
+  # If there was a value found for the key, resolve the value and not the key
   if (length(value) > 0) {
     
     catIf(dbg, sprintf("Value of key '%s': '%s'\n", x, value))
@@ -253,10 +259,10 @@ hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
     return (hsResolve(value, dict = dict, dbg = dbg))    
   }
   
-  ## Here, the value is NULL so let's continue with the key x
+  # Here, the value is NULL so let's continue with the key x
   value <- x
   
-  ## Find <tags> to resolve
+  # Find <tags> to resolve
   tags <- getTagNames(value, expected.length = 1)[[1]]
   
   # Return the value if there are no tags to be resolved
@@ -265,29 +271,30 @@ hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
     catIf(dbg, sprintf("\"%s\" resolved to itself: \"%s\".\n", value, value))
     
     return (x)
-  }
-  else {
+    
+  } else {
     
     printIf(dbg, tags)
   }  
   
-  ## Resolve the tags
+  # Resolve the tags
   resolvedTags <- hsResolve(tags, dict = dict, dbg = dbg)
   
-  ## For the tags that could be resolved substitute each occurrence of the tag 
-  ## with its resolved value
+  # For the tags that could be resolved substitute each occurrence of the tag 
+  # with its resolved value
   toResolve <- (resolvedTags != tags)
   
   if (any(toResolve)) {
     
     keys <- paste0("<", tags[toResolve], ">")
+    
     replacements <- toLookupList(keys = keys, values = resolvedTags[toResolve])
+    
     value <- multiSubstitute(value, replacements, fixed = TRUE)
   }
   
   catIf(dbg, sprintf("\"%s\" resolved to: \"%s\".\n", x, value))
   
-  # Return the (resolved) value
   value
 }
 
@@ -308,14 +315,16 @@ getTagNames <- function(
 ) 
 {
   if (! is.character(x)) {
+    
     stop("x must be a vector of character")
   }
   
   if (length(x) != expected.length) {
+    
     stop("x must be of length ", expected.length)
   }
   
-  ## Set pattern according to bracket type
+  # Set pattern according to bracket type
   patterns <- list(
     "<>" = "<([^<>]+)>",
     "[]" = "\\[([^][]*)\\]"
@@ -324,14 +333,15 @@ getTagNames <- function(
   p <- patterns[[bt]]
   
   if (is.null(p)) {
+    
     stop("bt (bracket type) must be one of c(\"<>\", \"[]\")!")
   }
   
   catIf(dbg, "pattern:", p, "\n")
   
-  ## Get matching strings (including parentheses)
+  # Get matching strings (including parentheses)
   matches <- regmatches(x, gregexpr(p, x))
   
-  ## Remove parentheses
+  # Remove parentheses
   lapply(matches, gsub, pattern = p, replacement = "\\1")
 }

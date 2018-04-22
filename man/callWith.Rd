@@ -2,7 +2,7 @@
 % Please edit documentation in R/mergeArgs.R
 \name{callWith}
 \alias{callWith}
-\title{call a function with given arguments}
+\title{Call a Function with Given Arguments}
 \usage{
 callWith(FUN, ...)
 }
@@ -16,20 +16,19 @@ callWith(FUN, ...)
 the return value is the return value of the function \code{FUN}.
 }
 \description{
-call a function with the given arguments. Unnamed arguments are expected to
-  be lists containing further argument assignments. Multiple argument lists
-  are merged using \code{\link{arglist}} in the order of their appearence.
+Call a function with the given arguments. Unnamed arguments are expected to
+be lists containing further argument assignments. Multiple argument lists
+are merged using \code{\link{arglist}} in the order of their appearence.
 }
 \examples{
-  # define some default arguments
-  args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
-  
-  # call plot with the default arguments
-  callWith(plot, x = 1:10, args.default)
-  
-  # call plot with the default arguments but override the colour
-  callWith(plot, x = 1:10, args.default, col = "blue")
-  
+# define some default arguments
+args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
+
+# call plot with the default arguments
+callWith(plot, x = 1:10, args.default)
+
+# call plot with the default arguments but override the colour
+callWith(plot, x = 1:10, args.default, col = "blue")
 
 }
 \seealso{

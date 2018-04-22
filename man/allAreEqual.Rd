@@ -9,12 +9,13 @@ allAreEqual(x, method = 1)
 \arguments{
 \item{x}{vector of elements to be compared}
 
-\item{method}{Select one of two methods. 1: check if the length of unique elements is
-equal to one, 2: check if all elements are equal to the first element.}
+\item{method}{Select one of two methods. 1: check if the length of unique
+elements is equal to one, 2: check if all elements are equal to the first
+element.}
 }
 \value{
-\code{TRUE} if all elements in \code{x} are equal to each other, otherwise 
-  \code{FALSE}
+\code{TRUE} if all elements in \code{x} are equal to each other,
+  otherwise \code{FALSE}
 }
 \description{
 are all elements in x the same?

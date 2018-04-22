@@ -37,4 +37,5 @@ countOrSum(x, c("Group", "Even"))
 # Sum up the values in column "Value" for each group
 countOrSum(x, "Group", sum.up = "Value")
 countOrSum(x, c("Group", "Even"), sum.up = "Value")
+
 }

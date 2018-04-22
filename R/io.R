@@ -9,31 +9,39 @@
 #' @param n total number of rows to be printed. 
 #' @param pattern pattern given to \code{sprintf} containing a \code{\%d}
 #'   placeholder to print the number of omitted rows
+#'   
 #' @return number of omitted rows, invisibly
+#' 
 #' @examples 
 #' x <- data.frame(number = 1:26, letter = LETTERS)
 #' headtail(x)
 #' headtail(x, 10)
 #' headtail(x, 16)
 #' headtail(x[10:20, ], 10)
+#' 
 headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
 {
   if (! is.data.frame(x)) {
+    
     stop("headtail() is currently only defined for data frames")
   }
   
   if (nrow(x) <= n) {
     
     print(x)
+    
     n_omitted <- 0
     
   } else {
     
     n2 <- n %/% 2
+    
     n_omitted <- nrow(x) - 2 * n2
     
     print(utils::head(x, n2))
+    
     cat(sprintf(pattern, n_omitted), "\n")
+    
     print(utils::tail(x, n2))
   }
   
@@ -42,34 +50,21 @@ headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
 
 # readPackageFile --------------------------------------------------------------
 
-#' read file from package's extdata folder
-#' 
-#' read file from package's "extdata" folder
+#' Read File from Package's extdata Folder
 #' 
 #' @param file name of file (without path)
 #' @param package name of the package from which to read the file
-#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default: \code{FALSE})
+#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default:
+#'   \code{FALSE})
 #' @param \dots further arguments passed to \code{\link[utils]{read.csv}}
 #' 
 #' @return result of reading \code{file} with \code{\link[utils]{read.csv}}
 #' 
-readPackageFile <- function # read file from package's extdata folder
-### read file from package's "extdata" folder
-(
-  file,
-  ### name of file (without path)
-  package,
-  ### name of the package from which to read the file
-  stringsAsFactors = FALSE,
-  ### passed to \code{\link[utils]{read.csv}} (default: \code{FALSE})
-  ...
-  ### further arguments passed to \code{\link[utils]{read.csv}}
-)
+readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 {
   file <- safePath(system.file("extdata", package = package), file)
 
   utils::read.csv(file = file, stringsAsFactors = stringsAsFactors, ...)
-  ### result of reading \code{file} with \code{\link[utils]{read.csv}}
 }
 
 # getNamesOfObjectsInRDataFiles ------------------------------------------------
@@ -88,8 +83,6 @@ getNamesOfObjectsInRDataFiles <- function(files.rdata)
 # listObjects ------------------------------------------------------------------
 
 #' Get Names of Objects in .RData files
-#' 
-#' get names of objects in .RData files
 #' 
 #' @param files vector of full paths to .RData files
 #' 
@@ -124,16 +117,21 @@ listObjects <- function(files)
     cat(sprintf(
       "Loading %d/%d: %s... ", i, length(files), basename(files[i])
     ))
+    
     load(file = files[i], envir = testenvironment)
+    
     cat("ok. ")
     
     objectnames <- ls(envir = testenvironment)
+    
     objectsInFiles[[i]] <- objectnames
     
     cat(length(objectnames), "objects found. ")
     
     cat("Clearing workspace... ")
+    
     rm(list = ls(envir = testenvironment), envir = testenvironment)
+    
     cat("ok.\n")
   }
   
@@ -198,8 +196,11 @@ loadObject <- function(file, objectname = NULL, dbg = TRUE)
   if (is.null(objectname) || (! objectname %in% objectnames)) {
 
     message_1 <- if (is.null(objectname)) {
+      
       "Please give an 'objectname'. "
+      
     } else {
+      
       sprintf("Object '%s' not found. ", objectname)
     }
 
@@ -214,30 +215,23 @@ loadObject <- function(file, objectname = NULL, dbg = TRUE)
 
   # Return the object
   get(objectname, envir = envir)
-
-  ### R object as specified in \emph{objectname}. If an object of that name does
-  ### not exist in the .RData file an error is thrown
 }
 
 # catLines ---------------------------------------------------------------------
 
-#' print character vector to the console
+#' Print Character Vector to the Console
 #' 
-#' call cat on character vector, pasted with collapse = <new line>
+#' Call cat on character vector, pasted with collapse = <new line>
 #' 
 #' @param x vector of character representing text lines to be printed
-catLines <- function # print character vector to the console
-### call cat on character vector, pasted with collapse = <new line>
-(x)
+#' 
+catLines <- function(x)
 {
   cat(paste0(paste0(x, collapse = "\n"), "\n"))
 }
 
 # .logstart --------------------------------------------------------------------
 
-#'  logstart
-#' 
-#' 
 .logstart <- function(dbg = TRUE, ...)
 {
   catIf(dbg, "***", ..., "... ")
@@ -245,9 +239,6 @@ catLines <- function # print character vector to the console
 
 # .logok -----------------------------------------------------------------------
 
-#'  logok
-#' 
-#' 
 .logok <- function(dbg = TRUE)
 {
   catIf(dbg, "*** ok.\n")
@@ -255,9 +246,6 @@ catLines <- function # print character vector to the console
 
 # .log -------------------------------------------------------------------------
 
-#'  log
-#' 
-#' 
 .log <- function(...)
 {
   cat("***", ...)
@@ -265,9 +253,6 @@ catLines <- function # print character vector to the console
 
 # .logline ---------------------------------------------------------------------
 
-#'  logline
-#' 
-#' 
 .logline <- function(...)
 {
   cat("***", ..., "\n")
@@ -275,50 +260,34 @@ catLines <- function # print character vector to the console
 
 # catIf ------------------------------------------------------------------------
 
-#' call cat if condition is met
-#' 
-#' call cat if condition is met
+#' Call cat If Condition Is Met
 #' 
 #' @param condition if TRUE, cat is called, else not
 #' @param \dots arguments passed to cat
 #' 
-catIf <- function # call cat if condition is met
-### call cat if condition is met
-(
-  condition,
-  ### if TRUE, cat is called, else not
-  ...
-  ### arguments passed to cat
-)
+catIf <- function(condition, ...)
 {
   if (condition) {
+    
     cat(...)
   }
 }
 
 # printIf ----------------------------------------------------------------------
 
-#' call print if condition is met
-#' 
-#' call print if condition is met
+#' Call Print If Condition Is Met
 #' 
 #' @param condition if TRUE, print is called, else not
 #' @param x object to be printed
-#' @param caption optional. Caption line to be printed with cat before printing \emph{x}
+#' @param caption optional. Caption line to be printed with cat before printing
+#'   \emph{x}
 #' 
-printIf <- function # call print if condition is met
-### call print if condition is met
-(
-  condition,
-  ### if TRUE, print is called, else not
-  x,
-  ### object to be printed
-  caption = deparse(substitute(x))
-  ### optional. Caption line to be printed with cat before printing \emph{x}
-)
+printIf <- function(condition, x, caption = deparse(substitute(x)))
 {
   if (condition) {
+    
     catIf(caption != "", paste0(caption, ":\n"))
+    
     print(x)
   }
 }
@@ -327,12 +296,7 @@ printIf <- function # call print if condition is met
 
 #' Clear the R Console
 #' 
-#' Clear the R Console
-#' 
-clearConsole <- function # Clear the R Console
-### Clear the R Console
-(
-)
+clearConsole <- function()
 {
   cat("\014\n")
 }
@@ -341,19 +305,14 @@ clearConsole <- function # Clear the R Console
 
 #' Check for nul String in File
 #' 
-#' check for nul string in file
-#' 
 #' @param filepath full path to file to be checked
+#' 
 #' @return \code{TRUE} if first two bytes of file are \code{<FF><FE>}, else 
 #'   \code{FALSE}
 #' 
-containsNulString <- function # containsNulString
-### check for nul string in file
-(
-  filepath
-)
+containsNulString <- function(filepath)
 {
   x <- readBin(filepath, "raw", 2)
+  
   x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)
-  ### TRUE if first two bytes of file are FF FE, else FALSE
 }

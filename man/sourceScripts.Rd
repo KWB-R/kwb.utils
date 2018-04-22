@@ -15,5 +15,5 @@ sourceScripts(scripts, dbg = TRUE)
 the vector of script paths is returned invisibly
 }
 \description{
-Load R scripts with \code{source}
+Load R Scripts with \code{source}
 }

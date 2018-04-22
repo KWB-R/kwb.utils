@@ -14,5 +14,5 @@ containsNulString(filepath)
   \code{FALSE}
 }
 \description{
-check for nul string in file
+Check for nul String in File
 }

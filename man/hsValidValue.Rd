@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert.R
 \name{hsValidValue}
 \alias{hsValidValue}
-\title{value in a correct English/German notation?}
+\title{Value in Correct English/German Notation?}
 \usage{
 hsValidValue(x, lng, dbg = FALSE, accept.na = TRUE)
 }
@@ -18,6 +18,6 @@ shown}
 \code{NA} values within \code{x}}
 }
 \description{
-returns TRUE if text representation of number is in correct format in 
+Returns TRUE if text representation of number is in correct format in 
   terms of decimal character and (optionally) thousand's separator character.
 }

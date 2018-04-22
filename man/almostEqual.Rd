@@ -2,7 +2,7 @@
 % Please edit documentation in R/logical.R
 \name{almostEqual}
 \alias{almostEqual}
-\title{compare numerical vectors with tolerance}
+\title{Compare Numerical Vectors with Tolerance}
 \usage{
 almostEqual(x, y, tolerance = 1e-12)
 }
@@ -11,12 +11,12 @@ almostEqual(x, y, tolerance = 1e-12)
 
 \item{y}{vector of numerical}
 
-\item{tolerance}{tolerance, i.e. accepted difference between values in \code{x} and 
-\code{y}. Default: 1e-12}
+\item{tolerance}{tolerance, i.e. accepted difference between values in
+\code{x} and \code{y}. Default: 1e-12}
 }
 \value{
 vector of logical
 }
 \description{
-compare numerical vectors accepting a tolerance
+Compare numerical vectors accepting a tolerance
 }

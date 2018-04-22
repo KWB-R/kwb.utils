@@ -2,7 +2,7 @@
 % Please edit documentation in R/encryption.R
 \name{createPasswordFile}
 \alias{createPasswordFile}
-\title{create encrypted password file for account}
+\title{Create Encrypted Password File for Account}
 \usage{
 createPasswordFile(account, keyFile, passwordFile)
 }
@@ -14,5 +14,5 @@ createPasswordFile(account, keyFile, passwordFile)
 \item{passwordFile}{path to the password file}
 }
 \description{
-create encrypted password file for account
+Create Encrypted Password File for Account
 }

@@ -9,10 +9,11 @@ stringList(x, qchar = "'", collapse = ", ")
 \arguments{
 \item{x}{vector of character}
 
-\item{qchar}{character to be used for quoting, default: single quote character}
+\item{qchar}{character to be used for quoting, default: single quote
+character}
 
 \item{collapse}{characters used to separate the strings. Default: ", "}
 }
 \description{
-create a string of comma separated quoted strings
+Create a string of comma separated quoted strings
 }

@@ -2,17 +2,17 @@
 % Please edit documentation in R/convert.R
 \name{toKeysAndValues}
 \alias{toKeysAndValues}
-\title{key value string to list of keys and values}
+\title{Key Value String to List of Keys and Values}
 \usage{
 toKeysAndValues(x, separators = c(",", "="))
 }
 \arguments{
 \item{x}{character vector of length 1}
 
-\item{separators}{character vector of length 2 representing two types of separators. The
-first (default: ",") is used to split \code{x} into single \code{key =
-value} assignments. The second (default: "=") is used to split each
-assignment into key and value.}
+\item{separators}{character vector of length 2 representing two types of
+separators. The first (default: ",") is used to split \code{x} into single
+\code{key = value} assignments. The second (default: "=") is used to split
+each assignment into key and value.}
 }
 \value{
 list with elements \code{keys} and \code{values}

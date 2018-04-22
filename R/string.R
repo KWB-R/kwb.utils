@@ -19,8 +19,11 @@ shorten <- function(x, max_chars = 10, delimiter = "...")
   too_long <- nchar(x) > max_chars
   
   n_delimiter <- nchar(delimiter)
+  
   n_available <- max_chars - n_delimiter
-  n_left <- ceiling(n_available /2)
+  
+  n_left <- ceiling(n_available / 2)
+  
   n_right <- n_available - n_left
   
   stopifnot(n_left + n_right + n_delimiter == max_chars)
@@ -28,6 +31,7 @@ shorten <- function(x, max_chars = 10, delimiter = "...")
   n <- nchar(x[too_long])
   
   left_side <- substr(x[too_long], 1, n_left)
+  
   right_side <- substr(x[too_long], n - n_right + 1, n)
   
   x[too_long] <- paste0(left_side, delimiter, right_side)
@@ -60,11 +64,7 @@ fileExtension <- function(x)
     
     pos <- match_infos[[i]]
     
-    if (pos == -1) {
-      ""
-    } else {
-      substr(x[[i]], pos + 1, nchar(x[[i]]))
-    }
+    if (pos == -1) "" else substr(x[[i]], pos + 1, nchar(x[[i]]))
   })
 }
 
@@ -208,10 +208,11 @@ csvTextToDataFrame <- function(text, ...)
 
 #' String of Comma Separated Quoted Strings
 #' 
-#' create a string of comma separated quoted strings
+#' Create a string of comma separated quoted strings
 #' 
 #' @param x vector of character
-#' @param qchar character to be used for quoting, default: single quote character
+#' @param qchar character to be used for quoting, default: single quote
+#'   character
 #' @param collapse characters used to separate the strings. Default: ", "
 #' 
 stringList <- function(x, qchar = "'", collapse = ", ") 
@@ -305,10 +306,12 @@ multiSubstitute <- function(strings, replacements, ..., dbg = FALSE)
   for (pattern in names(replacements)) {
     
     if (dbg) {
+      
       strings.bak <- strings
     }
     
     replacement <- replacements[[pattern]]
+    
     strings <- gsub(pattern, replacement, strings, ...)
     
     if (dbg) {
@@ -318,11 +321,14 @@ multiSubstitute <- function(strings, replacements, ..., dbg = FALSE)
       if (any(changed)) {
         
         frequencies <- table(strings.bak[changed])
+        
         items <- sprintf("'%s' (%d-times)", names(frequencies), frequencies)
         
         cat(sprintf(
-          paste0("In the following strings the parts matching the pattern ", 
-                 "'%s' are replaced with '%s':\n  %s\n"), 
+          paste0(
+            "In the following strings the parts matching the pattern ", 
+            "'%s' are replaced with '%s':\n  %s\n"
+          ), 
           pattern, replacement, collapsed(items, ",\n  ")
         ))
       }

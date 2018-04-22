@@ -2,14 +2,14 @@
 % Please edit documentation in R/homedir.R
 \name{get_homedir}
 \alias{get_homedir}
-\title{Get file path of user's home directory}
+\title{Get File Path of User's Home Directory}
 \usage{
 get_homedir()
 }
 \value{
-path of user's home directory on windows (full path 
-home directory path but without '/Documents') or linux
+path of user's home directory on windows (full path home directory
+  path but without '/Documents') or linux
 }
 \description{
-Get file path of user's home directory
+Get File Path of User's Home Directory
 }

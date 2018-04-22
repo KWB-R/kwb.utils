@@ -15,5 +15,5 @@ hsStringToDouble(strDbl, dec = ".")
 double representation of input string \code{strDbl}
 }
 \description{
-convert string to double considering given decimal sign in input string
+Convert string to double considering given decimal sign in input string
 }

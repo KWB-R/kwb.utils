@@ -256,7 +256,7 @@ revertListAssignments <- function(x)
 #'   values could not be converted.
 #' 
 #' @return vector of numeric(s). In case of conversion the function stops (if 
-#'   \code{stopOnError = TRUE}) or returns \cod{NA} for those indices for which
+#'   \code{stopOnError = TRUE}) or returns \code{NA} for those indices for which
 #'   the conversion failed. In the latter case an attribute "errorIndices" 
 #'   containing the corresponding indices is assigned to the result vector.
 #' 

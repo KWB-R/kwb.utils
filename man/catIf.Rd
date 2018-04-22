@@ -2,7 +2,7 @@
 % Please edit documentation in R/io.R
 \name{catIf}
 \alias{catIf}
-\title{call cat if condition is met}
+\title{Call cat If Condition Is Met}
 \usage{
 catIf(condition, ...)
 }
@@ -12,5 +12,5 @@ catIf(condition, ...)
 \item{\dots}{arguments passed to cat}
 }
 \description{
-call cat if condition is met
+Call cat If Condition Is Met
 }

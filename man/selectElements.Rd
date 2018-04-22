@@ -2,7 +2,7 @@
 % Please edit documentation in R/list.R
 \name{selectElements}
 \alias{selectElements}
-\title{select (and rename) elements from list}
+\title{Select (and Rename) Elements from List}
 \usage{
 selectElements(x, elements = NULL, do.stop = TRUE, do.warn = TRUE)
 }
@@ -27,17 +27,16 @@ list containing the elements of \code{x} that are specified in
   \code{elements} are named, these names are used in the output list.
 }
 \description{
-select (and rename, if required) elements from list. Stop with message if
-  elements do not exist
+select (and rename, if required) elements from list. Stop with message if 
+elements do not exist
 }
 \examples{
-  L <- list(a = 1, b = 2, c = 3, d = 4)
+L <- list(a = 1, b = 2, c = 3, d = 4)
   
-  # Select elements
-  selectElements(L, c("a", "c"))
-  
-  # Select and rename at the same time
-  selectElements(L, elements = c(a.new = "a", c.new = "c", "b"))
-  
+# Select elements
+selectElements(L, c("a", "c"))
+
+# Select and rename at the same time
+selectElements(L, elements = c(a.new = "a", c.new = "c", "b"))
 
 }

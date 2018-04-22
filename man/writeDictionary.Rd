@@ -7,8 +7,8 @@
 writeDictionary(dictionary, file)
 }
 \arguments{
-\item{dictionary}{list of character vectors of length one defining 
-\code{key = value} pairs forming a dictionary.}
+\item{dictionary}{list of character vectors of length one defining \code{key
+= value} pairs forming a dictionary.}
 
 \item{file}{full path to the file to which \code{dictionary} is to be written}
 }

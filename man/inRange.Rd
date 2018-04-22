@@ -2,7 +2,7 @@
 % Please edit documentation in R/logical.R
 \name{inRange}
 \alias{inRange}
-\title{inRange}
+\title{check for values within minimum and maximum value}
 \usage{
 inRange(values, min.value, max.value)
 }

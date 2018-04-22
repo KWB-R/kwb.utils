@@ -161,7 +161,6 @@ finishAndShowPdf <- function(PDF, which = grDevices::dev.cur(), ...)
 #' @seealso \code{\link{hsShowPdf}}
 #' 
 #' @examples 
-#'   
 #' # Set path to PDF file and open PDF device
 #' pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
 #' hsPrepPdf(pdfFile)
@@ -206,7 +205,6 @@ hsPrepPdf <- function(
 #' @seealso \code{\link{hsPrepPdf}}
 #' 
 #' @examples 
-#'   
 #' # Set path to PDF file and open PDF device
 #' tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
 #' hsPrepPdf(tmpPdf)

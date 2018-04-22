@@ -2,7 +2,7 @@
 % Please edit documentation in R/blockRange.R
 \name{startsToEnds}
 \alias{startsToEnds}
-\title{helper function: start indices to end indices}
+\title{Helper Function: Start Indices to End Indices}
 \usage{
 startsToEnds(starts, lastStop, stopOffset = 1)
 }
@@ -11,8 +11,8 @@ startsToEnds(starts, lastStop, stopOffset = 1)
 
 \item{lastStop}{number to be returned as last element of the result vector}
 
-\item{stopOffset}{number to be subtracted from (all but the first elements in) \emph{starts}
-in order to find the ends}
+\item{stopOffset}{number to be subtracted from (all but the first elements
+in) \emph{starts} in order to find the ends}
 }
 \value{
 vector of integer
@@ -21,14 +21,18 @@ vector of integer
 helper function to convert start indices to end indices
 }
 \examples{
-  starts <- c(1, 10, 20, 35)
+starts <- c(1, 10, 20, 35)
+
+ok <- identical(
+  startsToEnds(starts, lastStop = 50), 
+  c(9, 19, 34, 50)
+)
   
-  ok <- identical(startsToEnds(starts, lastStop = 50), 
-                  c(9, 19, 34, 50)) 
-  
-  ok <- ok && identical(startsToEnds(starts, lastStop = 50, stopOffset = 2), 
-                        c(8, 18, 33, 50))
-  ok
-  
+ok <- ok && identical(
+  startsToEnds(starts, lastStop = 50, stopOffset = 2), 
+  c(8, 18, 33, 50)
+)
+
+ok
 
 }

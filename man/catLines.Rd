@@ -2,7 +2,7 @@
 % Please edit documentation in R/io.R
 \name{catLines}
 \alias{catLines}
-\title{print character vector to the console}
+\title{Print Character Vector to the Console}
 \usage{
 catLines(x)
 }
@@ -10,5 +10,5 @@ catLines(x)
 \item{x}{vector of character representing text lines to be printed}
 }
 \description{
-call cat on character vector, pasted with collapse = <new line>
+Call cat on character vector, pasted with collapse = <new line>
 }

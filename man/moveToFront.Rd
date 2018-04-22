@@ -18,7 +18,7 @@ vector with \code{elements} coming first
 Move elements to the start of a vector
 }
 \examples{
-  moveToFront(1:10, 5)
-  moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
+moveToFront(1:10, 5)
+moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
   
 }

@@ -2,26 +2,26 @@
 % Please edit documentation in R/list.R
 \name{nameByElement}
 \alias{nameByElement}
-\title{name list elements by sublist element}
+\title{Name List Elements by Sublist Element}
 \usage{
 nameByElement(x, elementName = "name")
 }
 \arguments{
 \item{x}{list of lists}
 
-\item{elementName}{name of element to be looked up in each sublist of \code{x}}
+\item{elementName}{name of element to be looked up in each sublist of
+\code{x}}
 }
 \description{
-name the elements of a list of lists by the value of the element
-  \code{elementName} of each sublist
+name the elements of a list of lists by the value of the element 
+\code{elementName} of each sublist
 }
 \examples{
-  L <- list(
-    list(group = "A", value = 1),
-    list(group = "B", value = 2)
-  )
-  
-  nameByElement(L, "group")
-  
+L <- list(
+  list(group = "A", value = 1),
+  list(group = "B", value = 2)
+)
+
+nameByElement(L, "group")
 
 }

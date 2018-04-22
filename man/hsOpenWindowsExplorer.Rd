@@ -14,5 +14,5 @@ hsOpenWindowsExplorer(startdir = tempdir(),
 running the system command \code{cmd /C explorer}}
 }
 \description{
-open Windows Explorer
+Open Windows Explorer
 }

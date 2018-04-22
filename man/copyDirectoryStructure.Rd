@@ -25,6 +25,6 @@ This function invisibly returns a vector of character containing the
   full paths of the directories that were created.
 }
 \description{
-Copy the full directory structure from a source directory to a target
-  directory
+Copy the full directory structure from a source directory to a target 
+directory
 }

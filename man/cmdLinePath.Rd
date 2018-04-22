@@ -11,5 +11,4 @@ cmdLinePath(x)
 }
 \description{
 Set the given path in quotes so that in can be used in a command line
-#'
 }

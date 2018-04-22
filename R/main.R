@@ -23,8 +23,6 @@ randomValuesWithSum <- function(n, sumOfValues, names = seq_len(n))
   }
 
   structure(values, names = names)
-
-  ### named vector of integer values with \code{sum(values) == sumOfValues}
 }
 
 # callWithStringsAsFactors -----------------------------------------------------
@@ -71,6 +69,7 @@ callWithStringsAsFactors <- function(stringsAsFactors, FUN, ...)
 {
   if (! identical(TRUE, stringsAsFactors) &&
       ! identical(FALSE, stringsAsFactors)) {
+    
     stop("stringsAsFactors must be TRUE or FALSE")
   }
 
@@ -125,14 +124,17 @@ parallelNonNA <- function(a, b)
   result <- character(length(a))
 
   selected <- ! is.na(a) & is.na(b)
+  
   result[selected] <- a[selected]
 
   selected <- is.na(a) & !is.na(b)
+  
   result[selected] <- b[selected]
 
   bothNotNA <- ! is.na(a) & ! is.na(b)
 
   selected <- bothNotNA & (a == b)
+  
   result[selected] <- a[selected]
 
   selected <- bothNotNA & (a != b)
@@ -223,6 +225,7 @@ makeUnique <- function(x, warn = TRUE)
   if (anyDuplicated(x)) {
 
     is.duplicated <- duplicated(x)
+    
     duplicates <- unique(x[is.duplicated])
 
     if (warn) {
@@ -256,16 +259,21 @@ makeUnique <- function(x, warn = TRUE)
 #' 
 recursiveNames <- function(x, basename = "")
 {
-  if (!is.list(x) || is.null(names(x))) {
+  if (! is.list(x) || is.null(names(x))) {
+    
     return(NULL)
   }
 
   elementNames <- character()
 
   for (elementName in names(x)) {
+    
     child <- x[[elementName]]
+    
     if (is.list(child)) {
+      
       newBasename <- paste(basename, elementName, sep = "$")
+      
       elementNames <- c(
         elementNames, newBasename, recursiveNames(child, newBasename)
       )
@@ -277,9 +285,9 @@ recursiveNames <- function(x, basename = "")
 
 # quotient ---------------------------------------------------------------------
 
-#' quotient
+#' Quotient
 #' 
-#' calculate the quotient of two numbers
+#' Calculate the quotient of two numbers
 #' 
 #' @param dividend number to be devided
 #' @param divisor number by which dividend is to be devided

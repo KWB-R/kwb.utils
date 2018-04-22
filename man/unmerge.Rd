@@ -11,14 +11,14 @@ unmerge(z, by)
 
 \item{by}{vector of names of columns in \code{z} that are used to build 
 groups of rows of \code{z} so that within each group the values in these 
-columns do not change. For each group the columns being constant over all
-rows are identified. Columns that are constant in each group will appear 
-in the data frame \code{x} whereas the remaining columns will appear in the
+columns do not change. For each group the columns being constant over all 
+rows are identified. Columns that are constant in each group will appear in
+the data frame \code{x} whereas the remaining columns will appear in the 
 data frame \code{y} of the returned list.}
 }
 \value{
 list with two elements \code{x} and \code{y} each of which are data 
-frames containing at least the columns given in \code{by}.
+  frames containing at least the columns given in \code{by}.
 }
 \description{
 Split a data frame \code{z} into two data frames \code{x} and \code{y} so

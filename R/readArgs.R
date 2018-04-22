@@ -4,24 +4,19 @@
 #' 
 #' Read argument lists from CSV (or MS Excel) file
 #' 
-#' @param file full path to comma separated file containing the argument specification
-#' @param configTable Instead of the file you may provide a data frame containing the
-#'   configuration
+#' @param file full path to comma separated file containing the argument
+#'   specification
+#' @param configTable Instead of the file you may provide a data frame
+#'   containing the configuration
 #' @param dbg if \code{TRUE}, debug messages are shown
 #' 
-readArglists <- function # Read Argument Lists from CSV File
-### Read argument lists from CSV (or MS Excel) file
-(
-  file = NULL,
-  ### full path to comma separated file containing the argument specification
-  configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
-  ### Instead of the file you may provide a data frame containing the
-  ### configuration
+readArglists <- function(
+  file = NULL, configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
   dbg = FALSE
-  ### if \code{TRUE}, debug messages are shown
 )
 {
   configs <- lapply(seq_len(nrow(configTable)), function(i) {
+    
     as.list(hsDelEmptyCols(configTable[i, -1]))
   })
   
@@ -33,8 +28,11 @@ readArglists <- function # Read Argument Lists from CSV File
   indices <- which(sapply(configs, function(x) ! is.null(x$additional.args)))
   
   for (i in indices) {
+    
     configName <- configs[[i]]$additional.args
+    
     stopifnot(is.character(configName))
+    
     configs[[i]] <- arglist(selectElements(configs, configName), configs[[i]][-1])
   }
   
@@ -43,15 +41,13 @@ readArglists <- function # Read Argument Lists from CSV File
 
 # .readArglistsTable.csv -------------------------------------------------------
 
-#'  readArglistsTable csv
-#' 
-#' 
 .readArglistsTable.csv <- function(file, dbg = FALSE)
 {
   configTable <- utils::read.csv(file, stringsAsFactors = FALSE)
   
   # Set empty fields to NA
   for (column in names(configTable)) {
+    
     configTable[, column] <- gsub("^$", NA, configTable[, column])
   }
   
@@ -60,12 +56,10 @@ readArglists <- function # Read Argument Lists from CSV File
 
 # .cleanArglistConfig ----------------------------------------------------------
 
-#'  cleanArglistConfig
-#' 
-#' 
 .cleanArglistConfig <- function(config)
 {
   lapply(config, function(x) {
+    
     eval(parse(text = gsub("^\\|\\}$", "", x), keep.source = FALSE))
   })
 }

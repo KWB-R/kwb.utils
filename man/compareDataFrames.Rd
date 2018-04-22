@@ -28,15 +28,15 @@ list of logical
 Compare two data frames by columns
 }
 \examples{
-  x <- data.frame(a = 1:2, b = 2:3)
-  y <- x
-  
-  test1 <- all(unlist(compareDataFrames(x, y)))
-  
-  z <- compareDataFrames(x, y[, c("b", "a")])
-  expectedFalse <- c("identical", "identicalExceptAttributes", "sameColumnNames")
-  test2 <- all(names(which(!unlist(z))) == expectedFalse)
-  
-  test1 && test2
-  
+x <- data.frame(a = 1:2, b = 2:3)
+y <- x
+
+test1 <- all(unlist(compareDataFrames(x, y)))
+
+z <- compareDataFrames(x, y[, c("b", "a")])
+expectedFalse <- c("identical", "identicalExceptAttributes", "sameColumnNames")
+test2 <- all(names(which(!unlist(z))) == expectedFalse)
+
+test1 && test2
+
 }
