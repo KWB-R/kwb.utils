@@ -1,3 +1,18 @@
+# removeExtension --------------------------------------------------------------
+
+#' Remove File Name Extension
+#' 
+#' @param x vector of character
+#' 
+#' @examples
+#' removeExtension("example.R")
+#' removeExtension("any/path/example.txt")
+#' 
+removeExtension <- function(x)
+{
+  sub("\\.[^.]+$", "", x)
+}
+
 # shorten ----------------------------------------------------------------------
 
 #' Shorten Strings to a Maximum Length
