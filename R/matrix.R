@@ -244,8 +244,6 @@ assertRowsAndColumns <- function(
 #' 
 #' @param x object to be checked with \code{\link{is.matrix}}
 #' 
-#' @export
-#' 
 stopIfNotMatrix <- function(x)
 {
   if (! is.matrix(x)) {
@@ -264,8 +262,6 @@ stopIfNotMatrix <- function(x)
 #'   \code{i} representing the difference \code{x[i+1, ]-x[i, ]} between rows
 #'   \code{i+1} and \code{i} in \code{x}
 #'   
-#' @export
-#' 
 #' @examples 
 #' x <- matrix(1:12, nrow = 3)
 #' 
@@ -290,8 +286,6 @@ diffrows <- function(x)
 #' @return list with as many elements as there are columns in \code{x} and each
 #'   element representing one column
 #'   
-#' @export
-#' 
 #' @examples
 #' x <- matrix(1:12, nrow = 3)
 #' 
@@ -315,8 +309,6 @@ asColumnList <- function(x)
 #' @return list with as many elements as there are rows in \code{x} and each
 #'   element representing one row
 #'   
-#' @export
-#' 
 #' @examples
 #' x <- matrix(1:12, nrow = 3)
 #' 
