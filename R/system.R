@@ -160,7 +160,7 @@ sourceScripts <- function(scripts, dbg = TRUE)
 {
   for (script in scripts) {
 
-    catIf(dbg, "loading functions from ", basename(script), "... ")
+    catIf(dbg, "loading functions from", basename(script), "... ")
 
     if (file.exists(script)) {
       
