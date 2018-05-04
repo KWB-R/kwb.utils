@@ -1,11 +1,13 @@
 Package: kwb.utils
 Version: 0.3.99
-Title: some basic functions used by other kwb packages
+Title: General Utility Functions Developed at KWB
 Maintainer: Hauke Sonnenberg <hauke.sonnenberg@kompetenz-wasser.de>
 Author: Hauke Sonnenberg
 Suggests:
     PKI,
     testthat
-Description: some basic functions used by other kwb packages.
+Description: This package contains some small helper functions that aim at 
+    improving the quality of code developed at Kompetenzzentrum Wasser gGmbH
+    (KWB).
 License: GPL
 RoxygenNote: 6.0.1
