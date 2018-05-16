@@ -1,0 +1,14 @@
+url: https://kwb-r.github.io/kwb.utils
+
+authors:
+  Kompetenzzentrum Wasser Berlin gGmbH:
+    href: https://www.kompetenz-wasser.de
+    html: <img src="http://www.kompetenz-wasser.de/wp-content/uploads/2017/08/cropped-logo-kwb_klein-new.png" height="24" />
+
+template:
+  params:
+    bootswatch: cerulean
+
+development:
+  mode: auto
+

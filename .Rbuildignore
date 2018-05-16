@@ -3,3 +3,8 @@
 .travis.yml
 kwb.utils.Rproj
 kwb_utils.png
+^appveyor\.yml$
+^codecov\.yml$
+^README\.Rmd$
+^README\.md$
+^docs\.*

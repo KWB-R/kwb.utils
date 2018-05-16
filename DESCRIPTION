@@ -1,13 +1,16 @@
 Package: kwb.utils
-Version: 0.3.99
+Version: 0.3.0.9000
 Title: General Utility Functions Developed at KWB
-Maintainer: Hauke Sonnenberg <hauke.sonnenberg@kompetenz-wasser.de>
-Author: Hauke Sonnenberg
+Authors@R: c(person("Hauke", "Sonnenberg", , "hauke.sonnenberg@kompetenz-wasser.de", role = c("aut", "cre")),
+             person("Kompetenzzentrum Wasser Berlin gGmbH", role = c("cph")))
 Suggests:
     PKI,
-    testthat
+    testthat,
+    covr
 Description: This package contains some small helper functions that aim at 
     improving the quality of code developed at Kompetenzzentrum Wasser gGmbH
     (KWB).
 License: GPL
 RoxygenNote: 6.0.1
+URL: https://github.com/kwb-r/kwb.utils
+BugReports: https://github.com/kwb-r/kwb.utils/issues
