@@ -35,3 +35,5 @@ test_that("merging the unmerged results in the original data frame", {
   expect_true(checkResult(z, unmerge(z, "p2")))
   expect_true(checkResult(z, unmerge(z, c("p1", "p2"))))
 })
+
+test_that("it works", {})
