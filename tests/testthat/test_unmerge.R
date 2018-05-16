@@ -58,3 +58,15 @@ test_that("mergeNamedArrays works", {
     expect_true(all(dim_names_2[[i]] %in% dim_names[[i]]))
   }
 })
+
+test_that("dropDim works", {
+  a <- array(1:8, dim = c(2, 2, 2), dimnames = list(
+    paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
+  ))
+  
+  a1 <- dropDim(A[, 1, 1, drop = FALSE], dimension = 3)
+  a2 <- dropDim(A[1, , , drop = FALSE], dimension = 2)
+  
+  expect_identical(dim(a1), c(2, 1))
+  expect_identical(dim(a2), c(1, 2))
+})
