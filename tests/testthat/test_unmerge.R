@@ -70,10 +70,15 @@ test_that("dropDim works", {
 })
 
 test_that("almostEqual works", {
-  test_error(1, 1:2)
-  test_error(1:2, 3)
-  test_false(1, 2)
-  test_true(1, 1)
-  test_false(1, 1.1, 0.1)
-  test_true(1, 1.09, 0.1)
+  expect_error(1, 1:2)
+  expect_error(1:2, 3)
+  expect_false(1, 2)
+  expect_true(1, 1)
+  expect_false(1, 1.1, 0.1)
+  expect_true(1, 1.09, 0.1)
+})
+
+test_that("allAreEqual works", {
+  expect_true(c(1, 1, 1))
+  expect_false(c(1, 1, 2))
 })
