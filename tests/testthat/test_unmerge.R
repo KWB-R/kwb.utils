@@ -68,3 +68,12 @@ test_that("dropDim works", {
 
   expect_identical(dim(a1), c(2L, 1L))
 })
+
+test_that("almostEqual works", {
+  test_error(1, 1:2)
+  test_error(1:2, 3)
+  test_false(1, 2)
+  test_true(1, 1)
+  test_false(1, 1.1, 0.1)
+  test_true(1, 1.09, 0.1)
+})
