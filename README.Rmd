@@ -19,7 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Install from GitHub 
 
 ```{r eval=FALSE}
-if (!require("devtools")) {
+if (! require("devtools")) {
+  
   install.packages("devtools", repos = "https://cloud.r-project.org")
 }
 

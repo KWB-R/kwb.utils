@@ -8,3 +8,4 @@ kwb_utils.png
 ^README\.Rmd$
 ^README\.md$
 ^docs\.*
+_pkgdown.yaml

@@ -12,3 +12,257 @@ template:
 development:
   mode: auto
 
+reference:
+  - title: Functions Returning Logical
+    contents: 
+      - allAreEqual
+      - allAreIdentical
+      - almostEqual
+      - atLeastOneRowIn
+      - containsNulString
+      - hsValidValue
+      - inRange
+      - is.unnamed
+      - isEvenNumber
+      - isLoaded
+      - isNaInAllColumns
+      - isNaInAllRows
+      - isNaOrEmpty
+      - isNullOrEmpty
+      - isOddNumber
+      - matchesCriteria
+  - title: String Functions
+    contents: 
+      - appendSuffix
+      - collapsed
+      - commaCollapsed
+      - defaultLevels
+      - extractSubstring
+      - frenchToAscii
+      - hsCountInStr
+      - hsQuoteChr
+      - hsSafeName
+      - hsSubstSpecChars
+      - hsTrim
+      - moveToFront
+      - multiSubstitute
+      - pairwise
+      - removeExtension
+      - removeSpaces
+      - shorten
+      - stringContains
+      - stringEndsWith
+      - stringList
+      - stringStartsWith
+      - stringToExpression
+      - subExpressionMatches
+  - title: Input and Output Functions
+    contents:
+      - catLines
+      - clearConsole
+      - columnDescriptor
+      - finishAndShowPdf
+      - guessSeparator
+      - headtail
+      - hsPrepPdf
+      - preparePdf
+      - readArglists
+      - readCsvInputFile
+      - readPackageFile
+      - setLoaded
+      - sourceScripts
+  - title: Mathematical or Statistical Functions
+    contents:
+      - colMaxima
+      - colMinima
+      - colNaNumbers
+      - colStatisticOneFunction
+      - colStatistics
+      - countOrSum
+      - frequencyTable
+      - getEvenNumbers
+      - getOddNumbers
+      - hsMovingMean
+      - linearCombination
+      - percentage
+      - percentageOfMaximum
+      - percentageOfSum
+      - quotient
+      - relativeCumulatedSum
+  - title: Functions Working on Data Frames
+    contents:
+      - addRowWithName
+      - columnwisePercentage
+      - extractRowRanges
+      - fullySorted
+      - firstPosixColumn
+      - getKeywordPositions
+      - hsAddMissingCols
+      - hsDelEmptyCols
+      - hsRenameColumns
+      - insertColumns
+      - mergeAll
+      - moveColumnsToFront
+      - pasteColumns
+      - pasteColumns0
+      - posixColumnAtPosition
+      - rbindAll
+      - removeColumns
+      - removeEmptyColumns
+      - renameAndSelect
+      - renameColumns
+      - resetRowNames
+      - roundColumns
+      - safeColumnBind
+      - safeMerge
+      - safeRowBind
+      - safeRowBindAll
+      - selectColumns
+      - setColumns
+      - splitIntoFixSizedBlocks
+      - tableLookup
+      - unmerge
+  - title: Functions Working on Lists
+    contents:
+      - copyListElements
+      - excludeNULL
+      - mergeLists
+      - nameByElement
+      - recursiveNames
+      - removeElements
+      - revertListAssignments
+      - safeRowBindOfListElements
+      - selectElements
+  - title: Array/Matrix Functions
+    contents:
+      - createMatrix
+      - diffrows
+      - dropDim
+      - mergeNamedArrays
+      - randomMatrix
+      - setMatrixColumns
+      - splitAlongDim
+  - title: Vector Functions
+    contents:
+      - breakInSequence
+      - enlargeVector
+      - extendLimits
+      - firstElement
+      - getByPositiveOrNegativeIndex
+      - lastElement
+      - limitToRange
+      - parallelNonNA
+      - recycle
+  - title: General Object Functions
+    contents:
+      - addClass
+      - getAttribute
+      - getNamesOfObjectsInRDataFiles
+      - getObjectFromRDataFile
+      - hsRestoreAttributes
+      - listObjects
+      - loadObject
+      - removeAttributes
+  - title: Conversion Functions
+    contents: 
+      - asColumnList
+      - asRowList
+      - convertCsvFile
+      - csvTextToDataFrame
+      - hsChrToNum
+      - hsStringToDate
+      - hsStringToDouble
+      - hsMatrixToListForm
+      - naToLastNonNa
+      - startsToEnds
+      - startsToRanges
+      - toFactor
+      - toFormula
+      - toInches
+      - toKeysAndValues
+      - toLookupClass
+      - toLookupList
+      - toLookupTable
+      - toNamedList
+      - toPositiveIndices
+      - underscoreToPercent
+  - title: Shortcut Functions to if-statements
+    contents:
+      - catIf
+      - defaultIfNA
+      - defaultIfNULL
+      - defaultIfZero
+      - finishAndShowPdfIf
+      - preparePdfIf
+      - printIf
+  - title: Operating System Functions
+    contents:
+      - cmdLinePath
+      - copyDirectoryStructure
+      - createDirAndReturnPath
+      - createDirectory
+      - defaultWindowsProgramFolders
+      - desktop
+      - fileExtension
+      - get_homedir
+      - hsOpenWindowsExplorer
+      - hsShell
+      - hsShowPdf
+      - hsSystem
+      - mySystemTime
+      - objectSize
+      - rStylePath
+      - runBatchfileInDirectory
+      - runInDirectory
+      - safePath
+      - tempSubdirectory
+      - user
+      - windowsPath
+  - title: Check Functions
+    contents:
+      - assertRowsAndColumns
+      - checkForMissingColumns
+      - msgAvailableFields
+      - stopIfNotMatrix
+      - warnIfEmpty
+  - title: Debug Functions
+    contents:
+      - assignAll
+      - assignGlobally
+      - assignPackageObjects
+      - getGlobally
+  - title: Test Functions
+    contents:
+      - test_matchesCriteria
+      - test_roundColumns
+  - title: Compare Objects
+    contents:
+      - compareDataFrames
+      - compareSets
+  - title: Calling Functions
+    contents:
+      - arglist
+      - callWith
+      - callWithStringsAsFactors
+      - getFunctionName
+      - getFunctionValueOrDefault
+  - title: Cryptographic Functions
+    contents:
+      - createPasswordFile
+      - generateKeyFile
+      - getPassword
+  - title: Grammar/Dictionary Functions
+    contents:
+      - getTagNames
+      - hsResolve
+      - readDictionaries
+      - readDictionary
+      - resolve
+      - resolveAll
+      - writeDictionary
+  - title: Non-Categorised Functions
+    contents: 
+      - DIN.A4
+      - expandGrid
+      - makeUnique
+      - randomValuesWithSum
