@@ -17,20 +17,11 @@ test_that("selectColumns returns a vector for one column to select", {
 })
 
 test_that("selectColums() works", {
-   f <- selectColums
+   f <- selectColumns
    d <- data.frame(a = 1, b = "one")
    expect_error(f())
    expect_error(f(1))
    expect_error(f(list()))
    expect_equal(f(d, "a"), 1)
-   expect_equal(f(d, "b"), "one")
-})
-
-test_that("selectElements() works", {
-   f <- selectElements
-   L <- list(a = 1, b = "one")
-   expect_error(f())
-   expect_error(f(1))
-   expect_equal(f(L, "a"), 1)
-   expect_equal(f(L, "b"), "one")
+   expect_equal(f(d, "b"), as.factor("one"))
 })

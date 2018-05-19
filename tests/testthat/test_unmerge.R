@@ -68,17 +68,3 @@ test_that("dropDim works", {
 
   expect_identical(dim(a1), c(2L, 1L))
 })
-
-test_that("almostEqual works", {
-  expect_error(almostEqual(1, 1:2))
-  expect_error(almostEqual(1:2, 3))
-  expect_false(almostEqual(1, 2))
-  expect_true(almostEqual(1, 1))
-  expect_false(almostEqual(1, 1.1, 0.1))
-  expect_true(almostEqual(1, 1.09, 0.1))
-})
-
-test_that("allAreEqual works", {
-  expect_true(allAreEqual(c(1, 1, 1)))
-  expect_false(allAreEqual(c(1, 1, 2)))
-})
