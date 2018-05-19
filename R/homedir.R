@@ -5,12 +5,14 @@
 #'   
 get_homedir <- function()
 {
+  home <- Sys.getenv("HOME")
+  
   if (.Platform$OS.type == "windows") {
     
-   gsub("/Documents", "", Sys.getenv("HOME"))
+   gsub("/Documents", "", home)
     
   } else {
     
-   Sys.getenv("HOME")
+   home
   }
 }
