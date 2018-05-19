@@ -231,10 +231,6 @@ reference:
       - assignGlobally
       - assignPackageObjects
       - getGlobally
-  - title: Test Functions
-    contents:
-      - test_matchesCriteria
-      - test_roundColumns
   - title: Compare Objects
     contents:
       - compareDataFrames
