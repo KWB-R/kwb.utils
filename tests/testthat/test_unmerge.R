@@ -1,4 +1,3 @@
-# checkResult ------------------------------------------------------------------
 checkResult <- function(x, xy)
 {
   standardise <- function(x) kwb.utils::fullySorted(x[, sort(names(x))])
@@ -17,8 +16,7 @@ checkResult <- function(x, xy)
   isIdentical
 }
 
-# T E S T ----------------------------------------------------------------------
-test_that("merging the unmerged results in the original data frame", {
+test_that("unmerged() works", {
   
   z <- data.frame(
     insp = c(1, 1, 2, 3, 4, 5),
