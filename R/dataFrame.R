@@ -84,15 +84,8 @@ splitIntoFixSizedBlocks <- function(data, blocksize)
   stopifnot(length(dim(data)) == 2)
 
   n <- nrow(data)
-
-  lapply(0:as.integer(n/blocksize), function(i) {
-    
-    firstIndex <- i * blocksize + 1
-    
-    lastIndex <- (i + 1) * blocksize
-    
-    data[firstIndex:min(lastIndex, n), ]
-  })
+   
+  split(data, f = rep(seq_len(n), each = blocksize, length.out = n))
 }
 
 # resetRowNames ----------------------------------------------------------------
@@ -204,24 +197,6 @@ frequencyTable <- function(
   })
 
   structure(L, names = columns)
-}
-
-# .test_compareDataFrames ------------------------------------------------------
-
-#' .test compareDataFrames
-#' 
-.test_compareDataFrames <- function()
-{
-  x <- data.frame(a = 1:2, b = 2:3)
-  y <- x
-
-  test1 <- all(unlist(compareDataFrames(x, y)))
-
-  z <- compareDataFrames(x, y[, c("b", "a")])
-  expectedFalse <- c("identical", "identicalExceptAttributes", "sameColumnNames")
-  test2 <- all(names(which(!unlist(z))) == expectedFalse)
-
-  test1 && test2
 }
 
 # compareDataFrames ------------------------------------------------------------
@@ -370,50 +345,6 @@ compareSets <- function(
 atLeastOneRowIn <- function(dframe)
 {
   nrow(dframe) > 0
-}
-
-# .test_rbindAll ---------------------------------------------------------------
-
-#' .test rbindAll
-#' 
-.test_rbindAll <- function()
-{
-  L <- list(
-    A = data.frame(x = 1:2, y = 2:3),
-    B = data.frame(x = 1:3, y = 2:4)
-  )
-
-  L.unnamed <- L
-  names(L.unnamed) <- NULL
-
-  y1 <- rbindAll(L)
-  y2 <- rbindAll(L, nameColumn = "group")
-  y3 <- rbindAll(L.unnamed, nameColumn = "group", namesAsFactor = FALSE)
-  y4 <- rbindAll(L.unnamed, nameColumn = "group")
-
-  expected1 <- data.frame(
-    x = c(L$A$x, L$B$x),
-    y = c(L$A$y, L$B$y)
-  )
-
-  expected2 <- cbind(
-    expected1,
-    group = as.factor(c(rep("A", nrow(L$A)), rep("B", nrow(L$B)))),
-    stringsAsFactors = FALSE
-  )
-
-  expected3 <- cbind(
-    expected1,
-    group = c(rep(1L, nrow(L$A)), rep(2L, nrow(L$B)))
-  )
-
-  expected4 <- expected3
-  expected4$group <- as.factor(expected4$group)
-
-  identical(y1, expected1) &&
-    identical(y2, expected2) &&
-    identical(y3, expected3) &&
-    identical(y4, expected4)
 }
 
 # rbindAll ---------------------------------------------------------------------
