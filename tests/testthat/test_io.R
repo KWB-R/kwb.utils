@@ -48,6 +48,7 @@ test_that("listObjects() and loadObject() work", {
   expect_identical(y[[1]], c("a", "b"))
   expect_identical(attr(y, "files"), file)
   
+  expect_error(loadObject(file))
   expect_error(loadObject(file, "no_such_object"))
   
   expect_warning(getObjectFromRDataFile(file, "a"))
@@ -64,10 +65,26 @@ test_that("catLines() works", {
   expect_identical(out, text)
 })
 
-# test_that(".logstart", {})
-# test_that(".logok", {})
-# test_that(".log", {})
-# test_that(".logline", {})
+test_that("the log functions work", {
+
+  expect_identical(capture.output(.logstart(FALSE, "x")), character())
+  expect_identical(capture.output(.logok(FALSE)), character())
+  
+  text <- "Hello, world!"
+  
+  expect_true(grepl(text, capture.output(.logstart(TRUE, text))))
+  expect_true(grepl("ok", capture.output(.logok(TRUE))))
+  
+  expect_length(capture.output({
+    .log(text)
+    .log("<EOM>")
+  }), 1)
+  
+  expect_length(capture.output({
+    .logline(text)
+    .logline("<EOM>")
+  }), 2)
+})
 
 test_that("catIf() works", {
 
