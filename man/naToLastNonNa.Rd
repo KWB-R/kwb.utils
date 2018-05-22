@@ -20,9 +20,9 @@ replace NA values in a vector with the "last" non-NA values (at the nearest
 naToLastNonNa(c(1, 2, NA, NA, 3, NA, NA, 4, NA, NA, 5))
 ## Result: [1] 1 2 2 2 3 3 3 4 4 4 5
   
-# You will get an error if the first element is NA!
+# You will get an error if method = 1 and the first element is NA!
   
-# naToLastNonNa(c(NA, 1, NA, 2))
+# naToLastNonNa(c(NA, 1, NA, 2), method = 1)
   
 ## Error in naToLastNonNa(c(NA, 1, NA, 2)) :
 ##   The first element must not be NA
