@@ -1,31 +1,3 @@
-# .test_guessSeparator ---------------------------------------------------------
-
-.test_guessSeparator <- function()
-{
-  csvFiles <- dir(
-    path = "C:/Users/hsonne/Desktop/tmp", 
-    pattern = "\\.csv$", 
-    recursive = FALSE,
-    full.names = TRUE
-  )
-  
-  csvFile <- csvFiles[12]
-  
-  for (csvFile in csvFiles) {
-    
-    print(which(csvFile == csvFiles))
-    
-    sep <- guessSeparator(csvFile)
-    
-    cat(sprintf(
-      "\n\nExpected separator in '%s': '%s'\n", 
-      basename(csvFile), sep
-    ))
-    
-    print(readLines(csvFile, 6))
-  }  
-}
-
 # guessSeparator ---------------------------------------------------------------
 
 #' Guess Column Separator Used in File
