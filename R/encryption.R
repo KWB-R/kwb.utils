@@ -33,12 +33,14 @@ generateKeyFile <- function(target)
 #' @param account name of account the user is asked to enter the password for
 #' @param keyFile path to the file containing the encryption/decryption key
 #' @param passwordFile path to the password file
+#' @param password password for account. If \code{NULL} (default) the user will
+#'   be asked to enter the password on the console
 #' 
-createPasswordFile <- function(account, keyFile, passwordFile)
+createPasswordFile <- function(account, keyFile, passwordFile, password = NULL)
 {
   .checkNamespace("PKI", "createPasswordFile")
   
-  password <- .askForPassword(account)
+  password <- defaultIfNULL(password, .askForPassword(account))
   
   password.encrypted <- PKI::PKI.encrypt(
     charToRaw(password), key = PKI::PKI.load.key(file = keyFile)

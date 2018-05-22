@@ -4,7 +4,7 @@
 \alias{createPasswordFile}
 \title{Create Encrypted Password File for Account}
 \usage{
-createPasswordFile(account, keyFile, passwordFile)
+createPasswordFile(account, keyFile, passwordFile, password = NULL)
 }
 \arguments{
 \item{account}{name of account the user is asked to enter the password for}
@@ -12,6 +12,9 @@ createPasswordFile(account, keyFile, passwordFile)
 \item{keyFile}{path to the file containing the encryption/decryption key}
 
 \item{passwordFile}{path to the password file}
+
+\item{password}{password for account. If \code{NULL} (default) the user will
+be asked to enter the password on the console}
 }
 \description{
 Create Encrypted Password File for Account
