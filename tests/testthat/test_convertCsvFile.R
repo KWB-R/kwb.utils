@@ -5,10 +5,14 @@ test_that("convertCsvFile() works", {
   write.table(iris, csv_in, row.names = FALSE)
 
   csv_out <- convertCsvFile(csv_in, sep_out = ";")
-
+  
+  # Test that existing file will not be overwritten
+  expect_error(convertCsvFile(csv_in))
+  
   on.exit(unlink(csv_out))
   
   expect_true(is.character(csv_out))
+  
   expect_length(csv_out, 1)
   
   iris_reread <- read.table(csv_out, sep = ";", header = TRUE)
@@ -18,7 +22,7 @@ test_that("convertCsvFile() works", {
   unlink(csv_out)
   
   csv_out <- convertCsvFile(csv_in, sep_out = ";", dec_out = ",")
-
+  
   expect_true(is.character(csv_out))
   expect_length(csv_out, 1)
 

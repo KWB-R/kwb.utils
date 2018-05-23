@@ -116,6 +116,14 @@ test_that("atLeastOneRowIn() works", {
 })
 
 test_that("rbindAll() works", {
+
+  L <- list(1:3, 4:6)
+  
+  y <- rbindAll(L, nameColumn = "Name")
+  
+  expect_is(y, "data.frame")
+  expect_true("Name" %in% names(y))
+  expect_identical(dim(y), c(2L, 4L))
   
   L <- list(
     A = data.frame(x = 1:2, y = 2:3),
