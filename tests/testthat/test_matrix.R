@@ -36,38 +36,74 @@ test_that("createMatrix() works", {
   expect_identical(rownames(m4), LETTERS[1:3])
 })
  
-# setMatrixColumns -------------------------------------------------------------
-# assertRowsAndColumns ---------------------------------------------------------
-#' m <- matrix(1:12, nrow = 3, ncol = 4, dimnames = list(
-#'   rows = paste0("row", 1:3), cols = paste0("col", 1:4)
-#' ))
-#'
-#' # Add two rows, reverse order of rows, add one column, remove one column
-#' assertRowsAndColumns(
-#'   m,
-#'   row_names = paste0("row", 4:0),
-#'   col_names = paste0("col", 0:2)
-#' )
+test_that("setMatrixColumns() works", {
 
-# stopIfNotMatrix --------------------------------------------------------------
-# diffrows ---------------------------------------------------------------------
-#' x <- matrix(1:12, nrow = 3)
-#' 
-#' d <- diffrows(x)
-#' 
-#' x[2, ] - x[1, ] == d[1, ]
-#' x[3, ] - x[2, ] == d[2, ]
+  x <- createMatrix(c("a", "b", "c"))  
+  
+  y <- setMatrixColumns(x, list(c = 1:3))
 
-# asColumnList -----------------------------------------------------------------
-#' x <- matrix(1:12, nrow = 3)
-#' 
-#' column_list <- asColumnList(x)
-#' 
-#' for (i in 1:ncol(x)) print(identical(column_list[[i]], x[, i]))
+  expect_warning(setMatrixColumns(x, list(r = 1)))
+  
+  expect_equal(unname(y[, "c"]), 1:3)
+})
 
-# asRowList --------------------------------------------------------------------
-#' x <- matrix(1:12, nrow = 3)
-#' 
-#' row_list <- asRowList(x)
-#' 
-#' for (i in 1:nrow(x)) print(identical(row_list[[i]], x[i, ]))
+test_that("assertRowsAndColumns() works", {
+  
+  m <- matrix(1:12, nrow = 3, ncol = 4, dimnames = list(
+    rows = paste0("row", 1:3), cols = paste0("col", 1:4)
+  ))
+
+  # Add two rows, reverse order of rows, add one column, remove one column
+  row_names <- paste0("row", 4:0)
+  col_names <- paste0("col", 0:2)
+  
+  y <- assertRowsAndColumns(m, row_names = row_names, col_names = col_names)
+
+  expect_is(y, "matrix")
+  
+  expect_identical(rownames(y), row_names)
+  expect_identical(colnames(y), col_names)
+})
+
+test_that("stopIfNotMatrix() works", {
+  
+  expect_error(stopIfNotMatrix(NULL))
+  expect_error(stopIfNotMatrix(data.frame()))
+  expect_silent(stopIfNotMatrix(matrix()))
+})
+
+test_that("diffrows() works", {
+
+  x <- matrix(1:12, nrow = 3)
+
+  d <- diffrows(x)
+
+  expect_identical(nrow(d) + 1L, nrow(x))
+  
+  expect_equal(x[2, ] - x[1, ], d[1, ])
+  expect_equal(x[3, ] - x[2, ], d[2, ])
+})
+
+test_that("asColumnList() and asRowList() work", {
+  
+  x <- matrix(1:12, nrow = 3)
+
+  column_list <- asColumnList(x)
+  row_list <- asRowList(x)
+  
+  expect_is(column_list, "list")
+  expect_is(row_list, "list")
+  
+  expect_length(column_list, ncol(x))
+  expect_length(row_list, nrow(x))
+  
+  for (i in 1:ncol(x)) {
+    
+    expect_identical(column_list[[i]], x[, i])
+  }
+  
+  for (i in 1:nrow(x)) {
+    
+    expect_identical(row_list[[i]], x[i, ])
+  }
+})
