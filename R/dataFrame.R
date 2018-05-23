@@ -413,7 +413,10 @@ rbindAll <- function(
       xnames <- seq_len(length(x))
     }
     
-    times <- sapply(x, FUN = function(x) if (is.null(x)) 0 else nrow(x))
+    times <- sapply(x, FUN = function(xx) {
+      
+      if (is.null(xx)) 0 else if (is.null(dim(xx))) 1 else dim(xx)[1]
+    })
     
     nameValues <- rep(xnames, times = times)
     
