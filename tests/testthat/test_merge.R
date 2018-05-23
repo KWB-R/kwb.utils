@@ -16,7 +16,7 @@ checkResult <- function(x, xy)
   isIdentical
 }
 
-test_that("unmerged() works", {
+test_that("unmerge() works", {
   
   z <- data.frame(
     insp = c(1, 1, 2, 3, 4, 5),
@@ -32,6 +32,34 @@ test_that("unmerged() works", {
   expect_true(checkResult(z, unmerge(z, "p1")))
   expect_true(checkResult(z, unmerge(z, "p2")))
   expect_true(checkResult(z, unmerge(z, c("p1", "p2"))))
+})
+
+test_that("mergeAll() and safeMerge() work", {
+  
+  to_data <- function(...) data.frame(stringsAsFactors = FALSE, ...)
+  
+  peter <- to_data(fruit = c("apple", "pear", "banana"), kg = 1:3)
+  paul <- to_data(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
+  mary <- to_data(fruit = c("lemon", "organger", "apple"), kg = c(22, 33, 44))
+
+  expect_error(safeMerge(peter, paul, by = "no_such_column"))
+  expect_silent(y <- safeMerge(peter, paul, by = "fruit"))
+  
+  expect_identical(y, merge(peter, paul, by = "fruit"))
+  
+  x <- list(peter = peter, paul = paul, mary = mary)
+  
+  expect_output(y_1 <- mergeAll(x, by = "fruit"))
+  expect_output(y_2 <- mergeAll(x, by = "fruit", all = TRUE))
+  
+  expect_silent(mergeAll(x, by = "fruit", dbg = FALSE))
+
+  expect_identical(nrow(y_1), 1L)
+  
+  expect_identical(
+    sort(y_2$fruit), 
+    sort(unique(c(peter$fruit, paul$fruit, mary$fruit)))
+  )
 })
 
 test_that("mergeNamedArrays works", {
