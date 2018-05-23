@@ -45,20 +45,77 @@ test_that("desktop() and user() work", {
   expect_true(grepl(user_name, path, ignore.case = TRUE))
 })
 
-# sourceScripts ----------------------------------------------------------------
-# runInDirectory ---------------------------------------------------------------
-# defaultWindowsProgramFolders -------------------------------------------------
-# mySystemTime -----------------------------------------------------------------
+test_that("sourceScripts() works", {
+
+  temp_file_1 <- tempfile()
+  temp_file_2 <- tempfile()
+  
+  writeLines("cat('Hello, world!')", temp_file_1)
+  writeLines("x <- 123; stop('Hello, error!')", temp_file_2)
+  
+  expect_output(sourceScripts(temp_file_1, dbg = FALSE))
+  expect_error(sourceScripts(temp_file_2, dbg = FALSE))
+  
+  expect_identical(x, 123)
+})
+
+test_that("runInDirectory() works", {
+  
+  path <- system.file(package = "kwb.utils")
+
+  expect_identical(runInDirectory(path, dir), dir(path))
+  expect_output(runInDirectory(path, dir, .dbg = TRUE))
+})
+
+test_that("defaultWindowsProgramFolders() works", {
+
+  y <- defaultWindowsProgramFolders()
+  
+  expect_is(y, "character")
+  expect_named(y)
+})
+
+test_that("mySystemTime() works", {
+  
+  expect_output(y <- mySystemTime(max, list(1:10)))
+  
+  expect_is(y, "integer")
+  expect_length(y, 1)
+})
+
 # runBatchfileInDirectory ------------------------------------------------------
 # cmdLinePath ------------------------------------------------------------------
 # copyDirectoryStructure -------------------------------------------------------
 # createDirAndReturnPath -------------------------------------------------------
 # createDirectory --------------------------------------------------------------
-# tempSubdirectory -------------------------------------------------------------
+
+test_that("tempSubdirectory() works", {
+  
+  y <- tempSubdirectory("abc")
+  
+  expect_is(y, "character")
+  expect_true(file.exists(y))
+  expect_identical(basename(y), "abc")
+})
+
 # hsOpenWindowsExplorer --------------------------------------------------------
-# .isNetworkPath ---------------------------------------------------------------
-# windowsPath ------------------------------------------------------------------
-# rStylePath -------------------------------------------------------------------
+
+test_that(".isNetworkPath() works", {
+
+  expect_false(.isNetworkPath("abc"))
+  expect_true(.isNetworkPath("//abc"))
+  expect_true(.isNetworkPath("//abc/def/ghi"))
+})
+
+test_that("windowsPath() and rStylePath() work", {
+
+  x <- "a/b/c"
+  y <- windowsPath(x)
+  
+  expect_identical(hsCountInStr("\\\\", y), hsCountInStr("/", x))
+  expect_identical(rStylePath(y), x)
+})
+
 # .showCommand -----------------------------------------------------------------
 # hsSystem ---------------------------------------------------------------------
 # hsShell ----------------------------------------------------------------------
