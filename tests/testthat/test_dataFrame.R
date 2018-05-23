@@ -49,6 +49,8 @@ test_that("resetRowNames() works", {
     rownames(resetRowNames(persons)), 
     as.character(seq_len(nrow(persons)))
   )
+  
+  expect_error(resetRowNames(1))
 })
 
 test_that("frequencyTable() works", {
@@ -88,6 +90,8 @@ test_that("compareDataFrames() works", {
     names(which(! unlist(z))),
     c("identical", "identicalExceptAttributes", "sameColumnNames")
   )
+  
+  expect_output(tmp <- compareDataFrames(x, y, dbg = TRUE))
 })
 
 test_that("compareSets() works", {

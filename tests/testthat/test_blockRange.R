@@ -12,9 +12,13 @@ test_that("extractRowRanges() works", {
     )
   ))
   
-  y <- extractRowRanges(
+  arguments <- list(
     dataFrame, columnName = "V1", pattern = "Date", stopOffset = 2
   )
+  
+  y_1 <- callWith(extractRowRanges, arguments)
+  
+  y_2 <- callWith(extractRowRanges, arguments, nameByMatch = TRUE)
   
   expected <- list(
     data.frame(
@@ -29,7 +33,9 @@ test_that("extractRowRanges() works", {
     )
   )
   
-  expect_identical(y, expected)
+  expect_identical(y_1, expected)
+  
+  expect_named(y_2)
 })
 
 test_that("startsToRanges() works", {
