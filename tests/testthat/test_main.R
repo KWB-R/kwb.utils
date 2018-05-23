@@ -46,22 +46,6 @@ test_that("parallelNonNA() works", {
   expect_equal(attr(y, "invalid"), data.frame(index = 3, a = 3, b = 4))
 })
 
-test_that("naToLastNonNa() works", {
-
-  expect_identical(
-    naToLastNonNa(c(1, 2, NA, NA, 3, NA, NA, 4, NA, NA, 5)),
-    c(1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5)
-  )
-  
-  expect_identical(
-    naToLastNonNa(c(NA, 1, NA, 2)), c(NA, 1, 1, 2)
-  )
-
-  expect_error(
-    naToLastNonNa(c(NA, 1, NA, 2), method = 1)
-  )
-})
-
 test_that("makeUnique() works", {
 
   x <- c("a", "a")
