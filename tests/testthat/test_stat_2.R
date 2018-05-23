@@ -74,23 +74,6 @@ test_that("relativeCumulatedSum() works", {
   expect_identical(order(relativeCumulatedSum(1:5)), 1:5)
 })
 
-test_that("columnwisePercentage() works", {
-  
-  M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
-  
-  # Introduce some NA
-  values <- as.numeric(M1)
-  values[sample(length(values), 3)] <- NA
-  
-  M2 <- matrix(values, nrow = nrow(M1), dimnames = dimnames(M1))
-  
-  expect_true(all(colSums(columnwisePercentage(M1, digits = NA)) == 100))
-  
-  expect_true(all(colSums(columnwisePercentage(M2, digits = NA)) == 100))
-  
-  expect_true(sum(is.na(colSums(columnwisePercentage(M2, default = NA)))) > 0)
-}) 
-
 test_that("colStatistics() works", {
 
   x <- data.frame(a = 1:10, b = 2:11)

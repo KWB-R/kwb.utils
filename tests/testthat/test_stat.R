@@ -18,4 +18,18 @@ test_that("columnwisePercentage() works as expected", {
   
   expect_identical(dimnames(M1), dimnames(P1))
   expect_identical(dimnames(M2), dimnames(P2))
+  
+  M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
+  
+  # Introduce some NA
+  values <- as.numeric(M1)
+  values[sample(length(values), 3)] <- NA
+  
+  M2 <- matrix(values, nrow = nrow(M1), dimnames = dimnames(M1))
+  
+  expect_true(all_correct(columnwisePercentage(M1, digits = NA)))
+  
+  expect_true(all_correct(columnwisePercentage(M2, digits = NA)))
+  
+  expect_true(sum(is.na(colSums(columnwisePercentage(M2, default = NA)))) > 0)
 })
