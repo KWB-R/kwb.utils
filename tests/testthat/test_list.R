@@ -5,7 +5,13 @@ test_that("copyListElements() works", {
   
   expect_error(copyListElements("a", 1))
   expect_error(copyListElements(list(), 1))
-  expect_error(copyListElements(list(a = 1), list(b = 2, c = 3)))
+  expect_error(copyListElements(list(list(a = 1)), list(b = 2, c = 3)))
+  expect_error(copyListElements(list(list()), list(a = 1), name = character()))
+  
+  z <- copyListElements(x, y)
+  
+  expect_is(z, "list")
+  expect_length(z, length(x))
 })
 
 test_that("excludeNULL() works", {
@@ -38,8 +44,13 @@ test_that("nameByElement() works", {
   expect_identical(names(y), c("A", "B"))
 })
 
-
 test_that("removeElements() works", {
-  #x <- list(a = 1, b = 2)
-  #removeElements(x, "a")
+  
+  x <- list(a = 1, b = 2:3, c = 3:5)
+  
+  y <- removeElements(x, elements = "a")
+  
+  expect_is(y, "list")
+  expect_length(y, 2)
+  expect_identical(y, x[c("b", "c")])
 })
