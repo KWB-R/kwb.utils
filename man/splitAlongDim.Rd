@@ -13,7 +13,12 @@ splitAlongDim(a, n)
 }
 \value{
 array of one dimension less than \code{a}
-
+}
+\description{
+Split an array along its n-th dimension. The implementation was found here:
+https://stackoverflow.com/questions/20198751/three-dimensional-array-to-list
+}
+\examples{
 # Define an array
 A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
   paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
@@ -22,8 +27,5 @@ A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
 splitAlongDim(A, 1)
 splitAlongDim(A, 2)
 splitAlongDim(A, 3)
-}
-\description{
-Split an array along its n-th dimension. The implementation was found here:
-https://stackoverflow.com/questions/20198751/three-dimensional-array-to-list
+
 }

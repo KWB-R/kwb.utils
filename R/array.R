@@ -83,7 +83,7 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
     print_with_caption(dim_a)
     print_with_caption(dim_b)
 
-    stop("Target dimensions are to small!")
+    stop("Target dimensions are too small!")
   }
 
   for (i in seq_along(dim_a)) {
@@ -151,6 +151,7 @@ dropDim <- function(x, dimension = which(dim(x) == 1))
 #'
 #' @return array of one dimension less than \code{a}
 #'
+#' @examples
 #' # Define an array
 #' A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
 #'   paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
