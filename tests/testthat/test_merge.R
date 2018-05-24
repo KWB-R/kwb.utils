@@ -66,7 +66,8 @@ test_that("mergeAll() and safeMerge() work", {
   expect_identical(unname(y_1b), unname(y_2b))
 })
 
-test_that("mergeNamedArrays works", {
+test_that("mergeNamedArrays() works", {
+  
   a1 <- array(
     1:12, dim = c(2, 4, 2), dimnames = list(
       paste0("x", 1:2), paste0("y", 1:4), paste0("z", 1:2)
@@ -84,12 +85,33 @@ test_that("mergeNamedArrays works", {
   dim_names <- dimnames(a)
 
   for (i in 1:3) {
+    
     expect_true(all(dim_names_1[[i]] %in% dim_names[[i]]))
     expect_true(all(dim_names_2[[i]] %in% dim_names[[i]]))
   }
+  
+  expect_error(mergeNamedArrays(list(a1, unname(a2))))
 })
 
-test_that("dropDim works", {
+test_that(".checkDimensions() works", {
+
+  dim_1 <- list(x = c("x1", "x2", "x3"), y = c("y1", "y2", "y3"))
+  
+  .checkDimensions(dim_1, dim_1)
+  
+  dim_2 <- dim_1
+  
+  dim_2$y[1] <- "y11"
+  
+  expect_error(.checkDimensions(dim_1, dim_2))
+  
+  dim_2 <- list(x = 1:4, y = 1)
+  
+  expect_error(.checkDimensions(dim_1, dim_2))
+})
+
+test_that("dropDim() works", {
+  
   a <- array(1:8, dim = c(2, 2, 2), dimnames = list(
     paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
   ))
@@ -97,4 +119,20 @@ test_that("dropDim works", {
   a1 <- dropDim(a[, 1, 1, drop = FALSE], dimension = 3)
 
   expect_identical(dim(a1), c(2L, 1L))
+})
+
+test_that("splitAlongDim() works", {
+  
+  expect_error(splitAlongDim(list(), 1))
+  
+  # Define an array
+  A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
+    paste0("x", 1:2), paste0("y", 1:2), paste0("z", 1:2)
+  ))
+
+  expect_error(splitAlongDim(A, 4))
+  
+  splitAlongDim(A, 1)
+  splitAlongDim(A, 2)
+  splitAlongDim(A, 3)
 })
