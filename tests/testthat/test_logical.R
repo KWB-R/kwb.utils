@@ -50,18 +50,32 @@ test_that("allAreIdentical() works", {
 
 test_that("matchesCriteria() works", {
   
-  Data <- data.frame(A = c("x", "y", "z"), B = c( 1,   2,   3))
+  Data <- data.frame(A = c("x", "y", "z", NA), B = c(1, 2, NA, 4))
   
-  criteria1 <- c("A %in% c('y', 'z')", "B %in% 1:3")
-  criteria2 <- c("AB %in% c('y', 'z')", "B <- 1")
+  criteria_1 <- c("A %in% c('y', 'z')", "B %% 2 == 0")
   
-  expect_equal(matchesCriteria(Data, criteria1), c(F, T, T))
-  expect_equal(matchesCriteria(Data, criteria1[1]), c(F, T, T))
-  expect_equal(matchesCriteria(Data, criteria1[2]), c(T, T, T))
+  expect_warning(y <- matchesCriteria(Data, criteria_1))
+  expect_identical(y, c(FALSE, TRUE, NA, FALSE))
   
-  expect_error(matchesCriteria(Data, criteria2))
-  expect_error(matchesCriteria(Data, criteria2[1]))
-  expect_error(matchesCriteria(Data, criteria2[2]))
+  y <- matchesCriteria(Data, criteria_1[1])
+  expect_identical(y, c(FALSE, TRUE, TRUE, FALSE))
   
+  expect_warning(y <- matchesCriteria(Data, criteria_1[2]))
+  expect_identical(y, c(FALSE, TRUE, NA, TRUE))
+
+  expect_error(matchesCriteria(Data, "AB %in% c('y', 'z')"))
+
   expect_true(all(matchesCriteria(Data)))
+  
+  expect_message(y <- matchesCriteria(
+    Data, criteria_1, add.details = TRUE, na.to.false = TRUE
+  ))
+
+  expect_identical(removeAttributes(y), c(FALSE, TRUE, FALSE, FALSE))
+  
+  details <- attr(y, "details")
+  
+  expect_true(! is.null(criteria <- attr(details, "criteria")))
+  
+  expect_identical(as.character(criteria$condition), criteria_1)
 })
