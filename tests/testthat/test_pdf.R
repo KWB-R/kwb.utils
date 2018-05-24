@@ -1,4 +1,4 @@
-test_that("preparePdfIf() works", {
+test_that("preparePdfIf() and preparePdf() work", {
 
   dev_list <- dev.list()
   
@@ -6,13 +6,23 @@ test_that("preparePdfIf() works", {
   
   expect_identical(dev.list(), dev_list)
   
-  pdf_file <- preparePdfIf(TRUE)
+  pdf_file_1 <- preparePdfIf(TRUE)
+  pdf_file_2 <- preparePdfIf(TRUE, PDF = tempfile(fileext = ".pdf"))
+  pdf_file_3 <- preparePdf(makeCurrent = FALSE)
   
   on.exit(dev.off())
+  on.exit(dev.off(), add = TRUE)
+  on.exit(dev.off(), add = TRUE)
   
-  expect_true(file.exists(pdf_file))
+  expect_true(file.exists(pdf_file_1))
+  expect_true(file.exists(pdf_file_2))
+  expect_true(file.exists(pdf_file_3))
   
-  expect_identical(names(lastElement(dev.list())), "pdf")
+  n <- length(dev.list())
+
+  expect_true(dev.cur() != dev.list()[n])  
+  expect_identical(names(dev.list())[n], "pdf")
+  expect_identical(names(dev.list())[n], "pdf")
 })
 
 # preparePdf
