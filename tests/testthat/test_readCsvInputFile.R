@@ -67,7 +67,7 @@ test_that(".readAndSplitRowInFile() works", {
   
   expect_identical(y_1, header_fields)
   expect_identical(y_2, header_fields)
-}
+})
 
 test_that(".defaultColumnDescription() works", {
   
