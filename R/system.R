@@ -94,12 +94,13 @@ safePath <- function(...)
 #'
 #' Get the path to your desktop
 #'
+#' @param osType Optional. Type of operating system, one of \code{"unix"},
+#'   \code{"windows"}
+#'   
 #' @return character string representing the path to your desktop
 #'
-desktop <- function()
+desktop <- function(osType = .OStype())
 {
-  osType <- .OStype()
-
   desktops <- c(
     windows = "<userprofile>/Desktop",
     unix = "/home/<user>/Desktop"
@@ -131,12 +132,13 @@ desktop <- function()
 #'
 #' Get the name of the current user from the environment variables
 #'
+#' @param osType Optional. Type of operating system, one of \code{"unix"},
+#'   \code{"windows"}
+#'   
 #' @return character string represenging the name of the current user
 #'
-user <- function()
+user <- function(osType = .OStype())
 {
-  osType <- .OStype()
-
   user <- Sys.getenv(c(windows = "USERNAME", unix = "USER")[osType])
 
   if (isNaOrEmpty(user)) {

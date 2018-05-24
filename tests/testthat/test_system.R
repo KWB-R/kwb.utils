@@ -43,6 +43,11 @@ test_that("desktop() and user() work", {
   
   expect_true(grepl("desktop", path, ignore.case = TRUE))
   expect_true(grepl(user_name, path, ignore.case = TRUE))
+  
+  expect_error(desktop("no_such_os"))
+  expect_error(user("no_such_os"))
+  
+  expect_true(grepl("Desktop$", desktop("windows")))
 })
 
 test_that("sourceScripts() works", {

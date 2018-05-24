@@ -4,7 +4,11 @@
 \alias{desktop}
 \title{Path to Your Desktop}
 \usage{
-desktop()
+desktop(osType = .OStype())
+}
+\arguments{
+\item{osType}{Optional. Type of operating system, one of \code{"unix"},
+\code{"windows"}}
 }
 \value{
 character string representing the path to your desktop

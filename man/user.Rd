@@ -4,7 +4,11 @@
 \alias{user}
 \title{Name of the Current User}
 \usage{
-user()
+user(osType = .OStype())
+}
+\arguments{
+\item{osType}{Optional. Type of operating system, one of \code{"unix"},
+\code{"windows"}}
 }
 \value{
 character string represenging the name of the current user
