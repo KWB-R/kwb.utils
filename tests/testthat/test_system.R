@@ -84,10 +84,49 @@ test_that("mySystemTime() works", {
 })
 
 # runBatchfileInDirectory ------------------------------------------------------
-# cmdLinePath ------------------------------------------------------------------
-# copyDirectoryStructure -------------------------------------------------------
-# createDirAndReturnPath -------------------------------------------------------
-# createDirectory --------------------------------------------------------------
+
+test_that("cmdLinePath() works", {
+
+  expect_error(cmdLinePath())
+  
+  y <- cmdLinePath("x/y/z")
+  
+  expect_is(y, "character")
+  
+  expect_true(grepl('^".*"$', y))
+})
+
+test_that("copyDirectoryStructure() works", {
+  
+  sourcedir <- system.file(package = "kwb.utils")
+
+  folder_paths <- function(x) list.dirs(x, recursive = TRUE, full.names = FALSE)
+
+  targetdir <- createDirectory(file.path(tempdir(), "test_copy"))
+
+  copyDirectoryStructure(sourcedir, targetdir)
+  
+  expect_identical(folder_paths(targetdir), folder_paths(sourcedir))
+})
+
+test_that("createDirAndReturnPath() gives a warning", {
+  targetdir <- file.path(tempdir(), "test_createDir")
+  
+  expect_warning(path <- createDirAndReturnPath(targetdir))
+  
+  expect_identical(path, createDirectory(targetdir))
+})
+
+test_that("createDirectory() works", {
+  
+  targetdir <- file.path(tempdir(), "test_createDir")
+  
+  path <- createDirectory(targetdir)
+  
+  expect_true(file.exists(targetdir))
+  
+  expect_identical(path, targetdir)
+})
 
 test_that("tempSubdirectory() works", {
   
@@ -116,6 +155,31 @@ test_that("windowsPath() and rStylePath() work", {
   expect_identical(rStylePath(y), x)
 })
 
-# .showCommand -----------------------------------------------------------------
-# hsSystem ---------------------------------------------------------------------
-# hsShell ----------------------------------------------------------------------
+test_that(".showCommand() works", {
+
+  expect_error(.showCommand())
+  
+  expect_output(.showCommand("/path/to/program option1 option2 file"))
+})
+
+test_that("hsSystem() works", {
+
+  expect_error(hsSystem())
+  
+  expect_output(y <- hsSystem("dir"))
+  
+  expect_identical(y, 0L)
+})
+
+test_that("hsShell() works", {
+
+  if (.OStype() == "windows") {
+
+    expect_error(hsShell())
+    
+    expect_output(y <- hsShell("dir"))
+    
+    expect_identical(y, 0L)
+  }
+})
+
