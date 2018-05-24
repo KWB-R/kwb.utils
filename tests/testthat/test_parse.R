@@ -10,6 +10,8 @@ test_that("guessSeparator() works", {
   
   expect_identical(guessSeparator(file_1), ";")
   expect_identical(guessSeparator(file_2), ",")
+
+  expect_identical(guessSeparator(c(file_1, file_2)), c(";", ","))
 })
 
 test_that("getKeywordPositions() works", {
@@ -22,12 +24,25 @@ test_that("getKeywordPositions() works", {
 
   keywords <- c("frisch", "Erden", "Heute")
   
-  pos <- getKeywordPositions(word_matrix, keywords)
+  pos_dframe <- getKeywordPositions(word_matrix, keywords)
+  pos_matrix <- getKeywordPositions(word_matrix, keywords, asDataFrame = FALSE)
   
-  expect_true(is.data.frame(pos))
-  expect_identical(dim(pos), c(2L, 3L))
-  expect_identical(names(pos), keywords)
-  expect_equal(pos$frisch, c(3, 3))
-  expect_equal(pos$Erden, c(1, 5))
-  expect_equal(pos$Heute, c(2, 5))
+  expect_is(pos_dframe, "data.frame")
+  expect_is(pos_matrix, "matrix")
+  
+  expect_identical(dim(pos_dframe), c(2L, 3L))
+  expect_identical(dim(pos_matrix), c(2L, 3L))
+  
+  expect_identical(colnames(pos_dframe), keywords)
+  expect_identical(colnames(pos_matrix), keywords)
+  
+  expect_equal(pos_dframe$frisch, c(3, 3))
+  expect_equal(pos_dframe$Erden, c(1, 5))
+  expect_equal(pos_dframe$Heute, c(2, 5))
+  
+  expect_equal(pos_matrix[, "frisch"], c(3, 3))
+  expect_equal(pos_matrix[, "Erden"], c(1, 5))
+  expect_equal(pos_matrix[, "Heute"], c(2, 5))
+  
+  expect_error(getKeywordPositions(word_matrix, "no_such_word"))
 })
