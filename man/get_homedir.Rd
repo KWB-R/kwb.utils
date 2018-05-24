@@ -4,7 +4,11 @@
 \alias{get_homedir}
 \title{Get File Path of User's Home Directory}
 \usage{
-get_homedir()
+get_homedir(osType = .OStype())
+}
+\arguments{
+\item{osType}{Optional. Type of operating system, one of \code{"unix"},
+\code{"windows"}}
 }
 \value{
 path of user's home directory on windows (full path home directory

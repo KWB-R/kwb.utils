@@ -85,7 +85,13 @@ safePath <- function(...)
 {
   OS <- Sys.getenv("R_OSTYPE")
 
-  if (nzchar(OS)) OS else .Platform$OS.type
+  if (nzchar(OS)) {
+    
+    OS
+  } else {
+    
+    .Platform$OS.type
+  }
 }
 
 # desktop ----------------------------------------------------------------------
