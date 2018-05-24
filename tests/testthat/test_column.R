@@ -124,37 +124,41 @@ test_that("insertColumns() works", {
   expect_error(insertColumns(Data, before = c("A", "B")))
   expect_error(insertColumns(Data, after = c("A", "B")))
   expect_error(insertColumns(Data, before = "A", after = "B"))
+  
+  expect_error(insertColumns(Data, after = "A", 77))
+  expect_error(insertColumns(Data, after = "A", A1 = 77))
 })
 
-# hsRenameColumns --------------------------------------------------------------
+test_that("renameColumns() and renameAndSelect() work", {
+  
+  Data <- data.frame(A = 1:5, B = 2:6)
+  
+  renamings = list(A = "Alpha", B = "Bravo")
+  
+  y <- renameColumns(Data, renamings)
 
-# renameColumns ----------------------------------------------------------------
+  expect_identical(hsRenameColumns(y, renamings), renameColumns(y, renamings))
+  
+  expect_identical(names(y), as.character(renamings))
+  
+  expect_identical(unname(Data), unname(y))
+  
+  expect_identical(Data, renameColumns(Data, NULL))
+  
+  expect_identical(renameAndSelect(Data, renamings), y)
+})
 
-# renameAndSelect --------------------------------------------------------------
+test_that("setColumns() works", {
 
-# setColumns -------------------------------------------------------------------
+  x <- data.frame(a = 1:5)
 
-#' # Create a data frame
-#' x <- data.frame(a = 1:5)
-#'
-#' # Option 1: use the "$" operator
-#' x1 <- x
-#' x1$b <- 2:6
-#' x1$c <- 3:7
-#'
-#' # Option 2: use setColumns
-#' x2 <- setColumns(x, b = 2:6, c = 3:7)
-#'
-#' # The result is the same
-#' identical(x1, x2)
-#'
-#' # but the creation of columns has been reported on the console (dbg = TRUE by
-#' # default)
-#'
-#' ## Provide column 'b' to data frame 'x'... ok.
-#' ## Provide column 'c' to data frame 'x'... ok.
-#'   
-# setColumns <- function(.x, ..., dbg = TRUE)
-# stopifnot(is.data.frame(.x))
-# stop("All column assignments be named!", call. = FALSE)
-# catIf(dbg, sprintf("Provide column...
+  expect_error(setColumns(1, b = 2))
+  
+  expect_error(setColumns(x, 2))
+  
+  expect_silent(setColumns(x, b = 2:6, dbg = FALSE))
+
+  expect_output(y <- setColumns(x, b = 2:6, c = 3:7))
+  
+  expect_identical(y, cbind(x, b = 2:6, c = 3:7))
+})
