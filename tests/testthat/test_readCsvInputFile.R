@@ -24,7 +24,7 @@ columnDescription_1 <- list(
 )
 
 columnDescription_2 <- list(
-  columnDescriptor("z")
+  z = columnDescriptor("z")
 )
 
 columnDescription_3 <- list(
@@ -50,9 +50,9 @@ test_that("readCsvInputFile() works", {
   
   expect_is(y, "data.frame")
   
-  # expect_error(readCsvInputFile(
-  #   text_file, sep = ",", dec = ".", columnDescription = columnDescription_3
-  # ))
+  expect_warning(
+    readCsvInputFile(text_file, sep = ",", columnDescription = list())
+  )
 })
 
 test_that("msgAvailableFields() works", {
