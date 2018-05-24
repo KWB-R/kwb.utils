@@ -39,14 +39,16 @@ test_that("DIN.A4() works", {
 
 test_that("finishAndShowPdfIf() works", {
   
-  finishAndShowPdf(FALSE)
+  finishAndShowPdfIf(FALSE)
 })
 
 # finishAndShowPdf
 
 test_that("hsPrepPdf() gives a warning", {
 
-  expect_warning(hsPrepPdf(FALSE))
+  expect_warning(hsPrepPdf(tempfile()))
+  
+  dev.off()
 })
 
 # hsShowPdf --------------------------------------------------------------------
