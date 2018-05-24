@@ -1,6 +1,7 @@
 context("Lookup-functions")
 
 keys <- c("A", "B", "C")
+
 values <- c("Apple", "Banana", "Cherry")
 
 test_that("toLookupClass() works", {
@@ -26,6 +27,8 @@ test_that("toLookupClass() works", {
   expect_identical(fruits_list[c("A", "C")], list(A = "Apple", C = "Cherry"))
                    
   expect_identical(fruits_vector[c("A", "C")], c(A = "Apple", C = "Cherry"))
+  
+  expect_error(toLookupClass(keys, values, class = "no_such_class"))
 })
 
 test_that("toLookupList() works", {
@@ -36,6 +39,15 @@ test_that("toLookupList() works", {
   expect_length(y, length(keys))
   expect_identical(names(y), keys)
   expect_identical(as.character(y), values)
+  
+  expect_error(toLookupList(data = data.frame(Key = LETTERS[1:5])))
+  
+  data <- data.frame(Key = 1:26, Value = paste("Letter", LETTERS))
+  
+  y <- toLookupList(data = data)
+
+  expect_identical(hsTrim(names(y)), as.character(data$Key))
+  expect_identical(as.character(y), as.character(data$Value))
 })
 
 test_that("toLookupTable() works", {
@@ -46,6 +58,12 @@ test_that("toLookupTable() works", {
   expect_identical(nrow(y), 1L)
   expect_identical(names(y), keys)
   expect_identical(as.character(y), values)
+  
+  List <- list(a = 1, b = 2)
+  y <- toLookupTable(List = List)
+  
+  expect_identical(names(y), names(List))
+  expect_identical(as.integer(y), as.integer(List))
 })
 
 test_that("tableLookup() works", {
@@ -56,4 +74,16 @@ test_that("tableLookup() works", {
   
     expect_identical(tableLookup(x, keys[i]), values[i])
   }
+  
+  default <- "default_value"
+  
+  expect_warning(y <- tableLookup(x, "no_such_key", default = default))
+  
+  expect_identical(y, default)
+  
+  x <- rbind(x, c("B", "Blueberry"))
+  
+  expect_warning(y <- tableLookup(x, "B"))
+  
+  expect_identical(y, x$value[which(x$key == "B")[1]])
 })
