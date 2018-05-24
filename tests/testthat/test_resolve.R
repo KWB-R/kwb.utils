@@ -2,9 +2,17 @@ file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
 
 dictionary <- list()
 
-test_that("readDictionary() and readDictionaries() work", {
-  
+test_that("writeDictionary(), readDictionary() and readDictionaries() work", {
+
   dictionary <<- readDictionary(file)
+  
+  temp_file <- tempfile()
+  
+  writeDictionary(dictionary, temp_file)
+  
+  expect_true(file.exists(temp_file))
+  
+  expect_identical(readDictionary(temp_file), dictionary)
   
   dictionary_unsorted <- readDictionary(file, sorted = FALSE)
   
@@ -37,6 +45,11 @@ test_that("hsResolve does not crash on unresolved placeholders", {
   
   expect_equal(hsResolve("<a>"), "<a>")
   expect_equal(hsResolve("<a>", list(b = "c")), "<a>")
+})
+
+test_that("hsResolve works with more than one dictionary", {
+  
+  hsResolve("x", list(x = "<y>/z"), list(y = "root"))
 })
 
 test_that("hsResolve does not 'consume' backslashes", {
