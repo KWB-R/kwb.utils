@@ -112,7 +112,14 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
     sum(characters == sep)
   })
   
-  names(which.max(count))
+  if (! all(count == 0)) {
+    
+    names(count == max(count))
+    
+  } else {
+    
+    character()
+  }
 }
 
 # getKeywordPositions ----------------------------------------------------------

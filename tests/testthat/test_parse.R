@@ -6,17 +6,19 @@ test_that("guessSeparator() works", {
   file_2 <- tempfile()
   file_3 <- tempfile()
   
-  write.table(x, file_1, sep = ";")
-  write.table(x, file_2, sep = ",")
-  writeLines(c("a,b;c", "1;2,3"), file_3)
+  write.csv(x, file_1)
+  write.csv2(x, file_2)
+  writeLines(c("a,b;c", "", "1;2,3"), file_3)
   
-  expect_identical(guessSeparator(file_1), ";")
-  expect_identical(guessSeparator(file_2), ",")
+  expect_identical(guessSeparator(file_1), ",")
+  expect_identical(guessSeparator(file_2), ";")
 
-  expect_identical(guessSeparator(c(file_1, file_2)), c(";", ","))
+  expect_identical(guessSeparator(c(file_1, file_2)), c(",", ";"))
   
-  guessSeparator(file_3)
-  guessSeparator(file_3, separators = c(" ", "+"))
+  expect_identical(guessSeparator(file_3, separators = ","), ",")
+  
+  expect_warning(guessSeparator(file_3, separators = c(",", ";")))
+  expect_warning(guessSeparator(file_3, separators = "@"))
 })
 
 test_that("getKeywordPositions() works", {
