@@ -11,6 +11,13 @@ test_that("objectSize() works", {
   expect_true(grepl("Kb$", objectSize(1:100, units = "KB"), ignore.case = TRUE))
   
   expect_error(objectSize(1:100, units = "no_such_unit"))
+  
+  y <- objectSize(list(
+    a = list(x = 1:20, letters = LETTERS),
+    b = 77
+  ))
+  
+  expect_is(y, "list")
 })
 
 test_that("safePath() works", {

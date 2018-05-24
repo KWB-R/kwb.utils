@@ -4,14 +4,19 @@ test_that("guessSeparator() works", {
   
   file_1 <- tempfile()
   file_2 <- tempfile()
+  file_3 <- tempfile()
   
   write.table(x, file_1, sep = ";")
   write.table(x, file_2, sep = ",")
+  writeLines(c("a,b;c", "1;2,3"), file_3)
   
   expect_identical(guessSeparator(file_1), ";")
   expect_identical(guessSeparator(file_2), ",")
 
   expect_identical(guessSeparator(c(file_1, file_2)), c(";", ","))
+  
+  guessSeparator(file_3)
+  guessSeparator(file_3, separators = c(" ", "+"))
 })
 
 test_that("getKeywordPositions() works", {
