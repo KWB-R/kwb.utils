@@ -1,5 +1,21 @@
 file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
-dictionary <- readDictionary(file)
+
+dictionary <- list()
+
+test_that("readDictionary() and readDictionaries() work", {
+  
+  dictionary <<- readDictionary(file)
+  
+  dictionary_unsorted <- readDictionary(file, sorted = FALSE)
+  
+  expect_true(is.unsorted(names(dictionary_unsorted)))
+  
+  dictionaries <- readDictionaries(dirname(file), pattern = "^(dict.*)\\.txt$")
+  
+  expect_identical(dictionaries[[1]], dictionary_unsorted)
+  
+  expect_identical(names(dictionaries), "dictionary")
+})
 
 test_that("resolve works correctly", {
   
@@ -18,22 +34,26 @@ test_that("resolve works correctly", {
 })
 
 test_that("hsResolve does not crash on unresolved placeholders", {
+  
   expect_equal(hsResolve("<a>"), "<a>")
   expect_equal(hsResolve("<a>", list(b = "c")), "<a>")
 })
 
 test_that("hsResolve does not 'consume' backslashes", {
+  
   expect_equal(hsResolve("<a>", list(), a = "\\"), "\\")
   expect_equal(hsResolve("<a>", list(a = "\\")), "\\")
 })
 
 test_that("hsResolve replaces recursively", {
+  
   expect_equal(hsResolve("x", list(x = 1)), "1")
   expect_equal(hsResolve("x", list(x = "<y>", y = 1)), "1")
   expect_equal(hsResolve("x", list(x = "<y>", y = "<z>", z = "22")), "22")
 })
 
 test_that("hsResolve works with a vector of elements", {
+  
   expect_equal(hsResolve(c("x", "y", "z"), list(x = 1, y = 2, z = 3)), 
                as.character(1:3))
   expect_equal(hsResolve(c("x", "y", "z"), list(x = 1, y = 2), z = 3),
@@ -41,14 +61,23 @@ test_that("hsResolve works with a vector of elements", {
 })
 
 test_that("resolveAll works as expected", {
+  
   expect_equal(resolveAll(list(x = 1, y = "<x>", z = "<y>")), 
                list(x = "1", y = "1", z = "1"))
   expect_equal(resolveAll(list(x = 1, y = "<a>", z = "<y>"), a = 2), 
                list(x = "1", y = "2", z = "2"))
 })
 
-test_that("getTagNames works as expected", {
+test_that("resolveAll stops if not all unnamed arguments are lists", {
+  
+  expect_error(resolveAll(list(a = 1), c(b = 2)))
+})
+
+test_that("getTagNames() works as expected", {
+  
   expect_error(getTagNames(1), "must be .* character")
   expect_error(getTagNames(c("<a>", "<b>"), expected.length = 1, "length 1"))
   expect_identical(getTagNames(c("<a>", "<b>")), list("a", "b"))
+  
+  expect_error(getTagNames("a(b)c", bt = "()"))
 })
