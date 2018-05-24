@@ -55,8 +55,9 @@ test_that("sourceScripts() works", {
   
   expect_output(sourceScripts(temp_file_1, dbg = FALSE))
   expect_error(sourceScripts(temp_file_2, dbg = FALSE))
-  
   expect_identical(x, 123)
+  
+  expect_warning(sourceScripts("no_such_script"))
 })
 
 test_that("runInDirectory() works", {
