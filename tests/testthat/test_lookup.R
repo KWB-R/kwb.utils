@@ -64,6 +64,8 @@ test_that("toLookupTable() works", {
   
   expect_identical(names(y), names(List))
   expect_identical(as.integer(y), as.integer(List))
+  
+  expect_error(toLookupTable(List = 1))
 })
 
 test_that("tableLookup() works", {

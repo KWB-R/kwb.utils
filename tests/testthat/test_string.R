@@ -102,12 +102,16 @@ test_that("hsQuoteChr() works", {
   expect_identical(
     hsQuoteChr("He says: \"Hello\"", '"'), "\"He says: \"\"Hello\"\"\""
   )
+  
+  expect_null(hsQuoteChr(list()))
 })
 
 test_that("multiSubstitute() works", {
   
   expect_identical(multiSubstitute("abc", list(a = "b", b = "c")), "ccc")
   expect_identical(multiSubstitute("abc", list(a = "b", "^b" = "c")), "cbc")
+  
+  expect_output(multiSubstitute("abc", list(a = "A"), dbg = TRUE))
 })
 
 test_that("hsTrim() works", {

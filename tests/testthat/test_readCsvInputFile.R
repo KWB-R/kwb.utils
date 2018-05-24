@@ -46,6 +46,10 @@ test_that("readCsvInputFile() works", {
     text_file, sep = ",", dec = ".", columnDescription = columnDescription_2
   ))
   
+  y <- readCsvInputFile(text_file, ";", ".")
+  
+  expect_is(y, "data.frame")
+  
   # expect_error(readCsvInputFile(
   #   text_file, sep = ",", dec = ".", columnDescription = columnDescription_3
   # ))

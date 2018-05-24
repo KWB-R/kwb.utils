@@ -16,7 +16,14 @@
 #' toFactor(x) # Levels: b c a
 toFactor <- function(x)
 {
-  if (! is.factor(x)) factor(x, levels = unique(x)) else x
+  if (! is.factor(x)) {
+    
+    factor(x, levels = unique(x))
+    
+  } else {
+    
+    x
+  }
 }
 
 # toPositiveIndices ------------------------------------------------------------

@@ -5,6 +5,8 @@ test_that("toFactor() works", {
   y <- toFactor(x)
   
   expect_identical(levels(y), x)
+  
+  expect_identical(toFactor(y), y)
 })
 
 test_that("toPositiveIndices() works", {
@@ -23,6 +25,8 @@ test_that("limitToRange() works", {
   
   expect_identical(range(limitToRange(1:20, left = 5, right = 15)), c(5, 15))
   expect_identical(range(limitToRange(1:20, left = -10, right = 50)), c(1, 20))
+  
+  expect_error(limitToRange(1:10, left = 1:2, right = 5))
 })
 
 test_that("toKeysAndValues() works", {
@@ -121,11 +125,18 @@ test_that("hsStringToDouble() works", {
   expect_warning(hsStringToDouble("1,1"))
   expect_identical(hsStringToDouble("1,1", dec = ","), 1.1)
   expect_error(hsStringToDouble("1.1.1"))
+  
+  expect_error(hsStringToDouble("1.1", dec = "*"))
+  
+  expect_warning(hsStringToDouble("1.1", dec = ","))
 })
 
 test_that("hsStringToDate() works", {
 
   expect_s3_class(hsStringToDate("2018-05-22"), "Date")
   expect_s3_class(hsStringToDate("22.05.2018", "%d.%m.%Y"), "Date")
+  
   expect_error(hsStringToDate("22.05.2018"))
+  
+  expect_error(hsStringToDate(NA, "Y%-%m-%d"))
 })

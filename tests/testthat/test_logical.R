@@ -78,4 +78,6 @@ test_that("matchesCriteria() works", {
   expect_true(! is.null(criteria <- attr(details, "criteria")))
   
   expect_identical(as.character(criteria$condition), criteria_1)
+  
+  expect_error(matchesCriteria(Data, "sum(B, na.rm = TRUE)"))
 })

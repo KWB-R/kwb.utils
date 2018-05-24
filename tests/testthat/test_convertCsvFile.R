@@ -8,6 +8,12 @@ test_that("convertCsvFile() works", {
   write.table(iris, csv_in_2, row.names = TRUE)
   write.table(iris, csv_in_3, col.names = FALSE)
   
+  csv_out <- convertCsvFile(csv_in_1, row.names_in = rownames(iris))
+  unlink(csv_out)
+  
+  csv_out <- convertCsvFile(csv_in_1, col.names_in = colnames(iris))
+  unlink(csv_out)
+  
   check_result <- function(csv_in, args_convert, args_read) {
   
     csv_out <- do.call(convertCsvFile, c(list(csv_in), args_convert))
