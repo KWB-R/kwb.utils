@@ -96,7 +96,27 @@ test_that("mySystemTime() works", {
   expect_length(y, 1)
 })
 
-# runBatchfileInDirectory ------------------------------------------------------
+test_that("runBatchfileInDirectory() works", {
+
+  directory <- tempSubdirectory("test_batch")
+  
+  batchfile <- file.path(directory, "test.bat")
+  
+  writeLines("echo Hello, world", batchfile)
+  
+  old_dir <- getwd()
+  
+  if (.OStype() == "windows") {
+    
+    runBatchfileInDirectory(batchfile, directory)
+    
+    expect_identical(old_dir, getwd())
+    
+  } else {
+    
+    expect_error(runBatchfileInDirectory(batchfile, directory))
+  }
+})
 
 test_that("cmdLinePath() works", {
 
@@ -123,6 +143,7 @@ test_that("copyDirectoryStructure() works", {
 })
 
 test_that("createDirAndReturnPath() gives a warning", {
+  
   targetdir <- file.path(tempdir(), "test_createDir")
   
   expect_warning(path <- createDirAndReturnPath(targetdir))
@@ -132,13 +153,17 @@ test_that("createDirAndReturnPath() gives a warning", {
 
 test_that("createDirectory() works", {
   
-  targetdir <- file.path(tempdir(), "test_createDir")
+  targetdir_1 <- file.path(tempdir(), "test_createDir")
+  targetdir_2 <- file.path(tempdir(), "test/create/Dir")
   
-  path <- createDirectory(targetdir)
-  
-  expect_true(file.exists(targetdir))
-  
-  expect_identical(path, targetdir)
+  for (targetdir in list(targetdir_1, targetdir_2)) {
+    
+    path <- createDirectory(targetdir)
+    
+    expect_true(file.exists(targetdir))
+    
+    expect_identical(path, targetdir)
+  }
 })
 
 test_that("tempSubdirectory() works", {
