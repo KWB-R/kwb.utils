@@ -31,12 +31,12 @@ linearCombination <- function(x, coeffs, version = 1)
   
   if (! is.numeric(x)) {
     
-    stop("x is not numeric (after coercion to matrix) but", mode(x))
+    stop("x is not numeric (after coercion to matrix) but ", mode(x))
   }
   
   if (! is.numeric(coeffs)) {
     
-    stop("coeffs is not numeric but", mode(coeffs))
+    stop("coeffs is not numeric but ", mode(coeffs))
   }
   
   if (ncol(x) != length(coeffs)) {
