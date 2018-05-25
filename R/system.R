@@ -88,6 +88,7 @@ safePath <- function(...)
   if (nzchar(OS)) {
     
     OS
+    
   } else {
     
     .Platform$OS.type
@@ -275,7 +276,14 @@ runBatchfileInDirectory <- function(
 
   setwd(directory)
   
-  shell.exec(batchfile, ...)
+  if (.OStype() == "windows") {
+    
+    shell.exec(batchfile, ...)
+    
+  } else {
+    
+    stop("Not implemented for unix")
+  }
 }
 
 # cmdLinePath ------------------------------------------------------------------
