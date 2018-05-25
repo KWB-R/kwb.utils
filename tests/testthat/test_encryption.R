@@ -24,7 +24,7 @@ test_that(".checkNamespace() works", {
 
 test_that("createPasswordFile() and getPassword() work", {
 
-  key_file <- tempfile()
+  key_file <- tempfile(fileext = ".txt")
   
   password_file <- tempfile()
   
@@ -35,4 +35,8 @@ test_that("createPasswordFile() and getPassword() work", {
   createPasswordFile("hauke", key_file, password_file, password = "abc")
   
   expect_identical(getPassword(password_file, key_file), "abc")
+  
+  expect_error(getPassword("no_such_file"))
+  
+  expect_output(.askForPassword("hauke"))
 })
