@@ -1,5 +1,10 @@
-test_that("preparePdfIf() and preparePdf() work", {
-
+test_that(
+  
+  paste(
+    "preparePdfIf(), preparePdf(), finishAndShowPdfIf() and",  
+    "finishAndShowPdf() work"
+  ), {
+    
   dev_list <- dev.list()
   
   expect_identical(preparePdfIf(FALSE), "")
@@ -10,9 +15,9 @@ test_that("preparePdfIf() and preparePdf() work", {
   pdf_file_2 <- preparePdfIf(TRUE, PDF = tempfile(fileext = ".pdf"))
   pdf_file_3 <- preparePdf(makeCurrent = FALSE)
   
-  on.exit(dev.off())
-  on.exit(dev.off(), add = TRUE)
-  on.exit(dev.off(), add = TRUE)
+  on.exit(finishAndShowPdfIf(TRUE, pdf_file_1))
+  on.exit(finishAndShowPdf(pdf_file_2), add = TRUE)
+  on.exit(finishAndShowPdf(pdf_file_3), add = TRUE)
   
   expect_true(file.exists(pdf_file_1))
   expect_true(file.exists(pdf_file_2))
