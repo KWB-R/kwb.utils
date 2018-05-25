@@ -63,6 +63,10 @@ test_that("assertRowsAndColumns() works", {
   
   expect_identical(rownames(y), row_names)
   expect_identical(colnames(y), col_names)
+  
+  m_unnamed <- unname(m)
+  
+  expect_identical(assertRowsAndColumns(m_unnamed), m_unnamed)
 })
 
 test_that("stopIfNotMatrix() works", {
