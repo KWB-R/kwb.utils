@@ -379,6 +379,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/moveToFront.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/movingSum.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/msgAvailableFields.html</loc>
   </url>
   <url>
@@ -590,12 +593,6 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/tempSubdirectory.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/test_matchesCriteria.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/test_roundColumns.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toFactor.html</loc>

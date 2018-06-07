@@ -9,3 +9,4 @@ kwb_utils.png
 ^README\.md$
 ^docs\.*
 _pkgdown.yaml
+^LICENSE\.md$
