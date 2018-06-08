@@ -13,8 +13,8 @@ preparePdf(pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE,
 \arguments{
 \item{pdfFile}{Full path to PDF file to be created}
 
-\item{landscape}{If TRUE (default), orientation in PDF file will be
-landscape, else portrait}
+\item{landscape}{If \code{TRUE} (default), orientation in PDF file will be landscape, else 
+portrait}
 
 \item{borderWidth.cm}{(Total) border width in "width" direction in cm}
 
@@ -24,8 +24,8 @@ landscape, else portrait}
 
 \item{height.cm}{page height in cm. Default according to DIN A4}
 
-\item{makeCurrent}{if TRUE (default), the opened PDF device will become the
-current device}
+\item{makeCurrent}{if \code{TRUE} (default), the opened PDF device will
+become the current device, otherwise the current device will be restored}
 
 \item{paper}{passed to \code{\link[grDevices]{pdf}}. By default "A4" (if
 \code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE}). Use
@@ -37,5 +37,24 @@ current device}
 full path to pdf file
 }
 \description{
-Open PDF Device with DIN A4 Dimensions by Default
+Opens a PDF device in A4 paper format. After calling this function all plots
+go into the specified PDF file in \code{pdfFile}. Important: The PDF file
+needs to be closed explicitely with grDevices::dev.off() after all desired
+plots have been made.
+}
+\examples{
+\dontrun{
+# Open PDF file by giving a path to preparePdf(). The path is returned.
+pdf_file <- preparePdf(file.path(tempdir(), "example_preparePdf.pdf"))
+
+# Plot something
+plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
+
+# Open PDF file in viewer
+finishAndShowPdf(pdf_file)
+}
+
+}
+\seealso{
+\code{\link{finishAndShowPdf}}
 }

@@ -8,41 +8,18 @@ hsPrepPdf(strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE,
   bordW = 2, bordH = 2, makeCur = TRUE, ...)
 }
 \arguments{
-\item{strPdf}{Full path to PDF file to be created}
+\item{strPdf}{see argument \code{pdfFile} in \code{\link{preparePdf}}}
 
-\item{boolLandscape}{If TRUE, orientation in PDF file will be landscape, else
-portrait}
+\item{boolLandscape}{see argument \code{landscape} in \code{\link{preparePdf}}}
 
-\item{bordW}{(Total) border width in "width" direction in cm}
+\item{bordW}{see argument \code{borderWidth.cm} in \code{\link{preparePdf}}}
 
-\item{bordH}{(Total) border width in "height" direction in cm}
+\item{bordH}{see argument \code{borderHeight.cm} in \code{\link{preparePdf}}}
 
-\item{makeCur}{if TRUE, the new pdf device will become the current device,
-otherwise the current device will be restored}
+\item{makeCur}{see argument \code{makeCurrent} in \code{\link{preparePdf}}}
 
-\item{\dots}{further arguments passed to \code{\link[grDevices]{pdf}}}
+\item{\dots}{see \dots in \code{\link{preparePdf}}}
 }
 \description{
-Opens a PDF device in A4 paper format. After calling this function all plots
-go into the specified PDF file in \eqn{strPdf}. Important: The PDF file needs
-to be closed explicitely with grDevices::dev.off() after all desired plots
-have been made.
-}
-\examples{
-# Set path to PDF file and open PDF device
-pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
-hsPrepPdf(pdfFile)
-
-## Plot something
-plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
-
-## Close PDF device
-grDevices::dev.off()
-
-## Open PDF file in viewer
-hsShowPdf(pdfFile)
-
-}
-\seealso{
-\code{\link{hsShowPdf}}
+Deprecated. Please use \code{\link{preparePdf}} instead.
 }

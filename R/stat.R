@@ -66,32 +66,69 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
 #' 
 hsMovingMean <- function(x, n, na.rm = FALSE)
 {
+  movingSum(x, n, na.rm) / n
+}
+
+#' movingSum
+#' 
+#' Calculate moving sum of n values "around" values
+#' 
+#' @param x vector of values of which moving sum is to be calculated
+#' @param n number of values "around" the values in \code{x}, including the
+#'   values in \code{x}, of which the mean is calculated. Only odd numbers 1, 3,
+#'   5, ... allowed. For each x[i] in x the moving sum is calculated by: 
+#'   x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]
+#' @param na.rm logical. Should missing values (including NaN) be omitted from
+#'   the calculations?
+#'   
+#' @return Vector of moving sums with the same number of values as there are in
+#'   \code{x}. If \code{na.rm} is \code{FALSE}, the first \code{(n-1)/2} values 
+#'   and the last \code{(n-1)/2} values are NA since there are not enough values
+#'   at the start and at the end of the vector, respectively, to calculate the 
+#'   sum.
+#' 
+#' @examples 
+#' x <- rnorm(30)
+#' 
+#' plot(x, type = "b", main = "Moving mean over 3, 5, 7 points")
+#' 
+#' times <- 2:4
+#' 
+#' for (i in times) {
+#' 
+#'   lines(movingSum(x, n = 2 * i - 1), col = i, type = "b", lwd =  2)
+#' }
+#' 
+#' legend("topright", fill = times, legend = sprintf("n = %d", 2 * times - 1))
+#' 
+movingSum <- function(x, n, na.rm = FALSE)
+{
   if (! isOddNumber(n)) {
     
     stop(paste(
-      "The number n of values to be taken into account for the mean",
+      "The number n of values to be taken into account for the sum",
       "needs to be an odd number."
     ))
   }
   
-  matrix.values <- c(rep(c(x, rep(NA, n)), n-1), x)
+  matrix_values <- c(rep(c(x, rep(NA, n)), n - 1), x)
   
-  m <- matrix(matrix.values, ncol = n)
+  m <- matrix(matrix_values, ncol = n)
   
-  means <- rowSums(m, na.rm = na.rm) / rowSums( ! is.na(m))
+  sums <- rowSums(m, na.rm = na.rm)
   
-  n.remove <- (n-1)/2
+  n_remove <- (n - 1) / 2
   
-  if (n.remove > 0) {
+  if (n_remove > 0) {
     
-    i.at.beg <- seq(1, by = 1, length.out = n.remove)
+    i_at_begin <- seq(1, by = 1, length.out = n_remove)
     
-    i.at.end <- seq(nrow(m), by = -1, length.out = n.remove)
+    i_at_end <- seq(nrow(m), by = -1, length.out = n_remove)
     
-    means <- means[-c(i.at.beg, i.at.end)]
+    sums <- sums[-c(i_at_begin, i_at_end)]
   }
   
-  means
+  sums
 }
 
 # percentageOfMaximum ----------------------------------------------------------

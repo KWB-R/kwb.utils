@@ -30,22 +30,41 @@ preparePdfIf <- function(to.pdf, PDF = "", ...)
 # preparePdf -------------------------------------------------------------------
 
 #' Open PDF Device with DIN A4 Dimensions by Default
+#'
+#' Opens a PDF device in A4 paper format. After calling this function all plots
+#' go into the specified PDF file in \code{pdfFile}. Important: The PDF file
+#' needs to be closed explicitely with grDevices::dev.off() after all desired
+#' plots have been made.
 #' 
 #' @param pdfFile Full path to PDF file to be created
-#' @param landscape If TRUE (default), orientation in PDF file will be
-#'   landscape, else portrait
+#' @param landscape 
+#'   If \code{TRUE} (default), orientation in PDF file will be landscape, else 
+#'   portrait
 #' @param borderWidth.cm (Total) border width in "width" direction in cm
 #' @param borderHeight.cm (Total) border width in "height" direction in cm
 #' @param width.cm page width in cm. Default according to DIN A4
 #' @param height.cm page height in cm. Default according to DIN A4
-#' @param makeCurrent if TRUE (default), the opened PDF device will become the
-#'   current device
+#' @param makeCurrent if \code{TRUE} (default), the opened PDF device will
+#'   become the current device, otherwise the current device will be restored
 #' @param paper passed to \code{\link[grDevices]{pdf}}. By default "A4" (if
 #'   \code{landscape = FALSE}) or "A4r" (if \code{landscape = TRUE}). Use
 #'   \code{paper = "special"} to use the dimensions of the plot.
 #' @param \dots further arguments passed to \code{\link[grDevices]{pdf}}
-#' 
 #' @return full path to pdf file
+#' 
+#' @seealso \code{\link{finishAndShowPdf}}
+#' 
+#' @examples 
+#' \dontrun{
+#' # Open PDF file by giving a path to preparePdf(). The path is returned.
+#' pdf_file <- preparePdf(file.path(tempdir(), "example_preparePdf.pdf"))
+#' 
+#' # Plot something
+#' plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
+#' 
+#' # Open PDF file in viewer
+#' finishAndShowPdf(pdf_file)
+#' }
 #' 
 preparePdf <- function(
   pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE, borderWidth.cm = 2, 
@@ -55,7 +74,7 @@ preparePdf <- function(
   makeCurrent = TRUE, paper = paste0("a4", ifelse(landscape, "r", "")), ...
 )   
 {
-  ## save current device
+  # Save current device
   currentDevice <- grDevices::dev.cur()
   
   # Open PDF graphics device
@@ -68,7 +87,7 @@ preparePdf <- function(
     ...
   )
   
-  ## if required, restore old device
+  # If required, restore old device
   if (! makeCurrent) {
     
     grDevices::dev.set(currentDevice)  
@@ -144,42 +163,21 @@ finishAndShowPdf <- function(PDF, which = grDevices::dev.cur(), ...)
 
 #' Prepare Writing of PDF File
 #'
-#' Opens a PDF device in A4 paper format. After calling this function all plots
-#' go into the specified PDF file in \eqn{strPdf}. Important: The PDF file needs
-#' to be closed explicitely with grDevices::dev.off() after all desired plots
-#' have been made.
+#' Deprecated. Please use \code{\link{preparePdf}} instead.
 #'
-#' @param strPdf Full path to PDF file to be created
-#' @param boolLandscape If TRUE, orientation in PDF file will be landscape, else
-#'   portrait
-#' @param bordW (Total) border width in "width" direction in cm
-#' @param bordH (Total) border width in "height" direction in cm
-#' @param makeCur if TRUE, the new pdf device will become the current device,
-#'   otherwise the current device will be restored
-#' @param \dots further arguments passed to \code{\link[grDevices]{pdf}}
-#' 
-#' @seealso \code{\link{hsShowPdf}}
-#' 
-#' @examples 
-#' # Set path to PDF file and open PDF device
-#' pdfFile <- file.path(tempdir(), "ex_hsPrepPdf.pdf")
-#' hsPrepPdf(pdfFile)
-#' 
-#' ## Plot something
-#' plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
-#' 
-#' ## Close PDF device
-#' grDevices::dev.off()
-#' 
-#' ## Open PDF file in viewer
-#' hsShowPdf(pdfFile)
+#' @param strPdf see argument \code{pdfFile} in \code{\link{preparePdf}}
+#' @param boolLandscape see argument \code{landscape} in \code{\link{preparePdf}}
+#' @param bordW see argument \code{borderWidth.cm} in \code{\link{preparePdf}}
+#' @param bordH see argument \code{borderHeight.cm} in \code{\link{preparePdf}}
+#' @param makeCur see argument \code{makeCurrent} in \code{\link{preparePdf}}
+#' @param \dots see \dots in \code{\link{preparePdf}}
 #' 
 hsPrepPdf <- function(
   strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE, bordW = 2, 
   bordH = 2, makeCur = TRUE, ...
 )
 {
-  warning("Please use preparePdf instead of hsPrepPdf!")
+  .warningDeprecated("hsPrepPdf", "preparePdf")
   
   preparePdf(
     pdfFile = strPdf, 
@@ -207,22 +205,30 @@ hsPrepPdf <- function(
 #' @examples 
 #' # Set path to PDF file and open PDF device
 #' tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
+#' 
 #' hsPrepPdf(tmpPdf)
 #' 
-#' ## Plot something
+#' # Plot something
 #' plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")
 #' 
-#' ## Finish PDF file.
+#' # Finish PDF file.
 #' grDevices::dev.off()
 #' 
-#' ## Open PDF file in viewer.
+#' \dontrun{
+#' # Open PDF file in viewer.
 #' hsShowPdf(tmpPdf)
+#' }
 #' 
 hsShowPdf <- function(Pdf, dbg = TRUE) 
 {
   cmd <- sprintf('"%s" "%s"', getOption("pdfviewer"), Pdf)
   
-  catIf(dbg, "cmd:", cmd, "\n")
-  
-  system(cmd)
+  if (isTRUE(dbg)) {
+    
+    hsSystem(cmd)
+    
+  } else {
+    
+    system(cmd)
+  }
 }

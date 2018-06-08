@@ -2,15 +2,15 @@
 % Please edit documentation in R/stat.R
 \name{movingSum}
 \alias{movingSum}
-\title{Moving Sum}
+\title{movingSum}
 \usage{
 movingSum(x, n, na.rm = FALSE)
 }
 \arguments{
 \item{x}{vector of values of which moving sum is to be calculated}
 
-\item{n}{number of values "around" the values in \emph{x}, including the
-values in \emph{x}, of which the sum is calculated. Only odd numbers 1, 3,
+\item{n}{number of values "around" the values in \code{x}, including the
+values in \code{x}, of which the mean is calculated. Only odd numbers 1, 3,
 5, ... allowed. For each x[i] in x the moving sum is calculated by: 
 x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]}
 
@@ -19,17 +19,18 @@ the calculations?}
 }
 \value{
 Vector of moving sums with the same number of values as there are in
-  \emph{x}. If na.rm is FALSE, the first \emph{(n-1)/2} values and the last 
-  \emph{(n-1)/2} values are NA since there are not enough values at the start
-  and the end of the vector to calculate the sum.
+  \code{x}. If \code{na.rm} is \code{FALSE}, the first \code{(n-1)/2} values 
+  and the last \code{(n-1)/2} values are NA since there are not enough values
+  at the start and at the end of the vector, respectively, to calculate the 
+  sum.
 }
 \description{
-Calculate moving sum of \emph{n} values "around" values
+Calculate moving sum of n values "around" values
 }
 \examples{
 x <- rnorm(30)
 
-plot(x, type = "b", main = "Moving sum over 3, 5, 7 points")
+plot(x, type = "b", main = "Moving mean over 3, 5, 7 points")
 
 times <- 2:4
 
@@ -38,6 +39,6 @@ for (i in times) {
   lines(movingSum(x, n = 2 * i - 1), col = i, type = "b", lwd =  2)
 }
 
-legend("topright", fill = times, legend = sprintf("n = \%d", 2 * times - 1)) 
+legend("topright", fill = times, legend = sprintf("n = \%d", 2 * times - 1))
 
 }

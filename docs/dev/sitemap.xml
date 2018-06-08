@@ -4,6 +4,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/index.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/DIN.A4.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/addClass.html</loc>
   </url>
   <url>
@@ -70,9 +73,6 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/cmdLinePath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/collapsed.html</loc>
-  </url>
-  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/colMaxima.html</loc>
   </url>
   <url>
@@ -86,6 +86,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/colStatistics.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/collapsed.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/columnDescriptor.html</loc>
@@ -152,9 +155,6 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/diffrows.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/DIN.A4.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dropDim.html</loc>
@@ -391,10 +391,10 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/mySystemTime.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/nameByElement.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/naToLastNonNa.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/naToLastNonNa.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/nameByElement.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
@@ -434,6 +434,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/quotient.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/rStylePath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/randomMatrix.html</loc>
@@ -506,9 +509,6 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/roundColumns.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/rStylePath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/runBatchfileInDirectory.html</loc>
