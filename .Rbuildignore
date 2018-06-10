@@ -10,3 +10,4 @@ kwb_utils.png
 ^docs\.*
 _pkgdown.yaml
 ^LICENSE\.md$
+.gitlab-ci.yml
