@@ -229,6 +229,7 @@ reference:
   - title: Debug Functions
     contents:
       - assignAll
+      - assignArgumentDefaults
       - assignGlobally
       - assignPackageObjects
       - getGlobally
