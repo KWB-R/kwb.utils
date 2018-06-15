@@ -75,7 +75,7 @@ readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 #' 
 getNamesOfObjectsInRDataFiles <- function(files.rdata)
 {
-  .warningDeprecated("getNamesOfObjectsInRDataFiles", "listObjects")
+  warningDeprecated("getNamesOfObjectsInRDataFiles", "listObjects")
   
   listObjects(files.rdata)
 }
@@ -155,13 +155,13 @@ listObjects <- function(files)
 #' 
 getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 {
-  .warningDeprecated("getObjectFromRDataFile", "loadObject")
+  warningDeprecated("getObjectFromRDataFile", "loadObject")
   
   loadObject(file, objectname, dbg)
 }  
 
-# .warningDeprecated -----------------------------------------------------------
-.warningDeprecated <- function(old_name, new_name)
+# warningDeprecated ------------------------------------------------------------
+warningDeprecated <- function(old_name, new_name)
 {
   warning(
     "The function ", old_name, "() is deprecated. Please use ", new_name, 

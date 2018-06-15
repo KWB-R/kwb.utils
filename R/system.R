@@ -346,7 +346,7 @@ copyDirectoryStructure <- function(
 #'
 createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
 {
-  .warningDeprecated("createDirAndReturnPath", "createDirectory")
+  warningDeprecated("createDirAndReturnPath", "createDirectory")
 
   createDirectory(path, dbg = TRUE, confirm = FALSE)
 }

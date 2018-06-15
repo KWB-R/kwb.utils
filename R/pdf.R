@@ -177,7 +177,7 @@ hsPrepPdf <- function(
   bordH = 2, makeCur = TRUE, ...
 )
 {
-  .warningDeprecated("hsPrepPdf", "preparePdf")
+  warningDeprecated("hsPrepPdf", "preparePdf")
   
   preparePdf(
     pdfFile = strPdf, 
