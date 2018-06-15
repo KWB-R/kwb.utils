@@ -161,6 +161,15 @@ getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 }  
 
 # warningDeprecated ------------------------------------------------------------
+
+#' Create Warning About a Deprecated Function
+#' 
+#' @param old_name name of deprecated function
+#' @param new_name name of new function to be used instead
+#' 
+#' @examples
+#' warningDeprecated("old_function()", "new_function()")
+#' 
 warningDeprecated <- function(old_name, new_name)
 {
   warning(
