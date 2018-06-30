@@ -131,3 +131,18 @@ test_that("containsNulString() works", {
   
   expect_false(containsNulString(file))
 })
+
+test_that("writeText() works", {
+  
+  file <- tempfile()
+
+  x <- c("Hello", "world")
+  
+  expect_output(writeText(x, file))
+
+  type <- "welcome file"
+  
+  expect_output(writeText(x, file, type = type), regexp = type)
+
+  expect_identical(x, readLines(file))
+})

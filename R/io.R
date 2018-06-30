@@ -325,3 +325,45 @@ containsNulString <- function(filepath)
   
   x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)
 }
+
+# writeText --------------------------------------------------------------------
+
+#' Write Text Lines to a File
+#'
+#' Write text to a file using \code{\link{writeLines}} and output a debug
+#' message by default
+#'
+#' @param x vector of character representing the lines to be written to
+#'   \code{file}, passed to \code{\link{writeLines}}
+#' @param file path to file to be written, passed to \code{\link{writeLines}}
+#' @param type character string to be included in the debug message:
+#'   "Writing <type>'file-path' ..."
+#' @param dbg if \code{TRUE}, debug messages are shown
+#' @param \dots further arguments passed to \code{\link{writeLines}}
+#'
+#' @examples
+#' # Set path to a temporary file
+#' file <- tempfile()
+#'
+#' # Define text to be written to file
+#' x <- c("Hello", "world")
+#' 
+#' # Write text to the the temporary file
+#' writeText(x, file)
+#'
+#' # Make the debug message more informative
+#' writeText(x, file, type = "welcome file")
+#'
+#' # Read lines back and show on the console
+#' catLines(readLines(file))
+#'
+writeText <- function(x, file, type = "", dbg = TRUE, ...)
+{
+  catIf(dbg, sprintf(
+    "Writing %s%s'%s' ... ", type, ifelse(type == "", "", " "), file
+  ))
+  
+  writeLines(x, file, ...)
+  
+  catIf(dbg, "ok.\n")
+}
