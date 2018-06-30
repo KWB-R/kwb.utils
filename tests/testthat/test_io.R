@@ -146,3 +146,12 @@ test_that("writeText() works", {
 
   expect_identical(x, readLines(file))
 })
+
+test_that("catAndRun() works", {
+  
+  x <- 1L
+  
+  catAndRun("work hard", x <- x + 1L)
+
+  expect_identical(x, 2L)
+})

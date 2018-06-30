@@ -301,6 +301,54 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
   }
 }
 
+# catAndRun --------------------------------------------------------------------
+
+#' Print Debug Messages Before and After Running Code
+#'
+#' @param messageText text to be printed before running the code
+#' @param expr expressions to be run. Enclose more than one expression in
+#'   curly braces
+#' @param newLine integer controlling new lines. 0: no extra new line, 1:
+#'   new line after \code{messageText}, 2: new line after "ok.", 3: new line
+#'   after both, \code{messageText} and "ok."
+#'
+#' @examples
+#' for (newLine in 0:3) {
+#'
+#'   catAndRun("work hard", newLine = newLine, {
+#'     cat("hard\nworking\n")
+#'   })
+#'
+#'   cat("here.\n\n")
+#' }
+catAndRun <- function(messageText = "Running code", expr, newLine = 2L)
+{
+  cat(messageText, "... ")
+  
+  catNewLineIf(bitwAnd(newLine, 1))
+  
+  result <- eval(expr, envir = -1)
+  
+  cat("ok. ")
+  
+  catNewLineIf(bitwAnd(newLine, 2))
+}
+
+# catNewLineIf -----------------------------------------------------------------
+
+#' Print New Line Character to the Console if Condition is Met
+#'
+#' @param condition if \code{TRUE} the new line is printed else not
+#'
+#' @return Returns the condition, invisibly so that it can be reused
+#'
+catNewLineIf <- function(condition)
+{
+  kwb.utils::catIf(condition, "\n")
+  
+  invisible(condition)
+}
+
 # clearConsole -----------------------------------------------------------------
 
 #' Clear the R Console
