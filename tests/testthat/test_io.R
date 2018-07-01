@@ -138,7 +138,9 @@ test_that("writeText() works", {
 
   x <- c("Hello", "world")
   
-  expect_output(writeText(x, file))
+  expect_output(file_returned <- writeText(x, file))
+  
+  expect_identical(file_returned, file)
 
   type <- "welcome file"
   

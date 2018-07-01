@@ -389,15 +389,14 @@ containsNulString <- function(filepath)
 #' @param dbg if \code{TRUE}, debug messages are shown
 #' @param \dots further arguments passed to \code{\link{writeLines}}
 #'
+#' @return This function invisibly returns the path to the output \code{file}.
+#' 
 #' @examples
-#' # Set path to a temporary file
-#' file <- tempfile()
-#'
 #' # Define text to be written to file
 #' x <- c("Hello", "world")
 #' 
-#' # Write text to the the temporary file
-#' writeText(x, file)
+#' # Write text to a temporary file and catch the file path
+#' file <- writeText(x, tempfile(fileext = ".txt"))
 #'
 #' # Make the debug message more informative
 #' writeText(x, file, type = "welcome file")
@@ -414,4 +413,6 @@ writeText <- function(x, file, type = "", dbg = TRUE, ...)
   writeLines(x, file, ...)
   
   catIf(dbg, "ok.\n")
+  
+  invisible(file)
 }

@@ -19,19 +19,19 @@ writeText(x, file, type = "", dbg = TRUE, ...)
 
 \item{\dots}{further arguments passed to \code{\link{writeLines}}}
 }
+\value{
+This function invisibly returns the path to the output \code{file}.
+}
 \description{
 Write text to a file using \code{\link{writeLines}} and output a debug
 message by default
 }
 \examples{
-# Set path to a temporary file
-file <- tempfile()
-
 # Define text to be written to file
 x <- c("Hello", "world")
 
-# Write text to the the temporary file
-writeText(x, file)
+# Write text to a temporary file and catch the file path
+file <- writeText(x, tempfile(fileext = ".txt"))
 
 # Make the debug message more informative
 writeText(x, file, type = "welcome file")
