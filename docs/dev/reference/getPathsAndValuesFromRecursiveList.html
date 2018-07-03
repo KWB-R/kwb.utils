@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the "loaded" Status for a Script — setLoaded • kwb.utils</title>
+<title>Get Paths and String Values from Recursive List — getPathsAndValuesFromRecursiveList • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,12 +28,9 @@
 
 
 
-<meta property="og:title" content="Set the "loaded" Status for a Script — setLoaded" />
+<meta property="og:title" content="Get Paths and String Values from Recursive List — getPathsAndValuesFromRecursiveList" />
 
-<meta property="og:description" content="You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-isLoaded." />
+<meta property="og:description" content="Get Paths and String Values from Recursive List" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -99,75 +96,67 @@ isLoaded." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the "loaded" Status for a Script</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/load.R'><code>R/load.R</code></a></small>
-    <div class="hidden name"><code>setLoaded.Rd</code></div>
+    <h1>Get Paths and String Values from Recursive List</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/list.R'><code>R/list.R</code></a></small>
+    <div class="hidden name"><code>getPathsAndValuesFromRecursiveList.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-<code><a href='isLoaded.html'>isLoaded</a></code>.</p>
+    <p>Get Paths and String Values from Recursive List</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>setLoaded</span>(<span class='no'>scriptName</span>, <span class='kw'>isLoaded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>getPathsAndValuesFromRecursiveList</span>(<span class='no'>x</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>scriptName</th>
-      <td><p>name of the script for which we want to set the "loaded"
-state</p></td>
+      <th>x</th>
+      <td><p>a list</p></td>
     </tr>
     <tr>
-      <th>isLoaded</th>
-      <td><p>logical. Use <code>TRUE</code> to indicate that the script
-<code>scriptName</code> has been loaded and use <code>FALSE</code> to indicate that the
-script is not loaded (e.g. because you cleared the workspace in the
-meanwhile).</p></td>
+      <th>path</th>
+      <td><p>start path</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p><code><a href='isLoaded.html'>isLoaded</a></code></p></div>
+    <p>data frame with columns <code>path</code> and <code>value</code>. The 
+data frame contains all non-list elements that are contained in <code>x</code>, 
+coerced to character, in column <code>value</code>, together with the sequence of
+element names "leading" to the value when starting at <code>x</code>. For example,
+the path to element <code>x$a$a1</code> is <code>/a/a1</code> (see example).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># If you have a script with the main part on top and the required functions</span>
-<span class='co'># defined below (as recommended by Robert C. Martin, the author of "Clean</span>
-<span class='co'># Code") your script may look like this:</span>
+    <pre class="examples"><div class='input'><span class='co'># Define a recursive list</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>a1</span> <span class='kw'>=</span> <span class='st'>"A1"</span>, <span class='kw'>a2</span> <span class='kw'>=</span> <span class='st'>"A2"</span>),
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>b1</span> <span class='kw'>=</span> <span class='st'>"B1"</span>, <span class='kw'>b2</span> <span class='kw'>=</span> <span class='st'>"B2"</span>, <span class='kw'>b3</span> <span class='kw'>=</span> <span class='st'>"B3"</span>),
+  <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>c1</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>c11</span> <span class='kw'>=</span> <span class='st'>"C11"</span>), <span class='kw'>c2</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>c21</span> <span class='kw'>=</span> <span class='st'>"C21"</span>, <span class='kw'>c22</span> <span class='kw'>=</span> <span class='st'>"C22"</span>))
+)
 
-<span class='co'># Main part -----</span>
-
-<span class='co'># Check if the script has already been loaded (i.e. if setLoaded() has been </span>
-<span class='co'># called, see end of script). If yes, we can enter the main section. Otherwise</span>
-<span class='co'># we have to skip the main section since the function sayHello() is not yet</span>
-<span class='co'># defined.</span>
-<span class='kw'>if</span> (<span class='fu'><a href='isLoaded.html'>isLoaded</a></span>(<span class='st'>"welcome"</span>)) {
-  <span class='fu'>sayHello</span>(<span class='kw'>who</span> <span class='kw'>=</span> <span class='st'>"Hauke"</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in sayHello(who = "Hauke"): konnte Funktion "sayHello" nicht finden</span></div><div class='input'>
-<span class='co'># Functions -----</span>
-<span class='no'>sayHello</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>who</span>) {
-  <span class='fu'><a href='clearConsole.html'>clearConsole</a></span>()
-  <span class='fu'>cat</span>(<span class='st'>"***\n***\n*** Hello"</span>, <span class='no'>who</span>, <span class='st'>"how are you?\n***\n***\n"</span>)
-}
-
-<span class='co'># At the end of your script, call setLoaded() to indicate that your script is</span>
-<span class='co'># loaded now. If you "source" the script a second time, isLoaded("welcome") </span>
-<span class='co'># will return TRUE and thus the main section will be entered...</span>
-<span class='fu'>setLoaded</span>(<span class='st'>"welcome"</span>)</div></pre>
+<span class='co'># Get all non-list-elements and their "path" as a data frame</span>
+<span class='fu'>getPathsAndValuesFromRecursiveList</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        path value
+#&gt; 1     /a/a1    A1
+#&gt; 2     /a/a2    A2
+#&gt; 3     /b/b1    B1
+#&gt; 4     /b/b2    B2
+#&gt; 5     /b/b3    B3
+#&gt; 6 /c/c1/c11   C11
+#&gt; 7 /c/c2/c21   C21
+#&gt; 8 /c/c2/c22   C22</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

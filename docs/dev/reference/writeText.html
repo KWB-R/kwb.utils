@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the "loaded" Status for a Script — setLoaded • kwb.utils</title>
+<title>Write Text Lines to a File — writeText • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,12 +28,10 @@
 
 
 
-<meta property="og:title" content="Set the "loaded" Status for a Script — setLoaded" />
+<meta property="og:title" content="Write Text Lines to a File — writeText" />
 
-<meta property="og:description" content="You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-isLoaded." />
+<meta property="og:description" content="Write text to a file using writeLines and output a debug
+message by default" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -99,75 +97,71 @@ isLoaded." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the "loaded" Status for a Script</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/load.R'><code>R/load.R</code></a></small>
-    <div class="hidden name"><code>setLoaded.Rd</code></div>
+    <h1>Write Text Lines to a File</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
+    <div class="hidden name"><code>writeText.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-<code><a href='isLoaded.html'>isLoaded</a></code>.</p>
+    <p>Write text to a file using <code>writeLines</code> and output a debug
+message by default</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>setLoaded</span>(<span class='no'>scriptName</span>, <span class='kw'>isLoaded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>scriptName</th>
-      <td><p>name of the script for which we want to set the "loaded"
-state</p></td>
+      <th>x</th>
+      <td><p>vector of character representing the lines to be written to
+<code>file</code>, passed to <code>writeLines</code></p></td>
     </tr>
     <tr>
-      <th>isLoaded</th>
-      <td><p>logical. Use <code>TRUE</code> to indicate that the script
-<code>scriptName</code> has been loaded and use <code>FALSE</code> to indicate that the
-script is not loaded (e.g. because you cleared the workspace in the
-meanwhile).</p></td>
+      <th>file</th>
+      <td><p>path to file to be written, passed to <code>writeLines</code></p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>character string to be included in the debug message:
+"Writing &lt;type&gt;'file-path' ..."</p></td>
+    </tr>
+    <tr>
+      <th>dbg</th>
+      <td><p>if <code>TRUE</code>, debug messages are shown</p></td>
+    </tr>
+    <tr>
+      <th>&#8230;</th>
+      <td><p>further arguments passed to <code>writeLines</code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p><code><a href='isLoaded.html'>isLoaded</a></code></p></div>
+    <p>This function invisibly returns the path to the output <code>file</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># If you have a script with the main part on top and the required functions</span>
-<span class='co'># defined below (as recommended by Robert C. Martin, the author of "Clean</span>
-<span class='co'># Code") your script may look like this:</span>
+    <pre class="examples"><div class='input'><span class='co'># Define text to be written to file</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"Hello"</span>, <span class='st'>"world"</span>)
 
-<span class='co'># Main part -----</span>
-
-<span class='co'># Check if the script has already been loaded (i.e. if setLoaded() has been </span>
-<span class='co'># called, see end of script). If yes, we can enter the main section. Otherwise</span>
-<span class='co'># we have to skip the main section since the function sayHello() is not yet</span>
-<span class='co'># defined.</span>
-<span class='kw'>if</span> (<span class='fu'><a href='isLoaded.html'>isLoaded</a></span>(<span class='st'>"welcome"</span>)) {
-  <span class='fu'>sayHello</span>(<span class='kw'>who</span> <span class='kw'>=</span> <span class='st'>"Hauke"</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in sayHello(who = "Hauke"): konnte Funktion "sayHello" nicht finden</span></div><div class='input'>
-<span class='co'># Functions -----</span>
-<span class='no'>sayHello</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>who</span>) {
-  <span class='fu'><a href='clearConsole.html'>clearConsole</a></span>()
-  <span class='fu'>cat</span>(<span class='st'>"***\n***\n*** Hello"</span>, <span class='no'>who</span>, <span class='st'>"how are you?\n***\n***\n"</span>)
-}
-
-<span class='co'># At the end of your script, call setLoaded() to indicate that your script is</span>
-<span class='co'># loaded now. If you "source" the script a second time, isLoaded("welcome") </span>
-<span class='co'># will return TRUE and thus the main section will be entered...</span>
-<span class='fu'>setLoaded</span>(<span class='st'>"welcome"</span>)</div></pre>
+<span class='co'># Write text to a temporary file and catch the file path</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpwA0jJp/file2045627b3dd4f.txt' ... ok.</div><div class='input'>
+<span class='co'># Make the debug message more informative</span>
+<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpwA0jJp/file2045627b3dd4f.txt' ... ok.</div><div class='input'>
+<span class='co'># Read lines back and show on the console</span>
+<span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; Hello
+#&gt; world</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

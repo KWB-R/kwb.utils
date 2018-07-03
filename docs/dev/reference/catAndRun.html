@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the "loaded" Status for a Script — setLoaded • kwb.utils</title>
+<title>Print Debug Messages Before and After Running Code — catAndRun • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,12 +28,9 @@
 
 
 
-<meta property="og:title" content="Set the "loaded" Status for a Script — setLoaded" />
+<meta property="og:title" content="Print Debug Messages Before and After Running Code — catAndRun" />
 
-<meta property="og:description" content="You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-isLoaded." />
+<meta property="og:description" content="Print Debug Messages Before and After Running Code" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -99,76 +96,74 @@ isLoaded." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the "loaded" Status for a Script</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/load.R'><code>R/load.R</code></a></small>
-    <div class="hidden name"><code>setLoaded.Rd</code></div>
+    <h1>Print Debug Messages Before and After Running Code</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
+    <div class="hidden name"><code>catAndRun.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>You may use this function at the last line of your script to indicate that 
-this script has already been loaded. This information is stored in the R 
-option "kwb.utils.loaded" from which you may read the information back with 
-<code><a href='isLoaded.html'>isLoaded</a></code>.</p>
+    <p>Print Debug Messages Before and After Running Code</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>setLoaded</span>(<span class='no'>scriptName</span>, <span class='kw'>isLoaded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>scriptName</th>
-      <td><p>name of the script for which we want to set the "loaded"
-state</p></td>
+      <th>messageText</th>
+      <td><p>text to be printed before running the code</p></td>
     </tr>
     <tr>
-      <th>isLoaded</th>
-      <td><p>logical. Use <code>TRUE</code> to indicate that the script
-<code>scriptName</code> has been loaded and use <code>FALSE</code> to indicate that the
-script is not loaded (e.g. because you cleared the workspace in the
-meanwhile).</p></td>
+      <th>expr</th>
+      <td><p>expressions to be run. Enclose more than one expression in
+curly braces</p></td>
+    </tr>
+    <tr>
+      <th>newLine</th>
+      <td><p>integer controlling new lines. 0: no extra new line, 1:
+new line after <code>messageText</code>, 2: new line after "ok.", 3: new line
+after both, <code>messageText</code> and "ok."</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='isLoaded.html'>isLoaded</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># If you have a script with the main part on top and the required functions</span>
-<span class='co'># defined below (as recommended by Robert C. Martin, the author of "Clean</span>
-<span class='co'># Code") your script may look like this:</span>
+    <pre class="examples"><div class='input'><span class='kw'>for</span> (<span class='no'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span>:<span class='fl'>3</span>) {
 
-<span class='co'># Main part -----</span>
+  <span class='fu'>catAndRun</span>(<span class='st'>"work hard"</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='no'>newLine</span>, {
+    <span class='fu'>cat</span>(<span class='st'>"hard\nworking\n"</span>)
+  })
 
-<span class='co'># Check if the script has already been loaded (i.e. if setLoaded() has been </span>
-<span class='co'># called, see end of script). If yes, we can enter the main section. Otherwise</span>
-<span class='co'># we have to skip the main section since the function sayHello() is not yet</span>
-<span class='co'># defined.</span>
-<span class='kw'>if</span> (<span class='fu'><a href='isLoaded.html'>isLoaded</a></span>(<span class='st'>"welcome"</span>)) {
-  <span class='fu'>sayHello</span>(<span class='kw'>who</span> <span class='kw'>=</span> <span class='st'>"Hauke"</span>)
-}</div><div class='output co'>#&gt; <span class='error'>Error in sayHello(who = "Hauke"): konnte Funktion "sayHello" nicht finden</span></div><div class='input'>
-<span class='co'># Functions -----</span>
-<span class='no'>sayHello</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>who</span>) {
-  <span class='fu'><a href='clearConsole.html'>clearConsole</a></span>()
-  <span class='fu'>cat</span>(<span class='st'>"***\n***\n*** Hello"</span>, <span class='no'>who</span>, <span class='st'>"how are you?\n***\n***\n"</span>)
-}
-
-<span class='co'># At the end of your script, call setLoaded() to indicate that your script is</span>
-<span class='co'># loaded now. If you "source" the script a second time, isLoaded("welcome") </span>
-<span class='co'># will return TRUE and thus the main section will be entered...</span>
-<span class='fu'>setLoaded</span>(<span class='st'>"welcome"</span>)</div></pre>
+  <span class='fu'>cat</span>(<span class='st'>"here.\n\n"</span>)
+}</div><div class='output co'>#&gt; work hard ... hard
+#&gt; working
+#&gt; ok. here.
+#&gt; 
+#&gt; work hard ... 
+#&gt; hard
+#&gt; working
+#&gt; ok. here.
+#&gt; 
+#&gt; work hard ... hard
+#&gt; working
+#&gt; ok. 
+#&gt; here.
+#&gt; 
+#&gt; work hard ... 
+#&gt; hard
+#&gt; working
+#&gt; ok. 
+#&gt; here.
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

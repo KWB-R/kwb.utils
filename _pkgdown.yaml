@@ -58,7 +58,9 @@ reference:
       - subExpressionMatches
   - title: Input and Output Functions
     contents:
+      - catAndRun
       - catLines
+      - catNewLineIf
       - clearConsole
       - columnDescriptor
       - finishAndShowPdf
@@ -71,6 +73,7 @@ reference:
       - readPackageFile
       - setLoaded
       - sourceScripts
+      - writeText      
   - title: Mathematical or Statistical Functions
     contents:
       - colMaxima
@@ -127,6 +130,7 @@ reference:
     contents:
       - copyListElements
       - excludeNULL
+      - getPathsAndValuesFromRecursiveList
       - mergeLists
       - nameByElement
       - recursiveNames
@@ -226,6 +230,7 @@ reference:
       - msgAvailableFields
       - stopIfNotMatrix
       - warnIfEmpty
+      - warningDeprecated
   - title: Debug Functions
     contents:
       - assignAll

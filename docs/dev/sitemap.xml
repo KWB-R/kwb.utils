@@ -40,6 +40,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/assignAll.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/assignArgumentDefaults.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/assignGlobally.html</loc>
   </url>
   <url>
@@ -58,10 +61,16 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/callWithStringsAsFactors.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/catAndRun.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/catIf.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/catLines.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/catNewLineIf.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/checkForMissingColumns.html</loc>
@@ -236,6 +245,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/getPassword.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/getPathsAndValuesFromRecursiveList.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/getTagNames.html</loc>
@@ -634,9 +646,15 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/warnIfEmpty.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/warningDeprecated.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/windowsPath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/writeDictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/writeText.html</loc>
   </url>
 </urlset>
