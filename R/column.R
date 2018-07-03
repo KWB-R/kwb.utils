@@ -389,18 +389,51 @@ removeEmptyColumns <- function(
 #' Remove Columns from a Data Frame
 #' 
 #' @param dframe data frame,
-#' @param columnsToRemove vector of column names giving the columns to remove
+#' @param columns vector of column names giving the columns to remove
+#' @param columnsToRemove deprecated. Use argument \code{columns} instead.
+#' @param pattern regular expression matching the names of the columns to be
+#'   removed. Will only be evaluated if no explicit column names are given in 
+#'   \code{columns}.
 #' @param drop if FALSE, a data frame is returned in any case, otherwise the
 #'   result may be a vector if only one column remains
 #'
 #' @return \emph{dframe} with columns given in \emph{columnsToRemove} being
 #'   removed. User attributes of \emph{dframe} are restored.
 #' 
-removeColumns <- function(dframe, columnsToRemove, drop = FALSE)
+removeColumns <- function(
+  dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE
+)
 {
-  remainingColumns <- setdiff(names(dframe), columnsToRemove)
+  if (is.null(columns) && ! is.null(columnsToRemove)) {
   
-  hsRestoreAttributes(dframe[, remainingColumns, drop = drop], attributes(dframe))
+    warning(
+      "The argument 'columnsToRemove' is deprecated. Please use the new ", 
+      "argument 'columns' instead.", call. = FALSE
+    )
+    
+    columns <- columnsToRemove
+  }
+
+  all_columns <- names(dframe)
+  
+  if (is.null(columns)) {
+    
+    if (is.null(pattern)) {
+      
+      stop(
+        "Either 'columns' or 'pattern' must be given to removeColumns()",
+        call. = FALSE
+      )
+      
+    } else {
+      
+      columns <- grep(pattern, all_columns, value = TRUE)
+    }
+  }
+  
+  columns_keep <- setdiff(all_columns, columns)
+  
+  hsRestoreAttributes(dframe[, columns_keep, drop = drop], attributes(dframe))
 }
 
 # insertColumns ----------------------------------------------------------------

@@ -4,12 +4,19 @@
 \alias{removeColumns}
 \title{Remove Columns from a Data Frame}
 \usage{
-removeColumns(dframe, columnsToRemove, drop = FALSE)
+removeColumns(dframe, columns = NULL, columnsToRemove = NULL,
+  pattern = NULL, drop = FALSE)
 }
 \arguments{
 \item{dframe}{data frame,}
 
-\item{columnsToRemove}{vector of column names giving the columns to remove}
+\item{columns}{vector of column names giving the columns to remove}
+
+\item{columnsToRemove}{deprecated. Use argument \code{columns} instead.}
+
+\item{pattern}{regular expression matching the names of the columns to be
+removed. Will only be evaluated if no explicit column names are given in 
+\code{columns}.}
 
 \item{drop}{if FALSE, a data frame is returned in any case, otherwise the
 result may be a vector if only one column remains}
