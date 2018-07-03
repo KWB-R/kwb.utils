@@ -32,10 +32,11 @@ getPathsAndValuesFromRecursiveList <- function(x, path = "")
     
     do.call(rbind, lapply(elements, function(element) {
       
-      getPathsAndValuesFromRecursiveList(
-        x = x[[element]], 
-        path = file.path(path, element)
-      )
+      getPathsAndValuesFromRecursiveList(x[[element]], if (path == "") {
+        element 
+      } else {
+        file.path(path, element)
+      })
       
     }))
     
