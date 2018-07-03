@@ -1,3 +1,50 @@
+# getPathsAndValuesFromRecursiveList -------------------------------------------
+
+#' Get Paths and String Values from Recursive List
+#' 
+#' @param x a list
+#' @param path start path
+#' 
+#' @return data frame with columns \code{path} and \code{value}. The 
+#' data frame contains all non-list elements that are contained in \code{x}, 
+#' coerced to character, in column \code{value}, together with the sequence of
+#' element names "leading" to the value when starting at \code{x}. For example,
+#' the path to element \code{x$a$a1} is \code{/a/a1} (see example).
+#' 
+#' @examples
+#' # Define a recursive list
+#' x <- list(
+#'   a = list(a1 = "A1", a2 = "A2"),
+#'   b = list(b1 = "B1", b2 = "B2", b3 = "B3"),
+#'   c = list(c1 = list(c11 = "C11"), c2 = list(c21 = "C21", c22 = "C22"))
+#' )
+#' 
+#' # Get all non-list-elements and their "path" as a data frame
+#' getPathsAndValuesFromRecursiveList(x)
+#' 
+getPathsAndValuesFromRecursiveList <- function(x, path = "")
+{
+  if (is.list(x)) {
+    
+    elements <- names(x)
+    
+    stopifnot(length(elements) == length(x) && all(elements != ""))
+    
+    do.call(rbind, lapply(elements, function(element) {
+      
+      getPathsAndValuesFromRecursiveList(
+        x = x[[element]], 
+        path = file.path(path, element)
+      )
+      
+    }))
+    
+  } else {
+    
+    data.frame(path = path, value = as.character(x), stringsAsFactors = FALSE)
+  }
+}
+
 # copyListElements -------------------------------------------------------------
 
 #' Copy List Elements into a List of Lists
