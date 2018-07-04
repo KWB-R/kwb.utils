@@ -1,266 +1,3 @@
-# pasteColumns0 ----------------------------------------------------------------
-
-#' Paste Columns of Data Frame Without Separator
-#' 
-#' @param x data frame
-#' @param columns names of columns to be pasted. Default: all columns
-#' @param \dots args passed to \code{\link{pasteColumns}}
-#' 
-#' @return vector of character with each element representing the values of the
-#'   selected columns of one row, being pasted without a separator
-#' 
-#' @examples 
-#' x <- data.frame(A = 1:3, B = 2:4)
-#' pasteColumns0(x)
-#' 
-pasteColumns0 <- function(x, columns = names(x), ...)
-{
-  pasteColumns(x, columns, sep = "", ...)
-}
-
-# pasteColumns -----------------------------------------------------------------
-
-#' Paste Columns of Data Frame With Separator
-#' 
-#' @param x data frame
-#' @param columns names of columns to be pasted. Default: all columns
-#' @param sep separator character. Default: space (" ")
-#' @param \dots args passed to \code{\link{selectColumns}}, e.g. \code{do.stop}
-#'   to control whether the function shall stop if not all columns exist
-#'   
-#' @return vector of character with each element representing the values of the
-#'   selected columns of one row, being pasted with the separator character
-#' 
-#' @examples 
-#' x <- data.frame(A = 1:3, B = 2:4)
-#' pasteColumns(x, sep = ";")
-#'   
-pasteColumns <- function(x, columns = names(x), sep = " ", ...)
-{
-  if (length(columns) > 1) {
-    
-    args <- selectColumns(x, columns, ...)
-    
-    do.call(paste, c(args, sep = sep))
-    
-  } else {
-    
-    selectColumns(x, columns, ...)
-  }
-}
-
-# safeColumnBind ---------------------------------------------------------------
-
-#' "Safe" version of cbind.
-#' 
-#' If \code{x1} is NULL \code{x2} is returned otherwise \code{cbind(x1, x2)}
-#' 
-#' @param x1 first object to be passed to \code{cbind}
-#' @param x2 second object to be passed to  \code{cbind}
-#' 
-#' @return result of \code{cbind(x1, x2)} or \code{x2} if \code{x1}
-#'   is \code{NULL}.
-#' 
-#' @examples 
-#' x1 <- NULL
-#'   
-#' for (i in 1:3) {
-#'   
-#'   x2 <- data.frame(a = 1:3, b = rnorm(3))
-#'   x1 <- safeColumnBind(x1, x2)
-#'   
-#'   # using cbind would result in an error:
-#'   # x1 <- cbind(x1, x2)
-#' }
-#'   
-#' x1
-#' 
-safeColumnBind <- function(x1, x2)
-{
-  if (is.null(x1)) {
-    
-    x2
-    
-  } else {
-    
-    cbind(x1, x2)
-  }
-}
-
-# posixColumnAtPosition --------------------------------------------------------
-
-#' Indices of POSIX columns in a Data Frame
-#' 
-#' @param x data frame containing a date/time column
-#' 
-posixColumnAtPosition <- function(x)
-{
-  # find a POSIXt-column
-  FUN <- function(colname) {
-    
-    "POSIXct" %in% class(x[[colname]])
-  }
-  
-  tcol <- which(sapply(names(x), FUN))
-  
-  if (isNullOrEmpty(tcol)) {
-    
-    warning("No POSIXt-column in data frame.")
-  }
-  
-  tcol
-}
-
-# firstPosixColumn -------------------------------------------------------------
-
-#' data/time column of data frame
-#' 
-#' @param x data frame in which to find a column of class "POSIXt"
-#' 
-firstPosixColumn <- function(x)
-{
-  stopifnot (is.data.frame(x))
-  
-  x[[posixColumnAtPosition(x)]]
-}
-
-# roundColumns -----------------------------------------------------------------
-
-#' Round Columns to given Number of Digits
-#' 
-#' @param dframe data frame containing numeric columns to be rounded
-#' @param columnNames names of (numeric) columns in \emph{dframe} to be rounded.
-#' @param digits number of digits to be rounded to (vector of length 1 expected)
-#'   or list of assignments in the form: \emph{columnName} = 
-#'   \emph{numberOfDigits}. If you give a list here, then there is no need to 
-#'   set the argument \emph{columnNames}
-#'   
-#' @return \emph{dframe} with columns given in \emph{columnNames} being rounded
-#'   to \emph{digits} digits.
-#' 
-roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
-{
-  # if column names are given we expect that all these columns are rounded to
-  # one and the same number of digits
-  if (! is.null(columnNames)) {
-    
-    stopifnot(length(digits) == 1)
-  }
-  
-  if (! is.null(digits)) {
-    
-    if (is.null(columnNames)) {
-      
-      columnNames <- names(digits)
-    }
-    
-    for (columnName in columnNames) {
-      
-      numberOfDigits <- if (is.list(digits)) {
-        
-        digits[[columnName]]
-        
-      } else {
-        
-        digits
-      }
-      
-      dframe[[columnName]] <- round(
-        dframe[[columnName]], digits = numberOfDigits
-      )
-    }
-  }
-  
-  dframe
-}
-
-# selectColumns ----------------------------------------------------------------
-
-#' Select Columns from a Data Frame
-#' 
-#' Select columns from a data frame. Stop with message if columns do not exist
-#' 
-#' @param x data frame
-#' @param columns vector of column names. If \code{columns} is of length 0 or
-#'   \code{NULL} (default) or \code{NA} \code{x} is returned unchanged.
-#' @param pattern regular expression matching the names of the columns to be
-#'   selected. Will only be evaluated if no explicit column names are given in 
-#'   \code{columns}.
-#' @param drop if \code{TRUE} and if only one column is to be selected the
-#'   result is a vector (one dimensional) containing the values of the selected
-#'   column and not a data frame. One dimension has been \emph{dropped} then.
-#'   See the \code{help("[.data.frame")}. The default is \code{TRUE} if 
-#'   \code{length(columns) == 1}, else \code{FALSE}.
-#' @param do.stop this flag controls whether the function stops (\code{do.stop =
-#'   TRUE}) or not (\code{do.stop = FALSE}) if there are non-existing columns to
-#'   be selected. If \code{do.stop = FALSE} only those columns are selected that
-#'   actually exist
-#'   
-#' @return data frame containing the columns of \code{x} that are specified in 
-#'   \code{columns} or \code{x} itself if \code{columns} is \code{NULL} or a
-#'   vector containing the values of column \code{value} if \code{columns} is of
-#'   length 1 and \code{drop = TRUE} (which is the default in this case).
-#' 
-selectColumns <- function(
-  x, columns = NULL, pattern = NULL, drop = (length(columns) == 1), 
-  do.stop = TRUE
-)
-{
-  if (! is.data.frame(x)) {
-    
-    stop(
-      deparse(substitute(x)), " given to selectColumns() must be a data frame ", 
-      "but is of class: ", stringList(class(x)), call. = FALSE
-    )
-  }
-  
-  if (is.null(columns) || length(columns) == 0 || all(is.na(columns))) {
-    
-    if (is.null(pattern)) {
-      
-      return(x)
-      
-    } else {
-      
-      columns <- grep(pattern, names(x), value = TRUE)
-    }
-  }
-  
-  ok <- checkForMissingColumns(
-    x, columns, dataFrameName = deparse(substitute(x)), do.stop = do.stop
-  )
-  
-  if (! ok) {
-    
-    warning("Only the existing columns are selected.")
-    columns <- intersect(columns, names(x))
-  }
-  
-  x[, columns, drop = drop]
-}
-
-# moveColumnsToFront -----------------------------------------------------------
-
-#' Move Columns to the Start of a Data Frame
-#' 
-#' move columns to the start of a data frame or matrix
-#' 
-#' @param x data frame
-#' @param columns vector of column names
-#' 
-#' @return data frame or matrix with \code{columns} being the leftmost columns
-#' 
-#' @examples 
-#' x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
-#'   
-#' moveColumnsToFront(x, "b")
-#' moveColumnsToFront(x, c("b", "a"))
-#'   
-moveColumnsToFront <- function(x, columns = NULL)
-{
-  selectColumns(x, moveToFront(names(x), columns))
-}
-
 # checkForMissingColumns -------------------------------------------------------
 
 #' Check for Column Existence
@@ -302,6 +39,19 @@ checkForMissingColumns <- function(
   }
   
   isNullOrEmpty(missing)
+}
+
+# firstPosixColumn -------------------------------------------------------------
+
+#' data/time column of data frame
+#' 
+#' @param x data frame in which to find a column of class "POSIXt"
+#' 
+firstPosixColumn <- function(x)
+{
+  stopifnot (is.data.frame(x))
+  
+  x[[posixColumnAtPosition(x)]]
 }
 
 # hsAddMissingCols -------------------------------------------------------------
@@ -360,97 +110,18 @@ hsDelEmptyCols <- function(
   dataFrame[, ! isEmpty, drop = drop]
 }
 
-# removeEmptyColumns -----------------------------------------------------------
+# hsRenameColumns --------------------------------------------------------------
 
-#' Remove empty Columns from a Data Frame
+#' Rename Columns in a Data Frame (deprecated)
 #' 
-#' @param x data frame
-#' @param drop if \code{TRUE} and only one column remains the column is returned
-#'   as a vector
-#' @param FUN function called on each column to determine if all values in the
-#'   column are empty. Default: \code{function(x) all(is.na(x))}
-#' @param dbg if \code{TRUE} debug messages are shown
+#' Rename Columns in a Data Frame (deprecated, use renameColumns instead)
 #' 
-#' @return data frame \code{x} with empty columns (columns with NA in all rows) 
-#'   being removed
-#'   
-#' @seealso \code{\link{hsDelEmptyCols}}
-#' 
-removeEmptyColumns <- function(
-  x, drop = FALSE, FUN = function(x) all(is.na(x)), dbg = TRUE
-)
+#' @param dframe data.frame
+#' @param renames list with named elements each of which defines a column rename
+#'   in the form <old-name> = <new-name>
+hsRenameColumns <- function(dframe, renames)
 {
-  objectName <- as.character(substitute(x))
-  
-  isEmpty <- sapply(x, FUN)
-  
-  if (any(isEmpty)) {
-    
-    catIf(dbg, sprintf(
-      "%s: %d empty columns removed: %s\n",
-      objectName,
-      sum(isEmpty),
-      paste(names(x)[isEmpty], collapse = ", ")
-    ))
-    
-  } else {
-    
-    catIf(dbg, sprintf("%s: No empty columns.\n", objectName))
-  }
-  
-  x[, ! isEmpty, drop = drop]
-}
-
-# removeColumns ----------------------------------------------------------------
-
-#' Remove Columns from a Data Frame
-#' 
-#' @param dframe data frame,
-#' @param columns vector of column names giving the columns to remove
-#' @param columnsToRemove deprecated. Use argument \code{columns} instead.
-#' @param pattern regular expression matching the names of the columns to be
-#'   removed. Will only be evaluated if no explicit column names are given in 
-#'   \code{columns}.
-#' @param drop if FALSE, a data frame is returned in any case, otherwise the
-#'   result may be a vector if only one column remains
-#'
-#' @return \emph{dframe} with columns given in \emph{columnsToRemove} being
-#'   removed. User attributes of \emph{dframe} are restored.
-#' 
-removeColumns <- function(
-  dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE
-)
-{
-  if (is.null(columns) && ! is.null(columnsToRemove)) {
-  
-    warning(
-      "The argument 'columnsToRemove' is deprecated. Please use the new ", 
-      "argument 'columns' instead.", call. = FALSE
-    )
-    
-    columns <- columnsToRemove
-  }
-
-  all_columns <- names(dframe)
-  
-  if (is.null(columns)) {
-    
-    if (is.null(pattern)) {
-      
-      stop(
-        "Either 'columns' or 'pattern' must be given to removeColumns()",
-        call. = FALSE
-      )
-      
-    } else {
-      
-      columns <- grep(pattern, all_columns, value = TRUE)
-    }
-  }
-  
-  columns_keep <- setdiff(all_columns, columns)
-  
-  hsRestoreAttributes(dframe[, columns_keep, drop = drop], attributes(dframe))
+  renameColumns(x = dframe, renamings = renames)
 }
 
 # insertColumns ----------------------------------------------------------------
@@ -570,18 +241,210 @@ insertColumns <- function(
   cbind(part1, part2, stringsAsFactors = stringsAsFactors)
 }
 
-# hsRenameColumns --------------------------------------------------------------
+# moveColumnsToFront -----------------------------------------------------------
 
-#' Rename Columns in a Data Frame (deprecated)
+#' Move Columns to the Start of a Data Frame
 #' 
-#' Rename Columns in a Data Frame (deprecated, use renameColumns instead)
+#' move columns to the start of a data frame or matrix
 #' 
-#' @param dframe data.frame
-#' @param renames list with named elements each of which defines a column rename
-#'   in the form <old-name> = <new-name>
-hsRenameColumns <- function(dframe, renames)
+#' @param x data frame
+#' @param columns vector of column names
+#' 
+#' @return data frame or matrix with \code{columns} being the leftmost columns
+#' 
+#' @examples 
+#' x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
+#'   
+#' moveColumnsToFront(x, "b")
+#' moveColumnsToFront(x, c("b", "a"))
+#'   
+moveColumnsToFront <- function(x, columns = NULL)
 {
-  renameColumns(x = dframe, renamings = renames)
+  selectColumns(x, moveToFront(names(x), columns))
+}
+
+# pasteColumns -----------------------------------------------------------------
+
+#' Paste Columns of Data Frame With Separator
+#' 
+#' @param x data frame
+#' @param columns names of columns to be pasted. Default: all columns
+#' @param sep separator character. Default: space (" ")
+#' @param \dots args passed to \code{\link{selectColumns}}, e.g. \code{do.stop}
+#'   to control whether the function shall stop if not all columns exist
+#'   
+#' @return vector of character with each element representing the values of the
+#'   selected columns of one row, being pasted with the separator character
+#' 
+#' @examples 
+#' x <- data.frame(A = 1:3, B = 2:4)
+#' pasteColumns(x, sep = ";")
+#'   
+pasteColumns <- function(x, columns = names(x), sep = " ", ...)
+{
+  if (length(columns) > 1) {
+    
+    args <- selectColumns(x, columns, ...)
+    
+    do.call(paste, c(args, sep = sep))
+    
+  } else {
+    
+    selectColumns(x, columns, ...)
+  }
+}
+
+# pasteColumns0 ----------------------------------------------------------------
+
+#' Paste Columns of Data Frame Without Separator
+#' 
+#' @param x data frame
+#' @param columns names of columns to be pasted. Default: all columns
+#' @param \dots args passed to \code{\link{pasteColumns}}
+#' 
+#' @return vector of character with each element representing the values of the
+#'   selected columns of one row, being pasted without a separator
+#' 
+#' @examples 
+#' x <- data.frame(A = 1:3, B = 2:4)
+#' pasteColumns0(x)
+#' 
+pasteColumns0 <- function(x, columns = names(x), ...)
+{
+  pasteColumns(x, columns, sep = "", ...)
+}
+
+# posixColumnAtPosition --------------------------------------------------------
+
+#' Indices of POSIX columns in a Data Frame
+#' 
+#' @param x data frame containing a date/time column
+#' 
+posixColumnAtPosition <- function(x)
+{
+  # find a POSIXt-column
+  FUN <- function(colname) {
+    
+    "POSIXct" %in% class(x[[colname]])
+  }
+  
+  tcol <- which(sapply(names(x), FUN))
+  
+  if (isNullOrEmpty(tcol)) {
+    
+    warning("No POSIXt-column in data frame.")
+  }
+  
+  tcol
+}
+
+# removeColumns ----------------------------------------------------------------
+
+#' Remove Columns from a Data Frame
+#' 
+#' @param dframe data frame,
+#' @param columns vector of column names giving the columns to remove
+#' @param columnsToRemove deprecated. Use argument \code{columns} instead.
+#' @param pattern regular expression matching the names of the columns to be
+#'   removed. Will only be evaluated if no explicit column names are given in 
+#'   \code{columns}.
+#' @param drop if FALSE, a data frame is returned in any case, otherwise the
+#'   result may be a vector if only one column remains
+#'
+#' @return \emph{dframe} with columns given in \emph{columns} being removed.
+#'   User attributes of \emph{dframe} are restored.
+#' 
+removeColumns <- function(
+  dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE
+)
+{
+  if (is.null(columns) && ! is.null(columnsToRemove)) {
+    
+    warning(
+      "The argument 'columnsToRemove' is deprecated. Please use the new ", 
+      "argument 'columns' instead.", call. = FALSE
+    )
+    
+    columns <- columnsToRemove
+  }
+  
+  all_columns <- names(dframe)
+  
+  if (is.null(columns)) {
+    
+    if (is.null(pattern)) {
+      
+      stop(
+        "Either 'columns' or 'pattern' must be given to removeColumns()",
+        call. = FALSE
+      )
+      
+    } else {
+      
+      columns <- grep(pattern, all_columns, value = TRUE)
+    }
+  }
+  
+  columns_keep <- setdiff(all_columns, columns)
+  
+  hsRestoreAttributes(dframe[, columns_keep, drop = drop], attributes(dframe))
+}
+
+# removeEmptyColumns -----------------------------------------------------------
+
+#' Remove empty Columns from a Data Frame
+#' 
+#' @param x data frame
+#' @param drop if \code{TRUE} and only one column remains the column is returned
+#'   as a vector
+#' @param FUN function called on each column to determine if all values in the
+#'   column are empty. Default: \code{function(x) all(is.na(x))}
+#' @param dbg if \code{TRUE} debug messages are shown
+#' 
+#' @return data frame \code{x} with empty columns (columns with NA in all rows) 
+#'   being removed
+#'   
+#' @seealso \code{\link{hsDelEmptyCols}}
+#' 
+removeEmptyColumns <- function(
+  x, drop = FALSE, FUN = function(x) all(is.na(x)), dbg = TRUE
+)
+{
+  objectName <- as.character(substitute(x))
+  
+  isEmpty <- sapply(x, FUN)
+  
+  if (any(isEmpty)) {
+    
+    catIf(dbg, sprintf(
+      "%s: %d empty columns removed: %s\n",
+      objectName,
+      sum(isEmpty),
+      paste(names(x)[isEmpty], collapse = ", ")
+    ))
+    
+  } else {
+    
+    catIf(dbg, sprintf("%s: No empty columns.\n", objectName))
+  }
+  
+  x[, ! isEmpty, drop = drop]
+}
+
+# renameAndSelect --------------------------------------------------------------
+
+#' Rename and Select Columns of a Data Frame
+#' 
+#' @param data data frame
+#' @param renames list defining renames in the form of "oldName" = "newName"
+#'   pairs
+#' @param columns (new) names of colums to be selected
+#'   
+renameAndSelect <- function(data, renames, columns = unlist(renames))
+{
+  data <- kwb.utils::hsRenameColumns(data, renames)
+  
+  kwb.utils::selectColumns(data, columns, drop = FALSE)
 }
 
 # renameColumns ----------------------------------------------------------------
@@ -614,20 +477,157 @@ renameColumns <- function(x, renamings = NULL)
   structure(x, names = columns)
 }
 
-# renameAndSelect --------------------------------------------------------------
+# roundColumns -----------------------------------------------------------------
 
-#' Rename and Select Columns of a Data Frame
+#' Round Columns to given Number of Digits
 #' 
-#' @param data data frame
-#' @param renames list defining renames in the form of "oldName" = "newName"
-#'   pairs
-#' @param columns (new) names of colums to be selected
+#' @param dframe data frame containing numeric columns to be rounded
+#' @param columnNames names of (numeric) columns in \emph{dframe} to be rounded.
+#' @param digits number of digits to be rounded to (vector of length 1 expected)
+#'   or list of assignments in the form: \emph{columnName} = 
+#'   \emph{numberOfDigits}. If you give a list here, then there is no need to 
+#'   set the argument \emph{columnNames}
 #'   
-renameAndSelect <- function(data, renames, columns = unlist(renames))
+#' @return \emph{dframe} with columns given in \emph{columnNames} being rounded
+#'   to \emph{digits} digits.
+#' 
+roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
 {
-  data <- kwb.utils::hsRenameColumns(data, renames)
+  # if column names are given we expect that all these columns are rounded to
+  # one and the same number of digits
+  if (! is.null(columnNames)) {
+    
+    stopifnot(length(digits) == 1)
+  }
   
-  kwb.utils::selectColumns(data, columns, drop = FALSE)
+  if (! is.null(digits)) {
+    
+    if (is.null(columnNames)) {
+      
+      columnNames <- names(digits)
+    }
+    
+    for (columnName in columnNames) {
+      
+      numberOfDigits <- if (is.list(digits)) {
+        
+        digits[[columnName]]
+        
+      } else {
+        
+        digits
+      }
+      
+      dframe[[columnName]] <- round(
+        dframe[[columnName]], digits = numberOfDigits
+      )
+    }
+  }
+  
+  dframe
+}
+
+# safeColumnBind ---------------------------------------------------------------
+
+#' "Safe" version of cbind.
+#' 
+#' If \code{x1} is NULL \code{x2} is returned otherwise \code{cbind(x1, x2)}
+#' 
+#' @param x1 first object to be passed to \code{cbind}
+#' @param x2 second object to be passed to  \code{cbind}
+#' 
+#' @return result of \code{cbind(x1, x2)} or \code{x2} if \code{x1}
+#'   is \code{NULL}.
+#' 
+#' @examples 
+#' x1 <- NULL
+#'   
+#' for (i in 1:3) {
+#'   
+#'   x2 <- data.frame(a = 1:3, b = rnorm(3))
+#'   x1 <- safeColumnBind(x1, x2)
+#'   
+#'   # using cbind would result in an error:
+#'   # x1 <- cbind(x1, x2)
+#' }
+#'   
+#' x1
+#' 
+safeColumnBind <- function(x1, x2)
+{
+  if (is.null(x1)) {
+    
+    x2
+    
+  } else {
+    
+    cbind(x1, x2)
+  }
+}
+
+# selectColumns ----------------------------------------------------------------
+
+#' Select Columns from a Data Frame
+#' 
+#' Select columns from a data frame. Stop with message if columns do not exist
+#' 
+#' @param x data frame
+#' @param columns vector of column names. If \code{columns} is of length 0 or
+#'   \code{NULL} (default) or \code{NA} \code{x} is returned unchanged.
+#' @param pattern regular expression matching the names of the columns to be
+#'   selected. Will only be evaluated if no explicit column names are given in 
+#'   \code{columns}.
+#' @param drop if \code{TRUE} and if only one column is to be selected the
+#'   result is a vector (one dimensional) containing the values of the selected
+#'   column and not a data frame. One dimension has been \emph{dropped} then.
+#'   See the \code{help("[.data.frame")}. The default is \code{TRUE} if 
+#'   \code{length(columns) == 1}, else \code{FALSE}.
+#' @param do.stop this flag controls whether the function stops (\code{do.stop =
+#'   TRUE}) or not (\code{do.stop = FALSE}) if there are non-existing columns to
+#'   be selected. If \code{do.stop = FALSE} only those columns are selected that
+#'   actually exist
+#'   
+#' @return data frame containing the columns of \code{x} that are specified in 
+#'   \code{columns} or \code{x} itself if \code{columns} is \code{NULL} or a
+#'   vector containing the values of column \code{value} if \code{columns} is of
+#'   length 1 and \code{drop = TRUE} (which is the default in this case).
+#' 
+selectColumns <- function(
+  x, columns = NULL, pattern = NULL, drop = (length(columns) == 1), 
+  do.stop = TRUE
+)
+{
+  if (! is.data.frame(x)) {
+    
+    stop(
+      deparse(substitute(x)), " given to selectColumns() must be a data frame ", 
+      "but is of class: ", stringList(class(x)), call. = FALSE
+    )
+  }
+  
+  if (is.null(columns) || length(columns) == 0 || all(is.na(columns))) {
+    
+    if (is.null(pattern)) {
+      
+      return(x)
+      
+    } else {
+      
+      columns <- grep(pattern, names(x), value = TRUE)
+    }
+  }
+  
+  ok <- checkForMissingColumns(
+    x, columns, dataFrameName = deparse(substitute(x)), do.stop = do.stop
+  )
+  
+  if (! ok) {
+    
+    warning("Only the existing columns are selected.")
+    columns <- intersect(columns, names(x))
+  }
+  
+  x[, columns, drop = drop]
 }
 
 # setColumns -------------------------------------------------------------------
