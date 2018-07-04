@@ -311,7 +311,8 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
 #' @param newLine integer controlling new lines. 0: no extra new line, 1:
 #'   new line after \code{messageText}, 2: new line after "ok.", 3: new line
 #'   after both, \code{messageText} and "ok."
-#'
+#' @param dbg logical. If \code{FALSE}, output is suppressed.
+#' 
 #' @examples
 #' for (newLine in 0:3) {
 #'
@@ -321,17 +322,19 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
 #'
 #'   cat("here.\n\n")
 #' }
-catAndRun <- function(messageText = "Running code", expr, newLine = 2L)
+catAndRun <- function(
+  messageText = "Running code", expr, newLine = 2L, dbg = TRUE
+)
 {
-  cat(messageText, "... ")
+  catIf(dbg, messageText, "... ")
   
-  catNewLineIf(bitwAnd(newLine, 1))
+  catNewLineIf(dbg && bitwAnd(newLine, 1))
   
   result <- eval(expr, envir = -1)
   
-  cat("ok. ")
+  catIf(dbg, "ok. ")
   
-  catNewLineIf(bitwAnd(newLine, 2))
+  catNewLineIf(dbg && bitwAnd(newLine, 2))
 }
 
 # catNewLineIf -----------------------------------------------------------------

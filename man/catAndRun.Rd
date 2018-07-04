@@ -4,7 +4,7 @@
 \alias{catAndRun}
 \title{Print Debug Messages Before and After Running Code}
 \usage{
-catAndRun(messageText = "Running code", expr, newLine = 2L)
+catAndRun(messageText = "Running code", expr, newLine = 2L, dbg = TRUE)
 }
 \arguments{
 \item{messageText}{text to be printed before running the code}
@@ -15,6 +15,8 @@ curly braces}
 \item{newLine}{integer controlling new lines. 0: no extra new line, 1:
 new line after \code{messageText}, 2: new line after "ok.", 3: new line
 after both, \code{messageText} and "ok."}
+
+\item{dbg}{logical. If \code{FALSE}, output is suppressed.}
 }
 \description{
 Print Debug Messages Before and After Running Code

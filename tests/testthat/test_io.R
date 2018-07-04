@@ -1,3 +1,4 @@
+# headtail ---------------------------------------------------------------------
 test_that("headtail() works", {
   
   x <- data.frame(number = 1:26, letter = LETTERS)
@@ -21,6 +22,7 @@ test_that("headtail() works", {
   }
 })
 
+# readPackageFile --------------------------------------------------------------
 test_that("readPackageFile() works", {
 
   expect_error(readPackageFile("no_such_file", "kwb.utils"))
@@ -32,6 +34,7 @@ test_that("readPackageFile() works", {
   expect_true(is.data.frame(content))
 })
 
+# listObjects and loadObject ---------------------------------------------------
 test_that("listObjects() and loadObject() work", {
   
   file <- tempfile()
@@ -56,6 +59,7 @@ test_that("listObjects() and loadObject() work", {
   expect_identical(loadObject(file, "b"), b)
 })
 
+# catLines ---------------------------------------------------------------------
 test_that("catLines() works", {
 
   text <- c("line 1", "line 2", "line 3")
@@ -65,6 +69,7 @@ test_that("catLines() works", {
   expect_identical(out, text)
 })
 
+# log functions ----------------------------------------------------------------
 test_that("the log functions work", {
 
   expect_identical(capture.output(.logstart(FALSE, "x")), character())
@@ -86,6 +91,7 @@ test_that("the log functions work", {
   }), 2)
 })
 
+# catIf ------------------------------------------------------------------------
 test_that("catIf() works", {
 
   text <- "Hello, world!"
@@ -97,6 +103,7 @@ test_that("catIf() works", {
   expect_identical(out_2, text)
 })
 
+# printIf ----------------------------------------------------------------------
 test_that("printIf() works", {
   
   df <- data.frame(a = 1:2, b = c("A", "B"))
@@ -112,6 +119,7 @@ test_that("printIf() works", {
   expect_identical(out_3[1], "df:")
 })
 
+# clearConsole -----------------------------------------------------------------
 test_that("clearConsole() works", {
 
   out <- capture.output(clearConsole())
@@ -119,6 +127,7 @@ test_that("clearConsole() works", {
   expect_true(out == "\014")
 })
 
+# containsNulString ------------------------------------------------------------
 test_that("containsNulString() works", {
   
   file <- tempfile()
@@ -132,6 +141,7 @@ test_that("containsNulString() works", {
   expect_false(containsNulString(file))
 })
 
+# writeText --------------------------------------------------------------------
 test_that("writeText() works", {
   
   file <- tempfile()
@@ -149,6 +159,7 @@ test_that("writeText() works", {
   expect_identical(x, readLines(file))
 })
 
+# catAndRun --------------------------------------------------------------------
 test_that("catAndRun() works", {
   
   x <- 1L
@@ -156,4 +167,8 @@ test_that("catAndRun() works", {
   catAndRun("work hard", x <- x + 1L)
 
   expect_identical(x, 2L)
+
+  output <- capture.output(catAndRun("work hard", x <- x + 1L, dbg = FALSE))
+                           
+  expect_identical(output, character(0))
 })
