@@ -1,3 +1,166 @@
+# .log -------------------------------------------------------------------------
+
+.log <- function(...)
+{
+  cat("***", ...)
+}
+
+# .logline ---------------------------------------------------------------------
+
+.logline <- function(...)
+{
+  cat("***", ..., "\n")
+}
+
+# .logok -----------------------------------------------------------------------
+
+.logok <- function(dbg = TRUE)
+{
+  catIf(dbg, "*** ok.\n")
+}
+
+# .logstart --------------------------------------------------------------------
+
+.logstart <- function(dbg = TRUE, ...)
+{
+  catIf(dbg, "***", ..., "... ")
+}
+
+# catAndRun --------------------------------------------------------------------
+
+#' Print Debug Messages Before and After Running Code
+#'
+#' @param messageText text to be printed before running the code
+#' @param expr expressions to be run. Enclose more than one expression in
+#'   curly braces
+#' @param newLine integer controlling new lines. 0: no extra new line, 1:
+#'   new line after \code{messageText}, 2: new line after "ok.", 3: new line
+#'   after both, \code{messageText} and "ok."
+#' @param dbg logical. If \code{FALSE}, output is suppressed.
+#' 
+#' @examples
+#' for (newLine in 0:3) {
+#'
+#'   catAndRun("work hard", newLine = newLine, {
+#'     cat("hard\nworking\n")
+#'   })
+#'
+#'   cat("here.\n\n")
+#' }
+catAndRun <- function(
+  messageText = "Running code", expr, newLine = 2L, dbg = TRUE
+)
+{
+  catIf(dbg, messageText, "... ")
+  
+  catNewLineIf(dbg && bitwAnd(newLine, 1))
+  
+  result <- eval(expr, envir = -1)
+  
+  catIf(dbg, "ok. ")
+  
+  catNewLineIf(dbg && bitwAnd(newLine, 2))
+}
+
+# catIf ------------------------------------------------------------------------
+
+#' Call cat If Condition Is Met
+#' 
+#' @param condition if TRUE, cat is called, else not
+#' @param \dots arguments passed to cat
+#' 
+catIf <- function(condition, ...)
+{
+  if (condition) {
+    
+    cat(...)
+  }
+}
+
+# catLines ---------------------------------------------------------------------
+
+#' Print Character Vector to the Console
+#' 
+#' Call cat on character vector, pasted with collapse = <new line>
+#' 
+#' @param x vector of character representing text lines to be printed
+#' 
+catLines <- function(x)
+{
+  cat(paste0(paste0(x, collapse = "\n"), "\n"))
+}
+
+# catNewLineIf -----------------------------------------------------------------
+
+#' Print New Line Character to the Console if Condition is Met
+#'
+#' @param condition if \code{TRUE} the new line is printed else not
+#'
+#' @return Returns the condition, invisibly so that it can be reused
+#'
+catNewLineIf <- function(condition)
+{
+  kwb.utils::catIf(condition, "\n")
+  
+  invisible(condition)
+}
+
+# clearConsole -----------------------------------------------------------------
+
+#' Clear the R Console
+#' 
+clearConsole <- function()
+{
+  cat("\014\n")
+}
+
+# containsNulString ------------------------------------------------------------
+
+#' Check for nul String in File
+#' 
+#' @param filepath full path to file to be checked
+#' 
+#' @return \code{TRUE} if first two bytes of file are \code{<FF><FE>}, else 
+#'   \code{FALSE}
+#' 
+containsNulString <- function(filepath)
+{
+  x <- readBin(filepath, "raw", 2)
+  
+  x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)
+}
+
+# getNamesOfObjectsInRDataFiles ------------------------------------------------
+
+#' Deprecated. Use \code{\link{listObjects}} instead.
+#'  
+#' @param files.rdata vector of full paths to .RData files
+#' 
+getNamesOfObjectsInRDataFiles <- function(files.rdata)
+{
+  warningDeprecated("getNamesOfObjectsInRDataFiles", "listObjects")
+  
+  listObjects(files.rdata)
+}
+
+# getObjectFromRDataFile -------------------------------------------------------
+
+#' Deprecated. Please use \code{\link{loadObject}} instead.
+#' 
+#' @param file path to .RData file
+#' @param objectname name of object to be loaded
+#' @param dbg if \code{TRUE} a message about which object is loaded from which 
+#'   file is shown
+#' @return R object as specified in \emph{objectname}. If an object of that name does
+#'   not exist in the .RData file an error is thrown
+#' 
+getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
+{
+  warningDeprecated("getObjectFromRDataFile", "loadObject")
+  
+  loadObject(file, objectname, dbg)
+}  
+
 # headtail ---------------------------------------------------------------------
 
 #' Print First and Last Rows of a Data Frame
@@ -46,38 +209,6 @@ headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
   }
   
   invisible(n_omitted)
-}
-
-# readPackageFile --------------------------------------------------------------
-
-#' Read File from Package's extdata Folder
-#' 
-#' @param file name of file (without path)
-#' @param package name of the package from which to read the file
-#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default:
-#'   \code{FALSE})
-#' @param \dots further arguments passed to \code{\link[utils]{read.csv}}
-#' 
-#' @return result of reading \code{file} with \code{\link[utils]{read.csv}}
-#' 
-readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
-{
-  file <- safePath(system.file("extdata", package = package), file)
-
-  utils::read.csv(file = file, stringsAsFactors = stringsAsFactors, ...)
-}
-
-# getNamesOfObjectsInRDataFiles ------------------------------------------------
-
-#' Deprecated. Use \code{\link{listObjects}} instead.
-#'  
-#' @param files.rdata vector of full paths to .RData files
-#' 
-getNamesOfObjectsInRDataFiles <- function(files.rdata)
-{
-  warningDeprecated("getNamesOfObjectsInRDataFiles", "listObjects")
-  
-  listObjects(files.rdata)
 }
 
 # listObjects ------------------------------------------------------------------
@@ -142,42 +273,6 @@ listObjects <- function(files)
   structure(objectsInFiles, files = files)
 }
 
-# getObjectFromRDataFile -------------------------------------------------------
-
-#' Deprecated. Please use \code{\link{loadObject}} instead.
-#' 
-#' @param file path to .RData file
-#' @param objectname name of object to be loaded
-#' @param dbg if \code{TRUE} a message about which object is loaded from which 
-#'   file is shown
-#' @return R object as specified in \emph{objectname}. If an object of that name does
-#'   not exist in the .RData file an error is thrown
-#' 
-getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
-{
-  warningDeprecated("getObjectFromRDataFile", "loadObject")
-  
-  loadObject(file, objectname, dbg)
-}  
-
-# warningDeprecated ------------------------------------------------------------
-
-#' Create Warning About a Deprecated Function
-#' 
-#' @param old_name name of deprecated function
-#' @param new_name name of new function to be used instead
-#' 
-#' @examples
-#' warningDeprecated("old_function()", "new_function()")
-#' 
-warningDeprecated <- function(old_name, new_name)
-{
-  warning(
-    "The function ", old_name, "() is deprecated. Please use ", new_name, 
-    "() instead.", call. = FALSE
-  )
-}
-
 # loadObject -------------------------------------------------------------------
 
 #' Load R object from .RData file
@@ -194,16 +289,16 @@ warningDeprecated <- function(old_name, new_name)
 loadObject <- function(file, objectname = NULL, dbg = TRUE)
 {
   envir <- new.env()
-
+  
   catIf(dbg, sprintf("Loading '%s' from '%s'... ", objectname, file))
   
   load(safePath(file), envir = envir)
-
+  
   # Get the names of the contained objects
   objectnames <- ls(envir = envir)
-
+  
   if (is.null(objectname) || (! objectname %in% objectnames)) {
-
+    
     message_1 <- if (is.null(objectname)) {
       
       "Please give an 'objectname'. "
@@ -212,74 +307,18 @@ loadObject <- function(file, objectname = NULL, dbg = TRUE)
       
       sprintf("Object '%s' not found. ", objectname)
     }
-
+    
     message_2 <- sprintf(
       "Available objects in '%s':\n%s", file, stringList(objectnames)
     )
-
+    
     stop(message_1, message_2, call. = FALSE)
   }
-
+  
   catIf(dbg, "ok.\n")
-
+  
   # Return the object
   get(objectname, envir = envir)
-}
-
-# catLines ---------------------------------------------------------------------
-
-#' Print Character Vector to the Console
-#' 
-#' Call cat on character vector, pasted with collapse = <new line>
-#' 
-#' @param x vector of character representing text lines to be printed
-#' 
-catLines <- function(x)
-{
-  cat(paste0(paste0(x, collapse = "\n"), "\n"))
-}
-
-# .logstart --------------------------------------------------------------------
-
-.logstart <- function(dbg = TRUE, ...)
-{
-  catIf(dbg, "***", ..., "... ")
-}
-
-# .logok -----------------------------------------------------------------------
-
-.logok <- function(dbg = TRUE)
-{
-  catIf(dbg, "*** ok.\n")
-}
-
-# .log -------------------------------------------------------------------------
-
-.log <- function(...)
-{
-  cat("***", ...)
-}
-
-# .logline ---------------------------------------------------------------------
-
-.logline <- function(...)
-{
-  cat("***", ..., "\n")
-}
-
-# catIf ------------------------------------------------------------------------
-
-#' Call cat If Condition Is Met
-#' 
-#' @param condition if TRUE, cat is called, else not
-#' @param \dots arguments passed to cat
-#' 
-catIf <- function(condition, ...)
-{
-  if (condition) {
-    
-    cat(...)
-  }
 }
 
 # printIf ----------------------------------------------------------------------
@@ -301,80 +340,41 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
   }
 }
 
-# catAndRun --------------------------------------------------------------------
+# readPackageFile --------------------------------------------------------------
 
-#' Print Debug Messages Before and After Running Code
-#'
-#' @param messageText text to be printed before running the code
-#' @param expr expressions to be run. Enclose more than one expression in
-#'   curly braces
-#' @param newLine integer controlling new lines. 0: no extra new line, 1:
-#'   new line after \code{messageText}, 2: new line after "ok.", 3: new line
-#'   after both, \code{messageText} and "ok."
-#' @param dbg logical. If \code{FALSE}, output is suppressed.
+#' Read File from Package's extdata Folder
+#' 
+#' @param file name of file (without path)
+#' @param package name of the package from which to read the file
+#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default:
+#'   \code{FALSE})
+#' @param \dots further arguments passed to \code{\link[utils]{read.csv}}
+#' 
+#' @return result of reading \code{file} with \code{\link[utils]{read.csv}}
+#' 
+readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
+{
+  file <- safePath(system.file("extdata", package = package), file)
+
+  utils::read.csv(file = file, stringsAsFactors = stringsAsFactors, ...)
+}
+
+# warningDeprecated ------------------------------------------------------------
+
+#' Create Warning About a Deprecated Function
+#' 
+#' @param old_name name of deprecated function
+#' @param new_name name of new function to be used instead
 #' 
 #' @examples
-#' for (newLine in 0:3) {
-#'
-#'   catAndRun("work hard", newLine = newLine, {
-#'     cat("hard\nworking\n")
-#'   })
-#'
-#'   cat("here.\n\n")
-#' }
-catAndRun <- function(
-  messageText = "Running code", expr, newLine = 2L, dbg = TRUE
-)
-{
-  catIf(dbg, messageText, "... ")
-  
-  catNewLineIf(dbg && bitwAnd(newLine, 1))
-  
-  result <- eval(expr, envir = -1)
-  
-  catIf(dbg, "ok. ")
-  
-  catNewLineIf(dbg && bitwAnd(newLine, 2))
-}
-
-# catNewLineIf -----------------------------------------------------------------
-
-#' Print New Line Character to the Console if Condition is Met
-#'
-#' @param condition if \code{TRUE} the new line is printed else not
-#'
-#' @return Returns the condition, invisibly so that it can be reused
-#'
-catNewLineIf <- function(condition)
-{
-  kwb.utils::catIf(condition, "\n")
-  
-  invisible(condition)
-}
-
-# clearConsole -----------------------------------------------------------------
-
-#' Clear the R Console
+#' warningDeprecated("old_function()", "new_function()")
 #' 
-clearConsole <- function()
+warningDeprecated <- function(old_name, new_name)
 {
-  cat("\014\n")
-}
-
-# containsNulString ------------------------------------------------------------
-
-#' Check for nul String in File
-#' 
-#' @param filepath full path to file to be checked
-#' 
-#' @return \code{TRUE} if first two bytes of file are \code{<FF><FE>}, else 
-#'   \code{FALSE}
-#' 
-containsNulString <- function(filepath)
-{
-  x <- readBin(filepath, "raw", 2)
-  
-  x[1] == as.raw(0xff) && x[2] == as.raw(0xfe)
+  warning(
+    "The function ", old_name, "() is deprecated. Please use ", new_name, 
+    "() instead.", call. = FALSE
+  )
 }
 
 # writeText --------------------------------------------------------------------
