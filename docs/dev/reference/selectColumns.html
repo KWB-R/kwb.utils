@@ -107,8 +107,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>selectColumns</span>(<span class='no'>x</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop</span> <span class='kw'>=</span> (<span class='fu'>length</span>(<span class='no'>columns</span>) <span class='kw'>==</span> <span class='fl'>1</span>),
-  <span class='kw'>do.stop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>selectColumns</span>(<span class='no'>x</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop</span> <span class='kw'>=</span> (<span class='fu'>length</span>(<span class='no'>columns</span>)
+  <span class='kw'>==</span> <span class='fl'>1</span>), <span class='kw'>do.stop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -121,6 +121,12 @@
       <th>columns</th>
       <td><p>vector of column names. If <code>columns</code> is of length 0 or
 <code>NULL</code> (default) or <code>NA</code> <code>x</code> is returned unchanged.</p></td>
+    </tr>
+    <tr>
+      <th>pattern</th>
+      <td><p>regular expression matching the names of the columns to be
+selected. Will only be evaluated if no explicit column names are given in 
+<code>columns</code>.</p></td>
     </tr>
     <tr>
       <th>drop</th>

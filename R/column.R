@@ -183,6 +183,9 @@ roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
 #' @param x data frame
 #' @param columns vector of column names. If \code{columns} is of length 0 or
 #'   \code{NULL} (default) or \code{NA} \code{x} is returned unchanged.
+#' @param pattern regular expression matching the names of the columns to be
+#'   selected. Will only be evaluated if no explicit column names are given in 
+#'   \code{columns}.
 #' @param drop if \code{TRUE} and if only one column is to be selected the
 #'   result is a vector (one dimensional) containing the values of the selected
 #'   column and not a data frame. One dimension has been \emph{dropped} then.
@@ -199,14 +202,28 @@ roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
 #'   length 1 and \code{drop = TRUE} (which is the default in this case).
 #' 
 selectColumns <- function(
-  x, columns = NULL, drop = (length(columns) == 1), do.stop = TRUE
+  x, columns = NULL, pattern = NULL, drop = (length(columns) == 1), 
+  do.stop = TRUE
 )
 {
-  stopifnot(is.data.frame(x))
+  if (! is.data.frame(x)) {
+    
+    stop(
+      deparse(substitute(x)), " given to selectColumns() must be a data frame ", 
+      "but is of class: ", stringList(class(x)), call. = FALSE
+    )
+  }
   
   if (is.null(columns) || length(columns) == 0 || all(is.na(columns))) {
     
-    return(x)
+    if (is.null(pattern)) {
+      
+      return(x)
+      
+    } else {
+      
+      columns <- grep(pattern, names(x), value = TRUE)
+    }
   }
   
   ok <- checkForMissingColumns(

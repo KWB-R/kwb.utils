@@ -32,4 +32,6 @@ test_that("selectColums() works", {
    expect_identical(selectColumns(d, NULL), d)
    
    expect_warning(selectColumns(d, "c", do.stop = FALSE))
+   
+   expect_identical(selectColumns(d, pattern = "^b$"), d$b)
 })

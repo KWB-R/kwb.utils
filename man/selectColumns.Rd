@@ -4,14 +4,18 @@
 \alias{selectColumns}
 \title{Select Columns from a Data Frame}
 \usage{
-selectColumns(x, columns = NULL, drop = (length(columns) == 1),
-  do.stop = TRUE)
+selectColumns(x, columns = NULL, pattern = NULL, drop = (length(columns)
+  == 1), do.stop = TRUE)
 }
 \arguments{
 \item{x}{data frame}
 
 \item{columns}{vector of column names. If \code{columns} is of length 0 or
 \code{NULL} (default) or \code{NA} \code{x} is returned unchanged.}
+
+\item{pattern}{regular expression matching the names of the columns to be
+selected. Will only be evaluated if no explicit column names are given in 
+\code{columns}.}
 
 \item{drop}{if \code{TRUE} and if only one column is to be selected the
 result is a vector (one dimensional) containing the values of the selected

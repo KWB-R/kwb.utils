@@ -107,7 +107,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>removeColumns</span>(<span class='no'>dframe</span>, <span class='no'>columnsToRemove</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>removeColumns</span>(<span class='no'>dframe</span>, <span class='kw'>columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columnsToRemove</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -117,8 +118,18 @@
       <td><p>data frame,</p></td>
     </tr>
     <tr>
-      <th>columnsToRemove</th>
+      <th>columns</th>
       <td><p>vector of column names giving the columns to remove</p></td>
+    </tr>
+    <tr>
+      <th>columnsToRemove</th>
+      <td><p>deprecated. Use argument <code>columns</code> instead.</p></td>
+    </tr>
+    <tr>
+      <th>pattern</th>
+      <td><p>regular expression matching the names of the columns to be
+removed. Will only be evaluated if no explicit column names are given in 
+<code>columns</code>.</p></td>
     </tr>
     <tr>
       <th>drop</th>
