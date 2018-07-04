@@ -97,6 +97,7 @@ reference:
     contents:
       - addRowWithName
       - columnwisePercentage
+      - dropUnusedFactorLevels
       - extractRowRanges
       - fullySorted
       - firstPosixColumn

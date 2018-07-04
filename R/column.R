@@ -63,7 +63,7 @@ checkForMissingColumns <- function(
 #' # Review the structure of the data frame
 #' str(data)
 #' 
-#' # Review the structure of the data frame with unused factors removed.
+#' # Review the structure of the data frame with unused factors removed
 #' str(dropUnusedFactorLevels(data))
 #' 
 dropUnusedFactorLevels <- function(data, dbg = TRUE)

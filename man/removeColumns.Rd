@@ -22,8 +22,8 @@ removed. Will only be evaluated if no explicit column names are given in
 result may be a vector if only one column remains}
 }
 \value{
-\emph{dframe} with columns given in \emph{columnsToRemove} being
-  removed. User attributes of \emph{dframe} are restored.
+\emph{dframe} with columns given in \emph{columns} being removed.
+  User attributes of \emph{dframe} are restored.
 }
 \description{
 Remove Columns from a Data Frame

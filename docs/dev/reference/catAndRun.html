@@ -107,7 +107,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</pre>
+    <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -126,6 +126,10 @@ curly braces</p></td>
       <td><p>integer controlling new lines. 0: no extra new line, 1:
 new line after <code>messageText</code>, 2: new line after "ok.", 3: new line
 after both, <code>messageText</code> and "ok."</p></td>
+    </tr>
+    <tr>
+      <th>dbg</th>
+      <td><p>logical. If <code>FALSE</code>, output is suppressed.</p></td>
     </tr>
     </table>
     
