@@ -41,6 +41,63 @@ checkForMissingColumns <- function(
   isNullOrEmpty(missing)
 }
 
+# dropUnusedFactorLevels -------------------------------------------------------
+#' Drop Unused Factor Levels in all Factor Columns
+
+#' @param data data frame in which to remove unused levels in all columns that 
+#'   are factors
+#' @param dbg if \code{TRUE}, debug messages are shown
+#' 
+#' @return \code{data} with unused factors removed in all columns being factors
+#' 
+#' @examples
+#' # Create an example data frame with two factor columns
+#' data <- data.frame(
+#'   id = 1:3, 
+#'   factor_1 = factor(c("a", "b", "a"), levels = c("a", "b", "c")),
+#'   factor_2 = factor(c("x", "x", "y"), levels = c("x", "y", "z")),
+#'   no_factor = c("A", "B", "C"),
+#'   stringsAsFactors = FALSE
+#' )
+#'
+#' # Review the structure of the data frame
+#' str(data)
+#' 
+#' # Review the structure of the data frame with unused factors removed.
+#' str(dropUnusedFactorLevels(data))
+#' 
+dropUnusedFactorLevels <- function(data, dbg = TRUE)
+{
+  data_name <- deparse(substitute(data))
+  
+  if (! is.data.frame(data)) {
+    
+    stop(
+      "The object given to dropUnusedFactorLevels() is not a data frame but is",
+      "of\nclass: ", stringList(class(data)), call. = FALSE
+    )
+  }
+  
+  columns <- names(data)[sapply(data, is.factor)]
+  
+  if (length(columns)) {
+    
+    for (column in columns) {
+      
+      catAndRun(
+        sprintf("Removing unused factors from %s$%s", data_name, column),
+        data[[column]] <- droplevels(data[[column]])
+      )
+    }
+    
+  } else {
+    
+    catIf(dbg, "No factor columns contained in data frame '", data_name, "'")
+  }
+  
+  data
+}
+
 # firstPosixColumn -------------------------------------------------------------
 
 #' data/time column of data frame
