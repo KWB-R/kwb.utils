@@ -48,6 +48,28 @@ addRowWithName <- function(x, y, row.name)
   return(x)
 }
 
+# asNoFactorDataFrame ----------------------------------------------------------
+
+#' Convert to Data Frame without Factors
+#'
+#' Use \code{\link{as.data.frame}} with \code{stringsAsFactors = FALSE}
+#'
+#' @param \dots passed to \code{\link{as.data.frame}}
+#'
+#' @examples
+#' data_matrix <- matrix(LETTERS[1:6], nrow = 2)
+#'
+#' # as.data.frame() by default converts character to factor
+#' str(as.data.frame(data_matrix))
+#'
+#' # asNoFactorDataFrame keeps character as character
+#' str(asNoFactorDataFrame(data_matrix))
+#'
+asNoFactorDataFrame <- function(...)
+{
+  as.data.frame(..., stringsAsFactors = FALSE)
+}
+
 # atLeastOneRowIn --------------------------------------------------------------
 
 #' At least one row in data frame
@@ -327,6 +349,26 @@ fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
 moveToFront <- function(x, elements)
 {
   c(elements, setdiff(x, elements))
+}
+
+# noFactorDataFrame ------------------------------------------------------------
+
+#' Create Data Frame without Factors
+#'
+#' Use \code{\link{data.frame}} with \code{stringsAsFactors = FALSE}
+#'
+#' @param \dots passed to \code{\link{data.frame}}
+#'
+#' @examples
+#' # data.frame() by default converts character to factor
+#' str(data.frame(id = 1:3, letter = LETTERS[1:3]))
+#'
+#' # noFactorDataFrame keeps character as character
+#' str(noFactorDataFrame(id = 1:3, letter = LETTERS[1:3]))
+#'
+noFactorDataFrame <- function(...)
+{
+  data.frame(..., stringsAsFactors = FALSE)
 }
 
 # rbindAll ---------------------------------------------------------------------
