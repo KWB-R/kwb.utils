@@ -31,6 +31,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/asColumnList.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/asNoFactorDataFrame.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/asRowList.html</loc>
   </url>
   <url>
@@ -410,6 +413,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/nameByElement.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/noFactorDataFrame.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
