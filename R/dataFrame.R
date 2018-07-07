@@ -1,189 +1,14 @@
-# expandGrid ------------------------------------------------------------------
-
-#' Wrapper around expand.grid
-#' 
-#' Same as \code{\link[base]{expand.grid}} but with \code{stringsAsFactors =
-#' FALSE} by default and with the values of the first argument being changed
-#' last, not first.
-#' @param ... arguments passed to \code{\link[base]{expand.grid}}, but in 
-#'   reversed order
-#' @param stringsAsFactors passed to \code{\link[base]{expand.grid}}
-#' @examples 
-#' persons <- c("Peter", "Paul", "Mary")
-#' fruits <- c("apple", "pear")
-#' 
-#' # With expand.grid() the values of the first argument change first...
-#' (grid_1 <- expand.grid(person = persons, fruit = fruits))
-#' 
-#' #... with expandGrid() they change last.
-#' (grid_2 <- expandGrid(person = persons, fruit = fruits))
-#' 
-#' # With expand.grid() character strings are converted to factors by default...
-#' str(grid_1)
-#' 
-#' # ... with expandGrid() character strings are not converted by default.
-#' # Also, there is no attribute "out.attrs" as it is set by expand.grid().
-#' str(grid_2)
-#' 
-expandGrid <- function(..., stringsAsFactors = FALSE)
-{
-  args_1 <- rev(list(...))
-  args_2 <- list(stringsAsFactors = stringsAsFactors)
-  
-  grid <- do.call(expand.grid, c(args_1, args_2))
-
-  # Unnamed arguments are given default names "Var1", "Var2", ... by expand.grid  
-  # Reverse the order of these names so that "Var1" appears first
-  unnamed <- is.unnamed(args_1)
-  names(grid)[unnamed] <- paste0("Var", rev(seq_len(sum(unnamed))))
-  
-  structure(grid[, rev(seq_along(grid))])
-}
-
-# fullySorted ------------------------------------------------------------------
-
-#' Sort a Data Frame by all of its Columns
-#'
-#' @param x data frame
-#' @param decreasing passed to \code{\link[base]{order}}
-#' @param ... further arguments passed to \code{\link[base]{order}}
-#' @param renumber.rows if \code{TRUE} (default) the rows in the returned 
-#' data frame are renumbered from 1 to the number of rows in \code{x}
-#' @examples
-#' fullySorted(head(iris))
-#' fullySorted(head(iris), decreasing = TRUE)
-#' fullySorted(head(iris[, 5:1]))
-#' fullySorted(head(iris[, 5:1]), decreasing = TRUE)
-#' 
-fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
-{
-  stopifnot(is.data.frame(x))
-  
-  roworder <- do.call(order, c(x, list(decreasing = decreasing, ...)))
-  
-  x <- x[roworder, , drop = FALSE]
-  
-  if (renumber.rows) resetRowNames(x) else x
-}
-
-# splitIntoFixSizedBlocks ------------------------------------------------------
-
-#' Split into blocks of same size
-#' 
-#' Split a data frame or matrix into blocks of the same size (= data frames of 
-#' matrices with the same number of rows)
-#' 
-#' @param data data frame or matrix
-#' @param blocksize number of rows in each block into which \code{data} is split
-#'   
-#' @return list of data frames (if \code{data} is a data frame) or list of
-#'   matrices (if \code{data} is a matrix)
-#'   
-splitIntoFixSizedBlocks <- function(data, blocksize)
-{
-  stopifnot(length(dim(data)) == 2)
-
-  n <- nrow(data)
-   
-  split(data, f = rep(seq_len(n), each = blocksize, length.out = n))
-}
-
-# resetRowNames ----------------------------------------------------------------
-
-#' Reset row names to 1:n
-#' 
-#' Reset the row names of a data frame x to 1:nrow(x) by setting the
-#'   \code{row.names} attribute to \code{NULL}.
-#' 
-#' @param x data frame or matrix
-#' 
-#' @examples 
-#' persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
-#' 
-#' persons.ordered <- persons[order(persons$name), ]
-#' 
-#' # Original row names
-#' persons.ordered
-#' 
-#' # Reset row names
-#' resetRowNames(persons.ordered)
-#'
-resetRowNames <- function(x)
-{
-  if (length(dim(x)) != 2) {
-    
-    stop(deparse(substitute(x)), " must be have two dimensions", call. = FALSE)
-  }
-
-  row.names(x) <- NULL
-  
-  x
-}
-
-# frequencyTable ---------------------------------------------------------------
-
-#' Number of value occurrences in columns
-#' 
-#' Counts the number of occurrences of the different values in each column of a
-#' data frame
-#' 
-#' @param data data frame
-#' @param columns columns of \code{data} to be included in the frequency
-#'   analysis. Default: all columns of \code{data}
-#' @param orderByLeastLevels if TRUE (default) the list elements in the output
-#'   list each of which represents one column of \code{data} or the sections of
-#'   rows in the output data frame are orderd by
-#'   \code{length(unique(data[[column]]))}
-#' @param as.data.frame if TRUE (default) the result is a data frame, otherwise
-#'   a list (see below)
-#' @param useNA passed to \code{table} see there. Default: "ifany"
-#'   
-#' @return for \code{as.data.frame = FALSE} a list of data frames each of which 
-#'   represents the frequency statistics for one column of \code{data}. Each 
-#'   data frame has columns \emph{column} (name of the column of \code{data}),
-#'   \emph{value} (value occurring in \emph{column} of \code{data}),
-#'   \emph{count} (number of occurrences). For \code{as.data.frame = TRUE} one
-#'   data frame being the result of \code{rbind}-ing together these data frames.
-#'   
-#' @examples 
-#' # Some example data
-#' (data <- data.frame(
-#'   A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
-#'   B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
-#' ))
-#' 
-#' frequencyTable(data) # results in a data frame
-#' 
-#' frequencyTable(data, as.data.frame = FALSE) # results in a list
-#'
-frequencyTable <- function(
-  data, columns = names(data), orderByLeastLevels = TRUE, as.data.frame = TRUE,
-  useNA = c("no", "ifany", "always")[2]
-)
-{
-  L <- .frequencyTableList(data, columns = columns, useNA = useNA)
-  
-  if (isTRUE(orderByLeastLevels)) {
-    
-    L <- L[order(sapply(L, nrow))]
-  }
-  
-  if (isTRUE(as.data.frame)) rbindAll(L) else L
-}
-
 # .frequencyTableList ----------------------------------------------------------
 
-#' .frequencyTableList
-#' 
 .frequencyTableList <- function(data, columns = names(data), useNA = "ifany")
 {
   stopifnot(is.data.frame(data))
   checkForMissingColumns(data, columns)
-
+  
   L <- lapply(columns, FUN = function(column) {
-
+    
     count <- sort(table(data[[column]], useNA = useNA), decreasing = TRUE)
-
+    
     # count may be empty if the column contains only NA
     if (length(count) > 0) {
       data.frame(
@@ -195,8 +20,45 @@ frequencyTable <- function(
       )
     }
   })
-
+  
   structure(L, names = columns)
+}
+
+# addRowWithName ---------------------------------------------------------------
+
+#' Add a Row with a Name
+#' 
+#' add row to data frame and give a row name at the same time
+#' 
+#' @param x data frame to which row is to be appended
+#' @param y data frame containing the row to be appended (exacly one row
+#'   expected)
+#' @param row.name name of row to be given in result data frame
+#'   
+#' @return \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
+#' 
+addRowWithName <- function(x, y, row.name)
+{
+  stopifnot(nrow(y) == 1)
+  
+  x <- rbind(x, y)
+  
+  row.names(x)[nrow(x)] <- row.name
+  
+  return(x)
+}
+
+# atLeastOneRowIn --------------------------------------------------------------
+
+#' At least one row in data frame
+#' 
+#' returns TRUE if data frame has at least one row, else FALSE
+#' 
+#' @param dframe data frame
+#' 
+atLeastOneRowIn <- function(dframe)
+{
+  nrow(dframe) > 0
 }
 
 # compareDataFrames ------------------------------------------------------------
@@ -235,7 +97,7 @@ compareDataFrames <- function(
   
   catIf(dbg, sprintf("Dimension of %s: %s\n", xname, collapsed(dim(x))))
   catIf(dbg, sprintf("Dimension of %s: %s\n", yname, collapsed(dim(y))))
-
+  
   names.x <- names(x)
   names.y <- names(y)
   
@@ -243,7 +105,7 @@ compareDataFrames <- function(
     
     compareSets(names.x, names.y, "Columns", xname, yname)
   }
-
+  
   row.names.x <- row.names(x)
   row.names.y <- row.names(y)
   
@@ -330,21 +192,141 @@ compareSets <- function(
   cat(sprintf(stringFormat, subject, yname, xname, stringList(setdiff(y, x))))
 }
 
-#
-# Functions on data frames: row-related ----------------------------------------
-#
+# expandGrid ------------------------------------------------------------------
 
-# atLeastOneRowIn --------------------------------------------------------------
-
-#' At least one row in data frame
+#' Wrapper around expand.grid
 #' 
-#' returns TRUE if data frame has at least one row, else FALSE
+#' Same as \code{\link[base]{expand.grid}} but with \code{stringsAsFactors =
+#' FALSE} by default and with the values of the first argument being changed
+#' last, not first.
+#' @param ... arguments passed to \code{\link[base]{expand.grid}}, but in 
+#'   reversed order
+#' @param stringsAsFactors passed to \code{\link[base]{expand.grid}}
+#' @examples 
+#' persons <- c("Peter", "Paul", "Mary")
+#' fruits <- c("apple", "pear")
 #' 
-#' @param dframe data frame
+#' # With expand.grid() the values of the first argument change first...
+#' (grid_1 <- expand.grid(person = persons, fruit = fruits))
 #' 
-atLeastOneRowIn <- function(dframe)
+#' #... with expandGrid() they change last.
+#' (grid_2 <- expandGrid(person = persons, fruit = fruits))
+#' 
+#' # With expand.grid() character strings are converted to factors by default...
+#' str(grid_1)
+#' 
+#' # ... with expandGrid() character strings are not converted by default.
+#' # Also, there is no attribute "out.attrs" as it is set by expand.grid().
+#' str(grid_2)
+#' 
+expandGrid <- function(..., stringsAsFactors = FALSE)
 {
-  nrow(dframe) > 0
+  args_1 <- rev(list(...))
+  args_2 <- list(stringsAsFactors = stringsAsFactors)
+  
+  grid <- do.call(expand.grid, c(args_1, args_2))
+
+  # Unnamed arguments are given default names "Var1", "Var2", ... by expand.grid  
+  # Reverse the order of these names so that "Var1" appears first
+  unnamed <- is.unnamed(args_1)
+  names(grid)[unnamed] <- paste0("Var", rev(seq_len(sum(unnamed))))
+  
+  structure(grid[, rev(seq_along(grid))])
+}
+
+# frequencyTable ---------------------------------------------------------------
+
+#' Number of value occurrences in columns
+#' 
+#' Counts the number of occurrences of the different values in each column of a
+#' data frame
+#' 
+#' @param data data frame
+#' @param columns columns of \code{data} to be included in the frequency
+#'   analysis. Default: all columns of \code{data}
+#' @param orderByLeastLevels if TRUE (default) the list elements in the output
+#'   list each of which represents one column of \code{data} or the sections of
+#'   rows in the output data frame are orderd by
+#'   \code{length(unique(data[[column]]))}
+#' @param as.data.frame if TRUE (default) the result is a data frame, otherwise
+#'   a list (see below)
+#' @param useNA passed to \code{table} see there. Default: "ifany"
+#'   
+#' @return for \code{as.data.frame = FALSE} a list of data frames each of which 
+#'   represents the frequency statistics for one column of \code{data}. Each 
+#'   data frame has columns \emph{column} (name of the column of \code{data}),
+#'   \emph{value} (value occurring in \emph{column} of \code{data}),
+#'   \emph{count} (number of occurrences). For \code{as.data.frame = TRUE} one
+#'   data frame being the result of \code{rbind}-ing together these data frames.
+#'   
+#' @examples 
+#' # Some example data
+#' (data <- data.frame(
+#'   A = c("a1", "a2", "a1", "a1", "a2", "", "a2", NA, "a1"),
+#'   B = c("b1", "b1", NA, "b2", "b2", "b1", " ", "b3", "b2")
+#' ))
+#' 
+#' frequencyTable(data) # results in a data frame
+#' 
+#' frequencyTable(data, as.data.frame = FALSE) # results in a list
+#'
+frequencyTable <- function(
+  data, columns = names(data), orderByLeastLevels = TRUE, as.data.frame = TRUE,
+  useNA = c("no", "ifany", "always")[2]
+)
+{
+  L <- .frequencyTableList(data, columns = columns, useNA = useNA)
+  
+  if (isTRUE(orderByLeastLevels)) {
+    
+    L <- L[order(sapply(L, nrow))]
+  }
+  
+  if (isTRUE(as.data.frame)) rbindAll(L) else L
+}
+
+# fullySorted ------------------------------------------------------------------
+
+#' Sort a Data Frame by all of its Columns
+#'
+#' @param x data frame
+#' @param decreasing passed to \code{\link[base]{order}}
+#' @param ... further arguments passed to \code{\link[base]{order}}
+#' @param renumber.rows if \code{TRUE} (default) the rows in the returned 
+#' data frame are renumbered from 1 to the number of rows in \code{x}
+#' @examples
+#' fullySorted(head(iris))
+#' fullySorted(head(iris), decreasing = TRUE)
+#' fullySorted(head(iris[, 5:1]))
+#' fullySorted(head(iris[, 5:1]), decreasing = TRUE)
+#' 
+fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
+{
+  stopifnot(is.data.frame(x))
+  
+  roworder <- do.call(order, c(x, list(decreasing = decreasing, ...)))
+  
+  x <- x[roworder, , drop = FALSE]
+  
+  if (renumber.rows) resetRowNames(x) else x
+}
+
+# moveToFront ------------------------------------------------------------------
+
+#' Move elements to the start of a vector
+#' 
+#' @param x vector
+#' @param elements elements out of \code{x} to be moved to the front
+#' 
+#' @return vector with \code{elements} coming first
+#' 
+#' @examples 
+#' moveToFront(1:10, 5)
+#' moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
+#'   
+moveToFront <- function(x, elements)
+{
+  c(elements, setdiff(x, elements))
 }
 
 # rbindAll ---------------------------------------------------------------------
@@ -424,7 +406,7 @@ rbindAll <- function(
       
       nameValues <- as.factor(nameValues)
     }
-   
+    
     if (! is.data.frame(result)) {
       
       result <- data.frame(result)
@@ -438,6 +420,101 @@ rbindAll <- function(
     row.names(result) <- NULL
   }
   
+  result
+}
+
+# resetRowNames ----------------------------------------------------------------
+
+#' Reset row names to 1:n
+#' 
+#' Reset the row names of a data frame x to 1:nrow(x) by setting the
+#'   \code{row.names} attribute to \code{NULL}.
+#' 
+#' @param x data frame or matrix
+#' 
+#' @examples 
+#' persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
+#' 
+#' persons.ordered <- persons[order(persons$name), ]
+#' 
+#' # Original row names
+#' persons.ordered
+#' 
+#' # Reset row names
+#' resetRowNames(persons.ordered)
+#'
+resetRowNames <- function(x)
+{
+  if (length(dim(x)) != 2) {
+    
+    stop(deparse(substitute(x)), " must be have two dimensions", call. = FALSE)
+  }
+
+  row.names(x) <- NULL
+  
+  x
+}
+
+# safeRowBind ------------------------------------------------------------------
+
+#' "safe" rbind
+#' 
+#' rbind two data frames even if column names differ
+#' 
+#' @param dataFrame1 first data frame 
+#' @param dataFrame2 second data frame
+#' 
+#' @examples 
+#' kwb.utils::safeRowBind(
+#'   data.frame(A = 1:2, B = 2:3),
+#'   data.frame(B = 3:4, C = 4:5)
+#' )
+#'   
+safeRowBind <- function(dataFrame1, dataFrame2)
+{
+  stopifnot(
+    is.null(dataFrame1) || is.data.frame(dataFrame1),
+    is.null(dataFrame2) || is.data.frame(dataFrame2)
+  )
+  
+  if (is.null(dataFrame1)) {
+    
+    return(dataFrame2)
+  }
+  
+  if (is.null(dataFrame2)) {
+    
+    return(dataFrame1)
+  }
+  
+  allColumnNames <- unique(c(names(dataFrame1), names(dataFrame2)))
+  
+  dataFrame1 <- hsAddMissingCols(dataFrame1, allColumnNames)
+  
+  dataFrame2 <- hsAddMissingCols(dataFrame2, allColumnNames)
+  
+  rbind(dataFrame1, dataFrame2)
+}
+
+# safeRowBindAll ---------------------------------------------------------------
+
+#' "safe" rbind of all data frames in a list
+#' 
+#' rbind all data frames in a list using \code{\link{safeRowBind}}
+#' 
+#' @param x list of data frames
+#' 
+#' @return data frame resulting from "rbind"-ing all data frames in \code{x}
+#' 
+safeRowBindAll <- function(x)
+{
+  result <- NULL
+
+  for (element in x) {
+    
+    result <- safeRowBind(dataFrame1 = result, dataFrame2 = element)
+  }
+
   result
 }
 
@@ -485,106 +562,24 @@ safeRowBindOfListElements <- function(x, elementName)
   result
 }
 
-# safeRowBind ------------------------------------------------------------------
+# splitIntoFixSizedBlocks ------------------------------------------------------
 
-#' "safe" rbind
+#' Split into blocks of same size
 #' 
-#' rbind two data frames even if column names differ
+#' Split a data frame or matrix into blocks of the same size (= data frames of 
+#' matrices with the same number of rows)
 #' 
-#' @param dataFrame1 first data frame 
-#' @param dataFrame2 second data frame
-#' 
-#' @examples 
-#' kwb.utils::safeRowBind(
-#'   data.frame(A = 1:2, B = 2:3),
-#'   data.frame(B = 3:4, C = 4:5)
-#' )
+#' @param data data frame or matrix
+#' @param blocksize number of rows in each block into which \code{data} is split
 #'   
-safeRowBind <- function(dataFrame1, dataFrame2)
+#' @return list of data frames (if \code{data} is a data frame) or list of
+#'   matrices (if \code{data} is a matrix)
+#'   
+splitIntoFixSizedBlocks <- function(data, blocksize)
 {
-  stopifnot(
-    is.null(dataFrame1) || is.data.frame(dataFrame1),
-    is.null(dataFrame2) || is.data.frame(dataFrame2)
-  )
-
-  if (is.null(dataFrame1)) {
-    
-    return(dataFrame2)
-  }
-
-  if (is.null(dataFrame2)) {
-    
-    return(dataFrame1)
-  }
-
-  allColumnNames <- unique(c(names(dataFrame1), names(dataFrame2)))
-
-  dataFrame1 <- hsAddMissingCols(dataFrame1, allColumnNames)
+  stopifnot(length(dim(data)) == 2)
   
-  dataFrame2 <- hsAddMissingCols(dataFrame2, allColumnNames)
-
-  rbind(dataFrame1, dataFrame2)
-}
-
-# safeRowBindAll ---------------------------------------------------------------
-
-#' "safe" rbind of all data frames in a list
-#' 
-#' rbind all data frames in a list using \code{\link{safeRowBind}}
-#' 
-#' @param x list of data frames
-#' 
-#' @return data frame resulting from "rbind"-ing all data frames in \code{x}
-#' 
-safeRowBindAll <- function(x)
-{
-  result <- NULL
-
-  for (element in x) {
-    
-    result <- safeRowBind(dataFrame1 = result, dataFrame2 = element)
-  }
-
-  result
-}
-
-# addRowWithName ---------------------------------------------------------------
-
-#' Add a Row with a Name
-#' 
-#' add row to data frame and give a row name at the same time
-#' 
-#' @param x data frame to which row is to be appended
-#' @param y data frame containing the row to be appended (exacly one row
-#'   expected)
-#' @param row.name name of row to be given in result data frame
-#'   
-#' @return \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
-#' 
-addRowWithName <- function(x, y, row.name)
-{
-  stopifnot(nrow(y) == 1)
-
-  x <- rbind(x, y)
-  row.names(x)[nrow(x)] <- row.name
-
-  return(x)
-}
-
-# moveToFront ------------------------------------------------------------------
-
-#' Move elements to the start of a vector
-#' 
-#' @param x vector
-#' @param elements elements out of \code{x} to be moved to the front
-#' 
-#' @return vector with \code{elements} coming first
-#' 
-#' @examples 
-#' moveToFront(1:10, 5)
-#' moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
-#'   
-moveToFront <- function(x, elements)
-{
-  c(elements, setdiff(x, elements))
+  n <- nrow(data)
+  
+  split(data, f = rep(seq_len(n), each = blocksize, length.out = n))
 }
