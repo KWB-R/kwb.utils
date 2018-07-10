@@ -5,7 +5,7 @@
 \title{Remove Columns from a Data Frame}
 \usage{
 removeColumns(dframe, columns = NULL, columnsToRemove = NULL,
-  pattern = NULL, drop = FALSE, dbg = FALSE)
+  pattern = NULL, drop = FALSE, dbg = TRUE)
 }
 \arguments{
 \item{dframe}{data frame,}
@@ -21,8 +21,8 @@ removed. Will only be evaluated if no explicit column names are given in
 \item{drop}{if FALSE, a data frame is returned in any case, otherwise the
 result may be a vector if only one column remains}
 
-\item{dbg}{if \code{TRUE} (the default is \code{FALSE}), the deletion of
-columns is reported on the screen}
+\item{dbg}{if \code{TRUE} (default), the deletion of columns is reported on 
+the screen}
 }
 \value{
 \emph{dframe} with columns given in \emph{columns} being removed.

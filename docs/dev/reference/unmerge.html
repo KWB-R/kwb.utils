@@ -147,7 +147,9 @@ data frame <code>y</code> of the returned list.</p></td>
 
 <span class='co'># What fields seem to be properties of objects identified by name?</span>
 <span class='co'># -&gt; Age and height are fix properties of the persons identified by name</span>
-(<span class='no'>result1</span> <span class='kw'>&lt;-</span> <span class='fu'>unmerge</span>(<span class='no'>z</span>, <span class='st'>"name"</span>))</div><div class='output co'>#&gt; $x
+(<span class='no'>result1</span> <span class='kw'>&lt;-</span> <span class='fu'>unmerge</span>(<span class='no'>z</span>, <span class='st'>"name"</span>))</div><div class='output co'>#&gt; Removing column 'name' from 'x'.
+#&gt; Removing column 'name' from 'x'.
+#&gt; Removing column 'name' from 'x'.</div><div class='output co'>#&gt; $x
 #&gt;    name age height
 #&gt; 1 peter  42    181
 #&gt; 3  paul  31    178
@@ -164,7 +166,9 @@ data frame <code>y</code> of the returned list.</p></td>
 #&gt; </div><div class='input'>
 <span class='co'># What fields seem to be properties of objects identified by subject?</span>
 <span class='co'># -&gt; It seems that the subjects have been tested in different years</span>
-(<span class='no'>result2</span> <span class='kw'>&lt;-</span> <span class='fu'>unmerge</span>(<span class='no'>z</span>, <span class='st'>"subject"</span>))</div><div class='output co'>#&gt; $x
+(<span class='no'>result2</span> <span class='kw'>&lt;-</span> <span class='fu'>unmerge</span>(<span class='no'>z</span>, <span class='st'>"subject"</span>))</div><div class='output co'>#&gt; Removing column 'subject' from 'x'.
+#&gt; Removing column 'subject' from 'x'.
+#&gt; Removing column 'subject' from 'x'.</div><div class='output co'>#&gt; $x
 #&gt;   subject year
 #&gt; 1   maths 2016
 #&gt; 2     bio 2017
