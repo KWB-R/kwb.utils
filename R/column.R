@@ -407,14 +407,19 @@ posixColumnAtPosition <- function(x)
 #'   \code{columns}.
 #' @param drop if FALSE, a data frame is returned in any case, otherwise the
 #'   result may be a vector if only one column remains
-#'
+#' @param dbg if \code{TRUE} (the default is \code{FALSE}), the deletion of
+#'   columns is reported on the screen
+#'   
 #' @return \emph{dframe} with columns given in \emph{columns} being removed.
 #'   User attributes of \emph{dframe} are restored.
 #' 
 removeColumns <- function(
-  dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE
+  dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE,
+  dbg = FALSE
 )
 {
+  #kwb.utils::assignArgumentDefaults("removeColumns")
+  
   if (is.null(columns) && ! is.null(columnsToRemove)) {
     
     warning(
@@ -443,6 +448,17 @@ removeColumns <- function(
   }
   
   columns_keep <- setdiff(all_columns, columns)
+  
+  if (dbg) {
+    
+    columns_remove <- intersect(all_columns, columns)
+    
+    cat(sprintf(
+      "Removing column%s %s from '%s'.\n", 
+      ifelse(length(columns_remove) > 1, "s", ""), stringList(columns_remove), 
+      deparse(substitute(dframe))
+    ))
+  }
   
   hsRestoreAttributes(dframe[, columns_keep, drop = drop], attributes(dframe))
 }

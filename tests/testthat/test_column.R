@@ -104,6 +104,8 @@ test_that("removeColumns() works", {
   expect_identical(removeColumns(x, "z"), x)
   
   expect_identical(removeColumns(x, pattern = "^(a|c)$"), x[, "b", drop = FALSE])
+  
+  expect_output(removeColumns(x, c("a", "x"), dbg = TRUE), "column 'a' from")
 })
 
 test_that("insertColumns() works", {
