@@ -23,17 +23,23 @@ checkForMissingColumns <- function(
   
   missing <- reqCols[!(reqCols %in% columnNames)]
   
-  if (!isNullOrEmpty(missing)) {
+  if (! isNullOrEmpty(missing)) {
     
-    infotext <- paste(
-      sprintf("%d column%s missing in data frame '%s': %s",
-              length(missing), ifelse(length(missing) > 1, "s", ""),
-              dataFrameName, collapsed(hsQuoteChr(missing), ", ")),
-      sprintf("Available column%s: %s",
-              ifelse(length(columnNames) > 1, "s", ""),
-              collapsed(hsQuoteChr(columnNames), ", ")),
-      sep = "\n"
+    plural_s_or_empty <- function(x) ifelse(length(x) > 1, "s", "")
+  
+    sorted_list <- function(x) stringList(sort(x), collapse = "\n  ")
+
+    infotext_missing <- sprintf(
+      "%d column%s missing in data frame '%s':\n  %s", length(missing), 
+      plural_s_or_empty(missing), dataFrameName, sorted_list(missing)
     )
+    
+    infotext_available <- sprintf(
+      "Available column%s:\n  %s", plural_s_or_empty(columnNames), 
+      sorted_list(columnNames)
+    )
+    
+    infotext <- paste(infotext_missing, infotext_available, sep = "\n")
     
     do.call(ifelse(do.stop, "stop", "warning"), list(infotext, call. = FALSE))
   }
