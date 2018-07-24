@@ -3,13 +3,11 @@ test_that("catAndRun() works", {
   
   x <- 1L
   
-  catAndRun("work hard", x <- x + 1L)
+  x <- catAndRun("work hard", x + 1L)
   
   expect_identical(x, 2L)
   
-  output <- capture.output(catAndRun("work hard", x <- x + 1L, dbg = FALSE))
-  
-  expect_identical(output, character(0))
+  expect_silent(catAndRun("work hard", x + 1L, dbg = FALSE))
 })
 
 # catIf ------------------------------------------------------------------------

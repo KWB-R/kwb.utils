@@ -18,6 +18,9 @@ after both, \code{messageText} and "ok."}
 
 \item{dbg}{logical. If \code{FALSE}, output is suppressed.}
 }
+\value{
+This function returns the evaluation of \code{expr}.
+}
 \description{
 Print Debug Messages Before and After Running Code
 }

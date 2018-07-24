@@ -38,6 +38,8 @@
 #'   after both, \code{messageText} and "ok."
 #' @param dbg logical. If \code{FALSE}, output is suppressed.
 #' 
+#' @return This function returns the evaluation of \code{expr}.
+#' 
 #' @examples
 #' for (newLine in 0:3) {
 #'
@@ -60,6 +62,8 @@ catAndRun <- function(
   catIf(dbg, "ok. ")
   
   catNewLineIf(dbg && bitwAnd(newLine, 2))
+  
+  result
 }
 
 # catIf ------------------------------------------------------------------------
