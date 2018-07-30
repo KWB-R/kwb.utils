@@ -413,15 +413,15 @@ posixColumnAtPosition <- function(x)
 #'   \code{columns}.
 #' @param drop if FALSE, a data frame is returned in any case, otherwise the
 #'   result may be a vector if only one column remains
-#' @param dbg if \code{TRUE} (default), the deletion of columns is reported on 
-#'   the screen
+#' @param dbg if \code{TRUE} (the default is \code{FALSE}), the deletion of
+#'   columns is reported on the screen
 #'   
 #' @return \emph{dframe} with columns given in \emph{columns} being removed.
 #'   User attributes of \emph{dframe} are restored.
 #' 
 removeColumns <- function(
   dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE,
-  dbg = TRUE
+  dbg = FALSE
 )
 {
   #kwb.utils::assignArgumentDefaults("removeColumns")
