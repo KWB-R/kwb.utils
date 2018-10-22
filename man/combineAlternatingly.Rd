@@ -25,4 +25,6 @@ b <- paste0("b", 1:5)
 combineAlternatingly(a, b)
 combineAlternatingly(b, a)
 
+combineAlternatingly(list(a = 1, b = 2), list(c = 3, d = 4))
+
 }

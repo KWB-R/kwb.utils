@@ -15,6 +15,8 @@
 #' combineAlternatingly(a, b)
 #' combineAlternatingly(b, a)
 #' 
+#' combineAlternatingly(list(a = 1, b = 2), list(c = 3, d = 4))
+#' 
 combineAlternatingly <- function(a, b)
 {
   stopifnot(is.vector(a), is.vector(b))
@@ -25,8 +27,14 @@ combineAlternatingly <- function(a, b)
   
   indices <- seq_len(2 * length(a))
   
-  result[kwb.utils::getOddNumbers(indices)] <- a
-  result[kwb.utils::getEvenNumbers(indices)] <- b
+  odd_indices <- kwb.utils::getOddNumbers(indices)
+  even_indices <- kwb.utils::getEvenNumbers(indices)
+  
+  result[odd_indices] <- a
+  result[even_indices] <- b
+  
+  names(result)[odd_indices] <- names(a)
+  names(result)[even_indices] <- names(b)
   
   result
 }
