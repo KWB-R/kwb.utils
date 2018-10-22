@@ -1,3 +1,36 @@
+# combineAlternatingly ---------------------------------------------------------
+
+#' Combine Two Vectors Alternatingly
+#' 
+#' @param a first vector
+#' @param b second vector
+#' 
+#' @return vector \code{x} with all \code{x[c(1, 3, 5, ...)] == a[c(1, 2, 3,
+#'   ...)]} and all \code{x[c(2, 4, 6, ...)] == b[c(1, 2, 3, ...)]}
+#' 
+#' @examples
+#' a <- paste0("a", 1:5)
+#' b <- paste0("b", 1:5)
+#' 
+#' combineAlternatingly(a, b)
+#' combineAlternatingly(b, a)
+#' 
+combineAlternatingly <- function(a, b)
+{
+  stopifnot(is.vector(a), is.vector(b))
+  stopifnot(length(a) == length(b))
+  stopifnot(identical(class(a), class(b)))
+  
+  result <- vector()
+  
+  indices <- seq_len(2 * length(a))
+  
+  result[kwb.utils::getOddNumbers(indices)] <- a
+  result[kwb.utils::getEvenNumbers(indices)] <- b
+  
+  result
+}
+
 # enlargeVector ----------------------------------------------------------------
 
 #' Enlarge a Vector to Given Length

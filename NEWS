@@ -1,7 +1,14 @@
-2016-07-15: 
-- bug fix in .defaultIf(): was not working as expected with x = NULL
-- package prepared for automatic tests
-- new test for .defaultIf()
+2018-10-22
+==========
+
+* new: combineAlternatingly()
+
+2016-07-15 
+==========
+
+* bug fix in .defaultIf(): was not working as expected with x = NULL
+* package prepared for automatic tests
+* new test for .defaultIf()
 
 Current changes
 ===============
