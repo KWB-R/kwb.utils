@@ -4,8 +4,8 @@
 \alias{selectColumns}
 \title{Select Columns from a Data Frame}
 \usage{
-selectColumns(x, columns = NULL, pattern = NULL, drop = (length(columns)
-  == 1), do.stop = TRUE)
+selectColumns(x, columns = NULL, pattern = NULL,
+  drop = (length(columns) == 1), do.stop = TRUE)
 }
 \arguments{
 \item{x}{data frame}

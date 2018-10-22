@@ -4,8 +4,8 @@
 \alias{safeMerge}
 \title{Merge By Checking Column Existence}
 \usage{
-safeMerge(x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by,
-  ...)
+safeMerge(x, y, by = intersect(names(x), names(y)), by.x = by,
+  by.y = by, ...)
 }
 \arguments{
 \item{x}{just as in \code{\link[base]{merge}}}

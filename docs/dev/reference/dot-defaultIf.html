@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print Debug Messages Before and After Running Code — catAndRun • kwb.utils</title>
+<title>Return a Default Value for Values Meeting a Condition — .defaultIf • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Print Debug Messages Before and After Running Code — catAndRun" />
+<meta property="og:title" content="Return a Default Value for Values Meeting a Condition — .defaultIf" />
 
-<meta property="og:description" content="Print Debug Messages Before and After Running Code" />
+<meta property="og:description" content="Return a Default Value for Values Meeting a Condition" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -96,87 +96,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print Debug Messages Before and After Running Code</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
-    <div class="hidden name"><code>catAndRun.Rd</code></div>
+    <h1>Return a Default Value for Values Meeting a Condition</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/default.R'><code>R/default.R</code></a></small>
+    <div class="hidden name"><code>dot-defaultIf.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Print Debug Messages Before and After Running Code</p>
+    <p>Return a Default Value for Values Meeting a Condition</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>.defaultIf</span>(<span class='no'>FUN.test</span>, <span class='no'>x</span>, <span class='no'>default</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>messageText</th>
-      <td><p>text to be printed before running the code</p></td>
-    </tr>
-    <tr>
-      <th>expr</th>
-      <td><p>expressions to be run. Enclose more than one expression in
-curly braces</p></td>
-    </tr>
-    <tr>
-      <th>newLine</th>
-      <td><p>integer controlling new lines. 0: no extra new line, 1:
-new line after <code>messageText</code>, 2: new line after "ok.", 3: new line
-after both, <code>messageText</code> and "ok."</p></td>
-    </tr>
-    <tr>
-      <th>dbg</th>
-      <td><p>logical. If <code>FALSE</code>, output is suppressed.</p></td>
+      <th>count</th>
+      <td><p>if <code>TRUE</code> (the default is <code>FALSE</code>) the number of
+replaced values is returned in the attributes <code>count</code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function returns the evaluation of <code>expr</code>.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>for</span> (<span class='no'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span>:<span class='fl'>3</span>) {
-
-  <span class='fu'>catAndRun</span>(<span class='st'>"work hard"</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='no'>newLine</span>, {
-    <span class='fu'>cat</span>(<span class='st'>"hard\nworking\n"</span>)
-  })
-
-  <span class='fu'>cat</span>(<span class='st'>"here.\n\n"</span>)
-}</div><div class='output co'>#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. here.
-#&gt; 
-#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. 
-#&gt; here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. 
-#&gt; here.
-#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

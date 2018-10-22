@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print Debug Messages Before and After Running Code — catAndRun • kwb.utils</title>
+<title>Combine Two Vectors Alternatingly — combineAlternatingly • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Print Debug Messages Before and After Running Code — catAndRun" />
+<meta property="og:title" content="Combine Two Vectors Alternatingly — combineAlternatingly" />
 
-<meta property="og:description" content="Print Debug Messages Before and After Running Code" />
+<meta property="og:description" content="Combine Two Vectors Alternatingly" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -96,77 +96,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print Debug Messages Before and After Running Code</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
-    <div class="hidden name"><code>catAndRun.Rd</code></div>
+    <h1>Combine Two Vectors Alternatingly</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/vector.R'><code>R/vector.R</code></a></small>
+    <div class="hidden name"><code>combineAlternatingly.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Print Debug Messages Before and After Running Code</p>
+    <p>Combine Two Vectors Alternatingly</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>combineAlternatingly</span>(<span class='no'>a</span>, <span class='no'>b</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>messageText</th>
-      <td><p>text to be printed before running the code</p></td>
+      <th>a</th>
+      <td><p>first vector</p></td>
     </tr>
     <tr>
-      <th>expr</th>
-      <td><p>expressions to be run. Enclose more than one expression in
-curly braces</p></td>
-    </tr>
-    <tr>
-      <th>newLine</th>
-      <td><p>integer controlling new lines. 0: no extra new line, 1:
-new line after <code>messageText</code>, 2: new line after "ok.", 3: new line
-after both, <code>messageText</code> and "ok."</p></td>
-    </tr>
-    <tr>
-      <th>dbg</th>
-      <td><p>logical. If <code>FALSE</code>, output is suppressed.</p></td>
+      <th>b</th>
+      <td><p>second vector</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function returns the evaluation of <code>expr</code>.</p>
+    <p>vector <code>x</code> with all <code>x[c(1, 3, 5, ...)] == a[c(1, 2, 3,
+  ...)]</code> and all <code>x[c(2, 4, 6, ...)] == b[c(1, 2, 3, ...)]</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>for</span> (<span class='no'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span>:<span class='fl'>3</span>) {
+    <pre class="examples"><div class='input'><span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"a"</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)
+<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>paste0</span>(<span class='st'>"b"</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)
 
-  <span class='fu'>catAndRun</span>(<span class='st'>"work hard"</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='no'>newLine</span>, {
-    <span class='fu'>cat</span>(<span class='st'>"hard\nworking\n"</span>)
-  })
-
-  <span class='fu'>cat</span>(<span class='st'>"here.\n\n"</span>)
-}</div><div class='output co'>#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. here.
-#&gt; 
-#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. 
-#&gt; here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. 
-#&gt; here.
-#&gt; </div></pre>
+<span class='fu'>combineAlternatingly</span>(<span class='no'>a</span>, <span class='no'>b</span>)</div><div class='output co'>#&gt;  [1] "a1" "b1" "a2" "b2" "a3" "b3" "a4" "b4" "a5" "b5"</div><div class='input'><span class='fu'>combineAlternatingly</span>(<span class='no'>b</span>, <span class='no'>a</span>)</div><div class='output co'>#&gt;  [1] "b1" "a1" "b2" "a2" "b3" "a3" "b4" "a4" "b5" "a5"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

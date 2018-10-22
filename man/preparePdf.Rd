@@ -8,7 +8,8 @@ preparePdf(pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE,
   borderWidth.cm = 2, borderHeight.cm = 2,
   width.cm = .defaultWidth(landscape, borderWidth.cm, borderHeight.cm),
   height.cm = .defaultHeight(landscape, borderWidth.cm, borderHeight.cm),
-  makeCurrent = TRUE, paper = paste0("a4", ifelse(landscape, "r", "")), ...)
+  makeCurrent = TRUE, paper = paste0("a4", ifelse(landscape, "r", "")),
+  ...)
 }
 \arguments{
 \item{pdfFile}{Full path to PDF file to be created}

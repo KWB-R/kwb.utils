@@ -109,6 +109,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/columnwisePercentage.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/combineAlternatingly.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/commaCollapsed.html</loc>
   </url>
   <url>
@@ -167,6 +170,21 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/diffrows.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-OStype.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-defaultIf.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.1.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.2.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-isNetworkPath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dropDim.html</loc>

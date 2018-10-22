@@ -4,8 +4,8 @@
 \alias{toLookupClass}
 \title{Keys and Values to Lookup Structure}
 \usage{
-toLookupClass(keys, values, class = c("data.frame.1", "data.frame.2", "list",
-  "vector")[1])
+toLookupClass(keys, values, class = c("data.frame.1", "data.frame.2",
+  "list", "vector")[1])
 }
 \arguments{
 \item{keys}{vector of keys}
