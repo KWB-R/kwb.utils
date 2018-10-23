@@ -5,8 +5,8 @@
 #' @param a first vector
 #' @param b second vector
 #' 
-#' @return vector \code{x} with all \code{x[c(1, 3, 5, ...)] == a[c(1, 2, 3,
-#'   ...)]} and all \code{x[c(2, 4, 6, ...)] == b[c(1, 2, 3, ...)]}
+#' @return vector \code{x} with all \code{x[c(1, 3, 5, ...)] == a} and all
+#'   \code{x[c(2, 4, 6, ...)] == b}
 #' 
 #' @examples
 #' a <- paste0("a", 1:5)
