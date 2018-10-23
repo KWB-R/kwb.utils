@@ -227,14 +227,44 @@ relativeCumulatedSum <- function(values)
 #' 
 columnwisePercentage <- function(x, default = 0, digits = 1)
 {
+  rowOrColumnwisePercentage(x, rowwise = FALSE, default, digits)
+}
+
+# rowOrColumnwisePercentage ----------------------------------------------------
+
+#' Rowwise or Columnwise Percentage
+#' 
+#' Calculate the percentage (value divided by sum of values in the row/column) 
+#' for each row/column
+#' 
+#' @param x two dimensional numeric data structure
+#' @param rowwise if \code{TRUE} the percentage is calculated by row, else by
+#'   column
+#' @param default default value to be used if the calculated percentage is 
+#'   \code{NA}.
+#' @param digits number of digits (default: 1) to which the resulting 
+#'   percentages are to be rounded. Set to \code{NA} to suppress rounding
+#'   
+#' @seealso \code{\link{rowwisePercentage}}, \code{\link{columnwisePercentage}} 
+#' 
+rowOrColumnwisePercentage <- function(x, rowwise, default = 0, digits = 1)
+{
   stopifnot(length(dim(x)) == 2)
   
   # Copy row and column names from the input x
-  fractions <- structure(
-    defaultIfNA(apply(x, 2, FUN = percentageOfSum), default),
-    dimnames = dimnames(x)
-  )
+  fractions <- if (rowwise) {
+    
+    t(apply(x, 1, percentageOfSum))
+    
+  } else {
+    
+    apply(x, 2, percentageOfSum)
+  }
+  
+  fractions[is.na(fractions)] <- default
 
+  dimnames(fractions) <- dimnames(x)
+  
   if (! is.na(digits)) {
     
     round(fractions, digits) 
@@ -243,6 +273,40 @@ columnwisePercentage <- function(x, default = 0, digits = 1)
     
     fractions
   }
+}
+
+# rowwisePercentage ------------------------------------------------------------
+
+#' Rowwise Percentage
+#' 
+#' Calculate the percentage (value divided by sum of values in the row) for 
+#' each row
+#' 
+#' @param x two dimensional numeric data structure
+#' @param default default value to be used if the calculated percentage is 
+#'   \code{NA}.
+#' @param digits number of digits (default: 1) to which the resulting 
+#'   percentages are to be rounded. Set to \code{NA} to suppress rounding
+#'   
+#' @examples 
+#' # Create a random matrix of integer values
+#' M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
+#' 
+#' # Introduce some NA
+#' values <- as.numeric(M1)
+#' values[sample(length(values), 3)] <- NA
+#' M2 <- matrix(values, nrow = nrow(M1), dimnames = dimnames(M1))
+#' 
+#' M1
+#' rowwisePercentage(M1)
+#' 
+#' M2
+#' rowwisePercentage(M2)
+#' rowwisePercentage(M2, default = 0)
+#' 
+rowwisePercentage <- function(x, default = 0, digits = 1)
+{
+  rowOrColumnwisePercentage(x, rowwise = TRUE, default, digits)
 }
 
 # colStatistics ----------------------------------------------------------------
