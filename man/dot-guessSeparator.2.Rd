@@ -6,6 +6,12 @@
 \usage{
 .guessSeparator.2(textlines, separators)
 }
+\arguments{
+\item{textlines}{vector of character representing the first lines of a file}
+
+\item{separators}{vector of possible column separator characters the file is
+to be checked for}
+}
 \description{
 Guess Column Separator (Version 2)
 }

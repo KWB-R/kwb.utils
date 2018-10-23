@@ -467,8 +467,13 @@ hsOpenWindowsExplorer <- function(
 
 # .isNetworkPath ---------------------------------------------------------------
 
-#'  isNetworkPath
+#' Does the Path Represent a Network Path?
 #'
+#' @param x vector of character representing paths
+#' 
+#' @examples 
+#' .isNetworkPath("//server/folder/file.txt")
+#' 
 .isNetworkPath <- function(x)
 {
   grepl("^(//|\\\\\\\\)", x)

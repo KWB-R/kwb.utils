@@ -65,6 +65,10 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 
 #' Guess Column Separator (Version 1)
 #' 
+#' @param textlines vector of character representing the first lines of a file
+#' @param separators vector of possible column separator characters the file is
+#'   to be checked for
+#' @param comment.char comment character
 #' 
 .guessSeparator.1 <- function(textlines, separators, comment.char = "#")
 {
@@ -102,6 +106,10 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 
 #' Guess Column Separator (Version 2)
 #' 
+#' @param textlines vector of character representing the first lines of a file
+#' @param separators vector of possible column separator characters the file is
+#'   to be checked for
+#'   
 .guessSeparator.2 <- function(textlines, separators)
 {
   # Which of the separators occurs most?

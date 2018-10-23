@@ -155,6 +155,11 @@ defaultIfZero <- function(x, default, count = FALSE)
 
 #' Return a Default Value for Values Meeting a Condition
 #' 
+#' @param FUN.test function returning vector of logical, to be applied to 
+#'   \code{x}
+#' @param x vector in which to set default values
+#' @param default value to be set in \code{x} at those positions where 
+#'   \code{FUN.text} returns \code{TRUE}
 #' @param count if \code{TRUE} (the default is \code{FALSE}) the number of
 #'   replaced values is returned in the attributes \code{count}
 #' 

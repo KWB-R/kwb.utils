@@ -2,10 +2,17 @@
 % Please edit documentation in R/system.R
 \name{.isNetworkPath}
 \alias{.isNetworkPath}
-\title{isNetworkPath}
+\title{Does the Path Represent a Network Path?}
 \usage{
 .isNetworkPath(x)
 }
+\arguments{
+\item{x}{vector of character representing paths}
+}
 \description{
-isNetworkPath
+Does the Path Represent a Network Path?
+}
+\examples{
+.isNetworkPath("//server/folder/file.txt")
+
 }

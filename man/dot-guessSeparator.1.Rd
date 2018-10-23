@@ -6,6 +6,14 @@
 \usage{
 .guessSeparator.1(textlines, separators, comment.char = "#")
 }
+\arguments{
+\item{textlines}{vector of character representing the first lines of a file}
+
+\item{separators}{vector of possible column separator characters the file is
+to be checked for}
+
+\item{comment.char}{comment character}
+}
 \description{
 Guess Column Separator (Version 1)
 }
