@@ -82,6 +82,7 @@ reference:
       - colStatisticOneFunction
       - colStatistics
       - countOrSum
+      - countNaInColumn
       - frequencyTable
       - getEvenNumbers
       - getOddNumbers

@@ -32,6 +32,20 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
   stats::xtabs(toFormula(sum.up, by), x)
 }
 
+# countNaInColumn --------------------------------------------------------------
+
+#' Count NA in one Column of a Data Frame
+#' 
+#' @param data data frame
+#' @param column column name
+#' 
+#' @return number of \code{NA} in \code{column} of \code{data}
+#' 
+countNaInColumn <- function(data, column)
+{
+  sum(is.na(kwb.utils::selectColumns(data, column)))
+}
+
 # hsMovingMean -----------------------------------------------------------------
 
 #' Moving Mean
