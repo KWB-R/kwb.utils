@@ -1,3 +1,41 @@
+# addSuffixToColumns -----------------------------------------------------------
+
+#' Add Suffix to Column Names
+#' 
+#' @param data data frame
+#' @param suffix suffix to be added to each column name except the columns given
+#'   in \code{except}
+#' @param except names of columns to which no suffix is to be given
+#' 
+#' @return \code{data} with renamed columns
+#' 
+#' @export
+#' 
+#' @examples
+#' d1 <- data.frame(id = 1, a = 2, b = 3)
+#' d2 <- data.frame(id = 1, c = 2, d = 3)
+#' 
+#' # Using merge the origin of the column gets lost
+#' merge(d1, d2)
+#' 
+#' # Add a suffix before merging
+#' merge(
+#'   addSuffixToColumns(d1, ".first", except = "id"), 
+#'   addSuffixToColumns(d2, ".second", except = "id"), 
+#'   by = "id"
+#' )
+#' 
+addSuffixToColumns <- function(data, suffix, except = NULL)
+{
+  columns <- names(data)
+  
+  not_excluded <- ! (columns %in% except)
+  
+  columns[not_excluded] <- paste0(columns[not_excluded], suffix)
+  
+  stats::setNames(data, columns)
+}
+
 # checkForMissingColumns -------------------------------------------------------
 
 #' Check for Column Existence
@@ -45,6 +83,36 @@ checkForMissingColumns <- function(
   }
   
   isNullOrEmpty(missing)
+}
+
+# columnToDate -----------------------------------------------------------------
+
+#' Convert Column in Data Frame To Date
+#' 
+#' @param df data frame
+#' @param column name of column in \code{x}
+#' @param dbg if \code{TRUE} a debug message is shown
+#' 
+#' @return \code{df} with \code{column} converted to class \code{Date} with
+#'   \code{as.Date}
+#'   
+#' @export
+#' 
+#' @examples
+#' df <- data.frame(id = 1:2, date = c("2018-10-23", "2018-10-23"))
+#' str(df)
+#' 
+#' df <- columnToDate(df, "date")
+#' str(df)
+#' 
+columnToDate <- function(df, column, dbg = TRUE)
+{
+  df[[column]] <- kwb.utils::catAndRun(
+    sprintf("Converting column '%s' to Date", column), dbg = dbg,
+    as.Date(as.character(kwb.utils::selectColumns(df, column)))
+  )
+  
+  df
 }
 
 # dropUnusedFactorLevels -------------------------------------------------------
