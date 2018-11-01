@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write Text Lines to a File — writeText • kwb.utils</title>
+<title>Rowwise Percentage — rowwisePercentage • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,10 @@
 
 
 
-<meta property="og:title" content="Write Text Lines to a File — writeText" />
+<meta property="og:title" content="Rowwise Percentage — rowwisePercentage" />
 
-<meta property="og:description" content="Write text to a file using writeLines and output a debug
-message by default" />
+<meta property="og:description" content="Calculate the percentage (value divided by sum of values in the row) for 
+each row" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -97,72 +97,78 @@ message by default" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write Text Lines to a File</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
-    <div class="hidden name"><code>writeText.Rd</code></div>
+    <h1>Rowwise Percentage</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/stat.R'><code>R/stat.R</code></a></small>
+    <div class="hidden name"><code>rowwisePercentage.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Write text to a file using <code>writeLines</code> and output a debug
-message by default</p>
+    <p>Calculate the percentage (value divided by sum of values in the row) for 
+each row</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>rowwisePercentage</span>(<span class='no'>x</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector of character representing the lines to be written to
-<code>file</code>, passed to <code>writeLines</code></p></td>
+      <td><p>two dimensional numeric data structure</p></td>
     </tr>
     <tr>
-      <th>file</th>
-      <td><p>path to file to be written, passed to <code>writeLines</code></p></td>
+      <th>default</th>
+      <td><p>default value to be used if the calculated percentage is 
+<code>NA</code>.</p></td>
     </tr>
     <tr>
-      <th>type</th>
-      <td><p>character string to be included in the debug message:
-"Writing &lt;type&gt;'file-path' ..."</p></td>
-    </tr>
-    <tr>
-      <th>dbg</th>
-      <td><p>if <code>TRUE</code>, debug messages are shown</p></td>
-    </tr>
-    <tr>
-      <th>&#8230;</th>
-      <td><p>further arguments passed to <code>writeLines</code></p></td>
+      <th>digits</th>
+      <td><p>number of digits (default: 1) to which the resulting 
+percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>This function invisibly returns the path to the output <code>file</code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define text to be written to file</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"Hello"</span>, <span class='st'>"world"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Create a random matrix of integer values</span>
+<span class='no'>M1</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(<span class='fu'>sample</span>(<span class='fl'>100</span>, <span class='fl'>12</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>4</span>], <span class='fl'>1</span>:<span class='fl'>3</span>))
 
-<span class='co'># Write text to a temporary file and catch the file path</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpMsuQJ9/file37688738ee08.txt' ... ok.</div><div class='input'>
-<span class='co'># Make the debug message more informative</span>
-<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpMsuQJ9/file37688738ee08.txt' ... ok.</div><div class='input'>
-<span class='co'># Read lines back and show on the console</span>
-<span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; Hello
-#&gt; world</div><div class='input'>
+<span class='co'># Introduce some NA</span>
+<span class='no'>values</span> <span class='kw'>&lt;-</span> <span class='fu'>as.numeric</span>(<span class='no'>M1</span>)
+<span class='no'>values</span>[<span class='fu'>sample</span>(<span class='fu'>length</span>(<span class='no'>values</span>), <span class='fl'>3</span>)] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
+<span class='no'>M2</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(<span class='no'>values</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'>nrow</span>(<span class='no'>M1</span>), <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'>dimnames</span>(<span class='no'>M1</span>))
+
+<span class='no'>M1</span></div><div class='output co'>#&gt;    1  2  3
+#&gt; A 95 85 70
+#&gt; B 25 29 98
+#&gt; C 77 93 69
+#&gt; D 28 55 38</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M1</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A 38.0 34.0 28.0
+#&gt; B 16.4 19.1 64.5
+#&gt; C 32.2 38.9 28.9
+#&gt; D 23.1 45.5 31.4</div><div class='input'>
+<span class='no'>M2</span></div><div class='output co'>#&gt;    1  2  3
+#&gt; A NA 85 70
+#&gt; B NA 29 98
+#&gt; C 77 NA 69
+#&gt; D 28 55 38</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A  0.0 54.8 45.2
+#&gt; B  0.0 22.8 77.2
+#&gt; C 52.7  0.0 47.3
+#&gt; D 23.1 45.5 31.4</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A  0.0 54.8 45.2
+#&gt; B  0.0 22.8 77.2
+#&gt; C 52.7  0.0 47.3
+#&gt; D 23.1 45.5 31.4</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

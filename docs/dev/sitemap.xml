@@ -13,6 +13,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/addRowWithName.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/addSuffixToColumns.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/allAreEqual.html</loc>
   </url>
   <url>
@@ -104,6 +107,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/columnDescriptor.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/columnToDate.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/columnwisePercentage.html</loc>
@@ -548,6 +554,12 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/roundColumns.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/rowOrColumnwisePercentage.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/rowwisePercentage.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/runBatchfileInDirectory.html</loc>

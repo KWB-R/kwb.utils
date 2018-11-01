@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write Text Lines to a File — writeText • kwb.utils</title>
+<title>Convert Column in Data Frame To Date — columnToDate • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,9 @@
 
 
 
-<meta property="og:title" content="Write Text Lines to a File — writeText" />
+<meta property="og:title" content="Convert Column in Data Frame To Date — columnToDate" />
 
-<meta property="og:description" content="Write text to a file using writeLines and output a debug
-message by default" />
+<meta property="og:description" content="Convert Column in Data Frame To Date" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -97,63 +96,50 @@ message by default" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write Text Lines to a File</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
-    <div class="hidden name"><code>writeText.Rd</code></div>
+    <h1>Convert Column in Data Frame To Date</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/column.R'><code>R/column.R</code></a></small>
+    <div class="hidden name"><code>columnToDate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Write text to a file using <code>writeLines</code> and output a debug
-message by default</p>
+    <p>Convert Column in Data Frame To Date</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>columnToDate</span>(<span class='no'>df</span>, <span class='no'>column</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>vector of character representing the lines to be written to
-<code>file</code>, passed to <code>writeLines</code></p></td>
+      <th>df</th>
+      <td><p>data frame</p></td>
     </tr>
     <tr>
-      <th>file</th>
-      <td><p>path to file to be written, passed to <code>writeLines</code></p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>character string to be included in the debug message:
-"Writing &lt;type&gt;'file-path' ..."</p></td>
+      <th>column</th>
+      <td><p>name of column in <code>x</code></p></td>
     </tr>
     <tr>
       <th>dbg</th>
-      <td><p>if <code>TRUE</code>, debug messages are shown</p></td>
-    </tr>
-    <tr>
-      <th>&#8230;</th>
-      <td><p>further arguments passed to <code>writeLines</code></p></td>
+      <td><p>if <code>TRUE</code> a debug message is shown</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function invisibly returns the path to the output <code>file</code>.</p>
+    <p><code>df</code> with <code>column</code> converted to class <code>Date</code> with
+  <code>as.Date</code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define text to be written to file</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"Hello"</span>, <span class='st'>"world"</span>)
-
-<span class='co'># Write text to a temporary file and catch the file path</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpMsuQJ9/file37688738ee08.txt' ... ok.</div><div class='input'>
-<span class='co'># Make the debug message more informative</span>
-<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpMsuQJ9/file37688738ee08.txt' ... ok.</div><div class='input'>
-<span class='co'># Read lines back and show on the console</span>
-<span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; Hello
-#&gt; world</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"2018-10-23"</span>, <span class='st'>"2018-10-23"</span>))
+<span class='fu'>str</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; 'data.frame':	2 obs. of  2 variables:
+#&gt;  $ id  : int  1 2
+#&gt;  $ date: Factor w/ 1 level "2018-10-23": 1 1</div><div class='input'>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>columnToDate</span>(<span class='no'>df</span>, <span class='st'>"date"</span>)</div><div class='output co'>#&gt; Converting column 'date' to Date ... ok. </div><div class='input'><span class='fu'>str</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; 'data.frame':	2 obs. of  2 variables:
+#&gt;  $ id  : int  1 2
+#&gt;  $ date: Date, format: "2018-10-23" "2018-10-23"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
