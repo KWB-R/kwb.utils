@@ -12,7 +12,7 @@ renameAndSelect(data, renames, columns = unlist(renames))
 \item{renames}{list defining renames in the form of "oldName" = "newName"
 pairs}
 
-\item{columns}{(new) names of colums to be selected}
+\item{columns}{(new) names of columns to be selected}
 }
 \description{
 Rename and Select Columns of a Data Frame

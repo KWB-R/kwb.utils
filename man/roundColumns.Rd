@@ -4,21 +4,28 @@
 \alias{roundColumns}
 \title{Round Columns to given Number of Digits}
 \usage{
-roundColumns(dframe, columnNames = NULL, digits = NULL)
+roundColumns(dframe, columns = NULL, digits = NULL, pattern = NULL,
+  columnNames = NULL)
 }
 \arguments{
 \item{dframe}{data frame containing numeric columns to be rounded}
 
-\item{columnNames}{names of (numeric) columns in \emph{dframe} to be rounded.}
+\item{columns}{names of (numeric) columns in \code{dframe} to be rounded.}
 
 \item{digits}{number of digits to be rounded to (vector of length 1 expected)
-or list of assignments in the form: \emph{columnName} = 
-\emph{numberOfDigits}. If you give a list here, then there is no need to 
-set the argument \emph{columnNames}}
+or list of assignments in the form: \code{<column_name> = <n_digits>}. If
+you give a list here, then there is no need to set the argument
+\code{columnNames}.}
+
+\item{pattern}{regular expression matching the names of the columns to be
+rounded. Will only be evaluated if no explicit column names are given in 
+\code{columnNames}.}
+
+\item{columnNames}{deprecated. Use argument \code{columns} instead.}
 }
 \value{
-\emph{dframe} with columns given in \emph{columnNames} being rounded
-  to \emph{digits} digits.
+\code{dframe} with columns given in \code{columnNames} being rounded
+  to \code{digits} digits.
 }
 \description{
 Round Columns to given Number of Digits

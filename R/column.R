@@ -585,7 +585,7 @@ removeEmptyColumns <- function(
 #' @param data data frame
 #' @param renames list defining renames in the form of "oldName" = "newName"
 #'   pairs
-#' @param columns (new) names of colums to be selected
+#' @param columns (new) names of columns to be selected
 #'   
 renameAndSelect <- function(data, renames, columns = unlist(renames))
 {
@@ -629,46 +629,69 @@ renameColumns <- function(x, renamings = NULL)
 #' Round Columns to given Number of Digits
 #' 
 #' @param dframe data frame containing numeric columns to be rounded
-#' @param columnNames names of (numeric) columns in \emph{dframe} to be rounded.
+#' @param columns names of (numeric) columns in \code{dframe} to be rounded.
 #' @param digits number of digits to be rounded to (vector of length 1 expected)
-#'   or list of assignments in the form: \emph{columnName} = 
-#'   \emph{numberOfDigits}. If you give a list here, then there is no need to 
-#'   set the argument \emph{columnNames}
-#'   
-#' @return \emph{dframe} with columns given in \emph{columnNames} being rounded
-#'   to \emph{digits} digits.
+#'   or list of assignments in the form: \code{<column_name> = <n_digits>}. If
+#'   you give a list here, then there is no need to set the argument
+#'   \code{columnNames}.
+#' @param pattern regular expression matching the names of the columns to be
+#'   rounded. Will only be evaluated if no explicit column names are given in 
+#'   \code{columnNames}.
+#' @param columnNames deprecated. Use argument \code{columns} instead.
+#' @return \code{dframe} with columns given in \code{columnNames} being rounded
+#'   to \code{digits} digits.
 #' 
-roundColumns <- function(dframe, columnNames = NULL, digits = NULL)
+roundColumns <- function(
+  dframe, columns = NULL, digits = NULL, pattern = NULL, columnNames = NULL
+)
 {
+  if (! is.null(columnNames)) {
+    
+    warning(
+      "roundColumns: Argument 'columnNames' is deprecated. Use argument ", 
+      "'columns' instead.", call. = FALSE
+    )
+    
+    columns <- unique(c(columns, columnNames))
+  }
+  
   # if column names are given we expect that all these columns are rounded to
   # one and the same number of digits
-  if (! is.null(columnNames)) {
+  if (! is.null(columns)) {
     
     stopifnot(length(digits) == 1)
   }
   
-  if (! is.null(digits)) {
+  # No digits -> return dframe unchanged
+  if (is.null(digits)) {
     
-    if (is.null(columnNames)) {
+    return(dframe)
+  }
+  
+  # Use all numeric columns or all numeric columns whose names match a pattern
+  # if no column names are given
+  if (is.null(columns)) {
+    
+    columns <- names(which(sapply(dframe, is.numeric)))
+    
+    if (! is.null(pattern)) {
       
-      columnNames <- names(digits)
+      columns <- grep(pattern, columns, value = TRUE)
+    }
+  }
+  
+  for (column in columns) {
+    
+    n_digits <- if (is.list(digits)) {
+      
+      digits[[column]]
+      
+    } else {
+      
+      digits
     }
     
-    for (columnName in columnNames) {
-      
-      numberOfDigits <- if (is.list(digits)) {
-        
-        digits[[columnName]]
-        
-      } else {
-        
-        digits
-      }
-      
-      dframe[[columnName]] <- round(
-        dframe[[columnName]], digits = numberOfDigits
-      )
-    }
+    dframe[[column]] <- round(dframe[[column]], digits = n_digits)
   }
   
   dframe
