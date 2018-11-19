@@ -1,5 +1,5 @@
 Package: kwb.utils
-Version: 0.4.0
+Version: 0.4.0.9000
 Title: General Utility Functions Developed at KWB
 Authors@R: c(
     person("Hauke", "Sonnenberg", , "hauke.sonnenberg@kompetenz-wasser.de",
