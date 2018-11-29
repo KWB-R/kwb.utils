@@ -1,0 +1,191 @@
+---
+title: "What is this package for?"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Today is a good day to start documenting what this package (kwb.utils) is good
+for. I would like to start with a complete list of the names of the functions
+that are contained in this package. But how can I get such a list? 
+
+## How to get an overview of functions in a package?
+
+In fact, I do not know (any more) how to achieve this. However, I know that this
+package contains a function `assignPackageObjects()` that copies all the objects
+that are contained in a package (including all its functions) to the global
+environment. By inspecting the definition, i.e. the body, of this function, we
+can learn how this function works. Therefore, just type the function's name, 
+without parentheses, and press Enter:
+
+```{r}
+kwb.utils::assignPackageObjects
+```
+
+As the code reveals, the function loops though the values that are returned by
+`ls(getNamespace(package))` where `package` is the name of the package. This is
+exacly what we need. We can use this code to get the names of all objects in the
+"kwb.utils" package. Let's store these names in the variable `object_names`: 
+
+```{r}
+object_names <- ls(getNamespace("kwb.utils"))
+
+length(object_names)
+```
+
+Wow! There are `r length(object_names)` objects (functions) defined in this
+package. So where should I start? 
+
+Let's have a look at the first functions and see...
+
+```{r}
+head(object_names)
+```
+
+## Functions prefixed with `add`
+
+There are `r length(grep("^add", object_names))` functions that are prefixed 
+with `add`. These functions are explained in the following.
+
+### Function `addClass()`
+
+The function `addClass` adds an element to the `class` attribute of an object. 
+You may never have heard about the `class` attribute. That's ok. It allows you
+to assign a user-defined class to an object. By doing so, you can do some
+nice stuff, for example:
+
+```{r}
+# Define your own print function for objects of class "birthday"
+print.birthday <- function(x) {
+  print(sprintf("It's your birthday: %s!", x))
+}
+
+# Define a birthday string and print it
+x <- "January 14"
+print(x)
+
+# Now, set the class attribute to "birthday" and print again!
+x <- kwb.utils::addClass(x, "birthday")
+print(x)
+```
+
+### Function `addRowWithName()`
+
+This function does no more than adding a row to a data frame with `rbind` and
+giving it a name:
+
+```{r}
+x <- data.frame(value = 10:11)
+
+new_row <- data.frame(value = sum(x$value))
+
+kwb.utils::addRowWithName(x, new_row, row.name = "total")
+```
+
+### Function `addSuffixToColumns()`
+
+This function adds a postfix to the column names of a data frame. This may be
+useful when column-binding data frames. The function can be used to indicate the
+origin of each column by postfixing the column related to the name of the data 
+frame that it came from.
+
+```{r}
+data_frame_1 <- data.frame(
+  id = 1:2, 
+  first = c("Peter", "Mary"), 
+  last = c("Miller", "Smith")
+)
+
+data_frame_2 <- data.frame(
+  height_cm = c(181, 171),
+  weigth_kg = c(68, 59)
+)
+
+cbind(
+  kwb.utils::addSuffixToColumns(data_frame_1, "_1"),
+  kwb.utils::addSuffixToColumns(data_frame_2, "_2")
+)
+```
+
+Cool, I explained three functions. There are only `r length(object_names) - 3`
+left! The next three functions, `allAreEqual()`, `allAreIdentical()`, and
+`almostEqual()` belong to a group of functions that return a vector of
+`logical`. These functions are explained next.
+
+## Functions returning a vector of `logical`
+
+### Function `allAreEqual()`
+
+This function checks if all values in a vector are equal to each other:
+
+```{r}
+kwb.utils::allAreEqual(c(1, 1, 1, 1))
+kwb.utils::allAreEqual(c(1, 1, 1, 2))
+```
+
+### Function `allAreIdentical()`
+
+This function checks if all elements in a list are identical to each other. 
+It may be useful when checking if different versions of a function (that may,
+e.g., be created during code cleaning) return exactly the same, when being 
+given the same inputs. 
+
+```{r}
+# Define different functions that are intended to do the same
+get_list_1 <- function(a, b) list(a = a, b = b)
+get_list_2 <- function(a, b) stats::setNames(list(a, b), c("a", "b"))
+get_list_3 <- function(a, b) c(list(a = a), b = b)
+get_list_4 <- function(a, b) c(list(a = a), list(b = b))
+
+# Call the functions with identical arguments and put the results into a list
+results <- list(
+  get_list_1(1, 2:3), 
+  get_list_2(1, 2:3), 
+  get_list_3(1, 2:3),
+  get_list_4(1, 2:3)
+)
+
+# Not all results are the same...
+kwb.utils::allAreIdentical(results)
+
+# ... but all except the third:
+kwb.utils::allAreIdentical(results[-3])
+```
+
+
+### Function `almostEqual()`
+
+Take care when comparing floating point numbers! It depends on how they were
+calculated if floating point numbers are assumed to be equal or not, as shown in
+the following example.
+
+```{r}
+one_third_1 <- 1/3
+one_third_2 <- 1 - 2/3
+
+# Even though mathematically correct, they are not equal in R:
+one_third_1 == one_third_2
+```
+
+With `almostEqual()` numbers are compared by tolerating a small difference 
+between the numbers. This difference can be set with the argument `tolerance`.
+
+```{r}
+# The numbers are almost equal (with the default tolerance of 1e-12):
+kwb.utils::almostEqual(one_third_1, one_third_2)
+
+# It depends on the tolerance if they are treated as equal:
+kwb.utils::almostEqual(one_third_1, one_third_2, tolerance = 1e-17)
+```
+
