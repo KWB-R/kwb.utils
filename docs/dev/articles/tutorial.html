@@ -114,10 +114,9 @@
 <span class="co">#&gt; [1] "addClass"           "addRowWithName"     "addSuffixToColumns"</span>
 <span class="co">#&gt; [4] "allAreEqual"        "allAreIdentical"    "almostEqual"</span></code></pre></div>
 </div>
-<div id="functions-prefixed-with-add" class="section level2">
+<div id="one-function-a-day" class="section level2">
 <h2 class="hasAnchor">
-<a href="#functions-prefixed-with-add" class="anchor"></a>Functions prefixed with <code>add</code>
-</h2>
+<a href="#one-function-a-day" class="anchor"></a>One Function a day…</h2>
 <p>There are 3 functions that are prefixed with <code>add</code>. These functions are explained in the following.</p>
 <div id="function-addclass" class="section level3">
 <h3 class="hasAnchor">
@@ -180,13 +179,8 @@ data_frame_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="
 <span class="co">#&gt;   id_1 first_1 last_1 height_cm_2 weigth_kg_2</span>
 <span class="co">#&gt; 1    1   Peter Miller         181          68</span>
 <span class="co">#&gt; 2    2    Mary  Smith         171          59</span></code></pre></div>
-<p>Cool, I explained three functions. There are only 224 left! The next three functions, <code><a href="../reference/allAreEqual.html">allAreEqual()</a></code>, <code><a href="../reference/allAreIdentical.html">allAreIdentical()</a></code>, and <code><a href="../reference/almostEqual.html">almostEqual()</a></code> belong to a group of functions that return a vector of <code>logical</code>. These functions are explained next.</p>
+<p>Cool, I explained three functions. There are only 224 left! The next three functions, <code><a href="../reference/allAreEqual.html">allAreEqual()</a></code>, <code><a href="../reference/allAreIdentical.html">allAreIdentical()</a></code>, and <code><a href="../reference/almostEqual.html">almostEqual()</a></code> belong to a group of functions that return a vector of <code>logical</code>. They are explained next.</p>
 </div>
-</div>
-<div id="functions-returning-a-vector-of-logical" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functions-returning-a-vector-of-logical" class="anchor"></a>Functions returning a vector of <code>logical</code>
-</h2>
 <div id="function-allareequal" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-allareequal" class="anchor"></a>Function <code><a href="../reference/allAreEqual.html">allAreEqual()</a></code>
@@ -244,6 +238,50 @@ kwb.utils<span class="op">::</span><span class="kw">almostEqual</span>(one_third
 kwb.utils<span class="op">::</span><span class="kw">almostEqual</span>(one_third_<span class="dv">1</span>, one_third_<span class="dv">2</span>, <span class="dt">tolerance =</span> <span class="fl">1e-17</span>)
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
+<div id="function-appendsuffix" class="section level3">
+<h3 class="hasAnchor">
+<a href="#function-appendsuffix" class="anchor"></a>Function <code><a href="../reference/appendSuffix.html">appendSuffix()</a></code>
+</h3>
+<p>This function adds a suffix to all elements of a vector of character. It is thus just a shortcut to <code>paste0(values, suffix)</code> but allows to define values to be omitted:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define a vector of character</span>
+values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])
+
+<span class="co"># Add a suffix to all elements except "id"</span>
+kwb.utils<span class="op">::</span><span class="kw">appendSuffix</span>(values, <span class="st">"_value"</span>, <span class="dt">valuesToOmit =</span> <span class="st">"id"</span>)
+<span class="co">#&gt; [1] "id"      "a_value" "b_value" "c_value" "d_value" "e_value"</span></code></pre></div>
+</div>
+<div id="function-arglist" class="section level3">
+<h3 class="hasAnchor">
+<a href="#function-arglist" class="anchor"></a>Function <code><a href="../reference/arglist.html">arglist()</a></code>
+</h3>
+<p>The main purpose of the package “kwb.utils” is to provide functions that allow for writing cleaner and safer code. One main characteristic of clean code is that it is free or at least almost free of duplication. I have to admit that this is a very hard goal to achieve! But we should try our best!</p>
+<p>Have you ever seen something like the following?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span>pi, pi, pi<span class="op">/</span><span class="dv">10</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+<span class="kw">plot</span>(x, <span class="kw">sin</span>(x), <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)
+<span class="kw">plot</span>(x, <span class="kw">cos</span>(x), <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">ylab =</span> <span class="st">"cos(x)"</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
+<p>Do you spot the repetition? What if you want to change the plot character <code>pch</code> or the <code>type</code> of the plot or the character extension factor <code>cex</code> in both plots at the same time?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define common arguments</span>
+common &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> x, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)
+
+<span class="co"># Call the plot function with the common arguments, extended by</span>
+<span class="co"># call-specific arguments</span>
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+<span class="kw">do.call</span>(plot, kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>))
+<span class="kw">do.call</span>(plot, kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">cos</span>(x), <span class="dt">ylab =</span> <span class="st">"cos(x)"</span>))</code></pre></div>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
+<p>The function <code><a href="../reference/arglist.html">arglist()</a></code> merges the contents of one or more lists by allowing to overwrite existing list elements. In the above example, the list of <code>common</code> arguments is just extended. Elements in this list could also be overwritten, such as the argument <code>cex</code> in the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">do.call</span>(
+  <span class="dt">what =</span> plot, 
+  <span class="dt">args =</span> kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">cex =</span> <span class="dv">1</span>)
+)</code></pre></div>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-14-1.png" width="576"></p>
+<p>This pattern of calling a function with an extended argument list is so common that I wrote a function <code><a href="../reference/callWith.html">callWith()</a></code> that allows to write the above shorter:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kwb.utils<span class="op">::</span><span class="kw">callWith</span>(plot, common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">cex =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-15-1.png" width="576"></p>
+<p>But this will be explained later…</p>
+</div>
 </div>
   </div>
 
@@ -253,8 +291,7 @@ kwb.utils<span class="op">::</span><span class="kw">almostEqual</span>(one_third
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#how-to-get-an-overview-of-functions-in-a-package">How to get an overview of functions in a package?</a></li>
-      <li><a href="#functions-prefixed-with-add">Functions prefixed with <code>add</code></a></li>
-      <li><a href="#functions-returning-a-vector-of-logical">Functions returning a vector of <code>logical</code></a></li>
+      <li><a href="#one-function-a-day">One Function a day…</a></li>
       </ul>
 </div>
       </div>

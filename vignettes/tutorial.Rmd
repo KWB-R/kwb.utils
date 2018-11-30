@@ -5,14 +5,17 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6
 )
 ```
 
@@ -53,7 +56,7 @@ Let's have a look at the first six functions:
 head(object_names)
 ```
 
-## Functions prefixed with `add`
+## One Function a day...
 
 There are `r length(grep("^add", object_names))` functions that are prefixed 
 with `add`. These functions are explained in the following.
@@ -124,9 +127,7 @@ cbind(
 Cool, I explained three functions. There are only `r length(object_names) - 3`
 left! The next three functions, `allAreEqual()`, `allAreIdentical()`, and
 `almostEqual()` belong to a group of functions that return a vector of
-`logical`. These functions are explained next.
-
-## Functions returning a vector of `logical`
+`logical`. They are explained next.
 
 ### Function `allAreEqual()`
 
@@ -166,7 +167,6 @@ kwb.utils::allAreIdentical(results)
 kwb.utils::allAreIdentical(results[-3])
 ```
 
-
 ### Function `almostEqual()`
 
 Take care when comparing floating point numbers! Whether floating point numbers
@@ -192,3 +192,68 @@ kwb.utils::almostEqual(one_third_1, one_third_2)
 kwb.utils::almostEqual(one_third_1, one_third_2, tolerance = 1e-17)
 ```
 
+### Function `appendSuffix()`
+
+This function adds a suffix to all elements of a vector of character. It is thus
+just a shortcut to `paste0(values, suffix)` but allows to define values to be
+omitted:
+
+```{r}
+# Define a vector of character
+values <- c("id", letters[1:5])
+
+# Add a suffix to all elements except "id"
+kwb.utils::appendSuffix(values, "_value", valuesToOmit = "id")
+```
+
+### Function `arglist()`
+
+The main purpose of the package "kwb.utils" is to provide functions that allow
+for writing cleaner and safer code. One main characteristic of clean code is
+that it is free or at least almost free of duplication. I have to admit that
+this is a very hard goal to achieve! But we should try our best!
+
+Have you ever seen something like the following?
+
+```{r}
+x <- seq(-pi, pi, pi/10)
+par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
+plot(x, sin(x), xlab = "x", ylab = "sin(x)", pch = 16, type = "b", cex = 0.5)
+plot(x, cos(x), xlab = "x", ylab = "cos(x)", pch = 16, type = "b", cex = 0.5)
+```
+
+Do you spot the repetition? What if you want to change the plot character `pch`
+or the `type` of the plot or the character extension factor `cex` in both
+plots at the same time?
+
+```{r}
+# Define common arguments
+common <- list(x = x, pch = 16, xlab = "x", type = "b", cex = 0.5)
+
+# Call the plot function with the common arguments, extended by
+# call-specific arguments
+par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
+do.call(plot, kwb.utils::arglist(common, y = sin(x), ylab = "sin(x)"))
+do.call(plot, kwb.utils::arglist(common, y = cos(x), ylab = "cos(x)"))
+```
+
+The function `arglist()` merges the contents of one or more lists by allowing
+to overwrite existing list elements. In the above example, the list of `common`
+arguments is just extended. Elements in this list could also be overwritten,
+such as the argument `cex` in the following:
+
+```{r}
+do.call(
+  what = plot, 
+  args = kwb.utils::arglist(common, y = sin(x), ylab = "sin(x)", cex = 1)
+)
+```
+
+This pattern of calling a function with an extended argument list is so common 
+that I wrote a function `callWith()` that allows to write the above shorter:
+
+```{r}
+kwb.utils::callWith(plot, common, y = sin(x), ylab = "sin(x)", cex = 1)
+```
+
+But this will be explained later...
