@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,12 +37,11 @@ decimal character) of a CSV file. It uses read.table to read a
 CSV file and write.table to rewrite the file with modified
 format to a new file. All arguments of read.table and
 write.table are supported. Arguments that are provided by both
-functions appear as two arguments &lt;argument_name&gt;_in and 
-&lt;argument_name&gt;_out in this function." />
+functions appear as two arguments &amp;lt;argument_name&amp;gt;_in and 
+&amp;lt;argument_name&amp;gt;_out in this function." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
-
 
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -66,7 +67,7 @@ functions appear as two arguments &lt;argument_name&gt;_in and
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development package">0.3.0.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development package">0.4.0.9000</span>
       </span>
     </div>
 
@@ -80,6 +81,18 @@ functions appear as two arguments &lt;argument_name&gt;_in and
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/tutorial.html">What is this package for?</a>
+    </li>
+  </ul>
 </li>
       </ul>
       
@@ -224,8 +237,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 #&gt; 4.6 3.1 1.5 0.2 "setosa"
 #&gt; 5 3.6 1.4 0.2 "setosa"</div><div class='input'>
 <span class='co'># Convert the column separator (from " " which was the default) to ";"</span>
-<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpMsuQJ9/file37688438155bb.csv' ... ok.
-#&gt; Writing to '/tmp/RtmpMsuQJ9/file37688438155bb_new.csv' ... ok.</div><div class='input'>
+<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpGMFLQs/file297f5c282a93.csv' ... ok.
+#&gt; Writing to '/tmp/RtmpGMFLQs/file297f5c282a93_new.csv' ... ok.</div><div class='input'>
 <span class='co'># Review the result</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>csv_out</span>, <span class='fl'>6</span>))</div><div class='output co'>#&gt; "Sepal.Length";"Sepal.Width";"Petal.Length";"Petal.Width";"Species"
 #&gt; 5.1;3.5;1.4;0.2;"setosa"
@@ -237,8 +250,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class='fu'>unlink</span>(<span class='no'>csv_out</span>)
 
 <span class='co'># Convert the column separator and the decimal character</span>
-<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>, <span class='kw'>dec_out</span> <span class='kw'>=</span> <span class='st'>","</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpMsuQJ9/file37688438155bb.csv' ... ok.
-#&gt; Writing to '/tmp/RtmpMsuQJ9/file37688438155bb_new.csv' ... ok.</div><div class='input'>
+<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>, <span class='kw'>dec_out</span> <span class='kw'>=</span> <span class='st'>","</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpGMFLQs/file297f5c282a93.csv' ... ok.
+#&gt; Writing to '/tmp/RtmpGMFLQs/file297f5c282a93_new.csv' ... ok.</div><div class='input'>
 <span class='co'># Review the result</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>csv_out</span>, <span class='fl'>6</span>))</div><div class='output co'>#&gt; "Sepal.Length";"Sepal.Width";"Petal.Length";"Petal.Width";"Species"
 #&gt; 5,1;3,5;1,4;0,2;"setosa"
