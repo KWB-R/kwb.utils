@@ -33,7 +33,7 @@ without parentheses, and press Enter:
 kwb.utils::assignPackageObjects
 ```
 
-As the code reveals, the function loops though the values that are returned by
+As the code reveals, the function loops through the values that are returned by
 `ls(getNamespace(package))` where `package` is the name of the package. This is
 exacly what we need. We can use this code to get the names of all objects in the
 "kwb.utils" package. Let's store these names in the variable `object_names`: 
@@ -47,7 +47,7 @@ length(object_names)
 Wow! There are `r length(object_names)` objects (functions) defined in this
 package. So where should I start? 
 
-Let's have a look at the first functions and see...
+Let's have a look at the first six functions:
 
 ```{r}
 head(object_names)
@@ -97,21 +97,24 @@ kwb.utils::addRowWithName(x, new_row, row.name = "total")
 
 This function adds a postfix to the column names of a data frame. This may be
 useful when column-binding data frames. The function can be used to indicate the
-origin of each column by postfixing the column related to the name of the data 
-frame that it came from.
+origin of each column by giving it a suffix related to the data frame that it
+originates from.
 
 ```{r}
+# Define a first data frame
 data_frame_1 <- data.frame(
   id = 1:2, 
   first = c("Peter", "Mary"), 
   last = c("Miller", "Smith")
 )
 
+# Define a second data frame
 data_frame_2 <- data.frame(
   height_cm = c(181, 171),
   weigth_kg = c(68, 59)
 )
 
+# Column-bind the data frames, after giving their columns a unique suffix
 cbind(
   kwb.utils::addSuffixToColumns(data_frame_1, "_1"),
   kwb.utils::addSuffixToColumns(data_frame_2, "_2")
@@ -136,10 +139,10 @@ kwb.utils::allAreEqual(c(1, 1, 1, 2))
 
 ### Function `allAreIdentical()`
 
-This function checks if all elements in a list are identical to each other. 
-It may be useful when checking if different versions of a function (that may,
-e.g., be created during code cleaning) return exactly the same, when being 
-given the same inputs. 
+This function checks if all elements in a list are identical to each other. It
+may be useful when checking whether different versions of a function (that may,
+e.g., be created during code cleaning) return exactly the same, when being given
+the same inputs.
 
 ```{r}
 # Define different functions that are intended to do the same
@@ -166,9 +169,9 @@ kwb.utils::allAreIdentical(results[-3])
 
 ### Function `almostEqual()`
 
-Take care when comparing floating point numbers! It depends on how they were
-calculated if floating point numbers are assumed to be equal or not, as shown in
-the following example.
+Take care when comparing floating point numbers! Whether floating point numbers
+are assumed to be equal or not, depends on how they were calculated. This is 
+shown in the following example:
 
 ```{r}
 one_third_1 <- 1/3
