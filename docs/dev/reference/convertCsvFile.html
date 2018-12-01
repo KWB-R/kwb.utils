@@ -90,7 +90,25 @@ functions appear as two arguments &amp;lt;argument_name&amp;gt;_in and
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial.html">What is this package for?</a>
+      <a href="../articles/functions_check.html">Check Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_conversion.html">Conversion Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_data_frame.html">Functions Working on Data Frames</a>
+    </li>
+    <li>
+      <a href="../articles/functions_logical.html">Functions Returning Logical</a>
+    </li>
+    <li>
+      <a href="../articles/functions_object.html">General Object Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_string.html">String-Related Functions</a>
+    </li>
+    <li>
+      <a href="../articles/tutorial.html">Overview</a>
     </li>
   </ul>
 </li>
@@ -237,8 +255,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 #&gt; 4.6 3.1 1.5 0.2 "setosa"
 #&gt; 5 3.6 1.4 0.2 "setosa"</div><div class='input'>
 <span class='co'># Convert the column separator (from " " which was the default) to ";"</span>
-<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpEijpKu/file17791aee6f7b.csv' ... ok.
-#&gt; Writing to '/tmp/RtmpEijpKu/file17791aee6f7b_new.csv' ... ok.</div><div class='input'>
+<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpBrM8ZU/file2e5551bfb964.csv' ... ok.
+#&gt; Writing to '/tmp/RtmpBrM8ZU/file2e5551bfb964_new.csv' ... ok.</div><div class='input'>
 <span class='co'># Review the result</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>csv_out</span>, <span class='fl'>6</span>))</div><div class='output co'>#&gt; "Sepal.Length";"Sepal.Width";"Petal.Length";"Petal.Width";"Species"
 #&gt; 5.1;3.5;1.4;0.2;"setosa"
@@ -250,8 +268,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class='fu'>unlink</span>(<span class='no'>csv_out</span>)
 
 <span class='co'># Convert the column separator and the decimal character</span>
-<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>, <span class='kw'>dec_out</span> <span class='kw'>=</span> <span class='st'>","</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpEijpKu/file17791aee6f7b.csv' ... ok.
-#&gt; Writing to '/tmp/RtmpEijpKu/file17791aee6f7b_new.csv' ... ok.</div><div class='input'>
+<span class='no'>csv_out</span> <span class='kw'>&lt;-</span> <span class='fu'>convertCsvFile</span>(<span class='no'>csv_in</span>, <span class='kw'>sep_out</span> <span class='kw'>=</span> <span class='st'>";"</span>, <span class='kw'>dec_out</span> <span class='kw'>=</span> <span class='st'>","</span>)</div><div class='output co'>#&gt; Reading from '/tmp/RtmpBrM8ZU/file2e5551bfb964.csv' ... ok.
+#&gt; Writing to '/tmp/RtmpBrM8ZU/file2e5551bfb964_new.csv' ... ok.</div><div class='input'>
 <span class='co'># Review the result</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>csv_out</span>, <span class='fl'>6</span>))</div><div class='output co'>#&gt; "Sepal.Length";"Sepal.Width";"Petal.Length";"Petal.Width";"Species"
 #&gt; 5,1;3,5;1,4;0,2;"setosa"

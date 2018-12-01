@@ -1,0 +1,108 @@
+---
+title: "Functions Returning Logical"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Functions Returning Logical}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The following functions have in common that they return a vector of `logical`.
+
+### Function `allAreEqual()`
+
+This function checks if all values in a vector are equal to each other:
+
+```{r}
+kwb.utils::allAreEqual(c(1, 1, 1, 1))
+kwb.utils::allAreEqual(c(1, 1, 1, 2))
+```
+
+### Function `allAreIdentical()`
+
+This function checks if all elements in a list are identical to each other. It
+may be useful when checking whether different versions of a function (that may,
+e.g., be created during code cleaning) return exactly the same, when being given
+the same inputs.
+
+```{r}
+# Define different functions that are intended to do the same
+get_list_1 <- function(a, b) list(a = a, b = b)
+get_list_2 <- function(a, b) stats::setNames(list(a, b), c("a", "b"))
+get_list_3 <- function(a, b) c(list(a = a), b = b)
+get_list_4 <- function(a, b) c(list(a = a), list(b = b))
+
+# Call the functions with identical arguments and put the results into a list
+results <- list(
+  get_list_1(1, 2:3), 
+  get_list_2(1, 2:3), 
+  get_list_3(1, 2:3),
+  get_list_4(1, 2:3)
+)
+
+# Not all results are the same...
+kwb.utils::allAreIdentical(results)
+
+# ... but all except the third:
+kwb.utils::allAreIdentical(results[-3])
+```
+
+### Function `almostEqual()`
+
+Take care when comparing floating point numbers! Whether floating point numbers
+are assumed to be equal or not, depends on how they were calculated. This is 
+shown in the following example:
+
+```{r}
+one_third_1 <- 1/3
+one_third_2 <- 1 - 2/3
+
+# Even though mathematically correct, they are not equal in R:
+one_third_1 == one_third_2
+```
+
+With `almostEqual()` numbers are compared by tolerating a small difference 
+between the numbers. This difference can be set with the argument `tolerance`.
+
+```{r}
+# The numbers are almost equal (with the default tolerance of 1e-12):
+kwb.utils::almostEqual(one_third_1, one_third_2)
+
+# It depends on the tolerance if they are treated as equal:
+kwb.utils::almostEqual(one_third_1, one_third_2, tolerance = 1e-17)
+```
+
+### Function atLeastOneRowIn()
+
+### Function containsNulString()
+
+### Function hsValidValue()
+
+### Function inRange()
+
+### Function is.unnamed()
+
+### Function isEvenNumber()
+
+### Function isLoaded()
+
+### Function isNaInAllColumns()
+
+### Function isNaInAllRows()
+
+### Function isNaOrEmpty()
+
+### Function isNullOrEmpty()
+
+### Function isOddNumber()
+
+### Function matchesCriteria()

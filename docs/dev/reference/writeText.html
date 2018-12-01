@@ -85,7 +85,25 @@ message by default" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial.html">What is this package for?</a>
+      <a href="../articles/functions_check.html">Check Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_conversion.html">Conversion Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_data_frame.html">Functions Working on Data Frames</a>
+    </li>
+    <li>
+      <a href="../articles/functions_logical.html">Functions Returning Logical</a>
+    </li>
+    <li>
+      <a href="../articles/functions_object.html">General Object Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_string.html">String-Related Functions</a>
+    </li>
+    <li>
+      <a href="../articles/tutorial.html">Overview</a>
     </li>
   </ul>
 </li>
@@ -161,9 +179,9 @@ message by default</p>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"Hello"</span>, <span class='st'>"world"</span>)
 
 <span class='co'># Write text to a temporary file and catch the file path</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpEijpKu/file1779517f6e6f.txt' ... ok.</div><div class='input'>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpBrM8ZU/file2e551cbc0d58.txt' ... ok.</div><div class='input'>
 <span class='co'># Make the debug message more informative</span>
-<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpEijpKu/file1779517f6e6f.txt' ... ok.</div><div class='input'>
+<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpBrM8ZU/file2e551cbc0d58.txt' ... ok.</div><div class='input'>
 <span class='co'># Read lines back and show on the console</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'>readLines</span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; Hello
 #&gt; world</div><div class='input'>

@@ -1,10 +1,10 @@
 ---
-title: "What is this package for?"
+title: "Overview"
 author: "Hauke Sonnenberg"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Overview}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -56,155 +56,42 @@ Let's have a look at the first six functions:
 head(object_names)
 ```
 
-## One Function a day...
+## Grouped Functions
 
-There are `r length(grep("^add", object_names))` functions that are prefixed 
-with `add`. These functions are explained in the following.
+`addClass()`: 
+See article [General Object Functions](functions_object.html).
 
-### Function `addClass()`
+`addRowWithName()`: 
+See article [Functions Working on Data Frames](functions_data_frame.html).
 
-The function `addClass` adds an element to the `class` attribute of an object. 
-You may never have heard about the `class` attribute. That's ok. It allows you
-to assign a user-defined class to an object. By doing so, you can do some
-nice stuff, for example:
+`addSuffixToColumns()`:
+See article [Functions Working on Data Frames](functions_data_frame.html).
 
-```{r}
-# Define your own print function for objects of class "birthday"
-print.birthday <- function(x) {
-  print(sprintf("It's your birthday: %s!", x))
-}
+`allAreEqual()`:
+See article [Functions Returning Logical](functions_logical.html).
 
-# Define a birthday string and print it
-x <- "January 14"
-print(x)
+`allAreIdentical()`:
+See article [Functions Returning Logical](functions_logical.html).
 
-# Now, set the class attribute to "birthday" and print again!
-x <- kwb.utils::addClass(x, "birthday")
-print(x)
-```
+`almostEqual()`:
+See article [Functions Returning Logical](functions_logical.html).
 
-### Function `addRowWithName()`
+`appendSuffix()`:
+See article [String-Related Functions](functions_string.html).
 
-This function does no more than adding a row to a data frame with `rbind` and
-giving it a name:
+`asColumnList()`:
+See article [Conversion Functions](functions_conversion.html).
 
-```{r}
-x <- data.frame(value = 10:11)
+`asNoFactorDataFrame`:
+See article [Functions Working on Data Frames](functions_data_frame.html).
 
-new_row <- data.frame(value = sum(x$value))
+`asRowList()`:
+See article [Conversion Functions](functions_conversion.html).
 
-kwb.utils::addRowWithName(x, new_row, row.name = "total")
-```
+`assertRowsAndColumns()`:
+See article [Check Functions](functions_check.html).
 
-### Function `addSuffixToColumns()`
-
-This function adds a postfix to the column names of a data frame. This may be
-useful when column-binding data frames. The function can be used to indicate the
-origin of each column by giving it a suffix related to the data frame that it
-originates from.
-
-```{r}
-# Define a first data frame
-data_frame_1 <- data.frame(
-  id = 1:2, 
-  first = c("Peter", "Mary"), 
-  last = c("Miller", "Smith")
-)
-
-# Define a second data frame
-data_frame_2 <- data.frame(
-  height_cm = c(181, 171),
-  weigth_kg = c(68, 59)
-)
-
-# Column-bind the data frames, after giving their columns a unique suffix
-cbind(
-  kwb.utils::addSuffixToColumns(data_frame_1, "_1"),
-  kwb.utils::addSuffixToColumns(data_frame_2, "_2")
-)
-```
-
-Cool, I explained three functions. There are only `r length(object_names) - 3`
-left! The next three functions, `allAreEqual()`, `allAreIdentical()`, and
-`almostEqual()` belong to a group of functions that return a vector of
-`logical`. They are explained next.
-
-### Function `allAreEqual()`
-
-This function checks if all values in a vector are equal to each other:
-
-```{r}
-kwb.utils::allAreEqual(c(1, 1, 1, 1))
-kwb.utils::allAreEqual(c(1, 1, 1, 2))
-```
-
-### Function `allAreIdentical()`
-
-This function checks if all elements in a list are identical to each other. It
-may be useful when checking whether different versions of a function (that may,
-e.g., be created during code cleaning) return exactly the same, when being given
-the same inputs.
-
-```{r}
-# Define different functions that are intended to do the same
-get_list_1 <- function(a, b) list(a = a, b = b)
-get_list_2 <- function(a, b) stats::setNames(list(a, b), c("a", "b"))
-get_list_3 <- function(a, b) c(list(a = a), b = b)
-get_list_4 <- function(a, b) c(list(a = a), list(b = b))
-
-# Call the functions with identical arguments and put the results into a list
-results <- list(
-  get_list_1(1, 2:3), 
-  get_list_2(1, 2:3), 
-  get_list_3(1, 2:3),
-  get_list_4(1, 2:3)
-)
-
-# Not all results are the same...
-kwb.utils::allAreIdentical(results)
-
-# ... but all except the third:
-kwb.utils::allAreIdentical(results[-3])
-```
-
-### Function `almostEqual()`
-
-Take care when comparing floating point numbers! Whether floating point numbers
-are assumed to be equal or not, depends on how they were calculated. This is 
-shown in the following example:
-
-```{r}
-one_third_1 <- 1/3
-one_third_2 <- 1 - 2/3
-
-# Even though mathematically correct, they are not equal in R:
-one_third_1 == one_third_2
-```
-
-With `almostEqual()` numbers are compared by tolerating a small difference 
-between the numbers. This difference can be set with the argument `tolerance`.
-
-```{r}
-# The numbers are almost equal (with the default tolerance of 1e-12):
-kwb.utils::almostEqual(one_third_1, one_third_2)
-
-# It depends on the tolerance if they are treated as equal:
-kwb.utils::almostEqual(one_third_1, one_third_2, tolerance = 1e-17)
-```
-
-### Function `appendSuffix()`
-
-This function adds a suffix to all elements of a vector of character. It is 
-mainly a shortcut to `paste0(values, suffix)` but allows to define values to be 
-omitted:
-
-```{r}
-# Define a vector of character
-values <- c("id", letters[1:5])
-
-# Add a suffix to all elements except "id"
-kwb.utils::appendSuffix(values, "_value", valuesToOmit = "id")
-```
+## Ungrouped Functions
 
 ### Function `arglist()`
 
@@ -258,130 +145,183 @@ kwb.utils::callWith(plot, common, y = sin(x), ylab = "sin(x)", cex = 1)
 
 But this will be explained later...
 
-### Function `asColumnList()`
-
-This function converts a matrix into a list of its columns. This is useful when
-you want to loop through the columns of a matrix `m` with `lapply()`. You could
-also loop through the columns with `apply(m, MARGINS = 2)`. However, the
-usage of `lapply()` should be preferred to the usage of `apply()`, as 
-demonstrated in the following example:
-
-```{r}
-# Define and show a very simple matrix
-(m <- matrix(1:6, nrow = 2))
-
-# Define functions that return/count the values above a threshold.
-# These functions are to be applied to each column of the matrix 
-get_above <- function(x, threshold) x[x > threshold]
-count_above <- function(x, threshold) sum(x > threshold)
-```
-
-With the first function, the two approaches return identical results: 
-
-```{r}
-# Approach 1: loop through columns using asColumnList() and lapply()
-result_1 <- lapply(kwb.utils::asColumnList(m), get_above, 3)
-str(result_1)
-
-# Approach 2: loop through columns using apply()
-result_2 <- apply(m, 2, get_above, 3)
-str(result_2)
-```
-
-However, with the second function, the two approaches return differing results:
-
-```{r}
-# Approach 1: loop through columns using asColumnList() and lapply()
-result_1 <- lapply(kwb.utils::asColumnList(m), count_above, 3)
-str(result_1)
-
-# Approach 2: loop through columns using apply()
-result_2 <- apply(m, 2, count_above, 3)
-str(result_2)
-```
-
-The first approach using `lapply()` returns a `list`, whereas the second
-approach using `apply()` returns a vector. The first approach should be
-preferred because the user can trust that the result will always be a list,
-independent of the function that is called within the loop. The preferred
-function `lapply()` requires an object that it can loop through and this is what
-`asColumnList()` provides!
-
-### Function `asNoFactorDataFrame`
-
-This function is a shortcut to `as.data.frame(..., stringsAsFactors = FALSE)`. 
-Using this function may slightly improve the readability of a script (as the 
-number of arguments passed to the function is reduced):
-
-```{r}
-m <- matrix(letters[1:6], nrow = 2)
-
-result_1 <- kwb.utils::asNoFactorDataFrame(m)
-resutl_2 <- as.data.frame(m, stringsAsFactors = FALSE)
-
-identical(result_1, result_2)
-```
-
-### Function `asRowList()`
-
-This function converts a matrix into a list of its rows. See `asColumnList()`
-for an explanation of when this may be useful. 
-
-### Function `assertRowsAndColumns()`
-
-If you want to do calculations with a set of matrices it is important that all
-matrices have the same dimensions and that rows and columns of the same name are
-found at the same row and column indices, respectively. The function 
-`assertRowsAndColumns()` takes a matrix as input and returns a matrix as output.
-The function guarantees that the returned matrix contains rows and columns of
-requested names in requested orders. It does so by
-
-* creating rows/columns that are requested but not contained in the input 
-  matrix, 
-* removing rows/columns that are contained in the input matrix but not 
-  requested,
-* moving rows/columns that are contained in the input matrix but not in the 
-  requested order.
-
-Imagine three different matrices, each of with is created with `createMatrix()`,
-another function from this package:
-
-```{r}
-(m_1 <- kwb.utils::createMatrix(c("a", "c"), c("x", "y"), value = 1))
-(m_2 <- kwb.utils::createMatrix(c("a", "b"), c("x", "z"), value = 2))
-(m_3 <- kwb.utils::createMatrix(c("b", "c"), c("y", "z"), value = 3))
-```
-
-Each matrix has two out of three possible rows `a`, `b` and `c` and has two out
-of three possible columns `x`, `y` and `z`. You can now unify the shape of all
-matrices by means of `assertRowsAndColumns()`, specifying the rows and columns 
-to be required:
-
-```{r}
-row_names <- c("a", "b", "c")
-col_names <- c("x", "y", "z")
-
-(m_1 <- kwb.utils::assertRowsAndColumns(m_1, row_names, col_names))
-(m_2 <- kwb.utils::assertRowsAndColumns(m_2, row_names, col_names))
-(m_3 <- kwb.utils::assertRowsAndColumns(m_3, row_names, col_names))
-```
-
-Missing rows or columns are inserted and filled with the value that is given
-in the argument `fill_value` (defaulting to `0`, as can be seen above). Now,
-the matrices can e.g. be summed up:
-
-```{r}
-m_1 + m_2 + m_3
-```
-
-Or, they can be put into a three dimensional array:
-
-```{r}
-array_3d <- array(
-  c(m_1, m_2, m_3), 
-  dimnames = list(row_names, col_names, 1:3), 
-  dim = c(3, 3, 3)
-)
-
-array_3d
-```
+### Function assignAll()
+### Function assignArgumentDefaults()
+### Function assignGlobally()
+### Function assignPackageObjects()
+### Function breakInSequence()
+### Function callWith()
+### Function callWithStringsAsFactors()
+### Function catAndRun()
+### Function catIf()
+### Function catLines()
+### Function catNewLineIf()
+### Function checkForMissingColumns()
+### Function clearConsole()
+### Function cmdLinePath()
+### Function colMaxima()
+### Function colMinima()
+### Function colNaNumbers()
+### Function colStatisticOneFunction()
+### Function colStatistics()
+### Function columnDescriptor()
+### Function columnToDate()
+### Function columnwisePercentage()
+### Function combineAlternatingly()
+### Function compareDataFrames()
+### Function compareSets()
+### Function convertCsvFile()
+### Function copyDirectoryStructure()
+### Function copyListElements()
+### Function countNaInColumn()
+### Function countOrSum()
+### Function createDirAndReturnPath()
+### Function createDirectory()
+### Function createMatrix()
+### Function createPasswordFile()
+### Function csvTextToDataFrame()
+### Function defaultIfNA()
+### Function defaultIfNULL()
+### Function defaultIfZero()
+### Function defaultWindowsProgramFolders()
+### Function desktop()
+### Function diffrows()
+### Function DIN.A4()
+### Function dropDim()
+### Function dropUnusedFactorLevels()
+### Function enlargeVector()
+### Function excludeNULL()
+### Function expandGrid()
+### Function extendLimits()
+### Function extractRowRanges()
+### Function fileExtension()
+### Function finishAndShowPdf()
+### Function finishAndShowPdfIf()
+### Function firstElement()
+### Function firstPosixColumn()
+### Function frequencyTable()
+### Function fullySorted()
+### Function generateKeyFile()
+### Function get_homedir()
+### Function getAttribute()
+### Function getByPositiveOrNegativeIndex()
+### Function getEvenNumbers()
+### Function getFunctionName()
+### Function getFunctionValueOrDefault()
+### Function getGlobally()
+### Function getKeywordPositions()
+### Function getNamesOfObjectsInRDataFiles()
+### Function getObjectFromRDataFile()
+### Function getOddNumbers()
+### Function getPassword()
+### Function getPathsAndValuesFromRecursiveList()
+### Function getTagNames()
+### Function guessSeparator()
+### Function headtail()
+### Function hsAddMissingCols()
+### Function hsChrToNum()
+### Function hsDelEmptyCols()
+### Function hsMatrixToListForm()
+### Function hsMovingMean()
+### Function hsOpenWindowsExplorer()
+### Function hsPrepPdf()
+### Function hsRenameColumns()
+### Function hsResolve()
+### Function hsRestoreAttributes()
+### Function hsShell()
+### Function hsShowPdf()
+### Function hsStringToDate()
+### Function hsStringToDouble()
+### Function hsSystem()
+### Function insertColumns()
+### Function lastElement()
+### Function limitToRange()
+### Function linearCombination()
+### Function listObjects()
+### Function loadObject()
+### Function makeUnique()
+### Function mergeAll()
+### Function mergeLists()
+### Function mergeNamedArrays()
+### Function moveColumnsToFront()
+### Function movingSum()
+### Function msgAvailableFields()
+### Function mySystemTime()
+### Function nameByElement()
+### Function naToLastNonNa()
+### Function noFactorDataFrame()
+### Function objectSize()
+### Function parallelNonNA()
+### Function pasteColumns()
+### Function pasteColumns0()
+### Function percentage()
+### Function percentageOfMaximum()
+### Function percentageOfSum()
+### Function posixColumnAtPosition()
+### Function preparePdf()
+### Function preparePdfIf()
+### Function printIf()
+### Function quotient()
+### Function randomMatrix()
+### Function randomValuesWithSum()
+### Function rbindAll()
+### Function readArglists()
+### Function readCsvInputFile()
+### Function readDictionaries()
+### Function readDictionary()
+### Function readPackageFile()
+### Function recursiveNames()
+### Function recycle()
+### Function relativeCumulatedSum()
+### Function removeAttributes()
+### Function removeColumns()
+### Function removeElements()
+### Function removeEmptyColumns()
+### Function renameAndSelect()
+### Function renameColumns()
+### Function resetRowNames()
+### Function resolve()
+### Function resolveAll()
+### Function revertListAssignments()
+### Function roundColumns()
+### Function rowOrColumnwisePercentage()
+### Function rowwisePercentage()
+### Function rStylePath()
+### Function runBatchfileInDirectory()
+### Function runInDirectory()
+### Function safeColumnBind()
+### Function safeMerge()
+### Function safePath()
+### Function safeRowBind()
+### Function safeRowBindAll()
+### Function safeRowBindOfListElements()
+### Function selectColumns()
+### Function selectElements()
+### Function setColumns()
+### Function setLoaded()
+### Function setMatrixColumns()
+### Function sourceScripts()
+### Function splitAlongDim()
+### Function splitIntoFixSizedBlocks()
+### Function startsToEnds()
+### Function startsToRanges()
+### Function stopIfNotMatrix()
+### Function tableLookup()
+### Function tempSubdirectory()
+### Function toFactor()
+### Function toFormula()
+### Function toInches()
+### Function toKeysAndValues()
+### Function toLookupClass()
+### Function toLookupList()
+### Function toLookupTable()
+### Function toNamedList()
+### Function toPositiveIndices()
+### Function underscoreToPercent()
+### Function unmerge()
+### Function user()
+### Function warnIfEmpty()
+### Function warningDeprecated()
+### Function windowsPath()
+### Function writeDictionary()
+### Function writeText()

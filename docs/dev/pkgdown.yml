@@ -2,6 +2,12 @@ pandoc: 1.19.2.4
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
+  functions_check: functions_check.html
+  functions_conversion: functions_conversion.html
+  functions_data_frame: functions_data_frame.html
+  functions_logical: functions_logical.html
+  functions_object: functions_object.html
+  functions_string: functions_string.html
   tutorial: tutorial.html
 urls:
   reference: https://kwb-r.github.io/kwb.utils/reference

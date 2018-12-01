@@ -1,0 +1,76 @@
+---
+title: "Check Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Check Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function `assertRowsAndColumns()`
+
+If you want to do calculations with a set of matrices it is important that all
+matrices have the same dimensions and that rows and columns of the same name are
+found at the same row and column indices, respectively. The function 
+`assertRowsAndColumns()` takes a matrix as input and returns a matrix as output.
+The function guarantees that the returned matrix contains rows and columns of
+requested names in requested orders. It does so by
+
+* creating rows/columns that are requested but not contained in the input 
+  matrix, 
+* removing rows/columns that are contained in the input matrix but not 
+  requested,
+* moving rows/columns that are contained in the input matrix but not in the 
+  requested order.
+
+Imagine three different matrices, each of with is created with `createMatrix()`,
+another function from this package:
+
+```{r}
+(m_1 <- kwb.utils::createMatrix(c("a", "c"), c("x", "y"), value = 1))
+(m_2 <- kwb.utils::createMatrix(c("a", "b"), c("x", "z"), value = 2))
+(m_3 <- kwb.utils::createMatrix(c("b", "c"), c("y", "z"), value = 3))
+```
+
+Each matrix has two out of three possible rows `a`, `b` and `c` and has two out
+of three possible columns `x`, `y` and `z`. You can now unify the shape of all
+matrices by means of `assertRowsAndColumns()`, specifying the rows and columns 
+to be required:
+
+```{r}
+row_names <- c("a", "b", "c")
+col_names <- c("x", "y", "z")
+
+(m_1 <- kwb.utils::assertRowsAndColumns(m_1, row_names, col_names))
+(m_2 <- kwb.utils::assertRowsAndColumns(m_2, row_names, col_names))
+(m_3 <- kwb.utils::assertRowsAndColumns(m_3, row_names, col_names))
+```
+
+Missing rows or columns are inserted and filled with the value that is given
+in the argument `fill_value` (defaulting to `0`, as can be seen above). Now,
+the matrices can e.g. be summed up:
+
+```{r}
+m_1 + m_2 + m_3
+```
+
+Or, they can be put into a three dimensional array:
+
+```{r}
+array_3d <- array(
+  c(m_1, m_2, m_3), 
+  dimnames = list(row_names, col_names, 1:3), 
+  dim = c(3, 3, 3)
+)
+
+array_3d
+```

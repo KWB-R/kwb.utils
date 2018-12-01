@@ -1,0 +1,73 @@
+---
+title: "Functions Working on Data Frames"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Functions Working on Data Frames}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function `addRowWithName()`
+
+This function does no more than adding a row to a data frame with `rbind` and
+giving it a name:
+
+```{r}
+x <- data.frame(value = 10:11)
+
+new_row <- data.frame(value = sum(x$value))
+
+kwb.utils::addRowWithName(x, new_row, row.name = "total")
+```
+
+### Function `addSuffixToColumns()`
+
+This function adds a postfix to the column names of a data frame. This may be
+useful when column-binding data frames. The function can be used to indicate the
+origin of each column by giving it a suffix related to the data frame that it
+originates from.
+
+```{r}
+# Define a first data frame
+data_frame_1 <- data.frame(
+  id = 1:2, 
+  first = c("Peter", "Mary"), 
+  last = c("Miller", "Smith")
+)
+
+# Define a second data frame
+data_frame_2 <- data.frame(
+  height_cm = c(181, 171),
+  weigth_kg = c(68, 59)
+)
+
+# Column-bind the data frames, after giving their columns a unique suffix
+cbind(
+  kwb.utils::addSuffixToColumns(data_frame_1, "_1"),
+  kwb.utils::addSuffixToColumns(data_frame_2, "_2")
+)
+```
+
+### Function `asNoFactorDataFrame`
+
+This function is a shortcut to `as.data.frame(..., stringsAsFactors = FALSE)`. 
+Using this function may slightly improve the readability of a script (as the 
+number of arguments passed to the function is reduced):
+
+```{r}
+m <- matrix(letters[1:6], nrow = 2)
+
+result_1 <- kwb.utils::asNoFactorDataFrame(m)
+result_2 <- as.data.frame(m, stringsAsFactors = FALSE)
+
+identical(result_1, result_2)
+```

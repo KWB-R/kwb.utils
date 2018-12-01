@@ -1,0 +1,39 @@
+---
+title: "General Object Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{General Object Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function `addClass()`
+
+The function `addClass` adds an element to the `class` attribute of an object. 
+You may never have heard about the `class` attribute. That's ok. It allows you
+to assign a user-defined class to an object. By doing so, you can do some
+nice stuff, for example:
+
+```{r}
+# Define your own print function for objects of class "birthday"
+print.birthday <- function(x) {
+  print(sprintf("It's your birthday: %s!", x))
+}
+
+# Define a birthday string and print it
+x <- "January 14"
+print(x)
+
+# Now, set the class attribute to "birthday" and print again!
+x <- kwb.utils::addClass(x, "birthday")
+print(x)
+```

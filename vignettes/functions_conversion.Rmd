@@ -1,0 +1,71 @@
+---
+title: "Conversion Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Conversion Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function `asColumnList()`
+
+This function converts a matrix into a list of its columns. This is useful when
+you want to loop through the columns of a matrix `m` with `lapply()`. You could
+also loop through the columns with `apply(m, MARGINS = 2)`. However, the
+usage of `lapply()` should be preferred to the usage of `apply()`, as 
+demonstrated in the following example:
+
+```{r}
+# Define and show a very simple matrix
+(m <- matrix(1:6, nrow = 2))
+
+# Define functions that return/count the values above a threshold.
+# These functions are to be applied to each column of the matrix 
+get_above <- function(x, threshold) x[x > threshold]
+count_above <- function(x, threshold) sum(x > threshold)
+```
+
+With the first function, the two approaches return identical results: 
+
+```{r}
+# Approach 1: loop through columns using asColumnList() and lapply()
+result_1 <- lapply(kwb.utils::asColumnList(m), get_above, 3)
+str(result_1)
+
+# Approach 2: loop through columns using apply()
+result_2 <- apply(m, 2, get_above, 3)
+str(result_2)
+```
+
+However, with the second function, the two approaches return differing results:
+
+```{r}
+# Approach 1: loop through columns using asColumnList() and lapply()
+result_1 <- lapply(kwb.utils::asColumnList(m), count_above, 3)
+str(result_1)
+
+# Approach 2: loop through columns using apply()
+result_2 <- apply(m, 2, count_above, 3)
+str(result_2)
+```
+
+The first approach using `lapply()` returns a `list`, whereas the second
+approach using `apply()` returns a vector. The first approach should be
+preferred because the user can trust that the result will always be a list,
+independent of the function that is called within the loop. The preferred
+function `lapply()` requires an object that it can loop through and this is what
+`asColumnList()` provides!
+
+### Function `asRowList()`
+
+This function converts a matrix into a list of its rows. See `asColumnList()`
+for an explanation of when this may be useful. 

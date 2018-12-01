@@ -1,0 +1,95 @@
+---
+title: "String-Related Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{String-Related Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The following functions are returning or analysing strings.
+
+### Function `appendSuffix()`
+
+This function adds a suffix to all elements of a vector of character. It is 
+mainly a shortcut to `paste0(values, suffix)` but allows to define values to be 
+omitted:
+
+```{r}
+# Define a vector of character
+values <- c("id", letters[1:5])
+
+# Add a suffix to all elements except "id"
+kwb.utils::appendSuffix(values, "_value", valuesToOmit = "id")
+```
+
+### Function collapsed()
+
+The function call `collapsed(x, sep)` is a shortcut to 
+`paste(x, collapse = sep)`. It allows for shorter code and improved readability.
+
+```{r}
+kwb.utils::collapsed(1:10)
+kwb.utils::collapsed(1:10, ", ")
+kwb.utils::collapsed(letters, "|")
+```
+
+### Function commaCollapsed()
+
+The function call `commaCollapsed(x)` is a shortcut to 
+`paste(x, collapse = ",")`. It allows for shorter code and improved readability.
+
+```{r}
+kwb.utils::commaCollapsed(1:10)
+kwb.utils::commaCollapsed(letters)
+```
+
+### Function defaultLevels()
+
+When given a vector of character, this function returns the sorted unique 
+values of the input vector. When given a vector of numeric with all differences 
+being a multiple of the `step` argument (defaulting to `1`), 
+the `step`-incremented sequence of values between the smallest and the highest 
+value is returned.
+
+```{r}
+# Vector of character -> The sorted unique values are returned 
+kwb.utils::defaultLevels(c("melon", "apple", "melon", "pear", "apple"))
+
+# The differences between the values are not all a multiple of the step
+# -> Return sorted unique values
+kwb.utils::defaultLevels(c(5, 8, 1), step = 2)
+
+# The differences between the values are all a multiple of the step
+# -> Return step-incremented sequence between min and max
+kwb.utils::defaultLevels(c(1.5, 4.5, 10.5), step = 1.5)
+```
+
+### Function extractSubstring()
+### Function frenchToAscii()
+### Function hsCountInStr()
+### Function hsQuoteChr()
+### Function hsSafeName()
+### Function hsSubstSpecChars()
+### Function hsTrim()
+### Function moveToFront()
+### Function multiSubstitute()
+### Function pairwise()
+### Function removeExtension()
+### Function removeSpaces()
+### Function shorten()
+### Function stringContains()
+### Function stringEndsWith()
+### Function stringList()
+### Function stringStartsWith()
+### Function stringToExpression()
+### Function subExpressionMatches()
