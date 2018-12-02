@@ -1,0 +1,27 @@
+---
+title: "Debug Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Debug Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function assignAll()
+### Function assignArgumentDefaults()
+### Function assignGlobally()
+### Function assignPackageObjects()
+### Function getGlobally()
+
+Compare Objects
+### Function compareDataFrames()
+### Function compareSets()

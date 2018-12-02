@@ -1,0 +1,25 @@
+---
+title: "Grammar/Dictionary Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Grammar/Dictionary Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function getTagNames()
+### Function hsResolve()
+### Function readDictionaries()
+### Function readDictionary()
+### Function resolve()
+### Function resolveAll()
+### Function writeDictionary()

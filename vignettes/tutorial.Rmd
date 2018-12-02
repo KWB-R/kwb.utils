@@ -19,9 +19,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-Today is a good day to start documenting what this package (kwb.utils) is good
-for. I would like to start with a complete list of the names of the functions
-that are contained in this package. But how can I get such a list? 
+Today is a good day to start documenting what this package (kwb.utils) can be
+used for. I would like to start with a complete list of the names of the
+functions that are contained in this package. But how can I get such a list?
 
 ## How to get an overview of functions in a package?
 
@@ -56,272 +56,41 @@ Let's have a look at the first six functions:
 head(object_names)
 ```
 
-## Grouped Functions
+* [Functions Returning Logical](functions_logical.html)
 
-`addClass()`: 
-See article [General Object Functions](functions_object.html).
+* [String Functions](functions_string.html)
 
-`addRowWithName()`: 
-See article [Functions Working on Data Frames](functions_data_frame.html).
+* [Input and Output Functions](functions_in_out.html)
 
-`addSuffixToColumns()`:
-See article [Functions Working on Data Frames](functions_data_frame.html).
+* [Mathematical or Statistical Functions](functions_stats.html)
 
-`allAreEqual()`:
-See article [Functions Returning Logical](functions_logical.html).
+* [Functions Working on Data Frames](functions_data_frame.html)
 
-`allAreIdentical()`:
-See article [Functions Returning Logical](functions_logical.html).
+* [Functions Working on Lists](functions_list.html)
 
-`almostEqual()`:
-See article [Functions Returning Logical](functions_logical.html).
+* [Array/Matrix Functions](functions_array.html)
 
-`appendSuffix()`:
-See article [String-Related Functions](functions_string.html).
+* [Vector Functions](functions_vector.html)
 
-`asColumnList()`:
-See article [Conversion Functions](functions_conversion.html).
+* [General Object Functions](functions_object.html)
 
-`asNoFactorDataFrame`:
-See article [Functions Working on Data Frames](functions_data_frame.html).
+* [Conversion Functions](functions_conversion.html)
 
-`asRowList()`:
-See article [Conversion Functions](functions_conversion.html).
+* [Shortcut Functions to if-statements](functions_if.html)
 
-`assertRowsAndColumns()`:
-See article [Check Functions](functions_check.html).
+* [Operating System Functions](functions_system.html)
 
-## Ungrouped Functions
+* [Check Functions](functions_check.html): Functions that check for 
+  prerequisites
 
-### Function `arglist()`
+* [Debug Functions](functions_debug.html)
 
-The main purpose of the package "kwb.utils" is to provide functions that allow
-for writing cleaner and safer code. One main characteristic of clean code is
-that it is free or at least almost free of duplication. This is a very hard goal 
-to achieve! But we should try our best!
+* [Compare Objects](functions_debug.html)
 
-Have you ever seen something like the following?
+* [Calling Functions](functions_call.html)
 
-```{r}
-x <- seq(-pi, pi, pi/10)
-par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
-plot(x, sin(x), xlab = "x", ylab = "sin(x)", pch = 16, type = "b", cex = 0.5)
-plot(x, cos(x), xlab = "x", ylab = "cos(x)", pch = 16, type = "b", cex = 0.5)
-```
+* [Cryptographic Functions](functions_crypto.html)
 
-Do you spot the repetition? What if you want to change the plot character `pch`
-or the `type` of the plot or the character extension factor `cex` in both
-plots at the same time?
+* [Grammar/Dictionary Functions](functions_dictionary.html)
 
-```{r}
-# Define common arguments
-common <- list(x = x, pch = 16, xlab = "x", type = "b", cex = 0.5)
-
-# Call the plot function with the common arguments, extended by
-# call-specific arguments
-par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
-do.call(plot, kwb.utils::arglist(common, y = sin(x), ylab = "sin(x)"))
-do.call(plot, kwb.utils::arglist(common, y = cos(x), ylab = "cos(x)"))
-```
-
-The function `arglist()` merges the contents of one or more lists by allowing
-to overwrite existing list elements. In the above example, the list of `common`
-arguments is just extended. Elements in this list could also be overwritten,
-such as the argument `cex` in the following:
-
-```{r}
-do.call(
-  what = plot, 
-  args = kwb.utils::arglist(common, y = sin(x), ylab = "sin(x)", cex = 1)
-)
-```
-
-This pattern of calling a function with an extended argument list is so common 
-that I wrote a function `callWith()` that allows to write the above shorter:
-
-```{r}
-kwb.utils::callWith(plot, common, y = sin(x), ylab = "sin(x)", cex = 1)
-```
-
-But this will be explained later...
-
-### Function assignAll()
-### Function assignArgumentDefaults()
-### Function assignGlobally()
-### Function assignPackageObjects()
-### Function breakInSequence()
-### Function callWith()
-### Function callWithStringsAsFactors()
-### Function catAndRun()
-### Function catIf()
-### Function catLines()
-### Function catNewLineIf()
-### Function checkForMissingColumns()
-### Function clearConsole()
-### Function cmdLinePath()
-### Function colMaxima()
-### Function colMinima()
-### Function colNaNumbers()
-### Function colStatisticOneFunction()
-### Function colStatistics()
-### Function columnDescriptor()
-### Function columnToDate()
-### Function columnwisePercentage()
-### Function combineAlternatingly()
-### Function compareDataFrames()
-### Function compareSets()
-### Function convertCsvFile()
-### Function copyDirectoryStructure()
-### Function copyListElements()
-### Function countNaInColumn()
-### Function countOrSum()
-### Function createDirAndReturnPath()
-### Function createDirectory()
-### Function createMatrix()
-### Function createPasswordFile()
-### Function csvTextToDataFrame()
-### Function defaultIfNA()
-### Function defaultIfNULL()
-### Function defaultIfZero()
-### Function defaultWindowsProgramFolders()
-### Function desktop()
-### Function diffrows()
-### Function DIN.A4()
-### Function dropDim()
-### Function dropUnusedFactorLevels()
-### Function enlargeVector()
-### Function excludeNULL()
-### Function expandGrid()
-### Function extendLimits()
-### Function extractRowRanges()
-### Function fileExtension()
-### Function finishAndShowPdf()
-### Function finishAndShowPdfIf()
-### Function firstElement()
-### Function firstPosixColumn()
-### Function frequencyTable()
-### Function fullySorted()
-### Function generateKeyFile()
-### Function get_homedir()
-### Function getAttribute()
-### Function getByPositiveOrNegativeIndex()
-### Function getEvenNumbers()
-### Function getFunctionName()
-### Function getFunctionValueOrDefault()
-### Function getGlobally()
-### Function getKeywordPositions()
-### Function getNamesOfObjectsInRDataFiles()
-### Function getObjectFromRDataFile()
-### Function getOddNumbers()
-### Function getPassword()
-### Function getPathsAndValuesFromRecursiveList()
-### Function getTagNames()
-### Function guessSeparator()
-### Function headtail()
-### Function hsAddMissingCols()
-### Function hsChrToNum()
-### Function hsDelEmptyCols()
-### Function hsMatrixToListForm()
-### Function hsMovingMean()
-### Function hsOpenWindowsExplorer()
-### Function hsPrepPdf()
-### Function hsRenameColumns()
-### Function hsResolve()
-### Function hsRestoreAttributes()
-### Function hsShell()
-### Function hsShowPdf()
-### Function hsStringToDate()
-### Function hsStringToDouble()
-### Function hsSystem()
-### Function insertColumns()
-### Function lastElement()
-### Function limitToRange()
-### Function linearCombination()
-### Function listObjects()
-### Function loadObject()
-### Function makeUnique()
-### Function mergeAll()
-### Function mergeLists()
-### Function mergeNamedArrays()
-### Function moveColumnsToFront()
-### Function movingSum()
-### Function msgAvailableFields()
-### Function mySystemTime()
-### Function nameByElement()
-### Function naToLastNonNa()
-### Function noFactorDataFrame()
-### Function objectSize()
-### Function parallelNonNA()
-### Function pasteColumns()
-### Function pasteColumns0()
-### Function percentage()
-### Function percentageOfMaximum()
-### Function percentageOfSum()
-### Function posixColumnAtPosition()
-### Function preparePdf()
-### Function preparePdfIf()
-### Function printIf()
-### Function quotient()
-### Function randomMatrix()
-### Function randomValuesWithSum()
-### Function rbindAll()
-### Function readArglists()
-### Function readCsvInputFile()
-### Function readDictionaries()
-### Function readDictionary()
-### Function readPackageFile()
-### Function recursiveNames()
-### Function recycle()
-### Function relativeCumulatedSum()
-### Function removeAttributes()
-### Function removeColumns()
-### Function removeElements()
-### Function removeEmptyColumns()
-### Function renameAndSelect()
-### Function renameColumns()
-### Function resetRowNames()
-### Function resolve()
-### Function resolveAll()
-### Function revertListAssignments()
-### Function roundColumns()
-### Function rowOrColumnwisePercentage()
-### Function rowwisePercentage()
-### Function rStylePath()
-### Function runBatchfileInDirectory()
-### Function runInDirectory()
-### Function safeColumnBind()
-### Function safeMerge()
-### Function safePath()
-### Function safeRowBind()
-### Function safeRowBindAll()
-### Function safeRowBindOfListElements()
-### Function selectColumns()
-### Function selectElements()
-### Function setColumns()
-### Function setLoaded()
-### Function setMatrixColumns()
-### Function sourceScripts()
-### Function splitAlongDim()
-### Function splitIntoFixSizedBlocks()
-### Function startsToEnds()
-### Function startsToRanges()
-### Function stopIfNotMatrix()
-### Function tableLookup()
-### Function tempSubdirectory()
-### Function toFactor()
-### Function toFormula()
-### Function toInches()
-### Function toKeysAndValues()
-### Function toLookupClass()
-### Function toLookupList()
-### Function toLookupTable()
-### Function toNamedList()
-### Function toPositiveIndices()
-### Function underscoreToPercent()
-### Function unmerge()
-### Function user()
-### Function warnIfEmpty()
-### Function warningDeprecated()
-### Function windowsPath()
-### Function writeDictionary()
-### Function writeText()
+* [Non-Categorised Functions](functions_ungrouped.html)

@@ -1,0 +1,28 @@
+---
+title: "Vector Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vector Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function breakInSequence()
+### Function combineAlternatingly()
+### Function enlargeVector()
+### Function extendLimits()
+### Function firstElement()
+### Function getByPositiveOrNegativeIndex()
+### Function lastElement()
+### Function limitToRange()
+### Function parallelNonNA()
+### Function recycle()

@@ -1,0 +1,39 @@
+---
+title: "Operating System Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Operating System Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function cmdLinePath()
+### Function copyDirectoryStructure()
+### Function createDirAndReturnPath()
+### Function createDirectory()
+### Function defaultWindowsProgramFolders()
+### Function desktop()
+### Function fileExtension()
+### Function get_homedir()
+### Function hsOpenWindowsExplorer()
+### Function hsShell()
+### Function hsShowPdf()
+### Function hsSystem()
+### Function mySystemTime()
+### Function objectSize()
+### Function rStylePath()
+### Function runBatchfileInDirectory()
+### Function runInDirectory()
+### Function safePath()
+### Function tempSubdirectory()
+### Function user()
+### Function windowsPath()

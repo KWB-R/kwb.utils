@@ -1,0 +1,28 @@
+---
+title: "Functions Working on Lists"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Functions Working on Lists}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function copyListElements()
+### Function excludeNULL()
+### Function getPathsAndValuesFromRecursiveList()
+### Function mergeLists()
+### Function nameByElement()
+### Function recursiveNames()
+### Function removeElements()
+### Function revertListAssignments()
+### Function safeRowBindOfListElements()
+### Function selectElements()

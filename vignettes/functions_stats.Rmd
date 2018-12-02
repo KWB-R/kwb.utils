@@ -1,0 +1,36 @@
+---
+title: "Mathematical or Statistical Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Mathematical or Statistical Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function colMaxima()
+### Function colMinima()
+### Function colNaNumbers()
+### Function colStatisticOneFunction()
+### Function colStatistics()
+### Function countOrSum()
+### Function countNaInColumn()
+### Function frequencyTable()
+### Function getEvenNumbers()
+### Function getOddNumbers()
+### Function hsMovingMean()
+### Function linearCombination()
+### Function movingSum()
+### Function percentage()
+### Function percentageOfMaximum()
+### Function percentageOfSum()
+### Function quotient()
+### Function relativeCumulatedSum()

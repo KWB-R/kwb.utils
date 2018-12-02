@@ -74,3 +74,12 @@ array_3d <- array(
 
 array_3d
 ```
+
+
+Check Functions
+
+### Function checkForMissingColumns()
+### Function msgAvailableFields()
+### Function stopIfNotMatrix()
+### Function warnIfEmpty()
+### Function warningDeprecated()

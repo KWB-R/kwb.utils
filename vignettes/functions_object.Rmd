@@ -37,3 +37,14 @@ print(x)
 x <- kwb.utils::addClass(x, "birthday")
 print(x)
 ```
+
+General Object Functions
+
+### Function getAttribute()
+### Function getNamesOfObjectsInRDataFiles()
+### Function getObjectFromRDataFile()
+### Function hsRestoreAttributes()
+### Function listObjects()
+### Function loadObject()
+### Function removeAttributes()
+

@@ -1,0 +1,25 @@
+---
+title: "Array/Matrix Functions"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Array/Matrix Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function createMatrix()
+### Function diffrows()
+### Function dropDim()
+### Function mergeNamedArrays()
+### Function randomMatrix()
+### Function setMatrixColumns()
+### Function splitAlongDim()

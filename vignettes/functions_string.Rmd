@@ -1,10 +1,10 @@
 ---
-title: "String-Related Functions"
+title: "String Functions"
 author: "Hauke Sonnenberg"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{String-Related Functions}
+  %\VignetteIndexEntry{String Functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -73,6 +73,7 @@ kwb.utils::defaultLevels(c(5, 8, 1), step = 2)
 # -> Return step-incremented sequence between min and max
 kwb.utils::defaultLevels(c(1.5, 4.5, 10.5), step = 1.5)
 ```
+
 
 ### Function extractSubstring()
 ### Function frenchToAscii()

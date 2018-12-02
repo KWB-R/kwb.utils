@@ -69,3 +69,24 @@ function `lapply()` requires an object that it can loop through and this is what
 
 This function converts a matrix into a list of its rows. See `asColumnList()`
 for an explanation of when this may be useful. 
+
+
+### Function convertCsvFile()
+### Function csvTextToDataFrame()
+### Function hsChrToNum()
+### Function hsStringToDate()
+### Function hsStringToDouble()
+### Function hsMatrixToListForm()
+### Function naToLastNonNa()
+### Function startsToEnds()
+### Function startsToRanges()
+### Function toFactor()
+### Function toFormula()
+### Function toInches()
+### Function toKeysAndValues()
+### Function toLookupClass()
+### Function toLookupList()
+### Function toLookupTable()
+### Function toNamedList()
+### Function toPositiveIndices()
+### Function underscoreToPercent()

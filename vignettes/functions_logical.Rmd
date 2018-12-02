@@ -81,28 +81,17 @@ kwb.utils::almostEqual(one_third_1, one_third_2)
 kwb.utils::almostEqual(one_third_1, one_third_2, tolerance = 1e-17)
 ```
 
+
 ### Function atLeastOneRowIn()
-
 ### Function containsNulString()
-
 ### Function hsValidValue()
-
 ### Function inRange()
-
 ### Function is.unnamed()
-
 ### Function isEvenNumber()
-
 ### Function isLoaded()
-
 ### Function isNaInAllColumns()
-
 ### Function isNaInAllRows()
-
 ### Function isNaOrEmpty()
-
 ### Function isNullOrEmpty()
-
 ### Function isOddNumber()
-
 ### Function matchesCriteria()

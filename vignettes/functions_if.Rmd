@@ -1,0 +1,25 @@
+---
+title: "Shortcut Functions to if-statements"
+author: "Hauke Sonnenberg"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+### Function catIf()
+### Function defaultIfNA()
+### Function defaultIfNULL()
+### Function defaultIfZero()
+### Function finishAndShowPdfIf()
+### Function preparePdfIf()
+### Function printIf()
