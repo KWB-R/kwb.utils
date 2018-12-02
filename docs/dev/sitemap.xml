@@ -700,13 +700,37 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/writeText.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_array.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_call.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_check.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_conversion.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_crypto.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_data_frame.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_debug.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_dictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_if.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_in_out.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_list.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_logical.html</loc>
@@ -715,7 +739,19 @@
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_object.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_stats.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/functions_string.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_system.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_ungrouped.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_vector.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/articles/tutorial.html</loc>

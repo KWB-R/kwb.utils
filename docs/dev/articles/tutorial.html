@@ -53,13 +53,37 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/functions_array.html">Array/Matrix Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_call.html">Calling Functions</a>
+    </li>
+    <li>
       <a href="../articles/functions_check.html">Check Functions</a>
     </li>
     <li>
       <a href="../articles/functions_conversion.html">Conversion Functions</a>
     </li>
     <li>
+      <a href="../articles/functions_crypto.html">Cryptographic Functions</a>
+    </li>
+    <li>
       <a href="../articles/functions_data_frame.html">Functions Working on Data Frames</a>
+    </li>
+    <li>
+      <a href="../articles/functions_debug.html">Debug Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_dictionary.html">Grammar/Dictionary Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_if.html">Shortcut Functions to if-statements</a>
+    </li>
+    <li>
+      <a href="../articles/functions_in_out.html">Input and Output Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_list.html">Functions Working on Lists</a>
     </li>
     <li>
       <a href="../articles/functions_logical.html">Functions Returning Logical</a>
@@ -68,7 +92,19 @@
       <a href="../articles/functions_object.html">General Object Functions</a>
     </li>
     <li>
-      <a href="../articles/functions_string.html">String-Related Functions</a>
+      <a href="../articles/functions_stats.html">Mathematical or Statistical Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_string.html">String Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_system.html">Operating System Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_ungrouped.html">Non-Categorised Functions</a>
+    </li>
+    <li>
+      <a href="../articles/functions_vector.html">Vector Functions</a>
     </li>
     <li>
       <a href="../articles/tutorial.html">Overview</a>
@@ -107,7 +143,7 @@
 
     
     
-<p>Today is a good day to start documenting what this package (kwb.utils) is good for. I would like to start with a complete list of the names of the functions that are contained in this package. But how can I get such a list?</p>
+<p>Today is a good day to start documenting what this package (kwb.utils) can be used for. I would like to start with a complete list of the names of the functions that are contained in this package. But how can I get such a list?</p>
 <div id="how-to-get-an-overview-of-functions-in-a-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-get-an-overview-of-functions-in-a-package" class="anchor"></a>How to get an overview of functions in a package?</h2>
@@ -131,777 +167,27 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(object_names)
 <span class="co">#&gt; [1] "addClass"           "addRowWithName"     "addSuffixToColumns"</span>
 <span class="co">#&gt; [4] "allAreEqual"        "allAreIdentical"    "almostEqual"</span></code></pre></div>
-</div>
-<div id="grouped-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#grouped-functions" class="anchor"></a>Grouped Functions</h2>
-<p><code><a href="../reference/addClass.html">addClass()</a></code>: See article <a href="functions_object.html">General Object Functions</a>.</p>
-<p><code><a href="../reference/addRowWithName.html">addRowWithName()</a></code>: See article <a href="functions_data_frame.html">Functions Working on Data Frames</a>.</p>
-<p><code><a href="../reference/addSuffixToColumns.html">addSuffixToColumns()</a></code>: See article <a href="functions_data_frame.html">Functions Working on Data Frames</a>.</p>
-<p><code><a href="../reference/allAreEqual.html">allAreEqual()</a></code>: See article <a href="functions_logical.html">Functions Returning Logical</a>.</p>
-<p><code><a href="../reference/allAreIdentical.html">allAreIdentical()</a></code>: See article <a href="functions_logical.html">Functions Returning Logical</a>.</p>
-<p><code><a href="../reference/almostEqual.html">almostEqual()</a></code>: See article <a href="functions_logical.html">Functions Returning Logical</a>.</p>
-<p><code><a href="../reference/appendSuffix.html">appendSuffix()</a></code>: See article <a href="functions_string.html">String-Related Functions</a>.</p>
-<p><code><a href="../reference/asColumnList.html">asColumnList()</a></code>: See article <a href="functions_conversion.html">Conversion Functions</a>.</p>
-<p><code>asNoFactorDataFrame</code>: See article <a href="functions_data_frame.html">Functions Working on Data Frames</a>.</p>
-<p><code><a href="../reference/asRowList.html">asRowList()</a></code>: See article <a href="functions_conversion.html">Conversion Functions</a>.</p>
-<p><code><a href="../reference/assertRowsAndColumns.html">assertRowsAndColumns()</a></code>: See article <a href="functions_check.html">Check Functions</a>.</p>
-</div>
-<div id="ungrouped-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ungrouped-functions" class="anchor"></a>Ungrouped Functions</h2>
-<div id="function-arglist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-arglist" class="anchor"></a>Function <code><a href="../reference/arglist.html">arglist()</a></code>
-</h3>
-<p>The main purpose of the package “kwb.utils” is to provide functions that allow for writing cleaner and safer code. One main characteristic of clean code is that it is free or at least almost free of duplication. This is a very hard goal to achieve! But we should try our best!</p>
-<p>Have you ever seen something like the following?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span>pi, pi, pi<span class="op">/</span><span class="dv">10</span>)
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
-<span class="kw">plot</span>(x, <span class="kw">sin</span>(x), <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)
-<span class="kw">plot</span>(x, <span class="kw">cos</span>(x), <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">ylab =</span> <span class="st">"cos(x)"</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="tutorial_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
-<p>Do you spot the repetition? What if you want to change the plot character <code>pch</code> or the <code>type</code> of the plot or the character extension factor <code>cex</code> in both plots at the same time?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define common arguments</span>
-common &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> x, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">xlab =</span> <span class="st">"x"</span>, <span class="dt">type =</span> <span class="st">"b"</span>, <span class="dt">cex =</span> <span class="fl">0.5</span>)
-
-<span class="co"># Call the plot function with the common arguments, extended by</span>
-<span class="co"># call-specific arguments</span>
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
-<span class="kw">do.call</span>(plot, kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>))
-<span class="kw">do.call</span>(plot, kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">cos</span>(x), <span class="dt">ylab =</span> <span class="st">"cos(x)"</span>))</code></pre></div>
-<p><img src="tutorial_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
-<p>The function <code><a href="../reference/arglist.html">arglist()</a></code> merges the contents of one or more lists by allowing to overwrite existing list elements. In the above example, the list of <code>common</code> arguments is just extended. Elements in this list could also be overwritten, such as the argument <code>cex</code> in the following:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">do.call</span>(
-  <span class="dt">what =</span> plot, 
-  <span class="dt">args =</span> kwb.utils<span class="op">::</span><span class="kw">arglist</span>(common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">cex =</span> <span class="dv">1</span>)
-)</code></pre></div>
-<p><img src="tutorial_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
-<p>This pattern of calling a function with an extended argument list is so common that I wrote a function <code><a href="../reference/callWith.html">callWith()</a></code> that allows to write the above shorter:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kwb.utils<span class="op">::</span><span class="kw">callWith</span>(plot, common, <span class="dt">y =</span> <span class="kw">sin</span>(x), <span class="dt">ylab =</span> <span class="st">"sin(x)"</span>, <span class="dt">cex =</span> <span class="dv">1</span>)</code></pre></div>
-<p><img src="tutorial_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
-<p>But this will be explained later…</p>
-</div>
-<div id="function-assignall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-assignall" class="anchor"></a>Function assignAll()</h3>
-</div>
-<div id="function-assignargumentdefaults" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-assignargumentdefaults" class="anchor"></a>Function assignArgumentDefaults()</h3>
-</div>
-<div id="function-assignglobally" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-assignglobally" class="anchor"></a>Function assignGlobally()</h3>
-</div>
-<div id="function-assignpackageobjects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-assignpackageobjects" class="anchor"></a>Function assignPackageObjects()</h3>
-</div>
-<div id="function-breakinsequence" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-breakinsequence" class="anchor"></a>Function breakInSequence()</h3>
-</div>
-<div id="function-callwith" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-callwith" class="anchor"></a>Function callWith()</h3>
-</div>
-<div id="function-callwithstringsasfactors" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-callwithstringsasfactors" class="anchor"></a>Function callWithStringsAsFactors()</h3>
-</div>
-<div id="function-catandrun" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catandrun" class="anchor"></a>Function catAndRun()</h3>
-</div>
-<div id="function-catif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catif" class="anchor"></a>Function catIf()</h3>
-</div>
-<div id="function-catlines" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catlines" class="anchor"></a>Function catLines()</h3>
-</div>
-<div id="function-catnewlineif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catnewlineif" class="anchor"></a>Function catNewLineIf()</h3>
-</div>
-<div id="function-checkformissingcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-checkformissingcolumns" class="anchor"></a>Function checkForMissingColumns()</h3>
-</div>
-<div id="function-clearconsole" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-clearconsole" class="anchor"></a>Function clearConsole()</h3>
-</div>
-<div id="function-cmdlinepath" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-cmdlinepath" class="anchor"></a>Function cmdLinePath()</h3>
-</div>
-<div id="function-colmaxima" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-colmaxima" class="anchor"></a>Function colMaxima()</h3>
-</div>
-<div id="function-colminima" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-colminima" class="anchor"></a>Function colMinima()</h3>
-</div>
-<div id="function-colnanumbers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-colnanumbers" class="anchor"></a>Function colNaNumbers()</h3>
-</div>
-<div id="function-colstatisticonefunction" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-colstatisticonefunction" class="anchor"></a>Function colStatisticOneFunction()</h3>
-</div>
-<div id="function-colstatistics" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-colstatistics" class="anchor"></a>Function colStatistics()</h3>
-</div>
-<div id="function-columndescriptor" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columndescriptor" class="anchor"></a>Function columnDescriptor()</h3>
-</div>
-<div id="function-columntodate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columntodate" class="anchor"></a>Function columnToDate()</h3>
-</div>
-<div id="function-columnwisepercentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columnwisepercentage" class="anchor"></a>Function columnwisePercentage()</h3>
-</div>
-<div id="function-combinealternatingly" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-combinealternatingly" class="anchor"></a>Function combineAlternatingly()</h3>
-</div>
-<div id="function-comparedataframes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-comparedataframes" class="anchor"></a>Function compareDataFrames()</h3>
-</div>
-<div id="function-comparesets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-comparesets" class="anchor"></a>Function compareSets()</h3>
-</div>
-<div id="function-convertcsvfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-convertcsvfile" class="anchor"></a>Function convertCsvFile()</h3>
-</div>
-<div id="function-copydirectorystructure" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-copydirectorystructure" class="anchor"></a>Function copyDirectoryStructure()</h3>
-</div>
-<div id="function-copylistelements" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-copylistelements" class="anchor"></a>Function copyListElements()</h3>
-</div>
-<div id="function-countnaincolumn" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-countnaincolumn" class="anchor"></a>Function countNaInColumn()</h3>
-</div>
-<div id="function-countorsum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-countorsum" class="anchor"></a>Function countOrSum()</h3>
-</div>
-<div id="function-createdirandreturnpath" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-createdirandreturnpath" class="anchor"></a>Function createDirAndReturnPath()</h3>
-</div>
-<div id="function-createdirectory" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-createdirectory" class="anchor"></a>Function createDirectory()</h3>
-</div>
-<div id="function-creatematrix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-creatematrix" class="anchor"></a>Function createMatrix()</h3>
-</div>
-<div id="function-createpasswordfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-createpasswordfile" class="anchor"></a>Function createPasswordFile()</h3>
-</div>
-<div id="function-csvtexttodataframe" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-csvtexttodataframe" class="anchor"></a>Function csvTextToDataFrame()</h3>
-</div>
-<div id="function-defaultifna" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-defaultifna" class="anchor"></a>Function defaultIfNA()</h3>
-</div>
-<div id="function-defaultifnull" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-defaultifnull" class="anchor"></a>Function defaultIfNULL()</h3>
-</div>
-<div id="function-defaultifzero" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-defaultifzero" class="anchor"></a>Function defaultIfZero()</h3>
-</div>
-<div id="function-defaultwindowsprogramfolders" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-defaultwindowsprogramfolders" class="anchor"></a>Function defaultWindowsProgramFolders()</h3>
-</div>
-<div id="function-desktop" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-desktop" class="anchor"></a>Function desktop()</h3>
-</div>
-<div id="function-diffrows" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-diffrows" class="anchor"></a>Function diffrows()</h3>
-</div>
-<div id="function-din-a4" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-din-a4" class="anchor"></a>Function DIN.A4()</h3>
-</div>
-<div id="function-dropdim" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-dropdim" class="anchor"></a>Function dropDim()</h3>
-</div>
-<div id="function-dropunusedfactorlevels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-dropunusedfactorlevels" class="anchor"></a>Function dropUnusedFactorLevels()</h3>
-</div>
-<div id="function-enlargevector" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-enlargevector" class="anchor"></a>Function enlargeVector()</h3>
-</div>
-<div id="function-excludenull" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-excludenull" class="anchor"></a>Function excludeNULL()</h3>
-</div>
-<div id="function-expandgrid" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-expandgrid" class="anchor"></a>Function expandGrid()</h3>
-</div>
-<div id="function-extendlimits" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-extendlimits" class="anchor"></a>Function extendLimits()</h3>
-</div>
-<div id="function-extractrowranges" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-extractrowranges" class="anchor"></a>Function extractRowRanges()</h3>
-</div>
-<div id="function-fileextension" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-fileextension" class="anchor"></a>Function fileExtension()</h3>
-</div>
-<div id="function-finishandshowpdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-finishandshowpdf" class="anchor"></a>Function finishAndShowPdf()</h3>
-</div>
-<div id="function-finishandshowpdfif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-finishandshowpdfif" class="anchor"></a>Function finishAndShowPdfIf()</h3>
-</div>
-<div id="function-firstelement" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-firstelement" class="anchor"></a>Function firstElement()</h3>
-</div>
-<div id="function-firstposixcolumn" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-firstposixcolumn" class="anchor"></a>Function firstPosixColumn()</h3>
-</div>
-<div id="function-frequencytable" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-frequencytable" class="anchor"></a>Function frequencyTable()</h3>
-</div>
-<div id="function-fullysorted" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-fullysorted" class="anchor"></a>Function fullySorted()</h3>
-</div>
-<div id="function-generatekeyfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-generatekeyfile" class="anchor"></a>Function generateKeyFile()</h3>
-</div>
-<div id="function-get_homedir" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-get_homedir" class="anchor"></a>Function get_homedir()</h3>
-</div>
-<div id="function-getattribute" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getattribute" class="anchor"></a>Function getAttribute()</h3>
-</div>
-<div id="function-getbypositiveornegativeindex" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getbypositiveornegativeindex" class="anchor"></a>Function getByPositiveOrNegativeIndex()</h3>
-</div>
-<div id="function-getevennumbers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getevennumbers" class="anchor"></a>Function getEvenNumbers()</h3>
-</div>
-<div id="function-getfunctionname" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getfunctionname" class="anchor"></a>Function getFunctionName()</h3>
-</div>
-<div id="function-getfunctionvalueordefault" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getfunctionvalueordefault" class="anchor"></a>Function getFunctionValueOrDefault()</h3>
-</div>
-<div id="function-getglobally" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getglobally" class="anchor"></a>Function getGlobally()</h3>
-</div>
-<div id="function-getkeywordpositions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getkeywordpositions" class="anchor"></a>Function getKeywordPositions()</h3>
-</div>
-<div id="function-getnamesofobjectsinrdatafiles" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getnamesofobjectsinrdatafiles" class="anchor"></a>Function getNamesOfObjectsInRDataFiles()</h3>
-</div>
-<div id="function-getobjectfromrdatafile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getobjectfromrdatafile" class="anchor"></a>Function getObjectFromRDataFile()</h3>
-</div>
-<div id="function-getoddnumbers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getoddnumbers" class="anchor"></a>Function getOddNumbers()</h3>
-</div>
-<div id="function-getpassword" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getpassword" class="anchor"></a>Function getPassword()</h3>
-</div>
-<div id="function-getpathsandvaluesfromrecursivelist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getpathsandvaluesfromrecursivelist" class="anchor"></a>Function getPathsAndValuesFromRecursiveList()</h3>
-</div>
-<div id="function-gettagnames" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-gettagnames" class="anchor"></a>Function getTagNames()</h3>
-</div>
-<div id="function-guessseparator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-guessseparator" class="anchor"></a>Function guessSeparator()</h3>
-</div>
-<div id="function-headtail" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-headtail" class="anchor"></a>Function headtail()</h3>
-</div>
-<div id="function-hsaddmissingcols" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsaddmissingcols" class="anchor"></a>Function hsAddMissingCols()</h3>
-</div>
-<div id="function-hschrtonum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hschrtonum" class="anchor"></a>Function hsChrToNum()</h3>
-</div>
-<div id="function-hsdelemptycols" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsdelemptycols" class="anchor"></a>Function hsDelEmptyCols()</h3>
-</div>
-<div id="function-hsmatrixtolistform" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsmatrixtolistform" class="anchor"></a>Function hsMatrixToListForm()</h3>
-</div>
-<div id="function-hsmovingmean" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsmovingmean" class="anchor"></a>Function hsMovingMean()</h3>
-</div>
-<div id="function-hsopenwindowsexplorer" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsopenwindowsexplorer" class="anchor"></a>Function hsOpenWindowsExplorer()</h3>
-</div>
-<div id="function-hspreppdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hspreppdf" class="anchor"></a>Function hsPrepPdf()</h3>
-</div>
-<div id="function-hsrenamecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsrenamecolumns" class="anchor"></a>Function hsRenameColumns()</h3>
-</div>
-<div id="function-hsresolve" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsresolve" class="anchor"></a>Function hsResolve()</h3>
-</div>
-<div id="function-hsrestoreattributes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsrestoreattributes" class="anchor"></a>Function hsRestoreAttributes()</h3>
-</div>
-<div id="function-hsshell" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsshell" class="anchor"></a>Function hsShell()</h3>
-</div>
-<div id="function-hsshowpdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsshowpdf" class="anchor"></a>Function hsShowPdf()</h3>
-</div>
-<div id="function-hsstringtodate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsstringtodate" class="anchor"></a>Function hsStringToDate()</h3>
-</div>
-<div id="function-hsstringtodouble" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsstringtodouble" class="anchor"></a>Function hsStringToDouble()</h3>
-</div>
-<div id="function-hssystem" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hssystem" class="anchor"></a>Function hsSystem()</h3>
-</div>
-<div id="function-insertcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-insertcolumns" class="anchor"></a>Function insertColumns()</h3>
-</div>
-<div id="function-lastelement" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-lastelement" class="anchor"></a>Function lastElement()</h3>
-</div>
-<div id="function-limittorange" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-limittorange" class="anchor"></a>Function limitToRange()</h3>
-</div>
-<div id="function-linearcombination" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-linearcombination" class="anchor"></a>Function linearCombination()</h3>
-</div>
-<div id="function-listobjects" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-listobjects" class="anchor"></a>Function listObjects()</h3>
-</div>
-<div id="function-loadobject" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-loadobject" class="anchor"></a>Function loadObject()</h3>
-</div>
-<div id="function-makeunique" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-makeunique" class="anchor"></a>Function makeUnique()</h3>
-</div>
-<div id="function-mergeall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-mergeall" class="anchor"></a>Function mergeAll()</h3>
-</div>
-<div id="function-mergelists" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-mergelists" class="anchor"></a>Function mergeLists()</h3>
-</div>
-<div id="function-mergenamedarrays" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-mergenamedarrays" class="anchor"></a>Function mergeNamedArrays()</h3>
-</div>
-<div id="function-movecolumnstofront" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-movecolumnstofront" class="anchor"></a>Function moveColumnsToFront()</h3>
-</div>
-<div id="function-movingsum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-movingsum" class="anchor"></a>Function movingSum()</h3>
-</div>
-<div id="function-msgavailablefields" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-msgavailablefields" class="anchor"></a>Function msgAvailableFields()</h3>
-</div>
-<div id="function-mysystemtime" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-mysystemtime" class="anchor"></a>Function mySystemTime()</h3>
-</div>
-<div id="function-namebyelement" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-namebyelement" class="anchor"></a>Function nameByElement()</h3>
-</div>
-<div id="function-natolastnonna" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-natolastnonna" class="anchor"></a>Function naToLastNonNa()</h3>
-</div>
-<div id="function-nofactordataframe" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-nofactordataframe" class="anchor"></a>Function noFactorDataFrame()</h3>
-</div>
-<div id="function-objectsize" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-objectsize" class="anchor"></a>Function objectSize()</h3>
-</div>
-<div id="function-parallelnonna" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-parallelnonna" class="anchor"></a>Function parallelNonNA()</h3>
-</div>
-<div id="function-pastecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-pastecolumns" class="anchor"></a>Function pasteColumns()</h3>
-</div>
-<div id="function-pastecolumns0" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-pastecolumns0" class="anchor"></a>Function pasteColumns0()</h3>
-</div>
-<div id="function-percentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-percentage" class="anchor"></a>Function percentage()</h3>
-</div>
-<div id="function-percentageofmaximum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-percentageofmaximum" class="anchor"></a>Function percentageOfMaximum()</h3>
-</div>
-<div id="function-percentageofsum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-percentageofsum" class="anchor"></a>Function percentageOfSum()</h3>
-</div>
-<div id="function-posixcolumnatposition" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-posixcolumnatposition" class="anchor"></a>Function posixColumnAtPosition()</h3>
-</div>
-<div id="function-preparepdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-preparepdf" class="anchor"></a>Function preparePdf()</h3>
-</div>
-<div id="function-preparepdfif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-preparepdfif" class="anchor"></a>Function preparePdfIf()</h3>
-</div>
-<div id="function-printif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-printif" class="anchor"></a>Function printIf()</h3>
-</div>
-<div id="function-quotient" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-quotient" class="anchor"></a>Function quotient()</h3>
-</div>
-<div id="function-randommatrix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-randommatrix" class="anchor"></a>Function randomMatrix()</h3>
-</div>
-<div id="function-randomvalueswithsum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-randomvalueswithsum" class="anchor"></a>Function randomValuesWithSum()</h3>
-</div>
-<div id="function-rbindall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-rbindall" class="anchor"></a>Function rbindAll()</h3>
-</div>
-<div id="function-readarglists" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readarglists" class="anchor"></a>Function readArglists()</h3>
-</div>
-<div id="function-readcsvinputfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readcsvinputfile" class="anchor"></a>Function readCsvInputFile()</h3>
-</div>
-<div id="function-readdictionaries" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readdictionaries" class="anchor"></a>Function readDictionaries()</h3>
-</div>
-<div id="function-readdictionary" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readdictionary" class="anchor"></a>Function readDictionary()</h3>
-</div>
-<div id="function-readpackagefile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readpackagefile" class="anchor"></a>Function readPackageFile()</h3>
-</div>
-<div id="function-recursivenames" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-recursivenames" class="anchor"></a>Function recursiveNames()</h3>
-</div>
-<div id="function-recycle" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-recycle" class="anchor"></a>Function recycle()</h3>
-</div>
-<div id="function-relativecumulatedsum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-relativecumulatedsum" class="anchor"></a>Function relativeCumulatedSum()</h3>
-</div>
-<div id="function-removeattributes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removeattributes" class="anchor"></a>Function removeAttributes()</h3>
-</div>
-<div id="function-removecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removecolumns" class="anchor"></a>Function removeColumns()</h3>
-</div>
-<div id="function-removeelements" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removeelements" class="anchor"></a>Function removeElements()</h3>
-</div>
-<div id="function-removeemptycolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removeemptycolumns" class="anchor"></a>Function removeEmptyColumns()</h3>
-</div>
-<div id="function-renameandselect" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-renameandselect" class="anchor"></a>Function renameAndSelect()</h3>
-</div>
-<div id="function-renamecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-renamecolumns" class="anchor"></a>Function renameColumns()</h3>
-</div>
-<div id="function-resetrownames" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-resetrownames" class="anchor"></a>Function resetRowNames()</h3>
-</div>
-<div id="function-resolve" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-resolve" class="anchor"></a>Function resolve()</h3>
-</div>
-<div id="function-resolveall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-resolveall" class="anchor"></a>Function resolveAll()</h3>
-</div>
-<div id="function-revertlistassignments" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-revertlistassignments" class="anchor"></a>Function revertListAssignments()</h3>
-</div>
-<div id="function-roundcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-roundcolumns" class="anchor"></a>Function roundColumns()</h3>
-</div>
-<div id="function-roworcolumnwisepercentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-roworcolumnwisepercentage" class="anchor"></a>Function rowOrColumnwisePercentage()</h3>
-</div>
-<div id="function-rowwisepercentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-rowwisepercentage" class="anchor"></a>Function rowwisePercentage()</h3>
-</div>
-<div id="function-rstylepath" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-rstylepath" class="anchor"></a>Function rStylePath()</h3>
-</div>
-<div id="function-runbatchfileindirectory" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-runbatchfileindirectory" class="anchor"></a>Function runBatchfileInDirectory()</h3>
-</div>
-<div id="function-runindirectory" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-runindirectory" class="anchor"></a>Function runInDirectory()</h3>
-</div>
-<div id="function-safecolumnbind" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-safecolumnbind" class="anchor"></a>Function safeColumnBind()</h3>
-</div>
-<div id="function-safemerge" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-safemerge" class="anchor"></a>Function safeMerge()</h3>
-</div>
-<div id="function-safepath" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-safepath" class="anchor"></a>Function safePath()</h3>
-</div>
-<div id="function-saferowbind" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-saferowbind" class="anchor"></a>Function safeRowBind()</h3>
-</div>
-<div id="function-saferowbindall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-saferowbindall" class="anchor"></a>Function safeRowBindAll()</h3>
-</div>
-<div id="function-saferowbindoflistelements" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-saferowbindoflistelements" class="anchor"></a>Function safeRowBindOfListElements()</h3>
-</div>
-<div id="function-selectcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-selectcolumns" class="anchor"></a>Function selectColumns()</h3>
-</div>
-<div id="function-selectelements" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-selectelements" class="anchor"></a>Function selectElements()</h3>
-</div>
-<div id="function-setcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-setcolumns" class="anchor"></a>Function setColumns()</h3>
-</div>
-<div id="function-setloaded" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-setloaded" class="anchor"></a>Function setLoaded()</h3>
-</div>
-<div id="function-setmatrixcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-setmatrixcolumns" class="anchor"></a>Function setMatrixColumns()</h3>
-</div>
-<div id="function-sourcescripts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-sourcescripts" class="anchor"></a>Function sourceScripts()</h3>
-</div>
-<div id="function-splitalongdim" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-splitalongdim" class="anchor"></a>Function splitAlongDim()</h3>
-</div>
-<div id="function-splitintofixsizedblocks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-splitintofixsizedblocks" class="anchor"></a>Function splitIntoFixSizedBlocks()</h3>
-</div>
-<div id="function-startstoends" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-startstoends" class="anchor"></a>Function startsToEnds()</h3>
-</div>
-<div id="function-startstoranges" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-startstoranges" class="anchor"></a>Function startsToRanges()</h3>
-</div>
-<div id="function-stopifnotmatrix" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-stopifnotmatrix" class="anchor"></a>Function stopIfNotMatrix()</h3>
-</div>
-<div id="function-tablelookup" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tablelookup" class="anchor"></a>Function tableLookup()</h3>
-</div>
-<div id="function-tempsubdirectory" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tempsubdirectory" class="anchor"></a>Function tempSubdirectory()</h3>
-</div>
-<div id="function-tofactor" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tofactor" class="anchor"></a>Function toFactor()</h3>
-</div>
-<div id="function-toformula" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-toformula" class="anchor"></a>Function toFormula()</h3>
-</div>
-<div id="function-toinches" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-toinches" class="anchor"></a>Function toInches()</h3>
-</div>
-<div id="function-tokeysandvalues" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tokeysandvalues" class="anchor"></a>Function toKeysAndValues()</h3>
-</div>
-<div id="function-tolookupclass" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tolookupclass" class="anchor"></a>Function toLookupClass()</h3>
-</div>
-<div id="function-tolookuplist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tolookuplist" class="anchor"></a>Function toLookupList()</h3>
-</div>
-<div id="function-tolookuptable" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tolookuptable" class="anchor"></a>Function toLookupTable()</h3>
-</div>
-<div id="function-tonamedlist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tonamedlist" class="anchor"></a>Function toNamedList()</h3>
-</div>
-<div id="function-topositiveindices" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-topositiveindices" class="anchor"></a>Function toPositiveIndices()</h3>
-</div>
-<div id="function-underscoretopercent" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-underscoretopercent" class="anchor"></a>Function underscoreToPercent()</h3>
-</div>
-<div id="function-unmerge" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-unmerge" class="anchor"></a>Function unmerge()</h3>
-</div>
-<div id="function-user" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-user" class="anchor"></a>Function user()</h3>
-</div>
-<div id="function-warnifempty" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-warnifempty" class="anchor"></a>Function warnIfEmpty()</h3>
-</div>
-<div id="function-warningdeprecated" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-warningdeprecated" class="anchor"></a>Function warningDeprecated()</h3>
-</div>
-<div id="function-windowspath" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-windowspath" class="anchor"></a>Function windowsPath()</h3>
-</div>
-<div id="function-writedictionary" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-writedictionary" class="anchor"></a>Function writeDictionary()</h3>
-</div>
-<div id="function-writetext" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-writetext" class="anchor"></a>Function writeText()</h3>
-</div>
+<ul>
+<li><p><a href="functions_logical.html">Functions Returning Logical</a></p></li>
+<li><p><a href="functions_string.html">String Functions</a></p></li>
+<li><p><a href="functions_in_out.html">Input and Output Functions</a></p></li>
+<li><p><a href="functions_stats.html">Mathematical or Statistical Functions</a></p></li>
+<li><p><a href="functions_data_frame.html">Functions Working on Data Frames</a></p></li>
+<li><p><a href="functions_list.html">Functions Working on Lists</a></p></li>
+<li><p><a href="functions_array.html">Array/Matrix Functions</a></p></li>
+<li><p><a href="functions_vector.html">Vector Functions</a></p></li>
+<li><p><a href="functions_object.html">General Object Functions</a></p></li>
+<li><p><a href="functions_conversion.html">Conversion Functions</a></p></li>
+<li><p><a href="functions_if.html">Shortcut Functions to if-statements</a></p></li>
+<li><p><a href="functions_system.html">Operating System Functions</a></p></li>
+<li><p><a href="functions_check.html">Check Functions</a>: Functions that check for prerequisites</p></li>
+<li><p><a href="functions_debug.html">Debug Functions</a></p></li>
+<li><p><a href="functions_debug.html">Compare Objects</a></p></li>
+<li><p><a href="functions_call.html">Calling Functions</a></p></li>
+<li><p><a href="functions_crypto.html">Cryptographic Functions</a></p></li>
+<li><p><a href="functions_dictionary.html">Grammar/Dictionary Functions</a></p></li>
+<li><p><a href="functions_ungrouped.html">Non-Categorised Functions</a></p></li>
+</ul>
 </div>
   </div>
 
@@ -911,8 +197,6 @@ common &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="d
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#how-to-get-an-overview-of-functions-in-a-package">How to get an overview of functions in a package?</a></li>
-      <li><a href="#grouped-functions">Grouped Functions</a></li>
-      <li><a href="#ungrouped-functions">Ungrouped Functions</a></li>
       </ul>
 </div>
       </div>
