@@ -20,10 +20,19 @@ knitr::opts_chunk$set(
 ```
 
 Today is a good day to start documenting what this package (kwb.utils) can be
-used for. I would like to start with a complete list of the names of the
+used for. 
+
+## Intention
+
+The main purpose of the package "kwb.utils" is to provide functions that allow
+for writing cleaner and safer code. One main characteristic of clean code is
+that it is free or at least almost free of duplication. This is a very hard goal
+to achieve! But we should try our best!
+
+I would like to start with a complete list of the names of the
 functions that are contained in this package. But how can I get such a list?
 
-## How to get an overview of functions in a package?
+## How to get a list of functions in a package?
 
 In fact, I do not know (any more) how to achieve this. However, I know that this
 package contains a function `assignPackageObjects()` that copies all the objects
@@ -50,47 +59,122 @@ length(object_names)
 Wow! There are `r length(object_names)` objects (functions) defined in this
 package. So where should I start? 
 
-Let's have a look at the first six functions:
+To make it somehow scientific, let's have a look at the distribution of the
+function names, grouped by their first letter:
 
 ```{r}
-head(object_names)
+letter_distribution <- table(substr(sort(tolower(object_names)), 1, 1))
+barplot(letter_distribution, horiz = TRUE, las = 1)
 ```
 
-* [Functions Returning Logical](functions_logical.html)
+Even though not the highest peak, there are a lot of function names starting
+with `h`. Among these are functions that are prefixed by `hs`. We could find the
+names of these functions with the function `stringStartsWith()`, that is
+provided in this package (see [String Functions](#string), below). As, since R
+version 3.3.0, there is a function `startsWith()` in base R, we should use that
+one instead:
 
-* [String Functions](functions_string.html)
+```{r}
+object_names[startsWith(object_names, "hs")]
+```
 
-* [Input and Output Functions](functions_in_out.html)
+The functions prefixed by `hs` are the oldest. When I started writing functions,
+I thought that it is important to indicate that these functions are user-defined
+functions, as opposed to base R functions. Reading the book `Clean Code` by
+Robert C. Martin convinced me to use clean names that can be pronounced easily.
 
-* [Mathematical or Statistical Functions](functions_stats.html)
+## Functions by Category
 
-* [Functions Working on Data Frames](functions_data_frame.html)
+I tried to group all package functions per topic or per type of object that they
+either work on or return. These groups are listed below and described in further
+detail in one dedicated article per group.
 
-* [Functions Working on Lists](functions_list.html)
+### Functions Returning Logical {#logical}
 
-* [Array/Matrix Functions](functions_array.html)
+These functions take different types of arguments as input but have all in
+common that they return a vector of logical. Some of these functions are just a
+shortcut to a rather long expression aiming at making the code more readable and
+avoiding duplication, such as `allAreEqual()`, `allAreIdentical()`,
+`almostEqual()`, `isNaOrEmpty()` or `isNullOrEmpty()`. Others do more complex
+things, such as `matchesCriteria()` that evaluates a set of conditions on a data
+frame, returning `TRUE` or `FALSE` depending on whether a row matches all
+conditions or not. Another more complex function is `hsValidValue()` that checks
+if a vector of character seems to contain numerical values.
 
-* [Vector Functions](functions_vector.html)
+For details, see [Functions Returning Logical](functions_logical.html).
 
-* [General Object Functions](functions_object.html)
+### String Functions {#string}
 
-* [Conversion Functions](functions_conversion.html)
+The functions prefixed by `string` are wrappers around some simple `grep`
+expressions and exist since a former trainee asked me to provide these
+functions. 
 
-* [Shortcut Functions to if-statements](functions_if.html)
+For details, see [String Functions](functions_string.html).
 
-* [Operating System Functions](functions_system.html)
+### Input and Output Functions
 
-* [Check Functions](functions_check.html): Functions that check for 
-  prerequisites
+For details, see [Input and Output Functions](functions_in_out.html).
 
-* [Debug Functions](functions_debug.html)
+### Mathematical or Statistical Functions
 
-* [Compare Objects](functions_debug.html)
+For details, see [Mathematical or Statistical Functions](functions_stats.html).
 
-* [Calling Functions](functions_call.html)
+### Functions Working on Data Frames
 
-* [Cryptographic Functions](functions_crypto.html)
+For details, see [Functions Working on Data Frames](functions_data_frame.html).
 
-* [Grammar/Dictionary Functions](functions_dictionary.html)
+### Functions Working on Lists
 
-* [Non-Categorised Functions](functions_ungrouped.html)
+For details, see [Functions Working on Lists](functions_list.html).
+
+### Array/Matrix Functions
+
+For details, see [Array/Matrix Functions](functions_array.html).
+
+### Vector Functions
+
+For details, see [Vector Functions](functions_vector.html).
+
+### General Object Functions
+
+For details, see [General Object Functions](functions_object.html).
+
+### Conversion Functions
+
+For details, see [Conversion Functions](functions_conversion.html).
+
+### Shortcut Functions to if-statements
+
+For details, see [Shortcut Functions to if-statements](functions_if.html).
+
+### Operating System Functions
+
+For details, see [Operating System Functions](functions_system.html).
+
+### Check Functions
+
+For details, see [Check Functions](functions_check.html).: Functions that check for prerequisites
+
+### Debug Functions
+
+For details, see [Debug Functions](functions_debug.html).
+
+### Compare Objects
+
+For details, see [Compare Objects](functions_debug.html).
+
+### Calling Functions
+
+For details, see [Calling Functions](functions_call.html).
+
+### Cryptographic Functions
+
+For details, see [Cryptographic Functions](functions_crypto.html).
+
+### Grammar/Dictionary Functions
+
+For details, see [Grammar/Dictionary Functions](functions_dictionary.html).
+
+### Non-Categorised Functions
+
+For details, see [Non-Categorised Functions](functions_ungrouped.html).

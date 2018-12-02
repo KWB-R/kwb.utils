@@ -20,7 +20,7 @@ articles:
   functions_system: functions_system.html
   functions_ungrouped: functions_ungrouped.html
   functions_vector: functions_vector.html
-  tutorial: tutorial.html
+  overview: overview.html
 urls:
   reference: https://kwb-r.github.io/kwb.utils/reference
   article: https://kwb-r.github.io/kwb.utils/articles

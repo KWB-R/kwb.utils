@@ -18,11 +18,6 @@ knitr::opts_chunk$set(
 
 ### Function `arglist()`
 
-The main purpose of the package "kwb.utils" is to provide functions that allow
-for writing cleaner and safer code. One main characteristic of clean code is
-that it is free or at least almost free of duplication. This is a very hard goal 
-to achieve! But we should try our best!
-
 Have you ever seen something like the following?
 
 ```{r}

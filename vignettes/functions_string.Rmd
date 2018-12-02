@@ -92,5 +92,10 @@ kwb.utils::defaultLevels(c(1.5, 4.5, 10.5), step = 1.5)
 ### Function stringEndsWith()
 ### Function stringList()
 ### Function stringStartsWith()
+
+Returns `TRUE` for character strings starting with a given prefix. Since R 
+version 3.3.0 there is a function `startsWith()` in base R so that there is no 
+need to use my function any more. What a pity.
+
 ### Function stringToExpression()
 ### Function subExpressionMatches()
