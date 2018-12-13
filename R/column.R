@@ -160,7 +160,8 @@ dropUnusedFactorLevels <- function(data, dbg = TRUE)
       
       catAndRun(
         sprintf("Removing unused factors from %s$%s", data_name, column),
-        data[[column]] <- droplevels(data[[column]])
+        data[[column]] <- droplevels(data[[column]]),
+        dbg = dbg
       )
     }
     
