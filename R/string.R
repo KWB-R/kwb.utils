@@ -1,3 +1,28 @@
+# createIdAlong ----------------------------------------------------------------
+
+#' Create Unique Identifiers along Input Vector
+#' 
+#' This function helps you create strings that can be used as identifiers. 
+#' 
+#' @param x vector of objects for which to create identifiers
+#' @param base_name base string to which the hexadecimal suffixes are to be
+#'   appended. By default the name of the object \code{x}, with "s" at the
+#'   end removed, is used. For example, passing a vector called "files" to this
+#'   function results in ids "file_01", "file_02", ...
+#' @return vector of character as long as \code{x}
+#' @examples 
+#' # Create ids for 32 numbers
+#' createIdAlong(1:32, "number")
+#' # Take base name from x, with the plural's "s" removed
+#' numbers <- 1:32
+#' createIdAlong(numbers)
+createIdAlong <- function(x, base_name = NULL)
+{
+  base_name <- defaultIfNULL(base_name, gsub("s$", "", deparse(substitute(x))))
+  
+  sprintf("%s_%02x", base_name, seq_along(x))
+}
+
 # removeExtension --------------------------------------------------------------
 
 #' Remove File Name Extension

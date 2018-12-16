@@ -36,6 +36,7 @@ reference:
       - appendSuffix
       - collapsed
       - commaCollapsed
+      - createIdAlong
       - defaultLevels
       - extractSubstring
       - frenchToAscii
