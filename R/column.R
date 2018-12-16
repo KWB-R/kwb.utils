@@ -9,8 +9,6 @@
 #' 
 #' @return \code{data} with renamed columns
 #' 
-#' @export
-#' 
 #' @examples
 #' d1 <- data.frame(id = 1, a = 2, b = 3)
 #' d2 <- data.frame(id = 1, c = 2, d = 3)
@@ -96,8 +94,6 @@ checkForMissingColumns <- function(
 #' @return \code{df} with \code{column} converted to class \code{Date} with
 #'   \code{as.Date}
 #'   
-#' @export
-#' 
 #' @examples
 #' df <- data.frame(id = 1:2, date = c("2018-10-23", "2018-10-23"))
 #' str(df)
