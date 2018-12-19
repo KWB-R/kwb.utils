@@ -1,3 +1,33 @@
+# getElementLengths ------------------------------------------------------------
+
+#' Get the Lenghts of List Elements
+#'
+#' @param x a list
+#' @return vector of integer
+#' @examples 
+#' x <- list(a = 1:3, b = list(x = 1, y = 2), c = 1:100)
+#' getElementLengths(x)
+#' 
+getElementLengths <- function(x)
+{
+  if (! is.list(x)) {
+    
+    stop_(sprintf(
+      "The object '%s' given to getElementLengths() is not a list but: '%s'",
+      deparse(substitute(x)), mode(x)
+    ))
+  }
+  
+  if (length(x) == 0) {
+    
+    integer()
+    
+  } else {
+    
+    sapply(x, length)
+  }
+}
+
 # getPathsAndValuesFromRecursiveList -------------------------------------------
 
 #' Get Paths and String Values from Recursive List

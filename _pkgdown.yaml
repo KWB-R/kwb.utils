@@ -141,6 +141,7 @@ reference:
     contents:
       - copyListElements
       - excludeNULL
+      - getElementLengths
       - getPathsAndValuesFromRecursiveList
       - mergeLists
       - nameByElement
