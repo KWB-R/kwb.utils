@@ -12,7 +12,7 @@ getElementLengths <- function(x)
 {
   if (! is.list(x)) {
     
-    stop_(sprintf(
+    stop(call. = FALSE, sprintf(
       "The object '%s' given to getElementLengths() is not a list but: '%s'",
       deparse(substitute(x)), mode(x)
     ))
