@@ -1,3 +1,63 @@
+# intToNumeralSystem -----------------------------------------------------------
+
+#' Convert Integers to Numeral System
+#' 
+#' @param x vector of integers
+#' @param base base of the numeral system
+#' @return matrix with as many rows as there are elements in \code{x} and as 
+#'   many columns as digits that are required to represent the integers in 
+#'   \code{x} in the numeral system in base \code{base}. The elements of 
+#'   \code{x} appear as row names whereas the powers of \code{base} appear as
+#'   column names.
+#' @examples
+#' intToNumeralSystem(1:16, base = 2) # binary system
+#' intToNumeralSystem(1:16, base = 10) # decimal system
+#' intToNumeralSystem(1:16, base = 8) # octal system
+intToNumeralSystem <- function(x, base) 
+{
+  stopifnot(is.integer(x))
+  
+  maxi <- max(x)
+  
+  ref <- 1
+  
+  max_power <- 0
+  
+  while (maxi >= ref) {
+    
+    ref <- ref * base
+    max_power <- max_power + 1
+  }
+  
+  ref <- ref / base
+  max_power <- max_power - 1
+  
+  result <- createMatrix(
+    rowNames = as.character(x), 
+    colNames = as.character(rev(base^(0:max_power))), 
+    value = 0L
+  )
+  
+  power <- max_power
+  
+  while (power > 0) {
+    
+    (multiple <- x %/% ref)
+    
+    result[, max_power - power + 1] <- multiple
+    
+    (x <- x - multiple * ref)
+    
+    (ref <- ref / base)
+    
+    (power <- power - 1)
+  }
+  
+  result[, max_power + 1] <- x
+  
+  result
+}
+
 # toFactor ---------------------------------------------------------------------
 
 #' Convert to Factor with unique Values as Levels

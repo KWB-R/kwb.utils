@@ -1,7 +1,8 @@
-2018-12-16
-==========
+2018-12
+=======
 
-* new: createIdAlong()
+* new: intToNumeralSystem() (2018-12-21)
+* new: createIdAlong() (2018-12-16)
 
 2018-10-22
 ==========

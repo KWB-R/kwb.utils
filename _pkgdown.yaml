@@ -191,6 +191,7 @@ reference:
       - hsStringToDate
       - hsStringToDouble
       - hsMatrixToListForm
+      - intToNumeralSystem
       - naToLastNonNa
       - startsToEnds
       - startsToRanges

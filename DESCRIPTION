@@ -15,7 +15,7 @@ Description: This package contains some small helper functions that aim at
     improving the quality of code developed at Kompetenzzentrum Wasser gGmbH
     (KWB).
 License: MIT + file LICENSE
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 URL: https://github.com/kwb-r/kwb.utils
 BugReports: https://github.com/kwb-r/kwb.utils/issues
 VignetteBuilder: knitr
