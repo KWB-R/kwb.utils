@@ -163,6 +163,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/csvTextToDataFrame.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/decode.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIfNA.html</loc>
   </url>
   <url>
@@ -203,6 +206,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dropUnusedFactorLevels.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/encode.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/enlargeVector.html</loc>
@@ -488,6 +494,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/printIf.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/printable_chars.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/quotient.html</loc>
