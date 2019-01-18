@@ -10,9 +10,9 @@ toFactor(x)
 \item{x}{vector to be converted to factor}
 }
 \description{
-In contrast to the default behaviour of \code{\link[base]{as.factor}}, this 
-function uses the unsorted unique values of \code{x} as levels and not sorted
-unique values.
+In contrast to the default behaviour of \code{base::as.factor}, this function
+uses the unsorted unique values of \code{x} as levels and not sorted unique
+values.
 }
 \examples{
 x <- c("b", "c", "a")

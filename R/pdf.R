@@ -149,7 +149,7 @@ finishAndShowPdfIf <- function(to.pdf, PDF, ...)
 #' PDF viewer
 #' 
 #' @param PDF full path to the PDF file to be opened in the PDF Viewer
-#' @param which passed to \code{\link[grDevices]{dev.off}}
+#' @param which passed to \code{grDevices::dev.off}
 #' @param \dots further arguments passed to \code{hsShowPdf}
 #' 
 finishAndShowPdf <- function(PDF, which = grDevices::dev.cur(), ...)

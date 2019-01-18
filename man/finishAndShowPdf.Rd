@@ -9,7 +9,7 @@ finishAndShowPdf(PDF, which = grDevices::dev.cur(), ...)
 \arguments{
 \item{PDF}{full path to the PDF file to be opened in the PDF Viewer}
 
-\item{which}{passed to \code{\link[grDevices]{dev.off}}}
+\item{which}{passed to \code{grDevices::dev.off}}
 
 \item{\dots}{further arguments passed to \code{hsShowPdf}}
 }

@@ -62,9 +62,9 @@ intToNumeralSystem <- function(x, base)
 
 #' Convert to Factor with unique Values as Levels
 #' 
-#' In contrast to the default behaviour of \code{\link[base]{as.factor}}, this 
-#' function uses the unsorted unique values of \code{x} as levels and not sorted
-#' unique values.
+#' In contrast to the default behaviour of \code{base::as.factor}, this function
+#' uses the unsorted unique values of \code{x} as levels and not sorted unique
+#' values.
 #' 
 #' @param x vector to be converted to factor
 #' 

@@ -11,13 +11,13 @@ readPackageFile(file, package, stringsAsFactors = FALSE, ...)
 
 \item{package}{name of the package from which to read the file}
 
-\item{stringsAsFactors}{passed to \code{\link[utils]{read.csv}} (default:
+\item{stringsAsFactors}{passed to \code{utils::read.csv} (default:
 \code{FALSE})}
 
-\item{\dots}{further arguments passed to \code{\link[utils]{read.csv}}}
+\item{\dots}{further arguments passed to \code{utils::read.csv}}
 }
 \value{
-result of reading \code{file} with \code{\link[utils]{read.csv}}
+result of reading \code{file} with \code{utils::read.csv}
 }
 \description{
 Read File from Package's extdata Folder
