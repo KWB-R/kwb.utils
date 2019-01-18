@@ -37,8 +37,11 @@
 #'   new line after \code{messageText}, 2: new line after "ok.", 3: new line
 #'   after both, \code{messageText} and "ok."
 #' @param dbg logical. If \code{FALSE}, output is suppressed.
-#' 
-#' @return This function returns the evaluation of \code{expr}.
+#' @param log_time logical. If \code{TRUE}, the time elapsed during the 
+#'   evaluation of \code{expr} is printed.
+#' @return This function returns the evaluation of \code{expr}. The result is
+#'   returned invisibly so that the result of an assignment as the last 
+#'   expression in \code{exprt} does not show up on the console.
 #' 
 #' @examples
 #' for (newLine in 0:3) {
@@ -50,20 +53,24 @@
 #'   cat("here.\n\n")
 #' }
 catAndRun <- function(
-  messageText = "Running code", expr, newLine = 2L, dbg = TRUE
+  messageText = "Running code", expr, newLine = 2L, dbg = TRUE, log_time = TRUE
 )
 {
   catIf(dbg, messageText, "... ")
   
   catNewLineIf(dbg && bitwAnd(newLine, 1))
   
-  result <- eval(expr, envir = -1)
+  start_time <- Sys.time()
   
+  result <- eval(expr, envir = -1)
+
   catIf(dbg, "ok. ")
+  
+  catIf(dbg && log_time, sprintf("(%0.2fs) ", Sys.time() - start_time))
   
   catNewLineIf(dbg && bitwAnd(newLine, 2))
   
-  result
+  invisible(result)
 }
 
 # catIf ------------------------------------------------------------------------
@@ -350,11 +357,11 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
 #' 
 #' @param file name of file (without path)
 #' @param package name of the package from which to read the file
-#' @param stringsAsFactors passed to \code{\link[utils]{read.csv}} (default:
+#' @param stringsAsFactors passed to \code{utils::read.csv} (default:
 #'   \code{FALSE})
-#' @param \dots further arguments passed to \code{\link[utils]{read.csv}}
+#' @param \dots further arguments passed to \code{utils::read.csv}
 #' 
-#' @return result of reading \code{file} with \code{\link[utils]{read.csv}}
+#' @return result of reading \code{file} with \code{utils::read.csv}
 #' 
 readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 {

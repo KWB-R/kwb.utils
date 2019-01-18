@@ -1,6 +1,7 @@
 2018-12
 =======
 
+* add arg "log_time" to catAndRun() (2019-01-18)
 * remove non-existing links in documentation (2019-01-18)
 * new: encode(), decode(), printable_chars() (2019-01-03)
 * new: intToNumeralSystem() (2018-12-21)
