@@ -189,7 +189,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>catAndRun</span>(<span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>, <span class='no'>expr</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>log_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,11 +213,18 @@ after both, <code>messageText</code> and "ok."</p></td>
       <th>dbg</th>
       <td><p>logical. If <code>FALSE</code>, output is suppressed.</p></td>
     </tr>
+    <tr>
+      <th>log_time</th>
+      <td><p>logical. If <code>TRUE</code>, the time elapsed during the 
+evaluation of <code>expr</code> is printed.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function returns the evaluation of <code>expr</code>.</p>
+    <p>This function returns the evaluation of <code>expr</code>. The result is
+  returned invisibly so that the result of an assignment as the last 
+  expression in <code>exprt</code> does not show up on the console.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -230,22 +237,22 @@ after both, <code>messageText</code> and "ok."</p></td>
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cat'>cat</a></span>(<span class='st'>"here.\n\n"</span>)
 }</div><div class='output co'>#&gt; work hard ... hard
 #&gt; working
-#&gt; ok. here.
+#&gt; ok. (0.00s) here.
 #&gt; 
 #&gt; work hard ... 
 #&gt; hard
 #&gt; working
-#&gt; ok. here.
+#&gt; ok. (0.00s) here.
 #&gt; 
 #&gt; work hard ... hard
 #&gt; working
-#&gt; ok. 
+#&gt; ok. (0.00s) 
 #&gt; here.
 #&gt; 
 #&gt; work hard ... 
 #&gt; hard
 #&gt; working
-#&gt; ok. 
+#&gt; ok. (0.00s) 
 #&gt; here.
 #&gt; </div></pre>
   </div>
