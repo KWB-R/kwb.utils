@@ -5,7 +5,7 @@
 \title{Print Debug Messages Before and After Running Code}
 \usage{
 catAndRun(messageText = "Running code", expr, newLine = 2L,
-  dbg = TRUE)
+  dbg = TRUE, log_time = TRUE)
 }
 \arguments{
 \item{messageText}{text to be printed before running the code}
@@ -18,9 +18,14 @@ new line after \code{messageText}, 2: new line after "ok.", 3: new line
 after both, \code{messageText} and "ok."}
 
 \item{dbg}{logical. If \code{FALSE}, output is suppressed.}
+
+\item{log_time}{logical. If \code{TRUE}, the time elapsed during the 
+evaluation of \code{expr} is printed.}
 }
 \value{
-This function returns the evaluation of \code{expr}.
+This function returns the evaluation of \code{expr}. The result is
+  returned invisibly so that the result of an assignment as the last 
+  expression in \code{exprt} does not show up on the console.
 }
 \description{
 Print Debug Messages Before and After Running Code
