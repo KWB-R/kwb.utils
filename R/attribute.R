@@ -10,11 +10,11 @@
 #'   the vector of existing class names, otherwise appended to the end of the
 #'   vector
 #' @param dbg if \code{TRUE} (default), debug messages are shown.
-#' 
 #' @return \code{x} with the \code{class} attributed extended by
 #'   \code{className} (only if \code{x} did not yet inherit from
 #'   \code{className})
-#'
+#' @export
+#' 
 addClass <- function(x, className, first = TRUE, dbg = FALSE)
 {
   # Extend the class attribute if x does not yet inherit from the class of the
@@ -48,7 +48,8 @@ addClass <- function(x, className, first = TRUE, dbg = FALSE)
 #' @param x object
 #' @param attribs former attributes of x (as retrieved by attributes(x)) to be
 #'   restored
-#'   
+#' @export
+#' 
 hsRestoreAttributes <- function(x, attribs)
 {
   for (attrib in setdiff(names(attribs), names(attributes(x)))) {
@@ -70,7 +71,8 @@ hsRestoreAttributes <- function(x, attribs)
 #' @param attributeName name of the attribute to be returned
 #' @param do.stop if \code{TRUE} (default) an error is raised if the attribute
 #'   does not exist.
-#'   
+#' @export
+#' 
 getAttribute <- function(x, attributeName, do.stop = TRUE)
 {
   attributeNames <- names(attributes(x))
@@ -94,8 +96,8 @@ getAttribute <- function(x, attributeName, do.stop = TRUE)
 #' @param x object
 #' @param names names of attributes to be removed. If \code{NULL} (default),
 #'   all attributes are removed.
-#' 
 #' @return \emph{x}, but with its attributes removed
+#' @export
 #' 
 removeAttributes <- function(x, names = NULL)
 {

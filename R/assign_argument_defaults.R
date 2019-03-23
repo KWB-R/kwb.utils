@@ -4,7 +4,7 @@
 #' 
 #' @param FUN a function (a closure or a primitive). If \code{FUN} is a
 #'   character string then the function with that name is found and used.
-#'   
+#' @export
 #' @examples 
 #' # Assign the default values of breakInSequence() in the global environment
 #' assignArgumentDefaults(kwb.utils::breakInSequence)
