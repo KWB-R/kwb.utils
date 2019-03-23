@@ -9,6 +9,7 @@
 #'   of summing up values within each group
 #' @return object of class \code{xtabs} with as many dimensions as there are
 #'   values in \code{by}
+#' @export
 #' @examples
 #' # Create a data frame with example data
 #' x <- data.frame(
@@ -38,8 +39,8 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
 #' 
 #' @param data data frame
 #' @param column column name
-#' 
 #' @return number of \code{NA} in \code{column} of \code{data}
+#' @export
 #' 
 countNaInColumn <- function(data, column)
 {
@@ -59,12 +60,11 @@ countNaInColumn <- function(data, column)
 #'   (x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]) / n
 #' @param na.rm logical. Should missing values (including NaN) be omitted from
 #'   the calculations?
-#'   
 #' @return Vector of moving means with the same number of values as there are in
 #'   \emph{x}. If na.rm is FALSE, the first \emph{(n-1)/2} values and the last 
 #'   \emph{(n-1)/2} values are NA since there are not enough values at the start
 #'   and the end of the vector to calculate the mean.
-#' 
+#' @export
 #' @examples 
 #' x <- rnorm(30)
 #' 
@@ -94,13 +94,12 @@ hsMovingMean <- function(x, n, na.rm = FALSE)
 #'   x[i-(n-1)/2] + ... + x[i-1] + x[i] + x[i+1] + ... + x[i+(n-1)/2]
 #' @param na.rm logical. Should missing values (including NaN) be omitted from
 #'   the calculations?
-#'   
 #' @return Vector of moving sums with the same number of values as there are in
 #'   \code{x}. If \code{na.rm} is \code{FALSE}, the first \code{(n-1)/2} values 
 #'   and the last \code{(n-1)/2} values are NA since there are not enough values
 #'   at the start and at the end of the vector, respectively, to calculate the 
 #'   sum.
-#' 
+#' @export
 #' @examples 
 #' x <- rnorm(30)
 #' 
@@ -151,8 +150,8 @@ movingSum <- function(x, n, na.rm = FALSE)
 #' 
 #' @param x vector of numeric values
 #' @param na.rm passed to \code{max}
-#' 
 #' @return 100 * x / max(x)
+#' @export
 #' 
 percentageOfMaximum <- function(x, na.rm = TRUE)
 {
@@ -165,9 +164,8 @@ percentageOfMaximum <- function(x, na.rm = TRUE)
 #' 
 #' @param x vector of numeric values
 #' @param na.rm passed to \code{max}
-#' 
 #' @return 100 * x / sum(x)
-#' 
+#' @export
 #' @examples 
 #' p <- percentageOfSum(1:10)
 #' stopifnot(sum(p) == 100)
@@ -185,8 +183,8 @@ percentageOfSum <- function(x, na.rm = TRUE)
 #' 
 #' @param x numeric 
 #' @param basis numeric
-#' 
 #' @return 100 * x / basis
+#' @export
 #' 
 percentage <- function(x, basis)
 {
@@ -200,6 +198,7 @@ percentage <- function(x, basis)
 #' relative cumulated sum of a vector of values
 #' 
 #' @param values vector of numeric values
+#' @export
 #' 
 relativeCumulatedSum <- function(values) 
 {
@@ -222,7 +221,7 @@ relativeCumulatedSum <- function(values)
 #'   \code{NA}.
 #' @param digits number of digits (default: 1) to which the resulting 
 #'   percentages are to be rounded. Set to \code{NA} to suppress rounding
-#'   
+#' @export
 #' @examples 
 #' # Create a random matrix of integer values
 #' M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
@@ -258,7 +257,7 @@ columnwisePercentage <- function(x, default = 0, digits = 1)
 #'   \code{NA}.
 #' @param digits number of digits (default: 1) to which the resulting 
 #'   percentages are to be rounded. Set to \code{NA} to suppress rounding
-#'   
+#' @export
 #' @seealso \code{\link{rowwisePercentage}}, \code{\link{columnwisePercentage}} 
 #' 
 rowOrColumnwisePercentage <- function(x, rowwise, default = 0, digits = 1)
@@ -301,7 +300,7 @@ rowOrColumnwisePercentage <- function(x, rowwise, default = 0, digits = 1)
 #'   \code{NA}.
 #' @param digits number of digits (default: 1) to which the resulting 
 #'   percentages are to be rounded. Set to \code{NA} to suppress rounding
-#'   
+#' @export
 #' @examples 
 #' # Create a random matrix of integer values
 #' M1 <- matrix(sample(100, 12), nrow = 4, dimnames = list(LETTERS[1:4], 1:3))
@@ -338,6 +337,7 @@ rowwisePercentage <- function(x, default = 0, digits = 1)
 #' @param functionColumn if TRUE, a column containing the function name is
 #'   contained in the result data frame, otherwise the function names become the
 #'   row names of the result data frame
+#' @export
 #' 
 colStatistics <- function(
   dataFrame, functions = c("sum", "mean", "min", "max", "number.na", "length"),
@@ -388,7 +388,8 @@ colStatistics <- function(
 #'   values), "length" (number of values)
 #' @param na.rm if TRUE, NA values are removed before applying the statistical
 #'   function
-#'   
+#' @export
+#' 
 colStatisticOneFunction <- function(dataFrame, FUN, na.rm = FALSE)
 {
   if (FUN == "sum") {
@@ -432,6 +433,7 @@ colStatisticOneFunction <- function(dataFrame, FUN, na.rm = FALSE)
 #' 
 #' @param dataFrame data frame of which to calculate columnwise minima
 #' @param na.rm passed to the \code{min} function
+#' @export
 #' 
 colMinima <- function(dataFrame, na.rm = FALSE) 
 {
@@ -446,6 +448,7 @@ colMinima <- function(dataFrame, na.rm = FALSE)
 #' 
 #' @param dataFrame data frame of which to calculate columnwise maxima
 #' @param na.rm passed to the \code{max} function
+#' @export
 #' 
 colMaxima <- function(dataFrame, na.rm = FALSE) 
 {
@@ -459,6 +462,7 @@ colMaxima <- function(dataFrame, na.rm = FALSE)
 #' Calculate the number of NA values within each column
 #' 
 #' @param dataFrame data frame of which to calculate columnwise NA values
+#' @export
 #' 
 colNaNumbers <- function(dataFrame)
 {

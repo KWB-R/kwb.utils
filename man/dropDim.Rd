@@ -13,7 +13,7 @@ dropDim(x, dimension = which(dim(x) == 1))
 }
 \value{
 array with dimensions of which the numbers are given in
-\code{dimension} removed
+  \code{dimension} removed
 }
 \description{
 Drop Array Dimension(s) of Length One

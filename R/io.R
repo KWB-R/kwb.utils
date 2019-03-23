@@ -42,7 +42,7 @@
 #' @return This function returns the evaluation of \code{expr}. The result is
 #'   returned invisibly so that the result of an assignment as the last 
 #'   expression in \code{exprt} does not show up on the console.
-#' 
+#' @export
 #' @examples
 #' for (newLine in 0:3) {
 #'
@@ -52,6 +52,7 @@
 #'
 #'   cat("here.\n\n")
 #' }
+#' 
 catAndRun <- function(
   messageText = "Running code", expr, newLine = 2L, dbg = TRUE, log_time = TRUE
 )
@@ -79,6 +80,7 @@ catAndRun <- function(
 #' 
 #' @param condition if TRUE, cat is called, else not
 #' @param \dots arguments passed to cat
+#' @export
 #' 
 catIf <- function(condition, ...)
 {
@@ -95,6 +97,7 @@ catIf <- function(condition, ...)
 #' Call cat on character vector, pasted with collapse = <new line>
 #' 
 #' @param x vector of character representing text lines to be printed
+#' @export
 #' 
 catLines <- function(x)
 {
@@ -106,9 +109,9 @@ catLines <- function(x)
 #' Print New Line Character to the Console if Condition is Met
 #'
 #' @param condition if \code{TRUE} the new line is printed else not
-#'
 #' @return Returns the condition, invisibly so that it can be reused
-#'
+#' @export
+#' 
 catNewLineIf <- function(condition)
 {
   kwb.utils::catIf(condition, "\n")
@@ -120,6 +123,8 @@ catNewLineIf <- function(condition)
 
 #' Clear the R Console
 #' 
+#' @export
+#' 
 clearConsole <- function()
 {
   cat("\014\n")
@@ -130,9 +135,9 @@ clearConsole <- function()
 #' Check for nul String in File
 #' 
 #' @param filepath full path to file to be checked
-#' 
 #' @return \code{TRUE} if first two bytes of file are \code{<FF><FE>}, else 
 #'   \code{FALSE}
+#' @export
 #' 
 containsNulString <- function(filepath)
 {
@@ -146,6 +151,7 @@ containsNulString <- function(filepath)
 #' Deprecated. Use \code{\link{listObjects}} instead.
 #'  
 #' @param files.rdata vector of full paths to .RData files
+#' @export
 #' 
 getNamesOfObjectsInRDataFiles <- function(files.rdata)
 {
@@ -164,6 +170,7 @@ getNamesOfObjectsInRDataFiles <- function(files.rdata)
 #'   file is shown
 #' @return R object as specified in \emph{objectname}. If an object of that name does
 #'   not exist in the .RData file an error is thrown
+#' @export
 #' 
 getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 {
@@ -183,9 +190,8 @@ getObjectFromRDataFile <- function(file, objectname = NULL, dbg = TRUE)
 #' @param n total number of rows to be printed. 
 #' @param pattern pattern given to \code{sprintf} containing a \code{\%d}
 #'   placeholder to print the number of omitted rows
-#'   
 #' @return number of omitted rows, invisibly
-#' 
+#' @export
 #' @examples 
 #' x <- data.frame(number = 1:26, letter = LETTERS)
 #' headtail(x)
@@ -227,7 +233,7 @@ headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
 #' Get Names of Objects in .RData files
 #' 
 #' @param files vector of full paths to .RData files
-#' 
+#' @export
 #' @examples 
 #' ## Not run
 #'   
@@ -296,6 +302,7 @@ listObjects <- function(files)
 #'   file is shown
 #' @return R object as specified in \emph{objectname}. If an object of that name does
 #'   not exist in the .RData file an error is thrown
+#' @export
 #' 
 loadObject <- function(file, objectname = NULL, dbg = TRUE)
 {
@@ -340,6 +347,7 @@ loadObject <- function(file, objectname = NULL, dbg = TRUE)
 #' @param x object to be printed
 #' @param caption optional. Caption line to be printed with cat before printing
 #'   \emph{x}
+#' @export
 #' 
 printIf <- function(condition, x, caption = deparse(substitute(x)))
 {
@@ -362,6 +370,7 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
 #' @param \dots further arguments passed to \code{utils::read.csv}
 #' 
 #' @return result of reading \code{file} with \code{utils::read.csv}
+#' @export
 #' 
 readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 {
@@ -376,7 +385,7 @@ readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 #' 
 #' @param old_name name of deprecated function
 #' @param new_name name of new function to be used instead
-#' 
+#' @export
 #' @examples
 #' warningDeprecated("old_function()", "new_function()")
 #' 
@@ -402,9 +411,8 @@ warningDeprecated <- function(old_name, new_name)
 #'   "Writing <type>'file-path' ..."
 #' @param dbg if \code{TRUE}, debug messages are shown
 #' @param \dots further arguments passed to \code{\link{writeLines}}
-#'
 #' @return This function invisibly returns the path to the output \code{file}.
-#' 
+#' @export
 #' @examples
 #' # Define text to be written to file
 #' x <- c("Hello", "world")

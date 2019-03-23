@@ -10,6 +10,7 @@
 #'   end removed, is used. For example, passing a vector called "files" to this
 #'   function results in ids "file_01", "file_02", ...
 #' @return vector of character as long as \code{x}
+#' @export
 #' @examples 
 #' # Create ids for 32 numbers
 #' createIdAlong(1:32, "number")
@@ -28,7 +29,7 @@ createIdAlong <- function(x, base_name = NULL)
 #' Remove File Name Extension
 #' 
 #' @param x vector of character
-#' 
+#' @export
 #' @examples
 #' removeExtension("example.R")
 #' removeExtension("any/path/example.txt")
@@ -47,10 +48,10 @@ removeExtension <- function(x)
 #'   \code{x} are to be shortened
 #' @param delimiter string to be used as separater between the start and the end 
 #'   of the strings in \code{x} that are longer than \code{max_chars} characters
-#' 
 #' @return \code{x} with strings longer than \code{max_chars} characters being
 #'   shortend by replacing characters in the centre by the \code{delimiter}
 #'   string.
+#' @export
 #' 
 shorten <- function(x, max_chars = 10, delimiter = "...")
 {
@@ -84,7 +85,7 @@ shorten <- function(x, max_chars = 10, delimiter = "...")
 #' Get Extension of Full File Paths
 #' 
 #' @param x vector of file paths
-#' 
+#' @export
 #' @examples 
 #' # Define example paths
 #' paths <- c("C:/example/file.csv", "file2.txt", "D:/e/f/ghi.jkl.zip")
@@ -120,7 +121,7 @@ fileExtension <- function(x)
 #'   for in \code{x} to find strings that belong together. The default is to
 #'   take the unique strings appearing before a \code{split} character (if any)
 #' @param split split character used to create default \code{start} strings
-#' 
+#' @export
 #' @examples 
 #' x <- c("a.1", "b_hi", "c", "a.2", "d", "b_bye")
 #' 
@@ -192,10 +193,9 @@ pairwise <- function(x, starts = .defaultStarts(x, split), split = "_")
 #'   in \emph{valuesToOmit}
 #' @param valuesToOmit vector of values in \emph{values} to which no suffix is
 #'   to be appended
-#'   
 #' @return \emph{values} with \emph{suffix} appended to those values that are
 #'   not in \emph{valuesToOmit}
-#' 
+#' @export
 #' @examples 
 #' values <- c("a", "b", "c")
 #'   
@@ -224,6 +224,7 @@ appendSuffix <- function(values, suffix, valuesToOmit = NULL)
 #'   \code{str}
 #' @param str character string in which to count for \code{chr} 
 #' @return number of occurrences of \code{char} in \code{str}
+#' @export
 #' 
 hsCountInStr <- function(chr, str) 
 {
@@ -238,6 +239,7 @@ hsCountInStr <- function(chr, str)
 #' 
 #' @param text character vector representing lines of comma separated values
 #' @param \dots arguments passed to \code{\link[utils]{read.table}}
+#' @export
 #' 
 csvTextToDataFrame <- function(text, ...)
 {
@@ -254,6 +256,7 @@ csvTextToDataFrame <- function(text, ...)
 #' @param qchar character to be used for quoting, default: single quote
 #'   character
 #' @param collapse characters used to separate the strings. Default: ", "
+#' @export
 #' 
 stringList <- function(x, qchar = "'", collapse = ", ") 
 {
@@ -265,6 +268,7 @@ stringList <- function(x, qchar = "'", collapse = ", ")
 #' Paste With Collapse = ","
 #' 
 #' @param x vector of character
+#' @export
 #' 
 commaCollapsed <- function(x)
 {
@@ -280,7 +284,8 @@ commaCollapsed <- function(x)
 #' @param x vector of character
 #' @param collapse character string to separate the elements in x (passed to 
 #'   \code{\link[base]{paste}})
-#'   
+#' @export
+#' 
 collapsed <- function(x, collapse = " ")
 {
   paste(as.character(x), collapse = collapse)
@@ -297,6 +302,7 @@ collapsed <- function(x, collapse = " ")
 #' @param escapeMethod one of \code{"double", "backslash", "none"} deciding
 #'   how to treat the quote character if it occurs within the string to be
 #'   quoted
+#' @export
 #' 
 hsQuoteChr <- function(
   x, qchar = "'", escapeMethod = c("double", "backslash", "none")
@@ -340,7 +346,8 @@ hsQuoteChr <- function(
 #' @param \dots additional arguments passed to gsub
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}) it is shown which
 #'   strings were replaced
-#'   
+#' @export
+#' 
 multiSubstitute <- function(strings, replacements, ..., dbg = FALSE)
 {
   for (pattern in names(replacements)) {
@@ -389,9 +396,9 @@ multiSubstitute <- function(strings, replacements, ..., dbg = FALSE)
 #'   are replaced by one space
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}) debut messages are
 #'   shown
-#' 
 #' @return input string \emph{str} without leading or trailing spaces and with
 #'   multiple consecutive spaces being replaced by a single space
+#' @export
 #' 
 hsTrim <- function(str, trim.multiple.spaces = TRUE, dbg = FALSE) 
 {
@@ -410,8 +417,8 @@ hsTrim <- function(str, trim.multiple.spaces = TRUE, dbg = FALSE)
 #' Remove all Spaces in String(s)
 #' 
 #' @param x (vector of) character
-#' 
 #' @return \emph{x} with all spaces removed
+#' @export
 #' 
 removeSpaces <- function(x)
 {
@@ -426,6 +433,7 @@ removeSpaces <- function(x)
 #' @return input string \emph{x} with special characters being substituted by 
 #'   a meaningful represenation or underscore, multiple underscores replaced
 #'   by a single underscore and multiple underscores at the end removed.
+#' @export
 #' 
 hsSubstSpecChars <- function(x)
 {
@@ -452,6 +460,7 @@ hsSubstSpecChars <- function(x)
 #' Convert String to Expression
 #' 
 #' @param expressionString character string to be converted to an expression
+#' @export
 #' 
 stringToExpression <- function(expressionString)
 {
@@ -464,7 +473,7 @@ stringToExpression <- function(expressionString)
 #' 
 #' @param x vector of character
 #' @param contains vector of character
-#'  
+#' @export
 #' @examples 
 #' stringContains(c("abc", "Kabeljau", "Arabella"), "ab")
 #' stringContains(c("abc", "Kabeljau", "Arabella"), "abc")
@@ -482,7 +491,7 @@ stringContains <- function(x, contains)
 #'   \code{startsWith}
 #' @param startsWith string to be searched for at the beginning of the string(s)
 #'   in \code{x}
-#'   
+#' @export
 #' @examples 
 #' stringStartsWith(c("abc", "Kabeljau", "Arabella"), "ab")
 #' stringStartsWith(c("abc", "Kabeljau", "Arabella"), "A")
@@ -499,7 +508,7 @@ stringStartsWith <- function(x, startsWith)
 #' @param x vector of character to be checked if they end with \code{endsWith}
 #' @param endsWith string to be searched for at the end of the string(s) in
 #'   \code{x}
-#' 
+#' @export
 #' @examples 
 #' stringEndsWith(c("abc", "Kabeljau", "Arabella"), "a")
 #' stringEndsWith(c("abc", "Kabeljau", "Arabella"), "jau")
@@ -526,7 +535,7 @@ stringEndsWith <- function(x, endsWith)
 #' @param stringsAsFactors if \code{TRUE} (default is {FALSE}) and a data frame
 #'   is returned then the columns in the returned data frame are of factors,
 #'   otherwise vectors of character.
-#' 
+#' @export
 #' @examples 
 #' # Define pattern matching a date
 #' pattern <- "([^ ]+), ([0-9]+) of ([^ ]+)"
@@ -595,7 +604,6 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #'   parentheses to be extracted.
 #' @param simplify if TRUE (default) and \emph{text} has only one element, the
 #'   output structure will be a list instead a list of lists
-#'   
 #' @return If \code{length(text) > 1} a list is returned with as many elements
 #'   as there are strings in \emph{text} each of which is itself a list
 #'   containing the strings matching the subpatterns (enclosed in parentheses in
@@ -605,7 +613,7 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #'   length 1 and \emph{simplify} = TRUE (default) the top level list structure
 #'   described above is omitted, i.e. the list of substrings matching the
 #'   subpatterns is returned.
-#'   
+#' @export
 #' @examples 
 #' # split date into year, month and day
 #' subExpressionMatches("(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23")

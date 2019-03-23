@@ -6,9 +6,8 @@
 #' @param suffix suffix to be added to each column name except the columns given
 #'   in \code{except}
 #' @param except names of columns to which no suffix is to be given
-#' 
 #' @return \code{data} with renamed columns
-#' 
+#' @export
 #' @examples
 #' d1 <- data.frame(id = 1, a = 2, b = 3)
 #' d2 <- data.frame(id = 1, c = 2, d = 3)
@@ -48,7 +47,7 @@ addSuffixToColumns <- function(data, suffix, except = NULL)
 #'   missing
 #' @param dataFrameName the name of the data frame to be shown in the error
 #'   message if a column was missing
-#'   
+#' @export
 #' @return TRUE if all required columns are available, else FALSE
 #'   
 checkForMissingColumns <- function(
@@ -90,10 +89,9 @@ checkForMissingColumns <- function(
 #' @param df data frame
 #' @param column name of column in \code{x}
 #' @param dbg if \code{TRUE} a debug message is shown
-#' 
 #' @return \code{df} with \code{column} converted to class \code{Date} with
 #'   \code{as.Date}
-#'   
+#' @export
 #' @examples
 #' df <- data.frame(id = 1:2, date = c("2018-10-23", "2018-10-23"))
 #' str(df)
@@ -112,14 +110,14 @@ columnToDate <- function(df, column, dbg = TRUE)
 }
 
 # dropUnusedFactorLevels -------------------------------------------------------
+
 #' Drop Unused Factor Levels in all Factor Columns
 
 #' @param data data frame in which to remove unused levels in all columns that 
 #'   are factors
 #' @param dbg if \code{TRUE}, debug messages are shown
-#' 
 #' @return \code{data} with unused factors removed in all columns being factors
-#' 
+#' @export
 #' @examples
 #' # Create an example data frame with two factor columns
 #' data <- data.frame(
@@ -174,6 +172,7 @@ dropUnusedFactorLevels <- function(data, dbg = TRUE)
 #' data/time column of data frame
 #' 
 #' @param x data frame in which to find a column of class "POSIXt"
+#' @export
 #' 
 firstPosixColumn <- function(x)
 {
@@ -195,8 +194,8 @@ firstPosixColumn <- function(x)
 #'   \emph{dataFrame}
 #' @param fill.value value to be inserted into newly created columns. Default:
 #'   \code{NA}
-#'   
 #' @return data frame with columns as listed in \emph{colNames}
+#' @export
 #' 
 hsAddMissingCols <- function(dataFrame, colNames, fill.value = NA)
 {
@@ -226,7 +225,7 @@ hsAddMissingCols <- function(dataFrame, colNames, fill.value = NA)
 #'   dropped (a vector is returned instead of a data frame) in case that all but
 #'    one columns are removed.  
 #' @return copy of input data frame but with all empty columns removed
-#' 
+#' @export
 #' @seealso \code{\link{removeEmptyColumns}}
 #' 
 hsDelEmptyCols <- function(
@@ -247,6 +246,8 @@ hsDelEmptyCols <- function(
 #' @param dframe data.frame
 #' @param renames list with named elements each of which defines a column rename
 #'   in the form <old-name> = <new-name>
+#' @export
+#' 
 hsRenameColumns <- function(dframe, renames)
 {
   renameColumns(x = dframe, renamings = renames)
@@ -265,11 +266,10 @@ hsRenameColumns <- function(dframe, renames)
 #' @param before name of column before which to insert the new column(s)
 #' @param after name of column after which to insert the new column(s)
 #' @param stringsAsFactors passed on to data.frame() and cbind()
-#'   
 #' @return data frame \code{Data} with new columns inserted before the column
 #'   named as given in \code{before} or after the column named as given in 
 #'   \code{after}
-#'   
+#' @export
 #' @examples 
 #' Data <- data.frame(A = 1:5, B = 2:6)
 #' 
@@ -377,9 +377,8 @@ insertColumns <- function(
 #' 
 #' @param x data frame
 #' @param columns vector of column names
-#' 
 #' @return data frame or matrix with \code{columns} being the leftmost columns
-#' 
+#' @export
 #' @examples 
 #' x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
 #'   
@@ -400,10 +399,9 @@ moveColumnsToFront <- function(x, columns = NULL)
 #' @param sep separator character. Default: space (" ")
 #' @param \dots args passed to \code{\link{selectColumns}}, e.g. \code{do.stop}
 #'   to control whether the function shall stop if not all columns exist
-#'   
 #' @return vector of character with each element representing the values of the
 #'   selected columns of one row, being pasted with the separator character
-#' 
+#' @export
 #' @examples 
 #' x <- data.frame(A = 1:3, B = 2:4)
 #' pasteColumns(x, sep = ";")
@@ -429,10 +427,9 @@ pasteColumns <- function(x, columns = names(x), sep = " ", ...)
 #' @param x data frame
 #' @param columns names of columns to be pasted. Default: all columns
 #' @param \dots args passed to \code{\link{pasteColumns}}
-#' 
 #' @return vector of character with each element representing the values of the
 #'   selected columns of one row, being pasted without a separator
-#' 
+#' @export
 #' @examples 
 #' x <- data.frame(A = 1:3, B = 2:4)
 #' pasteColumns0(x)
@@ -447,6 +444,7 @@ pasteColumns0 <- function(x, columns = names(x), ...)
 #' Indices of POSIX columns in a Data Frame
 #' 
 #' @param x data frame containing a date/time column
+#' @export
 #' 
 posixColumnAtPosition <- function(x)
 {
@@ -480,9 +478,9 @@ posixColumnAtPosition <- function(x)
 #'   result may be a vector if only one column remains
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}), the deletion of
 #'   columns is reported on the screen
-#'   
 #' @return \emph{dframe} with columns given in \emph{columns} being removed.
 #'   User attributes of \emph{dframe} are restored.
+#' @export
 #' 
 removeColumns <- function(
   dframe, columns = NULL, columnsToRemove = NULL, pattern = NULL, drop = FALSE,
@@ -544,10 +542,9 @@ removeColumns <- function(
 #' @param FUN function called on each column to determine if all values in the
 #'   column are empty. Default: \code{function(x) all(is.na(x))}
 #' @param dbg if \code{TRUE} debug messages are shown
-#' 
 #' @return data frame \code{x} with empty columns (columns with NA in all rows) 
 #'   being removed
-#'   
+#' @export
 #' @seealso \code{\link{hsDelEmptyCols}}
 #' 
 removeEmptyColumns <- function(
@@ -583,7 +580,8 @@ removeEmptyColumns <- function(
 #' @param renames list defining renames in the form of "oldName" = "newName"
 #'   pairs
 #' @param columns (new) names of columns to be selected
-#'   
+#' @export
+#' 
 renameAndSelect <- function(data, renames, columns = unlist(renames))
 {
   data <- kwb.utils::hsRenameColumns(data, renames)
@@ -601,8 +599,8 @@ renameAndSelect <- function(data, renames, columns = unlist(renames))
 #' @param x data.frame
 #' @param renamings list with named elements each of which defines a column
 #'   rename in the form <old-name> = <new-name>
-#' 
 #' @return \emph{dframe} with columns renamed as specified in \emph{renames}
+#' @export
 #' 
 renameColumns <- function(x, renamings = NULL)
 {
@@ -637,6 +635,7 @@ renameColumns <- function(x, renamings = NULL)
 #' @param columnNames deprecated. Use argument \code{columns} instead.
 #' @return \code{dframe} with columns given in \code{columnNames} being rounded
 #'   to \code{digits} digits.
+#' @export
 #' 
 roundColumns <- function(
   dframe, columns = NULL, digits = NULL, pattern = NULL, columnNames = NULL
@@ -702,10 +701,9 @@ roundColumns <- function(
 #' 
 #' @param x1 first object to be passed to \code{cbind}
 #' @param x2 second object to be passed to  \code{cbind}
-#' 
 #' @return result of \code{cbind(x1, x2)} or \code{x2} if \code{x1}
 #'   is \code{NULL}.
-#' 
+#' @export
 #' @examples 
 #' x1 <- NULL
 #'   
@@ -753,11 +751,11 @@ safeColumnBind <- function(x1, x2)
 #'   TRUE}) or not (\code{do.stop = FALSE}) if there are non-existing columns to
 #'   be selected. If \code{do.stop = FALSE} only those columns are selected that
 #'   actually exist
-#'   
 #' @return data frame containing the columns of \code{x} that are specified in 
 #'   \code{columns} or \code{x} itself if \code{columns} is \code{NULL} or a
 #'   vector containing the values of column \code{value} if \code{columns} is of
 #'   length 1 and \code{drop = TRUE} (which is the default in this case).
+#' @export
 #' 
 selectColumns <- function(
   x, columns = NULL, pattern = NULL, drop = (length(columns) == 1), 
@@ -808,12 +806,10 @@ selectColumns <- function(
 #'   <values>}
 #' @param dbg if \code{TRUE} (default) the creation of new columns is reported
 #'   on the screen
-#'   
 #' @return data frame with columns modified or appended as specified with the 
 #'   \code{assignments}
-#'   
-#' @examples 
-#'
+#' @export
+#' @examples
 #' # Create a data frame
 #' x <- data.frame(a = 1:5)
 #'

@@ -45,8 +45,8 @@ isASCII <- function(x)
 #' @param y vector of numerical
 #' @param tolerance tolerance, i.e. accepted difference between values in
 #'   \code{x} and \code{y}. Default: 1e-12
-#' 
 #' @return vector of logical
+#' @export
 #' 
 almostEqual <- function(x, y, tolerance = 1e-12)
 {
@@ -77,10 +77,9 @@ almostEqual <- function(x, y, tolerance = 1e-12)
 #' @param dbg if TRUE (default) for each criterion in \code{criteria} it is
 #'   shown for how many rows in \code{Data} the criterion is TRUE and for how
 #'   many rows it is FALSE
-#' 
 #' @return vector of logical containing TRUE at positions representing rows in
 #'   \code{Data} fulfilling the \code{conditions} and FALSE elsewhere
-#' 
+#' @export
 #' @examples 
 #' # Define an example data frame
 #' Data <- data.frame(A = c("x", "y", "z", NA),
@@ -226,9 +225,9 @@ matchesCriteria <- function(
 #' @param method Select one of two methods. 1: check if the length of unique
 #'   elements is equal to one, 2: check if all elements are equal to the first
 #'   element.
-#'   
 #' @return \code{TRUE} if all elements in \code{x} are equal to each other,
 #'   otherwise \code{FALSE}
+#' @export
 #' 
 allAreEqual <- function(x, method = 1)
 {
@@ -247,9 +246,9 @@ allAreEqual <- function(x, method = 1)
 #' Are all list elements identical to each other?
 #' 
 #' @param x a list
-#' 
 #' @return \code{TRUE} if all elements in \code{x} are identical, otherwise 
 #'   \code{FALSE}
+#' @export
 #' 
 allAreIdentical <- function(x)
 {
@@ -287,9 +286,9 @@ allAreIdentical <- function(x)
 #' 
 #' @param x object to be tested for NULL or being empty (vector or list of
 #'   length 0 or data frame with no rows)
-#'   
 #' @return TRUE if x is NULL or x is a vector of length 0 or x is a data frame
 #'   with no rows.
+#' @export
 #' 
 isNullOrEmpty <- function(x)
 {
@@ -306,9 +305,9 @@ isNullOrEmpty <- function(x)
 #' is an object NA or equal to the empty string "" (after trimming)?
 #' 
 #' @param x object to be tested for NA or being empty (equal to "", after trimming)
-#' 
 #' @return (vector of) logical, being TRUE for each element in \emph{x} that is
 #'   NA or the empty string "" (after trimming)
+#' @export
 #' 
 isNaOrEmpty <- function(x)
 {
@@ -320,10 +319,10 @@ isNaOrEmpty <- function(x)
 #' isNaInAllColumns
 #' 
 #' @param dataFrame data frame or matrix
-#' 
 #' @return logical vector with as many elements as there are rows in 
 #'   \emph{dataFrame} (TRUE for rows in which all elements are NA, FALSE for
 #'   rows in which there is at least one non-NA element).
+#' @export
 #' 
 isNaInAllColumns <- function(dataFrame)
 {
@@ -338,10 +337,10 @@ isNaInAllColumns <- function(dataFrame)
 #' isNaInAllRows
 #' 
 #' @param dataFrame data frame or matrix
-#' 
 #' @return logical vector with as many elements as there are columns in 
 #'   \emph{dataFrame} (TRUE for columns in which all elements are NA, FALSE for
 #'   columns in which there is at least one non-NA element).
+#' @export
 #' 
 isNaInAllRows <- function(dataFrame)
 {
@@ -356,6 +355,7 @@ isNaInAllRows <- function(dataFrame)
 #' Check for Odd Numbers
 #' 
 #' @param x vector of numeric
+#' @export
 #' 
 isOddNumber <- function(x) 
 {
@@ -367,6 +367,7 @@ isOddNumber <- function(x)
 #' Check for Even Numbers
 #' 
 #' @param x vector of numeric
+#' @export
 #' 
 isEvenNumber <- function(x) 
 {
@@ -380,8 +381,8 @@ isEvenNumber <- function(x)
 #' @param values vector of values
 #' @param min.value minimum value (inclusive)
 #' @param max.value maximum value (inclusive)
-#' 
 #' @return vector of boolean
+#' @export
 #' 
 inRange <- function(values, min.value, max.value) 
 {

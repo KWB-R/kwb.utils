@@ -11,9 +11,8 @@
 #' for each script name for which \code{\link{setLoaded}} has been called.
 #' 
 #' @param scriptName name of the script for which to get the "loaded" state
-#' 
 #' @seealso \code{\link{setLoaded}} (see example there)
-#' 
+#' @export
 #' @examples 
 #' # For an example see kwb.utils::setLoaded()...
 #' 
@@ -45,9 +44,8 @@ isLoaded <- function(scriptName)
 #'   \code{scriptName} has been loaded and use \code{FALSE} to indicate that the
 #'   script is not loaded (e.g. because you cleared the workspace in the
 #'   meanwhile).
-#' 
 #' @seealso \code{\link{isLoaded}}
-#' 
+#' @export
 #' @examples 
 #' # If you have a script with the main part on top and the required functions
 #' # defined below (as recommended by Robert C. Martin, the author of "Clean

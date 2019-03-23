@@ -7,8 +7,8 @@
 #' @param PDF full path to PDF file. If this is an empty string (default) a
 #'   temporary file is created and its path returned
 #' @param \dots arguments passed to \code{\link{preparePdf}}
-#' 
 #' @return full path to pdf file created if condition is met or "" else
+#' @export
 #' 
 preparePdfIf <- function(to.pdf, PDF = "", ...)
 {
@@ -51,9 +51,8 @@ preparePdfIf <- function(to.pdf, PDF = "", ...)
 #'   \code{paper = "special"} to use the dimensions of the plot.
 #' @param \dots further arguments passed to \code{\link[grDevices]{pdf}}
 #' @return full path to pdf file
-#' 
 #' @seealso \code{\link{finishAndShowPdf}}
-#' 
+#' @export
 #' @examples 
 #' \dontrun{
 #' # Open PDF file by giving a path to preparePdf(). The path is returned.
@@ -116,6 +115,8 @@ preparePdf <- function(
 
 #' Width and Height of a DIN A4 Paper
 #' 
+#' @export
+#' 
 DIN.A4 <- function()
 {
   # DIN A4: 210 x 297 mm, 
@@ -132,6 +133,7 @@ DIN.A4 <- function()
 #'   opened in a viewer
 #' @param PDF path to the opened pdf file
 #' @param ... arguments passed to \code{\link{finishAndShowPdf}}
+#' @export
 #' 
 finishAndShowPdfIf <- function(to.pdf, PDF, ...)   
 {
@@ -151,6 +153,7 @@ finishAndShowPdfIf <- function(to.pdf, PDF, ...)
 #' @param PDF full path to the PDF file to be opened in the PDF Viewer
 #' @param which passed to \code{grDevices::dev.off}
 #' @param \dots further arguments passed to \code{hsShowPdf}
+#' @export
 #' 
 finishAndShowPdf <- function(PDF, which = grDevices::dev.cur(), ...)
 {
@@ -171,6 +174,7 @@ finishAndShowPdf <- function(PDF, which = grDevices::dev.cur(), ...)
 #' @param bordH see argument \code{borderHeight.cm} in \code{\link{preparePdf}}
 #' @param makeCur see argument \code{makeCurrent} in \code{\link{preparePdf}}
 #' @param \dots see \dots in \code{\link{preparePdf}}
+#' @export
 #' 
 hsPrepPdf <- function(
   strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE, bordW = 2, 
@@ -199,9 +203,8 @@ hsPrepPdf <- function(
 #' @param Pdf full path to PDF file
 #' @param dbg if \code{TRUE} (default) the command used to open the PDF file is
 #'   shown
-#' 
 #' @seealso \code{\link{hsPrepPdf}}
-#' 
+#' @export
 #' @examples 
 #' # Set path to PDF file and open PDF device
 #' tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 

@@ -5,6 +5,7 @@
 #' Generate a Decryption Key File
 #' 
 #' @param target full path to the file to which the key shall be written
+#' @export
 #' 
 generateKeyFile <- function(target)
 {
@@ -35,6 +36,7 @@ generateKeyFile <- function(target)
 #' @param passwordFile path to the password file
 #' @param password password for account. If \code{NULL} (default) the user will
 #'   be asked to enter the password on the console
+#' @export
 #' 
 createPasswordFile <- function(account, keyFile, passwordFile, password = NULL)
 {
@@ -68,8 +70,8 @@ createPasswordFile <- function(account, keyFile, passwordFile, password = NULL)
 #' 
 #' @param passwordFile path to the password file
 #' @param keyFile path to the key file
-#' 
 #' @return NA if no password is stored  
+#' @export
 #' 
 getPassword <- function(passwordFile, keyFile) 
 {

@@ -9,6 +9,7 @@
 #'   "na.rm"
 #' @param default default value to be returned if all values are NA
 #' @param warningMessage Warning message given if the default was taken
+#' @export
 #' 
 getFunctionValueOrDefault <- function(values, FUN, default, warningMessage = NA)
 {
@@ -46,11 +47,10 @@ getFunctionValueOrDefault <- function(values, FUN, default, warningMessage = NA)
 #' 
 #' @param x numeric or character vector
 #' @param step step to be used in sequence generation
-#'   
 #' @return if \code{x} is numeric the sequence between the lowest and highest
 #'   value in \code{x} with the given \code{step} is returned. If \code{x} is a 
 #'   vector of character strings, the sorted unique values are returned.
-#'   
+#' @export
 #' @examples 
 #' defaultLevels(c(1, 3, 4, 5, 4))
 #' defaultLevels(c(1920, 1950, 1970), step = 10)
@@ -84,11 +84,9 @@ defaultLevels <- function(x, step = 1)
 #' @param default default value that is returned if \code{x} is NULL
 #' @param count if \code{TRUE} (the default is \code{FALSE}) the number of
 #'   replaced values is returned in the attributes \code{count}
-#'   
 #' @return \code{x} if \code{x} is not NULL and \code{default} otherwise
-#'   
+#' @export
 #' @seealso \code{\link{defaultIfNA}, \link{defaultIfZero}}
-#'   
 #' @examples 
 #' defaultIfNULL(NULL, "default") # returns the default value
 #' defaultIfNULL("actual", "default") # returns the "actual" value
@@ -108,11 +106,9 @@ defaultIfNULL <- function(x, default, count = FALSE)
 #' @param default default value that is returned if \code{x} is NA
 #' @param count if \code{TRUE} (the default is \code{FALSE}) the number of
 #'   replaced values is returned in the attributes \code{count}
-#'   
 #' @return \code{x} if \code{x} is not NA and \code{default} otherwise
-#'   
+#' @export
 #' @seealso \code{\link{defaultIfNULL}, \link{defaultIfZero}}
-#'   
 #' @examples 
 #' defaultIfNA(NA, "default") # returns the default value
 #' defaultIfNA("actual", "default") # returns the "actual" value
@@ -132,13 +128,11 @@ defaultIfNA <- function(x, default, count = FALSE)
 #' @param default value to be used instead of zero
 #' @param count if \code{TRUE} (the default is \code{FALSE}) the number of
 #'   replaced values is returned in the attributes \code{count}
-#'   
 #' @return \code{x} if \code{x} is not 0 and \code{default} otherwise. The
 #'   returned object has an attribute \code{count} containing the number of
 #'   values that have been set to the default value.
-#'   
+#' @export
 #' @seealso \code{\link{defaultIfNA}, \link{defaultIfNULL}}
-#'   
 #' @examples 
 #' defaultIfZero(c(1, 2, 0, 4, 5, 0, 6), NA) # returns the default value (NA) 
 #' (out <- defaultIfZero(1:6, NA, count = TRUE)) # returns the "actual" values
@@ -162,6 +156,7 @@ defaultIfZero <- function(x, default, count = FALSE)
 #'   \code{FUN.text} returns \code{TRUE}
 #' @param count if \code{TRUE} (the default is \code{FALSE}) the number of
 #'   replaced values is returned in the attributes \code{count}
+#' @export
 #' 
 .defaultIf <- function(FUN.test, x, default, count = FALSE)
 {

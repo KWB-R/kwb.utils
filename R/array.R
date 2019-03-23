@@ -5,7 +5,7 @@
 #' @param x list of arrays of the same dimension
 #' @param check_dim logical. If \code{TRUE}, it is checked whether the source
 #'   dimension names are available in the target dimension names
-#'
+#' @export
 #' @examples
 #' a1 <- array(
 #'   1:12,
@@ -100,16 +100,16 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
   }
 }
 
+
 # dropDim ----------------------------------------------------------------------
-#'
+
 #' Drop Array Dimension(s) of Length One
 #'
 #' @param x an array
 #' @param dimension number(s) of dimension(s) of length one to be removed
-#'
 #' @return array with dimensions of which the numbers are given in
-#' \code{dimension} removed
-#'
+#'   \code{dimension} removed
+#' @export
 #' @examples
 #' # Define an array of two matrices
 #' A <- array(
@@ -135,11 +135,13 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
 dropDim <- function(x, dimension = which(dim(x) == 1))
 {
   stopifnot(is.array(x), is.numeric(dimension), all(dim(x)[dimension] == 1L))
-
+  
   dim_keep <- setdiff(seq_len(length(dim(x))), dimension)
-
+  
   array(x, dim = dim(x)[dim_keep], dimnames = dimnames(x)[dim_keep])
 }
+
+# splitAlongDim ----------------------------------------------------------------
 
 #' Split Array Along a Dimension
 #'
@@ -148,9 +150,8 @@ dropDim <- function(x, dimension = which(dim(x) == 1))
 #'
 #' @param a an array
 #' @param n number of the dimension along which to split the array
-#'
 #' @return array of one dimension less than \code{a}
-#'
+#' @export
 #' @examples
 #' # Define an array
 #' A <- array(1:8, dim = c(2, 2, 2), dimnames = list(
@@ -164,7 +165,7 @@ dropDim <- function(x, dimension = which(dim(x) == 1))
 splitAlongDim <- function(a, n)
 {
   stopifnot(is.array(a), n <= length(dim(a)))
-
+  
   stats::setNames(
     lapply(
       split(a, arrayInd(seq_along(a), dim(a))[, n]),

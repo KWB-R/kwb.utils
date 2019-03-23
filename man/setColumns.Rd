@@ -23,7 +23,6 @@ data frame with columns modified or appended as specified with the
 Set the (new or existing) column(s) of a data frame.
 }
 \examples{
-
 # Create a data frame
 x <- data.frame(a = 1:5)
 

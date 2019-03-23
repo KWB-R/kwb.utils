@@ -6,13 +6,12 @@
 #' @param level one of 1, 2, or 3 defining which character set to use for 
 #'   encoding, see \code{\link{printable_chars}}.
 #' @param chars vector of characters to be used for encoding
-#' 
 #' @return vector of character as long as \code{x} with each element containing
 #'   the encoded version of the corresponding element in \code{x}. The returned
 #'   vector has an attribute \code{codes} being a named vector. This vector 
 #'   contains the unique values in \code{x} as elements. Each element is named
 #'   by the code that was used to encode the corresponding element.
-#' 
+#' @export
 #' @examples 
 #' x <- c("very-long-word", "very-long-word", "very-very-long-word")
 #' encoded <- encode(x)
@@ -52,9 +51,8 @@ encode <- function(x, level = 1, chars = printable_chars(level))
 #'   to 9 and 26 uppercase letters. Level 2 characters comprise the characters 
 #'   of level 1 as well as 26 lowercase letters. Level 3 characters comprise
 #'   altogether 88 printable characters. 
-#'   
 #' @return vector of character
-#' 
+#' @export
 #' @examples 
 #' printable_chars(1)
 #' printable_chars(2)
@@ -94,8 +92,8 @@ printable_chars <- function(level = 1)
 #' 
 #' @param x vector of encoded character strings as returned by 
 #'   \code{\link{encode}}
-#'   
 #' @return vector of decoded character strings
+#' @export
 #' 
 decode <- function(x)
 {

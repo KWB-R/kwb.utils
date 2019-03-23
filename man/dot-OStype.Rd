@@ -7,7 +7,7 @@
 .OStype()
 }
 \description{
-This is a copy of tools:::.OStype. It is redefined here so that it can
-  be used within this package. R CMD build would complain if I used
-  tools:::.OStype!
+This is a copy of tools:::.OStype. It is redefined here so that it can be
+used within this package. R CMD build would complain if I used
+tools:::.OStype!
 }

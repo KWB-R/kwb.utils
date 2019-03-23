@@ -9,6 +9,7 @@
 #' @param configTable Instead of the file you may provide a data frame
 #'   containing the configuration
 #' @param dbg if \code{TRUE}, debug messages are shown
+#' @export
 #' 
 readArglists <- function(
   file = NULL, configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),

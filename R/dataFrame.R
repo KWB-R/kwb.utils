@@ -34,8 +34,8 @@
 #' @param y data frame containing the row to be appended (exacly one row
 #'   expected)
 #' @param row.name name of row to be given in result data frame
-#'   
 #' @return \emph{x} with row of \emph{y} (named \emph{row.name}) appended to it
+#' @export
 #' 
 addRowWithName <- function(x, y, row.name)
 {
@@ -55,7 +55,7 @@ addRowWithName <- function(x, y, row.name)
 #' Use \code{\link{as.data.frame}} with \code{stringsAsFactors = FALSE}
 #'
 #' @param \dots passed to \code{\link{as.data.frame}}
-#'
+#' @export
 #' @examples
 #' data_matrix <- matrix(LETTERS[1:6], nrow = 2)
 #'
@@ -77,6 +77,7 @@ asNoFactorDataFrame <- function(...)
 #' returns TRUE if data frame has at least one row, else FALSE
 #' 
 #' @param dframe data frame
+#' @export
 #' 
 atLeastOneRowIn <- function(dframe)
 {
@@ -96,7 +97,7 @@ atLeastOneRowIn <- function(dframe)
 #' @param yname name of second data frame to appear in the output if \code{dbg =
 #'   TRUE}
 #' @return list of logical
-#' 
+#' @export
 #' @examples 
 #' x <- data.frame(a = 1:2, b = 2:3)
 #' y <- x
@@ -197,7 +198,7 @@ compareDataFrames <- function(
 #'   message
 #' @param yname optional name of the second vector that will be used in the
 #'   message
-#'   
+#' @export
 #' @examples
 #' compareSets(1:10, 3:13)
 #' compareSets(1:10, 3:13, "numbers", "set 1", "set 2")
@@ -224,6 +225,7 @@ compareSets <- function(
 #' @param ... arguments passed to \code{\link[base]{expand.grid}}, but in 
 #'   reversed order
 #' @param stringsAsFactors passed to \code{\link[base]{expand.grid}}
+#' @export
 #' @examples 
 #' persons <- c("Peter", "Paul", "Mary")
 #' fruits <- c("apple", "pear")
@@ -273,14 +275,13 @@ expandGrid <- function(..., stringsAsFactors = FALSE)
 #' @param as.data.frame if TRUE (default) the result is a data frame, otherwise
 #'   a list (see below)
 #' @param useNA passed to \code{table} see there. Default: "ifany"
-#'   
 #' @return for \code{as.data.frame = FALSE} a list of data frames each of which 
 #'   represents the frequency statistics for one column of \code{data}. Each 
 #'   data frame has columns \emph{column} (name of the column of \code{data}),
 #'   \emph{value} (value occurring in \emph{column} of \code{data}),
 #'   \emph{count} (number of occurrences). For \code{as.data.frame = TRUE} one
 #'   data frame being the result of \code{rbind}-ing together these data frames.
-#'   
+#' @export
 #' @examples 
 #' # Some example data
 #' (data <- data.frame(
@@ -314,8 +315,9 @@ frequencyTable <- function(
 #' @param x data frame
 #' @param decreasing passed to \code{\link[base]{order}}
 #' @param ... further arguments passed to \code{\link[base]{order}}
-#' @param renumber.rows if \code{TRUE} (default) the rows in the returned 
-#' data frame are renumbered from 1 to the number of rows in \code{x}
+#' @param renumber.rows if \code{TRUE} (default) the rows in the returned data
+#'   frame are renumbered from 1 to the number of rows in \code{x}
+#' @export
 #' @examples
 #' fullySorted(head(iris))
 #' fullySorted(head(iris), decreasing = TRUE)
@@ -339,9 +341,8 @@ fullySorted <- function(x, decreasing = FALSE, ..., renumber.rows = TRUE)
 #' 
 #' @param x vector
 #' @param elements elements out of \code{x} to be moved to the front
-#' 
 #' @return vector with \code{elements} coming first
-#' 
+#' @export
 #' @examples 
 #' moveToFront(1:10, 5)
 #' moveToFront(c("a", "b", "c", "x", "y", "d"), c("x", "y"))
@@ -358,7 +359,7 @@ moveToFront <- function(x, elements)
 #' Use \code{\link{data.frame}} with \code{stringsAsFactors = FALSE}
 #'
 #' @param \dots passed to \code{\link{data.frame}}
-#'
+#' @export
 #' @examples
 #' # data.frame() by default converts character to factor
 #' str(data.frame(id = 1:3, letter = LETTERS[1:3]))
@@ -383,7 +384,7 @@ noFactorDataFrame <- function(...)
 #' @param remove.row.names if TRUE (default) row names are reset in the output data frame
 #' @param namesAsFactor if TRUE (default) and \emph{nameColumn} is given the values in
 #'   column \emph{nameColumn} are converted to a factor
-#' 
+#' @export
 #' @examples 
 #' L <- list(
 #'   A = data.frame(x = 1:2, y = 2:3),
@@ -473,7 +474,7 @@ rbindAll <- function(
 #'   \code{row.names} attribute to \code{NULL}.
 #' 
 #' @param x data frame or matrix
-#' 
+#' @export
 #' @examples 
 #' persons <- data.frame(id = c(1, 2, 3), name = c("Peter", "Paul", "Mary"))
 #' 
@@ -505,7 +506,7 @@ resetRowNames <- function(x)
 #' 
 #' @param dataFrame1 first data frame 
 #' @param dataFrame2 second data frame
-#' 
+#' @export
 #' @examples 
 #' kwb.utils::safeRowBind(
 #'   data.frame(A = 1:2, B = 2:3),
@@ -545,8 +546,8 @@ safeRowBind <- function(dataFrame1, dataFrame2)
 #' rbind all data frames in a list using \code{\link{safeRowBind}}
 #' 
 #' @param x list of data frames
-#' 
 #' @return data frame resulting from "rbind"-ing all data frames in \code{x}
+#' @export
 #' 
 safeRowBindAll <- function(x)
 {
@@ -568,9 +569,8 @@ safeRowBindAll <- function(x)
 #'   \emph{elementName}
 #' @param elementName name of list element in each sublist of \emph{x} which contains a
 #'   data frame
-#' 
 #' @return data frame resulting from "row-binding" data frames.
-#' 
+#' @export
 #' @examples 
 #' x <- list(
 #'   list(
@@ -613,10 +613,10 @@ safeRowBindOfListElements <- function(x, elementName)
 #' 
 #' @param data data frame or matrix
 #' @param blocksize number of rows in each block into which \code{data} is split
-#'   
 #' @return list of data frames (if \code{data} is a data frame) or list of
 #'   matrices (if \code{data} is a matrix)
-#'   
+#' @export
+#' 
 splitIntoFixSizedBlocks <- function(data, blocksize)
 {
   stopifnot(length(dim(data)) == 2)

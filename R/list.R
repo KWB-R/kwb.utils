@@ -4,6 +4,7 @@
 #'
 #' @param x a list
 #' @return vector of integer
+#' @export
 #' @examples 
 #' x <- list(a = 1:3, b = list(x = 1, y = 2), c = 1:100)
 #' getElementLengths(x)
@@ -34,13 +35,12 @@ getElementLengths <- function(x)
 #' 
 #' @param x a list
 #' @param path start path
-#' 
 #' @return data frame with columns \code{path} and \code{value}. The 
 #' data frame contains all non-list elements that are contained in \code{x}, 
 #' coerced to character, in column \code{value}, together with the sequence of
 #' element names "leading" to the value when starting at \code{x}. For example,
 #' the path to element \code{x$a$a1} is \code{/a/a1} (see example).
-#' 
+#' @export
 #' @examples
 #' # Define a recursive list
 #' x <- list(
@@ -85,7 +85,7 @@ getPathsAndValuesFromRecursiveList <- function(x, path = "")
 #' @param name name of target list element
 #' @return \code{x} with each sublist being extended by list element \code{name}
 #'   having been taken from \code{y}
-#'   
+#' @export
 #' @examples 
 #' x <- list(list(a = 1), list(b = 2), list(c = 3))
 #' y <- list("b1", "b2", "b3")
@@ -116,9 +116,8 @@ copyListElements <- function(x, y, name = deparse(substitute(y))) {
 #' Exclude all NULL Entries from a List
 #' 
 #' @param x a list
-#' 
 #' @return list \code{x} with all \code{NULL} entries excluded
-#' 
+#' @export
 #' @examples 
 #' L <- list(a = 1, b = NULL, c = "three")
 #' L
@@ -137,10 +136,9 @@ excludeNULL <- function(x)
 #' Convert to List with Names Equal to List Elements
 #' 
 #' @param x R object, preferably vector of character
-#' 
 #' @return result of calling \code{as.list} on \code{x} with list element names
 #'   being set to the elements of \code{x}.
-#' 
+#' @export
 #' @examples
 #' x.vector <- c("Peter", "Paul", "Mary")
 #' x.list <- toNamedList(x.vector)
@@ -169,7 +167,7 @@ toNamedList <- function(x)
 #' @param x list of lists
 #' @param elementName name of element to be looked up in each sublist of
 #'   \code{x}
-#' 
+#' @export
 #' @examples 
 #' L <- list(
 #'   list(group = "A", value = 1),
@@ -199,12 +197,11 @@ nameByElement <- function(x, elementName = "name")
 #'   actually exist
 #' @param do.warn if \code{TRUE} (default) and \code{do.stop = FALSE} a warning is given if
 #'   elements do not exist. Set to \code{FALSE} to suppress warnings
-#' 
 #' @return list containing the elements of \code{x} that are specified in 
 #'   \code{elements} or \code{x[[elements]]} if length of \code{elements} is 1 
 #'   or \code{list()} if \code{elements} is empty. If the elements in vector 
 #'   \code{elements} are named, these names are used in the output list.
-#' 
+#' @export
 #' @examples 
 #' L <- list(a = 1, b = 2, c = 3, d = 4)
 #'   
@@ -294,9 +291,9 @@ selectElements <- function(x, elements = NULL, do.stop = TRUE, do.warn = TRUE)
 #' 
 #' @param x a list
 #' @param elements names of elements to remove
-#' 
 #' @return \code{x} with elements with names given in \code{elements} being
 #'   removed. User attributes of \emph{x} are restored.
+#' @export
 #' 
 removeElements <- function(x, elements)
 {

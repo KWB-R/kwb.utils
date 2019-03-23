@@ -31,6 +31,7 @@
 #' @param \dots further arguments passed to either \code{\link{read.table}} or 
 #'   \code{\link{write.table}}
 #' @return path to the created CSV file   
+#' @export
 #' @examples
 #' # Write the iris dataset to a temporary file with "," as column separator
 #' csv_in <- tempfile(fileext = ".csv")
@@ -53,6 +54,7 @@
 #' 
 #' # Review the result
 #' catLines(readLines(csv_out, 6))
+#' 
 convertCsvFile <- function(
   file_in,
   sep_in = formals(utils::read.table)$sep,

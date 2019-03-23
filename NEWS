@@ -1,3 +1,9 @@
+2019-03: v0.4.1
+===============
+
+* export functions explicitly, do not export all functions starting with dot "."
+* new: isDotOrDoubleDot(), isASCII(), moved from kwb.fakin
+
 2018-12
 =======
 

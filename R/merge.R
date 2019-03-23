@@ -14,6 +14,7 @@
 #'   data frame \code{y} of the returned list.
 #' @return list with two elements \code{x} and \code{y} each of which are data 
 #'   frames containing at least the columns given in \code{by}.
+#' @export
 #' @examples 
 #' z <- data.frame(
 #'   name = c("peter", "peter", "paul", "mary", "paul", "mary"),
@@ -64,6 +65,9 @@ unmerge <- function(z, by)
 }
 
 # .splitDataFrame --------------------------------------------------------------
+#' @export
+#' @keywords internal
+#' 
 .splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
 {
   xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
@@ -89,10 +93,9 @@ unmerge <- function(z, by)
 #' @param \dots additional arguments passed to \code{merge}
 #' @param dbg if \code{TRUE} (default) debug messages showing the process of 
 #'   merging are shown
-#'   
 #' @return data frame being the result of merging all the data frames given in 
 #'   \emph{dataFrames} by  consecutively calling \code{merge}
-#'   
+#' @export
 #' @examples 
 #' peter <- data.frame(fruit = c("apple", "pear", "banana"), kg = 1:3)
 #' paul <- data.frame(fruit = c("banana", "apple", "lemon"), kg = c(10, 20, 30))
@@ -163,6 +166,7 @@ mergeAll <- function(dataFrames, by, ..., dbg = TRUE)
 #' @param by.x just as in \code{\link[base]{merge}}
 #' @param by.y just as in \code{\link[base]{merge}}
 #' @param \dots additional arguments passed to \code{\link[base]{merge}}
+#' @export
 #' 
 safeMerge <- function(
   x, y, by = intersect(names(x), names(y)), by.x = by, by.y = by, ...
