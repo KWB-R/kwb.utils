@@ -1,7 +1,26 @@
-pandoc: '2.5'
-pkgdown: 1.1.0
+pandoc: '2.2'
+pkgdown: 1.3.0
 pkgdown_sha: ~
-articles: []
+articles:
+  functions_array: functions_array.html
+  functions_call: functions_call.html
+  functions_check: functions_check.html
+  functions_conversion: functions_conversion.html
+  functions_crypto: functions_crypto.html
+  functions_data_frame: functions_data_frame.html
+  functions_debug: functions_debug.html
+  functions_dictionary: functions_dictionary.html
+  functions_if: functions_if.html
+  functions_in_out: functions_in_out.html
+  functions_list: functions_list.html
+  functions_logical: functions_logical.html
+  functions_object: functions_object.html
+  functions_stats: functions_stats.html
+  functions_string: functions_string.html
+  functions_system: functions_system.html
+  functions_ungrouped: functions_ungrouped.html
+  functions_vector: functions_vector.html
+  overview: overview.html
 urls:
   reference: https://kwb-r.github.io/kwb.utils/reference
   article: https://kwb-r.github.io/kwb.utils/articles
