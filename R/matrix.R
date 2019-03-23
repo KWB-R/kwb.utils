@@ -8,7 +8,7 @@
 #' @param coeffs numeric vector of coefficients
 #' @param version 1 or 2 (default: 1). Allows for two different versions of
 #'   calculation both of which should return the same!
-#' 
+#' @export
 #' @examples 
 #' (x <- randomMatrix(c(4, 2)))
 #' (coeffs <- rnorm(ncol(x)))
@@ -67,7 +67,7 @@ linearCombination <- function(x, coeffs, version = 1)
 #' @param dim integer vector of length two containing the number of rows and
 #'   columns, respectively, that the output matrix shall contain
 #' @param values set of values to be used within the matrix
-#'  
+#' @export
 #' @examples 
 #' 
 #' # By default, the matrix has a random number of rows between 1 and 10 and
@@ -99,10 +99,9 @@ randomMatrix <- function(
 #' @param value value to be given to each matrix element
 #' @param name.row name to be given to the row dimension (default: "")
 #' @param name.col name to be given to the column dimension (default: "")
-#'   
 #' @return matrix with \code{rowNames} as row names and \code{colNames} as
 #'   column names, filled with \emph{value} at each position
-#'   
+#' @export
 #' @examples 
 #' ## Initialise a matrix with rows A to E and columns x to z of value -1
 #' createMatrix(c("A", "B", "C", "D", "E"), c("x", "y", "z"), -1)
@@ -156,6 +155,7 @@ createMatrix <- function(
 #'   in the form \code{<column-name> = <value>}
 #' @param warn if \code{TRUE}, warnings are given if columns named in
 #'   \code{columnValuePairs} do not exist in matrix \code{m}
+#' @export
 #' 
 setMatrixColumns <- function(m, columnValuePairs, warn = TRUE)
 {
@@ -196,7 +196,7 @@ setMatrixColumns <- function(m, columnValuePairs, warn = TRUE)
 #' @param col_names character vector of column names
 #' @param fill_value value to fill a row or column with if a row or column does
 #'   not exist in \code{x}
-#'
+#' @export
 #' @examples
 #' m <- matrix(1:12, nrow = 3, ncol = 4, dimnames = list(
 #'   rows = paste0("row", 1:3), cols = paste0("col", 1:4)
@@ -243,6 +243,7 @@ assertRowsAndColumns <- function(
 #' Stop with a Message if Input is not a Matrix
 #' 
 #' @param x object to be checked with \code{\link{is.matrix}}
+#' @export
 #' 
 stopIfNotMatrix <- function(x)
 {
@@ -257,11 +258,10 @@ stopIfNotMatrix <- function(x)
 #' Differences between Matrix Rows
 #' 
 #' @param x matrix
-#' 
 #' @return matrix with one row less than in input matrix \code{x} and each row 
 #'   \code{i} representing the difference \code{x[i+1, ]-x[i, ]} between rows
 #'   \code{i+1} and \code{i} in \code{x}
-#'   
+#' @export
 #' @examples 
 #' x <- matrix(1:12, nrow = 3)
 #' 
@@ -282,10 +282,9 @@ diffrows <- function(x)
 #' Matrix to List of Matrix Columns
 #' 
 #' @param x matrix
-#' 
 #' @return list with as many elements as there are columns in \code{x} and each
 #'   element representing one column
-#'   
+#' @export
 #' @examples
 #' x <- matrix(1:12, nrow = 3)
 #' 
@@ -305,10 +304,9 @@ asColumnList <- function(x)
 #' Matrix to List of Matrix Rows
 #' 
 #' @param x matrix
-#' 
 #' @return list with as many elements as there are rows in \code{x} and each
 #'   element representing one row
-#'   
+#' @export
 #' @examples
 #' x <- matrix(1:12, nrow = 3)
 #' 

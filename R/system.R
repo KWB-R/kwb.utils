@@ -6,12 +6,12 @@
 #' @param max_depth number of sub levels of list structures to be shown
 #' @param units passed to \code{\link{object.size}}
 #' @param depth depth of recursive call (for internal use only)
-#'
 #' @return if \code{x} is a list, a list of the same structure is returned with
 #'   each list elemenet replaced by its size, otherwise the object size of
 #'   \code{x}. Each list or sub list with more than one element is assigned an
 #'   attribute "total" to containing the total size of the list.
-#'
+#' @export
+#' 
 objectSize <- function(x, max_depth = 2, units = "auto", depth = 0)
 {
   get_size <- function(xx) format(utils::object.size(xx), units = units)
@@ -46,9 +46,9 @@ objectSize <- function(x, max_depth = 2, units = "auto", depth = 0)
 #' does not exist
 #'
 #' @param \dots character vectors passed to \code{file.path}
-#'
 #' @return path as given in \code{path}
-#'
+#' @export
+#' 
 safePath <- function(...)
 {
   file <- file.path(...)
@@ -77,10 +77,11 @@ safePath <- function(...)
 
 #' see tools:::.OStype
 #'
-#' This is a copy of tools:::.OStype. It is redefined here so that it can
-#'   be used within this package. R CMD build would complain if I used
-#'   tools:::.OStype!
-#'
+#' This is a copy of tools:::.OStype. It is redefined here so that it can be
+#' used within this package. R CMD build would complain if I used
+#' tools:::.OStype!
+#'   
+#' @export
 .OStype <- function()
 {
   OS <- Sys.getenv("R_OSTYPE")
@@ -103,9 +104,9 @@ safePath <- function(...)
 #'
 #' @param osType Optional. Type of operating system, one of \code{"unix"},
 #'   \code{"windows"}
-#'   
 #' @return character string representing the path to your desktop
-#'
+#' @export
+#' 
 desktop <- function(osType = .OStype())
 {
   desktops <- c(
@@ -141,9 +142,9 @@ desktop <- function(osType = .OStype())
 #'
 #' @param osType Optional. Type of operating system, one of \code{"unix"},
 #'   \code{"windows"}
-#'   
 #' @return character string represenging the name of the current user
-#'
+#' @export
+#' 
 user <- function(osType = .OStype())
 {
   user <- Sys.getenv(c(windows = "USERNAME", unix = "USER")[osType])
@@ -162,9 +163,9 @@ user <- function(osType = .OStype())
 #'
 #' @param scripts full paths to R scripts
 #' @param dbg if TRUE (default) log messages ("loading... ok") are shown
-#'
 #' @return the vector of script paths is returned invisibly
-#'
+#' @export
+#' 
 sourceScripts <- function(scripts, dbg = TRUE)
 {
   for (script in scripts) {
@@ -195,7 +196,8 @@ sourceScripts <- function(scripts, dbg = TRUE)
 #' @param \dots arguments to be passed to function FUN
 #' @param .dbg if TRUE, debug messages on changing the directory are shown.
 #'   Default: \code{FALSE}
-#'
+#' @export
+#' 
 runInDirectory <- function(target.dir = tempdir(), FUN, ..., .dbg = FALSE)
 {
   # Save current working directory, set working directory to tdir
@@ -217,6 +219,8 @@ runInDirectory <- function(target.dir = tempdir(), FUN, ..., .dbg = FALSE)
 
 #' Default Windows Program Folders
 #'
+#' @export
+#' 
 defaultWindowsProgramFolders <- function()
 {
   directories <- c(
@@ -247,7 +251,8 @@ defaultWindowsProgramFolders <- function()
 #'
 #' @param FUN function to be called
 #' @param args list of arguments passed to \code{FUN}
-#'
+#' @export
+#' 
 mySystemTime <- function(FUN, args)
 {
   stime <- system.time(returnValue <- do.call(FUN, args))
@@ -265,7 +270,8 @@ mySystemTime <- function(FUN, args)
 #' @param directory directory from which batchfile is to be invoked. Default:
 #'   directory of batch file
 #' @param \dots arguments passed to shell.exec
-#'
+#' @export
+#' 
 runBatchfileInDirectory <- function(
   batchfile, directory = dirname(batchfile), ...
 )
@@ -293,6 +299,7 @@ runBatchfileInDirectory <- function(
 #' Set the given path in quotes so that in can be used in a command line
 #' 
 #' @param x path to be quoted
+#' @export
 #' 
 cmdLinePath <- function(x)
 {
@@ -313,10 +320,10 @@ cmdLinePath <- function(x)
 #' @param recursive if TRUE (default) the full tree of directories and
 #'   subdirectories is copied, otherwise only the top-level directories
 #' @param dbg if TRUE (default) debug messages are shown
-#'
 #' @return This function invisibly returns a vector of character containing the
 #'   full paths of the directories that were created.
-#'
+#' @export
+#' 
 copyDirectoryStructure <- function(
   sourcedir, targetdir, excludePattern = "^$", recursive = TRUE, dbg = TRUE
 )
@@ -343,7 +350,8 @@ copyDirectoryStructure <- function(
 #' @param confirm if \code{TRUE} (the default is \code{FALSE}!) the user is
 #'   asked to confirm the creation of a directory
 #' @return created path or \code{NULL} if the path could not be created
-#'
+#' @export
+#' 
 createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
 {
   warningDeprecated("createDirAndReturnPath", "createDirectory")
@@ -362,7 +370,8 @@ createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
 #' @param confirm if \code{TRUE} (the default is \code{FALSE}!) the user is
 #'   asked to confirm the creation of a directory
 #' @return created path or \code{NULL} if the path could not be created
-#'
+#' @export
+#' 
 createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 {
   stopifnot(length(dir.to.create) == 1, is.character(dir.to.create))
@@ -428,9 +437,9 @@ createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 #' Create and Return Path of Subdirectory in temp()
 #'
 #' @param subdir name of subdirectory to be created
-#'
 #' @return full path to created directory
-#'
+#' @export
+#' 
 tempSubdirectory <- function(subdir)
 {
   sdir <- file.path(tempdir(), subdir)
@@ -450,7 +459,8 @@ tempSubdirectory <- function(subdir)
 #' @param startdir directory to be opened in Windows Explorer
 #' @param use.shell.exec if \code{TRUE} \code{shell.exec} is used instead of
 #'   running the system command \code{cmd /C explorer}
-#'
+#' @export
+#' 
 hsOpenWindowsExplorer <- function(
   startdir = tempdir(), use.shell.exec = ! .isNetworkPath(startdir)
 )
@@ -470,7 +480,7 @@ hsOpenWindowsExplorer <- function(
 #' Does the Path Represent a Network Path?
 #'
 #' @param x vector of character representing paths
-#' 
+#' @export
 #' @examples 
 #' .isNetworkPath("//server/folder/file.txt")
 #' 
@@ -487,6 +497,7 @@ hsOpenWindowsExplorer <- function(
 #'   backslashes
 #'
 #' @param path vector of character representing file paths
+#' @export
 #' 
 windowsPath <- function(path)
 {
@@ -500,9 +511,9 @@ windowsPath <- function(path)
 #' R compatible file path with backslashes replaced with forward slashes
 #'
 #' @param path character string representing a file path
-#'
 #' @return path in which backslashes are replaced with forward slashes
-#'
+#' @export
+#' 
 rStylePath <- function(path)
 {
   gsub("\\\\", "/", path)
@@ -521,6 +532,7 @@ rStylePath <- function(path)
 #'
 #' @param commandLine character string passed to \code{system}
 #' @param ... additional arguments passed to \code{system}
+#' @export
 #' 
 hsSystem <- function(commandLine, ...)
 {
@@ -535,7 +547,8 @@ hsSystem <- function(commandLine, ...)
 #'
 #' @param commandLine character string passed to \code{shell}
 #' @param ... additional arguments passed to \code{shell}
-#'
+#' @export
+#' 
 hsShell <- function(commandLine, ...)
 {
   .showCommand(commandLine)

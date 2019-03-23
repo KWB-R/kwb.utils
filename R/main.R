@@ -6,8 +6,8 @@
 #' @param sumOfValues sum of values in the result vector
 #' @param names names of elements in the result vector. Default:
 #'   \code{seq_len(n)}
-#'   
 #' @return named vector of integer values with \code{sum(values) == sumOfValues}
+#' @export
 #' 
 randomValuesWithSum <- function(n, sumOfValues, names = seq_len(n))
 {
@@ -36,10 +36,9 @@ randomValuesWithSum <- function(n, sumOfValues, names = seq_len(n))
 #'   the option is reset to what it was before.
 #' @param FUN function to be called
 #' @param \dots arguments passed to \code{FUN}
-#' 
 #' @return This function returns what \code{FUN} returns when called with the
 #'   arguments given in \code{...}
-#' 
+#' @export
 #' @examples 
 #' option.bak <- getOption("stringsAsFactors")
 #'   
@@ -101,9 +100,8 @@ callWithStringsAsFactors <- function(stringsAsFactors, FUN, ...)
 #' 
 #' @param a vector 1
 #' @param b vector 2
-#' 
 #' @return character vector of same length as \emph{a} and \emph{b}
-#' 
+#' @export
 #' @examples 
 #' parallelNonNA(c(1, NA, 3), c(NA, 2, NA))  # "1" "2" "3"
 #'   
@@ -164,7 +162,7 @@ parallelNonNA <- function(a, b)
 #' @param x vector in which NA are to be replaced with the last non-NA value 
 #'   (at greatest of smaller indices) in the vector
 #' @param method integer (1 or 2) distinguishing two different methods
-#' 
+#' @export
 #' @examples 
 #' naToLastNonNa(c(1, 2, NA, NA, 3, NA, NA, 4, NA, NA, 5))
 #' ## Result: [1] 1 2 2 2 3 3 3 4 4 4 5
@@ -216,9 +214,9 @@ naToLastNonNa <- function(x, method = 2)
 #' @param x vector of character strings
 #' @param warn if \code{TRUE} (default) a warning showing the duplicated values is 
 #'   given
-#' 
 #' @return \code{x} with duplicate elements being modified to "element.1",
 #'   "element.2", etc.
+#' @export
 #' 
 makeUnique <- function(x, warn = TRUE)
 {
@@ -256,6 +254,7 @@ makeUnique <- function(x, warn = TRUE)
 #' 
 #' @param x R list.
 #' @param basename name to be used as prefix for all names found. Default: ""
+#' @export
 #' 
 recursiveNames <- function(x, basename = "")
 {
@@ -293,8 +292,8 @@ recursiveNames <- function(x, basename = "")
 #' @param divisor number by which dividend is to be devided
 #' @param substitute.value value to be returned if divisor is 0
 #' @param warn if TRUE, a warning is given if the divisor is zero
-#' 
 #' @return quotient of dividend and divisor: dividend/divisor
+#' @export
 #' 
 quotient <- function(dividend, divisor, substitute.value = Inf, warn = TRUE)
 {
@@ -322,6 +321,7 @@ quotient <- function(dividend, divisor, substitute.value = Inf, warn = TRUE)
 #' Get the Name of a Function
 #' 
 #' @param FUN R object representing a function
+#' @export
 #' 
 getFunctionName <- function(FUN)
 {
@@ -333,6 +333,7 @@ getFunctionName <- function(FUN)
 #' Get odd Numbers out of a Vector of Integers
 #' 
 #' @param x vector of integer
+#' @export
 #' 
 getOddNumbers <- function(x)
 {
@@ -344,6 +345,8 @@ getOddNumbers <- function(x)
 #' Get even Numbers out of a Vector of Integers
 #' 
 #' @param x vector of integer
+#' @export
+#' 
 getEvenNumbers <- function(x)
 {
   x[isEvenNumber(x)]
@@ -360,6 +363,7 @@ getEvenNumbers <- function(x)
 #'   (\emph{absolute == TRUE}) by which the right limit is extended to the
 #'   right.
 #' @param absolute Default: FALSE
+#' @export
 #' 
 extendLimits <- function(limits, left = 0.05, right = left, absolute = FALSE)
 {
@@ -379,6 +383,7 @@ extendLimits <- function(limits, left = 0.05, right = left, absolute = FALSE)
 #' @param x list of \code{key = value} assignments
 #' @param pos passed to \code{assign},
 #' @param \dots further arguments passed to \code{assign}
+#' @export
 #' 
 assignAll <- function(x, pos = 1, ...)
 {
@@ -395,6 +400,7 @@ assignAll <- function(x, pos = 1, ...)
 #' Assign all Package Objects to the Global Environment
 #' 
 #' @param package package name
+#' @export
 #' @examples 
 #' assignPackageObjects("kwb.utils")
 #' 
@@ -414,6 +420,7 @@ assignPackageObjects <- function(package)
 #' 
 #' @param x name of variable
 #' @param value value of variable
+#' @export
 #' 
 assignGlobally <- function(x, value)
 {
@@ -433,6 +440,7 @@ assignGlobally <- function(x, value)
 #' @param create.if.not.existing if TRUE and if the variable does not yet exist,
 #'   it is created and initialised with the value given in \code{default}.
 #'   Default: TRUE
+#' @export
 #' 
 getGlobally <- function(x, default = NULL, create.if.not.existing = TRUE)
 {
@@ -450,9 +458,9 @@ getGlobally <- function(x, default = NULL, create.if.not.existing = TRUE)
 #' @param x vector of numeric
 #' @param expectedDiff expected difference between elements in x. A bigger
 #'   difference is recognised as a break. Default: 1
-#'   
 #' @return index of elements after which a break occurs or integer(0) if no
 #'   break occurs at all
+#' @export
 #' 
 breakInSequence <- function(x, expectedDiff = 1)
 {
@@ -469,6 +477,7 @@ breakInSequence <- function(x, expectedDiff = 1)
 #' 
 #' @param x object to be tested for NULL or being empty (vector of length 0 or
 #'   data frame with no rows)
+#' @export
 #' 
 warnIfEmpty <- function(x)
 {
@@ -496,9 +505,8 @@ warnIfEmpty <- function(x)
 #'   parameter values
 #' @param stringsAsFactors if TRUE, columns of type character in the result data
 #'   frame are converted to factors. Parameter is passed to cbind, rbind.
-#' 
 #' @return data frame in "list form" (long format)
-#' 
+#' @export
 #' @seealso \code{\link[stats]{reshape}}
 #' 
 hsMatrixToListForm <- function(
@@ -527,11 +535,10 @@ hsMatrixToListForm <- function(
 #' 
 #' @param myName desired name.
 #' @param myNames vector of existing names.
-#' 
 #' @return If \emph{myName} is not contained in \emph{myNames} it is returned.
 #'   Otherwise \emph{myName} is modified to \emph{myName}_01, \emph{myName}_02,
 #'   ... until a non-existing name is found that is then returned.
-#' 
+#' @export
 #' @examples 
 #' existing <- c("a", "b")
 #' myName <- hsSafeName("c", existing)

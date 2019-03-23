@@ -87,4 +87,5 @@ csv_out <- convertCsvFile(csv_in, sep_out = ";", dec_out = ",")
 
 # Review the result
 catLines(readLines(csv_out, 6))
+
 }

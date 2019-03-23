@@ -9,11 +9,9 @@
 #' @param FUN function to be called
 #' @param ... (unnamed) lists containing argument assignments passed to
 #'   \code{FUN} or (named) arguments passed to \code{FUN}
-#' 
 #' @return the return value is the return value of the function \code{FUN}.
-#' 
+#' @export
 #' @seealso \code{\link{arglist}}
-#' 
 #' @examples 
 #' # define some default arguments
 #' args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
@@ -45,11 +43,9 @@ callWith <- function(FUN, ...)
 #'   this list.
 #' @param warn.on.NULL if TRUE (default is FALSE) a warning is given if any of
 #'   the arguments given to this function is NULL
-#' 
 #' @return merged list of arguments
-#' 
+#' @export
 #' @seealso \code{\link{callWith}}
-#' 
 #' @examples 
 #' # define some default arguments
 #' args.default <- list(xlim = c(0, 10), ylim = c(0, 10), col = "red", lwd = 2)
@@ -88,9 +84,8 @@ arglist <- function(..., warn.on.NULL = FALSE)
 #' where the list element at the same indices are not named.
 #' 
 #' @param x list
-#' 
 #' @return vector of logical
-#' 
+#' @export
 #' @examples 
 #' is.unnamed(list(1, b = 2)) # TRUE FALSE
 #' is.unnamed(list(a = 1, 2)) # FALSE TRUE
@@ -119,11 +114,9 @@ is.unnamed <- function(x)
 #' @param \dots lists
 #' @param warn.on.NULL if TRUE (default) a warning is given if any of the
 #'   arguments given to this function is NULL
-#' 
 #' @return list containing the elements given in \code{...}
-#' 
+#' @export
 #' @seealso \code{\link{arglist}}
-#' 
 #' @examples 
 #' # merge two lists with different elements
 #' mergeLists(list(a = 1), list(b = 2))

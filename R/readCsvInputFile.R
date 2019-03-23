@@ -5,6 +5,7 @@
 #' @param match pattern or fixed text to match in header line
 #' @param fixed if TRUE, \emph{match} is taken as a fixed string to be looked
 #'   for in the header line, otherwise it is interpreded as a regular expression
+#' @export
 #' 
 columnDescriptor <- function(match = ".*", fixed = FALSE)
 {
@@ -34,6 +35,7 @@ columnDescriptor <- function(match = ".*", fixed = FALSE)
 #'   columns defined in \emph{columnDescription} are found
 #' @param encoding passed to readLines, "Latin-1" or "UTF-8"
 #' @param \dots further arguments passed to read.table
+#' @export
 #' 
 readCsvInputFile <- function(
   csv, sep, dec, headerRow = 1, headerPattern = "", columnDescription = NULL,
@@ -123,6 +125,7 @@ readCsvInputFile <- function(
 #' Message to be shown if fields/columns are missing
 #' 
 #' @param x vector of character
+#' @export
 #' 
 msgAvailableFields <- function(x)
 {

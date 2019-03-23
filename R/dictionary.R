@@ -5,7 +5,7 @@
 #' @param dictionary list of character vectors of length one defining \code{key
 #'   = value} pairs forming a dictionary.
 #' @param file full path to the file to which \code{dictionary} is to be written
-#' 
+#' @export
 #' @seealso \code{\link{readDictionary}, \link{readDictionaries}}
 #' 
 writeDictionary <- function(dictionary, file)
@@ -48,7 +48,7 @@ writeDictionary <- function(dictionary, file)
 #' @param pattern regular expression to match the names of the files to be read.
 #'   The pattern is expected to contain a pair of parentheses around the part of
 #'   the file that shall be used as element name in the returned list
-#' 
+#' @export
 #' @seealso \code{\link{readDictionary}}
 #' 
 readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
@@ -71,7 +71,8 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' @param file full path to dictionary file
 #' @param sorted if TRUE (default) the entries in the dictionary will be sorted
 #'   by their keys
-#' 
+#' @export
+#' @seealso \code{\link{readDictionaries}}
 #' @examples 
 #' file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
 #' 
@@ -79,8 +80,6 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' 
 #' resolve("file.out", dictionary, extension = "csv")
 #' resolve("file.out", dictionary, extension = "pdf")
-#' 
-#' @seealso \code{\link{readDictionaries}}
 #' 
 readDictionary <- function(file, sorted = TRUE)
 {
@@ -124,7 +123,7 @@ readDictionary <- function(file, sorted = TRUE)
 #' @param \dots Unnamed arguments are treated as (further) dictionaries. These
 #'   are merged first to one dictionary before merging further (named) \code{key
 #'   = value} pairs.
-#' 
+#' @export
 #' @examples 
 #' file <- system.file("extdata", "dictionary.txt", package = "kwb.utils")
 #' 
@@ -168,7 +167,7 @@ resolve <- function(x, ...)
 #'   the key and the element value represents the value assigned to the key.
 #' @param \dots additional assignments of the form <key> = <value> that are
 #'   temporarily added to the \code{dictionary} before doing the resolving
-#' 
+#' @export
 #' @examples 
 #' # Define a dictionary in the form of a list
 #' dictionary <- list(
@@ -212,7 +211,7 @@ resolveAll <- function(dictionary, ...)
 #'   resolving
 #' @param dbg if \code{TRUE} (the default is \code{FALSE}) debug messages are 
 #'   shown
-#'   
+#' @export
 #' @return The (resolved) value is returned
 #' 
 hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
@@ -309,6 +308,7 @@ hsResolve <- function(x, dict = NULL, ..., dbg = FALSE)
 #' @param dbg if \code{TRUE} (default is \code{FALSE}) debug messages are shown
 #' @param expected.length if given and different from the length of \code{x}
 #'   an error is thrown
+#' @export
 #' 
 getTagNames <- function(
   x, bt = c("<>", "[]")[1], dbg = FALSE, expected.length = length(x)

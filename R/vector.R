@@ -4,10 +4,9 @@
 #' 
 #' @param a first vector
 #' @param b second vector
-#' 
 #' @return vector \code{x} with all \code{x[c(1, 3, 5, ...)] == a} and all
 #'   \code{x[c(2, 4, 6, ...)] == b}
-#' 
+#' @export
 #' @examples
 #' a <- paste0("a", 1:5)
 #' b <- paste0("b", 1:5)
@@ -48,10 +47,9 @@ combineAlternatingly <- function(a, b)
 #' @param x vector
 #' @param length.out desired length of output vector
 #' @param fill.with element to fill the vector up with (default: "")
-#' 
 #' @return \code{x}, filled up with \code{fill.with} to a final length of
 #'   \code{length.out}
-#' 
+#' @export
 #' @examples 
 #' kwb.utils::enlargeVector(1:5, 10, fill.with = 0) 
 #' kwb.utils::enlargeVector(1:5, 10, fill.with = NA) 
@@ -73,6 +71,7 @@ enlargeVector <- function(x, length.out, fill.with = "")
 #' 
 #' @param x vector to be "recycled"
 #' @param n target length
+#' @export
 #' 
 recycle <- function(x, n)
 {
@@ -86,8 +85,8 @@ recycle <- function(x, n)
 #' Returns the first element using the function head
 #' 
 #' @param x object
-#' 
 #' @return first element: x[1]
+#' @export
 #' 
 firstElement <- function(x)
 {
@@ -101,8 +100,8 @@ firstElement <- function(x)
 #' Returns the last element using the function tail
 #' 
 #' @param x object
-#' 
 #' @return last element: x[length(x)]
+#' @export
 #' 
 lastElement <- function(x)
 {
@@ -118,9 +117,9 @@ lastElement <- function(x)
 #' @param elements vector of elements
 #' @param index positive or negative index(es) with absolute value between 1 and
 #'   length(\emph{elements})
-#'   
 #' @return element(s) out of \emph{elements} corresponding to the index(es)
 #'   given in \emph{index}
+#' @export
 #' 
 getByPositiveOrNegativeIndex <- function(elements, index)
 {

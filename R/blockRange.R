@@ -17,7 +17,7 @@
 #' @param renumber if \code{TRUE} (default) the result data frame is renumbered
 #' @return list of data frames containing the rows of \emph{dataFrame} between
 #'   rows matching \emph{pattern} in \code{dataFrame[[columnName]]}.
-#' 
+#' @export
 #' @examples 
 #'   dataFrame <- as.data.frame(
 #'     matrix(
@@ -115,9 +115,8 @@ extractRowRanges <- function(
 #' @param lastStop integer value of the last stop index
 #' @param startOffset integer offset applied to the starts
 #' @param stopOffset integer offsets applied to the ends
-#' 
 #' @return data frame with columns \code{from} and \code{to}
-#' 
+#' @export
 #' @examples 
 #' starts <- c(1, 10, 20, 35)
 #' 
@@ -157,9 +156,8 @@ startsToRanges <- function(starts, lastStop, startOffset = 1, stopOffset = 1)
 #' @param lastStop number to be returned as last element of the result vector
 #' @param stopOffset number to be subtracted from (all but the first elements
 #'   in) \emph{starts} in order to find the ends
-#' 
 #' @return vector of integer
-#' 
+#' @export
 #' @examples 
 #' starts <- c(1, 10, 20, 35)
 #' 

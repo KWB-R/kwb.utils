@@ -13,8 +13,8 @@ fullySorted(x, decreasing = FALSE, ..., renumber.rows = TRUE)
 
 \item{...}{further arguments passed to \code{\link[base]{order}}}
 
-\item{renumber.rows}{if \code{TRUE} (default) the rows in the returned 
-data frame are renumbered from 1 to the number of rows in \code{x}}
+\item{renumber.rows}{if \code{TRUE} (default) the rows in the returned data
+frame are renumbered from 1 to the number of rows in \code{x}}
 }
 \description{
 Sort a Data Frame by all of its Columns

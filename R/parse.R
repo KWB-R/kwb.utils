@@ -6,6 +6,7 @@
 #' @param n number of first lines in the file to be looked at
 #' @param separators vector of possible column separator characters the file is
 #'   to be checked for
+#' @export
 #' 
 guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 { 
@@ -138,12 +139,12 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 #' @param keywords (list of) keywords to be looked for in \emph{data frame}
 #' @param asDataFrame if TRUE (default), a data frame is returned, otherwise a
 #'   matrix
-#'   
 #' @return data frame (if \emph{asDataFrame} = TRUE) or matrix with one column
 #'   per keyword that was given in \emph{keywords}. The first row contains the
 #'   row numbers and the second row contains the column numbers, respectively,
 #'   of the fields in \emph{dataFrame} in which the corresponding keywords were 
 #'   found.
+#' @export
 #' 
 getKeywordPositions <- function(dataFrame, keywords, asDataFrame = TRUE)
 {

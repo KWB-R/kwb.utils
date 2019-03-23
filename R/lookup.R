@@ -13,10 +13,9 @@
 #'   list with \code{values} as elements and \code{keys} as element names; 
 #'   "vector": named vector with \code{values} as elements and \code{keys} as 
 #'   names.
-#'   
 #' @return object according to the chosen \code{class}. See description of the 
 #'   \code{class} argument.
-#' 
+#' @export
 #' @examples 
 #' keys <- c("A", "B", "C")
 #' values <- c("Apple", "Banana", "Cherry")
@@ -77,9 +76,9 @@ toLookupClass <- function(
 #' @param data Optional. Data frame with two columns of which the first is
 #'   assumed to contain the keys and the second is assumed to contain the values
 #'   of the dictionary
-#'   
 #' @return dictionary: list with \emph{values} as elements and \emph{keys} as
 #'   names
+#' @export
 #' 
 toLookupList <- function(keys, values, data = NULL) 
 {
@@ -113,12 +112,12 @@ toLookupList <- function(keys, values, data = NULL)
 #' @param as.twoColumnTable if TRUE (the default is FALSE) the result is a data
 #'   frame with two columns \emph{keys} and \emph{values}, respectively.
 #' @param stringsAsFactors passed to \code{\link[base]{data.frame}}
-#'   
 #' @return data frame with one row containing \code{values} in columns named 
 #'   \code{keys} or, if \code{as.twoColumnTable = TRUE}, a data frame with the 
 #'   \code{keys} in column \emph{key} and the \code{values} in column 
 #'   \emph{value}
-#'   
+#' @export
+#' 
 toLookupTable <- function(
   keys = NULL, values = NULL, List = NULL, as.twoColumnTable = FALSE, 
   stringsAsFactors = FALSE
@@ -173,9 +172,9 @@ toLookupTable <- function(
 #' @param key key for which a value is to be looked up
 #' @param default default value that is returned if the key is not a key of the
 #'   lookup table
-#'   
 #' @return value looked up in the lookup table of default if \code{key} is not 
 #'   contained in the first column of the lookup table \code{x}
+#' @export
 #' 
 tableLookup <- function(x, key, default = NULL)
 {
