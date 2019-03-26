@@ -2,6 +2,7 @@
 ===============
 
 * export log-functions: .log(), .logline(), .logok(), .logstart()
+* new: multiColumnLookup()
 
 2019-03: v0.4.1
 ===============

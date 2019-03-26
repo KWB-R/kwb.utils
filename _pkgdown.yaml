@@ -116,6 +116,7 @@ reference:
       - insertColumns
       - mergeAll
       - moveColumnsToFront
+      - multiColumnLookup
       - noFactorDataFrame
       - pasteColumns
       - pasteColumns0
