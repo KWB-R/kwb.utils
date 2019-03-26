@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@
       <h1>Overview</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2019-03-23</h4>
+            <h4 class="date">2019-03-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/overview.Rmd"><code>vignettes/overview.Rmd</code></a></small>
       <div class="hidden name"><code>overview.Rmd</code></div>
@@ -170,7 +170,7 @@
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;         assignGlobally(name, object)</span></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;     }</span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; &lt;bytecode: 0x2e393d0&gt;</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; &lt;bytecode: 0x4674498&gt;</span></a>
 <a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; &lt;environment: namespace:kwb.utils&gt;</span></a></code></pre></div>
 <p>As the code reveals, the function loops through the values that are returned by <code><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls(getNamespace(package))</a></code> where <code>package</code> is the name of the package. This is exacly what we need. We can use this code to get the names of all objects in the “kwb.utils” package. Let’s store these names in the variable <code>object_names</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">object_names &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ns-reflect">getNamespace</a></span>(<span class="st">"kwb.utils"</span>))</a>
