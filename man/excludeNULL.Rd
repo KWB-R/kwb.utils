@@ -4,10 +4,13 @@
 \alias{excludeNULL}
 \title{Exclude all NULL Entries from a List}
 \usage{
-excludeNULL(x)
+excludeNULL(x, dbg = TRUE)
 }
 \arguments{
 \item{x}{a list}
+
+\item{dbg}{if \code{TRUE} (default) a message is shown if elements are 
+removed}
 }
 \value{
 list \code{x} with all \code{NULL} entries excluded

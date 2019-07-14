@@ -1,6 +1,7 @@
 2019-06
 ===============
 * new: findPartialDuplicates()
+* add arg "dbg" to excludeNULL()
 
 2019-03: v0.4.2
 ===============
