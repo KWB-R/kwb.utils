@@ -65,19 +65,6 @@ enlargeVector <- function(x, length.out, fill.with = "")
   c(x, rep(fill.with, length.out - N))
 }
 
-# recycle ----------------------------------------------------------------------
-
-#' "Recycle" Vector to given Length
-#' 
-#' @param x vector to be "recycled"
-#' @param n target length
-#' @export
-#' 
-recycle <- function(x, n)
-{
-  rep(x, length.out = n)
-}
-
 # firstElement -----------------------------------------------------------------
 
 #' First Element
@@ -91,21 +78,6 @@ recycle <- function(x, n)
 firstElement <- function(x)
 {
   utils::head(x, 1)
-}
-
-# lastElement ------------------------------------------------------------------
-
-#' Last Element
-#' 
-#' Returns the last element using the function tail
-#' 
-#' @param x object
-#' @return last element: x[length(x)]
-#' @export
-#' 
-lastElement <- function(x)
-{
-  utils::tail(x, 1)
 }
 
 # getByPositiveOrNegativeIndex -------------------------------------------------
@@ -132,4 +104,63 @@ getByPositiveOrNegativeIndex <- function(elements, index)
   }
   
   elements[toPositiveIndices(index, n = n)]
+}
+
+# lastElement ------------------------------------------------------------------
+
+#' Last Element
+#' 
+#' Returns the last element using the function tail
+#' 
+#' @param x object
+#' @return last element: x[length(x)]
+#' @export
+#' 
+lastElement <- function(x)
+{
+  utils::tail(x, 1)
+}
+
+# recycle ----------------------------------------------------------------------
+
+#' "Recycle" Vector to given Length
+#' 
+#' @param x vector to be "recycled"
+#' @param n target length
+#' @export
+#' 
+recycle <- function(x, n)
+{
+  rep(x, length.out = n)
+}
+
+# removeDuplicates ------------------------------------------------------------
+
+#' Remove Duplicated Values from a Vector
+#' 
+#' @param x vector from which to remove duplicates
+#' @param dbg if \code{TRUE} a debug message is shown
+#' @return \code{x} with duplicated values being removed
+#' @export
+#' @examples
+#' removeDuplicates(c(1, 1, 2, 3, 4, 4))
+removeDuplicates <- function(x, dbg = TRUE)
+{
+  is_duplicate <- kwb.utils::catAndRun(
+    paste(sprintf("Checking for duplicates in '%s'", deparse(substitute(x)))),
+    dbg = dbg,
+    duplicated(x)
+  )
+  
+  if (! any(is_duplicate)) {
+    return(x)
+  }
+  
+  result <- kwb.utils::catAndRun(
+    messageText = paste("Removing", sum(is_duplicate), "duplicate(s)"),
+    dbg = dbg,
+    expr = x[! is_duplicate]
+  )
+  
+  result
 }

@@ -116,6 +116,8 @@ copyListElements <- function(x, y, name = deparse(substitute(y))) {
 #' Exclude all NULL Entries from a List
 #' 
 #' @param x a list
+#' @param dbg if \code{TRUE} (default) a message is shown if elements are 
+#'   removed
 #' @return list \code{x} with all \code{NULL} entries excluded
 #' @export
 #' @examples 
@@ -124,11 +126,22 @@ copyListElements <- function(x, y, name = deparse(substitute(y))) {
 #' 
 #' excludeNULL(L)
 #'
-excludeNULL <- function(x)
+excludeNULL <- function(x, dbg = TRUE)
 {
   stopifnot(is.list(x))
+ 
+  is_null <- sapply(x, is.null)
   
-  x[! sapply(x, is.null)]
+  if (any(is_null)) {
+    
+    x <- catAndRun(
+      dbg = dbg, 
+      sprintf("Removing %d list elements that are NULL", sum(is_null)), 
+      x[! is_null]
+    )
+  }
+  
+  x
 }
 
 # toNamedList ------------------------------------------------------------------
