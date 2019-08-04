@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -188,7 +188,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>excludeNULL</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>excludeNULL</span>(<span class='no'>x</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,6 +196,11 @@
     <tr>
       <th>x</th>
       <td><p>a list</p></td>
+    </tr>
+    <tr>
+      <th>dbg</th>
+      <td><p>if <code>TRUE</code> (default) a message is shown if elements are 
+removed</p></td>
     </tr>
     </table>
     
@@ -215,7 +220,7 @@
 #&gt; $c
 #&gt; [1] "three"
 #&gt; </div><div class='input'>
-<span class='fu'>excludeNULL</span>(<span class='no'>L</span>)</div><div class='output co'>#&gt; $a
+<span class='fu'>excludeNULL</span>(<span class='no'>L</span>)</div><div class='output co'>#&gt; Removing 1 list elements that are NULL ... ok. (0.00s) </div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
 #&gt; $c

@@ -70,7 +70,7 @@ each column" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -222,27 +222,27 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 <span class='no'>M2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='no'>values</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='no'>M1</span>), <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dimnames'>dimnames</a></span>(<span class='no'>M1</span>))
 
 <span class='no'>M1</span></div><div class='output co'>#&gt;    1  2  3
-#&gt; A  9  1 68
-#&gt; B 83 45 71
-#&gt; C 59 47 79
-#&gt; D 16 27 97</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M1</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A  5.4  0.8 21.6
-#&gt; B 49.7 37.5 22.5
-#&gt; C 35.3 39.2 25.1
-#&gt; D  9.6 22.5 30.8</div><div class='input'>
+#&gt; A 45 47 69
+#&gt; B 23 31  5
+#&gt; C 76 68 24
+#&gt; D 63 73 79</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M1</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A 21.7 21.5 39.0
+#&gt; B 11.1 14.2  2.8
+#&gt; C 36.7 31.1 13.6
+#&gt; D 30.4 33.3 44.6</div><div class='input'>
 <span class='no'>M2</span></div><div class='output co'>#&gt;    1  2  3
-#&gt; A NA NA 68
-#&gt; B 83 45 71
-#&gt; C 59 47 79
-#&gt; D NA 27 97</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M2</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A  0.0  0.0 21.6
-#&gt; B 58.5 37.8 22.5
-#&gt; C 41.5 39.5 25.1
-#&gt; D  0.0 22.7 30.8</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M2</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A  0.0  0.0 21.6
-#&gt; B 58.5 37.8 22.5
-#&gt; C 41.5 39.5 25.1
-#&gt; D  0.0 22.7 30.8</div><div class='input'>
+#&gt; A 45 NA 69
+#&gt; B NA 31  5
+#&gt; C 76 NA 24
+#&gt; D 63 73 79</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M2</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A 24.5  0.0 39.0
+#&gt; B  0.0 29.8  2.8
+#&gt; C 41.3  0.0 13.6
+#&gt; D 34.2 70.2 44.6</div><div class='input'><span class='fu'>columnwisePercentage</span>(<span class='no'>M2</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A 24.5  0.0 39.0
+#&gt; B  0.0 29.8  2.8
+#&gt; C 41.3  0.0 13.6
+#&gt; D 34.2 70.2 44.6</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

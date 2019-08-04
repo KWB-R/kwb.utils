@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around expand.grid — expandGrid • kwb.utils</title>
+<title>Find Paritally Duplicated Rows in a Data Frame — findPartialDuplicates • kwb.utils</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,11 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Wrapper around expand.grid — expandGrid" />
+<meta property="og:title" content="Find Paritally Duplicated Rows in a Data Frame — findPartialDuplicates" />
 
-<meta property="og:description" content="Same as expand.grid but with stringsAsFactors =
-FALSE by default and with the values of the first argument being changed
-last, not first." />
+<meta property="og:description" content="Find Rows in a data frame that are identical in the key columns but not
+identical in all columns" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -179,78 +178,79 @@ last, not first." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around expand.grid</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/dataFrame.R'><code>R/dataFrame.R</code></a></small>
-    <div class="hidden name"><code>expandGrid.Rd</code></div>
+    <h1>Find Paritally Duplicated Rows in a Data Frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/findPartialDuplicates.R'><code>R/findPartialDuplicates.R</code></a></small>
+    <div class="hidden name"><code>findPartialDuplicates.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Same as <code><a href='https://www.rdocumentation.org/packages/base/topics/expand.grid'>expand.grid</a></code> but with <code>stringsAsFactors =
-FALSE</code> by default and with the values of the first argument being changed
-last, not first.</p>
+    <p>Find Rows in a data frame that are identical in the key columns but not
+identical in all columns</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>expandGrid</span>(<span class='no'>...</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>findPartialDuplicates</span>(<span class='no'>data</span>, <span class='no'>key_columns</span>, <span class='kw'>skip_columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>arguments passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/expand.grid'>expand.grid</a></code>, but in 
-reversed order</p></td>
+      <th>data</th>
+      <td><p>data frame</p></td>
     </tr>
     <tr>
-      <th>stringsAsFactors</th>
-      <td><p>passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/expand.grid'>expand.grid</a></code></p></td>
+      <th>key_columns</th>
+      <td><p>names of columns in <code>data</code> in which to look for
+duplicated (combined) values</p></td>
+    </tr>
+    <tr>
+      <th>skip_columns</th>
+      <td><p>names of columns to be skipped when looking for
+duplicated rows</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>NULL</code> if there are no rows in <code>data</code> that have identical
+  values in the <code>key_columns</code> or if all groups of rows that have
+  identical values in the <code>key_columns</code> are also identical in all the
+  other columns (except for those named in <code>skip_columns</code>). Otherwise
+  a list is returned with the one element per duplicate in the key columns.
+  The list elements are subsets of <code>data</code> representing the rows of
+  <code>data</code> that are identical in the key columns but different in at least
+  one of the other columns.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>persons</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span>)
-<span class='no'>fruits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"pear"</span>)
-
-<span class='co'># With expand.grid() the values of the first argument change first...</span>
-(<span class='no'>grid_1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/expand.grid'>expand.grid</a></span>(<span class='kw'>person</span> <span class='kw'>=</span> <span class='no'>persons</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='no'>fruits</span>))</div><div class='output co'>#&gt;   person fruit
-#&gt; 1  Peter apple
-#&gt; 2   Paul apple
-#&gt; 3   Mary apple
-#&gt; 4  Peter  pear
-#&gt; 5   Paul  pear
-#&gt; 6   Mary  pear</div><div class='input'>
-<span class='co'>#... with expandGrid() they change last.</span>
-(<span class='no'>grid_2</span> <span class='kw'>&lt;-</span> <span class='fu'>expandGrid</span>(<span class='kw'>person</span> <span class='kw'>=</span> <span class='no'>persons</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='no'>fruits</span>))</div><div class='output co'>#&gt;   person fruit
-#&gt; 1  Peter apple
-#&gt; 2  Peter  pear
-#&gt; 3   Paul apple
-#&gt; 4   Paul  pear
-#&gt; 5   Mary apple
-#&gt; 6   Mary  pear</div><div class='input'>
-<span class='co'># With expand.grid() character strings are converted to factors by default...</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>grid_1</span>)</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
-#&gt;  $ person: Factor w/ 3 levels "Peter","Paul",..: 1 2 3 1 2 3
-#&gt;  $ fruit : Factor w/ 2 levels "apple","pear": 1 1 1 2 2 2
-#&gt;  - attr(*, "out.attrs")=List of 2
-#&gt;   ..$ dim     : Named int  3 2
-#&gt;   .. ..- attr(*, "names")= chr  "person" "fruit"
-#&gt;   ..$ dimnames:List of 2
-#&gt;   .. ..$ person: chr  "person=Peter" "person=Paul" "person=Mary"
-#&gt;   .. ..$ fruit : chr  "fruit=apple" "fruit=pear"</div><div class='input'>
-<span class='co'># ... with expandGrid() character strings are not converted by default.</span>
-<span class='co'># Also, there is no attribute "out.attrs" as it is set by expand.grid().</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>grid_2</span>)</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
-#&gt;  $ person: chr  "Peter" "Peter" "Paul" "Paul" ...
-#&gt;  $ fruit : chr  "apple" "pear" "apple" "pear" ...</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>findPartialDuplicates</span>(<span class='kw'>key_columns</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>1</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>2</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3.1</span>)
+))</div><div class='output co'>#&gt; [[1]]
+#&gt;   id value
+#&gt; 2  2     2
+#&gt; 3  2     3
+#&gt; 
+#&gt; [[2]]
+#&gt;   id value
+#&gt; 4  3   3.0
+#&gt; 5  3   3.0
+#&gt; 6  3   3.1
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -210,24 +210,31 @@ columns, respectively, that the output matrix shall contain</p></td>
     <pre class="examples"><div class='input'>
 <span class='co'># By default, the matrix has a random number of rows between 1 and 10 and</span>
 <span class='co'># a random number of columns between 1 and 10 and random values of 1:100</span>
-<span class='fu'>randomMatrix</span>()</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-#&gt; [1,]   82   73   34   47   82   78   22   87   95    67
-#&gt; [2,]   70   22   57   92   91  100   30   24   44    41
-#&gt; [3,]   23   46   26   98   59   72   73    1   76    36</div><div class='input'>
+<span class='fu'>randomMatrix</span>()</div><div class='output co'>#&gt;       [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+#&gt;  [1,]   85   11   74   56   55   79    7
+#&gt;  [2,]  100   42   67   52   73   63   51
+#&gt;  [3,]   65   40  100   57   89   23   92
+#&gt;  [4,]    3   15   14   17   10   57   12
+#&gt;  [5,]    7   82   66   87   73   31    3
+#&gt;  [6,]   49   44   69   31   83   59   16
+#&gt;  [7,]   70   54   82   93   89   75   72
+#&gt;  [8,]   91   85   37   52   51   54   12
+#&gt;  [9,]   12   58    4   74   29   40   66
+#&gt; [10,]   39   29   83   24   49   60   71</div><div class='input'>
 <span class='co'># You may specify the dimensions (here: 5 rows, 3 columns)...</span>
 <span class='fu'>randomMatrix</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   74   86   17
-#&gt; [2,]   67   11   96
-#&gt; [3,]    9   49   33
-#&gt; [4,]   86   25   37
-#&gt; [5,]    8   69   89</div><div class='input'>
+#&gt; [1,]   82    2   16
+#&gt; [2,]   26   73   87
+#&gt; [3,]   64   57   15
+#&gt; [4,]   33   43   32
+#&gt; [5,]   90   33   84</div><div class='input'>
 <span class='co'># ... and the set of values to be used within the matrix</span>
 <span class='fu'>randomMatrix</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>5</span>, <span class='fl'>3</span>), <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   NA   NA    0
-#&gt; [2,]  0.0  0.5   NA
-#&gt; [3,]   NA   NA    0
-#&gt; [4,]   NA  0.0    0
-#&gt; [5,]  0.5  0.0    0</div><div class='input'>
+#&gt; [1,]    1  0.0  0.5
+#&gt; [2,]    0  0.5  1.0
+#&gt; [3,]   NA  1.0   NA
+#&gt; [4,]    0  1.0  0.5
+#&gt; [5,]    0   NA  1.0</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -244,6 +244,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/fileExtension.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/findPartialDuplicates.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/finishAndShowPdf.html</loc>
   </url>
   <url>
@@ -563,6 +566,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/removeColumns.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/removeDuplicates.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/removeElements.html</loc>
