@@ -606,10 +606,12 @@ safeRowBindOfListElements <- function(x, elementName)
 
 # splitIntoFixSizedBlocks ------------------------------------------------------
 
-#' Split into blocks of same size
+#' Split into Blocks of Same Size
 #' 
-#' Split a data frame or matrix into blocks of the same size (= data frames of 
-#' matrices with the same number of rows)
+#' Split a data frame or a matrix into blocks of the same size, i.e. data frames 
+#' or matrices with the same number of rows (except the last one that is shorter
+#' unless the total number of rows is a multiple of the number of rows per 
+#' block).
 #' 
 #' @param data data frame or matrix
 #' @param blocksize number of rows in each block into which \code{data} is split
