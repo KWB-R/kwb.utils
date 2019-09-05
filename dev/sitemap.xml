@@ -202,6 +202,18 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/dot-isNetworkPath.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-log.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logline.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logok.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logstart.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dropDim.html</loc>
   </url>
   <url>
@@ -230,6 +242,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/fileExtension.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/findPartialDuplicates.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/finishAndShowPdf.html</loc>
@@ -451,6 +466,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/msgAvailableFields.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/multiColumnLookup.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/multiSubstitute.html</loc>
   </url>
   <url>
@@ -548,6 +566,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/removeColumns.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/removeDuplicates.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/removeElements.html</loc>

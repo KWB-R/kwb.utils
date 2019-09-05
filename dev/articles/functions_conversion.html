@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conversion Functions • kwb.utils</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Conversion Functions">
@@ -33,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.4.3.9000</span>
       </span>
     </div>
 
@@ -41,7 +42,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -114,16 +115,19 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kwb-r/kwb.utils">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -137,13 +141,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Conversion Functions</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2019-03-23</h4>
+            <h4 class="date">2019-09-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_conversion.Rmd"><code>vignettes/functions_conversion.Rmd</code></a></small>
       <div class="hidden name"><code>functions_conversion.Rmd</code></div>
@@ -154,11 +159,11 @@
     
 <div id="function-ascolumnlist" class="section level3">
 <h3 class="hasAnchor">
-<a href="#function-ascolumnlist" class="anchor"></a>Function <code><a href="../reference/asColumnList.html">asColumnList()</a></code>
+<a href="#function-ascolumnlist" class="anchor"></a>Function <code>asColumnList()</code>
 </h3>
-<p>This function converts a matrix into a list of its columns. This is useful when you want to loop through the columns of a matrix <code>m</code> with <code><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply()</a></code>. You could also loop through the columns with <code><a href="https://www.rdocumentation.org/packages/base/topics/apply">apply(m, MARGINS = 2)</a></code>. However, the usage of <code><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply()</a></code> should be preferred to the usage of <code><a href="https://www.rdocumentation.org/packages/base/topics/apply">apply()</a></code>, as demonstrated in the following example:</p>
+<p>This function converts a matrix into a list of its columns. This is useful when you want to loop through the columns of a matrix <code>m</code> with <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>. You could also loop through the columns with <code><a href="https://rdrr.io/r/base/apply.html">apply(m, MARGINS = 2)</a></code>. However, the usage of <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> should be preferred to the usage of <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, as demonstrated in the following example:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Define and show a very simple matrix</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">(m &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">(m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt;      [,1] [,2] [,3]</span></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; [1,]    1    3    5</span></a>
 <a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; [2,]    2    4    6</span></a>
@@ -166,41 +171,41 @@
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Define functions that return/count the values above a threshold.</span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># These functions are to be applied to each column of the matrix </span></a>
 <a class="sourceLine" id="cb1-9" data-line-number="9">get_above &lt;-<span class="st"> </span><span class="cf">function</span>(x, threshold) x[x <span class="op">&gt;</span><span class="st"> </span>threshold]</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">count_above &lt;-<span class="st"> </span><span class="cf">function</span>(x, threshold) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(x <span class="op">&gt;</span><span class="st"> </span>threshold)</a></code></pre></div>
+<a class="sourceLine" id="cb1-10" data-line-number="10">count_above &lt;-<span class="st"> </span><span class="cf">function</span>(x, threshold) <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(x <span class="op">&gt;</span><span class="st"> </span>threshold)</a></code></pre></div>
 <p>With the first function, the two approaches return identical results:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Approach 1: loop through columns using asColumnList() and lapply()</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">result_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(kwb.utils<span class="op">::</span><span class="kw">asColumnList</span>(m), get_above, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(result_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">result_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(kwb.utils<span class="op">::</span><span class="kw">asColumnList</span>(m), get_above, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(result_<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; List of 3</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  $ : int(0) </span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  $ : int 4</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  $ : int [1:2] 5 6</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co"># Approach 2: loop through columns using apply()</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">result_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/apply">apply</a></span>(m, <span class="dv">2</span>, get_above, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(result_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">result_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/apply.html">apply</a></span>(m, <span class="dv">2</span>, get_above, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(result_<span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; List of 3</span></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  $ : int(0) </span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt;  $ : int 4</span></a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;  $ : int [1:2] 5 6</span></a></code></pre></div>
 <p>However, with the second function, the two approaches return differing results:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Approach 1: loop through columns using asColumnList() and lapply()</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">result_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(kwb.utils<span class="op">::</span><span class="kw">asColumnList</span>(m), count_above, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(result_<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">result_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(kwb.utils<span class="op">::</span><span class="kw">asColumnList</span>(m), count_above, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(result_<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; List of 3</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  $ : int 0</span></a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  $ : int 1</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  $ : int 2</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co"># Approach 2: loop through columns using apply()</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">result_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/apply">apply</a></span>(m, <span class="dv">2</span>, count_above, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(result_<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">result_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/apply.html">apply</a></span>(m, <span class="dv">2</span>, count_above, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(result_<span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  int [1:3] 0 1 2</span></a></code></pre></div>
-<p>The first approach using <code><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply()</a></code> returns a <code>list</code>, whereas the second approach using <code><a href="https://www.rdocumentation.org/packages/base/topics/apply">apply()</a></code> returns a vector. The first approach should be preferred because the user can trust that the result will always be a list, independent of the function that is called within the loop. The preferred function <code><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply()</a></code> requires an object that it can loop through and this is what <code><a href="../reference/asColumnList.html">asColumnList()</a></code> provides!</p>
+<p>The first approach using <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> returns a <code>list</code>, whereas the second approach using <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code> returns a vector. The first approach should be preferred because the user can trust that the result will always be a list, independent of the function that is called within the loop. The preferred function <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> requires an object that it can loop through and this is what <code><a href="../reference/asColumnList.html">asColumnList()</a></code> provides!</p>
 </div>
 <div id="function-asrowlist" class="section level3">
 <h3 class="hasAnchor">
-<a href="#function-asrowlist" class="anchor"></a>Function <code><a href="../reference/asRowList.html">asRowList()</a></code>
+<a href="#function-asrowlist" class="anchor"></a>Function <code>asRowList()</code>
 </h3>
 <p>This function converts a matrix into a list of its rows. See <code><a href="../reference/asColumnList.html">asColumnList()</a></code> for an explanation of when this may be useful.</p>
 </div>
@@ -283,9 +288,11 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
       </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
@@ -293,8 +300,9 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
