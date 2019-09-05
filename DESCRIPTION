@@ -1,21 +1,27 @@
 Package: kwb.utils
-Version: 0.4.3.9000
 Title: General Utility Functions Developed at KWB
-Authors@R: c(
-    person("Hauke", "Sonnenberg", , "hauke.sonnenberg@kompetenz-wasser.de",
-           role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9134-2871")),
-    person("Kompetenzzentrum Wasser Berlin gGmbH", role = c("cph")))
+Version: 0.4.3.9000
+Authors@R: 
+    c(person(given = "Hauke",
+             family = "Sonnenberg",
+             role = c("aut", "cre"),
+             email = "hauke.sonnenberg@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0001-9134-2871")),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH",
+             role = "cph"))
+Description: This package contains some small helper
+    functions that aim at improving the quality of code developed at
+    Kompetenzzentrum Wasser gGmbH (KWB).
+License: MIT + file LICENSE
+URL: https://github.com/kwb-r/kwb.utils
+BugReports: https://github.com/kwb-r/kwb.utils/issues
 Suggests:
     PKI,
     testthat,
     covr,
     knitr,
     rmarkdown
-Description: This package contains some small helper functions that aim at 
-    improving the quality of code developed at Kompetenzzentrum Wasser gGmbH
-    (KWB).
-License: MIT + file LICENSE
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
 RoxygenNote: 6.1.1
-URL: https://github.com/kwb-r/kwb.utils
-BugReports: https://github.com/kwb-r/kwb.utils/issues
-VignetteBuilder: knitr
