@@ -1,13 +1,3 @@
----
-title: ''
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
 [![Appveyor build status](https://ci.appveyor.com/api/projects/status/t9w8xyoyyg7tbk2y/branch/master?svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-utils/branch/master)
 [![Build Status](https://travis-ci.org/KWB-R/kwb.utils.svg?branch=master)](https://travis-ci.org/KWB-R/kwb.utils)
 [![codecov](https://codecov.io/github/KWB-R/kwb.utils/branch/master/graphs/badge.svg)](https://codecov.io/github/KWB-R/kwb.utils)
