@@ -41,6 +41,6 @@ First release on GitHub
 * hsPrepPdf, hsShowPdf moved from kwb.base
 * hsCatLists removed (it was just the same as c()!)
 
-# kwb.utils 0.1.0 <small>unreleased/small>
+# kwb.utils 0.1.0 <small>unreleased</small>
 
 * creation of the package
