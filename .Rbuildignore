@@ -11,3 +11,4 @@ kwb_utils.png
 _pkgdown.yaml
 ^LICENSE\.md$
 .gitlab-ci.yml
+^\.travis\.yml$
