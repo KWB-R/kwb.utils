@@ -1,5 +1,3 @@
-skip_on_appveyor()
-
 test_that("multiColumnLookup() works", {
   
   (persons <- rbind(
