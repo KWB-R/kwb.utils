@@ -1,7 +1,7 @@
-# [kwb.utils 0.4.3.9000](https://github.com/KWB-R/kwb.utils/tree/dev)
+# [kwb.utils 0.4.4](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.4) <small>2019-08-10</small>
 
-* current development version
 * improved documentation (deploy docu also from "dev" branch, include NEWS.md)
+* fixed continious integration (Windows)
 
 # [kwb.utils 0.4.3](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.3) <small>2019-08-04</small>
 
