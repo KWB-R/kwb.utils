@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Functions Returning Logical • kwb.utils</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Functions Returning Logical">
@@ -32,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.4</span>
       </span>
     </div>
 
@@ -40,7 +41,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -113,16 +114,19 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kwb-r/kwb.utils">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
-<form class="navbar-form navbar-right" role="search">
+<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
@@ -136,13 +140,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Functions Returning Logical</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2019-08-04</h4>
+            <h4 class="date">2019-09-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_logical.Rmd"><code>vignettes/functions_logical.Rmd</code></a></small>
       <div class="hidden name"><code>functions_logical.Rmd</code></div>
@@ -154,27 +159,27 @@
 <p>The following functions have in common that they return a vector of <code>logical</code>.</p>
 <div id="function-allareequal" class="section level3">
 <h3 class="hasAnchor">
-<a href="#function-allareequal" class="anchor"></a>Function <code><a href="../reference/allAreEqual.html">allAreEqual()</a></code>
+<a href="#function-allareequal" class="anchor"></a>Function <code>allAreEqual()</code>
 </h3>
 <p>This function checks if all values in a vector are equal to each other:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">kwb.utils<span class="op">::</span><span class="kw">allAreEqual</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">kwb.utils<span class="op">::</span><span class="kw">allAreEqual</span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">kwb.utils<span class="op">::</span><span class="kw">allAreEqual</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">kwb.utils<span class="op">::</span><span class="kw">allAreEqual</span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 </div>
 <div id="function-allareidentical" class="section level3">
 <h3 class="hasAnchor">
-<a href="#function-allareidentical" class="anchor"></a>Function <code><a href="../reference/allAreIdentical.html">allAreIdentical()</a></code>
+<a href="#function-allareidentical" class="anchor"></a>Function <code>allAreIdentical()</code>
 </h3>
 <p>This function checks if all elements in a list are identical to each other. It may be useful when checking whether different versions of a function (that may, e.g., be created during code cleaning) return exactly the same, when being given the same inputs.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Define different functions that are intended to do the same</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">get_list_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">get_list_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) stats<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/setNames">setNames</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(a, b), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">get_list_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a =</span> a), <span class="dt">b =</span> b)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">get_list_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">a =</span> a), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">b =</span> b))</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">get_list_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> a, <span class="dt">b =</span> b)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">get_list_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) stats<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(a, b), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>))</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">get_list_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> a), <span class="dt">b =</span> b)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">get_list_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">a =</span> a), <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">b =</span> b))</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co"># Call the functions with identical arguments and put the results into a list</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">results &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">results &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb2-9" data-line-number="9">  <span class="kw">get_list_1</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>), </a>
 <a class="sourceLine" id="cb2-10" data-line-number="10">  <span class="kw">get_list_2</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>), </a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">  <span class="kw">get_list_3</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>),</a>
@@ -191,7 +196,7 @@
 </div>
 <div id="function-almostequal" class="section level3">
 <h3 class="hasAnchor">
-<a href="#function-almostequal" class="anchor"></a>Function <code><a href="../reference/almostEqual.html">almostEqual()</a></code>
+<a href="#function-almostequal" class="anchor"></a>Function <code>almostEqual()</code>
 </h3>
 <p>Take care when comparing floating point numbers! Whether floating point numbers are assumed to be equal or not, depends on how they were calculated. This is shown in the following example:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">one_third_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></a>
@@ -264,18 +269,21 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
       </div>
 
 </div>
 
 
+
       <footer><div class="copyright">
-  <p>Developed by Hauke Sonnenberg.</p>
+  <p>Developed by <a href="https://github.com/hsonne">Hauke Sonnenberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
