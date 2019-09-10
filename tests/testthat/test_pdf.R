@@ -1,10 +1,9 @@
 test_that(
-  
   paste(
     "preparePdfIf(), preparePdf(), finishAndShowPdfIf() and",  
     "finishAndShowPdf() work"
   ), {
-    
+  skip_on_appveyor()  
   dev_list <- dev.list()
   
   expect_identical(preparePdfIf(FALSE), "")
