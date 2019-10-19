@@ -250,6 +250,7 @@ hsDelEmptyCols <- function(
 #' 
 hsRenameColumns <- function(dframe, renames)
 {
+  warningDeprecated("hsRenameColumns", "renameColumns")
   renameColumns(x = dframe, renamings = renames)
 }
 
@@ -584,7 +585,7 @@ removeEmptyColumns <- function(
 #' 
 renameAndSelect <- function(data, renames, columns = unlist(renames))
 {
-  data <- hsRenameColumns(data, renames)
+  data <- renameColumns(data, renames)
   
   selectColumns(data, columns, drop = FALSE)
 }
