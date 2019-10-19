@@ -5,9 +5,11 @@ kwb.utils.Rproj
 kwb_utils.png
 ^appveyor\.yml$
 ^codecov\.yml$
-^README\.Rmd$
+^index\.Rmd$
+^index\.md$
 ^README\.md$
 ^docs\.*
 _pkgdown.yaml
 ^LICENSE\.md$
 .gitlab-ci.yml
+^\.travis\.yml$
