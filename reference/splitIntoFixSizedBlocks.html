@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Split into blocks of same size — splitIntoFixSizedBlocks • kwb.utils</title>
+<title>Split into Blocks of Same Size — splitIntoFixSizedBlocks • kwb.utils</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,11 @@
 
 
 
-<meta property="og:title" content="Split into blocks of same size — splitIntoFixSizedBlocks" />
-<meta property="og:description" content="Split a data frame or matrix into blocks of the same size (= data frames of 
-matrices with the same number of rows)" />
+<meta property="og:title" content="Split into Blocks of Same Size — splitIntoFixSizedBlocks" />
+<meta property="og:description" content="Split a data frame or a matrix into blocks of the same size, i.e. data frames 
+or matrices with the same number of rows (except the last one that is shorter
+unless the total number of rows is a multiple of the number of rows per 
+block)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -187,14 +189,16 @@ matrices with the same number of rows)" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Split into blocks of same size</h1>
+    <h1>Split into Blocks of Same Size</h1>
     <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/dataFrame.R'><code>R/dataFrame.R</code></a></small>
     <div class="hidden name"><code>splitIntoFixSizedBlocks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Split a data frame or matrix into blocks of the same size (= data frames of 
-matrices with the same number of rows)</p>
+    <p>Split a data frame or a matrix into blocks of the same size, i.e. data frames 
+or matrices with the same number of rows (except the last one that is shorter
+unless the total number of rows is a multiple of the number of rows per 
+block).</p>
     </div>
 
     <pre class="usage"><span class='fu'>splitIntoFixSizedBlocks</span>(<span class='no'>data</span>, <span class='no'>blocksize</span>)</pre>
@@ -235,7 +239,7 @@ matrices with the same number of rows)</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
