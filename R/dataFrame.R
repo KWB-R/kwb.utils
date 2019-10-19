@@ -139,8 +139,8 @@ compareDataFrames <- function(
   
   # Are the data frames identical after removing all attributes?
   result$identicalExceptAttributes <- identical(
-    kwb.utils::removeAttributes(x),
-    kwb.utils::removeAttributes(y)
+    removeAttributes(x),
+    removeAttributes(y)
   )
   
   # Do the data frames have the same number of rows?
@@ -170,8 +170,8 @@ compareDataFrames <- function(
     c(
       identical = identical(x[[column]], y[[column]]),
       identicalExceptAttributes = identical(
-        kwb.utils::removeAttributes(x[[column]]),
-        kwb.utils::removeAttributes(y[[column]])
+        removeAttributes(x[[column]]),
+        removeAttributes(y[[column]])
       ),
       equalValues = all(x[[column]] == y[[column]])
     )

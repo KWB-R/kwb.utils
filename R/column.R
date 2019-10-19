@@ -101,9 +101,9 @@ checkForMissingColumns <- function(
 #' 
 columnToDate <- function(df, column, dbg = TRUE)
 {
-  df[[column]] <- kwb.utils::catAndRun(
+  df[[column]] <- catAndRun(
     sprintf("Converting column '%s' to Date", column), dbg = dbg,
-    as.Date(as.character(kwb.utils::selectColumns(df, column)))
+    as.Date(as.character(selectColumns(df, column)))
   )
   
   df
@@ -584,9 +584,9 @@ removeEmptyColumns <- function(
 #' 
 renameAndSelect <- function(data, renames, columns = unlist(renames))
 {
-  data <- kwb.utils::hsRenameColumns(data, renames)
+  data <- hsRenameColumns(data, renames)
   
-  kwb.utils::selectColumns(data, columns, drop = FALSE)
+  selectColumns(data, columns, drop = FALSE)
 }
 
 # renameColumns ----------------------------------------------------------------

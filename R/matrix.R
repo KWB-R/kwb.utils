@@ -213,16 +213,16 @@ assertRowsAndColumns <- function(
   x, row_names = NULL, col_names = NULL, fill_value = 0
 )
 {
-  kwb.utils::stopIfNotMatrix(x)
+  stopIfNotMatrix(x)
   
   if (is.null(row_names) && is.null(col_names)) {
     
     return (x)
   }
   
-  row_names <- kwb.utils::defaultIfNULL(row_names, rownames(x))
+  row_names <- defaultIfNULL(row_names, rownames(x))
   
-  col_names <- kwb.utils::defaultIfNULL(col_names, colnames(x))
+  col_names <- defaultIfNULL(col_names, colnames(x))
   
   y <- matrix(
     fill_value, nrow = length(row_names), ncol = length(col_names),
@@ -272,7 +272,7 @@ stopIfNotMatrix <- function(x)
 #' 
 diffrows <- function(x)
 {
-  kwb.utils::stopIfNotMatrix(x)
+  stopIfNotMatrix(x)
   
   do.call(rbind, lapply(seq_len(nrow(x) - 1), function(i) x[i + 1, ] - x[i, ]))
 }
@@ -294,7 +294,7 @@ diffrows <- function(x)
 #' 
 asColumnList <- function(x)
 {
-  kwb.utils::stopIfNotMatrix(x)
+  stopIfNotMatrix(x)
   
   structure(lapply(seq_len(ncol(x)), function(i) x[, i]), names = colnames(x))
 }
@@ -316,7 +316,7 @@ asColumnList <- function(x)
 #' 
 asRowList <- function(x)
 {
-  kwb.utils::stopIfNotMatrix(x)
+  stopIfNotMatrix(x)
   
   structure(lapply(seq_len(nrow(x)), function(i) x[i, ]), names = rownames(x))
 }

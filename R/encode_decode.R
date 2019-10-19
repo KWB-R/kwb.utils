@@ -22,7 +22,7 @@ encode <- function(x, level = 1, chars = printable_chars(level))
 {
   x <- as.factor(x)
   
-  m <- kwb.utils::intToNumeralSystem(seq_along(levels(x)), base = length(chars))
+  m <- intToNumeralSystem(seq_along(levels(x)), base = length(chars))
   
   result <- matrix(
     chars[m + 1], 
@@ -31,7 +31,7 @@ encode <- function(x, level = 1, chars = printable_chars(level))
     dimnames = dimnames(m)
   ) 
   
-  result <- do.call(paste0, kwb.utils::asColumnList(result))
+  result <- do.call(paste0, asColumnList(result))
   
   encoded_indices <- gsub(pattern = "^0+", replacement = "", result)
   
@@ -97,5 +97,5 @@ printable_chars <- function(level = 1)
 #' 
 decode <- function(x)
 {
-  unname(kwb.utils::getAttribute(x, "codes")[x])
+  unname(getAttribute(x, "codes")[x])
 }

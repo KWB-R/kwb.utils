@@ -44,7 +44,7 @@ countOrSum <- function(x, by = NULL, sum.up = NULL)
 #' 
 countNaInColumn <- function(data, column)
 {
-  sum(is.na(kwb.utils::selectColumns(data, column)))
+  sum(is.na(selectColumns(data, column)))
 }
 
 # hsMovingMean -----------------------------------------------------------------
