@@ -235,3 +235,37 @@ hsShowPdf <- function(Pdf, dbg = TRUE)
     system(cmd)
   }
 }
+
+#' Let Expressions Plot into a PDF File
+#' 
+#' The function opens a PDF device with \code{\link{pdf}}, executes the given 
+#' expressions, closes the PDF file and displays the file in a PDF viewer.
+#' 
+#' @param expressions R expressions creating plots that are to be redirected 
+#'   into a pdf file. You may pass multiple expressions within opening and 
+#'   closing curly braces
+#' @param pdfFile optional. Path to the PDF file to be created. The directory
+#'   part of the path must exist. If not given or \code{NULL}, the PDF file is
+#'   created in the \code{tempdir()} folder.
+#' @param \dots further arguments passed to \code{\link{pdf}}
+#' @return The function returns the path to the created PDF file.
+#' @examples
+#' \dontrun{
+#' toPdf({
+#'   plot(1:10, 10:1)
+#'   barplot(1:10)
+#'   hist(rnorm(100))
+#' })
+#' }
+toPdf <- function(expressions, pdfFile = NULL, ...)
+{
+  pdfFile <- defaultIfNULL(pdfFile, tempfile(fileext = ".pdf"))
+    
+  preparePdf(pdfFile, ...)
+
+  eval(expressions)
+  
+  finishAndShowPdf(pdfFile)
+  
+  pdfFile
+}

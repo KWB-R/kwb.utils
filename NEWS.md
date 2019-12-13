@@ -1,3 +1,7 @@
+# 2019-12-13
+
+* add toPdf()
+
 # [kwb.utils 0.4.4](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.4) <small>2019-08-10</small>
 
 * improved documentation (deploy docu also from "dev" branch, include NEWS.md)
