@@ -249,6 +249,7 @@ hsShowPdf <- function(Pdf, dbg = TRUE)
 #'   created in the \code{tempdir()} folder.
 #' @param \dots further arguments passed to \code{\link{pdf}}
 #' @return The function returns the path to the created PDF file.
+#' @export
 #' @examples
 #' \dontrun{
 #' toPdf({
