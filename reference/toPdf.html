@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • kwb.utils</title>
+<title>Let Expressions Plot into a PDF File — toPdf • kwb.utils</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,10 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Let Expressions Plot into a PDF File — toPdf" />
+<meta property="og:description" content="The function opens a PDF device with pdf, executes the given 
+expressions, closes the PDF file and displays the file in a PDF viewer." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +63,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -184,108 +187,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Let Expressions Plot into a PDF File</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/pdf.R'><code>R/pdf.R</code></a></small>
+    <div class="hidden name"><code>toPdf.Rd</code></div>
     </div>
 
-    <div id="kwb-utils-0-4-5-2019-12-17" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-5-2019-12-17" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.5">kwb.utils 0.4.5</a> <small>2019-12-17</small>
-</h1>
-<ul>
-<li>add toPdf()</li>
-<li>add assertFinalSlash()</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-4-4-2019-08-10" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-4-2019-08-10" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.4">kwb.utils 0.4.4</a> <small>2019-08-10</small>
-</h1>
-<ul>
-<li>improved documentation (deploy docu also from “dev” branch, include NEWS.md)</li>
-<li>fixed continious integration (Windows)</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-4-3-2019-08-04" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-3-2019-08-04" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.3">kwb.utils 0.4.3</a> <small>2019-08-04</small>
-</h1>
-<ul>
-<li>new: findPartialDuplicates()</li>
-<li>new: removeDuplicates()</li>
-<li>add arg “dbg” to excludeNULL()</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-4-2-2019-03-26" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-2-2019-03-26" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/tree/773c632aaa631ad51057eb99a841bb5f2721968c">kwb.utils 0.4.2</a> <small>2019-03-26</small>
-</h1>
-<ul>
-<li>export log-functions: .log(), .logline(), .logok(), .logstart()</li>
-<li>new: multiColumnLookup()</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-4-1-2019-03-23" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-1-2019-03-23" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/tree/37245e933ceed6538220caaadfc1aa4b2d7fc6ee">kwb.utils 0.4.1</a> <small>2019-03-23</small>
-</h1>
-<ul>
-<li>export functions explicitly, do not export all functions starting with dot “.”</li>
-<li>new: isDotOrDoubleDot(), isASCII(), moved from kwb.fakin</li>
-<li>add arg “log_time” to catAndRun() (2019-01-18)</li>
-<li>remove non-existing links in documentation (2019-01-18)</li>
-<li>new: encode(), decode(), printable_chars() (2019-01-03)</li>
-<li>new: intToNumeralSystem() (2018-12-21)</li>
-<li>new: createIdAlong() (2018-12-16)</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-4-0-2018-11-19" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-4-0-2018-11-19" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.0">kwb.utils 0.4.0</a> <small>2018-11-19</small>
-</h1>
-<ul>
-<li>new: combineAlternatingly()</li>
-<li>bug fix in .defaultIf(): was not working as expected with x = NULL</li>
-<li>package prepared for automatic tests</li>
-<li>new test for .defaultIf()</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-2-1-2016-09-06" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-2-1-2016-09-06" class="anchor"></a><a href="https://github.com/KWB-R/kwb.utils/releases/tag/v.0.2.1">kwb.utils 0.2.1</a> <small>2016-09-06</small>
-</h1>
-<p>First release on GitHub</p>
-<ul>
-<li>hsPrepPdf, hsShowPdf moved from kwb.base</li>
-<li>hsCatLists removed (it was just the same as c()!)</li>
-</ul>
-</div>
-    <div id="kwb-utils-0-1-0-unreleased" class="section level1">
-<h1 class="page-header">
-<a href="#kwb-utils-0-1-0-unreleased" class="anchor"></a>kwb.utils 0.1.0 <small>unreleased</small>
-</h1>
-<ul>
-<li>creation of the package</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>The function opens a PDF device with <code><a href='https://rdrr.io/r/grDevices/pdf.html'>pdf</a></code>, executes the given 
+expressions, closes the PDF file and displays the file in a PDF viewer.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>toPdf</span>(<span class='no'>expressions</span>, <span class='kw'>pdfFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>expressions</th>
+      <td><p>R expressions creating plots that are to be redirected 
+into a pdf file. You may pass multiple expressions within opening and 
+closing curly braces</p></td>
+    </tr>
+    <tr>
+      <th>pdfFile</th>
+      <td><p>optional. Path to the PDF file to be created. The directory
+part of the path must exist. If not given or <code>NULL</code>, the PDF file is
+created in the <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code> folder.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to <code><a href='https://rdrr.io/r/grDevices/pdf.html'>pdf</a></code></p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The function returns the path to the created PDF file.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>toPdf</span>({
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>10</span>:<span class='fl'>1</span>)
+  <span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>)
+  <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>))
+})
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#kwb-utils-0-4-5-2019-12-17">0.4.5</a></li>
-        <li><a href="#kwb-utils-0-4-4-2019-08-10">0.4.4</a></li>
-        <li><a href="#kwb-utils-0-4-3-2019-08-04">0.4.3</a></li>
-        <li><a href="#kwb-utils-0-4-2-2019-03-26">0.4.2</a></li>
-        <li><a href="#kwb-utils-0-4-1-2019-03-23">0.4.1</a></li>
-        <li><a href="#kwb-utils-0-4-0-2018-11-19">0.4.0</a></li>
-        <li><a href="#kwb-utils-0-2-1-2016-09-06">0.2.1</a></li>
-        <li><a href="#kwb-utils-0-1-0-unreleased">0.1.0</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
 

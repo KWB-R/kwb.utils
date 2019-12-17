@@ -40,6 +40,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/asRowList.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/assertFinalSlash.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/assertRowsAndColumns.html</loc>
   </url>
   <url>
@@ -716,6 +719,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toNamedList.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/toPdf.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toPositiveIndices.html</loc>
