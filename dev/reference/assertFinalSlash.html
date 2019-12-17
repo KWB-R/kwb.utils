@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Split into Blocks of Same Size — splitIntoFixSizedBlocks • kwb.utils</title>
+<title>Make Sure that Strings End With Slash — assertFinalSlash • kwb.utils</title>
 
 
 <!-- jquery -->
@@ -41,11 +41,8 @@
 
 
 
-<meta property="og:title" content="Split into Blocks of Same Size — splitIntoFixSizedBlocks" />
-<meta property="og:description" content="Split a data frame or a matrix into blocks of the same size, i.e. data frames 
-or matrices with the same number of rows (except the last one that is shorter
-unless the total number of rows is a multiple of the number of rows per 
-block)." />
+<meta property="og:title" content="Make Sure that Strings End With Slash — assertFinalSlash" />
+<meta property="og:description" content="Make Sure that Strings End With Slash" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -189,44 +186,47 @@ block)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Split into Blocks of Same Size</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/dataFrame.R'><code>R/dataFrame.R</code></a></small>
-    <div class="hidden name"><code>splitIntoFixSizedBlocks.Rd</code></div>
+    <h1>Make Sure that Strings End With Slash</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/assertFinalSlash.R'><code>R/assertFinalSlash.R</code></a></small>
+    <div class="hidden name"><code>assertFinalSlash.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Split a data frame or a matrix into blocks of the same size, i.e. data frames 
-or matrices with the same number of rows (except the last one that is shorter
-unless the total number of rows is a multiple of the number of rows per 
-block).</p>
+    <p>Make Sure that Strings End With Slash</p>
     </div>
 
-    <pre class="usage"><span class='fu'>splitIntoFixSizedBlocks</span>(<span class='no'>data</span>, <span class='no'>blocksize</span>)</pre>
+    <pre class="usage"><span class='fu'>assertFinalSlash</span>(<span class='no'>x</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame or matrix</p></td>
+      <th>x</th>
+      <td><p>vector of character</p></td>
     </tr>
     <tr>
-      <th>blocksize</th>
-      <td><p>number of rows in each block into which <code>data</code> is split</p></td>
+      <th>method</th>
+      <td><p>integer value specifying the implementation method. <code>1</code>
+(default): Find strings without ending slash and append slash to these
+strings. <code>2</code>: Remove one or more slashes at the end and append slash
+to all strings. <code>3</code>: Append slash to all strings and replace multiple
+occurrences of slash at the end with one slash. Method 1 is the fastest but
+does not replace multiple trailing slashes with only one trailing slash 
+(see examples).</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list of data frames (if <code>data</code> is a data frame) or list of
-  matrices (if <code>data</code> is a matrix)</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>assertFinalSlash</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>))</div><div class='output co'>#&gt; [1] "a/" "b/" "c/"</div><div class='input'><span class='fu'>assertFinalSlash</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a/"</span>, <span class='st'>"b/"</span>, <span class='st'>"c/"</span>))</div><div class='output co'>#&gt; [1] "a/" "b/" "c/"</div><div class='input'><span class='fu'>assertFinalSlash</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a//"</span>, <span class='st'>"b"</span>, <span class='st'>"c/"</span>))</div><div class='output co'>#&gt; [1] "a//" "b/"  "c/" </div><div class='input'>
+<span class='co'># Use method 2 or 3 to replace multiple slashes with one slash</span>
+<span class='fu'>assertFinalSlash</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a//"</span>, <span class='st'>"b"</span>, <span class='st'>"c/"</span>), <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] "a/" "b/" "c/"</div><div class='input'><span class='fu'>assertFinalSlash</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a//"</span>, <span class='st'>"b"</span>, <span class='st'>"c/"</span>), <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "a/" "b/" "c/"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

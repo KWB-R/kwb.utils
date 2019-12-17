@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Split into Blocks of Same Size — splitIntoFixSizedBlocks • kwb.utils</title>
+<title>Let Expressions Plot into a PDF File — toPdf • kwb.utils</title>
 
 
 <!-- jquery -->
@@ -41,11 +41,9 @@
 
 
 
-<meta property="og:title" content="Split into Blocks of Same Size — splitIntoFixSizedBlocks" />
-<meta property="og:description" content="Split a data frame or a matrix into blocks of the same size, i.e. data frames 
-or matrices with the same number of rows (except the last one that is shorter
-unless the total number of rows is a multiple of the number of rows per 
-block)." />
+<meta property="og:title" content="Let Expressions Plot into a PDF File — toPdf" />
+<meta property="og:description" content="The function opens a PDF device with pdf, executes the given 
+expressions, closes the PDF file and displays the file in a PDF viewer." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -189,44 +187,58 @@ block)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Split into Blocks of Same Size</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/dataFrame.R'><code>R/dataFrame.R</code></a></small>
-    <div class="hidden name"><code>splitIntoFixSizedBlocks.Rd</code></div>
+    <h1>Let Expressions Plot into a PDF File</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/pdf.R'><code>R/pdf.R</code></a></small>
+    <div class="hidden name"><code>toPdf.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Split a data frame or a matrix into blocks of the same size, i.e. data frames 
-or matrices with the same number of rows (except the last one that is shorter
-unless the total number of rows is a multiple of the number of rows per 
-block).</p>
+    <p>The function opens a PDF device with <code><a href='https://rdrr.io/r/grDevices/pdf.html'>pdf</a></code>, executes the given 
+expressions, closes the PDF file and displays the file in a PDF viewer.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>splitIntoFixSizedBlocks</span>(<span class='no'>data</span>, <span class='no'>blocksize</span>)</pre>
+    <pre class="usage"><span class='fu'>toPdf</span>(<span class='no'>expressions</span>, <span class='kw'>pdfFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame or matrix</p></td>
+      <th>expressions</th>
+      <td><p>R expressions creating plots that are to be redirected 
+into a pdf file. You may pass multiple expressions within opening and 
+closing curly braces</p></td>
     </tr>
     <tr>
-      <th>blocksize</th>
-      <td><p>number of rows in each block into which <code>data</code> is split</p></td>
+      <th>pdfFile</th>
+      <td><p>optional. Path to the PDF file to be created. The directory
+part of the path must exist. If not given or <code>NULL</code>, the PDF file is
+created in the <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code> folder.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to <code><a href='https://rdrr.io/r/grDevices/pdf.html'>pdf</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list of data frames (if <code>data</code> is a data frame) or list of
-  matrices (if <code>data</code> is a matrix)</p>
+    <p>The function returns the path to the created PDF file.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>toPdf</span>({
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>10</span>:<span class='fl'>1</span>)
+  <span class='fu'><a href='https://rdrr.io/r/graphics/barplot.html'>barplot</a></span>(<span class='fl'>1</span>:<span class='fl'>10</span>)
+  <span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>))
+})
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
