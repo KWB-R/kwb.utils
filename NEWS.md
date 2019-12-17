@@ -1,6 +1,7 @@
-# 2019-12-13
+# [kwb.utils 0.4.5](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.5) <small>2019-12-17</small>
 
 * add toPdf()
+* add assertFinalSlash()
 
 # [kwb.utils 0.4.4](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.4) <small>2019-08-10</small>
 
