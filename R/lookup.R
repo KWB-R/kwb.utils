@@ -39,19 +39,19 @@ toLookupClass <- function(
   keys, values, class = c("data.frame.1", "data.frame.2", "list", "vector")[1]
 )
 {
-  classes <- kwb.utils::toNamedList(
+  classes <- toNamedList(
     c("data.frame.1", "data.frame.2", "list", "vector")
   )
   
   if (class %in% c(classes$data.frame.1, classes$data.frame.2)) {
     
-    kwb.utils::toLookupTable(
+    toLookupTable(
       keys, values, as.twoColumnTable = (class == classes$data.frame.2)
     )
     
   } else if (class == classes$list) {
     
-    kwb.utils::toLookupList(keys, values)
+    toLookupList(keys, values)
     
   } else if (class == classes$vector) {
     

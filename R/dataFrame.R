@@ -139,8 +139,8 @@ compareDataFrames <- function(
   
   # Are the data frames identical after removing all attributes?
   result$identicalExceptAttributes <- identical(
-    kwb.utils::removeAttributes(x),
-    kwb.utils::removeAttributes(y)
+    removeAttributes(x),
+    removeAttributes(y)
   )
   
   # Do the data frames have the same number of rows?
@@ -170,8 +170,8 @@ compareDataFrames <- function(
     c(
       identical = identical(x[[column]], y[[column]]),
       identicalExceptAttributes = identical(
-        kwb.utils::removeAttributes(x[[column]]),
-        kwb.utils::removeAttributes(y[[column]])
+        removeAttributes(x[[column]]),
+        removeAttributes(y[[column]])
       ),
       equalValues = all(x[[column]] == y[[column]])
     )
@@ -606,10 +606,12 @@ safeRowBindOfListElements <- function(x, elementName)
 
 # splitIntoFixSizedBlocks ------------------------------------------------------
 
-#' Split into blocks of same size
+#' Split into Blocks of Same Size
 #' 
-#' Split a data frame or matrix into blocks of the same size (= data frames of 
-#' matrices with the same number of rows)
+#' Split a data frame or a matrix into blocks of the same size, i.e. data frames 
+#' or matrices with the same number of rows (except the last one that is shorter
+#' unless the total number of rows is a multiple of the number of rows per 
+#' block).
 #' 
 #' @param data data frame or matrix
 #' @param blocksize number of rows in each block into which \code{data} is split

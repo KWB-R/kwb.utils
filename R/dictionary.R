@@ -25,7 +25,7 @@ writeDictionary <- function(dictionary, file)
   header_lines <- c(
     header_lines,
     "This file has been generated using kwb.utils::writeDictionary()", 
-    sprintf("on %s by user %s", Sys.Date(), kwb.utils::user())
+    sprintf("on %s by user %s", Sys.Date(), user())
   )
   
   header_lines <- paste("#", header_lines)
@@ -55,9 +55,9 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 {
   files <- dir(folder, pattern, full.names = TRUE)
   
-  dictionaries <- lapply(files, kwb.utils::readDictionary, sorted = FALSE)
+  dictionaries <- lapply(files, readDictionary, sorted = FALSE)
   
-  config_names <- kwb.utils::subExpressionMatches(pattern, basename(files))
+  config_names <- subExpressionMatches(pattern, basename(files))
   
   structure(dictionaries, names = sapply(config_names, "[[", 1))
 }

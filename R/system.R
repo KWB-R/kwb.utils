@@ -125,7 +125,7 @@ desktop <- function(osType = .OStype())
     
     hsResolve(
       "desktop", dict,
-      userprofile = kwb.utils::rStylePath(Sys.getenv("USERPROFILE"))
+      userprofile = rStylePath(Sys.getenv("USERPROFILE"))
     )
 
   } else {

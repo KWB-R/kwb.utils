@@ -99,16 +99,16 @@ convertCsvFile <- function(
   args <- c(args_read, arguments[argnames])
 
   # Read data from file_in  
-  kwb.utils::catIf(dbg, sprintf("Reading from '%s' ... ", file_in))
+  catIf(dbg, sprintf("Reading from '%s' ... ", file_in))
   
   x <- do.call(utils::read.table, args)
   
-  kwb.utils::catIf(dbg, "ok.\n")
+  catIf(dbg, "ok.\n")
 
   # If no target file name is given, create one
   if (is.null(file_out)) {
     
-    extension <- kwb.utils::fileExtension(file_in)
+    extension <- fileExtension(file_in)
     
     pattern <- paste0("\\.", extension, "$")
     
@@ -133,11 +133,11 @@ convertCsvFile <- function(
   args <- c(args_write, arguments[argnames])
 
   # Write data to file_out
-  kwb.utils::catIf(dbg, sprintf("Writing to '%s' ... ", file_out))
+  catIf(dbg, sprintf("Writing to '%s' ... ", file_out))
   
   do.call(utils::write.table, args)
   
-  kwb.utils::catIf(dbg, "ok.\n")
+  catIf(dbg, "ok.\n")
   
   file_out
 }

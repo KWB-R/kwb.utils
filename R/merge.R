@@ -47,13 +47,13 @@ unmerge <- function(z, by)
   stopifnot(is.data.frame(z))
   
   # Build groups of rows for each value combination in "by"-columns
-  groups <- split(z, kwb.utils::selectColumns(z, by, drop = FALSE))
+  groups <- split(z, selectColumns(z, by, drop = FALSE))
   
   # Find "fix" columns in which the values do not change within any group
-  fixColumnList <- kwb.utils::excludeNULL(lapply(groups, function(x) {
+  fixColumnList <- excludeNULL(lapply(groups, function(x) {
     if (nrow(x) > 0) {
-      y <- kwb.utils::removeColumns(x, by)
-      names(y)[sapply(y, kwb.utils::allAreEqual)]
+      y <- removeColumns(x, by)
+      names(y)[sapply(y, allAreEqual)]
     }
   }))
   
@@ -70,8 +70,8 @@ unmerge <- function(z, by)
 #' 
 .splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
 {
-  xdata <- unique(kwb.utils::selectColumns(z, xColumns, drop = FALSE))
-  ydata <- kwb.utils::selectColumns(z, yColumns, drop = FALSE)
+  xdata <- unique(selectColumns(z, xColumns, drop = FALSE))
+  ydata <- selectColumns(z, yColumns, drop = FALSE)
   
   if (check) {
     stopifnot(identical(ydata, unique(ydata)))

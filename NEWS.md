@@ -1,3 +1,16 @@
+# [kwb.utils 0.5.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.5.0) <small>2019-12-17</small>
+
+* new: toPdf()
+* new: assertFinalSlash()
+* new private functions:
+  + cache_and_return()
+  + clear_cache()
+  + get_cached()
+  + get_cached_file()
+  + run_cached()
+  + objectToText()
+  + textToObject()
+
 # [kwb.utils 0.4.4](https://github.com/KWB-R/kwb.utils/releases/tag/v0.4.4) <small>2019-08-10</small>
 
 * improved documentation (deploy docu also from "dev" branch, include NEWS.md)

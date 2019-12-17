@@ -35,7 +35,7 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
   }
 
   # Stop if not all dimensions are of the same length
-  stopifnot(kwb.utils::allAreEqual(sapply(dimnames_list, length)))
+  stopifnot(allAreEqual(sapply(dimnames_list, length)))
 
   # Merge the dimension lists
   dim_names <- lapply(seq_along(dimnames_list[[1]]), function(i) {
@@ -71,7 +71,7 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
 {
   # Define helper functions
   get_lengths <- function(x) sapply(x, length)
-  print_with_caption <- function(x) kwb.utils::printIf(TRUE, x)
+  print_with_caption <- function(x) printIf(TRUE, x)
 
   dim_a <- get_lengths(dimnames_a)
   dim_b <- get_lengths(dimnames_b)
@@ -94,7 +94,7 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
 
       stop(
         "There are labels in a that are not in b in dimension ", i, ", e.g.:\n",
-        kwb.utils::stringList(utils::head(dimnames_a[[i]][! a_in_b]))
+        stringList(utils::head(dimnames_a[[i]][! a_in_b]))
       )
     }
   }

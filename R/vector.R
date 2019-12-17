@@ -26,8 +26,8 @@ combineAlternatingly <- function(a, b)
   
   indices <- seq_len(2 * length(a))
   
-  odd_indices <- kwb.utils::getOddNumbers(indices)
-  even_indices <- kwb.utils::getEvenNumbers(indices)
+  odd_indices <- getOddNumbers(indices)
+  even_indices <- getEvenNumbers(indices)
   
   result[odd_indices] <- a
   result[even_indices] <- b
@@ -146,7 +146,7 @@ recycle <- function(x, n)
 #' removeDuplicates(c(1, 1, 2, 3, 4, 4))
 removeDuplicates <- function(x, dbg = TRUE)
 {
-  is_duplicate <- kwb.utils::catAndRun(
+  is_duplicate <- catAndRun(
     paste(sprintf("Checking for duplicates in '%s'", deparse(substitute(x)))),
     dbg = dbg,
     duplicated(x)
@@ -156,7 +156,7 @@ removeDuplicates <- function(x, dbg = TRUE)
     return(x)
   }
   
-  result <- kwb.utils::catAndRun(
+  result <- catAndRun(
     messageText = paste("Removing", sum(is_duplicate), "duplicate(s)"),
     dbg = dbg,
     expr = x[! is_duplicate]

@@ -86,7 +86,7 @@ catLines <- function(x)
 #' 
 catNewLineIf <- function(condition)
 {
-  kwb.utils::catIf(condition, "\n")
+  catIf(condition, "\n")
   
   invisible(condition)
 }
