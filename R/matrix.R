@@ -274,7 +274,15 @@ diffrows <- function(x)
 {
   stopIfNotMatrix(x)
   
-  do.call(rbind, lapply(seq_len(nrow(x) - 1), function(i) x[i + 1, ] - x[i, ]))
+  rows <- lapply(seq_len(nrow(x) - 1L), function(i) x[i + 1L, ] - x[i, ])
+  
+  result <- do.call(rbind, rows)
+  
+  if (ncol(result) == 1L) {
+    colnames(result) <- colnames(x)
+  }
+  
+  result
 }
 
 # asColumnList -----------------------------------------------------------------
