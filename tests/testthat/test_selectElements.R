@@ -14,6 +14,8 @@ test_that("selectElements() works", {
   expect_identical(selectElements(L, character()), list())
   
   expect_equal(selectElements(L, "a"), 1)
+  expect_equal(kwb.utils::selectElements(L, c(b = "a")), 1)
+  
   expect_equal(selectElements(L, "b"), "one")
   expect_identical(selectElements(L, c("a", "c")), L[c("a", "c")])
 

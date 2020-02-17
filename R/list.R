@@ -273,19 +273,16 @@ selectElements <- function(x, elements = NULL, do.stop = TRUE, do.warn = TRUE)
   
   L <- length(elements) 
   
-  result <- if (L == 0) {
-    
-    list()
-    
-  } else if (L == 1) {
-    
-    x[[elements]]
-    
-  } else {
-    
-    x[elements]
-  }
+  if (L == 0L) {
+    return(list())
+  } 
   
+  if (L == 1L) {
+    return(x[[elements]])
+  } 
+  
+  result <- x[elements]
+
   newNames <- names(elements)
   
   if (! is.null(newNames)) {
