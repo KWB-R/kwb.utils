@@ -1,3 +1,8 @@
+# Current
+
+* Fix bug in moveColumnsToFront(): keep data frame structure in case that the
+  data frame has only one column
+
 # [kwb.utils 0.5.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.5.0) <small>2019-12-17</small>
 
 * new: toPdf()

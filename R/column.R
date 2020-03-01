@@ -388,7 +388,7 @@ insertColumns <- function(
 #'   
 moveColumnsToFront <- function(x, columns = NULL)
 {
-  selectColumns(x, moveToFront(names(x), columns))
+  selectColumns(x, moveToFront(names(x), columns), drop = FALSE)
 }
 
 # pasteColumns -----------------------------------------------------------------
