@@ -4,8 +4,8 @@
 \alias{createMatrix}
 \title{Matrix with Row and Column Names}
 \usage{
-createMatrix(rowNames, colNames = rowNames, value = 0, name.row = "",
-  name.col = "")
+createMatrix(rowNames, colNames = rowNames, value = 0,
+  name.row = NULL, name.col = NULL)
 }
 \arguments{
 \item{rowNames}{character vector of row names to be given to the matrix}
@@ -14,9 +14,9 @@ createMatrix(rowNames, colNames = rowNames, value = 0, name.row = "",
 
 \item{value}{value to be given to each matrix element}
 
-\item{name.row}{name to be given to the row dimension (default: "")}
+\item{name.row}{optional. Name to be given to the row dimension}
 
-\item{name.col}{name to be given to the column dimension (default: "")}
+\item{name.col}{optional. Name to be given to the column dimension}
 }
 \value{
 matrix with \code{rowNames} as row names and \code{colNames} as

@@ -97,8 +97,8 @@ randomMatrix <- function(
 #' @param rowNames character vector of row names to be given to the matrix
 #' @param colNames character vector of column names to be given to the matrix
 #' @param value value to be given to each matrix element
-#' @param name.row name to be given to the row dimension (default: "")
-#' @param name.col name to be given to the column dimension (default: "")
+#' @param name.row optional. Name to be given to the row dimension
+#' @param name.col optional. Name to be given to the column dimension
 #' @return matrix with \code{rowNames} as row names and \code{colNames} as
 #'   column names, filled with \emph{value} at each position
 #' @export
@@ -116,7 +116,7 @@ randomMatrix <- function(
 #' createMatrix(c("A", "B", "C"), name.row = "Letters")
 #' 
 createMatrix <- function(
-  rowNames, colNames = rowNames, value = 0, name.row = "", name.col = ""
+  rowNames, colNames = rowNames, value = 0, name.row = NULL, name.col = NULL
 )
 {
   stopifnot(is.character(rowNames))
