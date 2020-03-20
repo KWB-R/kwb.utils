@@ -127,16 +127,14 @@ createMatrix <- function(
   
   dimnames <- list(rowNames, colNames)
   
-  if (! is.null(name.row)) {
+  if (! is.null(name.row) || ! is.null(name.col)) {
     
-    names(dimnames)[1] <- name.row
+    names(dimnames) <- c(
+      defaultIfNULL(name.row, ""), 
+      defaultIfNULL(name.col, "")
+    )
   }
-  
-  if (! is.null(name.col)) {
-    
-    names(dimnames)[2] <- name.col
-  }
-  
+
   matrix(
     data = rep(value, times = nrows * length(colNames)), 
     nrow = nrows,
