@@ -21,7 +21,7 @@ test_that("selectColumns returns a vector for one column to select", {
 
 test_that("selectColums() works", {
   
-   d <- data.frame(a = 1, b = "one")
+   d <- data.frame(a = 1, b = "one", stringsAsFactors = TRUE)
    
    expect_error(selectColumns())
    expect_error(selectColumns(1))
