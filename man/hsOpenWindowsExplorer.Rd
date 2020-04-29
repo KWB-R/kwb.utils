@@ -4,8 +4,10 @@
 \alias{hsOpenWindowsExplorer}
 \title{Open Windows Explorer}
 \usage{
-hsOpenWindowsExplorer(startdir = tempdir(),
-  use.shell.exec = !.isNetworkPath(startdir))
+hsOpenWindowsExplorer(
+  startdir = tempdir(),
+  use.shell.exec = !.isNetworkPath(startdir)
+)
 }
 \arguments{
 \item{startdir}{directory to be opened in Windows Explorer}

@@ -17,7 +17,7 @@ Get Names of Objects in .RData files
   
 ## Search for available .RData files below "searchdir"
 #searchdir <- "//poseidon/projekte$/SUW_Department/Projects/SEMA/WP/20_Braunschweig"
-#files <- dir(searchdir, pattern = "\\\\\\\\.RData$", recursive = TRUE, full.names = TRUE)
+#files <- dir(searchdir, pattern = "\\\\.RData$", recursive = TRUE, full.names = TRUE)
   
 ## Get the names of the objects in the .RData files
 #objectsInFiles <- listObjects(files)
@@ -26,6 +26,6 @@ Get Names of Objects in .RData files
 #dataQ.found <- sapply(objectsInFiles, function(x) {"DataQ" \%in\% x})
   
 #cat("DataQ was found in the following files:",
-#    paste(files[dataQ.found], collapse = "\\n  "))
+#    paste(files[dataQ.found], collapse = "\n  "))
 
 }

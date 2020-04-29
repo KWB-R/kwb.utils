@@ -4,8 +4,12 @@
 \alias{checkForMissingColumns}
 \title{Check for Column Existence}
 \usage{
-checkForMissingColumns(frm, reqCols, do.stop = TRUE,
-  dataFrameName = deparse(substitute(frm)))
+checkForMissingColumns(
+  frm,
+  reqCols,
+  do.stop = TRUE,
+  dataFrameName = deparse(substitute(frm))
+)
 }
 \arguments{
 \item{frm}{data frame}

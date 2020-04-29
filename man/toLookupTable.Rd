@@ -4,8 +4,13 @@
 \alias{toLookupTable}
 \title{Keys and Values or List to Lookup Table}
 \usage{
-toLookupTable(keys = NULL, values = NULL, List = NULL,
-  as.twoColumnTable = FALSE, stringsAsFactors = FALSE)
+toLookupTable(
+  keys = NULL,
+  values = NULL,
+  List = NULL,
+  as.twoColumnTable = FALSE,
+  stringsAsFactors = FALSE
+)
 }
 \arguments{
 \item{keys}{keys of the lookup table}

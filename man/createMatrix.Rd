@@ -4,8 +4,13 @@
 \alias{createMatrix}
 \title{Matrix with Row and Column Names}
 \usage{
-createMatrix(rowNames, colNames = rowNames, value = 0,
-  name.row = NULL, name.col = NULL)
+createMatrix(
+  rowNames,
+  colNames = rowNames,
+  value = 0,
+  name.row = NULL,
+  name.col = NULL
+)
 }
 \arguments{
 \item{rowNames}{character vector of row names to be given to the matrix}

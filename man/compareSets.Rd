@@ -4,8 +4,13 @@
 \alias{compareSets}
 \title{Compare the values in two vectors}
 \usage{
-compareSets(x, y, subject = "Values", xname = deparse(substitute(x)),
-  yname = deparse(substitute(y)))
+compareSets(
+  x,
+  y,
+  subject = "Values",
+  xname = deparse(substitute(x)),
+  yname = deparse(substitute(y))
+)
 }
 \arguments{
 \item{x}{first vector}

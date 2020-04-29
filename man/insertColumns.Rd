@@ -4,8 +4,13 @@
 \alias{insertColumns}
 \title{Insert new Column(s) into a Data Frame}
 \usage{
-insertColumns(Data, ..., before = "", after = "",
-  stringsAsFactors = default.stringsAsFactors())
+insertColumns(
+  Data,
+  ...,
+  before = "",
+  after = "",
+  stringsAsFactors = default.stringsAsFactors()
+)
 }
 \arguments{
 \item{Data}{data frame}

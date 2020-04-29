@@ -4,8 +4,13 @@
 \alias{copyDirectoryStructure}
 \title{Copy Directory Structure}
 \usage{
-copyDirectoryStructure(sourcedir, targetdir, excludePattern = "^$",
-  recursive = TRUE, dbg = TRUE)
+copyDirectoryStructure(
+  sourcedir,
+  targetdir,
+  excludePattern = "^$",
+  recursive = TRUE,
+  dbg = TRUE
+)
 }
 \arguments{
 \item{sourcedir}{path to the source directory}

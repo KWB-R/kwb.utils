@@ -4,8 +4,12 @@
 \alias{removeEmptyColumns}
 \title{Remove empty Columns from a Data Frame}
 \usage{
-removeEmptyColumns(x, drop = FALSE, FUN = function(x) all(is.na(x)),
-  dbg = TRUE)
+removeEmptyColumns(
+  x,
+  drop = FALSE,
+  FUN = function(x) all(is.na(x)),
+  dbg = TRUE
+)
 }
 \arguments{
 \item{x}{data frame}

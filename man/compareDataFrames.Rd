@@ -4,8 +4,13 @@
 \alias{compareDataFrames}
 \title{Compare two data frames by columns}
 \usage{
-compareDataFrames(x, y, dbg = FALSE, xname = deparse(substitute(x)),
-  yname = deparse(substitute(y)))
+compareDataFrames(
+  x,
+  y,
+  dbg = FALSE,
+  xname = deparse(substitute(x)),
+  yname = deparse(substitute(y))
+)
 }
 \arguments{
 \item{x}{first data frame}

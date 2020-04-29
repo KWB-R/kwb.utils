@@ -4,8 +4,13 @@
 \alias{matchesCriteria}
 \title{Do Data Frame Row Match Given Criteria?}
 \usage{
-matchesCriteria(Data, criteria = NULL, na.to.false = FALSE,
-  add.details = FALSE, dbg = TRUE)
+matchesCriteria(
+  Data,
+  criteria = NULL,
+  na.to.false = FALSE,
+  add.details = FALSE,
+  dbg = TRUE
+)
 }
 \arguments{
 \item{Data}{data frame}

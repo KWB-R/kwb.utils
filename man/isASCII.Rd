@@ -17,9 +17,9 @@ vector of logical with \code{TRUE} at positions \code{i} where
 The code has been "stolen" from \code{\link[tools]{showNonASCII}}
 }
 \examples{
-months <- c("Januar", "Februar", "M\\ue4rz")
+months <- c("Januar", "Februar", "M\ue4rz")
 
-cat(months, "\\n")
+cat(months, "\n")
 
 isASCII(months)
 }

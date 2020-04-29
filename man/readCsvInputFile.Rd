@@ -4,9 +4,18 @@
 \alias{readCsvInputFile}
 \title{Read CSV File}
 \usage{
-readCsvInputFile(csv, sep, dec, headerRow = 1, headerPattern = "",
-  columnDescription = NULL, maxRowToLookForHeader = 10,
-  stopOnMissingColumns = TRUE, encoding = "unknown", ...)
+readCsvInputFile(
+  csv,
+  sep,
+  dec,
+  headerRow = 1,
+  headerPattern = "",
+  columnDescription = NULL,
+  maxRowToLookForHeader = 10,
+  stopOnMissingColumns = TRUE,
+  encoding = "unknown",
+  ...
+)
 }
 \arguments{
 \item{csv}{full path to CSV file}

@@ -4,16 +4,25 @@
 \alias{convertCsvFile}
 \title{Modify the format of a CSV file}
 \usage{
-convertCsvFile(file_in, sep_in = formals(utils::read.table)$sep,
-  sep_out = sep_in, dec_in = formals(utils::read.table)$dec,
-  dec_out = dec_in, file_out = NULL, header = TRUE,
+convertCsvFile(
+  file_in,
+  sep_in = formals(utils::read.table)$sep,
+  sep_out = sep_in,
+  dec_in = formals(utils::read.table)$dec,
+  dec_out = dec_in,
+  file_out = NULL,
+  header = TRUE,
   quote_in = formals(utils::read.table)$quote,
   quote_out = formals(utils::write.table)$quote,
   row.names_in = formals(utils::read.table)$row.names,
   col.names_in = formals(utils::read.table)$col.names,
-  row.names_out = FALSE, col.names_out = TRUE,
+  row.names_out = FALSE,
+  col.names_out = TRUE,
   fileEncoding_in = formals(utils::read.table)$fileEncoding,
-  fileEncoding_out = fileEncoding_in, dbg = TRUE, ...)
+  fileEncoding_out = fileEncoding_in,
+  dbg = TRUE,
+  ...
+)
 }
 \arguments{
 \item{file_in}{path to input file}

@@ -4,8 +4,7 @@
 \alias{hsDelEmptyCols}
 \title{Delete empty Columns of Data Frame}
 \usage{
-hsDelEmptyCols(dataFrame, FUN = function(x) all(is.na(x)),
-  drop = FALSE)
+hsDelEmptyCols(dataFrame, FUN = function(x) all(is.na(x)), drop = FALSE)
 }
 \arguments{
 \item{dataFrame}{data frame of which empty columns (NA in all rows) are to be removed}

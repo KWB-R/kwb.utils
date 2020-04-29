@@ -4,9 +4,14 @@
 \alias{hsMatrixToListForm}
 \title{Convert "Matrix Form" (wide format) to "List Form" (long format)}
 \usage{
-hsMatrixToListForm(df, keyFields, parFields = setdiff(names(df),
-  keyFields), colNamePar = "parName", colNameVal = "parVal",
-  stringsAsFactors = FALSE)
+hsMatrixToListForm(
+  df,
+  keyFields,
+  parFields = setdiff(names(df), keyFields),
+  colNamePar = "parName",
+  colNameVal = "parVal",
+  stringsAsFactors = FALSE
+)
 }
 \arguments{
 \item{df}{data frame}

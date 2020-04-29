@@ -4,9 +4,11 @@
 \alias{readArglists}
 \title{Read Argument Lists from CSV File}
 \usage{
-readArglists(file = NULL,
+readArglists(
+  file = NULL,
   configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
-  dbg = FALSE)
+  dbg = FALSE
+)
 }
 \arguments{
 \item{file}{full path to comma separated file containing the argument

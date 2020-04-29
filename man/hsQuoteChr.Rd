@@ -4,8 +4,7 @@
 \alias{hsQuoteChr}
 \title{Quote Character Strings}
 \usage{
-hsQuoteChr(x, qchar = "'", escapeMethod = c("double", "backslash",
-  "none"))
+hsQuoteChr(x, qchar = "'", escapeMethod = c("double", "backslash", "none"))
 }
 \arguments{
 \item{x}{vector or list of character strings}
