@@ -30,15 +30,20 @@ test_that("convertCsvFile() works", {
     expect_identical(iris, do.call(read.table, c(list(csv_out), args_read)))
   }
 
+  # The default for stringsAsFactors seems to have changed in some recent 
+  # version of R!
+  
   check_result(
     csv_in = csv_in_1, 
     args_convert = list(sep_out = ";"), 
-    args_read = list(sep = ";", header = TRUE)
+    args_read = list(sep = ";", header = TRUE, stringsAsFactors = TRUE)
   )
   
   check_result(
     csv_in = csv_in_1, 
     args_convert = list(sep_out = ";", dec_out = ","),
-    args_read = list(sep = ";", dec = ",", header = TRUE)
+    args_read = list(
+      sep = ";", dec = ",", header = TRUE, stringsAsFactors = TRUE
+    )
   )
 })

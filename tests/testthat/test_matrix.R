@@ -86,6 +86,10 @@ test_that("diffrows() works", {
   
   expect_equal(x[2, ] - x[1, ], d[1, ])
   expect_equal(x[3, ] - x[2, ], d[2, ])
+  
+  x <- matrix(1:4, ncol = 1, dimnames = list(NULL, "1a"))
+  
+  expect_identical(colnames(diffrows(x)), "1a")
 })
 
 test_that("asColumnList() and asRowList() work", {

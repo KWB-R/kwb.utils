@@ -4,8 +4,7 @@
 \alias{randomMatrix}
 \title{Create a Matrix with Random Integer Values}
 \usage{
-randomMatrix(dim = c(sample(10, 1), sample(10, 1)),
-  values = seq_len(100))
+randomMatrix(dim = c(sample(10, 1), sample(10, 1)), values = seq_len(100))
 }
 \arguments{
 \item{dim}{integer vector of length two containing the number of rows and

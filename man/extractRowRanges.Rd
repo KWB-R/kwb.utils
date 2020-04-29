@@ -4,9 +4,16 @@
 \alias{extractRowRanges}
 \title{Extract Row Ranges by Pattern}
 \usage{
-extractRowRanges(dataFrame, columnName, pattern, startOffset = 1,
-  stopOffset = 1, nameByMatch = FALSE, nameColumnsByMatch = TRUE,
-  renumber = TRUE)
+extractRowRanges(
+  dataFrame,
+  columnName,
+  pattern,
+  startOffset = 1,
+  stopOffset = 1,
+  nameByMatch = FALSE,
+  nameColumnsByMatch = TRUE,
+  renumber = TRUE
+)
 }
 \arguments{
 \item{dataFrame}{data frame}

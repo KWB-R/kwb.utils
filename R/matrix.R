@@ -97,8 +97,8 @@ randomMatrix <- function(
 #' @param rowNames character vector of row names to be given to the matrix
 #' @param colNames character vector of column names to be given to the matrix
 #' @param value value to be given to each matrix element
-#' @param name.row name to be given to the row dimension (default: "")
-#' @param name.col name to be given to the column dimension (default: "")
+#' @param name.row optional. Name to be given to the row dimension
+#' @param name.col optional. Name to be given to the column dimension
 #' @return matrix with \code{rowNames} as row names and \code{colNames} as
 #'   column names, filled with \emph{value} at each position
 #' @export
@@ -116,7 +116,7 @@ randomMatrix <- function(
 #' createMatrix(c("A", "B", "C"), name.row = "Letters")
 #' 
 createMatrix <- function(
-  rowNames, colNames = rowNames, value = 0, name.row = "", name.col = ""
+  rowNames, colNames = rowNames, value = 0, name.row = NULL, name.col = NULL
 )
 {
   stopifnot(is.character(rowNames))
@@ -127,16 +127,14 @@ createMatrix <- function(
   
   dimnames <- list(rowNames, colNames)
   
-  if (! is.null(name.row)) {
+  if (! is.null(name.row) || ! is.null(name.col)) {
     
-    names(dimnames)[1] <- name.row
+    names(dimnames) <- c(
+      defaultIfNULL(name.row, ""), 
+      defaultIfNULL(name.col, "")
+    )
   }
-  
-  if (! is.null(name.col)) {
-    
-    names(dimnames)[2] <- name.col
-  }
-  
+
   matrix(
     data = rep(value, times = nrows * length(colNames)), 
     nrow = nrows,
@@ -274,7 +272,15 @@ diffrows <- function(x)
 {
   stopIfNotMatrix(x)
   
-  do.call(rbind, lapply(seq_len(nrow(x) - 1), function(i) x[i + 1, ] - x[i, ]))
+  rows <- lapply(seq_len(nrow(x) - 1L), function(i) x[i + 1L, ] - x[i, ])
+  
+  result <- do.call(rbind, rows)
+  
+  if (ncol(result) == 1L) {
+    colnames(result) <- colnames(x)
+  }
+  
+  result
 }
 
 # asColumnList -----------------------------------------------------------------

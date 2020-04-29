@@ -4,8 +4,12 @@
 \alias{colStatistics}
 \title{Column Statistics}
 \usage{
-colStatistics(dataFrame, functions = c("sum", "mean", "min", "max",
-  "number.na", "length"), na.rm = FALSE, functionColumn = FALSE)
+colStatistics(
+  dataFrame,
+  functions = c("sum", "mean", "min", "max", "number.na", "length"),
+  na.rm = FALSE,
+  functionColumn = FALSE
+)
 }
 \arguments{
 \item{dataFrame}{data frame with numeric columns only}

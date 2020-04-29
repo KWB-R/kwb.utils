@@ -4,8 +4,13 @@
 \alias{catAndRun}
 \title{Print Debug Messages Before and After Running Code}
 \usage{
-catAndRun(messageText = "Running code", expr, newLine = 2L,
-  dbg = TRUE, log_time = TRUE)
+catAndRun(
+  messageText = "Running code",
+  expr,
+  newLine = 2L,
+  dbg = TRUE,
+  log_time = TRUE
+)
 }
 \arguments{
 \item{messageText}{text to be printed before running the code}
@@ -34,10 +39,10 @@ Print Debug Messages Before and After Running Code
 for (newLine in 0:3) {
 
   catAndRun("work hard", newLine = newLine, {
-    cat("hard\\nworking\\n")
+    cat("hard\nworking\n")
   })
 
-  cat("here.\\n\\n")
+  cat("here.\n\n")
 }
 
 }

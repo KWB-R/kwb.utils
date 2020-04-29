@@ -39,7 +39,7 @@ if (isLoaded("welcome")) {
 # Functions -----
 sayHello <- function(who) {
   clearConsole()
-  cat("***\\n***\\n*** Hello", who, "how are you?\\n***\\n***\\n")
+  cat("***\n***\n*** Hello", who, "how are you?\n***\n***\n")
 }
 
 # At the end of your script, call setLoaded() to indicate that your script is

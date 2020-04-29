@@ -4,8 +4,7 @@
 \alias{rbindAll}
 \title{rbind all data frames given in a list}
 \usage{
-rbindAll(x, nameColumn = "", remove.row.names = TRUE,
-  namesAsFactor = TRUE)
+rbindAll(x, nameColumn = "", remove.row.names = TRUE, namesAsFactor = TRUE)
 }
 \arguments{
 \item{x}{list of data frames to be passed to \code{rbind}}

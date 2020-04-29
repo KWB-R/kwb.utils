@@ -4,8 +4,14 @@
 \alias{hsPrepPdf}
 \title{Prepare Writing of PDF File}
 \usage{
-hsPrepPdf(strPdf = tempfile(fileext = ".pdf"), boolLandscape = TRUE,
-  bordW = 2, bordH = 2, makeCur = TRUE, ...)
+hsPrepPdf(
+  strPdf = tempfile(fileext = ".pdf"),
+  boolLandscape = TRUE,
+  bordW = 2,
+  bordH = 2,
+  makeCur = TRUE,
+  ...
+)
 }
 \arguments{
 \item{strPdf}{see argument \code{pdfFile} in \code{\link{preparePdf}}}

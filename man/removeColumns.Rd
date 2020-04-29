@@ -4,8 +4,14 @@
 \alias{removeColumns}
 \title{Remove Columns from a Data Frame}
 \usage{
-removeColumns(dframe, columns = NULL, columnsToRemove = NULL,
-  pattern = NULL, drop = FALSE, dbg = FALSE)
+removeColumns(
+  dframe,
+  columns = NULL,
+  columnsToRemove = NULL,
+  pattern = NULL,
+  drop = FALSE,
+  dbg = FALSE
+)
 }
 \arguments{
 \item{dframe}{data frame,}

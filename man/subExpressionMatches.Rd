@@ -4,9 +4,13 @@
 \alias{subExpressionMatches}
 \title{Find and Extract Regular Expressions from Strings}
 \usage{
-subExpressionMatches(regularExpression, text, match.names = NULL,
+subExpressionMatches(
+  regularExpression,
+  text,
+  match.names = NULL,
   select = stats::setNames(seq_along(match.names), match.names),
-  simplify = TRUE)
+  simplify = TRUE
+)
 }
 \arguments{
 \item{regularExpression}{regular expression containing parts in parentheses
@@ -47,6 +51,6 @@ x <- subExpressionMatches(
   match.names = c("year", "month", "day")
 )
 
-cat(paste0("Today is ", x$day, "/", x$month, " of ", x$year, "\\n"))
+cat(paste0("Today is ", x$day, "/", x$month, " of ", x$year, "\n"))
 
 }

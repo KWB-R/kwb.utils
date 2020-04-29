@@ -4,8 +4,7 @@
 \alias{getTagNames}
 \title{Find <tag>-tags in string}
 \usage{
-getTagNames(x, bt = c("<>", "[]")[1], dbg = FALSE,
-  expected.length = length(x))
+getTagNames(x, bt = c("<>", "[]")[1], dbg = FALSE, expected.length = length(x))
 }
 \arguments{
 \item{x}{vector of character}

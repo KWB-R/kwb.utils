@@ -4,8 +4,13 @@
 \alias{roundColumns}
 \title{Round Columns to given Number of Digits}
 \usage{
-roundColumns(dframe, columns = NULL, digits = NULL, pattern = NULL,
-  columnNames = NULL)
+roundColumns(
+  dframe,
+  columns = NULL,
+  digits = NULL,
+  pattern = NULL,
+  columnNames = NULL
+)
 }
 \arguments{
 \item{dframe}{data frame containing numeric columns to be rounded}

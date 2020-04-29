@@ -4,8 +4,13 @@
 \alias{frequencyTable}
 \title{Number of value occurrences in columns}
 \usage{
-frequencyTable(data, columns = names(data), orderByLeastLevels = TRUE,
-  as.data.frame = TRUE, useNA = c("no", "ifany", "always")[2])
+frequencyTable(
+  data,
+  columns = names(data),
+  orderByLeastLevels = TRUE,
+  as.data.frame = TRUE,
+  useNA = c("no", "ifany", "always")[2]
+)
 }
 \arguments{
 \item{data}{data frame}

@@ -4,8 +4,7 @@
 \alias{assertRowsAndColumns}
 \title{Assert Row and Column Names of a Matrix}
 \usage{
-assertRowsAndColumns(x, row_names = NULL, col_names = NULL,
-  fill_value = 0)
+assertRowsAndColumns(x, row_names = NULL, col_names = NULL, fill_value = 0)
 }
 \arguments{
 \item{x}{A matrix}
