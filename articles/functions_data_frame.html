@@ -6,21 +6,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Functions Working on Data Frames • kwb.utils</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Functions Working on Data Frames">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="kwb.utils">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
       </span>
     </div>
 
@@ -120,7 +120,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kwb-r/kwb.utils">
+  <a href="https://github.com/kwb-r/kwb.utils/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -144,10 +144,10 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Functions Working on Data Frames</h1>
+      <h1 data-toc-skip>Functions Working on Data Frames</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2019-12-17</h4>
+            <h4 class="date">2020-04-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_data_frame.Rmd"><code>vignettes/functions_data_frame.Rmd</code></a></small>
       <div class="hidden name"><code>functions_data_frame.Rmd</code></div>
@@ -161,55 +161,55 @@
 <a href="#function-addrowwithname" class="anchor"></a>Function <code>addRowWithName()</code>
 </h3>
 <p>This function does no more than adding a row to a data frame with <code>rbind</code> and giving it a name:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">value =</span> <span class="dv">10</span><span class="op">:</span><span class="dv">11</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">new_row &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">value =</span> <span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(x<span class="op">$</span>value))</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">kwb.utils<span class="op">::</span><span class="kw">addRowWithName</span>(x, new_row, <span class="dt">row.name =</span> <span class="st">"total"</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt;       value</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt; 1        10</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; 2        11</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; total    21</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">value</span> <span class="kw">=</span> <span class="fl">10</span>:<span class="fl">11</span>)
+
+<span class="no">new_row</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">x</span>$<span class="no">value</span>))
+
+<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addRowWithName.html">addRowWithName</a></span>(<span class="no">x</span>, <span class="no">new_row</span>, <span class="kw">row.name</span> <span class="kw">=</span> <span class="st">"total"</span>)
+<span class="co">#&gt;       value</span>
+<span class="co">#&gt; 1        10</span>
+<span class="co">#&gt; 2        11</span>
+<span class="co">#&gt; total    21</span></pre></body></html></div>
 </div>
 <div id="function-addsuffixtocolumns" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-addsuffixtocolumns" class="anchor"></a>Function <code>addSuffixToColumns()</code>
 </h3>
 <p>This function adds a postfix to the column names of a data frame. This may be useful when column-binding data frames. The function can be used to indicate the origin of each column by giving it a suffix related to the data frame that it originates from.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Define a first data frame</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">data_frame_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="dt">first =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Peter"</span>, <span class="st">"Mary"</span>), </a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="dt">last =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Miller"</span>, <span class="st">"Smith"</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># Define a second data frame</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">data_frame_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">  <span class="dt">height_cm =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">181</span>, <span class="dv">171</span>),</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">  <span class="dt">weigth_kg =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">68</span>, <span class="dv">59</span>)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">)</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co"># Column-bind the data frames, after giving their columns a unique suffix</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">  kwb.utils<span class="op">::</span><span class="kw">addSuffixToColumns</span>(data_frame_<span class="dv">1</span>, <span class="st">"_1"</span>),</a>
-<a class="sourceLine" id="cb2-17" data-line-number="17">  kwb.utils<span class="op">::</span><span class="kw">addSuffixToColumns</span>(data_frame_<span class="dv">2</span>, <span class="st">"_2"</span>)</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18">)</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt;   id_1 first_1 last_1 height_cm_2 weigth_kg_2</span></a>
-<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 1    1   Peter Miller         181          68</span></a>
-<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 2    2    Mary  Smith         171          59</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Define a first data frame</span>
+<span class="no">data_frame_1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
+  <span class="kw">id</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">2</span>,
+  <span class="kw">first</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Peter"</span>, <span class="st">"Mary"</span>),
+  <span class="kw">last</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Miller"</span>, <span class="st">"Smith"</span>)
+)
+
+<span class="co"># Define a second data frame</span>
+<span class="no">data_frame_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
+  <span class="kw">height_cm</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">181</span>, <span class="fl">171</span>),
+  <span class="kw">weigth_kg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">68</span>, <span class="fl">59</span>)
+)
+
+<span class="co"># Column-bind the data frames, after giving their columns a unique suffix</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(
+  <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span>(<span class="no">data_frame_1</span>, <span class="st">"_1"</span>),
+  <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span>(<span class="no">data_frame_2</span>, <span class="st">"_2"</span>)
+)
+<span class="co">#&gt;   id_1 first_1 last_1 height_cm_2 weigth_kg_2</span>
+<span class="co">#&gt; 1    1   Peter Miller         181          68</span>
+<span class="co">#&gt; 2    2    Mary  Smith         171          59</span></pre></body></html></div>
 </div>
 <div id="function-asnofactordataframe" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-asnofactordataframe" class="anchor"></a>Function <code>asNoFactorDataFrame</code>
 </h3>
 <p>This function is a shortcut to <code><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame(..., stringsAsFactors = FALSE)</a></code>. Using this function may slightly improve the readability of a script (as the number of arguments passed to the function is reduced):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>], <span class="dt">nrow =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">result_<span class="dv">1</span> &lt;-<span class="st"> </span>kwb.utils<span class="op">::</span><span class="kw">asNoFactorDataFrame</span>(m)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">result_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(m, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(result_<span class="dv">1</span>, result_<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">6</span>], <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)
+
+<span class="no">result_1</span> <span class="kw">&lt;-</span> <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/asNoFactorDataFrame.html">asNoFactorDataFrame</a></span>(<span class="no">m</span>)
+<span class="no">result_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="no">m</span>, <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="no">result_1</span>, <span class="no">result_2</span>)
+<span class="co">#&gt; [1] TRUE</span></pre></body></html></div>
 <p>Functions Working on Data Frames</p>
 </div>
 <div id="function-columntodate" class="section level3">
@@ -350,7 +350,7 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
       </div>
 
@@ -363,7 +363,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
