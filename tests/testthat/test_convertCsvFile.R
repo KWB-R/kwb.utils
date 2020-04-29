@@ -9,16 +9,16 @@ test_that("convertCsvFile() works", {
   write.table(iris, csv_in_3, col.names = FALSE)
   
   csv_out <- convertCsvFile(csv_in_1, row.names_in = rownames(iris))
-  unlink(csv_out)
+  #unlink(csv_out)
   
   csv_out <- convertCsvFile(csv_in_1, col.names_in = colnames(iris))
-  unlink(csv_out)
+  #unlink(csv_out)
   
   check_result <- function(csv_in, args_convert, args_read) {
   
     csv_out <- do.call(convertCsvFile, c(list(csv_in), args_convert))
     
-    on.exit(unlink(csv_out))
+    #on.exit(unlink(csv_out))
   
     # Test that existing file will not be overwritten
     expect_error(convertCsvFile(csv_in))
