@@ -29,6 +29,7 @@
 #'   \code{isdir}. If \code{full_info = TRUE} the result data frame may contain
 #'   further columns, as provided by the function given in \code{FUN} for
 #'   \code{full_info = TRUE}.
+#' @export
 #' @examples 
 #' # Example list function provided in this package (file listing)
 #' FUN <- kwb.utils:::listFiles

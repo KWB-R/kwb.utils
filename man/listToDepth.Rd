@@ -16,28 +16,30 @@ listToDepth(
 )
 }
 \arguments{
-\item{path}{path to the element where to start listing}
+\item{path}{path to the element at which to start listing}
 
 \item{recursive}{If \code{TRUE}, the listing is performed recursively, up to
-a depth od \code{max_depth}}
+a depth level of \code{max_depth}}
 
 \item{max_depth}{maximal depth of level to be listed 
-if \code{recursive = TRUE}}
+if \code{recursive = TRUE} (0 = no recursion at all)}
 
 \item{full_info}{return only \code{path} and \code{isdir} information or
 the full information provided by \code{FUN(full_info = TRUE)}?}
 
-\item{FUN}{function called to get the listing of the element given in 
-\code{path}. The function must accept a path as its first argument and it 
-must define the argument \code{full_info} at the second position. It may
-accept further arguments. It must always return a data frame. For 
-\code{full_info = FALSE} the data frame must have columns \code{file} and
-\code{isdir} (is the "file" a directory?). For \code{full_info = TRUE} the
-function may return further columns. The function must provide an empty
-data frame with the expected columns when being called with 
-\code{character()} as the first argument. See \code{kwb.utils:::listFiles}
-for an example implementation that somehow simulates the behaviour of the
-\code{\link{dir}} function.}
+\item{FUN}{function called to get the listing of the element given in
+\code{path}. The function must accept a path as its first argument and it
+must define the argument \code{full_info} second. It may accept further
+arguments. It must always return a data frame. For \code{full_info = FALSE}
+the data frame must have columns \code{file} and \code{isdir} (is the
+"file" a directory?). For \code{full_info = TRUE} the function may return
+further columns. The function must provide an empty data frame with the
+expected columns when being called with \code{character()} as the first
+argument. See \code{kwb.utils:::listFiles} for an example implementation
+that somehow simulates the behaviour of the \code{\link{dir}} function.
+See \code{kwb.dwd::list_url()} for a more advanced usage of this function
+in order to recursively list the files on an FTP server (FTP = file 
+transfer protocol).}
 
 \item{\dots}{further arguments passed to \code{FUN}}
 
