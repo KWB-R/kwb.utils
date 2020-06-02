@@ -61,6 +61,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/atLeastOneRowIn.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/backspace.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/breakInSequence.html</loc>
   </url>
   <url>
@@ -430,6 +433,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/lastElement.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/left.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/limitToRange.html</loc>
   </url>
   <url>
@@ -491,6 +497,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/orderBy.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/pairwise.html</loc>
@@ -595,6 +604,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/renameColumns.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/repeated.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/resetRowNames.html</loc>
   </url>
   <url>
@@ -605,6 +617,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/revertListAssignments.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/right.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/roundColumns.html</loc>
@@ -659,6 +674,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/sourceScripts.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/space.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/splitAlongDim.html</loc>
