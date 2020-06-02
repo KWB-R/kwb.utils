@@ -78,11 +78,8 @@ listToDepth <- function(
   info <- FUN(mutate_or_not(path, prob_mutate), full_info, ...)
   #info <- FUN(mutate_or_not(path, prob_mutate), full_info)
 
-  # Helper function to get an info column
-  get_info <- function(x) kwb.utils::selectColumns(info, x)
-
   # Which files represent directories?
-  is_directory <- get_info("isdir")
+  is_directory <- selectColumns(info, "isdir")
 
   # Are we already at maximum depth?
   at_max_depth <- ! is.na(max_depth) && (depth == max_depth)
@@ -95,7 +92,7 @@ listToDepth <- function(
   }
 
   # URLs representing directories
-  directories <- get_info("file")[is_directory]
+  directories <- selectColumns(info, "file")[is_directory]
 
   # Number of directories
   n_directories <- length(directories)
