@@ -6,8 +6,7 @@
 \usage{
 listToDepth(
   path,
-  recursive = TRUE,
-  max_depth = 1,
+  max_depth = 0L,
   full_info = FALSE,
   FUN = listFiles,
   ...,
@@ -18,11 +17,9 @@ listToDepth(
 \arguments{
 \item{path}{path to the element at which to start listing}
 
-\item{recursive}{If \code{TRUE}, the listing is performed recursively, up to
-a depth level of \code{max_depth}}
-
-\item{max_depth}{maximal depth of level to be listed 
-if \code{recursive = TRUE} (0 = no recursion at all)}
+\item{max_depth}{maximal depth level of which to list elements. A value of
+\code{0} means non-recursive listing, a value of \code{NA} represents fully
+recursive listing.}
 
 \item{full_info}{return only \code{path} and \code{isdir} information or
 the full information provided by \code{FUN(full_info = TRUE)}?}
@@ -43,9 +40,12 @@ transfer protocol).}
 
 \item{\dots}{further arguments passed to \code{FUN}}
 
-\item{depth}{start depth when \code{recursive = TRUE}, for internal use!}
+\item{depth}{start depth of recursion if \code{max_depth > 0}. This argument
+is for internal use and not intended to be set by the user!}
 
-\item{prob_mutate}{for internal use!}
+\item{prob_mutate}{probability to alter the path so that it becomes useless.
+This is zero by default. Set the value only if you want to test how the
+function behaves if the listing of a path fails.}
 }
 \value{
 data frame containing at least the columns \code{file} and 

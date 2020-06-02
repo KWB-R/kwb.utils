@@ -3,10 +3,9 @@
 #' List Elements Recursively up to Depth
 #' 
 #' @param path path to the element at which to start listing
-#' @param recursive If \code{TRUE}, the listing is performed recursively, up to
-#'   a depth level of \code{max_depth}
-#' @param max_depth maximal depth of level to be listed 
-#'   if \code{recursive = TRUE} (0 = no recursion at all)
+#' @param max_depth maximal depth level of which to list elements. A value of
+#'   \code{0} means non-recursive listing, a value of \code{NA} represents fully
+#'   recursive listing.
 #' @param full_info return only \code{path} and \code{isdir} information or
 #'   the full information provided by \code{FUN(full_info = TRUE)}?
 #' @param FUN function called to get the listing of the element given in
@@ -23,8 +22,11 @@
 #'   in order to recursively list the files on an FTP server (FTP = file 
 #'   transfer protocol).
 #' @param \dots further arguments passed to \code{FUN}
-#' @param depth start depth when \code{recursive = TRUE}, for internal use!
-#' @param prob_mutate for internal use!
+#' @param depth start depth of recursion if \code{max_depth > 0}. This argument
+#'   is for internal use and not intended to be set by the user!
+#' @param prob_mutate probability to alter the path so that it becomes useless.
+#'   This is zero by default. Set the value only if you want to test how the
+#'   function behaves if the listing of a path fails.
 #' @return data frame containing at least the columns \code{file} and 
 #'   \code{isdir}. If \code{full_info = TRUE} the result data frame may contain
 #'   further columns, as provided by the function given in \code{FUN} for
@@ -48,8 +50,7 @@
 #' 
 listToDepth <- function(
   path, 
-  recursive = TRUE, 
-  max_depth = 1, 
+  max_depth = 0L, 
   full_info = FALSE, 
   FUN = listFiles, 
   ..., 
@@ -57,12 +58,11 @@ listToDepth <- function(
   prob_mutate = 0
 )
 {
-  # Helper function to mutate the path (to test failures!)
+  # Helper function to mutate the path with a probability of "prob" 
   mutate_or_not <- function(x, prob = 0.1) {
     stopifnot(inRange(prob, 0, 1))
-    # Mutate with a probability of "prob"
+    # Add some nonsense to the path if the TRUE/FALSE coin lands on TRUE
     if (prob > 0 && sample(c(TRUE, FALSE), 1L, prob = c(prob, 1 - prob))) {
-      # Add some nonsense
       x <- paste0(x, "blabla")
     }
     x
@@ -87,7 +87,7 @@ listToDepth <- function(
   # Return the file list if no recursive listing is requested or if we are
   # already at maximum depth or if there are no directories. The function is
   # also returned from if info is empty (! any(is_directory) is TRUE).
-  if (! recursive || at_max_depth || ! any(is_directory)) {
+  if (at_max_depth || ! any(is_directory)) {
     return(info)
   }
 
@@ -113,8 +113,7 @@ listToDepth <- function(
 
     # Recursive call of this function
     listToDepth(
-      path = paste0(kwb.utils::assertFinalSlash(path), directories[i]),
-      recursive = recursive,
+      path = paste0(assertFinalSlash(path), directories[i]),
       max_depth = max_depth,
       full_info = full_info,
       FUN = FUN,
