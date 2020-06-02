@@ -1,5 +1,5 @@
 pandoc: '2.2'
-pkgdown: 1.4.1
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   functions_array: functions_array.html
@@ -21,6 +21,7 @@ articles:
   functions_ungrouped: functions_ungrouped.html
   functions_vector: functions_vector.html
   overview: overview.html
+last_built: 2020-06-02T06:30Z
 urls:
   reference: https://kwb-r.github.io/kwb.utils/reference
   article: https://kwb-r.github.io/kwb.utils/articles
