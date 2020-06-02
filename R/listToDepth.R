@@ -16,11 +16,14 @@
 #'   "file" a directory?). For \code{full_info = TRUE} the function may return
 #'   further columns. The function must provide an empty data frame with the
 #'   expected columns when being called with \code{character()} as the first
-#'   argument. See \code{kwb.utils:::listFiles} for an example implementation
-#'   that somehow simulates the behaviour of the \code{\link{dir}} function.
-#'   See \code{kwb.dwd::list_url()} for a more advanced usage of this function
-#'   in order to recursively list the files on an FTP server (FTP = file 
-#'   transfer protocol).
+#'   argument. The function is expected to set the attribute "failed" to the
+#'   given path in case that the path could not be accessed (e.g. because of a
+#'   broken internet connection if the listing is done remotely). See
+#'   \code{kwb.utils:::listFiles} for an example implementation that somehow
+#'   simulates the behaviour of the \code{\link{dir}} function. See
+#'   \code{kwb.dwd::list_url()} for a more advanced usage of this function in
+#'   order to recursively list the files on an FTP server (FTP = file transfer
+#'   protocol).
 #' @param \dots further arguments passed to \code{FUN}
 #' @param depth start depth of recursion if \code{max_depth > 0}. This argument
 #'   is for internal use and not intended to be set by the user!
@@ -72,9 +75,7 @@ listToDepth <- function(
   # kwb.utils::assignArgumentDefaults(listToDepth)
   # max_depth = 1;full_info=TRUE;set.seed(1)
 
-  # Call the domain specific function list_contents(). The function is expected
-  # to set the attribute "failed" to the given path in case that the path failed
-  # to be accessed.
+  # Call the user-defined function FUN to list the elements at the given path
   info <- FUN(mutate_or_not(path, prob_mutate), full_info, ...)
   #info <- FUN(mutate_or_not(path, prob_mutate), full_info)
 

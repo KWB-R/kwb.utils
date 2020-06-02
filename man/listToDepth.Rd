@@ -32,11 +32,14 @@ the data frame must have columns \code{file} and \code{isdir} (is the
 "file" a directory?). For \code{full_info = TRUE} the function may return
 further columns. The function must provide an empty data frame with the
 expected columns when being called with \code{character()} as the first
-argument. See \code{kwb.utils:::listFiles} for an example implementation
-that somehow simulates the behaviour of the \code{\link{dir}} function.
-See \code{kwb.dwd::list_url()} for a more advanced usage of this function
-in order to recursively list the files on an FTP server (FTP = file 
-transfer protocol).}
+argument. The function is expected to set the attribute "failed" to the
+given path in case that the path could not be accessed (e.g. because of a
+broken internet connection if the listing is done remotely). See
+\code{kwb.utils:::listFiles} for an example implementation that somehow
+simulates the behaviour of the \code{\link{dir}} function. See
+\code{kwb.dwd::list_url()} for a more advanced usage of this function in
+order to recursively list the files on an FTP server (FTP = file transfer
+protocol).}
 
 \item{\dots}{further arguments passed to \code{FUN}}
 
