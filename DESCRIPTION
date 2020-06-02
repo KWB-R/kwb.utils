@@ -1,6 +1,6 @@
 Package: kwb.utils
 Title: General Utility Functions Developed at KWB
-Version: 0.5.1
+Version: 0.6.0
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
