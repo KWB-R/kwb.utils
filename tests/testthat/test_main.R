@@ -8,29 +8,18 @@ test_that("randomValuesWithSum() works", {
 }) 
 
 test_that("callWithStringsAsFactors() works", {
+
+  get_stringsAsFactors <- function() getOption("stringsAsFactors")
   
-  option_bak <- getOption("stringsAsFactors")
+  option_bak <- get_stringsAsFactors()
 
-  d1 <- callWithStringsAsFactors(
-    TRUE,
-    rbind,
-    data.frame(id = 1, name = "Peter"),
-    data.frame(id = 2, name = "Paul"),
-    data.frame(id = 3, name = "Mary")
-  )
-
-  d2 <- callWithStringsAsFactors(
-    FALSE,
-    rbind,
-    data.frame(id = 1, name = "Peter"),
-    data.frame(id = 2, name = "Paul"),
-    data.frame(id = 3, name = "Mary")
-  )
-
-  expect_true(is.factor(d1$name))
-  expect_false(is.factor(d2$name))
+  d1 <- callWithStringsAsFactors(TRUE, get_stringsAsFactors)
+  expect_identical(d1, TRUE)
+  expect_identical(option_bak, get_stringsAsFactors())
   
-  expect_identical(option_bak, getOption("stringsAsFactors"))
+  d2 <- callWithStringsAsFactors(FALSE, get_stringsAsFactors)
+  expect_identical(d2, FALSE)
+  expect_identical(option_bak, get_stringsAsFactors())
 
   expect_error(callWithStringsAsFactors(1, data.frame, a = "x"))
 })
