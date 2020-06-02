@@ -153,9 +153,9 @@ mergeFileInfos <- function(file_infos, template)
 
   # Function to prepend a parent name "p" to column "file" in data frame "df"
   prepend_parent <- function(df, p) {
-    parent <- kwb.utils::assertFinalSlash(p)
-    child <- kwb.utils::selectColumns(df, "file")
-    kwb.utils::setColumns(df, file = paste0(parent, child), dbg = FALSE)
+    parent <- assertFinalSlash(p)
+    child <- selectColumns(df, "file")
+    setColumns(df, file = paste0(parent, child), dbg = FALSE)
   }
 
   # Prepend the parent names to the filenames for the remaining data frames
@@ -165,7 +165,7 @@ mergeFileInfos <- function(file_infos, template)
 
   # If the result is NULL (no data frames to loop through) set the result to the
   # empty file info record
-  result <- kwb.utils::defaultIfNULL(result, template)
+  result <- defaultIfNULL(result, template)
 
   # Collect the information on URLs that could not be listed
   failed <- unlist(excludeNULL(lapply(file_infos, attr, "failed"), FALSE))
