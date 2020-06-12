@@ -3,6 +3,7 @@
 * new: listToDepth() 
 * new small helper functions: backspace(), left(), orderBy(), repeated(), 
   right(), space()
+* new: reproducibleSample()
 
 # [kwb.utils 0.5.1](https://github.com/KWB-R/kwb.utils/releases/tag/v0.5.1) <small>2020-04-20</small>
 
