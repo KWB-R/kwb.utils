@@ -4,12 +4,15 @@
 \alias{warningDeprecated}
 \title{Create Warning About a Deprecated Function}
 \usage{
-warningDeprecated(old_name, new_name)
+warningDeprecated(old_name, new_name, parentheses = TRUE)
 }
 \arguments{
 \item{old_name}{name of deprecated function}
 
 \item{new_name}{name of new function to be used instead}
+
+\item{parentheses}{logical. Should parentheses be printed after the names
+in the output? Default: \code{TRUE}.}
 }
 \description{
 Create Warning About a Deprecated Function
