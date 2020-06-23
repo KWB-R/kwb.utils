@@ -532,6 +532,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/preparePdfIf.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/print.repro_sample.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/printIf.html</loc>
   </url>
   <url>
@@ -605,6 +608,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/repeated.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/reproducibleSample.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/resetRowNames.html</loc>
