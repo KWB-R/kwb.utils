@@ -104,6 +104,16 @@ listToDepth <- function(
   # URLs representing directories
   directories <- selectColumns(info, "file")[is_directory]
 
+  # Stop if there is an empty directory. This would lead to an endless 
+  # recursion. The list function must not return directories with empty name.
+  if (! all(nzchar(directories))) {
+    stop(
+      "An empty directory name occurred. This should not happen.\n",
+      "Please check the listing function that you passed in 'FUN'.",
+      call. = FALSE
+    )
+  }
+
   # Number of directories
   n_directories <- length(directories)
 
