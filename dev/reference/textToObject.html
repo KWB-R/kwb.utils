@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Write Text Lines to a File — writeText • kwb.utils</title>
+<title>Convert Text Representation Back to R Object — textToObject • kwb.utils</title>
 
 
 <!-- jquery -->
@@ -45,9 +45,8 @@
 
 
 
-<meta property="og:title" content="Write Text Lines to a File — writeText" />
-<meta property="og:description" content="Write text to a file using writeLines and output a debug
-message by default" />
+<meta property="og:title" content="Convert Text Representation Back to R Object — textToObject" />
+<meta property="og:description" content="Convert Text Representation Back to R Object" />
 
 
 <meta name="robots" content="noindex">
@@ -190,61 +189,32 @@ message by default" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Write Text Lines to a File</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/io.R'><code>R/io.R</code></a></small>
-    <div class="hidden name"><code>writeText.Rd</code></div>
+    <h1>Convert Text Representation Back to R Object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kwb-r/kwb.utils/blob/master/R/textToObject.R'><code>R/textToObject.R</code></a></small>
+    <div class="hidden name"><code>textToObject.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Write text to a file using <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></code> and output a debug
-message by default</p>
+    <p>Convert Text Representation Back to R Object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>textToObject</span>(<span class='no'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector of character representing the lines to be written to
-<code>file</code>, passed to <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></code></p></td>
-    </tr>
-    <tr>
-      <th>file</th>
-      <td><p>path to file to be written, passed to <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></code></p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>character string to be included in the debug message:
-"Writing &lt;type&gt;'file-path' ..."</p></td>
-    </tr>
-    <tr>
-      <th>dbg</th>
-      <td><p>if <code>TRUE</code>, debug messages are shown</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>further arguments passed to <code><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></code></p></td>
+      <td><p>vector of character as returned by <code><a href='objectToText.html'>objectToText</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>This function invisibly returns the path to the output <code>file</code>.</p>
+    <p>R object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define text to be written to file</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Hello"</span>, <span class='st'>"world"</span>)
-
-<span class='co'># Write text to a temporary file and catch the file path</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".txt"</span>))</div><div class='output co'>#&gt; Writing '/tmp/RtmpRpreLC/file548810b36f9f.txt' ... ok.</div><div class='input'>
-<span class='co'># Make the debug message more informative</span>
-<span class='fu'>writeText</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"welcome file"</span>)</div><div class='output co'>#&gt; Writing welcome file '/tmp/RtmpRpreLC/file548810b36f9f.txt' ... ok.</div><div class='input'>
-<span class='co'># Read lines back and show on the console</span>
-<span class='fu'><a href='catLines.html'>catLines</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span>(<span class='no'>file</span>))</div><div class='output co'>#&gt; Hello
-#&gt; world</div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>textToObject</span>(<span class='st'>"c(1:10)"</span>)</div><div class='output co'>#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>iris</span>, <span class='fu'>textToObject</span>(<span class='fu'><a href='objectToText.html'>objectToText</a></span>(<span class='no'>iris</span>))))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

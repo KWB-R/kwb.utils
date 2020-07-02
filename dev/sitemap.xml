@@ -151,6 +151,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/countOrSum.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/createAccessor.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/createDirAndReturnPath.html</loc>
   </url>
   <url>
@@ -499,6 +502,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/objectToText.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/orderBy.html</loc>
   </url>
   <url>
@@ -722,6 +728,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/tempSubdirectory.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/textToObject.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toFactor.html</loc>
