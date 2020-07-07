@@ -1,16 +1,18 @@
 # createStorage ----------------------------------------------------------------
 
-#' Create Storage Object to Save/Load RDS files
+#' Create Storage Object to Save/Load .rds or .RData files
 #' 
 #' This function returns an object that implements the methods \code{list()}, 
 #' \code{save()}, \code{load()}, \code{remove()} that list, store, load or 
-#' remove, respectively RDS files. The object is associated to a folder that 
-#' is given to this function.
+#' remove, respectively .rds or .RData files. The object is associated to a 
+#' folder that is given to this function.
 #' 
 #' @param path path to the folder in which to store the RDS files. If the folder 
 #'   does not exist it is attempted to be created. 
+#' @param type one of \code{"rds"}, \code{"RData"}, specifying the format used
+#'   to store R objects.
 #' @return list with "member functions" \code{list()}, \code{save()}, 
-#'   \code{load()}, \code{remove()}
+#'   \code{load()}, \code{remove()}, and variables \code{path}, \code{type}
 #' @export
 #' @examples
 #' # Create a storage object
@@ -38,12 +40,16 @@
 #' # The storage is empty again
 #' storage$list()
 #' 
-createStorage <- function(path)
+createStorage <- function(path, type = "rds")
 {
+  type <- match.arg(type, c("rds", "RData"))
+  
   kwb.utils::createDirectory(path)
 
-  object_path <- function(name) file.path(path, paste0(name, ".rds"))
-
+  object_path <- function(name) {
+    file.path(path, paste(name, type, sep = "."))
+  }
+  
   get_named_arg_assignments <- function() {
     args <- as.list(sys.call(which = 1L)[-1L])
     arg_names <- defaultIfNULL(names(args), character(length(args)))
@@ -53,16 +59,24 @@ createStorage <- function(path)
   }
 
   member_list <- function(full.names = FALSE) {
-    dir(path, pattern = "\\.rds$", full.names = full.names, all.files = TRUE)
+    dir(
+      path, 
+      pattern = paste0("\\.", type, "$"), 
+      ignore.case = TRUE, 
+      full.names = full.names, 
+      all.files = TRUE
+    )
   }
 
-  member_save <- function(..., .overwrite = FALSE) {
+  member_save <- function(..., .objects = NULL, .overwrite = FALSE) {
 
-    assignments <- get_named_arg_assignments()
-    assignments <- assignments[names(assignments) != ".overwrite"]
-    stopifnot(all(nzchar(defaultIfNULL(names(assignments), ""))))
+    if (is.null(.objects)) {
+      .objects <- get_named_arg_assignments()
+      .objects <- .objects[names(.objects) != ".overwrite"]
+      stopifnot(all(nzchar(defaultIfNULL(names(.objects), ""))))
+    } 
 
-    for (name in names(assignments)) {
+    for (name in names(.objects)) {
 
       file <- object_path(name)
 
@@ -79,12 +93,24 @@ createStorage <- function(path)
         message("Overwriting:\n  ", file)
       }
 
-      saveRDS(assignments[[name]], file = file)
+      if (type == "rds") {
+        
+        saveRDS(.objects[[name]], file = file)
+        
+      } else {
+        
+        do.call(
+          what = save, 
+          args = stats::setNames(list(.objects[[name]], file), c("x", "file"))
+        )
+      }
     }
   }
 
   member_load <- function(name) {
 
+    stopifnot(is.character(name), length(name) == 1L)
+    
     file <- object_path(name)
 
     if (! file.exists(file)) {
@@ -92,7 +118,14 @@ createStorage <- function(path)
       return(NULL)
     }
 
-    readRDS(file)
+    if (type == "rds") {
+      
+      readRDS(file)
+      
+    } else {
+      
+      loadObject(file, objectname = listObjects(file)[[1L]][1L])
+    }
   }
 
   member_remove <- function(name) {
@@ -111,6 +144,8 @@ createStorage <- function(path)
     list = member_list,
     save = member_save,
     load = member_load,
-    remove = member_remove
+    remove = member_remove,
+    path = path,
+    type = type
   )
 }

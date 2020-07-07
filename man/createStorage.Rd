@@ -2,23 +2,26 @@
 % Please edit documentation in R/createStorage.R
 \name{createStorage}
 \alias{createStorage}
-\title{Create Storage Object to Save/Load RDS files}
+\title{Create Storage Object to Save/Load .rds or .RData files}
 \usage{
-createStorage(path)
+createStorage(path, type = "rds")
 }
 \arguments{
 \item{path}{path to the folder in which to store the RDS files. If the folder 
 does not exist it is attempted to be created.}
+
+\item{type}{one of \code{"rds"}, \code{"RData"}, specifying the format used
+to store R objects.}
 }
 \value{
 list with "member functions" \code{list()}, \code{save()}, 
-  \code{load()}, \code{remove()}
+  \code{load()}, \code{remove()}, and variables \code{path}, \code{type}
 }
 \description{
 This function returns an object that implements the methods \code{list()}, 
 \code{save()}, \code{load()}, \code{remove()} that list, store, load or 
-remove, respectively RDS files. The object is associated to a folder that 
-is given to this function.
+remove, respectively .rds or .RData files. The object is associated to a 
+folder that is given to this function.
 }
 \examples{
 # Create a storage object
