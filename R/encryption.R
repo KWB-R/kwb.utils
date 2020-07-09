@@ -53,15 +53,20 @@ createPasswordFile <- function(account, keyFile, passwordFile, password = NULL)
 
 # .askForPassword --------------------------------------------------------------
 
-.askForPassword <- function(account)
+.askForPassword <- function(account = NULL)
 {
   clearConsole()
-  
-  userInput <- readline(paste0("Enter password for account '", account, "': "))
-  
+
+  prompt <- sprintf(
+    "Enter password%s: ", 
+    if (is.null(account)) "" else paste0("for account '", account, "'")
+  )
+    
+  userInput <- readline(prompt)
+
   clearConsole()
   
-  userInput
+  invisible(userInput)
 }
 
 # getPassword ------------------------------------------------------------------
