@@ -92,16 +92,15 @@ createStorage <- function(path, type = "rds")
         message("Overwriting:\n  ", file)
       }
 
+      object <- .objects[[name]]
+      
       if (type == "rds") {
         
-        saveRDS(.objects[[name]], file = file)
+        saveRDS(object, file = file)
         
       } else {
         
-        do.call(
-          what = save, 
-          args = stats::setNames(list(.objects[[name]], file), c("x", "file"))
-        )
+        save(object, file = file)
       }
     }
   }
