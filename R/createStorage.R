@@ -15,6 +15,7 @@
 #'   \code{load()}, \code{remove()}, and variables \code{path}, \code{type}
 #' @export
 #' @examples
+#' \dontrun{
 #' # Create a storage object
 #' storage <- createStorage(tempdir())
 #' 
@@ -22,24 +23,22 @@
 #' storage$list()
 #' 
 #' # Store objects
-#' a <- 2
-#' b <- "two"
-#' storage$save(a, b, c = list("Hello", "World"))
+#' apple <- 5
+#' storage$save(apple, banana = list("Hello", "World"))
 #' 
 #' # List the objects
 #' storage$list()
 #' 
 #' # Retrieve an object
-#' storage$load("c")
+#' storage$load("banana")
 #' 
 #' # Remove objects
-#' storage$remove("a")
-#' storage$remove("b")
-#' storage$remove("c")
+#' storage$remove("apple")
+#' storage$remove("banana")
 #' 
 #' # The storage is empty again
 #' storage$list()
-#' 
+#' }
 createStorage <- function(path, type = "rds")
 {
   type <- match.arg(type, c("rds", "RData"))
