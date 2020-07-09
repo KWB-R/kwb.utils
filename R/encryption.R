@@ -89,8 +89,8 @@ getPassword <- function(passwordFile, keyFile)
   
   password.encrypted <- readBin(passwordFile, what = "raw", n = 256)
   
-  rawToChar(PKI::PKI.decrypt(
+  invisible(rawToChar(PKI::PKI.decrypt(
     what = password.encrypted, 
     key = PKI::PKI.load.key(file = keyFile)
-  ))
+  )))
 }
