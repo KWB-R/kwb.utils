@@ -424,6 +424,12 @@ assignPackageObjects <- function(package)
 #' 
 assignGlobally <- function(x, value)
 {
+  warningDeprecated(
+    old_name = "assignGlobally()", 
+    new_name = "'assign(x, value, envir = .GlobalEnv)'", 
+    parentheses = FALSE
+  )
+  
   assign(x, value, envir = .GlobalEnv)
 }
 
