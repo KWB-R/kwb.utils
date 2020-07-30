@@ -135,9 +135,9 @@ test_that("removeSpaces() works", {
   expect_identical(removeSpaces(" a  b  c "), "abc")
 })
 
-test_that("hsSubstSpecChars() works", {
+test_that("substSpecialChars() works", {
   
-  expect_identical(hsSubstSpecChars("% ?"), "proz")
+  expect_identical(substSpecialChars("% ?"), "proz")
 }) 
 
 test_that("stringToExpression() works", {

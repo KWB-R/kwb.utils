@@ -427,7 +427,7 @@ removeSpaces <- function(x)
 
 # hsSubstSpecChars -------------------------------------------------------------
 
-#' Substitution of Special Characters
+#' Deprecated. Use \code{\link{substSpecialChars}} instead.
 #' 
 #' @param x string containing special characters to be substituted
 #' @return input string \emph{x} with special characters being substituted by 
@@ -437,8 +437,31 @@ removeSpaces <- function(x)
 #' 
 hsSubstSpecChars <- function(x)
 {
+  warningDeprecated("hsSubstSpecChars", "substSpecialChars")
+  
+  substSpecialChars(x)
+}
+
+# substSpecialChars ------------------------------------------------------------
+
+#' Substitution of Special Characters
+#' 
+#' @param x string containing special characters to be substituted
+#' @return input string \emph{x} with special characters being substituted by 
+#'   a meaningful represenation or underscore, multiple underscores replaced
+#'   by a single underscore and multiple underscores at the end removed.
+#' @export
+#' 
+substSpecialChars <- function(x)
+{
   replacements_x <- list(
-    "\\xe4" = "ae", "\\xf6" = "oe", "\\xfc" = "ue", "\\xdf" = "ss", 
+    "\\xc4" = "Ae", 
+    "\\xe4" = "ae", 
+    "\\xd4" = "Oe", 
+    "\\xf6" = "oe", 
+    "\\xd4" = "Ue", 
+    "\\xfc" = "ue", 
+    "\\xdf" = "ss", 
     "\\xb5" = "my"
   )
   

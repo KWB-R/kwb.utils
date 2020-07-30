@@ -50,7 +50,6 @@ reference:
       - hsCountInStr
       - hsQuoteChr
       - hsSafeName
-      - hsSubstSpecChars
       - hsTrim
       - moveToFront
       - multiSubstitute
@@ -64,6 +63,7 @@ reference:
       - stringStartsWith
       - stringToExpression
       - subExpressionMatches
+      - substSpecialChars
   - title: Input and Output Functions
     contents:
       - catAndRun
