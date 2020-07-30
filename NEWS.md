@@ -4,6 +4,7 @@
   objectToText(), orderBy(), repeated(), reproducibleSample(), right(), space(),
   textToObject()
 * listToDepth(): Avoid endless recursion by checking for empty directory names
+* hsSubstSpecChars(): Add upper case umlauts, rename to substSpecialChars()
 
 # [kwb.utils 0.5.1](https://github.com/KWB-R/kwb.utils/releases/tag/v0.5.1) <small>2020-04-20</small>
 

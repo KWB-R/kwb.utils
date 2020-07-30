@@ -189,7 +189,7 @@ msgAvailableFields <- function(x)
 
 .toColumnName <- function(x)
 {
-  hsSubstSpecChars(x)
+  substSpecChars(x)
 }
 
 # .stopIfNotEnoughColumns ------------------------------------------------------
