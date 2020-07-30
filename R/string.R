@@ -457,9 +457,9 @@ substSpecialChars <- function(x)
   replacements_x <- list(
     "\\xc4" = "Ae", 
     "\\xe4" = "ae", 
-    "\\xd4" = "Oe", 
+    "\\xd6" = "Oe", 
     "\\xf6" = "oe", 
-    "\\xd4" = "Ue", 
+    "\\xdc" = "Ue", 
     "\\xfc" = "ue", 
     "\\xdf" = "ss", 
     "\\xb5" = "my"
