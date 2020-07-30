@@ -427,7 +427,7 @@ removeSpaces <- function(x)
 
 # hsSubstSpecChars -------------------------------------------------------------
 
-#' Deprecated. Use \code{\link{substSpecChars}} instead.
+#' Deprecated. Use \code{\link{substSpecialChars}} instead.
 #' 
 #' @param x string containing special characters to be substituted
 #' @return input string \emph{x} with special characters being substituted by 
@@ -437,9 +437,9 @@ removeSpaces <- function(x)
 #' 
 hsSubstSpecChars <- function(x)
 {
-  warningDeprecated("hsSubstSpecChars", "substSpecChars")
+  warningDeprecated("hsSubstSpecChars", "substSpecialChars")
   
-  substSpecChars(x)
+  substSpecialChars(x)
 }
 
 # substSpecialChars ------------------------------------------------------------
