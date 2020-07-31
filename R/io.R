@@ -361,8 +361,9 @@ readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 #'   in the output? Default: \code{TRUE}.
 #' @export
 #' @examples
+#' \dontrun{
 #' warningDeprecated("old_function()", "new_function()")
-#' 
+#' }
 warningDeprecated <- function(old_name, new_name, parentheses = TRUE)
 {
   parens <- if (parentheses) "()" else ""

@@ -18,6 +18,7 @@ in the output? Default: \code{TRUE}.}
 Create Warning About a Deprecated Function
 }
 \examples{
+\dontrun{
 warningDeprecated("old_function()", "new_function()")
-
+}
 }
