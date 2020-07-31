@@ -1,4 +1,4 @@
-# Current
+# [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 
 * new functions: backspace(), createAccessor(), createStorage(), left(),
   listToDepth(), objectToText(), orderBy(), repeated(), reproducibleSample(),
