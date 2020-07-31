@@ -1,10 +1,18 @@
 # Current
 
-* new: backspace(), createAccessor(), createStorage(), left(), listToDepth(),
-  objectToText(), orderBy(), repeated(), reproducibleSample(), right(), space(),
-  textToObject()
-* listToDepth(): Avoid endless recursion by checking for empty directory names
-* hsSubstSpecChars(): Add upper case umlauts, rename to substSpecialChars()
+* new functions: backspace(), createAccessor(), createStorage(), left(),
+  listToDepth(), objectToText(), orderBy(), repeated(), reproducibleSample(),
+  right(), space(), substSpecialChars(), textToObject()
+* new generic (S3) function: print.repro_sample
+* listToDepth(): Avoid endless recursion by checking for empty directory names,
+  add argument "template"
+* hsSubstSpecChars(): Add upper case umlauts, rename to substSpecialChars(),
+  make deprecated
+* .askForPassword(): Set default "NULL" for argument "account"; return invisible
+* assignGlobally(): Make deprecated and do not use internally any more
+* getPassword(): Return invisible
+* hsPrepPdf(): Do not use internally any more
+* warningDeprecated(): Add argument "parentheses"
 
 # [kwb.utils 0.5.1](https://github.com/KWB-R/kwb.utils/releases/tag/v0.5.1) <small>2020-04-20</small>
 
