@@ -30,6 +30,11 @@
 #' @param prob_mutate probability to alter the path so that it becomes useless.
 #'   This is zero by default. Set the value only if you want to test how the
 #'   function behaves if the listing of a path fails.
+#' @param template empty data frame (zero rows) and with columns that are
+#'   identical to the columns in the data frame returned by \code{FUN}. If not
+#'   provided the function will call \code{FUN} once with a zero-length
+#'   \code{path} argument expecting to retrieve the template that is expected
+#'   here.
 #' @return data frame containing at least the columns \code{file} and 
 #'   \code{isdir}. If \code{full_info = TRUE} the result data frame may contain
 #'   further columns, as provided by the function given in \code{FUN} for
@@ -58,7 +63,8 @@ listToDepth <- function(
   FUN = listFiles, 
   ..., 
   depth = 0, 
-  prob_mutate = 0
+  prob_mutate = 0,
+  template = NULL
 )
 {
   # Helper function to mutate the path with a probability of "prob" 
@@ -70,6 +76,9 @@ listToDepth <- function(
     }
     x
   }
+
+  # We need a template just in case that no data could be retrieved
+  template <- defaultIfNULL(template, FUN(full_info = full_info))
   
   # kwb.utils::assignPackageObjects("kwb.utils")
   # kwb.utils::assignArgumentDefaults(listToDepth)
@@ -94,6 +103,16 @@ listToDepth <- function(
 
   # URLs representing directories
   directories <- selectColumns(info, "file")[is_directory]
+
+  # Stop if there is an empty directory. This would lead to an endless 
+  # recursion. The list function must not return directories with empty name.
+  if (! all(nzchar(directories))) {
+    stop(
+      "An empty directory name occurred. This should not happen.\n",
+      "Please check the listing function that you passed in 'FUN'.",
+      call. = FALSE
+    )
+  }
 
   # Number of directories
   n_directories <- length(directories)
@@ -120,12 +139,10 @@ listToDepth <- function(
       FUN = FUN,
       ...,
       depth = depth + 1,
-      prob_mutate = prob_mutate
+      prob_mutate = prob_mutate,
+      template = template
     )
   })
-
-  # We need a template just in case that no data could be retrieved
-  template <- FUN(full_info = full_info)
 
   # Merge data frames with info on files in subdirectories
   subdir_info <- mergeFileInfos(subdir_infos, template)

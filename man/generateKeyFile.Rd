@@ -12,3 +12,6 @@ generateKeyFile(target)
 \description{
 Generate a Decryption Key File
 }
+\seealso{
+\code{\link{createPasswordFile}}, \code{\link{getPassword}}
+}

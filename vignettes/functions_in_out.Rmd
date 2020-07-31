@@ -25,6 +25,9 @@ knitr::opts_chunk$set(
 ### Function guessSeparator()
 ### Function headtail()
 ### Function hsPrepPdf()
+
+Deprecated. Use preparePdf() instead.
+
 ### Function preparePdf()
 ### Function readArglists()
 ### Function readCsvInputFile()

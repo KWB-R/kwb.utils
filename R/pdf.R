@@ -203,13 +203,13 @@ hsPrepPdf <- function(
 #' @param Pdf full path to PDF file
 #' @param dbg if \code{TRUE} (default) the command used to open the PDF file is
 #'   shown
-#' @seealso \code{\link{hsPrepPdf}}
+#' @seealso \code{\link{preparePdf}}
 #' @export
 #' @examples 
 #' # Set path to PDF file and open PDF device
 #' tmpPdf <- tempfile("ex_hsFinishPdf", fileext = ".pdf") 
 #' 
-#' hsPrepPdf(tmpPdf)
+#' preparePdf(tmpPdf)
 #' 
 #' # Plot something
 #' plot(x <- seq(-pi,pi,pi/100), sin(x), type = "l")

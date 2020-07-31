@@ -357,16 +357,21 @@ readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 #' 
 #' @param old_name name of deprecated function
 #' @param new_name name of new function to be used instead
+#' @param parentheses logical. Should parentheses be printed after the names
+#'   in the output? Default: \code{TRUE}.
 #' @export
 #' @examples
+#' \dontrun{
 #' warningDeprecated("old_function()", "new_function()")
-#' 
-warningDeprecated <- function(old_name, new_name)
+#' }
+warningDeprecated <- function(old_name, new_name, parentheses = TRUE)
 {
-  warning(
-    "The function ", old_name, "() is deprecated. Please use ", new_name, 
-    "() instead.", call. = FALSE
-  )
+  parens <- if (parentheses) "()" else ""
+  
+  warning(call. = FALSE, sprintf(
+    "The function %s%s is deprecated.\nPlease use %s%s instead.", 
+    old_name, parens, new_name, parens
+  ))
 }
 
 # writeText --------------------------------------------------------------------

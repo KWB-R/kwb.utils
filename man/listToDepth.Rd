@@ -11,7 +11,8 @@ listToDepth(
   FUN = listFiles,
   ...,
   depth = 0,
-  prob_mutate = 0
+  prob_mutate = 0,
+  template = NULL
 )
 }
 \arguments{
@@ -49,6 +50,12 @@ is for internal use and not intended to be set by the user!}
 \item{prob_mutate}{probability to alter the path so that it becomes useless.
 This is zero by default. Set the value only if you want to test how the
 function behaves if the listing of a path fails.}
+
+\item{template}{empty data frame (zero rows) and with columns that are
+identical to the columns in the data frame returned by \code{FUN}. If not
+provided the function will call \code{FUN} once with a zero-length
+\code{path} argument expecting to retrieve the template that is expected
+here.}
 }
 \value{
 data frame containing at least the columns \code{file} and 

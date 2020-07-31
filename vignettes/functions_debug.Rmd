@@ -19,6 +19,9 @@ knitr::opts_chunk$set(
 ### Function assignAll()
 ### Function assignArgumentDefaults()
 ### Function assignGlobally()
+
+Deprecated. Use instead: assign(x, value, envir = .GlobalEnv)
+
 ### Function assignPackageObjects()
 ### Function getGlobally()
 
