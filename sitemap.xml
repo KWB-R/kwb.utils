@@ -151,6 +151,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/countOrSum.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/createAccessor.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/createDirAndReturnPath.html</loc>
   </url>
   <url>
@@ -164,6 +167,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/createPasswordFile.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/createStorage.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/csvTextToDataFrame.html</loc>
@@ -499,6 +505,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/objectToText.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/orderBy.html</loc>
   </url>
   <url>
@@ -530,6 +539,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/preparePdfIf.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/print.repro_sample.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/printIf.html</loc>
@@ -605,6 +617,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/repeated.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/reproducibleSample.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/resetRowNames.html</loc>
@@ -712,10 +727,16 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/subExpressionMatches.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/substSpecialChars.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/tableLookup.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/tempSubdirectory.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/textToObject.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toFactor.html</loc>

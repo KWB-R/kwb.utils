@@ -79,7 +79,7 @@ each row" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
       </span>
     </div>
 
@@ -232,27 +232,27 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 <span class='no'>M2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='no'>values</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>M1</span>), <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>M1</span>))
 
 <span class='no'>M1</span></div><div class='output co'>#&gt;    1  2  3
-#&gt; A 58 42 84
-#&gt; B 63 50 78
-#&gt; C 62 37  6
-#&gt; D 34 19 51</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M1</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A 31.5 22.8 45.7
-#&gt; B 33.0 26.2 40.8
-#&gt; C 59.0 35.2  5.7
-#&gt; D 32.7 18.3 49.0</div><div class='input'>
+#&gt; A 98 40 14
+#&gt; B  6 94 67
+#&gt; C 51 86 18
+#&gt; D 88 72 15</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M1</span>)</div><div class='output co'>#&gt;      1    2    3
+#&gt; A 64.5 26.3  9.2
+#&gt; B  3.6 56.3 40.1
+#&gt; C 32.9 55.5 11.6
+#&gt; D 50.3 41.1  8.6</div><div class='input'>
 <span class='no'>M2</span></div><div class='output co'>#&gt;    1  2  3
-#&gt; A NA 42 84
-#&gt; B 63 50 78
-#&gt; C 62 37 NA
-#&gt; D 34 NA 51</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A  0.0 33.3 66.7
-#&gt; B 33.0 26.2 40.8
-#&gt; C 62.6 37.4  0.0
-#&gt; D 40.0  0.0 60.0</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;      1    2    3
-#&gt; A  0.0 33.3 66.7
-#&gt; B 33.0 26.2 40.8
-#&gt; C 62.6 37.4  0.0
-#&gt; D 40.0  0.0 60.0</div><div class='input'>
+#&gt; A 98 40 14
+#&gt; B  6 94 67
+#&gt; C 51 86 NA
+#&gt; D 88 NA NA</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>)</div><div class='output co'>#&gt;       1    2    3
+#&gt; A  64.5 26.3  9.2
+#&gt; B   3.6 56.3 40.1
+#&gt; C  37.2 62.8  0.0
+#&gt; D 100.0  0.0  0.0</div><div class='input'><span class='fu'>rowwisePercentage</span>(<span class='no'>M2</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt;       1    2    3
+#&gt; A  64.5 26.3  9.2
+#&gt; B   3.6 56.3 40.1
+#&gt; C  37.2 62.8  0.0
+#&gt; D 100.0  0.0  0.0</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
