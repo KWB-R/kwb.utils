@@ -104,9 +104,9 @@ test_that("assignPackageObjects() works", {
   expect_true("assignPackageObjects" %in% ls(envir = .GlobalEnv))
 }) 
 
-test_that("assignGlobally() and getGlobally() work", {
+test_that("getGlobally() works", {
   
-  assignGlobally("a", 1)
+  assign("a", 1, envir = .GlobalEnv)
   
   expect_true("a" %in% ls(envir = .GlobalEnv))
   

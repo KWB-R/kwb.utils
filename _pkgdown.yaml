@@ -254,7 +254,6 @@ reference:
     contents:
       - assignAll
       - assignArgumentDefaults
-      - assignGlobally
       - assignPackageObjects
       - getGlobally
   - title: Compare Objects

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ### Function assignAll()
 ### Function assignArgumentDefaults()
-### Function assignGlobally()
+### Function assignGlobally(): Deprecated
 ### Function assignPackageObjects()
 ### Function getGlobally()
 
