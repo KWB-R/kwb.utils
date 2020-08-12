@@ -44,16 +44,21 @@ left <- function(x, n)
 #' @return \code{df} being sorted and with newly renumbered rows
 #' @export
 #' @examples
-#' df <- data.frame(number = 4:1, letter = LETTERS[1:4])
-#' df
-#' orderBy(df, "number")
-#' orderBy(df, "letter", decreasing = TRUE)
+#' orderBy(iris, by = "Sepal.Length")
+#' orderBy(iris, by = "Species", decreasing = TRUE)
+#' orderBy(
+#'   iris, 
+#'   by = c("Species", "Petal.Width", "Petal.Length"), 
+#'   decreasing = TRUE
+#' )
 #' 
 orderBy <- function(df, by = NULL, ...)
 {
-  kwb.utils::resetRowNames(
-    df[order(kwb.utils::selectColumns(df, by), ...), , drop = FALSE]
-  )
+  order_args <- c(kwb.utils::selectColumns(df, by, drop = FALSE), list(...))
+  
+  row_order <- do.call(order, order_args)
+  
+  kwb.utils::resetRowNames(df[row_order, , drop = FALSE])
 }
 
 # repeated ---------------------------------------------------------------------
