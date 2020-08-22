@@ -408,7 +408,7 @@ assignPackageObjects <- function(package)
 {
   for (name in ls(getNamespace(package))) {
     object <- get(name, envir = asNamespace(package), inherits = FALSE)
-    assignGlobally(name, object)  
+    assign(name, object, envir = .GlobalEnv)
   }
 }
 
@@ -424,6 +424,12 @@ assignPackageObjects <- function(package)
 #' 
 assignGlobally <- function(x, value)
 {
+  warningDeprecated(
+    old_name = "assignGlobally()", 
+    new_name = "'assign(x, value, envir = .GlobalEnv)'", 
+    parentheses = FALSE
+  )
+  
   assign(x, value, envir = .GlobalEnv)
 }
 
@@ -445,7 +451,7 @@ assignGlobally <- function(x, value)
 getGlobally <- function(x, default = NULL, create.if.not.existing = TRUE)
 {
   if (!exists(x, envir = .GlobalEnv) && create.if.not.existing) {
-    assignGlobally(x, default)
+    assign(x, default, envir = .GlobalEnv)
   }
 
   get(x, envir = .GlobalEnv)
