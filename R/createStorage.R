@@ -15,9 +15,12 @@
 #'   \code{load()}, \code{remove()}, and variables \code{path}, \code{type}
 #' @export
 #' @examples
-#' \dontrun{
-#' # Create a storage object
-#' storage <- createStorage(tempdir())
+#' # Create an empty test folder
+#' path <- file.path(tempdir(), "test")
+#' dir.create(path)
+#' 
+#' # Create a storage object pointing to a temporary test folder
+#' storage <- kwb.utils::createStorage(path)
 #' 
 #' # At the beginning, the storage is empty
 #' storage$list()
@@ -26,6 +29,7 @@
 #' apple <- 5
 #' storage$save(apple, banana = list("Hello", "World"))
 #' 
+#' \dontrun{
 #' # List the objects
 #' storage$list()
 #' 
