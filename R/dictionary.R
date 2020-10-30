@@ -68,7 +68,8 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' 
 #' Reads a dictionary (a list of "key = value"-pairs) from a text file.
 #' 
-#' @param file full path to dictionary file
+#' @param file full path to dictionary file or connection as e.g. opened with
+#'   \code{file}
 #' @param sorted if TRUE (default) the entries in the dictionary will be sorted
 #'   by their keys
 #' @export
@@ -83,8 +84,15 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' 
 readDictionary <- function(file, sorted = TRUE)
 {
+  stopifnot(length(file) == 1L)
+  stopifnot(is.character(file) || inherits(file, "connection"))
+  
+  if (is.character(file)) {
+    safePath(file)
+  }
+  
   # Read the lines of the text file
-  content <- readLines(safePath(file))
+  content <- readLines(file)
   
   # Trim all lines
   content <- unlist(lapply(content, hsTrim))
@@ -97,20 +105,17 @@ readDictionary <- function(file, sorted = TRUE)
     "^([^= ]+)\\s*=\\s*(.*)$", content, match.names = c("key", "value")
   )
 
+  # Helper function
+  extract <- function(name) sapply(key_value_pairs, selectElements, name)
+  
   # Create the dictionary
-  dictionary <- toLookupList(
-    keys = sapply(key_value_pairs, selectElements, "key"),
-    values = sapply(key_value_pairs, selectElements, "value")  
-  )
+  dictionary <- toLookupList(keys = extract("key"), values = extract("value"))
 
-  if (sorted) {
-    
-    dictionary[order(names(dictionary))]
-    
-  } else {
-    
-    dictionary
+  if (! sorted) {
+    return(dictionary)
   }
+  
+  dictionary[order(names(dictionary))]
 }
 
 # resolve ----------------------------------------------------------------------

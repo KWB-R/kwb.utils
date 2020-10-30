@@ -7,7 +7,8 @@
 readDictionary(file, sorted = TRUE)
 }
 \arguments{
-\item{file}{full path to dictionary file}
+\item{file}{full path to dictionary file or connection as e.g. opened with
+\code{file}}
 
 \item{sorted}{if TRUE (default) the entries in the dictionary will be sorted
 by their keys}

@@ -1,6 +1,8 @@
 # Current
 
 * new: matrixToDataFrame()
+* writeDictionary(): check "file" argument. Do not check the file path unless
+  "file" is of class character (and not a connection)
 
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 
