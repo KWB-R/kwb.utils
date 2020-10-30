@@ -72,6 +72,8 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #'   \code{file}
 #' @param sorted if TRUE (default) the entries in the dictionary will be sorted
 #'   by their keys
+#' @param fileEncoding passed to \code{\link{readLinesWithEncoding}}
+#' @param \dots further arguments passed to \code{\link{readLinesWithEncoding}}
 #' @export
 #' @seealso \code{\link{readDictionaries}}
 #' @examples 
@@ -82,17 +84,14 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' resolve("file.out", dictionary, extension = "csv")
 #' resolve("file.out", dictionary, extension = "pdf")
 #' 
-readDictionary <- function(file, sorted = TRUE)
+readDictionary <- function(file, sorted = TRUE, fileEncoding = "", ...)
 {
-  stopifnot(length(file) == 1L)
-  stopifnot(is.character(file) || inherits(file, "connection"))
-  
-  if (is.character(file)) {
-    safePath(file)
-  }
+  stopifnot(length(file) == 1L, is.character(file))
   
   # Read the lines of the text file
-  content <- readLines(file)
+  content <- readLinesWithEncoding(
+    safePath(file), fileEncoding = fileEncoding, ...
+  )
   
   # Trim all lines
   content <- unlist(lapply(content, hsTrim))

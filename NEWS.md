@@ -4,6 +4,8 @@
 * writeDictionary(): check "file" argument. Do not check the file path unless
   "file" is of class character (and not a connection)
 * add readLinesWithEncoding(), moved from fakin.path.app::read_lines()
+* readDictionary(): add arguments "fileEncoding", "...", pass on to
+  readLinesWithEncoding()
 
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 
