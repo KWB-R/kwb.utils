@@ -38,8 +38,8 @@ get_cached <- function(name)
 # get_cached_file --------------------------------------------------------------
 get_cached_file <- function(name = "")
 {
-  cache_dir <- file.path(tempdir(), "cache")
-  
+  cache_dir <- get_cache_dir()
+
   createDirectory(cache_dir, dbg = FALSE)
   
   if (name == "") {
@@ -47,6 +47,18 @@ get_cached_file <- function(name = "")
   }
   
   file.path(cache_dir, paste0(name, ".RData"))
+}
+
+# get_cache_dir ----------------------------------------------------------------
+get_cache_dir <- function()
+{
+  Sys.getenv("SEMA_BERLIN_CACHE_DIR", file.path(tempdir(), "cache"))
+}
+
+# set_cache_dir ----------------------------------------------------------------
+set_cache_dir <- function(path)
+{
+  Sys.setenv(SEMA_BERLIN_CACHE_DIR = path)
 }
 
 # run_cached -------------------------------------------------------------------

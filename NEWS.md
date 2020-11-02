@@ -6,6 +6,7 @@
 * add readLinesWithEncoding(), moved from fakin.path.app::read_lines()
 * readDictionary(): add arguments "fileEncoding", "...", pass on to
   readLinesWithEncoding()
+* allow to set the cache directory with set_cache_dir()
 
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 
