@@ -66,13 +66,33 @@ preparePdfIf <- function(to.pdf, PDF = "", ...)
 #' }
 #' 
 preparePdf <- function(
-  pdfFile = tempfile(fileext = ".pdf"), landscape = TRUE, borderWidth.cm = 2, 
+  pdfFile = tempfile(fileext = ".pdf"), 
+  landscape = TRUE, 
+  borderWidth.cm = 2, 
   borderHeight.cm = 2, 
-  width.cm = .defaultWidth(landscape, borderWidth.cm, borderHeight.cm),
-  height.cm = .defaultHeight(landscape, borderWidth.cm, borderHeight.cm),
-  makeCurrent = TRUE, paper = paste0("a4", ifelse(landscape, "r", "")), ...
+  width.cm = NULL,
+  height.cm = NULL,
+  makeCurrent = TRUE, 
+  paper = NULL,
+  ...
 )   
 {
+  if (is.null(paper)) {
+    paper <- if (! is.null(width.cm) || ! is.null(height.cm)) {
+      "special"
+    } else {
+      paste0("a4", ifelse(landscape, "r", ""))
+    }
+  }
+        
+  width.cm <- defaultIfNULL(width.cm, .defaultWidth(
+    landscape, borderWidth.cm, borderHeight.cm
+  ))
+  
+  height.cm <- defaultIfNULL(height.cm, .defaultHeight(
+    landscape, borderWidth.cm, borderHeight.cm
+  ))
+
   # Save current device
   currentDevice <- grDevices::dev.cur()
   
