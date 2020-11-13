@@ -42,5 +42,4 @@ identical(x1, x2)
 
 ## Provide column 'b' to data frame 'x'... ok.
 ## Provide column 'c' to data frame 'x'... ok.
-  
 }

@@ -26,13 +26,15 @@ clear_cache <- function()
 }
 
 # get_cached -------------------------------------------------------------------
-get_cached <- function(name)
+get_cached <- function(name, dbg = TRUE)
 {
-  if (file.exists(file <- get_cached_file(name))) {
-    loadObject(file, "x")
-  } else {
-    NULL
+  file <- get_cached_file(name)
+  
+  if (! file.exists(file)) {
+    return(NULL)
   }
+  
+  loadObject(file, "x", dbg = dbg)
 }
 
 # get_cached_file --------------------------------------------------------------
