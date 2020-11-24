@@ -198,7 +198,7 @@
     <p>If <code>x1</code> is NULL <code>x2</code> is returned otherwise <code><a href='https://rdrr.io/r/base/cbind.html'>cbind(x1, x2)</a></code></p>
     </div>
 
-    <pre class="usage"><span class='fu'>safeColumnBind</span>(<span class='no'>x1</span>, <span class='no'>x2</span>)</pre>
+    <pre class="usage"><span class='fu'>safeColumnBind</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -219,18 +219,19 @@
   is <code>NULL</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>) {
-
-  <span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>3</span>))
-  <span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='fu'>safeColumnBind</span>(<span class='no'>x1</span>, <span class='no'>x2</span>)
-
+    <pre class="examples"><div class='input'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+  
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span>
+  
+  <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'>safeColumnBind</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
+  
   <span class='co'># using cbind would result in an error:</span>
   <span class='co'># x1 &lt;- cbind(x1, x2)</span>
-}
-
-<span class='no'>x1</span></div><div class='output co'>#&gt;   a          b a          b a          b
+<span class='op'>}</span>
+  
+<span class='va'>x1</span>
+</div><div class='output co'>#&gt;   a          b a          b a          b
 #&gt; 1 1 -0.9676737 1 -0.9369726 1 -2.1443322
 #&gt; 2 2  0.7924511 2  0.8613005 2  0.4847217
 #&gt; 3 3  1.8150308 3  0.6216399 3 -0.4472743</div><div class='input'>
@@ -250,7 +251,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

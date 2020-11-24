@@ -198,13 +198,13 @@
     <p>are data frame rows matching given criteria?</p>
     </div>
 
-    <pre class="usage"><span class='fu'>matchesCriteria</span>(
-  <span class='no'>Data</span>,
-  <span class='kw'>criteria</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>na.to.false</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>add.details</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>matchesCriteria</span><span class='op'>(</span>
+  <span class='va'>Data</span>,
+  criteria <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na.to.false <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  add.details <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  dbg <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -245,16 +245,18 @@ many rows it is FALSE</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Define an example data frame</span>
-<span class='no'>Data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>, <span class='st'>"z"</span>, <span class='fl'>NA</span>),
-                   <span class='kw'>B</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fl'>NA</span>,   <span class='fl'>2</span>,   <span class='fl'>3</span>, <span class='fl'>4</span>))
+<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"y"</span>, <span class='st'>"z"</span>, <span class='cn'>NA</span><span class='op'>)</span>,
+                   B <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='cn'>NA</span>,   <span class='fl'>2</span>,   <span class='fl'>3</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Define one or more criteria</span>
-<span class='no'>criteria</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A %in% c('y', 'z')"</span>, <span class='st'>"B %in% 1:3"</span>)
+<span class='va'>criteria</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A %in% c('y', 'z')"</span>, <span class='st'>"B %in% 1:3"</span><span class='op'>)</span>
 
 <span class='co'># For which rows the criteria are met (vector of logical)?</span>
-<span class='fu'>matchesCriteria</span>(<span class='no'>Data</span>, <span class='no'>criteria</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE  TRUE FALSE</div><div class='input'>
+<span class='fu'>matchesCriteria</span><span class='op'>(</span><span class='va'>Data</span>, <span class='va'>criteria</span>, dbg <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE  TRUE  TRUE FALSE</div><div class='input'>
 <span class='co'># You may use the function in the context of indexing:</span>
-<span class='no'>Data</span>[<span class='fu'>matchesCriteria</span>(<span class='no'>Data</span>, <span class='no'>criteria</span>), ]</div><div class='output co'>#&gt; Evaluating A %in% c("y", "z") ...
+<span class='va'>Data</span><span class='op'>[</span><span class='fu'>matchesCriteria</span><span class='op'>(</span><span class='va'>Data</span>, <span class='va'>criteria</span><span class='op'>)</span>, <span class='op'>]</span>
+</div><div class='output co'>#&gt; Evaluating A %in% c("y", "z") ...
 #&gt;   is TRUE for       2 rows ( 50.0 %),
 #&gt;     FALSE for       2 rows ( 50.0 %) and
 #&gt;        NA for       0 rows (  0.0 %).
@@ -267,13 +269,15 @@ many rows it is FALSE</p></td>
 #&gt; 2 y 2
 #&gt; 3 z 3</div><div class='input'>
 <span class='co'># Filtering for non-NA values</span>
-<span class='no'>D1</span> <span class='kw'>&lt;-</span> <span class='no'>Data</span>[<span class='fu'>matchesCriteria</span>(<span class='no'>Data</span>, <span class='st'>"! is.na(A) &amp; ! is.na(B)"</span>), ]</div><div class='output co'>#&gt; Evaluating !is.na(A) &amp; !is.na(B) ...
+<span class='va'>D1</span> <span class='op'>&lt;-</span> <span class='va'>Data</span><span class='op'>[</span><span class='fu'>matchesCriteria</span><span class='op'>(</span><span class='va'>Data</span>, <span class='st'>"! is.na(A) &amp; ! is.na(B)"</span><span class='op'>)</span>, <span class='op'>]</span>
+</div><div class='output co'>#&gt; Evaluating !is.na(A) &amp; !is.na(B) ...
 #&gt;   is TRUE for       2 rows ( 50.0 %),
 #&gt;     FALSE for       2 rows ( 50.0 %) and
 #&gt;        NA for       0 rows (  0.0 %).
 #&gt;   Selected rows now: 2</div><div class='input'>
 <span class='co'># the same result is returned by:</span>
-<span class='no'>D2</span> <span class='kw'>&lt;-</span> <span class='no'>Data</span>[<span class='fu'>matchesCriteria</span>(<span class='no'>Data</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"! is.na(A)"</span>, <span class='st'>"! is.na(B)"</span>)), ]</div><div class='output co'>#&gt; Evaluating !is.na(A) ...
+<span class='va'>D2</span> <span class='op'>&lt;-</span> <span class='va'>Data</span><span class='op'>[</span><span class='fu'>matchesCriteria</span><span class='op'>(</span><span class='va'>Data</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"! is.na(A)"</span>, <span class='st'>"! is.na(B)"</span><span class='op'>)</span><span class='op'>)</span>, <span class='op'>]</span>
+</div><div class='output co'>#&gt; Evaluating !is.na(A) ...
 #&gt;   is TRUE for       3 rows ( 75.0 %),
 #&gt;     FALSE for       1 rows ( 25.0 %) and
 #&gt;        NA for       0 rows (  0.0 %).
@@ -283,7 +287,8 @@ many rows it is FALSE</p></td>
 #&gt;     FALSE for       1 rows ( 25.0 %) and
 #&gt;        NA for       0 rows (  0.0 %).
 #&gt;   Selected rows now: 2</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>D1</span>, <span class='no'>D2</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>D1</span>, <span class='va'>D2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -300,7 +305,7 @@ many rows it is FALSE</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

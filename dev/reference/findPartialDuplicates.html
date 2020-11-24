@@ -200,7 +200,7 @@ identical in all columns" />
 identical in all columns</p>
     </div>
 
-    <pre class="usage"><span class='fu'>findPartialDuplicates</span>(<span class='no'>data</span>, <span class='no'>key_columns</span>, <span class='kw'>skip_columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>findPartialDuplicates</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>key_columns</span>, skip_columns <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -233,14 +233,15 @@ duplicated rows</p></td>
   one of the other columns.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>findPartialDuplicates</span>(<span class='kw'>key_columns</span> <span class='kw'>=</span> <span class='st'>"id"</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>1</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>2</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3.1</span>)
-))</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='fu'>findPartialDuplicates</span><span class='op'>(</span>key_columns <span class='op'>=</span> <span class='st'>"id"</span>, data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>1</span>, value <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>2</span>, value <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>2</span>, value <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>3</span>, value <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>3</span>, value <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>3</span>, value <span class='op'>=</span> <span class='fl'>3.1</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt;   id value
 #&gt; 2  2     2
 #&gt; 3  2     3
@@ -267,7 +268,7 @@ duplicated rows</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -198,16 +198,16 @@
     <p>Extract Row Ranges by Pattern</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extractRowRanges</span>(
-  <span class='no'>dataFrame</span>,
-  <span class='no'>columnName</span>,
-  <span class='no'>pattern</span>,
-  <span class='kw'>startOffset</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>stopOffset</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>nameByMatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nameColumnsByMatch</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>renumber</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>extractRowRanges</span><span class='op'>(</span>
+  <span class='va'>dataFrame</span>,
+  <span class='va'>columnName</span>,
+  <span class='va'>pattern</span>,
+  startOffset <span class='op'>=</span> <span class='fl'>1</span>,
+  stopOffset <span class='op'>=</span> <span class='fl'>1</span>,
+  nameByMatch <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  nameColumnsByMatch <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  renumber <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -257,39 +257,40 @@ data frame are named</p></td>
   rows matching <em>pattern</em> in <code>dataFrame[[columnName]]</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='no'>dataFrame</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(
-      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"Value"</span>,
+    <pre class="examples"><div class='input'>  <span class='va'>dataFrame</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Date"</span>, <span class='st'>"Value"</span>,
         <span class='st'>"1.1."</span>, <span class='st'>"1"</span>,
         <span class='st'>"2.1."</span>, <span class='st'>"2"</span>,
         <span class='st'>""</span>, <span class='st'>""</span>,
         <span class='st'>"Date"</span>, <span class='st'>"Value"</span>,
         <span class='st'>"3.1."</span>, <span class='st'>"3"</span>,
-        <span class='st'>"4.1."</span>, <span class='st'>"4"</span>),
-      <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-      <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-    ),
-    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  )
-
-  <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>extractRowRanges</span>(
-    <span class='no'>dataFrame</span>, <span class='kw'>columnName</span> <span class='kw'>=</span> <span class='st'>"V1"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Date"</span>, <span class='kw'>stopOffset</span> <span class='kw'>=</span> <span class='fl'>2</span>
-  )
-
-  <span class='no'>expected</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-      <span class='kw'>Date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1.1."</span>, <span class='st'>"2.1."</span>),
-      <span class='kw'>Value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1"</span>, <span class='st'>"2"</span>),
-      <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-    ),
-    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-      <span class='kw'>Date</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3.1."</span>, <span class='st'>"4.1."</span>),
-      <span class='kw'>Value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3"</span>, <span class='st'>"4"</span>),
-      <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-    )
-  )
-
-  <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>y</span>, <span class='no'>expected</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
+        <span class='st'>"4.1."</span>, <span class='st'>"4"</span><span class='op'>)</span>, 
+      ncol <span class='op'>=</span> <span class='fl'>2</span>, 
+      byrow <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <span class='op'>)</span>,
+    stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+  <span class='op'>)</span>
+  
+  <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>extractRowRanges</span><span class='op'>(</span>
+    <span class='va'>dataFrame</span>, columnName <span class='op'>=</span> <span class='st'>"V1"</span>, pattern <span class='op'>=</span> <span class='st'>"Date"</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span>
+  <span class='op'>)</span>
+  
+  <span class='va'>expected</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1.1."</span>, <span class='st'>"2.1."</span><span class='op'>)</span>,
+      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1"</span>, <span class='st'>"2"</span><span class='op'>)</span>,
+      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+    <span class='op'>)</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3.1."</span>, <span class='st'>"4.1."</span><span class='op'>)</span>,
+      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span><span class='op'>)</span>,
+      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>expected</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -306,7 +307,7 @@ data frame are named</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

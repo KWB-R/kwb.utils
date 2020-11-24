@@ -200,7 +200,7 @@ by numbers of  first and last rows" />
 by numbers of  first and last rows</p>
     </div>
 
-    <pre class="usage"><span class='fu'>startsToRanges</span>(<span class='no'>starts</span>, <span class='no'>lastStop</span>, <span class='kw'>startOffset</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stopOffset</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, <span class='va'>lastStop</span>, startOffset <span class='op'>=</span> <span class='fl'>1</span>, stopOffset <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,25 +228,26 @@ by numbers of  first and last rows</p>
     <p>data frame with columns <code>from</code> and <code>to</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>starts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>35</span>)
+    <pre class="examples"><div class='input'><span class='va'>starts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>35</span><span class='op'>)</span>
 
-<span class='no'>ok</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(
-  <span class='fu'>startsToRanges</span>(<span class='no'>starts</span>, <span class='kw'>lastStop</span> <span class='kw'>=</span> <span class='fl'>50</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-    <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>11</span>, <span class='fl'>21</span>, <span class='fl'>36</span>),
-    <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>9</span>, <span class='fl'>19</span>, <span class='fl'>34</span>, <span class='fl'>50</span>)
-  )
-)
-
-<span class='no'>ok</span> <span class='kw'>&lt;-</span> <span class='no'>ok</span> <span class='kw'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(
-  <span class='fu'>startsToRanges</span>(<span class='no'>starts</span>, <span class='kw'>lastStop</span> <span class='kw'>=</span> <span class='fl'>55</span>, <span class='kw'>startOffset</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>stopOffset</span> <span class='kw'>=</span> <span class='fl'>2</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-    <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>12</span>, <span class='fl'>22</span>, <span class='fl'>37</span>),
-    <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>8</span>, <span class='fl'>18</span>, <span class='fl'>33</span>, <span class='fl'>55</span>)
-  )
-)
-
-<span class='no'>ok</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
+<span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span>
+  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>, 
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>11</span>, <span class='fl'>21</span>, <span class='fl'>36</span><span class='op'>)</span>,
+    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='fl'>19</span>, <span class='fl'>34</span>, <span class='fl'>50</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+  
+<span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='va'>ok</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span>
+  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>55</span>, startOffset <span class='op'>=</span> <span class='fl'>2</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, 
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>12</span>, <span class='fl'>22</span>, <span class='fl'>37</span><span class='op'>)</span>,
+    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>18</span>, <span class='fl'>33</span>, <span class='fl'>55</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+  
+<span class='va'>ok</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -263,7 +264,7 @@ by numbers of  first and last rows</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

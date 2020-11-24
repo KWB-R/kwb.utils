@@ -198,7 +198,7 @@
     <p>Merge Lists Overriding Elements of the Same Name</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mergeLists</span>(<span class='no'>...</span>, <span class='kw'>warn.on.NULL</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>mergeLists</span><span class='op'>(</span><span class='va'>...</span>, warn.on.NULL <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -223,14 +223,16 @@ arguments given to this function is NULL</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># merge two lists with different elements</span>
-<span class='fu'>mergeLists</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='output co'>#&gt; $a
+<span class='fu'>mergeLists</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
 #&gt; $b
 #&gt; [1] 2
 #&gt; </div><div class='input'>
 <span class='co'># merge two lists with one element of the same name: override element "b"</span>
-<span class='fu'>mergeLists</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>4</span>))</div><div class='output co'>#&gt; $a
+<span class='fu'>mergeLists</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>b <span class='op'>=</span> <span class='fl'>3</span>, c <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
 #&gt; $b
@@ -255,7 +257,7 @@ arguments given to this function is NULL</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

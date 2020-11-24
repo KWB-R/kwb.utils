@@ -198,7 +198,7 @@
     <p>Set the option "stringsAsFactors", run a function and reset the option.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>callWithStringsAsFactors</span>(<span class='no'>stringsAsFactors</span>, <span class='no'>FUN</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>callWithStringsAsFactors</span><span class='op'>(</span><span class='va'>stringsAsFactors</span>, <span class='va'>FUN</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -225,30 +225,35 @@ the option is reset to what it was before.</p></td>
   arguments given in <code>...</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>option.bak</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>)
-
-<span class='no'>d1</span> <span class='kw'>&lt;-</span> <span class='fu'>callWithStringsAsFactors</span>(
-  <span class='fl'>TRUE</span>,
-  <span class='no'>rbind</span>,
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Peter"</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Paul"</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Mary"</span>)
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'options(stringsAsFactors = TRUE)' is deprecated and will be disabled</span></div><div class='input'>
-<span class='no'>d2</span> <span class='kw'>&lt;-</span> <span class='fu'>callWithStringsAsFactors</span>(
-  <span class='fl'>FALSE</span>,
-  <span class='no'>rbind</span>,
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Peter"</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Paul"</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Mary"</span>)
-)
-
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>d1</span>)</div><div class='output co'>#&gt; 'data.frame':	3 obs. of  2 variables:
+    <pre class="examples"><div class='input'><span class='va'>option.bak</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"stringsAsFactors"</span><span class='op'>)</span>
+  
+<span class='va'>d1</span> <span class='op'>&lt;-</span> <span class='fu'>callWithStringsAsFactors</span><span class='op'>(</span>
+  <span class='cn'>TRUE</span>,
+  <span class='va'>rbind</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>1</span>, name <span class='op'>=</span> <span class='st'>"Peter"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>2</span>, name <span class='op'>=</span> <span class='st'>"Paul"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>3</span>, name <span class='op'>=</span> <span class='st'>"Mary"</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: 'options(stringsAsFactors = TRUE)' is deprecated and will be disabled</span></div><div class='input'>  
+<span class='va'>d2</span> <span class='op'>&lt;-</span> <span class='fu'>callWithStringsAsFactors</span><span class='op'>(</span>
+  <span class='cn'>FALSE</span>,
+  <span class='va'>rbind</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>1</span>, name <span class='op'>=</span> <span class='st'>"Peter"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>2</span>, name <span class='op'>=</span> <span class='st'>"Paul"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>3</span>, name <span class='op'>=</span> <span class='st'>"Mary"</span><span class='op'>)</span>
+<span class='op'>)</span>
+  
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>d1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	3 obs. of  2 variables:
 #&gt;  $ id  : num  1 2 3
-#&gt;  $ name: Factor w/ 3 levels "Peter","Paul",..: 1 2 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>d2</span>)</div><div class='output co'>#&gt; 'data.frame':	3 obs. of  2 variables:
+#&gt;  $ name: Factor w/ 3 levels "Peter","Paul",..: 1 2 3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>d2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	3 obs. of  2 variables:
 #&gt;  $ id  : num  1 2 3
-#&gt;  $ name: chr  "Peter" "Paul" "Mary"</div><div class='input'>
+#&gt;  $ name: chr  "Peter" "Paul" "Mary"</div><div class='input'>  
 <span class='co'># The option "stringsAsFactors" has not changed!</span>
-<span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>(<span class='no'>option.bak</span> <span class='kw'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='st'>"stringsAsFactors"</span>))</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='va'>option.bak</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"stringsAsFactors"</span><span class='op'>)</span><span class='op'>)</span>
+  
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -264,7 +269,7 @@ the option is reset to what it was before.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

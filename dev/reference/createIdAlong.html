@@ -198,7 +198,7 @@
     <p>This function helps you create strings that can be used as identifiers.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createIdAlong</span>(<span class='no'>x</span>, <span class='kw'>base_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>createIdAlong</span><span class='op'>(</span><span class='va'>x</span>, base_name <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -222,14 +222,16 @@ function results in ids "file_01", "file_02", ...</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Create ids for 32 numbers</span>
-<span class='fu'>createIdAlong</span>(<span class='fl'>1</span>:<span class='fl'>32</span>, <span class='st'>"number"</span>)</div><div class='output co'>#&gt;  [1] "number_01" "number_02" "number_03" "number_04" "number_05" "number_06"
+<span class='fu'>createIdAlong</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>32</span>, <span class='st'>"number"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "number_01" "number_02" "number_03" "number_04" "number_05" "number_06"
 #&gt;  [7] "number_07" "number_08" "number_09" "number_0a" "number_0b" "number_0c"
 #&gt; [13] "number_0d" "number_0e" "number_0f" "number_10" "number_11" "number_12"
 #&gt; [19] "number_13" "number_14" "number_15" "number_16" "number_17" "number_18"
 #&gt; [25] "number_19" "number_1a" "number_1b" "number_1c" "number_1d" "number_1e"
 #&gt; [31] "number_1f" "number_20"</div><div class='input'><span class='co'># Take base name from x, with the plural's "s" removed</span>
-<span class='no'>numbers</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>32</span>
-<span class='fu'>createIdAlong</span>(<span class='no'>numbers</span>)</div><div class='output co'>#&gt;  [1] "number_01" "number_02" "number_03" "number_04" "number_05" "number_06"
+<span class='va'>numbers</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>32</span>
+<span class='fu'>createIdAlong</span><span class='op'>(</span><span class='va'>numbers</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "number_01" "number_02" "number_03" "number_04" "number_05" "number_06"
 #&gt;  [7] "number_07" "number_08" "number_09" "number_0a" "number_0b" "number_0c"
 #&gt; [13] "number_0d" "number_0e" "number_0f" "number_10" "number_11" "number_12"
 #&gt; [19] "number_13" "number_14" "number_15" "number_16" "number_17" "number_18"
@@ -250,7 +252,7 @@ function results in ids "file_01", "file_02", ...</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

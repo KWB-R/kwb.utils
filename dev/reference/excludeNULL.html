@@ -198,7 +198,7 @@
     <p>Exclude all NULL Entries from a List</p>
     </div>
 
-    <pre class="usage"><span class='fu'>excludeNULL</span>(<span class='no'>x</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>excludeNULL</span><span class='op'>(</span><span class='va'>x</span>, dbg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -219,8 +219,9 @@ removed</p></td>
     <p>list <code>x</code> with all <code>NULL</code> entries excluded</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>L</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='st'>"three"</span>)
-<span class='no'>L</span></div><div class='output co'>#&gt; $a
+    <pre class="examples"><div class='input'><span class='va'>L</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span>, b <span class='op'>=</span> <span class='cn'>NULL</span>, c <span class='op'>=</span> <span class='st'>"three"</span><span class='op'>)</span>
+<span class='va'>L</span>
+</div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
 #&gt; $b
@@ -229,7 +230,8 @@ removed</p></td>
 #&gt; $c
 #&gt; [1] "three"
 #&gt; </div><div class='input'>
-<span class='fu'>excludeNULL</span>(<span class='no'>L</span>)</div><div class='output co'>#&gt; Removing 1 list elements that are NULL ... ok. (0.00s) </div><div class='output co'>#&gt; $a
+<span class='fu'>excludeNULL</span><span class='op'>(</span><span class='va'>L</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Removing 1 list elements that are NULL ... ok. (0.00s) </div><div class='output co'>#&gt; $a
 #&gt; [1] 1
 #&gt; 
 #&gt; $c
@@ -251,7 +253,7 @@ removed</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

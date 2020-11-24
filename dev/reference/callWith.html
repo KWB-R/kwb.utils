@@ -202,7 +202,7 @@ be lists containing further argument assignments. Multiple argument lists
 are merged using <code><a href='arglist.html'>arglist</a></code> in the order of their appearence.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>callWith</span>(<span class='no'>FUN</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>callWith</span><span class='op'>(</span><span class='va'>FUN</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,12 +227,14 @@ are merged using <code><a href='arglist.html'>arglist</a></code> in the order of
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># define some default arguments</span>
-<span class='no'>args.default</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>), <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"red"</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='va'>args.default</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
 <span class='co'># call plot with the default arguments</span>
-<span class='fu'>callWith</span>(<span class='no'>plot</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='no'>args.default</span>)</div><div class='img'><img src='callWith-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>callWith</span><span class='op'>(</span><span class='va'>plot</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='va'>args.default</span><span class='op'>)</span>
+</div><div class='img'><img src='callWith-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># call plot with the default arguments but override the colour</span>
-<span class='fu'>callWith</span>(<span class='no'>plot</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='no'>args.default</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"blue"</span>)</div><div class='img'><img src='callWith-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>callWith</span><span class='op'>(</span><span class='va'>plot</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='va'>args.default</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span>
+</div><div class='img'><img src='callWith-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -249,7 +251,7 @@ are merged using <code><a href='arglist.html'>arglist</a></code> in the order of
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

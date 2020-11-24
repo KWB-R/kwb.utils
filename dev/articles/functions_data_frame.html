@@ -142,13 +142,14 @@
 
       
 
-      </header><div class="row">
+      </header><script src="functions_data_frame_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="functions_data_frame_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="functions_data_frame_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions Working on Data Frames</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2020-08-12</h4>
+            <h4 class="date">2020-11-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_data_frame.Rmd"><code>vignettes/functions_data_frame.Rmd</code></a></small>
       <div class="hidden name"><code>functions_data_frame.Rmd</code></div>
@@ -162,55 +163,58 @@
 <a href="#function-addrowwithname" class="anchor"></a>Function <code>addRowWithName()</code>
 </h3>
 <p>This function does no more than adding a row to a data frame with <code>rbind</code> and giving it a name:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">value</span> <span class="kw">=</span> <span class="fl">10</span>:<span class="fl">11</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span>
 
-<span class="no">new_row</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">x</span>$<span class="no">value</span>))
+<span class="va">new_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">)</span>
 
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addRowWithName.html">addRowWithName</a></span>(<span class="no">x</span>, <span class="no">new_row</span>, <span class="kw">row.name</span> <span class="kw">=</span> <span class="st">"total"</span>)
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addRowWithName.html">addRowWithName</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">new_row</span>, row.name <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span>
 <span class="co">#&gt;       value</span>
 <span class="co">#&gt; 1        10</span>
 <span class="co">#&gt; 2        11</span>
-<span class="co">#&gt; total    21</span></pre></body></html></div>
+<span class="co">#&gt; total    21</span></code></pre></div>
 </div>
 <div id="function-addsuffixtocolumns" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-addsuffixtocolumns" class="anchor"></a>Function <code>addSuffixToColumns()</code>
 </h3>
 <p>This function adds a postfix to the column names of a data frame. This may be useful when column-binding data frames. The function can be used to indicate the origin of each column by giving it a suffix related to the data frame that it originates from.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Define a first data frame</span>
-<span class="no">data_frame_1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  <span class="kw">id</span> <span class="kw">=</span> <span class="fl">1</span>:<span class="fl">2</span>,
-  <span class="kw">first</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Peter"</span>, <span class="st">"Mary"</span>),
-  <span class="kw">last</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Miller"</span>, <span class="st">"Smith"</span>)
-)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Define a first data frame</span>
+<span class="va">data_frame_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, 
+  first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Peter"</span>, <span class="st">"Mary"</span><span class="op">)</span>, 
+  last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Miller"</span>, <span class="st">"Smith"</span><span class="op">)</span>
+<span class="op">)</span>
 
 <span class="co"># Define a second data frame</span>
-<span class="no">data_frame_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
-  <span class="kw">height_cm</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">181</span>, <span class="fl">171</span>),
-  <span class="kw">weigth_kg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">68</span>, <span class="fl">59</span>)
-)
+<span class="va">data_frame_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  height_cm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">181</span>, <span class="fl">171</span><span class="op">)</span>,
+  weigth_kg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">68</span>, <span class="fl">59</span><span class="op">)</span>
+<span class="op">)</span>
 
 <span class="co"># Column-bind the data frames, after giving their columns a unique suffix</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(
-  <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span>(<span class="no">data_frame_1</span>, <span class="st">"_1"</span>),
-  <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span>(<span class="no">data_frame_2</span>, <span class="st">"_2"</span>)
-)
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>
+  <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span><span class="op">(</span><span class="va">data_frame_1</span>, <span class="st">"_1"</span><span class="op">)</span>,
+  <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span><span class="op">(</span><span class="va">data_frame_2</span>, <span class="st">"_2"</span><span class="op">)</span>
+<span class="op">)</span>
 <span class="co">#&gt;   id_1 first_1 last_1 height_cm_2 weigth_kg_2</span>
 <span class="co">#&gt; 1    1   Peter Miller         181          68</span>
-<span class="co">#&gt; 2    2    Mary  Smith         171          59</span></pre></body></html></div>
+<span class="co">#&gt; 2    2    Mary  Smith         171          59</span></code></pre></div>
 </div>
 <div id="function-asnofactordataframe" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-asnofactordataframe" class="anchor"></a>Function <code>asNoFactorDataFrame</code>
 </h3>
 <p>This function is a shortcut to <code><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame(..., stringsAsFactors = FALSE)</a></code>. Using this function may slightly improve the readability of a script (as the number of arguments passed to the function is reduced):</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">m</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">6</span>], <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
-<span class="no">result_1</span> <span class="kw">&lt;-</span> <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/asNoFactorDataFrame.html">asNoFactorDataFrame</a></span>(<span class="no">m</span>)
-<span class="no">result_2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="no">m</span>, <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="va">result_1</span> <span class="op">&lt;-</span> <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/asNoFactorDataFrame.html">asNoFactorDataFrame</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>
+<span class="va">result_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="no">result_1</span>, <span class="no">result_2</span>)
-<span class="co">#&gt; [1] TRUE</span></pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">result_1</span>, <span class="va">result_2</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>Functions Working on Data Frames</p>
 </div>
 <div id="function-columntodate" class="section level3">
@@ -364,7 +368,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

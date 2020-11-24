@@ -200,7 +200,7 @@
   smaller indices in each case) in the vector</p>
     </div>
 
-    <pre class="usage"><span class='fu'>naToLastNonNa</span>(<span class='no'>x</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+    <pre class="usage"><span class='fu'>naToLastNonNa</span><span class='op'>(</span><span class='va'>x</span>, method <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,14 +218,15 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>naToLastNonNa</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>3</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>4</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt;  [1] 1 2 2 2 3 3 3 4 4 4 5</div><div class='input'>## Result: [1] 1 2 2 2 3 3 3 4 4 4 5
+    <pre class="examples"><div class='input'><span class='fu'>naToLastNonNa</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>3</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>4</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] 1 2 2 2 3 3 3 4 4 4 5</div><div class='input'><span class='co'>## Result: [1] 1 2 2 2 3 3 3 4 4 4 5</span>
   
-# You will get an error if method = 1 and the first element is NA!
+<span class='co'># You will get an error if method = 1 and the first element is NA!</span>
   
-# naToLastNonNa(c(NA, 1, NA, 2), method = 1)
+<span class='co'># naToLastNonNa(c(NA, 1, NA, 2), method = 1)</span>
   
-## Error in naToLastNonNa(c(NA, 1, NA, 2)) :
-##   The first element must not be NA
+<span class='co'>## Error in naToLastNonNa(c(NA, 1, NA, 2)) :</span>
+<span class='co'>##   The first element must not be NA</span>
   
 </div></pre>
   </div>
@@ -243,7 +244,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -463,6 +463,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/matchesCriteria.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/matrixToDataFrame.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/mergeAll.html</loc>
   </url>
   <url>
@@ -575,6 +578,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/readDictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/readLinesWithEncoding.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/readPackageFile.html</loc>

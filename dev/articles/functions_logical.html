@@ -142,13 +142,14 @@
 
       
 
-      </header><div class="row">
+      </header><script src="functions_logical_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="functions_logical_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="functions_logical_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions Returning Logical</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2020-08-12</h4>
+            <h4 class="date">2020-11-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_logical.Rmd"><code>vignettes/functions_logical.Rmd</code></a></small>
       <div class="hidden name"><code>functions_logical.Rmd</code></div>
@@ -163,57 +164,61 @@
 <a href="#function-allareequal" class="anchor"></a>Function <code>allAreEqual()</code>
 </h3>
 <p>This function checks if all values in a vector are equal to each other:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>))
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>))
-<span class="co">#&gt; [1] FALSE</span></pre></body></html></div>
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
 <div id="function-allareidentical" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-allareidentical" class="anchor"></a>Function <code>allAreIdentical()</code>
 </h3>
 <p>This function checks if all elements in a list are identical to each other. It may be useful when checking whether different versions of a function (that may, e.g., be created during code cleaning) return exactly the same, when being given the same inputs.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Define different functions that are intended to do the same</span>
-<span class="no">get_list_1</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">a</span>, <span class="no">b</span>) <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">a</span> <span class="kw">=</span> <span class="no">a</span>, <span class="kw">b</span> <span class="kw">=</span> <span class="no">b</span>)
-<span class="no">get_list_2</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">a</span>, <span class="no">b</span>) <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">a</span>, <span class="no">b</span>), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>))
-<span class="no">get_list_3</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">a</span>, <span class="no">b</span>) <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">a</span> <span class="kw">=</span> <span class="no">a</span>), <span class="kw">b</span> <span class="kw">=</span> <span class="no">b</span>)
-<span class="no">get_list_4</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">a</span>, <span class="no">b</span>) <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">a</span> <span class="kw">=</span> <span class="no">a</span>), <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">b</span> <span class="kw">=</span> <span class="no">b</span>))
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Define different functions that are intended to do the same</span>
+<span class="va">get_list_1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="va">get_list_2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">get_list_3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="va">get_list_4</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Call the functions with identical arguments and put the results into a list</span>
-<span class="no">results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-  <span class="fu">get_list_1</span>(<span class="fl">1</span>, <span class="fl">2</span>:<span class="fl">3</span>),
-  <span class="fu">get_list_2</span>(<span class="fl">1</span>, <span class="fl">2</span>:<span class="fl">3</span>),
-  <span class="fu">get_list_3</span>(<span class="fl">1</span>, <span class="fl">2</span>:<span class="fl">3</span>),
-  <span class="fu">get_list_4</span>(<span class="fl">1</span>, <span class="fl">2</span>:<span class="fl">3</span>)
-)
+<span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+  <span class="fu">get_list_1</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, 
+  <span class="fu">get_list_2</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, 
+  <span class="fu">get_list_3</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,
+  <span class="fu">get_list_4</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="op">)</span>
 
 <span class="co"># Not all results are the same...</span>
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/allAreIdentical.html">allAreIdentical</a></span>(<span class="no">results</span>)
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreIdentical.html">allAreIdentical</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span>
 
 <span class="co"># ... but all except the third:</span>
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/allAreIdentical.html">allAreIdentical</a></span>(<span class="no">results</span>[-<span class="fl">3</span>])
-<span class="co">#&gt; [1] TRUE</span></pre></body></html></div>
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreIdentical.html">allAreIdentical</a></span><span class="op">(</span><span class="va">results</span><span class="op">[</span><span class="op">-</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span></code></pre></div>
 </div>
 <div id="function-almostequal" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-almostequal" class="anchor"></a>Function <code>almostEqual()</code>
 </h3>
 <p>Take care when comparing floating point numbers! Whether floating point numbers are assumed to be equal or not, depends on how they were calculated. This is shown in the following example:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">one_third_1</span> <span class="kw">&lt;-</span> <span class="fl">1</span>/<span class="fl">3</span>
-<span class="no">one_third_2</span> <span class="kw">&lt;-</span> <span class="fl">1</span> - <span class="fl">2</span>/<span class="fl">3</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">one_third_1</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>
+<span class="va">one_third_2</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">2</span><span class="op">/</span><span class="fl">3</span>
 
 <span class="co"># Even though mathematically correct, they are not equal in R:</span>
-<span class="no">one_third_1</span> <span class="kw">==</span> <span class="no">one_third_2</span>
-<span class="co">#&gt; [1] FALSE</span></pre></body></html></div>
+<span class="va">one_third_1</span> <span class="op">==</span> <span class="va">one_third_2</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
 <p>With <code><a href="../reference/almostEqual.html">almostEqual()</a></code> numbers are compared by tolerating a small difference between the numbers. This difference can be set with the argument <code>tolerance</code>.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># The numbers are almost equal (with the default tolerance of 1e-12):</span>
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/almostEqual.html">almostEqual</a></span>(<span class="no">one_third_1</span>, <span class="no">one_third_2</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># The numbers are almost equal (with the default tolerance of 1e-12):</span>
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/almostEqual.html">almostEqual</a></span><span class="op">(</span><span class="va">one_third_1</span>, <span class="va">one_third_2</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 
 <span class="co"># It depends on the tolerance if they are treated as equal:</span>
-<span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/almostEqual.html">almostEqual</a></span>(<span class="no">one_third_1</span>, <span class="no">one_third_2</span>, <span class="kw">tolerance</span> <span class="kw">=</span> <span class="fl">1e-17</span>)
-<span class="co">#&gt; [1] FALSE</span></pre></body></html></div>
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/almostEqual.html">almostEqual</a></span><span class="op">(</span><span class="va">one_third_1</span>, <span class="va">one_third_2</span>, tolerance <span class="op">=</span> <span class="fl">1e-17</span><span class="op">)</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
 <div id="function-atleastonerowin" class="section level3">
 <h3 class="hasAnchor">
@@ -282,7 +287,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

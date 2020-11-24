@@ -198,7 +198,7 @@
     <p>Differences between Matrix Rows</p>
     </div>
 
-    <pre class="usage"><span class='fu'>diffrows</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>diffrows</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -216,11 +216,13 @@
   <code>i+1</code> and <code>i</code> in <code>x</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>1</span>:<span class='fl'>12</span>, <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>, nrow <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
 
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>diffrows</span>(<span class='no'>x</span>)
+<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>diffrows</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='no'>x</span>[<span class='fl'>2</span>, ] - <span class='no'>x</span>[<span class='fl'>1</span>, ] <span class='kw'>==</span> <span class='no'>d</span>[<span class='fl'>1</span>, ]</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div><div class='input'><span class='no'>x</span>[<span class='fl'>3</span>, ] - <span class='no'>x</span>[<span class='fl'>2</span>, ] <span class='kw'>==</span> <span class='no'>d</span>[<span class='fl'>2</span>, ]</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div><div class='input'>
+<span class='va'>x</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span> <span class='op'>-</span> <span class='va'>x</span><span class='op'>[</span><span class='fl'>1</span>, <span class='op'>]</span> <span class='op'>==</span> <span class='va'>d</span><span class='op'>[</span><span class='fl'>1</span>, <span class='op'>]</span>
+</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div><div class='input'><span class='va'>x</span><span class='op'>[</span><span class='fl'>3</span>, <span class='op'>]</span> <span class='op'>-</span> <span class='va'>x</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span> <span class='op'>==</span> <span class='va'>d</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span>
+</div><div class='output co'>#&gt; [1] TRUE TRUE TRUE TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -237,7 +239,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

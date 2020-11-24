@@ -200,7 +200,7 @@
   <code>row.names</code> attribute to <code>NULL</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>resetRowNames</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>resetRowNames</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -213,17 +213,19 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>persons</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span>))
+    <pre class="examples"><div class='input'><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>persons.ordered</span> <span class='kw'>&lt;-</span> <span class='no'>persons</span>[<span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span>(<span class='no'>persons</span>$<span class='no'>name</span>), ]
+<span class='va'>persons.ordered</span> <span class='op'>&lt;-</span> <span class='va'>persons</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>persons</span><span class='op'>$</span><span class='va'>name</span><span class='op'>)</span>, <span class='op'>]</span>
 
 <span class='co'># Original row names</span>
-<span class='no'>persons.ordered</span></div><div class='output co'>#&gt;   id  name
+<span class='va'>persons.ordered</span>
+</div><div class='output co'>#&gt;   id  name
 #&gt; 3  3  Mary
 #&gt; 2  2  Paul
 #&gt; 1  1 Peter</div><div class='input'>
 <span class='co'># Reset row names</span>
-<span class='fu'>resetRowNames</span>(<span class='no'>persons.ordered</span>)</div><div class='output co'>#&gt;   id  name
+<span class='fu'>resetRowNames</span><span class='op'>(</span><span class='va'>persons.ordered</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   id  name
 #&gt; 1  3  Mary
 #&gt; 2  2  Paul
 #&gt; 3  1 Peter</div><div class='input'>
@@ -243,7 +245,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

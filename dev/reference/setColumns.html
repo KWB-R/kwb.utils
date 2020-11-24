@@ -198,7 +198,7 @@
     <p>Set the (new or existing) column(s) of a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setColumns</span>(<span class='no'>.x</span>, <span class='no'>...</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>setColumns</span><span class='op'>(</span><span class='va'>.x</span>, <span class='va'>...</span>, dbg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,24 +226,25 @@ on the screen</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Create a data frame</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
 
 <span class='co'># Option 1: use the "$" operator</span>
-<span class='no'>x1</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
-<span class='no'>x1</span>$<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>:<span class='fl'>6</span>
-<span class='no'>x1</span>$<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>:<span class='fl'>7</span>
+<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='va'>x</span>
+<span class='va'>x1</span><span class='op'>$</span><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span>
+<span class='va'>x1</span><span class='op'>$</span><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span>
 
 <span class='co'># Option 2: use setColumns</span>
-<span class='no'>x2</span> <span class='kw'>&lt;-</span> <span class='fu'>setColumns</span>(<span class='no'>x</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>6</span>, <span class='kw'>c</span> <span class='kw'>=</span> <span class='fl'>3</span>:<span class='fl'>7</span>)</div><div class='output co'>#&gt; Provide column 'b' to data frame 'x'... ok.
+<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'>setColumns</span><span class='op'>(</span><span class='va'>x</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span>, c <span class='op'>=</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Provide column 'b' to data frame 'x'... ok.
 #&gt; Provide column 'c' to data frame 'x'... ok.</div><div class='input'>
 <span class='co'># The result is the same</span>
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>x1</span>, <span class='no'>x2</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-# but the creation of columns has been reported on the console (dbg = TRUE by
-# default)
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='co'># but the creation of columns has been reported on the console (dbg = TRUE by</span>
+<span class='co'># default)</span>
 
-## Provide column 'b' to data frame 'x'... ok.
-## Provide column 'c' to data frame 'x'... ok.
-  
+<span class='co'>## Provide column 'b' to data frame 'x'... ok.</span>
+<span class='co'>## Provide column 'c' to data frame 'x'... ok.</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -260,7 +261,7 @@ on the screen</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

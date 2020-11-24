@@ -198,13 +198,13 @@
     <p>Find and Extract Regular Expressions from Strings</p>
     </div>
 
-    <pre class="usage"><span class='fu'>subExpressionMatches</span>(
-  <span class='no'>regularExpression</span>,
-  <span class='no'>text</span>,
-  <span class='kw'>match.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_along</a></span>(<span class='no'>match.names</span>), <span class='no'>match.names</span>),
-  <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>subExpressionMatches</span><span class='op'>(</span>
+  <span class='va'>regularExpression</span>,
+  <span class='va'>text</span>,
+  match.names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  select <span class='op'>=</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/setNames.html'>setNames</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_along</a></span><span class='op'>(</span><span class='va'>match.names</span><span class='op'>)</span>, <span class='va'>match.names</span><span class='op'>)</span>,
+  simplify <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -249,14 +249,16 @@ output structure will be a list instead a list of lists</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># split date into year, month and day</span>
-<span class='fu'>subExpressionMatches</span>(<span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'>
+<span class='fu'>subExpressionMatches</span><span class='op'>(</span><span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; NULL</div><div class='input'>
 <span class='co'># split date into year, month and day (give names to the resulting elements)</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>subExpressionMatches</span>(
-  <span class='kw'>regularExpression</span> <span class='kw'>=</span> <span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span>,
-  <span class='kw'>match.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"day"</span>)
-)
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>subExpressionMatches</span><span class='op'>(</span>
+  regularExpression <span class='op'>=</span> <span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span>,
+  match.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"day"</span><span class='op'>)</span>
+<span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Today is "</span>, <span class='no'>x</span>$<span class='no'>day</span>, <span class='st'>"/"</span>, <span class='no'>x</span>$<span class='no'>month</span>, <span class='st'>" of "</span>, <span class='no'>x</span>$<span class='no'>year</span>, <span class='st'>"\n"</span>))</div><div class='output co'>#&gt; Today is / of </div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Today is "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>day</span>, <span class='st'>"/"</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>month</span>, <span class='st'>" of "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>year</span>, <span class='st'>"\n"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Today is / of </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -273,7 +275,7 @@ output structure will be a list instead a list of lists</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

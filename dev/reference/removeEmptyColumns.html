@@ -198,12 +198,12 @@
     <p>Remove empty Columns from a Data Frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'>removeEmptyColumns</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>FUN</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>x</span>)),
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>removeEmptyColumns</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  drop <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  FUN <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
+  dbg <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -251,7 +251,7 @@ column are empty. Default: <code>function(x) all(is.na(x))</code></p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

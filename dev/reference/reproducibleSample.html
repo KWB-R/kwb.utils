@@ -206,7 +206,7 @@ to another call of this function, the values returned will be the same as
 in the first call.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reproducibleSample</span>(<span class='no'>...</span>, <span class='kw'>FUN</span> <span class='kw'>=</span> <span class='no'>sample</span>, <span class='kw'>random_seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>reproducibleSample</span><span class='op'>(</span><span class='va'>...</span>, FUN <span class='op'>=</span> <span class='va'>sample</span>, random_seed <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -232,16 +232,19 @@ in the first call.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Take a sample</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>reproducibleSample</span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>10</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt;  [1] 58 63 62 34 42 50 37 19 84 78</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>reproducibleSample</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>, <span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt;  [1] 58 63 62 34 42 50 37 19 84 78</div><div class='input'>
 <span class='co'># The full seed vector is returned in the attribute "random_seed"</span>
-<span class='no'>random_seed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>x</span>, <span class='st'>"random_seed"</span>)
+<span class='va'>random_seed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='st'>"random_seed"</span><span class='op'>)</span>
 
 <span class='co'># Take a new sample, this time passing the seed vector</span>
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>reproducibleSample</span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>10</span>, <span class='kw'>random_seed</span> <span class='kw'>=</span> <span class='no'>random_seed</span>)
-<span class='no'>y</span></div><div class='output co'>#&gt;  [1] 58 63 62 34 42 50 37 19 84 78</div><div class='input'>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>reproducibleSample</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>, <span class='fl'>10</span>, random_seed <span class='op'>=</span> <span class='va'>random_seed</span><span class='op'>)</span>
+<span class='va'>y</span>
+</div><div class='output co'>#&gt;  [1] 58 63 62 34 42 50 37 19 84 78</div><div class='input'>
 <span class='co'># The values are identical to the values of the first sampling</span>
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -258,7 +261,7 @@ in the first call.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

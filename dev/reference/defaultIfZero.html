@@ -198,7 +198,7 @@
     <p>Return the given object or a default value if the object is 0 (zero)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>defaultIfZero</span>(<span class='no'>x</span>, <span class='no'>default</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>defaultIfZero</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>default</span>, count <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,11 +228,14 @@ replaced values is returned in the attributes <code>count</code></p></td>
     <div class='dont-index'><p><code><a href='defaultIfNA.html'>defaultIfNA</a>, <a href='defaultIfNULL.html'>defaultIfNULL</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>defaultIfZero</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>0</span>, <span class='fl'>6</span>), <span class='fl'>NA</span>) <span class='co'># returns the default value (NA) </span></div><div class='output co'>#&gt; [1]  1  2 NA  4  5 NA  6</div><div class='input'>(<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>defaultIfZero</span>(<span class='fl'>1</span>:<span class='fl'>6</span>, <span class='fl'>NA</span>, <span class='kw'>count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) <span class='co'># returns the "actual" values</span></div><div class='output co'>#&gt; [1] 1 2 3 4 5 6
+    <pre class="examples"><div class='input'><span class='fu'>defaultIfZero</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span>, <span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>0</span>, <span class='fl'>6</span><span class='op'>)</span>, <span class='cn'>NA</span><span class='op'>)</span> <span class='co'># returns the default value (NA) </span>
+</div><div class='output co'>#&gt; [1]  1  2 NA  4  5 NA  6</div><div class='input'><span class='op'>(</span><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>defaultIfZero</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span>, <span class='cn'>NA</span>, count <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># returns the "actual" values</span>
+</div><div class='output co'>#&gt; [1] 1 2 3 4 5 6
 #&gt; attr(,"count")
 #&gt; [1] 0</div><div class='input'>
 <span class='co'># The number of values that were zero is returned in the attribute "count" </span>
-<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>out</span>, <span class='st'>"count"</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'>  
+<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='st'>"count"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0</div><div class='input'>  
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -249,7 +252,7 @@ replaced values is returned in the attributes <code>count</code></p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -204,7 +204,7 @@ option "kwb.utils.loaded" from which you may read the information back with
 <code><a href='isLoaded.html'>isLoaded</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setLoaded</span>(<span class='no'>scriptName</span>, <span class='kw'>isLoaded</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>setLoaded</span><span class='op'>(</span><span class='va'>scriptName</span>, isLoaded <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -238,20 +238,22 @@ meanwhile).</p></td>
 <span class='co'># called, see end of script). If yes, we can enter the main section. Otherwise</span>
 <span class='co'># we have to skip the main section since the function sayHello() is not yet</span>
 <span class='co'># defined.</span>
-<span class='kw'>if</span> (<span class='fu'><a href='isLoaded.html'>isLoaded</a></span>(<span class='st'>"welcome"</span>)) {
-  <span class='fu'>sayHello</span>(<span class='kw'>who</span> <span class='kw'>=</span> <span class='st'>"Hauke"</span>)
-}
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='isLoaded.html'>isLoaded</a></span><span class='op'>(</span><span class='st'>"welcome"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>sayHello</span><span class='op'>(</span>who <span class='op'>=</span> <span class='st'>"Hauke"</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># Functions -----</span>
-<span class='no'>sayHello</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>who</span>) {
-  <span class='fu'><a href='clearConsole.html'>clearConsole</a></span>()
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"***\n***\n*** Hello"</span>, <span class='no'>who</span>, <span class='st'>"how are you?\n***\n***\n"</span>)
-}
+<span class='va'>sayHello</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>who</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='clearConsole.html'>clearConsole</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"***\n***\n*** Hello"</span>, <span class='va'>who</span>, <span class='st'>"how are you?\n***\n***\n"</span><span class='op'>)</span>
+<span class='op'>}</span>
 
 <span class='co'># At the end of your script, call setLoaded() to indicate that your script is</span>
 <span class='co'># loaded now. If you "source" the script a second time, isLoaded("welcome") </span>
 <span class='co'># will return TRUE and thus the main section will be entered...</span>
-<span class='fu'>setLoaded</span>(<span class='st'>"welcome"</span>)</div></pre>
+<span class='fu'>setLoaded</span><span class='op'>(</span><span class='st'>"welcome"</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -267,7 +269,7 @@ meanwhile).</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

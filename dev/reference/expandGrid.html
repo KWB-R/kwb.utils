@@ -202,7 +202,7 @@ FALSE</code> by default and with the values of the first argument being changed
 last, not first.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>expandGrid</span>(<span class='no'>...</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>expandGrid</span><span class='op'>(</span><span class='va'>...</span>, stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,11 +220,12 @@ reversed order</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>persons</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span>)
-<span class='no'>fruits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"apple"</span>, <span class='st'>"pear"</span>)
+    <pre class="examples"><div class='input'><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span><span class='op'>)</span>
+<span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"pear"</span><span class='op'>)</span>
 
 <span class='co'># With expand.grid() the values of the first argument change first...</span>
-(<span class='no'>grid_1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid</a></span>(<span class='kw'>person</span> <span class='kw'>=</span> <span class='no'>persons</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='no'>fruits</span>))</div><div class='output co'>#&gt;   person fruit
+<span class='op'>(</span><span class='va'>grid_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid</a></span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   person fruit
 #&gt; 1  Peter apple
 #&gt; 2   Paul apple
 #&gt; 3   Mary apple
@@ -232,7 +233,8 @@ reversed order</p></td>
 #&gt; 5   Paul  pear
 #&gt; 6   Mary  pear</div><div class='input'>
 <span class='co'>#... with expandGrid() they change last.</span>
-(<span class='no'>grid_2</span> <span class='kw'>&lt;-</span> <span class='fu'>expandGrid</span>(<span class='kw'>person</span> <span class='kw'>=</span> <span class='no'>persons</span>, <span class='kw'>fruit</span> <span class='kw'>=</span> <span class='no'>fruits</span>))</div><div class='output co'>#&gt;   person fruit
+<span class='op'>(</span><span class='va'>grid_2</span> <span class='op'>&lt;-</span> <span class='fu'>expandGrid</span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   person fruit
 #&gt; 1  Peter apple
 #&gt; 2  Peter  pear
 #&gt; 3   Paul apple
@@ -240,7 +242,8 @@ reversed order</p></td>
 #&gt; 5   Mary apple
 #&gt; 6   Mary  pear</div><div class='input'>
 <span class='co'># With expand.grid() character strings are converted to factors by default...</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>grid_1</span>)</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
 #&gt;  $ person: Factor w/ 3 levels "Peter","Paul",..: 1 2 3 1 2 3
 #&gt;  $ fruit : Factor w/ 2 levels "apple","pear": 1 1 1 2 2 2
 #&gt;  - attr(*, "out.attrs")=List of 2
@@ -251,7 +254,8 @@ reversed order</p></td>
 #&gt;   .. ..$ fruit : chr [1:2] "fruit=apple" "fruit=pear"</div><div class='input'>
 <span class='co'># ... with expandGrid() character strings are not converted by default.</span>
 <span class='co'># Also, there is no attribute "out.attrs" as it is set by expand.grid().</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>grid_2</span>)</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
 #&gt;  $ person: chr  "Peter" "Peter" "Paul" "Paul" ...
 #&gt;  $ fruit : chr  "apple" "pear" "apple" "pear" ...</div><div class='input'>
 </div></pre>
@@ -270,7 +274,7 @@ reversed order</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

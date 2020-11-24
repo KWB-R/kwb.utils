@@ -142,13 +142,14 @@
 
       
 
-      </header><div class="row">
+      </header><script src="functions_object_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="functions_object_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="functions_object_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>General Object Functions</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2020-08-12</h4>
+            <h4 class="date">2020-11-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_object.Rmd"><code>vignettes/functions_object.Rmd</code></a></small>
       <div class="hidden name"><code>functions_object.Rmd</code></div>
@@ -162,20 +163,21 @@
 <a href="#function-addclass" class="anchor"></a>Function <code>addClass()</code>
 </h3>
 <p>The function <code>addClass</code> adds an element to the <code>class</code> attribute of an object. You may never have heard about the <code>class</code> attribute. That’s ok. It allows you to assign a user-defined class to an object. By doing so, you can do some nice stuff, for example:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># Define your own print function for objects of class "birthday"</span>
-<span class="no">print.birthday</span> <span class="kw">&lt;-</span> <span class="kw">function</span>(<span class="no">x</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span>(<span class="st">"It's your birthday: %s!"</span>, <span class="no">x</span>))
-}
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Define your own print function for objects of class "birthday"</span>
+<span class="va">print.birthday</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"It's your birthday: %s!"</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
 
 <span class="co"># Define a birthday string and print it</span>
-<span class="no">x</span> <span class="kw">&lt;-</span> <span class="st">"January 14"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"January 14"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "January 14"</span>
 
 <span class="co"># Now, set the class attribute to "birthday" and print again!</span>
-<span class="no">x</span> <span class="kw">&lt;-</span> <span class="kw pkg">kwb.utils</span><span class="kw ns">::</span><span class="fu"><a href="../reference/addClass.html">addClass</a></span>(<span class="no">x</span>, <span class="st">"birthday"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">x</span>)
-<span class="co">#&gt; [1] "It's your birthday: January 14!"</span></pre></body></html></div>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addClass.html">addClass</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"birthday"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "It's your birthday: January 14!"</span></code></pre></div>
 <p>General Object Functions</p>
 </div>
 <div id="function-getattribute" class="section level3">
@@ -221,7 +223,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
