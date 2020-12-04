@@ -9,6 +9,7 @@
 * allow to set the cache directory with set_cache_dir()
 * preparePdf(): set paper to "special" if width or height are set
 * get_cached(): add argument "dbg"
+* lastElement(): do not use tail() for lists, use x[[length(x)]] instead
 
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 

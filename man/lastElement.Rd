@@ -10,7 +10,8 @@ lastElement(x)
 \item{x}{object}
 }
 \value{
-last element: x[length(x)]
+The last element of \code{object} is returned: \code{x[[length(x)]]} 
+  if \code{x} is a list (and not a data frame), otherwise \code{tail(x, 1)}.
 }
 \description{
 Returns the last element using the function tail
