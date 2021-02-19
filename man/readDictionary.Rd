@@ -4,13 +4,18 @@
 \alias{readDictionary}
 \title{Read Dictionary from Text File}
 \usage{
-readDictionary(file, sorted = TRUE)
+readDictionary(file, sorted = TRUE, fileEncoding = "", ...)
 }
 \arguments{
-\item{file}{full path to dictionary file}
+\item{file}{full path to dictionary file or connection as e.g. opened with
+\code{file}}
 
 \item{sorted}{if TRUE (default) the entries in the dictionary will be sorted
 by their keys}
+
+\item{fileEncoding}{passed to \code{\link{readLinesWithEncoding}}}
+
+\item{\dots}{further arguments passed to \code{\link{readLinesWithEncoding}}}
 }
 \description{
 Reads a dictionary (a list of "key = value"-pairs) from a text file.

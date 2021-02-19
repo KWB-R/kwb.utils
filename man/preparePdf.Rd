@@ -9,10 +9,10 @@ preparePdf(
   landscape = TRUE,
   borderWidth.cm = 2,
   borderHeight.cm = 2,
-  width.cm = .defaultWidth(landscape, borderWidth.cm, borderHeight.cm),
-  height.cm = .defaultHeight(landscape, borderWidth.cm, borderHeight.cm),
+  width.cm = NULL,
+  height.cm = NULL,
   makeCurrent = TRUE,
-  paper = paste0("a4", ifelse(landscape, "r", "")),
+  paper = NULL,
   ...
 )
 }

@@ -26,20 +26,22 @@ clear_cache <- function()
 }
 
 # get_cached -------------------------------------------------------------------
-get_cached <- function(name)
+get_cached <- function(name, dbg = TRUE)
 {
-  if (file.exists(file <- get_cached_file(name))) {
-    loadObject(file, "x")
-  } else {
-    NULL
+  file <- get_cached_file(name)
+  
+  if (! file.exists(file)) {
+    return(NULL)
   }
+  
+  loadObject(file, "x", dbg = dbg)
 }
 
 # get_cached_file --------------------------------------------------------------
 get_cached_file <- function(name = "")
 {
-  cache_dir <- file.path(tempdir(), "cache")
-  
+  cache_dir <- get_cache_dir()
+
   createDirectory(cache_dir, dbg = FALSE)
   
   if (name == "") {
@@ -47,6 +49,18 @@ get_cached_file <- function(name = "")
   }
   
   file.path(cache_dir, paste0(name, ".RData"))
+}
+
+# get_cache_dir ----------------------------------------------------------------
+get_cache_dir <- function()
+{
+  Sys.getenv("KWB_UTILS_CACHE_DIR", file.path(tempdir(), "cache"))
+}
+
+# set_cache_dir ----------------------------------------------------------------
+set_cache_dir <- function(path)
+{
+  Sys.setenv(KWB_UTILS_CACHE_DIR = path)
 }
 
 # run_cached -------------------------------------------------------------------

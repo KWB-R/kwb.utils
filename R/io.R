@@ -210,7 +210,7 @@ headtail <- function(x, n = 6, pattern = "[%d rows omitted]")
 #' ## Not run
 #'   
 #' ## Search for available .RData files below "searchdir"
-#' #searchdir <- "//poseidon/projekte$/SUW_Department/Projects/SEMA/WP/20_Braunschweig"
+#' #searchdir <- "Y:/SUW_Department/Projects/SEMA/WP/20_Braunschweig"
 #' #files <- dir(searchdir, pattern = "\\\\.RData$", recursive = TRUE, full.names = TRUE)
 #'   
 #' ## Get the names of the objects in the .RData files

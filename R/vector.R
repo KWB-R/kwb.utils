@@ -113,11 +113,16 @@ getByPositiveOrNegativeIndex <- function(elements, index)
 #' Returns the last element using the function tail
 #' 
 #' @param x object
-#' @return last element: x[length(x)]
+#' @return The last element of \code{object} is returned: \code{x[[length(x)]]} 
+#'   if \code{x} is a list (and not a data frame), otherwise \code{tail(x, 1)}.
 #' @export
 #' 
 lastElement <- function(x)
 {
+  if (is.list(x) && ! is.data.frame(x)) {
+    return(x[[length(x)]])
+  }
+  
   utils::tail(x, 1)
 }
 

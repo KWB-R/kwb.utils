@@ -21,9 +21,12 @@ orderBy(df, by = NULL, ...)
 Order a Data Frame by One or more Columns
 }
 \examples{
-df <- data.frame(number = 4:1, letter = LETTERS[1:4])
-df
-orderBy(df, "number")
-orderBy(df, "letter", decreasing = TRUE)
+orderBy(iris, by = "Sepal.Length")
+orderBy(iris, by = "Species", decreasing = TRUE)
+orderBy(
+  iris, 
+  by = c("Species", "Petal.Width", "Petal.Length"), 
+  decreasing = TRUE
+)
 
 }

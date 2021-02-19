@@ -830,7 +830,6 @@ selectColumns <- function(
 #'
 #' ## Provide column 'b' to data frame 'x'... ok.
 #' ## Provide column 'c' to data frame 'x'... ok.
-#'   
 setColumns <- function(.x, ..., dbg = TRUE)
 {
   stopifnot(is.data.frame(.x))
@@ -841,7 +840,7 @@ setColumns <- function(.x, ..., dbg = TRUE)
   
   if (any(is.unnamed(assignments))) {
     
-    stop("All column assignments be named!", call. = FALSE)
+    stop("All column assignments must be named!", call. = FALSE)
   }
   
   for (columnName in names(assignments)) {

@@ -68,9 +68,12 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' 
 #' Reads a dictionary (a list of "key = value"-pairs) from a text file.
 #' 
-#' @param file full path to dictionary file
+#' @param file full path to dictionary file or connection as e.g. opened with
+#'   \code{file}
 #' @param sorted if TRUE (default) the entries in the dictionary will be sorted
 #'   by their keys
+#' @param fileEncoding passed to \code{\link{readLinesWithEncoding}}
+#' @param \dots further arguments passed to \code{\link{readLinesWithEncoding}}
 #' @export
 #' @seealso \code{\link{readDictionaries}}
 #' @examples 
@@ -81,10 +84,14 @@ readDictionaries <- function(folder, pattern = "^dictionary_(.*)[.]txt$")
 #' resolve("file.out", dictionary, extension = "csv")
 #' resolve("file.out", dictionary, extension = "pdf")
 #' 
-readDictionary <- function(file, sorted = TRUE)
+readDictionary <- function(file, sorted = TRUE, fileEncoding = "", ...)
 {
+  stopifnot(length(file) == 1L, is.character(file))
+  
   # Read the lines of the text file
-  content <- readLines(safePath(file))
+  content <- readLinesWithEncoding(
+    safePath(file), fileEncoding = fileEncoding, ...
+  )
   
   # Trim all lines
   content <- unlist(lapply(content, hsTrim))
@@ -97,20 +104,17 @@ readDictionary <- function(file, sorted = TRUE)
     "^([^= ]+)\\s*=\\s*(.*)$", content, match.names = c("key", "value")
   )
 
+  # Helper function
+  extract <- function(name) sapply(key_value_pairs, selectElements, name)
+  
   # Create the dictionary
-  dictionary <- toLookupList(
-    keys = sapply(key_value_pairs, selectElements, "key"),
-    values = sapply(key_value_pairs, selectElements, "value")  
-  )
+  dictionary <- toLookupList(keys = extract("key"), values = extract("value"))
 
-  if (sorted) {
-    
-    dictionary[order(names(dictionary))]
-    
-  } else {
-    
-    dictionary
+  if (! sorted) {
+    return(dictionary)
   }
+  
+  dictionary[order(names(dictionary))]
 }
 
 # resolve ----------------------------------------------------------------------

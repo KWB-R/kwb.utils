@@ -1,6 +1,6 @@
 Package: kwb.utils
 Title: General Utility Functions Developed at KWB
-Version: 0.7.0
+Version: 0.8.0
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
@@ -9,7 +9,7 @@ Authors@R:
              comment = c(ORCID = "0000-0001-9134-2871")),
       person(given = "Michael",
              family = "Rustler",
-             role = c("ctb"),
+             role = "ctb",
              email = "michael.rustler@kompetenz-wasser.de",
              comment = c(ORCID = "0000-0003-0647-7726")),
       person(given = "Kompetenzzentrum Wasser Berlin gGmbH",

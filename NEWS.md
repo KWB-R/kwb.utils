@@ -1,3 +1,19 @@
+# Current
+
+# [kwb.utils 0.8.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.8.0) <small>2021-02-19</small>
+
+* add: matrixToDataFrame()
+* add (private): get_cache_dir(), set_cache_dir()
+* add: readLinesWithEncoding(), moved from fakin.path.app::read_lines()
+* get_cached(): add argument "dbg"; return NULL if file does not exist
+* lastElement(): do not use tail() for lists, use x[[length(x)]] instead
+* orderBy(): allow to order by multiple columns
+* preparePdf(): set paper to "special" if width or height are set
+* readDictionary(): add arguments "fileEncoding", "...", pass on to
+  readLinesWithEncoding()
+* writeDictionary(): check "file" argument. Do not check the file path unless
+  "file" is of class character (and not a connection)
+
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 
 * new functions: backspace(), createAccessor(), createStorage(), left(),
