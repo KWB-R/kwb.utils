@@ -42,7 +42,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -122,7 +122,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -142,14 +142,13 @@
 
       
 
-      </header><script src="overview_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="overview_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="overview_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="overview_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Overview</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2020-12-04</h4>
+            <h4 class="date">2021-02-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/overview.Rmd"><code>vignettes/overview.Rmd</code></a></small>
       <div class="hidden name"><code>overview.Rmd</code></div>
@@ -178,7 +177,7 @@
 <span class="co">#&gt;         assign(name, object, envir = .GlobalEnv)</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fb452294500&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f99db1ebc30&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:kwb.utils&gt;</span></code></pre></div>
 <p>As the code reveals, the function loops through the values that are returned by <code><a href="https://rdrr.io/r/base/ls.html">ls(getNamespace(package))</a></code> where <code>package</code> is the name of the package. This is exacly what we need. We can use this code to get the names of all objects in the “kwb.utils” package. Let’s store these names in the variable <code>object_names</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
