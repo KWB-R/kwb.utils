@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -166,7 +166,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -198,7 +198,7 @@
     <p>Get Names of Objects in .RData files</p>
     </div>
 
-    <pre class="usage"><span class='fu'>listObjects</span>(<span class='no'>files</span>)</pre>
+    <pre class="usage"><span class='fu'>listObjects</span><span class='op'>(</span><span class='va'>files</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -211,20 +211,20 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>## Not run
+    <pre class="examples"><div class='input'><span class='co'>## Not run</span>
   
-## Search for available .RData files below "searchdir"
-#searchdir &lt;- "//poseidon/projekte$/SUW_Department/Projects/SEMA/WP/20_Braunschweig"
-#files &lt;- dir(searchdir, pattern = "\\.RData$", recursive = TRUE, full.names = TRUE)
+<span class='co'>## Search for available .RData files below "searchdir"</span>
+<span class='co'>#searchdir &lt;- "Y:/SUW_Department/Projects/SEMA/WP/20_Braunschweig"</span>
+<span class='co'>#files &lt;- dir(searchdir, pattern = "\\.RData$", recursive = TRUE, full.names = TRUE)</span>
   
-## Get the names of the objects in the .RData files
-#objectsInFiles &lt;- listObjects(files)
+<span class='co'>## Get the names of the objects in the .RData files</span>
+<span class='co'>#objectsInFiles &lt;- listObjects(files)</span>
   
-## Which file contains the object "DataQ"?
-#dataQ.found &lt;- sapply(objectsInFiles, function(x) {"DataQ" %in% x})
+<span class='co'>## Which file contains the object "DataQ"?</span>
+<span class='co'>#dataQ.found &lt;- sapply(objectsInFiles, function(x) {"DataQ" %in% x})</span>
   
-#cat("DataQ was found in the following files:",
-#    paste(files[dataQ.found], collapse = "\n  "))
+<span class='co'>#cat("DataQ was found in the following files:",</span>
+<span class='co'>#    paste(files[dataQ.found], collapse = "\n  "))</span>
 
 </div></pre>
   </div>
@@ -242,7 +242,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

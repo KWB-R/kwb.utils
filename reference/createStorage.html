@@ -81,7 +81,7 @@ folder that is given to this function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@ folder that is given to this function." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -169,7 +169,7 @@ folder that is given to this function." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -204,7 +204,7 @@ remove, respectively .rds or .RData files. The object is associated to a
 folder that is given to this function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createStorage</span>(<span class='no'>path</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"rds"</span>)</pre>
+    <pre class="usage"><span class='fu'>createStorage</span><span class='op'>(</span><span class='va'>path</span>, type <span class='op'>=</span> <span class='st'>"rds"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,30 +227,35 @@ to store R objects.</p></td>
   <code><a href='https://rdrr.io/r/base/load.html'>load()</a></code>, <code><a href='https://rdrr.io/r/base/rm.html'>remove()</a></code>, and variables <code>path</code>, <code>type</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'># Create a storage object</span>
-<span class='no'>storage</span> <span class='kw'>&lt;-</span> <span class='fu'>createStorage</span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>())
+    <pre class="examples"><div class='input'><span class='co'># Create an empty test folder</span>
+<span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"test"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>
 
+<span class='co'># Create a storage object pointing to a temporary test folder</span>
+<span class='va'>storage</span> <span class='op'>&lt;-</span> <span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='fu'>createStorage</span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; The directory "/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp9Z1Yhz/test" already exists.</div><div class='input'>
 <span class='co'># At the beginning, the storage is empty</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
-
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>list</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; character(0)</div><div class='input'>
 <span class='co'># Store objects</span>
-<span class='no'>apple</span> <span class='kw'>&lt;-</span> <span class='fl'>5</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/save.html'>save</a></span>(<span class='no'>apple</span>, <span class='kw'>banana</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"Hello"</span>, <span class='st'>"World"</span>))
+<span class='va'>apple</span> <span class='op'>&lt;-</span> <span class='fl'>5</span>
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>save</span><span class='op'>(</span><span class='va'>apple</span>, banana <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Hello"</span>, <span class='st'>"World"</span><span class='op'>)</span><span class='op'>)</span>
 
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># List the objects</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>list</span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='co'># Retrieve an object</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span>(<span class='st'>"banana"</span>)
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>load</span><span class='op'>(</span><span class='st'>"banana"</span><span class='op'>)</span>
 
 <span class='co'># Remove objects</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>remove</a></span>(<span class='st'>"apple"</span>)
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>remove</a></span>(<span class='st'>"banana"</span>)
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>remove</span><span class='op'>(</span><span class='st'>"apple"</span><span class='op'>)</span>
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>remove</span><span class='op'>(</span><span class='st'>"banana"</span><span class='op'>)</span>
 
 <span class='co'># The storage is empty again</span>
-<span class='no'>storage</span>$<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
-}</div></pre>
+<span class='va'>storage</span><span class='op'>$</span><span class='fu'>list</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -266,7 +271,7 @@ to store R objects.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -166,7 +166,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -198,7 +198,7 @@
     <p>Create Function to Safely Access Data Frame Columns or List Elements</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createAccessor</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>createAccessor</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -211,10 +211,13 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>getcol</span> <span class='kw'>&lt;-</span> <span class='fu'>createAccessor</span>(<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>3</span>))
-<span class='fu'>getcol</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] 1 2</div><div class='input'><span class='fu'>getcol</span>(<span class='st'>"b"</span>)</div><div class='output co'>#&gt; [1] 2 3</div><div class='input'><span class='fu'>getcol</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"a"</span>))</div><div class='output co'>#&gt;   b a
+    <pre class="examples"><div class='input'><span class='va'>getcol</span> <span class='op'>&lt;-</span> <span class='fu'>createAccessor</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>getcol</span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 1 2</div><div class='input'><span class='fu'>getcol</span><span class='op'>(</span><span class='st'>"b"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 2 3</div><div class='input'><span class='fu'>getcol</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"a"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   b a
 #&gt; 1 2 1
-#&gt; 2 3 2</div><div class='input'># getcol("c") # error with info about existing columns
+#&gt; 2 3 2</div><div class='input'><span class='co'># getcol("c") # error with info about existing columns</span>
 
 </div></pre>
   </div>
@@ -232,7 +235,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

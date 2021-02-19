@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -166,7 +166,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -198,7 +198,7 @@
     <p>Drop Array Dimension(s) of Length One</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dropDim</span>(<span class='no'>x</span>, <span class='kw'>dimension</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>x</span>) <span class='kw'>==</span> <span class='fl'>1</span>))</pre>
+    <pre class="usage"><span class='fu'>dropDim</span><span class='op'>(</span><span class='va'>x</span>, dimension <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -220,10 +220,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Define an array of two matrices</span>
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(
-<span class='fl'>1</span>:<span class='fl'>8</span>, <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>dimnames</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"x"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"y"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"z"</span>, <span class='fl'>1</span>:<span class='fl'>2</span>))
-)
+<span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span>
+<span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>, dimnames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"z"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'># The aim is to select the first column of the first matrix with</span>
 <span class='co'># the matrix structure being kept. This cannot be done with the</span>
@@ -231,10 +231,12 @@
 <span class='co'># acts on all dimensions:</span>
 
 <span class='co'># By default, drop is TRUE. The result is a named vector</span>
-<span class='no'>A</span>[, <span class='fl'>1</span>, <span class='fl'>1</span>]</div><div class='output co'>#&gt; x1 x2 
+<span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; x1 x2 
 #&gt;  1  2 </div><div class='input'>
 <span class='co'># With drop = FALSE we get a 3D-array again and not a matrix</span>
-<span class='no'>A</span>[, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>]</div><div class='output co'>#&gt; , , z1
+<span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; , , z1
 #&gt; 
 #&gt;    y1
 #&gt; x1  1
@@ -242,7 +244,8 @@
 #&gt; </div><div class='input'>
 <span class='co'># Use dropDim to remove the third dimension of an array that</span>
 <span class='co'># has already one dimension of length one</span>
-<span class='fu'>dropDim</span>(<span class='no'>A</span>[, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>], <span class='kw'>dimension</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt;    y1
+<span class='fu'>dropDim</span><span class='op'>(</span><span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>, dimension <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    y1
 #&gt; x1  1
 #&gt; x2  2</div><div class='input'>
 </div></pre>
@@ -261,7 +264,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

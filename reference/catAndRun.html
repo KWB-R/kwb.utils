@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -166,7 +166,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -198,13 +198,13 @@
     <p>Print Debug Messages Before and After Running Code</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catAndRun</span>(
-  <span class='kw'>messageText</span> <span class='kw'>=</span> <span class='st'>"Running code"</span>,
-  <span class='no'>expr</span>,
-  <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>log_time</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>catAndRun</span><span class='op'>(</span>
+  messageText <span class='op'>=</span> <span class='st'>"Running code"</span>,
+  <span class='va'>expr</span>,
+  newLine <span class='op'>=</span> <span class='fl'>2L</span>,
+  dbg <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  log_time <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -242,14 +242,15 @@ evaluation of <code>expr</code> is printed.</p></td>
   expression in <code>exprt</code> does not show up on the console.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>for</span> (<span class='no'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span>:<span class='fl'>3</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span>
 
-  <span class='fu'>catAndRun</span>(<span class='st'>"work hard"</span>, <span class='kw'>newLine</span> <span class='kw'>=</span> <span class='no'>newLine</span>, {
-    <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"hard\nworking\n"</span>)
-  })
+  <span class='fu'>catAndRun</span><span class='op'>(</span><span class='st'>"work hard"</span>, newLine <span class='op'>=</span> <span class='va'>newLine</span>, <span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"hard\nworking\n"</span><span class='op'>)</span>
+  <span class='op'>}</span><span class='op'>)</span>
 
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='st'>"here.\n\n"</span>)
-}</div><div class='output co'>#&gt; work hard ... hard
+  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"here.\n\n"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; work hard ... hard
 #&gt; working
 #&gt; ok. (0.00s) here.
 #&gt; 
@@ -285,7 +286,7 @@ evaluation of <code>expr</code> is printed.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
