@@ -35,7 +35,10 @@
 #' 
 multiColumnLookup <- function(data, lookup, value = NULL)
 {
-  value <- defaultIfNULL(utils::tail(names(lookup), 1))
+  stopifnot(is.data.frame(data))
+  stopifnot(is.data.frame(lookup))
+  
+  value <- defaultIfNULL(value, names(lookup)[ncol(lookup)])
   
   checkForMissingColumns(lookup, value)
   
