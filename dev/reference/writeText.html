@@ -79,7 +79,7 @@ message by default" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.7.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
       </span>
     </div>
 
@@ -239,10 +239,10 @@ message by default</p>
 
 <span class='co'># Write text to a temporary file and catch the file path</span>
 <span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'>writeText</span><span class='op'>(</span><span class='va'>x</span>, <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".txt"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Writing '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpXO6CJ6/file74256f84573.txt' ... ok.</div><div class='input'>
+</div><div class='output co'>#&gt; Writing '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpQEfp2E/file8141fa7fd8f.txt' ... ok.</div><div class='input'>
 <span class='co'># Make the debug message more informative</span>
 <span class='fu'>writeText</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>file</span>, type <span class='op'>=</span> <span class='st'>"welcome file"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Writing welcome file '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpXO6CJ6/file74256f84573.txt' ... ok.</div><div class='input'>
+</div><div class='output co'>#&gt; Writing welcome file '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpQEfp2E/file8141fa7fd8f.txt' ... ok.</div><div class='input'>
 <span class='co'># Read lines back and show on the console</span>
 <span class='fu'><a href='catLines.html'>catLines</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Hello
