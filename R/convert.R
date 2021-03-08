@@ -536,8 +536,9 @@ hsStringToDate <- function(strDate, dateFormat)
   
   # Stop if there are NAs in the result vector. Rhe wrong dateFormat may have
   # been used
-  if (any(is.na(res))) {
-    
+  not_converted <- is.na(res) & ! is.na(strDate)
+
+  if (any(not_converted)) {
     stop(sprintf(
       paste(
         "Error when trying to convert strings to Dates.",
@@ -547,7 +548,7 @@ hsStringToDate <- function(strDate, dateFormat)
         "%%y (2-digit year), %%Y (4-digit year),",
         "e.g. \"%%d.%%m.%%Y\""
       ),
-      dateFormat, strDate[is.na(res)][1]
+      dateFormat, kwb.utils::stringList(utils::head(strDate[not_converted], 3L))
     ))
   }
   
