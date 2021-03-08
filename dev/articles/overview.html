@@ -148,7 +148,7 @@
       <h1 data-toc-skip>Overview</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-03-06</h4>
+            <h4 class="date">2021-03-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/overview.Rmd"><code>vignettes/overview.Rmd</code></a></small>
       <div class="hidden name"><code>overview.Rmd</code></div>
@@ -177,7 +177,7 @@
 <span class="co">#&gt;         assign(name, object, envir = .GlobalEnv)</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7f9fa99552e0&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7f948cfabd40&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:kwb.utils&gt;</span></code></pre></div>
 <p>As the code reveals, the function loops through the values that are returned by <code><a href="https://rdrr.io/r/base/ls.html">ls(getNamespace(package))</a></code> where <code>package</code> is the name of the package. This is exacly what we need. We can use this code to get the names of all objects in the “kwb.utils” package. Let’s store these names in the variable <code>object_names</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
