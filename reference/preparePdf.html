@@ -81,7 +81,7 @@ plots have been made." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -269,18 +269,18 @@ become the current device, otherwise the current device will be restored</p></td
     <div class='dont-index'><p><code><a href='finishAndShowPdf.html'>finishAndShowPdf</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Open PDF file by giving a path to preparePdf(). The path is returned.</span>
-<span class='va'>pdf_file</span> <span class='op'>&lt;-</span> <span class='fu'>preparePdf</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"example_preparePdf.pdf"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Plot something</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>pi</span>,<span class='va'>pi</span>,<span class='va'>pi</span><span class='op'>/</span><span class='fl'>100</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"l"</span><span class='op'>)</span>
-
-<span class='co'># Open PDF file in viewer</span>
-<span class='fu'><a href='finishAndShowPdf.html'>finishAndShowPdf</a></span><span class='op'>(</span><span class='va'>pdf_file</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># Open PDF file by giving a path to preparePdf(). The path is returned.</span></span>
+<span class='r-in'><span class='va'>pdf_file</span> <span class='op'>&lt;-</span> <span class='fu'>preparePdf</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"example_preparePdf.pdf"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Plot something</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>pi</span>,<span class='va'>pi</span>,<span class='va'>pi</span><span class='op'>/</span><span class='fl'>100</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, type <span class='op'>=</span> <span class='st'>"l"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Open PDF file in viewer</span></span>
+<span class='r-in'><span class='fu'><a href='finishAndShowPdf.html'>finishAndShowPdf</a></span><span class='op'>(</span><span class='va'>pdf_file</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

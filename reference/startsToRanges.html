@@ -79,7 +79,7 @@ by numbers of  first and last rows" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -228,27 +228,28 @@ by numbers of  first and last rows</p>
     <p>data frame with columns <code>from</code> and <code>to</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>starts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>35</span><span class='op'>)</span>
-
-<span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span>
-  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>, 
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>11</span>, <span class='fl'>21</span>, <span class='fl'>36</span><span class='op'>)</span>,
-    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='fl'>19</span>, <span class='fl'>34</span>, <span class='fl'>50</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-  
-<span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='va'>ok</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span>
-  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>55</span>, startOffset <span class='op'>=</span> <span class='fl'>2</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, 
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>12</span>, <span class='fl'>22</span>, <span class='fl'>37</span><span class='op'>)</span>,
-    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>18</span>, <span class='fl'>33</span>, <span class='fl'>55</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>)</span>
-  
-<span class='va'>ok</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>starts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, <span class='fl'>35</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span>, </span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>11</span>, <span class='fl'>21</span>, <span class='fl'>36</span><span class='op'>)</span>,</span>
+<span class='r-in'>    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>, <span class='fl'>19</span>, <span class='fl'>34</span>, <span class='fl'>50</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='va'>ok</span> <span class='op'>&lt;-</span> <span class='va'>ok</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='fu'>startsToRanges</span><span class='op'>(</span><span class='va'>starts</span>, lastStop <span class='op'>=</span> <span class='fl'>55</span>, startOffset <span class='op'>=</span> <span class='fl'>2</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>, </span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>    from <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>12</span>, <span class='fl'>22</span>, <span class='fl'>37</span><span class='op'>)</span>,</span>
+<span class='r-in'>    to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='fl'>18</span>, <span class='fl'>33</span>, <span class='fl'>55</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='va'>ok</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'>  </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

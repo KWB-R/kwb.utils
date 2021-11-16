@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -242,35 +242,36 @@ evaluation of <code>expr</code> is printed.</p></td>
   expression in <code>exprt</code> does not show up on the console.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span>
-
-  <span class='fu'>catAndRun</span><span class='op'>(</span><span class='st'>"work hard"</span>, newLine <span class='op'>=</span> <span class='va'>newLine</span>, <span class='op'>{</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"hard\nworking\n"</span><span class='op'>)</span>
-  <span class='op'>}</span><span class='op'>)</span>
-
-  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"here.\n\n"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. (0.00s) here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. (0.00s) here.
-#&gt; 
-#&gt; work hard ... hard
-#&gt; working
-#&gt; ok. (0.00s) 
-#&gt; here.
-#&gt; 
-#&gt; work hard ... 
-#&gt; hard
-#&gt; working
-#&gt; ok. (0.00s) 
-#&gt; here.
-#&gt; </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>newLine</span> <span class='kw'>in</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='fu'>catAndRun</span><span class='op'>(</span><span class='st'>"work hard"</span>, newLine <span class='op'>=</span> <span class='va'>newLine</span>, <span class='op'>{</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"hard\nworking\n"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>}</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='st'>"here.\n\n"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> work hard ... hard</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> working</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ok. (0.00s) here.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> work hard ... </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hard</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> working</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ok. (0.00s) here.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> work hard ... hard</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> working</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ok. (0.00s) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> here.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> work hard ... </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hard</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> working</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> ok. (0.00s) </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> here.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

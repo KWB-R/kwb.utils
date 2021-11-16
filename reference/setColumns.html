@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -225,27 +225,29 @@ on the screen</p></td>
   <code>assignments</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Create a data frame</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-
-<span class='co'># Option 1: use the "$" operator</span>
-<span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='va'>x</span>
-<span class='va'>x1</span><span class='op'>$</span><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span>
-<span class='va'>x1</span><span class='op'>$</span><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span>
-
-<span class='co'># Option 2: use setColumns</span>
-<span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'>setColumns</span><span class='op'>(</span><span class='va'>x</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span>, c <span class='op'>=</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Provide column 'b' to data frame 'x'... ok.
-#&gt; Provide column 'c' to data frame 'x'... ok.</div><div class='input'>
-<span class='co'># The result is the same</span>
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'># but the creation of columns has been reported on the console (dbg = TRUE by</span>
-<span class='co'># default)</span>
-
-<span class='co'>## Provide column 'b' to data frame 'x'... ok.</span>
-<span class='co'>## Provide column 'c' to data frame 'x'... ok.</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Create a data frame</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Option 1: use the "$" operator</span></span>
+<span class='r-in'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='va'>x</span></span>
+<span class='r-in'><span class='va'>x1</span><span class='op'>$</span><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span></span>
+<span class='r-in'><span class='va'>x1</span><span class='op'>$</span><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Option 2: use setColumns</span></span>
+<span class='r-in'><span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'>setColumns</span><span class='op'>(</span><span class='va'>x</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span>, c <span class='op'>=</span> <span class='fl'>3</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Provide column 'b' to data frame 'x'... ok.</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Provide column 'c' to data frame 'x'... ok.</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The result is the same</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># but the creation of columns has been reported on the console (dbg = TRUE by</span></span>
+<span class='r-in'><span class='co'># default)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Provide column 'b' to data frame 'x'... ok.</span></span>
+<span class='r-in'><span class='co'>## Provide column 'c' to data frame 'x'... ok.</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

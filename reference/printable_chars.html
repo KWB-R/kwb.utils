@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -217,19 +217,22 @@ altogether 88 printable characters.</p></td>
     <p>vector of character</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "A" "B" "C" "D" "E" "F" "G" "H" "I"
-#&gt; [20] "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"</div><div class='input'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "A" "B" "C" "D" "E" "F" "G" "H" "I"
-#&gt; [20] "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "a" "b"
-#&gt; [39] "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u"
-#&gt; [58] "v" "w" "x" "y" "z"</div><div class='input'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "!" "#" "$" "%" "&amp;" "(" ")" "*" "+"
-#&gt; [20] "-" "." "/" ":" "&lt;" "=" "&gt;" "?" "@" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"
-#&gt; [39] "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "[" "]" "^"
-#&gt; [58] "_" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r"
-#&gt; [77] "s" "t" "u" "v" "w" "x" "y" "z" "{" "|" "}" "~"</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "A" "B" "C" "D" "E" "F" "G" "H" "I"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [20] "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"</span>
+<span class='r-in'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "A" "B" "C" "D" "E" "F" "G" "H" "I"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [20] "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "a" "b"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [39] "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [58] "v" "w" "x" "y" "z"</span>
+<span class='r-in'><span class='fu'>printable_chars</span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "!" "#" "$" "%" "&amp;" "(" ")" "*" "+"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [20] "-" "." "/" ":" "&lt;" "=" "&gt;" "?" "@" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [39] "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z" "[" "]" "^"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [58] "_" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [77] "s" "t" "u" "v" "w" "x" "y" "z" "{" "|" "}" "~"</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

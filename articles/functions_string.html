@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@
       <h1 data-toc-skip>String Functions</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-02-19</h4>
+            <h4 class="date">2021-11-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_string.Rmd"><code>vignettes/functions_string.Rmd</code></a></small>
       <div class="hidden name"><code>functions_string.Rmd</code></div>
@@ -161,7 +161,7 @@
 <h3 class="hasAnchor">
 <a href="#function-appendsuffix" class="anchor"></a>Function <code>appendSuffix()</code>
 </h3>
-<p>This function adds a suffix to all elements of a vector of character. It is mainly a shortcut to <code><a href="https://rdrr.io/r/base/paste.html">paste0(values, suffix)</a></code> but allows to define values to be omitted:</p>
+<p>This function adds a suffix to all elements of a vector of character. It is mainly a shortcut to <code>paste0(values, suffix)</code> but allows to define values to be omitted:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Define a vector of character</span>
 <span class="va">values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span>
@@ -173,7 +173,7 @@
 <div id="function-collapsed" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-collapsed" class="anchor"></a>Function collapsed()</h3>
-<p>The function call <code><a href="../reference/collapsed.html">collapsed(x, sep)</a></code> is a shortcut to <code><a href="https://rdrr.io/r/base/paste.html">paste(x, collapse = sep)</a></code>. It allows for shorter code and improved readability.</p>
+<p>The function call <code>collapsed(x, sep)</code> is a shortcut to <code>paste(x, collapse = sep)</code>. It allows for shorter code and improved readability.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/collapsed.html">collapsed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1 2 3 4 5 6 7 8 9 10"</span>
@@ -185,7 +185,7 @@
 <div id="function-commacollapsed" class="section level3">
 <h3 class="hasAnchor">
 <a href="#function-commacollapsed" class="anchor"></a>Function commaCollapsed()</h3>
-<p>The function call <code><a href="../reference/commaCollapsed.html">commaCollapsed(x)</a></code> is a shortcut to <code><a href="https://rdrr.io/r/base/paste.html">paste(x, collapse = ",")</a></code>. It allows for shorter code and improved readability.</p>
+<p>The function call <code>commaCollapsed(x)</code> is a shortcut to <code>paste(x, collapse = ",")</code>. It allows for shorter code and improved readability.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/commaCollapsed.html">commaCollapsed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt; [1] "1,2,3,4,5,6,7,8,9,10"</span>

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -225,43 +225,46 @@ looked up. Default: name of the last column in <code>lookup</code></p></td>
     <p>vector with as many elements as there are rows in <code>data</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='op'>(</span><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Peter"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Paris"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Mary"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Peter"</span>, city <span class='op'>=</span> <span class='st'>"Paris"</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    name   city
-#&gt; 1 Peter Berlin
-#&gt; 2  Paul  Paris
-#&gt; 3  Mary Berlin
-#&gt; 4  Paul Berlin
-#&gt; 5 Peter  Paris</div><div class='input'>
-<span class='co'># Who is cool, which city is cool and which combination is coolest?</span>
-<span class='op'>(</span><span class='va'>is_cool</span> <span class='op'>&lt;-</span> <span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='fu'><a href='safeRowBindAll.html'>safeRowBindAll</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span>, value <span class='op'>=</span> <span class='st'>"astro-cool"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>"Berlin"</span>, value <span class='op'>=</span> <span class='st'>"cool"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, value <span class='op'>=</span> <span class='st'>"mega-cool"</span><span class='op'>)</span>,
-  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>"Paris"</span>, value <span class='op'>=</span> <span class='st'>"ca va"</span><span class='op'>)</span>
-<span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   name   city      value
-#&gt; 1 Paul Berlin astro-cool
-#&gt; 2 &lt;NA&gt; Berlin       cool
-#&gt; 3 Paul   &lt;NA&gt;  mega-cool
-#&gt; 4 &lt;NA&gt;  Paris      ca va</div><div class='input'>
-<span class='co'># Lookup the coolness based on name and city</span>
-<span class='va'>coolness</span> <span class='op'>&lt;-</span> <span class='fu'>multiColumnLookup</span><span class='op'>(</span><span class='va'>persons</span>, <span class='va'>is_cool</span>, value <span class='op'>=</span> <span class='st'>"value"</span><span class='op'>)</span>
-
-<span class='co'># Add the coolness column</span>
-<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>persons</span>, <span class='va'>coolness</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    name   city   coolness
-#&gt; 1 Peter Berlin       cool
-#&gt; 2  Paul  Paris  mega-cool
-#&gt; 3  Mary Berlin       cool
-#&gt; 4  Paul Berlin astro-cool
-#&gt; 5 Peter  Paris      ca va</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='op'>(</span><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Peter"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Paris"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Mary"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Peter"</span>, city <span class='op'>=</span> <span class='st'>"Paris"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    name   city</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Peter Berlin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  Paul  Paris</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  Mary Berlin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  Paul Berlin</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 Peter  Paris</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Who is cool, which city is cool and which combination is coolest?</span></span>
+<span class='r-in'><span class='op'>(</span><span class='va'>is_cool</span> <span class='op'>&lt;-</span> <span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='fu'><a href='safeRowBindAll.html'>safeRowBindAll</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, city <span class='op'>=</span> <span class='st'>"Berlin"</span>, value <span class='op'>=</span> <span class='st'>"astro-cool"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>"Berlin"</span>, value <span class='op'>=</span> <span class='st'>"cool"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Paul"</span>, value <span class='op'>=</span> <span class='st'>"mega-cool"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  <span class='fu'><a href='noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>"Paris"</span>, value <span class='op'>=</span> <span class='st'>"ca va"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   name   city      value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Paul Berlin astro-cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 &lt;NA&gt; Berlin       cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 Paul   &lt;NA&gt;  mega-cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 &lt;NA&gt;  Paris      ca va</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Lookup the coolness based on name and city</span></span>
+<span class='r-in'><span class='va'>coolness</span> <span class='op'>&lt;-</span> <span class='fu'>multiColumnLookup</span><span class='op'>(</span><span class='va'>persons</span>, <span class='va'>is_cool</span>, value <span class='op'>=</span> <span class='st'>"value"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Add the coolness column</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>persons</span>, <span class='va'>coolness</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    name   city   coolness</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Peter Berlin       cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  Paul  Paris  mega-cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  Mary Berlin       cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  Paul Berlin astro-cool</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 Peter  Paris      ca va</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -82,7 +82,7 @@ name are overriden and elements with new names are appended." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -233,16 +233,18 @@ the arguments given to this function is NULL</p></td>
     <div class='dont-index'><p><code><a href='callWith.html'>callWith</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># define some default arguments</span>
-<span class='va'>args.default</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-
-<span class='co'># call plot with the default arguments</span>
-<span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>plot</span>, <span class='fu'>arglist</span><span class='op'>(</span><span class='va'>args.default</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='arglist-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># call plot with the default arguments but override the colour</span>
-<span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>plot</span>, <span class='fu'>arglist</span><span class='op'>(</span><span class='va'>args.default</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='arglist-2.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># define some default arguments</span></span>
+<span class='r-in'><span class='va'>args.default</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>10</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># call plot with the default arguments</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>plot</span>, <span class='fu'>arglist</span><span class='op'>(</span><span class='va'>args.default</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='arglist-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># call plot with the default arguments but override the colour</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='va'>plot</span>, <span class='fu'>arglist</span><span class='op'>(</span><span class='va'>args.default</span>, x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-plt img'><img src='arglist-2.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

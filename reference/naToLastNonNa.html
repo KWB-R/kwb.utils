@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
       </span>
     </div>
 
@@ -218,17 +218,18 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>naToLastNonNa</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>3</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>4</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] 1 2 2 2 3 3 3 4 4 4 5</div><div class='input'><span class='co'>## Result: [1] 1 2 2 2 3 3 3 4 4 4 5</span>
-  
-<span class='co'># You will get an error if method = 1 and the first element is NA!</span>
-  
-<span class='co'># naToLastNonNa(c(NA, 1, NA, 2), method = 1)</span>
-  
-<span class='co'>## Error in naToLastNonNa(c(NA, 1, NA, 2)) :</span>
-<span class='co'>##   The first element must not be NA</span>
-  
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>naToLastNonNa</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>3</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>4</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] 1 2 2 2 3 3 3 4 4 4 5</span>
+<span class='r-in'><span class='co'>## Result: [1] 1 2 2 2 3 3 3 4 4 4 5</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'># You will get an error if method = 1 and the first element is NA!</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'># naToLastNonNa(c(NA, 1, NA, 2), method = 1)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'>## Error in naToLastNonNa(c(NA, 1, NA, 2)) :</span></span>
+<span class='r-in'><span class='co'>##   The first element must not be NA</span></span>
+<span class='r-in'>  </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
