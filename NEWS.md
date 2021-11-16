@@ -1,6 +1,12 @@
 # Current
 
+# [kwb.utils 0.9.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.9.0) <small>2021-11-16</small>
+
 * fix bug in multiColumnLookup(): Consider "value" argument
+* fix bug in hsStringToDate(): Do not complain on NA that were already in x
+* Add new private functions: enumeration(), hintAvailable(), hintNoSuch(),
+  stopIsNotBut(), 
+* checkForMissingColumns(), selectElements(): Use new private functions
 
 # [kwb.utils 0.8.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.8.0) <small>2021-02-19</small>
 
