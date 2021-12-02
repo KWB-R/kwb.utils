@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -212,16 +212,18 @@ character string then the function with that name is found and used.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Assign the default values of breakInSequence() in the global environment</span>
-<span class='fu'>assignArgumentDefaults</span><span class='op'>(</span><span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='va'><a href='breakInSequence.html'>breakInSequence</a></span><span class='op'>)</span>
-
-<span class='co'># The argument "expectedDiff" is now in the global environment</span>
-<span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; character(0)</div><div class='input'>
-<span class='co'># Its value is 1 which is the default value defined in the function definition</span>
-<span class='va'>expectedDiff</span>
-</div><div class='output co'>#&gt; [1] 1</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Assign the default values of breakInSequence() in the global environment</span></span>
+<span class='r-in'><span class='fu'>assignArgumentDefaults</span><span class='op'>(</span><span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='va'><a href='breakInSequence.html'>breakInSequence</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The argument "expectedDiff" is now in the global environment</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/ls.html'>ls</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> character(0)</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Its value is 1 which is the default value defined in the function definition</span></span>
+<span class='r-in'><span class='va'>expectedDiff</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

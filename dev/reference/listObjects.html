@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -211,22 +211,23 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run</span>
-  
-<span class='co'>## Search for available .RData files below "searchdir"</span>
-<span class='co'>#searchdir &lt;- "Y:/SUW_Department/Projects/SEMA/WP/20_Braunschweig"</span>
-<span class='co'>#files &lt;- dir(searchdir, pattern = "\\.RData$", recursive = TRUE, full.names = TRUE)</span>
-  
-<span class='co'>## Get the names of the objects in the .RData files</span>
-<span class='co'>#objectsInFiles &lt;- listObjects(files)</span>
-  
-<span class='co'>## Which file contains the object "DataQ"?</span>
-<span class='co'>#dataQ.found &lt;- sapply(objectsInFiles, function(x) {"DataQ" %in% x})</span>
-  
-<span class='co'>#cat("DataQ was found in the following files:",</span>
-<span class='co'>#    paste(files[dataQ.found], collapse = "\n  "))</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>## Not run</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'>## Search for available .RData files below "searchdir"</span></span>
+<span class='r-in'><span class='co'>#searchdir &lt;- "Y:/SUW_Department/Projects/SEMA/WP/20_Braunschweig"</span></span>
+<span class='r-in'><span class='co'>#files &lt;- dir(searchdir, pattern = "\\.RData$", recursive = TRUE, full.names = TRUE)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'>## Get the names of the objects in the .RData files</span></span>
+<span class='r-in'><span class='co'>#objectsInFiles &lt;- listObjects(files)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'>## Which file contains the object "DataQ"?</span></span>
+<span class='r-in'><span class='co'>#dataQ.found &lt;- sapply(objectsInFiles, function(x) {"DataQ" %in% x})</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='co'>#cat("DataQ was found in the following files:",</span></span>
+<span class='r-in'><span class='co'>#    paste(files[dataQ.found], collapse = "\n  "))</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

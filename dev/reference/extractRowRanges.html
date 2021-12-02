@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -257,41 +257,42 @@ data frame are named</p></td>
   rows matching <em>pattern</em> in <code>dataFrame[[columnName]]</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='va'>dataFrame</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Date"</span>, <span class='st'>"Value"</span>,
-        <span class='st'>"1.1."</span>, <span class='st'>"1"</span>,
-        <span class='st'>"2.1."</span>, <span class='st'>"2"</span>,
-        <span class='st'>""</span>, <span class='st'>""</span>,
-        <span class='st'>"Date"</span>, <span class='st'>"Value"</span>,
-        <span class='st'>"3.1."</span>, <span class='st'>"3"</span>,
-        <span class='st'>"4.1."</span>, <span class='st'>"4"</span><span class='op'>)</span>, 
-      ncol <span class='op'>=</span> <span class='fl'>2</span>, 
-      byrow <span class='op'>=</span> <span class='cn'>TRUE</span>
-    <span class='op'>)</span>,
-    stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
-  <span class='op'>)</span>
-  
-  <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>extractRowRanges</span><span class='op'>(</span>
-    <span class='va'>dataFrame</span>, columnName <span class='op'>=</span> <span class='st'>"V1"</span>, pattern <span class='op'>=</span> <span class='st'>"Date"</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span>
-  <span class='op'>)</span>
-  
-  <span class='va'>expected</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1.1."</span>, <span class='st'>"2.1."</span><span class='op'>)</span>,
-      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1"</span>, <span class='st'>"2"</span><span class='op'>)</span>,
-      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
-    <span class='op'>)</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3.1."</span>, <span class='st'>"4.1."</span><span class='op'>)</span>,
-      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span><span class='op'>)</span>,
-      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span>
-    <span class='op'>)</span>
-  <span class='op'>)</span>
-  
-  <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>expected</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>  
-</div></pre>
+    <pre class="examples"><span class='r-in'>  <span class='va'>dataFrame</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span></span>
+<span class='r-in'>      <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Date"</span>, <span class='st'>"Value"</span>,</span>
+<span class='r-in'>        <span class='st'>"1.1."</span>, <span class='st'>"1"</span>,</span>
+<span class='r-in'>        <span class='st'>"2.1."</span>, <span class='st'>"2"</span>,</span>
+<span class='r-in'>        <span class='st'>""</span>, <span class='st'>""</span>,</span>
+<span class='r-in'>        <span class='st'>"Date"</span>, <span class='st'>"Value"</span>,</span>
+<span class='r-in'>        <span class='st'>"3.1."</span>, <span class='st'>"3"</span>,</span>
+<span class='r-in'>        <span class='st'>"4.1."</span>, <span class='st'>"4"</span><span class='op'>)</span>, </span>
+<span class='r-in'>      ncol <span class='op'>=</span> <span class='fl'>2</span>, </span>
+<span class='r-in'>      byrow <span class='op'>=</span> <span class='cn'>TRUE</span></span>
+<span class='r-in'>    <span class='op'>)</span>,</span>
+<span class='r-in'>    stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'>  <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'>extractRowRanges</span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>dataFrame</span>, columnName <span class='op'>=</span> <span class='st'>"V1"</span>, pattern <span class='op'>=</span> <span class='st'>"Date"</span>, stopOffset <span class='op'>=</span> <span class='fl'>2</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'>  <span class='va'>expected</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1.1."</span>, <span class='st'>"2.1."</span><span class='op'>)</span>,</span>
+<span class='r-in'>      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1"</span>, <span class='st'>"2"</span><span class='op'>)</span>,</span>
+<span class='r-in'>      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span class='r-in'>    <span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span></span>
+<span class='r-in'>      Date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3.1."</span>, <span class='st'>"4.1."</span><span class='op'>)</span>,</span>
+<span class='r-in'>      Value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"3"</span>, <span class='st'>"4"</span><span class='op'>)</span>,</span>
+<span class='r-in'>      stringsAsFactors <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>expected</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'>  </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

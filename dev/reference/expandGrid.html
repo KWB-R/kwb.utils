@@ -80,7 +80,7 @@ last, not first." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -220,45 +220,49 @@ reversed order</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span><span class='op'>)</span>
-<span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"pear"</span><span class='op'>)</span>
-
-<span class='co'># With expand.grid() the values of the first argument change first...</span>
-<span class='op'>(</span><span class='va'>grid_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid</a></span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   person fruit
-#&gt; 1  Peter apple
-#&gt; 2   Paul apple
-#&gt; 3   Mary apple
-#&gt; 4  Peter  pear
-#&gt; 5   Paul  pear
-#&gt; 6   Mary  pear</div><div class='input'>
-<span class='co'>#... with expandGrid() they change last.</span>
-<span class='op'>(</span><span class='va'>grid_2</span> <span class='op'>&lt;-</span> <span class='fu'>expandGrid</span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   person fruit
-#&gt; 1  Peter apple
-#&gt; 2  Peter  pear
-#&gt; 3   Paul apple
-#&gt; 4   Paul  pear
-#&gt; 5   Mary apple
-#&gt; 6   Mary  pear</div><div class='input'>
-<span class='co'># With expand.grid() character strings are converted to factors by default...</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
-#&gt;  $ person: Factor w/ 3 levels "Peter","Paul",..: 1 2 3 1 2 3
-#&gt;  $ fruit : Factor w/ 2 levels "apple","pear": 1 1 1 2 2 2
-#&gt;  - attr(*, "out.attrs")=List of 2
-#&gt;   ..$ dim     : Named int [1:2] 3 2
-#&gt;   .. ..- attr(*, "names")= chr [1:2] "person" "fruit"
-#&gt;   ..$ dimnames:List of 2
-#&gt;   .. ..$ person: chr [1:3] "person=Peter" "person=Paul" "person=Mary"
-#&gt;   .. ..$ fruit : chr [1:2] "fruit=apple" "fruit=pear"</div><div class='input'>
-<span class='co'># ... with expandGrid() character strings are not converted by default.</span>
-<span class='co'># Also, there is no attribute "out.attrs" as it is set by expand.grid().</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 'data.frame':	6 obs. of  2 variables:
-#&gt;  $ person: chr  "Peter" "Peter" "Paul" "Paul" ...
-#&gt;  $ fruit : chr  "apple" "pear" "apple" "pear" ...</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Peter"</span>, <span class='st'>"Paul"</span>, <span class='st'>"Mary"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fruits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"apple"</span>, <span class='st'>"pear"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># With expand.grid() the values of the first argument change first...</span></span>
+<span class='r-in'><span class='op'>(</span><span class='va'>grid_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid</a></span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   person fruit</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  Peter apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2   Paul apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3   Mary apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  Peter  pear</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5   Paul  pear</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6   Mary  pear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#... with expandGrid() they change last.</span></span>
+<span class='r-in'><span class='op'>(</span><span class='va'>grid_2</span> <span class='op'>&lt;-</span> <span class='fu'>expandGrid</span><span class='op'>(</span>person <span class='op'>=</span> <span class='va'>persons</span>, fruit <span class='op'>=</span> <span class='va'>fruits</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   person fruit</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  Peter apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  Peter  pear</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3   Paul apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4   Paul  pear</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5   Mary apple</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6   Mary  pear</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># With expand.grid() character strings are converted to factors by default...</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 'data.frame':	6 obs. of  2 variables:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ person: Factor w/ 3 levels "Peter","Paul",..: 1 2 3 1 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ fruit : Factor w/ 2 levels "apple","pear": 1 1 1 2 2 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  - attr(*, "out.attrs")=List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ dim     : Named int [1:2] 3 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   .. ..- attr(*, "names")= chr [1:2] "person" "fruit"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ dimnames:List of 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   .. ..$ person: chr [1:3] "person=Peter" "person=Paul" "person=Mary"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   .. ..$ fruit : chr [1:2] "fruit=apple" "fruit=pear"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># ... with expandGrid() character strings are not converted by default.</span></span>
+<span class='r-in'><span class='co'># Also, there is no attribute "out.attrs" as it is set by expand.grid().</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>grid_2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 'data.frame':	6 obs. of  2 variables:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ person: chr  "Peter" "Peter" "Paul" "Paul" ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ fruit : chr  "apple" "pear" "apple" "pear" ...</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

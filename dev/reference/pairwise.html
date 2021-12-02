@@ -79,7 +79,7 @@ next to each other" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -223,25 +223,30 @@ take the unique strings appearing before a <code>split</code> character (if any)
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a.1"</span>, <span class='st'>"b_hi"</span>, <span class='st'>"c"</span>, <span class='st'>"a.2"</span>, <span class='st'>"d"</span>, <span class='st'>"b_bye"</span><span class='op'>)</span>
-
-<span class='co'># You have the most control when setting the starts argument</span>
-<span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, starts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a."</span>, <span class='st'>"b_"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a.1"   "a.2"   "b_hi"  "b_bye" "c"     "d"    </div><div class='input'>
-<span class='co'># Use default starts resulting from splitting at a split character</span>
-<span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"_"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a.1"   "b_hi"  "b_bye" "c"     "a.2"   "d"    </div><div class='input'>
-<span class='co'># This is actually the default</span>
-<span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a.1"   "b_hi"  "b_bye" "c"     "a.2"   "d"    </div><div class='input'>
-<span class='co'># Note that the split parameter is interpreted as a pattern where the</span>
-<span class='co'># dot has a special meaning unless it is escaped or enclosed in []</span>
-<span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"[.]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a.1"   "a.2"   "b_hi"  "c"     "d"     "b_bye"</div><div class='input'>
-<span class='co'># Same result as in the first example</span>
-<span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"[._]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a.1"   "a.2"   "b_hi"  "b_bye" "c"     "d"    </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a.1"</span>, <span class='st'>"b_hi"</span>, <span class='st'>"c"</span>, <span class='st'>"a.2"</span>, <span class='st'>"d"</span>, <span class='st'>"b_bye"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># You have the most control when setting the starts argument</span></span>
+<span class='r-in'><span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, starts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a."</span>, <span class='st'>"b_"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a.1"   "a.2"   "b_hi"  "b_bye" "c"     "d"    </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Use default starts resulting from splitting at a split character</span></span>
+<span class='r-in'><span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"_"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a.1"   "b_hi"  "b_bye" "c"     "a.2"   "d"    </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># This is actually the default</span></span>
+<span class='r-in'><span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a.1"   "b_hi"  "b_bye" "c"     "a.2"   "d"    </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Note that the split parameter is interpreted as a pattern where the</span></span>
+<span class='r-in'><span class='co'># dot has a special meaning unless it is escaped or enclosed in []</span></span>
+<span class='r-in'><span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"[.]"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a.1"   "a.2"   "b_hi"  "c"     "d"     "b_bye"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Same result as in the first example</span></span>
+<span class='r-in'><span class='fu'>pairwise</span><span class='op'>(</span><span class='va'>x</span>, split <span class='op'>=</span> <span class='st'>"[._]"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "a.1"   "a.2"   "b_hi"  "b_bye" "c"     "d"    </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

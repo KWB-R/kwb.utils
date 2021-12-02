@@ -79,7 +79,7 @@ column" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -241,41 +241,45 @@ frame. Each object must have as many elements as Data has rows.</p></td>
   <code>after</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, B <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span>
-
-<span class='co'># Insert new columns X and Y before column "B"</span>
-<span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, before <span class='op'>=</span> <span class='st'>"B"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   A  X  Y B
-#&gt; 1 1 x1 y1 2
-#&gt; 2 2 x2 y2 3
-#&gt; 3 3 x3 y3 4
-#&gt; 4 4 x4 y4 5
-#&gt; 5 5 x5 y5 6</div><div class='input'>
-<span class='co'># This is the same as inserting new columns X and Y after column "A":</span>
-<span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, after <span class='op'>=</span> <span class='st'>"A"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   A  X  Y B
-#&gt; 1 1 x1 y1 2
-#&gt; 2 2 x2 y2 3
-#&gt; 3 3 x3 y3 4
-#&gt; 4 4 x4 y4 5
-#&gt; 5 5 x5 y5 6</div><div class='input'>
-<span class='co'># You may also insert before the first...</span>
-<span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, before <span class='op'>=</span> <span class='st'>"A"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    X  Y A B
-#&gt; 1 x1 y1 1 2
-#&gt; 2 x2 y2 2 3
-#&gt; 3 x3 y3 3 4
-#&gt; 4 x4 y4 4 5
-#&gt; 5 x5 y5 5 6</div><div class='input'>
-<span class='co'># ... or after the last column</span>
-<span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, after <span class='op'>=</span> <span class='st'>"B"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   A B  X  Y
-#&gt; 1 1 2 x1 y1
-#&gt; 2 2 3 x2 y2
-#&gt; 3 3 4 x3 y3
-#&gt; 4 4 5 x4 y4
-#&gt; 5 5 6 x5 y5</div><div class='input'>  
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, B <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Insert new columns X and Y before column "B"</span></span>
+<span class='r-in'><span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, before <span class='op'>=</span> <span class='st'>"B"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   A  X  Y B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 x1 y1 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 2 x2 y2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 3 x3 y3 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 4 x4 y4 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 5 x5 y5 6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># This is the same as inserting new columns X and Y after column "A":</span></span>
+<span class='r-in'><span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, after <span class='op'>=</span> <span class='st'>"A"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   A  X  Y B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 x1 y1 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 2 x2 y2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 3 x3 y3 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 4 x4 y4 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 5 x5 y5 6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># You may also insert before the first...</span></span>
+<span class='r-in'><span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, before <span class='op'>=</span> <span class='st'>"A"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    X  Y A B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 x1 y1 1 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 x2 y2 2 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 x3 y3 3 4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 x4 y4 4 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 x5 y5 5 6</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># ... or after the last column</span></span>
+<span class='r-in'><span class='fu'>insertColumns</span><span class='op'>(</span><span class='va'>Data</span>, after <span class='op'>=</span> <span class='st'>"B"</span>, X <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>, Y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   A B  X  Y</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 2 x1 y1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 2 3 x2 y2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 3 4 x3 y3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 4 5 x4 y4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 5 6 x5 y5</span>
+<span class='r-in'>  </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

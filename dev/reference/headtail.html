@@ -79,7 +79,7 @@ respectively. Print the number of omitted rows" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -225,63 +225,67 @@ placeholder to print the number of omitted rows</p></td>
     <p>number of omitted rows, invisibly</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>number <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>26</span>, letter <span class='op'>=</span> <span class='va'>LETTERS</span><span class='op'>)</span>
-<span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   number letter
-#&gt; 1      1      A
-#&gt; 2      2      B
-#&gt; 3      3      C
-#&gt; [20 rows omitted] 
-#&gt;    number letter
-#&gt; 24     24      X
-#&gt; 25     25      Y
-#&gt; 26     26      Z</div><div class='input'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   number letter
-#&gt; 1      1      A
-#&gt; 2      2      B
-#&gt; 3      3      C
-#&gt; 4      4      D
-#&gt; 5      5      E
-#&gt; [16 rows omitted] 
-#&gt;    number letter
-#&gt; 22     22      V
-#&gt; 23     23      W
-#&gt; 24     24      X
-#&gt; 25     25      Y
-#&gt; 26     26      Z</div><div class='input'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>16</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   number letter
-#&gt; 1      1      A
-#&gt; 2      2      B
-#&gt; 3      3      C
-#&gt; 4      4      D
-#&gt; 5      5      E
-#&gt; 6      6      F
-#&gt; 7      7      G
-#&gt; 8      8      H
-#&gt; [10 rows omitted] 
-#&gt;    number letter
-#&gt; 19     19      S
-#&gt; 20     20      T
-#&gt; 21     21      U
-#&gt; 22     22      V
-#&gt; 23     23      W
-#&gt; 24     24      X
-#&gt; 25     25      Y
-#&gt; 26     26      Z</div><div class='input'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span><span class='op'>[</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>20</span>, <span class='op'>]</span>, <span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    number letter
-#&gt; 10     10      J
-#&gt; 11     11      K
-#&gt; 12     12      L
-#&gt; 13     13      M
-#&gt; 14     14      N
-#&gt; [1 rows omitted] 
-#&gt;    number letter
-#&gt; 16     16      P
-#&gt; 17     17      Q
-#&gt; 18     18      R
-#&gt; 19     19      S
-#&gt; 20     20      T</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>number <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>26</span>, letter <span class='op'>=</span> <span class='va'>LETTERS</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1      A</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      2      B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      3      C</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [20 rows omitted] </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24     24      X</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25     25      Y</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26     26      Z</span>
+<span class='r-in'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1      A</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      2      B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      3      C</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      4      D</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5      5      E</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [16 rows omitted] </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22     22      V</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23     23      W</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24     24      X</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25     25      Y</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26     26      Z</span>
+<span class='r-in'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>16</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1      A</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      2      B</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      3      C</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      4      D</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5      5      E</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6      6      F</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7      7      G</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8      8      H</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10 rows omitted] </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19     19      S</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20     20      T</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 21     21      U</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 22     22      V</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 23     23      W</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 24     24      X</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 25     25      Y</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 26     26      Z</span>
+<span class='r-in'><span class='fu'>headtail</span><span class='op'>(</span><span class='va'>x</span><span class='op'>[</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>20</span>, <span class='op'>]</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10     10      J</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 11     11      K</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 12     12      L</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 13     13      M</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 14     14      N</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1 rows omitted] </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    number letter</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 16     16      P</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 17     17      Q</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 18     18      R</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 19     19      S</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 20     20      T</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

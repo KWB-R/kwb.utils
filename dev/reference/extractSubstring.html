@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -230,39 +230,47 @@ otherwise vectors of character.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define pattern matching a date</span>
-<span class='va'>pattern</span> <span class='op'>&lt;-</span> <span class='st'>"([^ ]+), ([0-9]+) of ([^ ]+)"</span>
-
-<span class='co'># Extract single sub expressions from one string</span>
-<span class='va'>datestring</span> <span class='op'>&lt;-</span> <span class='st'>"Thursday, 8 of December"</span>
-<span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># ""Thursday""</span>
-</div><div class='output co'>#&gt; [1] "Thursday"</div><div class='input'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>2</span><span class='op'>)</span> <span class='co'># "8"</span>
-</div><div class='output co'>#&gt; [1] "8"</div><div class='input'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='co'># "December"</span>
-</div><div class='output co'>#&gt; [1] "December"</div><div class='input'>
-<span class='co'># Extract single sub expressions from a vector of strings</span>
-<span class='va'>datestrings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Thursday, 8 of December"</span>, <span class='st'>"Tuesday, 14 of January"</span><span class='op'>)</span>
-<span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># "Thursday" "Tuesday"</span>
-</div><div class='output co'>#&gt; [1] "Thursday" "Tuesday" </div><div class='input'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>2</span><span class='op'>)</span> <span class='co'># "8"  "14"</span>
-</div><div class='output co'>#&gt; [1] "8"  "14"</div><div class='input'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='co'># "December" "January" </span>
-</div><div class='output co'>#&gt; [1] "December" "January" </div><div class='input'>
-<span class='co'># Extract more than one subexpression at once -&gt; data.frame</span>
-<span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   subexp.1 subexp.2 subexp.3
-#&gt; 1 Thursday        8 December
-#&gt; 2  Tuesday       14  January</div><div class='input'>
-<span class='co'>#   subexp.1 subexp.2 subexp.3</span>
-<span class='co'>#   1 Thursday        8 December</span>
-<span class='co'>#   2  Tuesday       14  January</span>
-
-<span class='co'># Name the sub expressions by naming their number in index (3rd argument)</span>
-<span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>weekday <span class='op'>=</span> <span class='fl'>1</span>, <span class='fl'>2</span>, month <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    weekday subexp.2    month
-#&gt; 1 Thursday        8 December
-#&gt; 2  Tuesday       14  January</div><div class='input'><span class='co'>#   weekday subexp.2    month</span>
-<span class='co'>#   1 Thursday        8 December</span>
-<span class='co'>#   2  Tuesday       14  January</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Define pattern matching a date</span></span>
+<span class='r-in'><span class='va'>pattern</span> <span class='op'>&lt;-</span> <span class='st'>"([^ ]+), ([0-9]+) of ([^ ]+)"</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Extract single sub expressions from one string</span></span>
+<span class='r-in'><span class='va'>datestring</span> <span class='op'>&lt;-</span> <span class='st'>"Thursday, 8 of December"</span></span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># ""Thursday""</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Thursday"</span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>2</span><span class='op'>)</span> <span class='co'># "8"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "8"</span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestring</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='co'># "December"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "December"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Extract single sub expressions from a vector of strings</span></span>
+<span class='r-in'><span class='va'>datestrings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Thursday, 8 of December"</span>, <span class='st'>"Tuesday, 14 of January"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='co'># "Thursday" "Tuesday"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Thursday" "Tuesday" </span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>2</span><span class='op'>)</span> <span class='co'># "8"  "14"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "8"  "14"</span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>3</span><span class='op'>)</span> <span class='co'># "December" "January" </span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "December" "January" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Extract more than one subexpression at once -&gt; data.frame</span></span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   subexp.1 subexp.2 subexp.3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Thursday        8 December</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  Tuesday       14  January</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>#   subexp.1 subexp.2 subexp.3</span></span>
+<span class='r-in'><span class='co'>#   1 Thursday        8 December</span></span>
+<span class='r-in'><span class='co'>#   2  Tuesday       14  January</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Name the sub expressions by naming their number in index (3rd argument)</span></span>
+<span class='r-in'><span class='fu'>extractSubstring</span><span class='op'>(</span><span class='va'>pattern</span>, <span class='va'>datestrings</span>, index <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>weekday <span class='op'>=</span> <span class='fl'>1</span>, <span class='fl'>2</span>, month <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    weekday subexp.2    month</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 Thursday        8 December</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  Tuesday       14  January</span>
+<span class='r-in'><span class='co'>#   weekday subexp.2    month</span></span>
+<span class='r-in'><span class='co'>#   1 Thursday        8 December</span></span>
+<span class='r-in'><span class='co'>#   2  Tuesday       14  January</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

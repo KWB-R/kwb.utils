@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -219,36 +219,39 @@
   <code>dimension</code> removed</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define an array of two matrices</span>
-<span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span>
-<span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>, dimnames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"z"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># The aim is to select the first column of the first matrix with</span>
-<span class='co'># the matrix structure being kept. This cannot be done with the</span>
-<span class='co'># standard "[" operator. It has indeed a "drop" argument but this</span>
-<span class='co'># acts on all dimensions:</span>
-
-<span class='co'># By default, drop is TRUE. The result is a named vector</span>
-<span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>
-</div><div class='output co'>#&gt; x1 x2 
-#&gt;  1  2 </div><div class='input'>
-<span class='co'># With drop = FALSE we get a 3D-array again and not a matrix</span>
-<span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>
-</div><div class='output co'>#&gt; , , z1
-#&gt; 
-#&gt;    y1
-#&gt; x1  1
-#&gt; x2  2
-#&gt; </div><div class='input'>
-<span class='co'># Use dropDim to remove the third dimension of an array that</span>
-<span class='co'># has already one dimension of length one</span>
-<span class='fu'>dropDim</span><span class='op'>(</span><span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>, dimension <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    y1
-#&gt; x1  1
-#&gt; x2  2</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Define an array of two matrices</span></span>
+<span class='r-in'><span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span></span>
+<span class='r-in'><span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span><span class='op'>)</span>, dimnames <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"z"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># The aim is to select the first column of the first matrix with</span></span>
+<span class='r-in'><span class='co'># the matrix structure being kept. This cannot be done with the</span></span>
+<span class='r-in'><span class='co'># standard "[" operator. It has indeed a "drop" argument but this</span></span>
+<span class='r-in'><span class='co'># acts on all dimensions:</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># By default, drop is TRUE. The result is a named vector</span></span>
+<span class='r-in'><span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x1 x2 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  1  2 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># With drop = FALSE we get a 3D-array again and not a matrix</span></span>
+<span class='r-in'><span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , z1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    y1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x1  1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x2  2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Use dropDim to remove the third dimension of an array that</span></span>
+<span class='r-in'><span class='co'># has already one dimension of length one</span></span>
+<span class='r-in'><span class='fu'>dropDim</span><span class='op'>(</span><span class='va'>A</span><span class='op'>[</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, drop <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>]</span>, dimension <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    y1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x1  1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> x2  2</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

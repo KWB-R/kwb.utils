@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -239,18 +239,19 @@ TRUE</code></p></td>
     <p>list of logical</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span>
-
-<span class='va'>test1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'>compareDataFrames</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'>compareDataFrames</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"a"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
-<span class='va'>expectedFalse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"identical"</span>, <span class='st'>"identicalExceptAttributes"</span>, <span class='st'>"sameColumnNames"</span><span class='op'>)</span>
-<span class='va'>test2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>z</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>==</span> <span class='va'>expectedFalse</span><span class='op'>)</span>
-
-<span class='va'>test1</span> <span class='op'>&amp;&amp;</span> <span class='va'>test2</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, b <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>test1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'>compareDataFrames</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'>compareDataFrames</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"b"</span>, <span class='st'>"a"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>expectedFalse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"identical"</span>, <span class='st'>"identicalExceptAttributes"</span>, <span class='st'>"sameColumnNames"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>test2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/which.html'>which</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='va'>z</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>==</span> <span class='va'>expectedFalse</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>test1</span> <span class='op'>&amp;&amp;</span> <span class='va'>test2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

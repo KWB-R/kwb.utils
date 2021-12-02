@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -248,18 +248,20 @@ output structure will be a list instead a list of lists</p></td>
   subpatterns is returned.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># split date into year, month and day</span>
-<span class='fu'>subExpressionMatches</span><span class='op'>(</span><span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; NULL</div><div class='input'>
-<span class='co'># split date into year, month and day (give names to the resulting elements)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>subExpressionMatches</span><span class='op'>(</span>
-  regularExpression <span class='op'>=</span> <span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span>,
-  match.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"day"</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Today is "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>day</span>, <span class='st'>"/"</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>month</span>, <span class='st'>" of "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>year</span>, <span class='st'>"\n"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Today is / of </div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># split date into year, month and day</span></span>
+<span class='r-in'><span class='fu'>subExpressionMatches</span><span class='op'>(</span><span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> NULL</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># split date into year, month and day (give names to the resulting elements)</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>subExpressionMatches</span><span class='op'>(</span></span>
+<span class='r-in'>  regularExpression <span class='op'>=</span> <span class='st'>"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class='st'>"2014-04-23"</span>,</span>
+<span class='r-in'>  match.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"day"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"Today is "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>day</span>, <span class='st'>"/"</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>month</span>, <span class='st'>" of "</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>year</span>, <span class='st'>"\n"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Today is / of </span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -195,7 +195,7 @@
     </div>
 
     <div class="ref-description">
-    <p>If <code>x1</code> is NULL <code>x2</code> is returned otherwise <code><a href='https://rdrr.io/r/base/cbind.html'>cbind(x1, x2)</a></code></p>
+    <p>If <code>x1</code> is NULL <code>x2</code> is returned otherwise <code>cbind(x1, x2)</code></p>
     </div>
 
     <pre class="usage"><span class='fu'>safeColumnBind</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span></pre>
@@ -215,27 +215,28 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>result of <code><a href='https://rdrr.io/r/base/cbind.html'>cbind(x1, x2)</a></code> or <code>x2</code> if <code>x1</code>
+    <p>result of <code>cbind(x1, x2)</code> or <code>x2</code> if <code>x1</code>
   is <code>NULL</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
-  
-<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span>
-  
-  <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'>safeColumnBind</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span>
-  
-  <span class='co'># using cbind would result in an error:</span>
-  <span class='co'># x1 &lt;- cbind(x1, x2)</span>
-<span class='op'>}</span>
-  
-<span class='va'>x1</span>
-</div><div class='output co'>#&gt;   a          b a          b a          b
-#&gt; 1 1 -0.9676737 1 -0.9369726 1 -2.1443322
-#&gt; 2 2  0.7924511 2  0.8613005 2  0.4847217
-#&gt; 3 3  1.8150308 3  0.6216399 3 -0.4472743</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'>  <span class='va'>x2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>x1</span> <span class='op'>&lt;-</span> <span class='fu'>safeColumnBind</span><span class='op'>(</span><span class='va'>x1</span>, <span class='va'>x2</span><span class='op'>)</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'>  <span class='co'># using cbind would result in an error:</span></span>
+<span class='r-in'>  <span class='co'># x1 &lt;- cbind(x1, x2)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='va'>x1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   a          b a          b a          b</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 1 -0.9676737 1 -0.9369726 1 -2.1443322</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 2  0.7924511 2  0.8613005 2  0.4847217</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 3  1.8150308 3  0.6216399 3 -0.4472743</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

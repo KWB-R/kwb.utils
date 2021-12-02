@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -222,25 +222,26 @@ element names "leading" to the value when starting at <code>x</code>. For exampl
 the path to element <code>x$a$a1</code> is <code>/a/a1</code> (see example).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Define a recursive list</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a1 <span class='op'>=</span> <span class='st'>"A1"</span>, a2 <span class='op'>=</span> <span class='st'>"A2"</span><span class='op'>)</span>,
-  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>b1 <span class='op'>=</span> <span class='st'>"B1"</span>, b2 <span class='op'>=</span> <span class='st'>"B2"</span>, b3 <span class='op'>=</span> <span class='st'>"B3"</span><span class='op'>)</span>,
-  c <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c11 <span class='op'>=</span> <span class='st'>"C11"</span><span class='op'>)</span>, c2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c21 <span class='op'>=</span> <span class='st'>"C21"</span>, c22 <span class='op'>=</span> <span class='st'>"C22"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># Get all non-list-elements and their "path" as a data frame</span>
-<span class='fu'>getPathsAndValuesFromRecursiveList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;       path value
-#&gt; 1     a/a1    A1
-#&gt; 2     a/a2    A2
-#&gt; 3     b/b1    B1
-#&gt; 4     b/b2    B2
-#&gt; 5     b/b3    B3
-#&gt; 6 c/c1/c11   C11
-#&gt; 7 c/c2/c21   C21
-#&gt; 8 c/c2/c22   C22</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Define a recursive list</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>  a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a1 <span class='op'>=</span> <span class='st'>"A1"</span>, a2 <span class='op'>=</span> <span class='st'>"A2"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>b1 <span class='op'>=</span> <span class='st'>"B1"</span>, b2 <span class='op'>=</span> <span class='st'>"B2"</span>, b3 <span class='op'>=</span> <span class='st'>"B3"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  c <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c11 <span class='op'>=</span> <span class='st'>"C11"</span><span class='op'>)</span>, c2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>c21 <span class='op'>=</span> <span class='st'>"C21"</span>, c22 <span class='op'>=</span> <span class='st'>"C22"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Get all non-list-elements and their "path" as a data frame</span></span>
+<span class='r-in'><span class='fu'>getPathsAndValuesFromRecursiveList</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>       path value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1     a/a1    A1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2     a/a2    A2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3     b/b1    B1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4     b/b2    B2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5     b/b3    B3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6 c/c1/c11   C11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7 c/c2/c21   C21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8 c/c2/c22   C22</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

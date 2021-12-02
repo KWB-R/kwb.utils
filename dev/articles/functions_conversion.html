@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
       </span>
     </div>
 
@@ -148,7 +148,7 @@
       <h1 data-toc-skip>Conversion Functions</h1>
                         <h4 class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-03-08</h4>
+            <h4 class="date">2021-12-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_conversion.Rmd"><code>vignettes/functions_conversion.Rmd</code></a></small>
       <div class="hidden name"><code>functions_conversion.Rmd</code></div>
@@ -161,7 +161,7 @@
 <h3 class="hasAnchor">
 <a href="#function-ascolumnlist" class="anchor"></a>Function <code>asColumnList()</code>
 </h3>
-<p>This function converts a matrix into a list of its columns. This is useful when you want to loop through the columns of a matrix <code>m</code> with <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>. You could also loop through the columns with <code><a href="https://rdrr.io/r/base/apply.html">apply(m, MARGINS = 2)</a></code>. However, the usage of <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> should be preferred to the usage of <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, as demonstrated in the following example:</p>
+<p>This function converts a matrix into a list of its columns. This is useful when you want to loop through the columns of a matrix <code>m</code> with <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>. You could also loop through the columns with <code>apply(m, MARGINS = 2)</code>. However, the usage of <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> should be preferred to the usage of <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, as demonstrated in the following example:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Define and show a very simple matrix</span>
 <span class="op">(</span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
