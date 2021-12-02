@@ -1,6 +1,7 @@
 # Current
 
 * fix bug in multiColumnLookup(): Consider "value" argument
+* add findChanges(), to be used by kwb.utils::hsEventsOnChange()
 
 # [kwb.utils 0.8.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.8.0) <small>2021-02-19</small>
 
