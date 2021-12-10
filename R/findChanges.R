@@ -5,6 +5,10 @@
 #' \code{ends_at} whithin each of which the value does not change, i.e. 
 #' \code{length(unique(x[starts_at:ends_at])) == 1L} is \code{TRUE}.
 #' 
+#' The input vector \code{x} must not contain any \code{NA} because it is not
+#' clear how to handle this. The functions stops with an error if there are any
+#' \code{NA} in \code{x}.
+#' 
 #' @param x vector of atomic mode (e.g. logical, numeric, character)
 #' @return data frame with one row more than there are value changes in
 #'   \code{x}. If the value in \code{x} does not change from one index to the
@@ -21,6 +25,10 @@
 #' 
 findChanges <- function(x)
 {
+  if (anyNA(x)) {
+    stop("The input vector x must not contain any NA!")
+  }
+  
   n <- length(x)
 
   if (n == 0L) {
