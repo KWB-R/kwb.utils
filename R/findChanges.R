@@ -6,7 +6,7 @@
 #' \code{length(unique(x[starts_at:ends_at])) == 1L} is \code{TRUE}.
 #' 
 #' The input vector \code{x} must not contain any \code{NA} because it is not
-#' clear how to handle this. The functions stops with an error if there are any
+#' clear how to handle this. The function stops with an error if there are any
 #' \code{NA} in \code{x}.
 #' 
 #' @param x vector of atomic mode (e.g. logical, numeric, character)
