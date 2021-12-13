@@ -24,6 +24,11 @@ regions", i.e. the regions between indices \code{starts_at} and
 \code{ends_at} whithin each of which the value does not change, i.e. 
 \code{length(unique(x[starts_at:ends_at])) == 1L} is \code{TRUE}.
 }
+\details{
+The input vector \code{x} must not contain any \code{NA} because it is not
+clear how to handle this. The function stops with an error if there are any
+\code{NA} in \code{x}.
+}
 \examples{
 findChanges(c(1,2,2,3,3,3))
 findChanges(c("a", "a", "b", "c", "c", "d"))
