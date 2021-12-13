@@ -75,6 +75,24 @@ hsRestoreAttributes <- function(x, attribs)
 #' 
 getAttribute <- function(x, attributeName, do.stop = TRUE)
 {
+  # If the attribute name contains slash(es), split the name at the slash 
+  # character and call this function for each segment
+  split_at <- "/"
+  
+  if (grepl(split_at, attributeName)) {
+    
+    segments <- strsplit(attributeName, "/")[[1L]]
+    
+    result <- x
+    
+    while (length(segments)) {
+      result <- getAttribute(result, segments[1L], do.stop = do.stop)
+      segments <- segments[-1L]
+    }
+    
+    return (result)
+  }
+  
   attributeNames <- names(attributes(x))
   
   if (do.stop && ! attributeName %in% attributeNames) {

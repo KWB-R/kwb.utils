@@ -9,6 +9,7 @@
 * Add new private functions: enumeration(), hintAvailable(), hintNoSuch(),
   stopIsNotBut(), 
 * checkForMissingColumns(), selectElements(): Use new private functions
+* Allow to pass a "path" to getAttribute()
 
 # [kwb.utils 0.8.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.8.0) <small>2021-02-19</small>
 
