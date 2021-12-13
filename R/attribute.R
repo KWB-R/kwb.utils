@@ -72,6 +72,21 @@ hsRestoreAttributes <- function(x, attribs)
 #' @param do.stop if \code{TRUE} (default) an error is raised if the attribute
 #'   does not exist.
 #' @export
+#' @examples 
+#' 
+#' x <- structure(1, a = 2)
+#' # getAttribute(x, "b") # gives a clear error message
+#' identical(getAttribute(x, "a"), attr(x, "a")) # is TRUE
+#' 
+#' # Get an attribute's attribute by means of a "path" notation
+#' y <- structure(1, a = structure(2, b = 3))
+#' z <- structure(4, y = y)
+#' 
+#' str(y)
+#' str(z)
+#' 
+#' kwb.utils::getAttribute(y, "a/b")
+#' kwb.utils::getAttribute(z, "y/a/b")
 #' 
 getAttribute <- function(x, attributeName, do.stop = TRUE)
 {
