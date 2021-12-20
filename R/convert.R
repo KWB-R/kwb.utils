@@ -543,12 +543,13 @@ hsStringToDate <- function(strDate, dateFormat)
       paste(
         "Error when trying to convert strings to Dates.",
         "Did you use the wrong date format (\"%s\")?\n",
-        "E.g. \"%s\" could not be converted to Date.\n",
+        "E.g. %s could not be converted to Date.\n",
         "Use placeholders %%d (day), %%m (month), ",
         "%%y (2-digit year), %%Y (4-digit year),",
         "e.g. \"%%d.%%m.%%Y\""
       ),
-      dateFormat, kwb.utils::stringList(utils::head(strDate[not_converted], 3L))
+      dateFormat, 
+      kwb.utils::stringList(utils::head(strDate[not_converted], 3L))
     ))
   }
   
