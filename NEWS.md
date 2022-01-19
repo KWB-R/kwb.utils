@@ -1,3 +1,5 @@
+# Changes since last release
+
 # [kwb.utils 0.10.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.10.0) <small>2022-01-19</small>
 
 * add findChanges(), to be used by kwb.utils::hsEventsOnChange()
