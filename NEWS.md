@@ -1,4 +1,8 @@
-# Current
+# [kwb.utils 0.10.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.10.0) <small>2022-01-19</small>
+
+* add findChanges(), to be used by kwb.utils::hsEventsOnChange()
+* add toConditional()
+* allow to pass a "path" to getAttribute()
 
 # [kwb.utils 0.9.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.9.0) <small>2021-11-16</small>
 
