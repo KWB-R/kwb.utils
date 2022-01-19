@@ -16,7 +16,8 @@ test_that("findChanges() works", {
   expect_identical(f(c("a", "b", "b", "c")), data.frame(
     starts_at = c(1L, 2L, 4L),
     ends_at = c(1L, 3L, 4L), 
-    value = c("a", "b", "c")
+    value = c("a", "b", "c"),
+    stringsAsFactors = FALSE
   ))
 
   # Take care with real numbers!
