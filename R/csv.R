@@ -1,3 +1,19 @@
+# argsCsv ----------------------------------------------------------------------
+
+#' Language Abbreviation to "sep" and "dec" argument
+#' 
+#' @param lng "de" for German, "en" for Englisch
+#' @return list with elements \code{sep} (column separator), \code{dec} 
+#'   (character used for decimal points)
+#' @export
+argsCsv <- function(lng = "de")
+{
+  list(
+    sep = selectElements(list(de = ";", en = ","), lng),
+    dec = selectElements(list(de = ",", en = "."), lng)
+  )
+}
+
 # convertCsvFile ---------------------------------------------------------------
 
 #' Modify the format of a CSV file
