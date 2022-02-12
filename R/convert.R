@@ -418,14 +418,17 @@ hsValidValue <- function(x, lng, dbg = FALSE, accept.na = TRUE)
   p1 <- "\\d*"                         
   
   # number with decimal point only
-  p2 <- sprintf("\\d*\\%s\\d*", decim) 
+  p2 <- sprintf("\\d*[%s]\\d*", decim) 
   
   # number with thousand's separator
-  p3 <- sprintf("\\d{1,3}(\\%s\\d{3})+(\\%s\\d*)?", thsep, decim) 
+  p3 <- sprintf("\\d{1,3}([%s]\\d{3})+([%s]\\d*)?", thsep, decim) 
   
-  ptrn <- sprintf("^([+-]?((%s)|(%s)|(%s)))$", p1, p2, p3)  
+  # number in scientific notation, e.g. 1.233e-09
+  p4 <- paste0(p2, "[eE][+-]\\d+")
+  
+  ptrn <- sprintf("^([+-]?((%s)|(%s)|(%s)|(%s)))$", p1, p2, p3, p4)
 
-  catIf(dbg, "applied pattern: ", ptrn, "\n")    
+  catIf(dbg, "applied pattern: ", ptrn, "\n")
     
   res <- rep(FALSE, length(x))
   
