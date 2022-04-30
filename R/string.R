@@ -447,21 +447,26 @@ hsSubstSpecChars <- function(x)
 #' Substitution of Special Characters
 #' 
 #' @param x string containing special characters to be substituted
+#' @param deuOnly logical. If \code{TRUE} only the German special characters 
+#'   Umlaute and Eszett are replaced.
 #' @return input string \emph{x} with special characters being substituted by 
 #'   a meaningful represenation or underscore, multiple underscores replaced
 #'   by a single underscore and multiple underscores at the end removed.
 #' @export
 #' 
-substSpecialChars <- function(x)
+substSpecialChars <- function(x, deuOnly = FALSE)
 {
-  replacements_x <- list(
+  replacements_deu <- list(
     "\\xc4" = "Ae", 
     "\\xe4" = "ae", 
     "\\xd6" = "Oe", 
     "\\xf6" = "oe", 
     "\\xdc" = "Ue", 
     "\\xfc" = "ue", 
-    "\\xdf" = "ss", 
+    "\\xdf" = "ss"
+  )
+  
+  replacements_grc <- list(
     "\\xb5" = "my"
   )
   
@@ -474,8 +479,13 @@ substSpecialChars <- function(x)
     "_+" = "_",          # Replace multiple underscores by one underscore
     "_$" = ""            # Remove underscore at the end
   )
-  
-  multiSubstitute(x, c(replacements_x, replacements_other))
+
+  multiSubstitute(x, replacements = c(
+    replacements_deu, 
+    if (! deuOnly) {
+      list(replacements_grc, replacements_other)
+    } # else NULL
+  ))
 }
 
 # stringToExpression -----------------------------------------------------------
