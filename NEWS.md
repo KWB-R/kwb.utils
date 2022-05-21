@@ -2,6 +2,8 @@
 
 * add argument "deuOnly" to substSpecialChars()
 * add function clipMatrix()
+* add argument "rng" to inRange()
+* add arguments "sep", "simple" to makeUnique()
 
 # [kwb.utils 0.11.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.11.0) <small>2022-01-19</small>
 

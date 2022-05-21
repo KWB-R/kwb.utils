@@ -214,11 +214,16 @@ naToLastNonNa <- function(x, method = 2)
 #' @param x vector of character strings
 #' @param warn if \code{TRUE} (default) a warning showing the duplicated values is 
 #'   given
+#' @param sep separator between name and suffix number. Default: "."
+#' @param simple if \code{TRUE} all elements with identical name (e.g. "a") are 
+#'   numbered (e.g. "a.1", "a.2", "a.3"), otherwise the first element is kept
+#'   unchanged and all but the first one are numbered (e.g. "a", "a.1", "a.2").
+#'   The default is \code{FALSE}.
 #' @return \code{x} with duplicate elements being modified to "element.1",
 #'   "element.2", etc.
 #' @export
 #' 
-makeUnique <- function(x, warn = TRUE)
+makeUnique <- function(x, warn = TRUE, sep = ".", simple = FALSE)
 {
   if (anyDuplicated(x)) {
 
@@ -227,7 +232,6 @@ makeUnique <- function(x, warn = TRUE)
     duplicates <- unique(x[is.duplicated])
 
     if (warn) {
-      
       warning("There are duplicate values: ", stringList(duplicates))
     }
 
@@ -235,7 +239,11 @@ makeUnique <- function(x, warn = TRUE)
 
       indices <- which(x == duplicate)
 
-      x[indices[-1]] <- paste(x[indices[-1]], seq_len(length(indices)-1), sep = ".")
+      if (! simple) {
+        indices <- indices[-1L]
+      }
+
+      x[indices] <- paste(x[indices], seq_len(length(indices)), sep = sep)
     }
   }
 
