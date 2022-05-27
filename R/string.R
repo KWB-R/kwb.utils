@@ -473,7 +473,7 @@ substSpecialChars <- function(x, deuOnly = FALSE)
   replacements_other <- list(
     "%" = "proz",
     "\\\\" = "_",        # Replace backslash with underscore
-    "[() -/.,;?]" = "_", # Replace special characters with underscore
+    "[() -/.,;:?]" = "_", # Replace special characters with underscore
     "\\[" = "_",         # Replace opening bracket with underscore
     "\\]" = "_",         # Replace closing bracket with underscore
     "_+" = "_",          # Replace multiple underscores by one underscore
@@ -483,7 +483,7 @@ substSpecialChars <- function(x, deuOnly = FALSE)
   multiSubstitute(x, replacements = c(
     replacements_deu, 
     if (! deuOnly) {
-      list(replacements_grc, replacements_other)
+      c(replacements_grc, replacements_other)
     } # else NULL
   ))
 }
