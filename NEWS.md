@@ -9,7 +9,8 @@
 * substSpecialChars(): fix bug, substitute also colon with underscore
 * extractRowRanges():
     - let it work also for vector of character
-    - rename argument "columnName" to "column" and change order of arguments
+    - rename argument "columnName" to "column", add argument "starts", change 
+      order of arguments
   
 # [kwb.utils 0.11.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.11.0) <small>2022-01-19</small>
 
