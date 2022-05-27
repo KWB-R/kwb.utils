@@ -6,13 +6,20 @@
  
 adds ".1", ".2", etc. to duplicate values}
 \usage{
-makeUnique(x, warn = TRUE)
+makeUnique(x, warn = TRUE, sep = ".", simple = FALSE)
 }
 \arguments{
 \item{x}{vector of character strings}
 
 \item{warn}{if \code{TRUE} (default) a warning showing the duplicated values is 
 given}
+
+\item{sep}{separator between name and suffix number. Default: "."}
+
+\item{simple}{if \code{TRUE} all elements with identical name (e.g. "a") are 
+numbered (e.g. "a.1", "a.2", "a.3"), otherwise the first element is kept
+unchanged and all but the first one are numbered (e.g. "a", "a.1", "a.2").
+The default is \code{FALSE}.}
 }
 \value{
 \code{x} with duplicate elements being modified to "element.1",

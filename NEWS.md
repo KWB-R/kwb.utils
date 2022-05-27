@@ -1,5 +1,18 @@
 # Changes since last release
 
+# [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
+
+* add argument "deuOnly" to substSpecialChars()
+* add function clipMatrix()
+* add argument "rng" to inRange()
+* add arguments "sep", "simple" to makeUnique()
+* substSpecialChars(): fix bug, substitute also colon with underscore
+* extractRowRanges():
+    - let it work also for vector of character
+    - rename argument "columnName" to "column" and change order of arguments
+  
+# [kwb.utils 0.11.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.11.0) <small>2022-01-19</small>
+
 * add argsCsv(), moved from kwb.sema
 
 # [kwb.utils 0.10.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.10.0) <small>2022-01-19</small>
