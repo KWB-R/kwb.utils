@@ -364,9 +364,9 @@ insertColumns <- function(
 
 # moveColumnsToFront -----------------------------------------------------------
 
-#' Move Columns to the Start of a Data Frame
+#' Move Columns to the Left
 #' 
-#' move columns to the start of a data frame or matrix
+#' Move columns of a data frame or matrix to the left 
 #' 
 #' @param x data frame
 #' @param columns vector of column names

@@ -2,7 +2,7 @@
 % Please edit documentation in R/column.R
 \name{moveColumnsToFront}
 \alias{moveColumnsToFront}
-\title{Move Columns to the Start of a Data Frame}
+\title{Move Columns to the Left}
 \usage{
 moveColumnsToFront(x, columns = NULL)
 }
@@ -15,7 +15,7 @@ moveColumnsToFront(x, columns = NULL)
 data frame or matrix with \code{columns} being the leftmost columns
 }
 \description{
-move columns to the start of a data frame or matrix
+Move columns of a data frame or matrix to the left
 }
 \examples{
 x <- data.frame(a = 1:5, b = 2:6, c = 3:7)
