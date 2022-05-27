@@ -9,6 +9,10 @@
 #'   vector of character)
 #' @param column name of column in which to search for \emph{pattern} if 
 #'   \code{x} is a data frame or a matrix
+#' @param starts optional. Vector of indices representing the starts of the row
+#'   ranges to be extracted. This argument overrides \code{pattern}. Instead of
+#'   using the pattern to find the start indices, the indices given here are 
+#'   used.
 #' @param startOffset row offset to be added to row number in which the pattern
 #'   matches
 #' @param stopOffset row offset to be subtracted from row number in which the
@@ -80,7 +84,7 @@
 #'   nameByMatch = TRUE
 #' )
 extractRowRanges <- function(
-  x, pattern, column = NULL, startOffset = 1L, stopOffset = 1L,
+  x, pattern, column = NULL, starts = NULL, startOffset = 1L, stopOffset = 1L,
   nameByMatch = FALSE, nameColumnsByMatch = TRUE, renumber = TRUE
 )
 {
@@ -102,7 +106,7 @@ extractRowRanges <- function(
   # Find the rows of the data frame or the indices in the vector of strings 
   # where the values in column <column> or the elements in vector 
   # <x> match the pattern
-  starts <- grep(pattern, values)
+  starts <- kwb.utils::defaultIfNULL(starts, grep(pattern, values))
 
   # Create index ranges from one start position to (one before) the next  
   ranges <- startsToRanges(

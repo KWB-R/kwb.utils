@@ -8,6 +8,7 @@ extractRowRanges(
   x,
   pattern,
   column = NULL,
+  starts = NULL,
   startOffset = 1L,
   stopOffset = 1L,
   nameByMatch = FALSE,
@@ -25,6 +26,11 @@ vector of character)}
 
 \item{column}{name of column in which to search for \emph{pattern} if 
 \code{x} is a data frame or a matrix}
+
+\item{starts}{optional. Vector of indices representing the starts of the row
+ranges to be extracted. This argument overrides \code{pattern}. Instead of
+using the pattern to find the start indices, the indices given here are 
+used.}
 
 \item{startOffset}{row offset to be added to row number in which the pattern
 matches}
