@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,23 +35,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -120,7 +116,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kwb-r/kwb.utils/">
+  <a href="https://github.com/kwb-r/kwb.utils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -145,81 +141,81 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Input and Output Functions</h1>
-                        <h4 class="author">Hauke Sonnenberg</h4>
+                        <h4 data-toc-skip class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-11-16</h4>
+            <h4 data-toc-skip class="date">2022-05-28</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_in_out.Rmd"><code>vignettes/functions_in_out.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/HEAD/vignettes/functions_in_out.Rmd" class="external-link"><code>vignettes/functions_in_out.Rmd</code></a></small>
       <div class="hidden name"><code>functions_in_out.Rmd</code></div>
 
     </div>
 
     
     
-<div id="function-catandrun" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catandrun" class="anchor"></a>Function catAndRun()</h3>
+<div class="section level3">
+<h3 id="function-catandrun">Function catAndRun()<a class="anchor" aria-label="anchor" href="#function-catandrun"></a>
+</h3>
 </div>
-<div id="function-catlines" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catlines" class="anchor"></a>Function catLines()</h3>
+<div class="section level3">
+<h3 id="function-catlines">Function catLines()<a class="anchor" aria-label="anchor" href="#function-catlines"></a>
+</h3>
 </div>
-<div id="function-catnewlineif" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-catnewlineif" class="anchor"></a>Function catNewLineIf()</h3>
+<div class="section level3">
+<h3 id="function-catnewlineif">Function catNewLineIf()<a class="anchor" aria-label="anchor" href="#function-catnewlineif"></a>
+</h3>
 </div>
-<div id="function-clearconsole" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-clearconsole" class="anchor"></a>Function clearConsole()</h3>
+<div class="section level3">
+<h3 id="function-clearconsole">Function clearConsole()<a class="anchor" aria-label="anchor" href="#function-clearconsole"></a>
+</h3>
 </div>
-<div id="function-columndescriptor" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columndescriptor" class="anchor"></a>Function columnDescriptor()</h3>
+<div class="section level3">
+<h3 id="function-columndescriptor">Function columnDescriptor()<a class="anchor" aria-label="anchor" href="#function-columndescriptor"></a>
+</h3>
 </div>
-<div id="function-finishandshowpdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-finishandshowpdf" class="anchor"></a>Function finishAndShowPdf()</h3>
+<div class="section level3">
+<h3 id="function-finishandshowpdf">Function finishAndShowPdf()<a class="anchor" aria-label="anchor" href="#function-finishandshowpdf"></a>
+</h3>
 </div>
-<div id="function-guessseparator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-guessseparator" class="anchor"></a>Function guessSeparator()</h3>
+<div class="section level3">
+<h3 id="function-guessseparator">Function guessSeparator()<a class="anchor" aria-label="anchor" href="#function-guessseparator"></a>
+</h3>
 </div>
-<div id="function-headtail" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-headtail" class="anchor"></a>Function headtail()</h3>
+<div class="section level3">
+<h3 id="function-headtail">Function headtail()<a class="anchor" aria-label="anchor" href="#function-headtail"></a>
+</h3>
 </div>
-<div id="function-hspreppdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hspreppdf" class="anchor"></a>Function hsPrepPdf()</h3>
+<div class="section level3">
+<h3 id="function-hspreppdf">Function hsPrepPdf()<a class="anchor" aria-label="anchor" href="#function-hspreppdf"></a>
+</h3>
 <p>Deprecated. Use preparePdf() instead.</p>
 </div>
-<div id="function-preparepdf" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-preparepdf" class="anchor"></a>Function preparePdf()</h3>
+<div class="section level3">
+<h3 id="function-preparepdf">Function preparePdf()<a class="anchor" aria-label="anchor" href="#function-preparepdf"></a>
+</h3>
 </div>
-<div id="function-readarglists" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readarglists" class="anchor"></a>Function readArglists()</h3>
+<div class="section level3">
+<h3 id="function-readarglists">Function readArglists()<a class="anchor" aria-label="anchor" href="#function-readarglists"></a>
+</h3>
 </div>
-<div id="function-readcsvinputfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readcsvinputfile" class="anchor"></a>Function readCsvInputFile()</h3>
+<div class="section level3">
+<h3 id="function-readcsvinputfile">Function readCsvInputFile()<a class="anchor" aria-label="anchor" href="#function-readcsvinputfile"></a>
+</h3>
 </div>
-<div id="function-readpackagefile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-readpackagefile" class="anchor"></a>Function readPackageFile()</h3>
+<div class="section level3">
+<h3 id="function-readpackagefile">Function readPackageFile()<a class="anchor" aria-label="anchor" href="#function-readpackagefile"></a>
+</h3>
 </div>
-<div id="function-setloaded" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-setloaded" class="anchor"></a>Function setLoaded()</h3>
+<div class="section level3">
+<h3 id="function-setloaded">Function setLoaded()<a class="anchor" aria-label="anchor" href="#function-setloaded"></a>
+</h3>
 </div>
-<div id="function-sourcescripts" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-sourcescripts" class="anchor"></a>Function sourceScripts()</h3>
+<div class="section level3">
+<h3 id="function-sourcescripts">Function sourceScripts()<a class="anchor" aria-label="anchor" href="#function-sourcescripts"></a>
+</h3>
 </div>
-<div id="function-writetext" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-writetext" class="anchor"></a>Function writeText()</h3>
+<div class="section level3">
+<h3 id="function-writetext">Function writeText()<a class="anchor" aria-label="anchor" href="#function-writetext"></a>
+</h3>
 </div>
   </div>
 
@@ -232,11 +228,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/hsonne">Hauke Sonnenberg</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/hsonne" class="external-link">Hauke Sonnenberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,23 +35,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.9.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.12.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -120,7 +116,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kwb-r/kwb.utils/">
+  <a href="https://github.com/kwb-r/kwb.utils/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -145,11 +141,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Functions Returning Logical</h1>
-                        <h4 class="author">Hauke Sonnenberg</h4>
+                        <h4 data-toc-skip class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-11-16</h4>
+            <h4 data-toc-skip class="date">2022-05-28</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_logical.Rmd"><code>vignettes/functions_logical.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/HEAD/vignettes/functions_logical.Rmd" class="external-link"><code>vignettes/functions_logical.Rmd</code></a></small>
       <div class="hidden name"><code>functions_logical.Rmd</code></div>
 
     </div>
@@ -157,31 +153,29 @@
     
     
 <p>The following functions have in common that they return a vector of <code>logical</code>.</p>
-<div id="function-allareequal" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-allareequal" class="anchor"></a>Function <code>allAreEqual()</code>
+<div class="section level3">
+<h3 id="function-allareequal">Function <code>allAreEqual()</code><a class="anchor" aria-label="anchor" href="#function-allareequal"></a>
 </h3>
 <p>This function checks if all values in a vector are equal to each other:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
-<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreEqual.html">allAreEqual</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
-<div id="function-allareidentical" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-allareidentical" class="anchor"></a>Function <code>allAreIdentical()</code>
+<div class="section level3">
+<h3 id="function-allareidentical">Function <code>allAreIdentical()</code><a class="anchor" aria-label="anchor" href="#function-allareidentical"></a>
 </h3>
 <p>This function checks if all elements in a list are identical to each other. It may be useful when checking whether different versions of a function (that may, e.g., be created during code cleaning) return exactly the same, when being given the same inputs.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Define different functions that are intended to do the same</span>
-<span class="va">get_list_1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
-<span class="va">get_list_2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">get_list_3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
-<span class="va">get_list_4</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span>
+<span class="va">get_list_1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="va">get_list_2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">get_list_3</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, b <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="va">get_list_4</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="va">a</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>b <span class="op">=</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Call the functions with identical arguments and put the results into a list</span>
-<span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+<span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
   <span class="fu">get_list_1</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, 
   <span class="fu">get_list_2</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>, 
   <span class="fu">get_list_3</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>,
@@ -196,9 +190,8 @@
 <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/allAreIdentical.html">allAreIdentical</a></span><span class="op">(</span><span class="va">results</span><span class="op">[</span><span class="op">-</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 </div>
-<div id="function-almostequal" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-almostequal" class="anchor"></a>Function <code>almostEqual()</code>
+<div class="section level3">
+<h3 id="function-almostequal">Function <code>almostEqual()</code><a class="anchor" aria-label="anchor" href="#function-almostequal"></a>
 </h3>
 <p>Take care when comparing floating point numbers! Whether floating point numbers are assumed to be equal or not, depends on how they were calculated. This is shown in the following example:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -218,57 +211,57 @@
 <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/almostEqual.html">almostEqual</a></span><span class="op">(</span><span class="va">one_third_1</span>, <span class="va">one_third_2</span>, tolerance <span class="op">=</span> <span class="fl">1e-17</span><span class="op">)</span>
 <span class="co">#&gt; [1] FALSE</span></code></pre></div>
 </div>
-<div id="function-atleastonerowin" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-atleastonerowin" class="anchor"></a>Function atLeastOneRowIn()</h3>
+<div class="section level3">
+<h3 id="function-atleastonerowin">Function atLeastOneRowIn()<a class="anchor" aria-label="anchor" href="#function-atleastonerowin"></a>
+</h3>
 </div>
-<div id="function-containsnulstring" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-containsnulstring" class="anchor"></a>Function containsNulString()</h3>
+<div class="section level3">
+<h3 id="function-containsnulstring">Function containsNulString()<a class="anchor" aria-label="anchor" href="#function-containsnulstring"></a>
+</h3>
 </div>
-<div id="function-hsvalidvalue" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsvalidvalue" class="anchor"></a>Function hsValidValue()</h3>
+<div class="section level3">
+<h3 id="function-hsvalidvalue">Function hsValidValue()<a class="anchor" aria-label="anchor" href="#function-hsvalidvalue"></a>
+</h3>
 </div>
-<div id="function-inrange" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-inrange" class="anchor"></a>Function inRange()</h3>
+<div class="section level3">
+<h3 id="function-inrange">Function inRange()<a class="anchor" aria-label="anchor" href="#function-inrange"></a>
+</h3>
 </div>
-<div id="function-is-unnamed" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-is-unnamed" class="anchor"></a>Function is.unnamed()</h3>
+<div class="section level3">
+<h3 id="function-is-unnamed">Function is.unnamed()<a class="anchor" aria-label="anchor" href="#function-is-unnamed"></a>
+</h3>
 </div>
-<div id="function-isevennumber" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isevennumber" class="anchor"></a>Function isEvenNumber()</h3>
+<div class="section level3">
+<h3 id="function-isevennumber">Function isEvenNumber()<a class="anchor" aria-label="anchor" href="#function-isevennumber"></a>
+</h3>
 </div>
-<div id="function-isloaded" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isloaded" class="anchor"></a>Function isLoaded()</h3>
+<div class="section level3">
+<h3 id="function-isloaded">Function isLoaded()<a class="anchor" aria-label="anchor" href="#function-isloaded"></a>
+</h3>
 </div>
-<div id="function-isnainallcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isnainallcolumns" class="anchor"></a>Function isNaInAllColumns()</h3>
+<div class="section level3">
+<h3 id="function-isnainallcolumns">Function isNaInAllColumns()<a class="anchor" aria-label="anchor" href="#function-isnainallcolumns"></a>
+</h3>
 </div>
-<div id="function-isnainallrows" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isnainallrows" class="anchor"></a>Function isNaInAllRows()</h3>
+<div class="section level3">
+<h3 id="function-isnainallrows">Function isNaInAllRows()<a class="anchor" aria-label="anchor" href="#function-isnainallrows"></a>
+</h3>
 </div>
-<div id="function-isnaorempty" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isnaorempty" class="anchor"></a>Function isNaOrEmpty()</h3>
+<div class="section level3">
+<h3 id="function-isnaorempty">Function isNaOrEmpty()<a class="anchor" aria-label="anchor" href="#function-isnaorempty"></a>
+</h3>
 </div>
-<div id="function-isnullorempty" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isnullorempty" class="anchor"></a>Function isNullOrEmpty()</h3>
+<div class="section level3">
+<h3 id="function-isnullorempty">Function isNullOrEmpty()<a class="anchor" aria-label="anchor" href="#function-isnullorempty"></a>
+</h3>
 </div>
-<div id="function-isoddnumber" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-isoddnumber" class="anchor"></a>Function isOddNumber()</h3>
+<div class="section level3">
+<h3 id="function-isoddnumber">Function isOddNumber()<a class="anchor" aria-label="anchor" href="#function-isoddnumber"></a>
+</h3>
 </div>
-<div id="function-matchescriteria" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-matchescriteria" class="anchor"></a>Function matchesCriteria()</h3>
+<div class="section level3">
+<h3 id="function-matchescriteria">Function matchesCriteria()<a class="anchor" aria-label="anchor" href="#function-matchescriteria"></a>
+</h3>
 </div>
   </div>
 
@@ -281,11 +274,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/hsonne">Hauke Sonnenberg</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/hsonne" class="external-link">Hauke Sonnenberg</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

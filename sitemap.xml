@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/404.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_array.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_call.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_check.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_conversion.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_crypto.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_data_frame.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_debug.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_dictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_if.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_in_out.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_list.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_logical.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_object.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_string.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_system.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_ungrouped.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/articles/overview.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/authors.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/index.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/news/index.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/DIN.A4.html</loc>
@@ -29,6 +104,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/arglist.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/argsCsv.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/asColumnList.html</loc>
@@ -89,6 +167,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/clearConsole.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/clipMatrix.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/cmdLinePath.html</loc>
@@ -256,6 +337,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/fileExtension.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/findChanges.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/findPartialDuplicates.html</loc>
   </url>
   <url>
@@ -398,6 +482,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/inRange.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/index.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/insertColumns.html</loc>
@@ -745,6 +832,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/textToObject.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/toConditional.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/toFactor.html</loc>
   </url>
   <url>
@@ -797,62 +887,5 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/writeText.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_array.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_call.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_check.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_conversion.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_crypto.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_data_frame.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_debug.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_dictionary.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_if.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_in_out.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_list.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_logical.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_object.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_stats.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_string.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_system.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_ungrouped.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_vector.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/overview.html</loc>
   </url>
 </urlset>
