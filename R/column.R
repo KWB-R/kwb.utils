@@ -279,8 +279,11 @@ hsRenameColumns <- function(dframe, renames)
 #' insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
 #'   
 insertColumns <- function(
-  Data, ..., before = "", after = "", 
-  stringsAsFactors = default.stringsAsFactors()
+  Data, 
+  ..., 
+  before = "", 
+  after = "", 
+  stringsAsFactors = defaultIfNULL(options()$stringsAsFactors, FALSE)
 )
 {
   stopifnot(is.data.frame(Data))
