@@ -30,6 +30,8 @@ reference:
       - hsValidValue
       - inRange
       - is.unnamed
+      - isASCII
+      - isDotOrDoubleDot
       - isEvenNumber
       - isLoaded
       - isNaInAllColumns
@@ -38,9 +40,11 @@ reference:
       - isNullOrEmpty
       - isOddNumber
       - matchesCriteria
-  - title: String Functions
+  - title: String Related Functions
     contents: 
       - appendSuffix
+      - assertFinalSlash
+      - backspace
       - collapsed
       - commaCollapsed
       - createIdAlong
@@ -50,13 +54,19 @@ reference:
       - hsCountInStr
       - hsQuoteChr
       - hsSafeName
+      - hsSubstSpecChars
       - hsTrim
+      - left
+      - makeUnique
       - moveToFront
       - multiSubstitute
       - pairwise
       - removeExtension
       - removeSpaces
+      - repeated
+      - right
       - shorten
+      - space
       - stringContains
       - stringEndsWith
       - stringList
@@ -64,25 +74,38 @@ reference:
       - stringToExpression
       - subExpressionMatches
       - substSpecialChars
+  - title: PDF Related Functions
+    contents:
+      - toPdf
+      - preparePdf
+      - preparePdfIf
+      - finishAndShowPdf
+      - finishAndShowPdfIf
+      - hsPrepPdf
+      - hsShowPdf
+      - DIN.A4
   - title: Input and Output Functions
     contents:
+      - argsCsv
       - catAndRun
       - catLines
       - catNewLineIf
       - clearConsole
       - columnDescriptor
-      - finishAndShowPdf
+      - createStorage
       - guessSeparator
       - headtail
-      - hsPrepPdf
-      - preparePdf
+      - print.repro_sample
+      - printable_chars
+      - printIf
       - readArglists
       - readCsvInputFile
+      - readLinesWithEncoding
       - readPackageFile
       - setLoaded
       - sourceScripts
       - writeText      
-  - title: Mathematical or Statistical Functions
+  - title: Mathematical, Statistical, Sample Functions
     contents:
       - colMaxima
       - colMinima
@@ -91,6 +114,8 @@ reference:
       - colStatistics
       - countOrSum
       - countNaInColumn
+      - expandGrid
+      - findPartialDuplicates
       - frequencyTable
       - getEvenNumbers
       - getOddNumbers
@@ -101,7 +126,11 @@ reference:
       - percentageOfMaximum
       - percentageOfSum
       - quotient
+      - randomValuesWithSum
       - relativeCumulatedSum
+      - reproducibleSample
+      - removeDuplicates
+      - rowOrColumnwisePercentage
   - title: Functions Working on Data Frames
     contents:
       - addRowWithName
@@ -122,6 +151,7 @@ reference:
       - moveColumnsToFront
       - multiColumnLookup
       - noFactorDataFrame
+      - orderBy
       - pasteColumns
       - pasteColumns0
       - posixColumnAtPosition
@@ -157,9 +187,11 @@ reference:
       - selectElements
   - title: Array/Matrix Functions
     contents:
+      - clipMatrix
       - createMatrix
       - diffrows
       - dropDim
+      - matrixToDataFrame
       - mergeNamedArrays
       - randomMatrix
       - setMatrixColumns
@@ -170,6 +202,7 @@ reference:
       - combineAlternatingly
       - enlargeVector
       - extendLimits
+      - findChanges
       - firstElement
       - getByPositiveOrNegativeIndex
       - lastElement
@@ -198,8 +231,10 @@ reference:
       - hsMatrixToListForm
       - intToNumeralSystem
       - naToLastNonNa
+      - objectToText
       - startsToEnds
       - startsToRanges
+      - textToObject
       - toFactor
       - toFormula
       - toInches
@@ -216,9 +251,6 @@ reference:
       - defaultIfNA
       - defaultIfNULL
       - defaultIfZero
-      - finishAndShowPdfIf
-      - preparePdfIf
-      - printIf
   - title: Operating System Functions
     contents:
       - cmdLinePath
@@ -231,7 +263,6 @@ reference:
       - get_homedir
       - hsOpenWindowsExplorer
       - hsShell
-      - hsShowPdf
       - hsSystem
       - mySystemTime
       - objectSize
@@ -252,8 +283,13 @@ reference:
       - warningDeprecated
   - title: Debug Functions
     contents:
+      - .log
+      - .logline
+      - .logok
+      - .logstart
       - assignAll
       - assignArgumentDefaults
+      - assignGlobally
       - assignPackageObjects
       - getGlobally
   - title: Compare Objects
@@ -270,6 +306,8 @@ reference:
   - title: Cryptographic Functions
     contents:
       - createPasswordFile
+      - decode
+      - encode
       - generateKeyFile
       - getPassword
   - title: Grammar/Dictionary Functions
@@ -281,9 +319,17 @@ reference:
       - resolve
       - resolveAll
       - writeDictionary
+  - title: Functions Returning Functions
+    contents:
+      - createAccessor
+      - toConditional
+  - title: Further Hidden Functions (Why?)
+    contents:
+      - .OStype
+      - .defaultIf
+      - .guessSeparator.1
+      - .guessSeparator.2
+      - .isNetworkPath
   - title: Non-Categorised Functions
     contents: 
-      - DIN.A4
-      - expandGrid
-      - makeUnique
-      - randomValuesWithSum
+      - listToDepth
