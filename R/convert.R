@@ -418,14 +418,17 @@ hsValidValue <- function(x, lng, dbg = FALSE, accept.na = TRUE)
   p1 <- "\\d*"                         
   
   # number with decimal point only
-  p2 <- sprintf("\\d*\\%s\\d*", decim) 
+  p2 <- sprintf("\\d*[%s]\\d*", decim) 
   
   # number with thousand's separator
-  p3 <- sprintf("\\d{1,3}(\\%s\\d{3})+(\\%s\\d*)?", thsep, decim) 
+  p3 <- sprintf("\\d{1,3}([%s]\\d{3})+([%s]\\d*)?", thsep, decim) 
   
-  ptrn <- sprintf("^([+-]?((%s)|(%s)|(%s)))$", p1, p2, p3)  
+  # number in scientific notation, e.g. 1.233e-09
+  p4 <- paste0(p2, "[eE][+-]\\d+")
+  
+  ptrn <- sprintf("^([+-]?((%s)|(%s)|(%s)|(%s)))$", p1, p2, p3, p4)
 
-  catIf(dbg, "applied pattern: ", ptrn, "\n")    
+  catIf(dbg, "applied pattern: ", ptrn, "\n")
     
   res <- rep(FALSE, length(x))
   
@@ -536,18 +539,20 @@ hsStringToDate <- function(strDate, dateFormat)
   
   # Stop if there are NAs in the result vector. Rhe wrong dateFormat may have
   # been used
-  if (any(is.na(res))) {
-    
+  not_converted <- is.na(res) & ! is.na(strDate)
+
+  if (any(not_converted)) {
     stop(sprintf(
       paste(
         "Error when trying to convert strings to Dates.",
         "Did you use the wrong date format (\"%s\")?\n",
-        "E.g. \"%s\" could not be converted to Date.\n",
+        "E.g. %s could not be converted to Date.\n",
         "Use placeholders %%d (day), %%m (month), ",
         "%%y (2-digit year), %%Y (4-digit year),",
         "e.g. \"%%d.%%m.%%Y\""
       ),
-      dateFormat, strDate[is.na(res)][1]
+      dateFormat, 
+      kwb.utils::stringList(utils::head(strDate[not_converted], 3L))
     ))
   }
   

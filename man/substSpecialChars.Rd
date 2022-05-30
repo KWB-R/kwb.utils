@@ -4,10 +4,13 @@
 \alias{substSpecialChars}
 \title{Substitution of Special Characters}
 \usage{
-substSpecialChars(x)
+substSpecialChars(x, deuOnly = FALSE)
 }
 \arguments{
 \item{x}{string containing special characters to be substituted}
+
+\item{deuOnly}{logical. If \code{TRUE} only the German special characters 
+Umlaute and Eszett are replaced.}
 }
 \value{
 input string \emph{x} with special characters being substituted by 

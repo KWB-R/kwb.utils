@@ -54,13 +54,13 @@ get_cached_file <- function(name = "")
 # get_cache_dir ----------------------------------------------------------------
 get_cache_dir <- function()
 {
-  Sys.getenv("SEMA_BERLIN_CACHE_DIR", file.path(tempdir(), "cache"))
+  Sys.getenv("KWB_UTILS_CACHE_DIR", file.path(tempdir(), "cache"))
 }
 
 # set_cache_dir ----------------------------------------------------------------
 set_cache_dir <- function(path)
 {
-  Sys.setenv(SEMA_BERLIN_CACHE_DIR = path)
+  Sys.setenv(KWB_UTILS_CACHE_DIR = path)
 }
 
 # run_cached -------------------------------------------------------------------

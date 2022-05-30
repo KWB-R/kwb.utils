@@ -147,5 +147,7 @@ test_that("hsStringToDate() works", {
   
   expect_error(hsStringToDate("22.05.2018"))
   
-  expect_error(hsStringToDate(NA, "Y%-%m-%d"))
+  expect_true(is.na(hsStringToDate(NA, "Y%-%m-%d")))
+  result <- hsStringToDate(c(NA, "14.01.1975"), "%d.%m.%Y")
+  expect_true(is.na(result[1L]), result[[2L]] == as.Date("1975-01-14"))
 })

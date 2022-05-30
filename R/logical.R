@@ -381,10 +381,20 @@ isEvenNumber <- function(x)
 #' @param values vector of values
 #' @param min.value minimum value (inclusive)
 #' @param max.value maximum value (inclusive)
+#' @param rng optional. Vector of two elements representing \code{min.value}
+#'   and \code{max.value}, respectively
 #' @return vector of boolean
 #' @export
 #' 
-inRange <- function(values, min.value, max.value) 
+inRange <- function(values, min.value, max.value, rng = NULL)
 {
+  if (! is.null(rng)) {
+    
+    stopifnot(length(rng) == 2L)
+    
+    min.value <- rng[1L]
+    max.value <- rng[2L]
+  }
+  
   (values >= min.value) & (values <= max.value)
 }
