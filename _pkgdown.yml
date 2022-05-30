@@ -1,24 +1,28 @@
 url: https://kwb-r.github.io/kwb.utils
-
 authors:
   Hauke Sonnenberg: 
     href: https://github.com/hsonne
   Michael Rustler:
     href: https://mrustl.de
-  Kompetenzzentrum Wasser Berlin gGmbH:
+  Kompetenzzentrum Wasser Berlin gGmbH (KWB):
     href: https://www.kompetenz-wasser.de
-    html: <img src="http://www.kompetenz-wasser.de/wp-content/uploads/2017/08/cropped-logo-kwb_klein-new.png" height="24" />
-
+    html: <img src='https://publications.kompetenz-wasser.de/img/KWB-Logo.svg' alt='KWB'
+      width='72' />
 template:
-  params:
-    bootswatch: cerulean
-    docsearch:
-      api_key: 18bee084719187fe8f77ebc6bd25f9ca
-      index_name: kwb_utils
-
+  bootstrap: 5
+  bootswatch: cerulean
+  docsearch:
+    api_key: 18bee084719187fe8f77ebc6bd25f9ca
+    index_name: kwb_utils
+  bslib:
+    bg: '#ffffff'
+    fg: '#000000'
+    primary: '#007aff'
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
 development:
   mode: auto
-
+  
 reference:
   - title: Functions Returning Logical
     contents: 
