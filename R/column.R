@@ -60,23 +60,15 @@ checkForMissingColumns <- function(
   
   if (! isNullOrEmpty(missing)) {
     
-    plural_s_or_empty <- function(x) ifelse(length(x) > 1, "s", "")
-  
-    sorted_list <- function(x) stringList(sort(x), collapse = "\n  ")
+    msg <- noSuchElements(
+      x = missing, 
+      available = columnNames, 
+      type = "column",
+      sorted = TRUE,
+      suffix = sprintf(" in data frame '%s'", dataFrameName)
+    )
 
-    infotext_missing <- sprintf(
-      "%d column%s missing in data frame '%s':\n  %s", length(missing), 
-      plural_s_or_empty(missing), dataFrameName, sorted_list(missing)
-    )
-    
-    infotext_available <- sprintf(
-      "Available column%s:\n  %s", plural_s_or_empty(columnNames), 
-      sorted_list(columnNames)
-    )
-    
-    infotext <- paste(infotext_missing, infotext_available, sep = "\n")
-    
-    do.call(ifelse(do.stop, "stop", "warning"), list(infotext, call. = FALSE))
+    do.call(ifelse(do.stop, "stop", "warning"), list(msg, call. = FALSE))
   }
   
   isNullOrEmpty(missing)
@@ -287,8 +279,11 @@ hsRenameColumns <- function(dframe, renames)
 #' insertColumns(Data, after = "B", X = paste0("x", 1:5), Y = paste0("y", 1:5))
 #'   
 insertColumns <- function(
-  Data, ..., before = "", after = "", 
-  stringsAsFactors = default.stringsAsFactors()
+  Data, 
+  ..., 
+  before = "", 
+  after = "", 
+  stringsAsFactors = defaultIfNULL(options()$stringsAsFactors, FALSE)
 )
 {
   stopifnot(is.data.frame(Data))
@@ -372,9 +367,9 @@ insertColumns <- function(
 
 # moveColumnsToFront -----------------------------------------------------------
 
-#' Move Columns to the Start of a Data Frame
+#' Move Columns to the Left
 #' 
-#' move columns to the start of a data frame or matrix
+#' Move columns of a data frame or matrix to the left 
 #' 
 #' @param x data frame
 #' @param columns vector of column names
@@ -764,11 +759,11 @@ selectColumns <- function(
 )
 {
   if (! is.data.frame(x)) {
-    
-    stop(
-      deparse(substitute(x)), " given to selectColumns() must be a data frame ", 
-      "but is of class: ", stringList(class(x)), call. = FALSE
-    )
+    stop(call. = FALSE, sprintf(
+      "%s given to selectColumns() must be a data frame but is of class: %s", 
+      deparse(substitute(x)),
+      stringList(class(x))
+    ))
   }
   
   if (is.null(columns) || length(columns) == 0 || all(is.na(columns))) {
@@ -788,7 +783,6 @@ selectColumns <- function(
   )
   
   if (! ok) {
-    
     warning("Only the existing columns are selected.")
     columns <- intersect(columns, names(x))
   }

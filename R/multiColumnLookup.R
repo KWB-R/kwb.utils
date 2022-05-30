@@ -35,7 +35,10 @@
 #' 
 multiColumnLookup <- function(data, lookup, value = NULL)
 {
-  value <- defaultIfNULL(utils::tail(names(lookup), 1))
+  stopifnot(is.data.frame(data))
+  stopifnot(is.data.frame(lookup))
+  
+  value <- defaultIfNULL(value, names(lookup)[ncol(lookup)])
   
   checkForMissingColumns(lookup, value)
   
@@ -57,12 +60,12 @@ multiColumnLookup <- function(data, lookup, value = NULL)
     
     Reduce(`&`, lapply(names(criterion), function(column) {
       
-      selectColumns(data, column) == criterion[1, column]
+      selectColumns(data, column) == criterion[1L, column]
     }))
   }))
   
   # For each row in match_matrix, find the index of the first "TRUE"
-  indices <- sapply(asRowList(match_matrix), function(x) which(x)[1])
+  indices <- sapply(asRowList(match_matrix), function(x) unname(which(x)[1L]))
   
   is_na <- is.na(indices)
   

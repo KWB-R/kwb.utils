@@ -1,25 +1,19 @@
 test_that("extractRowRanges() works", {
 
-  dataFrame <- as.data.frame(stringsAsFactors = FALSE, matrix(
-    ncol = 2, byrow = TRUE, c(
-      "Date", "Value",
-      "1.1.", "1",
-      "2.1.", "2",
-      "", "",
-      "Date", "Value",
-      "3.1.", "3",
-      "4.1.", "4"
-    )
-  ))
-  
-  arguments <- list(
-    dataFrame, columnName = "V1", pattern = "Date", stopOffset = 2
+  textLines <- c(
+    "Date,Value",
+    "1.1.,1",
+    "2.1.,2",
+    ",",
+    "Date,Value",
+    "3.1.,3",
+    "4.1.,4"
   )
-  
-  y_1 <- callWith(extractRowRanges, arguments)
-  
-  y_2 <- callWith(extractRowRanges, arguments, nameByMatch = TRUE)
-  
+
+  # Convert textLines to data frame. The function should be able to handle both.
+  dataFrame <- read.table(text = textLines, sep = ",", stringsAsFactors = FALSE)
+
+  # Define expected result
   expected <- list(
     data.frame(
       Date = c("1.1.", "2.1."),
@@ -33,9 +27,25 @@ test_that("extractRowRanges() works", {
     )
   )
   
-  expect_identical(y_1, expected)
+  arguments <- list(
+    pattern = "Date", column = "V1", stopOffset = 2L
+  )
   
-  expect_named(y_2)
+  y1 <- callWith(extractRowRanges, arguments, x = dataFrame)
+  y2 <- callWith(extractRowRanges, arguments, x = dataFrame, nameByMatch = TRUE)
+
+  expect_identical(expected, y1)
+  expect_named(y2)
+  expect_identical(expected, unname(y2))
+  
+  y3 <- callWith(extractRowRanges, arguments, x = textLines)
+  y4 <- callWith(extractRowRanges, arguments, x = textLines, nameByMatch = TRUE)
+
+  expectedText <- lapply(expected, pasteColumns, sep = ",")
+  
+  expect_identical(expectedText, y3)
+  expect_named(y4)
+  expect_identical(expectedText, unname(y4))
 })
 
 test_that("startsToRanges() works", {

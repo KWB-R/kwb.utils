@@ -1,15 +1,48 @@
-# Current
+# Changes since last release
 
-* new: matrixToDataFrame()
-* writeDictionary(): check "file" argument. Do not check the file path unless
-  "file" is of class character (and not a connection)
-* add readLinesWithEncoding(), moved from fakin.path.app::read_lines()
+# [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
+
+* add argument "deuOnly" to substSpecialChars()
+* add function clipMatrix()
+* add argument "rng" to inRange()
+* add arguments "sep", "simple" to makeUnique()
+* substSpecialChars(): fix bug, substitute also colon with underscore
+* extractRowRanges():
+    - let it work also for vector of character
+    - rename argument "columnName" to "column", add argument "starts", change 
+      order of arguments
+  
+# [kwb.utils 0.11.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.11.0) <small>2022-01-19</small>
+
+* add argsCsv(), moved from kwb.sema
+
+# [kwb.utils 0.10.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.10.0) <small>2022-01-19</small>
+
+* add findChanges(), to be used by kwb.utils::hsEventsOnChange()
+* add toConditional()
+* allow to pass a "path" to getAttribute()
+
+# [kwb.utils 0.9.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.9.0) <small>2021-11-16</small>
+
+* fix bug in multiColumnLookup(): Consider "value" argument
+* fix bug in hsStringToDate(): Do not complain on NA that were already in x
+* Add new private functions: enumeration(), hintAvailable(), hintNoSuch(),
+  stopIsNotBut(), 
+* checkForMissingColumns(), selectElements(): Use new private functions
+
+# [kwb.utils 0.8.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.8.0) <small>2021-02-19</small>
+
+* add: matrixToDataFrame()
+* add (private): get_cache_dir(), set_cache_dir()
+* add: readLinesWithEncoding(), moved from fakin.path.app::read_lines()
+* get_cached(): add argument "dbg"; return NULL if file does not exist
+* lastElement(): do not use tail() for lists, use x[[length(x)]] instead
+* orderBy(): allow to order by multiple columns
+* preparePdf(): set paper to "special" if width or height are set
 * readDictionary(): add arguments "fileEncoding", "...", pass on to
   readLinesWithEncoding()
-* allow to set the cache directory with set_cache_dir()
-* preparePdf(): set paper to "special" if width or height are set
-* get_cached(): add argument "dbg"
-* lastElement(): do not use tail() for lists, use x[[length(x)]] instead
+* writeDictionary(): check "file" argument. Do not check the file path unless
+  "file" is of class character (and not a connection)
 
 # [kwb.utils 0.7.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.7.0) <small>2020-07-31</small>
 

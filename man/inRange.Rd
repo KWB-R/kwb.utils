@@ -4,7 +4,7 @@
 \alias{inRange}
 \title{check for values within minimum and maximum value}
 \usage{
-inRange(values, min.value, max.value)
+inRange(values, min.value, max.value, rng = NULL)
 }
 \arguments{
 \item{values}{vector of values}
@@ -12,6 +12,9 @@ inRange(values, min.value, max.value)
 \item{min.value}{minimum value (inclusive)}
 
 \item{max.value}{maximum value (inclusive)}
+
+\item{rng}{optional. Vector of two elements representing \code{min.value}
+and \code{max.value}, respectively}
 }
 \value{
 vector of boolean

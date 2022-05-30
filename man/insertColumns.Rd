@@ -9,7 +9,7 @@ insertColumns(
   ...,
   before = "",
   after = "",
-  stringsAsFactors = default.stringsAsFactors()
+  stringsAsFactors = defaultIfNULL(options()$stringsAsFactors, FALSE)
 )
 }
 \arguments{

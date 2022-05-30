@@ -229,42 +229,40 @@ selectElements <- function(x, elements = NULL, do.stop = TRUE, do.warn = TRUE)
   listName <- deparse(substitute(x))
   
   if (! is.list(x)) {
-    
-    stop(
-      listName, " is not a list but:\n", 
-      paste(utils::capture.output(utils::str(x)), collapse = "\n")
-    )
+    stopIsNotBut(x, "list", listName)
   }
   
   available <- names(x)
   
-  messageAvailable <- paste0(
-    "Available elements: ", stringList(sort(available))
-  )
-  
   if (is.null(elements)) {
-    
-    stop("No elements selected. ", messageAvailable)
+    stop(
+      "No elements selected. ", 
+      hintAvailable(available, sorted = TRUE), 
+      call. = FALSE
+    )
   }
   
   missingElements <- elements[! elements %in% available]
   
   if (length(missingElements) > 0) {
     
-    output <- paste0(
-      "No such list elements: ", stringList(missingElements), "\n",
-      messageAvailable
+    msg <- noSuchElements(
+      missingElements, 
+      available, 
+      type = "element", 
+      suffix = sprintf(" in list '%s'", collapsed(deparse(substitute(x))))
     )
     
     if (isTRUE(do.stop)) {
       
-      stop(output)
+      stop(msg, call. = FALSE)
       
     } else {
       
       if (isTRUE(do.warn)) {
-        
-        warning(paste0(output, "\nOnly the existing elements are selected."))
+        warning(
+          msg, "\nOnly the existing elements are selected.", call. = FALSE
+        )
       }
       
       elements <- intersect(elements, available)
