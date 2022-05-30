@@ -31,3 +31,9 @@ if (! require("remotes")) {
 
 remotes::install_github("kwb-r/kwb.utils")
 ```
+
+## Documentation
+
+Release: [https://kwb-r.github.io/kwb.utils](https://kwb-r.github.io/kwb.utils)
+
+Development: [https://kwb-r.github.io/kwb.utils/dev](https://kwb-r.github.io/kwb.utils/dev)
