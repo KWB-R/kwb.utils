@@ -11,15 +11,16 @@ authors:
 template:
   bootstrap: 5
   bootswatch: cerulean
-  docsearch:
-    api_key: 18bee084719187fe8f77ebc6bd25f9ca
-    index_name: kwb_utils
   bslib:
     bg: '#ffffff'
     fg: '#000000'
     primary: '#007aff'
     border-radius: 0.5rem
     btn-border-radius: 0.25rem
+  params:
+    docsearch:
+      api_key: 18bee084719187fe8f77ebc6bd25f9ca
+      index_name: kwb_utils
 development:
   mode: auto
   
