@@ -72,6 +72,7 @@ reference:
       - right
       - shorten
       - space
+      - splitIntoLines
       - stringContains
       - stringEndsWith
       - stringList
@@ -277,6 +278,7 @@ reference:
       - hsSystem
       - mySystemTime
       - objectSize
+      - replaceFileExtension
       - rStylePath
       - runBatchfileInDirectory
       - runInDirectory

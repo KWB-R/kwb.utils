@@ -7,6 +7,8 @@
 * add mainClass()
 * add nNA()
 * add nUnique()
+* add replaceFileExtension()
+* add splitIntoLines()
 
 # [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
 
