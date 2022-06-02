@@ -222,6 +222,7 @@ reference:
     contents:
       - addClass
       - commonNames
+      - copyAttributes
       - getAttribute
       - getNamesOfObjectsInRDataFiles
       - getObjectFromRDataFile
@@ -232,6 +233,7 @@ reference:
       - removeAttributes
   - title: Conversion Functions
     contents: 
+      - arrayToDataFrame
       - asColumnList
       - asRowList
       - convertCsvFile
@@ -242,8 +244,10 @@ reference:
       - hsMatrixToListForm
       - intToNumeralSystem
       - namedVectorToDataFrame
+      - namedVectorFromColumns
       - naToLastNonNa
       - objectToText
+      - rangeToSequence
       - startsToEnds
       - startsToRanges
       - textToObject

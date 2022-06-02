@@ -1,13 +1,17 @@
 # Changes since last release
 
-* add orderDecreasinglyBy()
-* add namedVectorToDataFrame()
+* add arrayToDataFrame()
 * add commonNames()
-* add showPackageObjects()
+* add copyAttributes()
 * add mainClass()
 * add nNA()
 * add nUnique()
+* add namedVectorFromColumns()
+* add namedVectorToDataFrame()
+* add orderDecreasinglyBy()
+* add rangeToSequence()
 * add replaceFileExtension()
+* add showPackageObjects()
 * add splitIntoLines()
 
 # [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
