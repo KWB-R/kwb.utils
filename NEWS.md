@@ -1,5 +1,10 @@
 # Changes since last release
 
+* add orderDecreasinglyBy()
+* add namedVectorToDataFrame()
+* add commonNames()
+* add showPackageObjects()
+
 # [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
 
 * add argument "deuOnly" to substSpecialChars()

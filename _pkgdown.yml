@@ -157,6 +157,7 @@ reference:
       - multiColumnLookup
       - noFactorDataFrame
       - orderBy
+      - orderDecreasinglyBy
       - pasteColumns
       - pasteColumns0
       - posixColumnAtPosition
@@ -217,6 +218,7 @@ reference:
   - title: General Object Functions
     contents:
       - addClass
+      - commonNames
       - getAttribute
       - getNamesOfObjectsInRDataFiles
       - getObjectFromRDataFile
@@ -235,6 +237,7 @@ reference:
       - hsStringToDouble
       - hsMatrixToListForm
       - intToNumeralSystem
+      - namedVectorToDataFrame
       - naToLastNonNa
       - objectToText
       - startsToEnds
@@ -297,6 +300,7 @@ reference:
       - assignGlobally
       - assignPackageObjects
       - getGlobally
+      - showPackageObjects
   - title: Compare Objects
     contents:
       - compareDataFrames
