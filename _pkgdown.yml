@@ -32,6 +32,7 @@ reference:
       - almostEqual
       - atLeastOneRowIn
       - containsNulString
+      - hasFinalSlash
       - hsValidValue
       - inRange
       - is.unnamed
@@ -62,10 +63,12 @@ reference:
       - hsSubstSpecChars
       - hsTrim
       - left
+      - leftSubstringEquals
       - makeUnique
       - moveToFront
       - multiSubstitute
       - pairwise
+      - removeEmpty
       - removeExtension
       - removeSpaces
       - repeated
