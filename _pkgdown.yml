@@ -69,6 +69,7 @@ reference:
       - multiSubstitute
       - pairwise
       - removeEmpty
+      - removeEmpty2
       - removeExtension
       - removeSpaces
       - repeated
@@ -315,6 +316,8 @@ reference:
       - showPackageObjects
   - title: Compare Objects
     contents:
+      - catChanges
+      - catChangesIf
       - compareDataFrames
       - compareSets
   - title: Calling Functions
