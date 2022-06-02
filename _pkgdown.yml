@@ -127,6 +127,8 @@ reference:
       - hsMovingMean
       - linearCombination
       - movingSum
+      - nNA
+      - nUnique
       - percentage
       - percentageOfMaximum
       - percentageOfSum
@@ -225,6 +227,7 @@ reference:
       - hsRestoreAttributes
       - listObjects
       - loadObject
+      - mainClass
       - removeAttributes
   - title: Conversion Functions
     contents: 

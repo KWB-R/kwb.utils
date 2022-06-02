@@ -4,6 +4,9 @@
 * add namedVectorToDataFrame()
 * add commonNames()
 * add showPackageObjects()
+* add mainClass()
+* add nNA()
+* add nUnique()
 
 # [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
 
