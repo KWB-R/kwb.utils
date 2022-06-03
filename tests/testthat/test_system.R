@@ -1,21 +1,21 @@
 test_that("objectSize() works", {
 
-  results <- list(
+  capture <- capture.output
+  
+  capture(results <- list(
     objectSize(character()), 
     objectSize(integer()), 
     objectSize(double())
-  )
+  ))
   
-  expect_true(all(sapply(results, grepl, pattern = "bytes$")))
+  capture(expect_true(all(sapply(results, grepl, pattern = "bytes$"))))
+  capture(expect_true(grepl("Kb$", objectSize(1:100, units = "KB"), ignore.case = TRUE)))
+  capture(expect_error(objectSize(1:100, units = "no_such_unit")))
   
-  expect_true(grepl("Kb$", objectSize(1:100, units = "KB"), ignore.case = TRUE))
-  
-  expect_error(objectSize(1:100, units = "no_such_unit"))
-  
-  y <- objectSize(list(
+  capture(y <- objectSize(list(
     a = list(x = 1:20, letters = LETTERS),
     b = 77
-  ))
+  )))
   
   expect_is(y, "list")
 })
@@ -69,7 +69,7 @@ test_that("sourceScripts() works", {
   expect_error(sourceScripts(temp_file_2, dbg = FALSE))
   expect_identical(x, 123)
   
-  expect_warning(sourceScripts("no_such_script"))
+  expect_warning(sourceScripts("no_such_script", dbg = FALSE))
 })
 
 test_that("runInDirectory() works", {
@@ -146,9 +146,9 @@ test_that("createDirAndReturnPath() gives a warning", {
   
   targetdir <- file.path(tempdir(), "test_createDir")
   
-  expect_warning(path <- createDirAndReturnPath(targetdir))
+  expect_warning(path <- createDirAndReturnPath(targetdir, dbg = FALSE))
   
-  expect_identical(path, createDirectory(targetdir))
+  expect_identical(path, createDirectory(targetdir, dbg = FALSE))
 })
 
 test_that("createDirectory() works", {
@@ -158,7 +158,7 @@ test_that("createDirectory() works", {
   
   for (targetdir in list(targetdir_1, targetdir_2)) {
     
-    path <- createDirectory(targetdir)
+    path <- createDirectory(targetdir, dbg = FALSE)
     
     expect_true(file.exists(targetdir))
     
@@ -204,7 +204,7 @@ test_that("hsSystem() works", {
 
   expect_error(hsSystem())
   
-  expect_output(y <- hsSystem("dir"))
+  capture.output(expect_output(y <- hsSystem("dir")))
   
   #expect_identical(y, 0L)
 })

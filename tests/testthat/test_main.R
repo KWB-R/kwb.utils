@@ -72,7 +72,7 @@ test_that("quotient() works", {
 
 test_that("getFunctionName() works", {
   
-  #getFunctionName(min)
+  #getFunctionName(base::min)
 })
 
 test_that("getOddNumbers() and getEvenNumbers() works", {

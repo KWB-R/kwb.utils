@@ -6,7 +6,7 @@
 #
 
 test_that("clear_cache() works", {
-
-  kwb.utils:::clear_cache()
-
+  
+  expect_output(kwb.utils:::clear_cache(), "No cached files")
+  
 })

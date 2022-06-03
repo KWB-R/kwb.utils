@@ -8,7 +8,6 @@ checkResult <- function(x, xy)
   isIdentical <- identical(x, y)
   
   if (! isIdentical) {
-    
     cat("str(x):\n"); str(x)
     cat("str(y):\n"); str(y)
   }

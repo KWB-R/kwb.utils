@@ -87,12 +87,12 @@ test_that(
     )
     
     expect_output(removeEmptyColumns(y))
-    expect_identical(removeEmptyColumns(y), y)
+    expect_identical(removeEmptyColumns(y, dbg = FALSE), y)
     
     y$b <- NA
   
     expect_output(removeEmptyColumns(y))
-    expect_identical(removeEmptyColumns(y, drop = TRUE), y$a)
+    expect_identical(removeEmptyColumns(y, drop = TRUE, dbg = FALSE), y$a)
   }
 )
 
@@ -146,7 +146,12 @@ test_that("renameColumns() and renameAndSelect() work", {
   
   y <- renameColumns(Data, renamings)
 
-  expect_identical(hsRenameColumns(y, renamings), renameColumns(y, renamings))
+  expect_warning(hsRenameColumns(y, renamings))
+  
+  expect_identical(
+    suppressWarnings(hsRenameColumns(y, renamings)), 
+    renameColumns(y, renamings)
+  )
   
   expect_identical(names(y), as.character(renamings))
   
