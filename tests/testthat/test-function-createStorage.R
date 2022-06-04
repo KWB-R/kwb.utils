@@ -4,7 +4,7 @@ test_that("createStorage() works", {
   
   expect_error(f())
   
-  storage <- f(tempdir())
+  expect_output(storage <- f(tempdir()), "already exists")
   
   expect_is(storage, "list")
   expect_identical(storage$path, tempdir())

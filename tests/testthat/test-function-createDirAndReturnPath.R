@@ -1,7 +1,8 @@
 test_that("createDirAndReturnPath() gives a warning", {
   
-  targetdir <- file.path(tempdir(), "test_createDir")
+  targetdir <- file.path(tempdir(), basename(tempfile(pattern = "test")))
   
-  expect_warning(path <- createDirAndReturnPath(targetdir, dbg = FALSE))
-  expect_identical(path, createDirectory(targetdir, dbg = FALSE))
+  expect_warning(createDirAndReturnPath(targetdir, dbg = FALSE))
+  expect_output(path <- createDirectory(targetdir), "already exists")
+  expect_identical(path, targetdir)
 })
