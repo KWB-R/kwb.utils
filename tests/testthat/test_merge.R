@@ -106,7 +106,7 @@ test_that(".checkDimensions() works", {
   
   dim_2 <- list(x = 1:4, y = 1)
   
-  expect_error(.checkDimensions(dim_1, dim_2))
+  expect_error(capture.output(.checkDimensions(dim_1, dim_2)))
 })
 
 test_that("dropDim() works", {
@@ -135,3 +135,4 @@ test_that("splitAlongDim() works", {
   splitAlongDim(A, 2)
   splitAlongDim(A, 3)
 })
+

@@ -135,10 +135,9 @@ test_that("copyDirectoryStructure() works", {
 
   folder_paths <- function(x) list.dirs(x, recursive = TRUE, full.names = FALSE)
 
-  targetdir <- createDirectory(file.path(tempdir(), "test_copy"))
+  targetdir <- createDirectory(file.path(tempdir(), "test_copy"), dbg = FALSE)
 
-  copyDirectoryStructure(sourcedir, targetdir)
-  
+  expect_output(copyDirectoryStructure(sourcedir, targetdir))
   expect_identical(folder_paths(targetdir), folder_paths(sourcedir))
 })
 
@@ -147,7 +146,6 @@ test_that("createDirAndReturnPath() gives a warning", {
   targetdir <- file.path(tempdir(), "test_createDir")
   
   expect_warning(path <- createDirAndReturnPath(targetdir, dbg = FALSE))
-  
   expect_identical(path, createDirectory(targetdir, dbg = FALSE))
 })
 
@@ -196,7 +194,6 @@ test_that("windowsPath() and rStylePath() work", {
 test_that(".showCommand() works", {
 
   expect_error(.showCommand())
-  
   expect_output(.showCommand("/path/to/program option1 option2 file"))
 })
 
@@ -204,9 +201,9 @@ test_that("hsSystem() works", {
 
   expect_error(hsSystem())
   
-  capture.output(expect_output(y <- hsSystem("dir")))
+  capture.output(y <- hsSystem("dir", intern = TRUE))
   
-  #expect_identical(y, 0L)
+  expect_true(is.character(y))
 })
 
 test_that("hsShell() works", {
@@ -215,9 +212,9 @@ test_that("hsShell() works", {
 
     expect_error(hsShell())
     
-    expect_output(y <- hsShell("dir"))
+    expect_output(y <- hsShell("dir", intern = TRUE))
     
-    expect_identical(y, 0L)
+    expect_true(is.character(y))
   }
 })
 
