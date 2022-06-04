@@ -1,3 +1,4 @@
+
 test_that(
   paste(
     "preparePdfIf(), preparePdf(), finishAndShowPdfIf() and",  
@@ -29,8 +30,6 @@ test_that(
   expect_identical(names(dev.list())[n], "pdf")
 })
 
-# preparePdf
-
 test_that(".defaultWidth() and .defaultHeight() work", {
 
   expect_identical(.defaultWidth(landscape = TRUE, 0, 0), DIN.A4()$height.cm)
@@ -48,21 +47,3 @@ test_that("DIN.A4() works", {
   
   expect_identical(names(y), c("height.cm", "width.cm"))
 })
-
-# finishAndShowPdfIf
-
-test_that("finishAndShowPdfIf() works", {
-  
-  finishAndShowPdfIf(FALSE)
-})
-
-# finishAndShowPdf
-
-test_that("hsPrepPdf() gives a warning", {
-
-  expect_warning(hsPrepPdf(tempfile()))
-  
-  dev.off()
-})
-
-# hsShowPdf --------------------------------------------------------------------

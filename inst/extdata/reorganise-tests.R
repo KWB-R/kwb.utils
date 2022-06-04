@@ -8,6 +8,9 @@
 # Clear the environment
 rm(list = ls())
 
+# function names in kwb.utils
+known_names <- kwb.utils::showPackageObjects()
+
 # MAIN -------------------------------------------------------------------------
 if (FALSE)
 {
@@ -19,28 +22,58 @@ if (FALSE)
   result <- lapply(stats::setNames(files, basename(files)), read_test)
   result <- lapply(result, kwb.utils::nameByElement, "name")
   
-  # Extract tests into their own files and remove the original files...
-  
   # Skip files that we have already looked at
   result <- kwb.utils::removeElements(result, c(
     "test_column.R", 
     "test_encode_decode.R",
     "test_io.R",
-    "test_linearCombination.R"
+    "test_merge.R",
+    "test_pdf.R",
+    "test_readArgs.R",
+    "test_readCsvInputFile.R",
+    "test_resolve.R",
+    "test_selectColumns.R",
+    "test_stat.R",
+    "test_system.R",
+    "test_string.R"
   ))
 
-  # function names in kwb.utils
-  known_names <- kwb.utils::showPackageObjects()
+  # Extract tests into their own files and remove the original files...
   
-  for (r in result) {
-    extract_tests_of_known_functions(x = r, known_names)
-  }
+  # for (r in result) {
+  #   extract_tests_of_known_functions(x = r, known_names)
+  # }
   
-  extract_tests_of_known_functions(x = result$test_findChanges.R, known_names)
-  extract_tests_of_known_functions(x = result$test_get_homedir.R, known_names)
-  extract_tests_of_known_functions(x = result$test_io.R, known_names)
-  extract_tests_of_known_functions(x = result$test_linearCombination.R, known_names)
-  extract_tests_of_known_functions(x = result$test_list.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_findChanges.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_get_homedir.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_io.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_linearCombination.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_list.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_loaded.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_logical.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_lookup.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_main.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_matrix.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_merge.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_multiColumnLookup.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_naToLastNonNa.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_pairwise.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_parse.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_pdf.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_readArgs.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_readCsvInputFile.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_resolve.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_roundColumns.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_selectColumns.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_selectElements.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_stat.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_stat_2.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_string.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_subExpressionMatches.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_system.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_string.R, known_names)
+  #extract_tests_of_known_functions(x = result$test_vector.R, known_names)
+  extract_tests_of_known_functions(x = result$skip_if, known_names)
   
   # test_encryption.R
   x1 <- result$test_encryption.R
