@@ -340,8 +340,10 @@ rowwisePercentage <- function(x, default = 0, digits = 1)
 #' @export
 #' 
 colStatistics <- function(
-  dataFrame, functions = c("sum", "mean", "min", "max", "number.na", "length"),
-  na.rm = FALSE, functionColumn = FALSE
+  dataFrame, 
+  functions = c("sum", "mean", "min", "max", "number.na", "length"),
+  na.rm = FALSE, 
+  functionColumn = FALSE
 )
 {
   statistics <- NULL
@@ -351,11 +353,8 @@ colStatistics <- function(
     functionStatistics <- colStatisticOneFunction(dataFrame, FUN, na.rm = na.rm)
     
     statistics <- if (is.null(statistics)) {
-      
       functionStatistics
-      
     } else {
-      
       cbind(statistics, functionStatistics)
     }
   } 
@@ -365,13 +364,11 @@ colStatistics <- function(
   if (functionColumn) {
     
     rownames(statistics) <- NULL
-    
-    data.frame(FUN = functions, t(statistics), stringsAsFactors = FALSE)
+    data.frame(FUN = functions, statistics, stringsAsFactors = FALSE)
     
   } else {
     
     rownames(statistics) <- functions
-    
     data.frame(t(statistics))
   }  
 }
