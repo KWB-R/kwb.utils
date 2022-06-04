@@ -45,6 +45,7 @@ reference:
       - isNaOrEmpty
       - isNullOrEmpty
       - isOddNumber
+      - isTryError
       - matchesCriteria
   - title: String Related Functions
     contents: 
@@ -62,6 +63,7 @@ reference:
       - hsSafeName
       - hsSubstSpecChars
       - hsTrim
+      - indent
       - left
       - leftSubstringEquals
       - makeUnique
@@ -71,6 +73,7 @@ reference:
       - removeEmpty
       - removeEmpty2
       - removeExtension
+      - removeLeadingSlashes
       - removeSpaces
       - repeated
       - right
@@ -84,6 +87,7 @@ reference:
       - stringToExpression
       - subExpressionMatches
       - substSpecialChars
+      - uniqueDirnames
   - title: PDF Related Functions
     contents:
       - toPdf
@@ -276,6 +280,7 @@ reference:
       - cmdLinePath
       - copyDirectoryStructure
       - createDirAndReturnPath
+      - createDirectories
       - createDirectory
       - defaultWindowsProgramFolders
       - desktop
