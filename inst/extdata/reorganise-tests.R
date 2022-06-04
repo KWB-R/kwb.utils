@@ -63,7 +63,6 @@ read_test <- function(file)
   #file <- files[1L]
   cat("Reading", file, "\n")
   exprs <- parse(file, keep.source = TRUE)
-  
   lapply(seq_along(exprs), function(i) {
     #i <- 1L
     # Important to use [i] instead of [[i]] here, otherwise the original 
