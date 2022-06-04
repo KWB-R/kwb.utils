@@ -3,7 +3,7 @@ test_that("catAndRun() works", {
   
   x <- 1L
   
-  x <- catAndRun("work hard", x + 1L)
+  expect_output(x <- catAndRun("work hard", x + 1L))
   
   expect_identical(x, 2L)
   
@@ -65,10 +65,9 @@ test_that("dropUnusedFactorLevels() works", {
     stringsAsFactors = FALSE
   )
 
-  result <- dropUnusedFactorLevels(data)
+  result <- dropUnusedFactorLevels(data, dbg = FALSE)
   
   check_column <- function(f) {
-    
     expect_identical(sort(levels(f)), sort(unique(as.character(f))))
   }
 
@@ -110,19 +109,19 @@ test_that("listObjects() and loadObject() work", {
   
   save(a, b, file = file)
 
-  y <- listObjects(file)
-  expect_warning(getNamesOfObjectsInRDataFiles(file))
+  capture.output(y <- listObjects(file))
+  capture.output(expect_warning(getNamesOfObjectsInRDataFiles(file)))
   
   expect_true(is.list(y))
   expect_identical(y[[1]], c("a", "b"))
   expect_identical(attr(y, "files"), file)
   
-  expect_error(loadObject(file))
-  expect_error(loadObject(file, "no_such_object"))
+  expect_error(loadObject(file, dbg = FALSE))
+  expect_error(loadObject(file, "no_such_object", dbg = FALSE))
   
-  expect_warning(getObjectFromRDataFile(file, "a"))
-  expect_identical(loadObject(file, "a"), a)
-  expect_identical(loadObject(file, "b"), b)
+  capture.output(expect_warning(getObjectFromRDataFile(file, "a")))
+  expect_identical(loadObject(file, "a", dbg = FALSE), a)
+  expect_identical(loadObject(file, "b", dbg = FALSE), b)
 })
 
 # log functions ----------------------------------------------------------------

@@ -1,9 +1,17 @@
 test_that("roundColumns() works", {
   
-  x <- data.frame(a = c(1.23456, 234.5678), b = c("A", "B"), c = c(1245, 234))
+  x <- data.frame(
+    a = c(1.23456, 234.5678), 
+    b = c("A", "B"), 
+    c = c(1245, 234)
+  )
   
-  x1 <- roundColumns(x, columnNames = c("a", "c"), digits = 2)
-
+  expect_warning(
+    roundColumns(x, columnNames = "a", digits = 2), 
+    "'columnNames' is deprecated"
+  )
+  
+  x1 <- roundColumns(x, columns = c("a", "c"), digits = 2)
   x2 <- roundColumns(x, digits = list(a = 1, c = -2))
 
   expect_equal(x1$a, round(x$a, 2))

@@ -32,6 +32,7 @@ reference:
       - almostEqual
       - atLeastOneRowIn
       - containsNulString
+      - hasFinalSlash
       - hsValidValue
       - inRange
       - is.unnamed
@@ -44,6 +45,7 @@ reference:
       - isNaOrEmpty
       - isNullOrEmpty
       - isOddNumber
+      - isTryError
       - matchesCriteria
   - title: String Related Functions
     contents: 
@@ -61,17 +63,23 @@ reference:
       - hsSafeName
       - hsSubstSpecChars
       - hsTrim
+      - indent
       - left
+      - leftSubstringEquals
       - makeUnique
       - moveToFront
       - multiSubstitute
       - pairwise
+      - removeEmpty
+      - removeEmpty2
       - removeExtension
+      - removeLeadingSlashes
       - removeSpaces
       - repeated
       - right
       - shorten
       - space
+      - splitIntoLines
       - stringContains
       - stringEndsWith
       - stringList
@@ -79,6 +87,7 @@ reference:
       - stringToExpression
       - subExpressionMatches
       - substSpecialChars
+      - uniqueDirnames
   - title: PDF Related Functions
     contents:
       - toPdf
@@ -127,6 +136,8 @@ reference:
       - hsMovingMean
       - linearCombination
       - movingSum
+      - nNA
+      - nUnique
       - percentage
       - percentageOfMaximum
       - percentageOfSum
@@ -157,6 +168,7 @@ reference:
       - multiColumnLookup
       - noFactorDataFrame
       - orderBy
+      - orderDecreasinglyBy
       - pasteColumns
       - pasteColumns0
       - posixColumnAtPosition
@@ -217,15 +229,19 @@ reference:
   - title: General Object Functions
     contents:
       - addClass
+      - commonNames
+      - copyAttributes
       - getAttribute
       - getNamesOfObjectsInRDataFiles
       - getObjectFromRDataFile
       - hsRestoreAttributes
       - listObjects
       - loadObject
+      - mainClass
       - removeAttributes
   - title: Conversion Functions
     contents: 
+      - arrayToDataFrame
       - asColumnList
       - asRowList
       - convertCsvFile
@@ -235,8 +251,11 @@ reference:
       - hsStringToDouble
       - hsMatrixToListForm
       - intToNumeralSystem
+      - namedVectorToDataFrame
+      - namedVectorFromColumns
       - naToLastNonNa
       - objectToText
+      - rangeToSequence
       - startsToEnds
       - startsToRanges
       - textToObject
@@ -261,6 +280,7 @@ reference:
       - cmdLinePath
       - copyDirectoryStructure
       - createDirAndReturnPath
+      - createDirectories
       - createDirectory
       - defaultWindowsProgramFolders
       - desktop
@@ -271,6 +291,7 @@ reference:
       - hsSystem
       - mySystemTime
       - objectSize
+      - replaceFileExtension
       - rStylePath
       - runBatchfileInDirectory
       - runInDirectory
@@ -297,8 +318,11 @@ reference:
       - assignGlobally
       - assignPackageObjects
       - getGlobally
+      - showPackageObjects
   - title: Compare Objects
     contents:
+      - catChanges
+      - catChangesIf
       - compareDataFrames
       - compareSets
   - title: Calling Functions
@@ -306,7 +330,6 @@ reference:
       - arglist
       - callWith
       - callWithStringsAsFactors
-      - getFunctionName
       - getFunctionValueOrDefault
   - title: Cryptographic Functions
     contents:

@@ -1,5 +1,30 @@
 # Changes since last release
 
+* add arrayToDataFrame()
+* add catChanges()
+* add catChangesIf()
+* add commonNames()
+* add copyAttributes()
+* add createDirectories()
+* add hasFinalSlash()
+* add indent()
+* add isTryError()
+* add leftSubstringEquals()
+* add mainClass()
+* add nNA()
+* add nUnique()
+* add namedVectorFromColumns()
+* add namedVectorToDataFrame()
+* add orderDecreasinglyBy()
+* add rangeToSequence()
+* add removeEmpty()
+* add removeEmpty2()
+* add removeLeadingSlashes()
+* add replaceFileExtension()
+* add showPackageObjects()
+* add splitIntoLines()
+* add uniqueDirnames()
+
 # [kwb.utils 0.12.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.12.0) <small>2022-05-27</small>
 
 * add argument "deuOnly" to substSpecialChars()

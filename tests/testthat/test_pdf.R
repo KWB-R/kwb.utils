@@ -14,9 +14,9 @@ test_that(
   pdf_file_2 <- preparePdfIf(TRUE, PDF = tempfile(fileext = ".pdf"))
   pdf_file_3 <- preparePdf(makeCurrent = FALSE)
   
-  on.exit(finishAndShowPdfIf(TRUE, pdf_file_1))
-  on.exit(finishAndShowPdf(pdf_file_2), add = TRUE)
-  on.exit(finishAndShowPdf(pdf_file_3), add = TRUE)
+  on.exit(capture.output(finishAndShowPdfIf(TRUE, pdf_file_1)))
+  on.exit(capture.output(finishAndShowPdf(pdf_file_2)), add = TRUE)
+  on.exit(capture.output(finishAndShowPdf(pdf_file_3)), add = TRUE)
   
   expect_true(file.exists(pdf_file_1))
   expect_true(file.exists(pdf_file_2))
