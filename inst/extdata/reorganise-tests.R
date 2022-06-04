@@ -19,7 +19,59 @@ if (FALSE)
   result <- lapply(stats::setNames(files, basename(files)), read_test)
   result <- lapply(result, kwb.utils::nameByElement, "name")
   
-  # Extract tests into their own files and remove the original files
+  # Extract tests into their own files and remove the original files...
+
+  # test_encryption.R
+  x1 <- result$test_encryption.R
+  x2 <- extract_test(x1, "generateKeyFile")
+  x3 <- extract_test(x2, "createPasswordFile")
+  x4 <- extract_test(x3, "_checkNamespace")
+  # Remove original file. Remaining context() call not required
+  x4
+  unlink(x1[[1L]]$file)
+  
+  # test_encode_decode.R -> skip
+
+  # test_defaultIf.R
+  x1 <- result$test_defaultIf.R
+  x2 <- extract_test(x1, "_defaultIf_is_null")
+  x3 <- extract_test(x2, "_defaultIf")
+  x3 # check if empty
+  unlink(x1[[1L]]$file)
+  
+  # test_default.R
+  x1 <- result$test_default.R
+  x2 <- extract_test(x1, "getFunctionValueOrDefault")
+  x3 <- extract_test(x2, "defaultLevels")
+  x4 <- extract_test(x3, "defaultIfNULL")
+  x4 # check if empty
+  unlink(x1[[1L]]$file)
+  
+  # test_dataFrame.R
+  x1 <- result$test_dataFrame.R
+  x2 <- extract_test(x1, "expandGrid")
+  x3 <- extract_test(x2, "fullySorted")
+  x4 <- extract_test(x3, "splitIntoFixSizedBlocks")
+  x5 <- extract_test(x4, "resetRowNames")
+  x6 <- extract_test(x5, "frequencyTable")
+  x7 <- extract_test(x6, "compareDataFrames")
+  x8 <- extract_test(x7, "compareSets")
+  x9 <- extract_test(x8, "atLeastOneRowIn")
+  x10 <- extract_test(x9, "rbindAll")
+  x11 <- extract_test(x10, "safeRowBindOfListElements")
+  x12 <- extract_test(x11, "safeRowBind")
+  x13 <- extract_test(x12, "addRowWithName")
+  x14 <- extract_test(x13, "moveToFront")
+  x14 # check if empty
+  unlink(x1[[1L]]$file)
+  
+  # test_convertCsvFile.R
+  x1 <- result$test_convertCsvFile.R
+  x2 <- extract_test(x1, "convertCsvFile")
+  x2 # check if empty
+  unlink(x1[[1L]]$file)
+
+  # test_convert.R
   x1 <- result$test_convert.R
   x2 <- extract_test(x1, "intToNumeralSystem")
   x3 <- extract_test(x2, "toFactor")
