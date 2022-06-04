@@ -7,7 +7,7 @@
 
 test_that("get_cached_file() works", {
 
-  kwb.utils:::get_cached_file()
+  expect_length(kwb.utils:::get_cached_file(), 0L)
 
 })
 

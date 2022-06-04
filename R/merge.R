@@ -50,7 +50,7 @@ unmerge <- function(z, by)
   groups <- split(z, selectColumns(z, by, drop = FALSE))
   
   # Find "fix" columns in which the values do not change within any group
-  fixColumnList <- excludeNULL(lapply(groups, function(x) {
+  fixColumnList <- excludeNULL(dbg = FALSE, lapply(groups, function(x) {
     if (nrow(x) > 0) {
       y <- removeColumns(x, by)
       names(y)[sapply(y, allAreEqual)]

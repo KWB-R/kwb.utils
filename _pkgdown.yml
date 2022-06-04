@@ -1,0 +1,363 @@
+url: https://kwb-r.github.io/kwb.utils
+authors:
+  Hauke Sonnenberg: 
+    href: https://github.com/hsonne
+  Michael Rustler:
+    href: https://mrustl.de
+  Kompetenzzentrum Wasser Berlin gGmbH (KWB):
+    href: https://www.kompetenz-wasser.de
+    html: <img src='https://publications.kompetenz-wasser.de/img/KWB-Logo.svg' alt='KWB'
+      width='72' />
+template:
+  bootstrap: 5
+  bootswatch: cerulean
+  bslib:
+    bg: '#ffffff'
+    fg: '#000000'
+    primary: '#007aff'
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+  params:
+    docsearch:
+      api_key: 18bee084719187fe8f77ebc6bd25f9ca
+      index_name: kwb_utils
+development:
+  mode: auto
+  
+reference:
+  - title: Functions Returning Logical
+    contents: 
+      - allAreEqual
+      - allAreIdentical
+      - almostEqual
+      - atLeastOneRowIn
+      - containsNulString
+      - hasFinalSlash
+      - hsValidValue
+      - inRange
+      - is.unnamed
+      - isASCII
+      - isDotOrDoubleDot
+      - isEvenNumber
+      - isLoaded
+      - isNaInAllColumns
+      - isNaInAllRows
+      - isNaOrEmpty
+      - isNullOrEmpty
+      - isOddNumber
+      - isTryError
+      - matchesCriteria
+  - title: String Related Functions
+    contents: 
+      - appendSuffix
+      - assertFinalSlash
+      - backspace
+      - collapsed
+      - commaCollapsed
+      - createIdAlong
+      - defaultLevels
+      - extractSubstring
+      - frenchToAscii
+      - hsCountInStr
+      - hsQuoteChr
+      - hsSafeName
+      - hsSubstSpecChars
+      - hsTrim
+      - indent
+      - left
+      - leftSubstringEquals
+      - makeUnique
+      - moveToFront
+      - multiSubstitute
+      - pairwise
+      - removeEmpty
+      - removeEmpty2
+      - removeExtension
+      - removeLeadingSlashes
+      - removeSpaces
+      - repeated
+      - right
+      - shorten
+      - space
+      - splitIntoLines
+      - stringContains
+      - stringEndsWith
+      - stringList
+      - stringStartsWith
+      - stringToExpression
+      - subExpressionMatches
+      - substSpecialChars
+      - uniqueDirnames
+  - title: PDF Related Functions
+    contents:
+      - toPdf
+      - preparePdf
+      - preparePdfIf
+      - finishAndShowPdf
+      - finishAndShowPdfIf
+      - hsPrepPdf
+      - hsShowPdf
+      - DIN.A4
+  - title: Input and Output Functions
+    contents:
+      - argsCsv
+      - catAndRun
+      - catLines
+      - catNewLineIf
+      - clearConsole
+      - columnDescriptor
+      - createStorage
+      - guessSeparator
+      - headtail
+      - print.repro_sample
+      - printable_chars
+      - printIf
+      - readArglists
+      - readCsvInputFile
+      - readLinesWithEncoding
+      - readPackageFile
+      - setLoaded
+      - sourceScripts
+      - writeText      
+  - title: Mathematical, Statistical, Sample Functions
+    contents:
+      - colMaxima
+      - colMinima
+      - colNaNumbers
+      - colStatisticOneFunction
+      - colStatistics
+      - countOrSum
+      - countNaInColumn
+      - expandGrid
+      - findPartialDuplicates
+      - frequencyTable
+      - getEvenNumbers
+      - getOddNumbers
+      - hsMovingMean
+      - linearCombination
+      - movingSum
+      - nNA
+      - nUnique
+      - percentage
+      - percentageOfMaximum
+      - percentageOfSum
+      - quotient
+      - randomValuesWithSum
+      - relativeCumulatedSum
+      - reproducibleSample
+      - removeDuplicates
+      - rowOrColumnwisePercentage
+  - title: Functions Working on Data Frames
+    contents:
+      - addRowWithName
+      - addSuffixToColumns
+      - asNoFactorDataFrame
+      - columnToDate
+      - columnwisePercentage
+      - dropUnusedFactorLevels
+      - extractRowRanges
+      - fullySorted
+      - firstPosixColumn
+      - getKeywordPositions
+      - hsAddMissingCols
+      - hsDelEmptyCols
+      - hsRenameColumns
+      - insertColumns
+      - mergeAll
+      - moveColumnsToFront
+      - multiColumnLookup
+      - noFactorDataFrame
+      - orderBy
+      - orderDecreasinglyBy
+      - pasteColumns
+      - pasteColumns0
+      - posixColumnAtPosition
+      - rbindAll
+      - removeColumns
+      - removeEmptyColumns
+      - renameAndSelect
+      - renameColumns
+      - resetRowNames
+      - roundColumns
+      - rowwisePercentage
+      - safeColumnBind
+      - safeMerge
+      - safeRowBind
+      - safeRowBindAll
+      - selectColumns
+      - setColumns
+      - splitIntoFixSizedBlocks
+      - tableLookup
+      - unmerge
+  - title: Functions Working on Lists
+    contents:
+      - copyListElements
+      - excludeNULL
+      - getElementLengths
+      - getPathsAndValuesFromRecursiveList
+      - mergeLists
+      - nameByElement
+      - recursiveNames
+      - removeElements
+      - revertListAssignments
+      - safeRowBindOfListElements
+      - selectElements
+  - title: Array/Matrix Functions
+    contents:
+      - clipMatrix
+      - createMatrix
+      - diffrows
+      - dropDim
+      - matrixToDataFrame
+      - mergeNamedArrays
+      - randomMatrix
+      - setMatrixColumns
+      - splitAlongDim
+  - title: Vector Functions
+    contents:
+      - breakInSequence
+      - combineAlternatingly
+      - enlargeVector
+      - extendLimits
+      - findChanges
+      - firstElement
+      - getByPositiveOrNegativeIndex
+      - lastElement
+      - limitToRange
+      - parallelNonNA
+      - recycle
+  - title: General Object Functions
+    contents:
+      - addClass
+      - commonNames
+      - copyAttributes
+      - getAttribute
+      - getNamesOfObjectsInRDataFiles
+      - getObjectFromRDataFile
+      - hsRestoreAttributes
+      - listObjects
+      - loadObject
+      - mainClass
+      - removeAttributes
+  - title: Conversion Functions
+    contents: 
+      - arrayToDataFrame
+      - asColumnList
+      - asRowList
+      - convertCsvFile
+      - csvTextToDataFrame
+      - hsChrToNum
+      - hsStringToDate
+      - hsStringToDouble
+      - hsMatrixToListForm
+      - intToNumeralSystem
+      - namedVectorToDataFrame
+      - namedVectorFromColumns
+      - naToLastNonNa
+      - objectToText
+      - rangeToSequence
+      - startsToEnds
+      - startsToRanges
+      - textToObject
+      - toFactor
+      - toFormula
+      - toInches
+      - toKeysAndValues
+      - toLookupClass
+      - toLookupList
+      - toLookupTable
+      - toNamedList
+      - toPositiveIndices
+      - underscoreToPercent
+  - title: Shortcut Functions to if-statements
+    contents:
+      - catIf
+      - defaultIfNA
+      - defaultIfNULL
+      - defaultIfZero
+  - title: Operating System Functions
+    contents:
+      - cmdLinePath
+      - copyDirectoryStructure
+      - createDirAndReturnPath
+      - createDirectories
+      - createDirectory
+      - defaultWindowsProgramFolders
+      - desktop
+      - fileExtension
+      - get_homedir
+      - hsOpenWindowsExplorer
+      - hsShell
+      - hsSystem
+      - mySystemTime
+      - objectSize
+      - replaceFileExtension
+      - rStylePath
+      - runBatchfileInDirectory
+      - runInDirectory
+      - safePath
+      - tempSubdirectory
+      - user
+      - windowsPath
+  - title: Check Functions
+    contents:
+      - assertRowsAndColumns
+      - checkForMissingColumns
+      - msgAvailableFields
+      - stopIfNotMatrix
+      - warnIfEmpty
+      - warningDeprecated
+  - title: Debug Functions
+    contents:
+      - .log
+      - .logline
+      - .logok
+      - .logstart
+      - assignAll
+      - assignArgumentDefaults
+      - assignGlobally
+      - assignPackageObjects
+      - getGlobally
+      - showPackageObjects
+  - title: Compare Objects
+    contents:
+      - catChanges
+      - catChangesIf
+      - compareDataFrames
+      - compareSets
+  - title: Calling Functions
+    contents:
+      - arglist
+      - callWith
+      - callWithStringsAsFactors
+      - getFunctionValueOrDefault
+  - title: Cryptographic Functions
+    contents:
+      - createPasswordFile
+      - decode
+      - encode
+      - generateKeyFile
+      - getPassword
+  - title: Grammar/Dictionary Functions
+    contents:
+      - getTagNames
+      - hsResolve
+      - readDictionaries
+      - readDictionary
+      - resolve
+      - resolveAll
+      - writeDictionary
+  - title: Functions Returning Functions
+    contents:
+      - createAccessor
+      - toConditional
+  - title: Further Hidden Functions (Why?)
+    contents:
+      - .OStype
+      - .defaultIf
+      - .guessSeparator.1
+      - .guessSeparator.2
+      - .isNetworkPath
+  - title: Non-Categorised Functions
+    contents: 
+      - listToDepth

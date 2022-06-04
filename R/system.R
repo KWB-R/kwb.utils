@@ -356,7 +356,7 @@ createDirAndReturnPath <- function(path, dbg = TRUE, confirm = FALSE)
 {
   warningDeprecated("createDirAndReturnPath", "createDirectory")
 
-  createDirectory(path, dbg = TRUE, confirm = FALSE)
+  createDirectory(path, dbg = dbg, confirm = confirm)
 }
 
 # createDirectory --------------------------------------------------------------

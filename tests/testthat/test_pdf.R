@@ -1,3 +1,4 @@
+
 test_that(
   paste(
     "preparePdfIf(), preparePdf(), finishAndShowPdfIf() and",  
@@ -14,9 +15,9 @@ test_that(
   pdf_file_2 <- preparePdfIf(TRUE, PDF = tempfile(fileext = ".pdf"))
   pdf_file_3 <- preparePdf(makeCurrent = FALSE)
   
-  on.exit(finishAndShowPdfIf(TRUE, pdf_file_1))
-  on.exit(finishAndShowPdf(pdf_file_2), add = TRUE)
-  on.exit(finishAndShowPdf(pdf_file_3), add = TRUE)
+  on.exit(capture.output(finishAndShowPdfIf(TRUE, pdf_file_1)))
+  on.exit(capture.output(finishAndShowPdf(pdf_file_2)), add = TRUE)
+  on.exit(capture.output(finishAndShowPdf(pdf_file_3)), add = TRUE)
   
   expect_true(file.exists(pdf_file_1))
   expect_true(file.exists(pdf_file_2))
@@ -28,8 +29,6 @@ test_that(
   expect_identical(names(dev.list())[n], "pdf")
   expect_identical(names(dev.list())[n], "pdf")
 })
-
-# preparePdf
 
 test_that(".defaultWidth() and .defaultHeight() work", {
 
@@ -48,21 +47,3 @@ test_that("DIN.A4() works", {
   
   expect_identical(names(y), c("height.cm", "width.cm"))
 })
-
-# finishAndShowPdfIf
-
-test_that("finishAndShowPdfIf() works", {
-  
-  finishAndShowPdfIf(FALSE)
-})
-
-# finishAndShowPdf
-
-test_that("hsPrepPdf() gives a warning", {
-
-  expect_warning(hsPrepPdf(tempfile()))
-  
-  dev.off()
-})
-
-# hsShowPdf --------------------------------------------------------------------

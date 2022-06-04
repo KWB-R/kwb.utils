@@ -18,7 +18,7 @@ getFunctionValueOrDefault <- function(values, FUN, default, warningMessage = NA)
     if (is.na(warningMessage)) {
       
       warningMessage <- paste(
-        "All values to which", hsQuoteChr(getFunctionName(FUN)),
+        "All values to which", hsQuoteChr(deparse(substitute(FUN))),
         "should be applied are NA. The default is taken:", default
       )
     }

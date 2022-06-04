@@ -324,18 +324,6 @@ quotient <- function(dividend, divisor, substitute.value = Inf, warn = TRUE)
   result
 }
 
-# getFunctionName --------------------------------------------------------------
-
-#' Get the Name of a Function
-#' 
-#' @param FUN R object representing a function
-#' @export
-#' 
-getFunctionName <- function(FUN)
-{
-  deparse(quote(FUN))
-}
-
 # getOddNumbers ----------------------------------------------------------------
 
 #' Get odd Numbers out of a Vector of Integers

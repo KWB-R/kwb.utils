@@ -19,5 +19,4 @@ knitr::opts_chunk$set(
 ### Function arglist()
 ### Function callWith()
 ### Function callWithStringsAsFactors()
-### Function getFunctionName()
 ### Function getFunctionValueOrDefault()

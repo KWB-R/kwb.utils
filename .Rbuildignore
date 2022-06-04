@@ -14,3 +14,6 @@ _pkgdown.yaml
 .gitlab-ci.yml
 ^\.travis\.yml$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
