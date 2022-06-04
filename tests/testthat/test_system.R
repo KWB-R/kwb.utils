@@ -196,25 +196,3 @@ test_that(".showCommand() works", {
   expect_error(.showCommand())
   expect_output(.showCommand("/path/to/program option1 option2 file"))
 })
-
-test_that("hsSystem() works", {
-
-  expect_error(hsSystem())
-  
-  capture.output(y <- hsSystem("dir", intern = TRUE))
-  
-  expect_true(is.character(y))
-})
-
-test_that("hsShell() works", {
-
-  if (.OStype() == "windows") {
-
-    expect_error(hsShell())
-    
-    expect_output(y <- hsShell("dir", intern = TRUE))
-    
-    expect_true(is.character(y))
-  }
-})
-
