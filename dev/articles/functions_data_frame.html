@@ -4,16 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="kwb.utils">
 <title>Functions Working on Data Frames • kwb.utils</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Functions Working on Data Frames">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Functions Working on Data Frames">
 <meta property="og:description" content="kwb.utils">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -21,151 +19,95 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">kwb.utils</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.9.0.9000</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">kwb.utils</a>
+
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.12.0.9000</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/functions_array.html">Array/Matrix Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_call.html">Calling Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_check.html">Check Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_conversion.html">Conversion Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_crypto.html">Cryptographic Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_data_frame.html">Functions Working on Data Frames</a>
-    </li>
-    <li>
-      <a href="../articles/functions_debug.html">Debug Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_dictionary.html">Grammar/Dictionary Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_if.html">Shortcut Functions to if-statements</a>
-    </li>
-    <li>
-      <a href="../articles/functions_in_out.html">Input and Output Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_list.html">Functions Working on Lists</a>
-    </li>
-    <li>
-      <a href="../articles/functions_logical.html">Functions Returning Logical</a>
-    </li>
-    <li>
-      <a href="../articles/functions_object.html">General Object Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_stats.html">Mathematical or Statistical Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_string.html">String Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_system.html">Operating System Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_ungrouped.html">Non-Categorised Functions</a>
-    </li>
-    <li>
-      <a href="../articles/functions_vector.html">Vector Functions</a>
-    </li>
-    <li>
-      <a href="../articles/overview.html">Overview</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/kwb-r/kwb.utils/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
-        <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-</div>
-      </form>
-      
-    </div>
-<!--/.nav-collapse -->
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/functions_array.html">Array/Matrix Functions</a>
+    <a class="dropdown-item" href="../articles/functions_call.html">Calling Functions</a>
+    <a class="dropdown-item" href="../articles/functions_check.html">Check Functions</a>
+    <a class="dropdown-item" href="../articles/functions_conversion.html">Conversion Functions</a>
+    <a class="dropdown-item" href="../articles/functions_crypto.html">Cryptographic Functions</a>
+    <a class="dropdown-item" href="../articles/functions_data_frame.html">Functions Working on Data Frames</a>
+    <a class="dropdown-item" href="../articles/functions_debug.html">Debug Functions</a>
+    <a class="dropdown-item" href="../articles/functions_dictionary.html">Grammar/Dictionary Functions</a>
+    <a class="dropdown-item" href="../articles/functions_if.html">Shortcut Functions to if-statements</a>
+    <a class="dropdown-item" href="../articles/functions_in_out.html">Input and Output Functions</a>
+    <a class="dropdown-item" href="../articles/functions_list.html">Functions Working on Lists</a>
+    <a class="dropdown-item" href="../articles/functions_logical.html">Functions Returning Logical</a>
+    <a class="dropdown-item" href="../articles/functions_object.html">General Object Functions</a>
+    <a class="dropdown-item" href="../articles/functions_stats.html">Mathematical or Statistical Functions</a>
+    <a class="dropdown-item" href="../articles/functions_string.html">String Functions</a>
+    <a class="dropdown-item" href="../articles/functions_system.html">Operating System Functions</a>
+    <a class="dropdown-item" href="../articles/functions_ungrouped.html">Non-Categorised Functions</a>
+    <a class="dropdown-item" href="../articles/functions_vector.html">Vector Functions</a>
+    <a class="dropdown-item" href="../articles/overview.html">Overview</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/kwb-r/kwb.utils/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
+    
+  </div>
+</nav><div class="container template-article">
 
-      </header><script src="functions_data_frame_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Functions Working on Data Frames</h1>
-                        <h4 class="author">Hauke Sonnenberg</h4>
+
+
+<script src="functions_data_frame_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Functions Working on Data Frames</h1>
+                        <h4 data-toc-skip class="author">Hauke Sonnenberg</h4>
             
-            <h4 class="date">2021-12-02</h4>
+            <h4 data-toc-skip class="date">2022-06-04</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/master/vignettes/functions_data_frame.Rmd"><code>vignettes/functions_data_frame.Rmd</code></a></small>
-      <div class="hidden name"><code>functions_data_frame.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/HEAD/vignettes/functions_data_frame.Rmd" class="external-link"><code>vignettes/functions_data_frame.Rmd</code></a></small>
+      <div class="d-none name"><code>functions_data_frame.Rmd</code></div>
     </div>
 
     
     
-<div id="function-addrowwithname" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-addrowwithname" class="anchor"></a>Function <code>addRowWithName()</code>
+<div class="section level3">
+<h3 id="function-addrowwithname">Function <code>addRowWithName()</code><a class="anchor" aria-label="anchor" href="#function-addrowwithname"></a>
 </h3>
 <p>This function does no more than adding a row to a data frame with <code>rbind</code> and giving it a name:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fl">10</span><span class="op">:</span><span class="fl">11</span><span class="op">)</span>
 
-<span class="va">new_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">)</span>
+<span class="va">new_row</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addRowWithName.html">addRowWithName</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">new_row</span>, row.name <span class="op">=</span> <span class="st">"total"</span><span class="op">)</span>
 <span class="co">#&gt;       value</span>
@@ -173,27 +115,26 @@
 <span class="co">#&gt; 2        11</span>
 <span class="co">#&gt; total    21</span></code></pre></div>
 </div>
-<div id="function-addsuffixtocolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-addsuffixtocolumns" class="anchor"></a>Function <code>addSuffixToColumns()</code>
+<div class="section level3">
+<h3 id="function-addsuffixtocolumns">Function <code>addSuffixToColumns()</code><a class="anchor" aria-label="anchor" href="#function-addsuffixtocolumns"></a>
 </h3>
 <p>This function adds a postfix to the column names of a data frame. This may be useful when column-binding data frames. The function can be used to indicate the origin of each column by giving it a suffix related to the data frame that it originates from.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Define a first data frame</span>
-<span class="va">data_frame_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+<span class="va">data_frame_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
   id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, 
-  first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Peter"</span>, <span class="st">"Mary"</span><span class="op">)</span>, 
-  last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Miller"</span>, <span class="st">"Smith"</span><span class="op">)</span>
+  first <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Peter"</span>, <span class="st">"Mary"</span><span class="op">)</span>, 
+  last <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Miller"</span>, <span class="st">"Smith"</span><span class="op">)</span>
 <span class="op">)</span>
 
 <span class="co"># Define a second data frame</span>
-<span class="va">data_frame_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
-  height_cm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">181</span>, <span class="fl">171</span><span class="op">)</span>,
-  weigth_kg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">68</span>, <span class="fl">59</span><span class="op">)</span>
+<span class="va">data_frame_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
+  height_cm <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">181</span>, <span class="fl">171</span><span class="op">)</span>,
+  weigth_kg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">68</span>, <span class="fl">59</span><span class="op">)</span>
 <span class="op">)</span>
 
 <span class="co"># Column-bind the data frames, after giving their columns a unique suffix</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>
   <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span><span class="op">(</span><span class="va">data_frame_1</span>, <span class="st">"_1"</span><span class="op">)</span>,
   <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/addSuffixToColumns.html">addSuffixToColumns</a></span><span class="op">(</span><span class="va">data_frame_2</span>, <span class="st">"_2"</span><span class="op">)</span>
 <span class="op">)</span>
@@ -201,193 +142,177 @@
 <span class="co">#&gt; 1    1   Peter Miller         181          68</span>
 <span class="co">#&gt; 2    2    Mary  Smith         171          59</span></code></pre></div>
 </div>
-<div id="function-asnofactordataframe" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-asnofactordataframe" class="anchor"></a>Function <code>asNoFactorDataFrame</code>
+<div class="section level3">
+<h3 id="function-asnofactordataframe">Function <code>asNoFactorDataFrame</code><a class="anchor" aria-label="anchor" href="#function-asnofactordataframe"></a>
 </h3>
 <p>This function is a shortcut to <code>as.data.frame(..., stringsAsFactors = FALSE)</code>. Using this function may slightly improve the readability of a script (as the number of arguments passed to the function is reduced):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
 <span class="va">result_1</span> <span class="op">&lt;-</span> <span class="fu">kwb.utils</span><span class="fu">::</span><span class="fu"><a href="../reference/asNoFactorDataFrame.html">asNoFactorDataFrame</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span>
-<span class="va">result_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">m</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">result_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">m</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">result_1</span>, <span class="va">result_2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">result_1</span>, <span class="va">result_2</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span></code></pre></div>
 <p>Functions Working on Data Frames</p>
 </div>
-<div id="function-columntodate" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columntodate" class="anchor"></a>Function columnToDate()</h3>
+<div class="section level3">
+<h3 id="function-columntodate">Function columnToDate()<a class="anchor" aria-label="anchor" href="#function-columntodate"></a>
+</h3>
 </div>
-<div id="function-columnwisepercentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-columnwisepercentage" class="anchor"></a>Function columnwisePercentage()</h3>
+<div class="section level3">
+<h3 id="function-columnwisepercentage">Function columnwisePercentage()<a class="anchor" aria-label="anchor" href="#function-columnwisepercentage"></a>
+</h3>
 </div>
-<div id="function-dropunusedfactorlevels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-dropunusedfactorlevels" class="anchor"></a>Function dropUnusedFactorLevels()</h3>
+<div class="section level3">
+<h3 id="function-dropunusedfactorlevels">Function dropUnusedFactorLevels()<a class="anchor" aria-label="anchor" href="#function-dropunusedfactorlevels"></a>
+</h3>
 </div>
-<div id="function-extractrowranges" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-extractrowranges" class="anchor"></a>Function extractRowRanges()</h3>
+<div class="section level3">
+<h3 id="function-extractrowranges">Function extractRowRanges()<a class="anchor" aria-label="anchor" href="#function-extractrowranges"></a>
+</h3>
 </div>
-<div id="function-fullysorted" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-fullysorted" class="anchor"></a>Function fullySorted()</h3>
+<div class="section level3">
+<h3 id="function-fullysorted">Function fullySorted()<a class="anchor" aria-label="anchor" href="#function-fullysorted"></a>
+</h3>
 </div>
-<div id="function-firstposixcolumn" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-firstposixcolumn" class="anchor"></a>Function firstPosixColumn()</h3>
+<div class="section level3">
+<h3 id="function-firstposixcolumn">Function firstPosixColumn()<a class="anchor" aria-label="anchor" href="#function-firstposixcolumn"></a>
+</h3>
 </div>
-<div id="function-getkeywordpositions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-getkeywordpositions" class="anchor"></a>Function getKeywordPositions()</h3>
+<div class="section level3">
+<h3 id="function-getkeywordpositions">Function getKeywordPositions()<a class="anchor" aria-label="anchor" href="#function-getkeywordpositions"></a>
+</h3>
 </div>
-<div id="function-hsaddmissingcols" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsaddmissingcols" class="anchor"></a>Function hsAddMissingCols()</h3>
+<div class="section level3">
+<h3 id="function-hsaddmissingcols">Function hsAddMissingCols()<a class="anchor" aria-label="anchor" href="#function-hsaddmissingcols"></a>
+</h3>
 </div>
-<div id="function-hsdelemptycols" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsdelemptycols" class="anchor"></a>Function hsDelEmptyCols()</h3>
+<div class="section level3">
+<h3 id="function-hsdelemptycols">Function hsDelEmptyCols()<a class="anchor" aria-label="anchor" href="#function-hsdelemptycols"></a>
+</h3>
 </div>
-<div id="function-hsrenamecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-hsrenamecolumns" class="anchor"></a>Function hsRenameColumns()</h3>
+<div class="section level3">
+<h3 id="function-hsrenamecolumns">Function hsRenameColumns()<a class="anchor" aria-label="anchor" href="#function-hsrenamecolumns"></a>
+</h3>
 </div>
-<div id="function-insertcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-insertcolumns" class="anchor"></a>Function insertColumns()</h3>
+<div class="section level3">
+<h3 id="function-insertcolumns">Function insertColumns()<a class="anchor" aria-label="anchor" href="#function-insertcolumns"></a>
+</h3>
 </div>
-<div id="function-mergeall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-mergeall" class="anchor"></a>Function mergeAll()</h3>
+<div class="section level3">
+<h3 id="function-mergeall">Function mergeAll()<a class="anchor" aria-label="anchor" href="#function-mergeall"></a>
+</h3>
 </div>
-<div id="function-movecolumnstofront" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-movecolumnstofront" class="anchor"></a>Function moveColumnsToFront()</h3>
+<div class="section level3">
+<h3 id="function-movecolumnstofront">Function moveColumnsToFront()<a class="anchor" aria-label="anchor" href="#function-movecolumnstofront"></a>
+</h3>
 </div>
-<div id="function-nofactordataframe" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-nofactordataframe" class="anchor"></a>Function noFactorDataFrame()</h3>
+<div class="section level3">
+<h3 id="function-nofactordataframe">Function noFactorDataFrame()<a class="anchor" aria-label="anchor" href="#function-nofactordataframe"></a>
+</h3>
 </div>
-<div id="function-pastecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-pastecolumns" class="anchor"></a>Function pasteColumns()</h3>
+<div class="section level3">
+<h3 id="function-pastecolumns">Function pasteColumns()<a class="anchor" aria-label="anchor" href="#function-pastecolumns"></a>
+</h3>
 </div>
-<div id="function-pastecolumns0" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-pastecolumns0" class="anchor"></a>Function pasteColumns0()</h3>
+<div class="section level3">
+<h3 id="function-pastecolumns0">Function pasteColumns0()<a class="anchor" aria-label="anchor" href="#function-pastecolumns0"></a>
+</h3>
 </div>
-<div id="function-posixcolumnatposition" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-posixcolumnatposition" class="anchor"></a>Function posixColumnAtPosition()</h3>
+<div class="section level3">
+<h3 id="function-posixcolumnatposition">Function posixColumnAtPosition()<a class="anchor" aria-label="anchor" href="#function-posixcolumnatposition"></a>
+</h3>
 </div>
-<div id="function-rbindall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-rbindall" class="anchor"></a>Function rbindAll()</h3>
+<div class="section level3">
+<h3 id="function-rbindall">Function rbindAll()<a class="anchor" aria-label="anchor" href="#function-rbindall"></a>
+</h3>
 </div>
-<div id="function-removecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removecolumns" class="anchor"></a>Function removeColumns()</h3>
+<div class="section level3">
+<h3 id="function-removecolumns">Function removeColumns()<a class="anchor" aria-label="anchor" href="#function-removecolumns"></a>
+</h3>
 </div>
-<div id="function-removeemptycolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-removeemptycolumns" class="anchor"></a>Function removeEmptyColumns()</h3>
+<div class="section level3">
+<h3 id="function-removeemptycolumns">Function removeEmptyColumns()<a class="anchor" aria-label="anchor" href="#function-removeemptycolumns"></a>
+</h3>
 </div>
-<div id="function-renameandselect" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-renameandselect" class="anchor"></a>Function renameAndSelect()</h3>
+<div class="section level3">
+<h3 id="function-renameandselect">Function renameAndSelect()<a class="anchor" aria-label="anchor" href="#function-renameandselect"></a>
+</h3>
 </div>
-<div id="function-renamecolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-renamecolumns" class="anchor"></a>Function renameColumns()</h3>
+<div class="section level3">
+<h3 id="function-renamecolumns">Function renameColumns()<a class="anchor" aria-label="anchor" href="#function-renamecolumns"></a>
+</h3>
 </div>
-<div id="function-resetrownames" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-resetrownames" class="anchor"></a>Function resetRowNames()</h3>
+<div class="section level3">
+<h3 id="function-resetrownames">Function resetRowNames()<a class="anchor" aria-label="anchor" href="#function-resetrownames"></a>
+</h3>
 </div>
-<div id="function-roundcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-roundcolumns" class="anchor"></a>Function roundColumns()</h3>
+<div class="section level3">
+<h3 id="function-roundcolumns">Function roundColumns()<a class="anchor" aria-label="anchor" href="#function-roundcolumns"></a>
+</h3>
 </div>
-<div id="function-rowwisepercentage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-rowwisepercentage" class="anchor"></a>Function rowwisePercentage()</h3>
+<div class="section level3">
+<h3 id="function-rowwisepercentage">Function rowwisePercentage()<a class="anchor" aria-label="anchor" href="#function-rowwisepercentage"></a>
+</h3>
 </div>
-<div id="function-safecolumnbind" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-safecolumnbind" class="anchor"></a>Function safeColumnBind()</h3>
+<div class="section level3">
+<h3 id="function-safecolumnbind">Function safeColumnBind()<a class="anchor" aria-label="anchor" href="#function-safecolumnbind"></a>
+</h3>
 </div>
-<div id="function-safemerge" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-safemerge" class="anchor"></a>Function safeMerge()</h3>
+<div class="section level3">
+<h3 id="function-safemerge">Function safeMerge()<a class="anchor" aria-label="anchor" href="#function-safemerge"></a>
+</h3>
 </div>
-<div id="function-saferowbind" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-saferowbind" class="anchor"></a>Function safeRowBind()</h3>
+<div class="section level3">
+<h3 id="function-saferowbind">Function safeRowBind()<a class="anchor" aria-label="anchor" href="#function-saferowbind"></a>
+</h3>
 </div>
-<div id="function-saferowbindall" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-saferowbindall" class="anchor"></a>Function safeRowBindAll()</h3>
+<div class="section level3">
+<h3 id="function-saferowbindall">Function safeRowBindAll()<a class="anchor" aria-label="anchor" href="#function-saferowbindall"></a>
+</h3>
 </div>
-<div id="function-selectcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-selectcolumns" class="anchor"></a>Function selectColumns()</h3>
+<div class="section level3">
+<h3 id="function-selectcolumns">Function selectColumns()<a class="anchor" aria-label="anchor" href="#function-selectcolumns"></a>
+</h3>
 </div>
-<div id="function-setcolumns" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-setcolumns" class="anchor"></a>Function setColumns()</h3>
+<div class="section level3">
+<h3 id="function-setcolumns">Function setColumns()<a class="anchor" aria-label="anchor" href="#function-setcolumns"></a>
+</h3>
 </div>
-<div id="function-splitintofixsizedblocks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-splitintofixsizedblocks" class="anchor"></a>Function splitIntoFixSizedBlocks()</h3>
+<div class="section level3">
+<h3 id="function-splitintofixsizedblocks">Function splitIntoFixSizedBlocks()<a class="anchor" aria-label="anchor" href="#function-splitintofixsizedblocks"></a>
+</h3>
 </div>
-<div id="function-tablelookup" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-tablelookup" class="anchor"></a>Function tableLookup()</h3>
+<div class="section level3">
+<h3 id="function-tablelookup">Function tableLookup()<a class="anchor" aria-label="anchor" href="#function-tablelookup"></a>
+</h3>
 </div>
-<div id="function-unmerge" class="section level3">
-<h3 class="hasAnchor">
-<a href="#function-unmerge" class="anchor"></a>Function unmerge()</h3>
+<div class="section level3">
+<h3 id="function-unmerge">Function unmerge()<a class="anchor" aria-label="anchor" href="#function-unmerge"></a>
+</h3>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-      </div>
-
+  </main>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/hsonne">Hauke Sonnenberg</a>.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by <a href="https://github.com/hsonne" class="external-link">Hauke Sonnenberg</a>.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
-  docsearch({
-    
-    
-    apiKey: '18bee084719187fe8f77ebc6bd25f9ca',
-    indexName: 'kwb_utils',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
-  });
-</script>
-</body>
+
+  
+
+  </body>
 </html>

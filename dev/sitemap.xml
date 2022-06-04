@@ -1,861 +1,957 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/index.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/DIN.A4.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/addClass.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_array.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/addRowWithName.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_call.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/addSuffixToColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_check.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/allAreEqual.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_conversion.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/allAreIdentical.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_crypto.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/almostEqual.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_data_frame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/appendSuffix.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_debug.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/arglist.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_dictionary.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/asColumnList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_if.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/asNoFactorDataFrame.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_in_out.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/asRowList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_list.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assertFinalSlash.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_logical.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assertRowsAndColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_object.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assignAll.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_stats.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assignArgumentDefaults.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_string.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assignGlobally.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_system.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/assignPackageObjects.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_ungrouped.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/atLeastOneRowIn.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/functions_vector.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/backspace.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/breakInSequence.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/articles/overview.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/callWith.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/authors.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/callWithStringsAsFactors.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/index.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/catAndRun.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/news/index.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/catIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/DIN.A4.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/catLines.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/addClass.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/catNewLineIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/addRowWithName.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/checkForMissingColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/addSuffixToColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/clearConsole.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/allAreEqual.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/cmdLinePath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/allAreIdentical.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/colMaxima.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/almostEqual.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/colMinima.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/appendSuffix.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/colNaNumbers.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/arglist.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/colStatisticOneFunction.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/argsCsv.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/colStatistics.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/arrayToDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/collapsed.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/asColumnList.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/columnDescriptor.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/asNoFactorDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/columnToDate.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/asRowList.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/columnwisePercentage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assertFinalSlash.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/combineAlternatingly.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assertRowsAndColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/commaCollapsed.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignAll.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/compareDataFrames.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignArgumentDefaults.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/compareSets.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignGlobally.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/containsNulString.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignPackageObjects.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/convertCsvFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/atLeastOneRowIn.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/copyDirectoryStructure.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/backspace.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/copyListElements.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/breakInSequence.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/countNaInColumn.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/callWith.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/countOrSum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/callWithStringsAsFactors.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createAccessor.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catAndRun.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createDirAndReturnPath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catChanges.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createDirectory.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catChangesIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createIdAlong.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createMatrix.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catLines.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createPasswordFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catNewLineIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/createStorage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/checkForMissingColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/csvTextToDataFrame.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/clearConsole.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/decode.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/clipMatrix.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIfNA.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/cmdLinePath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIfNULL.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/colMaxima.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIfZero.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/colMinima.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultLevels.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/colNaNumbers.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultWindowsProgramFolders.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/colStatisticOneFunction.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/desktop.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/colStatistics.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/diffrows.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/collapsed.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-OStype.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/columnDescriptor.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-defaultIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/columnToDate.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.1.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/columnwisePercentage.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.2.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/combineAlternatingly.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-isNetworkPath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/commaCollapsed.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-log.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/commonNames.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logline.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/compareDataFrames.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logok.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/compareSets.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-logstart.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/containsNulString.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dropDim.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/convertCsvFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dropUnusedFactorLevels.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/copyAttributes.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/encode.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/copyDirectoryStructure.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/enlargeVector.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/copyListElements.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/excludeNULL.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/countNaInColumn.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/expandGrid.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/countOrSum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/extendLimits.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createAccessor.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/extractRowRanges.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createDirAndReturnPath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/extractSubstring.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createDirectories.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/fileExtension.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createDirectory.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/findChanges.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createIdAlong.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/findPartialDuplicates.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createMatrix.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/finishAndShowPdf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createPasswordFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/finishAndShowPdfIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createStorage.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/firstElement.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/csvTextToDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/firstPosixColumn.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/decode.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/frenchToAscii.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultIfNA.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/frequencyTable.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultIfNULL.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/fullySorted.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultIfZero.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/generateKeyFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultLevels.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getAttribute.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultWindowsProgramFolders.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getByPositiveOrNegativeIndex.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/desktop.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getElementLengths.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/diffrows.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getEvenNumbers.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-OStype.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getFunctionName.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-defaultIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getFunctionValueOrDefault.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-guessSeparator.1.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getGlobally.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-guessSeparator.2.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getKeywordPositions.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-isNetworkPath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getNamesOfObjectsInRDataFiles.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-log.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getObjectFromRDataFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-logline.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getOddNumbers.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-logok.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getPassword.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-logstart.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getPathsAndValuesFromRecursiveList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dropDim.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/getTagNames.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dropUnusedFactorLevels.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/get_homedir.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/encode.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/guessSeparator.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/enlargeVector.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/headtail.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/excludeNULL.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsAddMissingCols.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/expandGrid.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsChrToNum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/extendLimits.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsCountInStr.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/extractRowRanges.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsDelEmptyCols.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/extractSubstring.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsMatrixToListForm.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/fileExtension.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsMovingMean.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/findChanges.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsOpenWindowsExplorer.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/findPartialDuplicates.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsPrepPdf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/finishAndShowPdf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsQuoteChr.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/finishAndShowPdfIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsRenameColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/firstElement.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsResolve.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/firstPosixColumn.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsRestoreAttributes.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/frenchToAscii.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsSafeName.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/frequencyTable.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsShell.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/fullySorted.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsShowPdf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/generateKeyFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsStringToDate.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getAttribute.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsStringToDouble.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getByPositiveOrNegativeIndex.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsSubstSpecChars.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getElementLengths.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsSystem.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getEvenNumbers.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsTrim.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getFunctionValueOrDefault.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/hsValidValue.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getGlobally.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/inRange.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getKeywordPositions.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/insertColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getNamesOfObjectsInRDataFiles.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/intToNumeralSystem.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getObjectFromRDataFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/is.unnamed.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getOddNumbers.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isASCII.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getPassword.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isDotOrDoubleDot.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getPathsAndValuesFromRecursiveList.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isEvenNumber.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getTagNames.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isLoaded.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/get_homedir.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isNaInAllColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/guessSeparator.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isNaInAllRows.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hasFinalSlash.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isNaOrEmpty.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/headtail.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isNullOrEmpty.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsAddMissingCols.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/isOddNumber.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsChrToNum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/lastElement.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsCountInStr.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/left.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsDelEmptyCols.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/limitToRange.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsMatrixToListForm.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/linearCombination.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsMovingMean.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/listObjects.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsOpenWindowsExplorer.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/listToDepth.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsPrepPdf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/loadObject.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsQuoteChr.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/makeUnique.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsRenameColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/matchesCriteria.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsResolve.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/matrixToDataFrame.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsRestoreAttributes.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/mergeAll.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsSafeName.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/mergeLists.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsShell.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/mergeNamedArrays.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsShowPdf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/moveColumnsToFront.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsStringToDate.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/moveToFront.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsStringToDouble.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/movingSum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsSubstSpecChars.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/msgAvailableFields.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsSystem.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/multiColumnLookup.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsTrim.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/multiSubstitute.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hsValidValue.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/mySystemTime.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/inRange.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/naToLastNonNa.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/indent.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/nameByElement.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/noFactorDataFrame.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/insertColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/objectSize.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/intToNumeralSystem.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/objectToText.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/is.unnamed.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/orderBy.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isASCII.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/pairwise.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isDotOrDoubleDot.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/parallelNonNA.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isEvenNumber.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/pasteColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isLoaded.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/pasteColumns0.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNaInAllColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/percentage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNaInAllRows.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/percentageOfMaximum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNaOrEmpty.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/percentageOfSum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNullOrEmpty.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/posixColumnAtPosition.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isOddNumber.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/preparePdf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isTryError.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/preparePdfIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/lastElement.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/print.repro_sample.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/left.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/printIf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/leftSubstringEquals.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/printable_chars.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/limitToRange.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/quotient.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/linearCombination.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/rStylePath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/listObjects.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/randomMatrix.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/listToDepth.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/randomValuesWithSum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/loadObject.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/rbindAll.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mainClass.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readArglists.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/makeUnique.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readCsvInputFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/matchesCriteria.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readDictionaries.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/matrixToDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readDictionary.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mergeAll.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readLinesWithEncoding.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mergeLists.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/readPackageFile.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mergeNamedArrays.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/recursiveNames.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/moveColumnsToFront.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/recycle.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/moveToFront.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/relativeCumulatedSum.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/movingSum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeAttributes.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/msgAvailableFields.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/multiColumnLookup.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeDuplicates.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/multiSubstitute.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeElements.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mySystemTime.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeEmptyColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/nNA.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeExtension.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/nUnique.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/removeSpaces.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/naToLastNonNa.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/renameAndSelect.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/nameByElement.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/renameColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/namedVectorFromColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/repeated.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/namedVectorToDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/reproducibleSample.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/noFactorDataFrame.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/resetRowNames.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/objectSize.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/resolve.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/objectToText.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/resolveAll.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/orderBy.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/revertListAssignments.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/orderDecreasinglyBy.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/right.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/pairwise.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/roundColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/parallelNonNA.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/rowOrColumnwisePercentage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/pasteColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/rowwisePercentage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/pasteColumns0.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/runBatchfileInDirectory.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/percentage.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/runInDirectory.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/percentageOfMaximum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safeColumnBind.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/percentageOfSum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safeMerge.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/posixColumnAtPosition.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safePath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/preparePdf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safeRowBind.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/preparePdfIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safeRowBindAll.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/print.repro_sample.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/safeRowBindOfListElements.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/printIf.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/selectColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/printable_chars.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/selectElements.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/quotient.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/setColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/rStylePath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/setLoaded.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/randomMatrix.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/setMatrixColumns.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/randomValuesWithSum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/shorten.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/rangeToSequence.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/sourceScripts.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/rbindAll.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/space.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readArglists.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/splitAlongDim.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readCsvInputFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/splitIntoFixSizedBlocks.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readDictionaries.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/startsToEnds.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readDictionary.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/startsToRanges.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readLinesWithEncoding.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stopIfNotMatrix.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/readPackageFile.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stringContains.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/recursiveNames.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stringEndsWith.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/recycle.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stringList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/relativeCumulatedSum.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stringStartsWith.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeAttributes.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/stringToExpression.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/subExpressionMatches.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeDuplicates.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/substSpecialChars.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeElements.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/tableLookup.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeEmpty.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/tempSubdirectory.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeEmpty2.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/textToObject.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeEmptyColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toFactor.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeExtension.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toFormula.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeLeadingSlashes.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toInches.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/removeSpaces.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toKeysAndValues.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/renameAndSelect.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toLookupClass.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/renameColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toLookupList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/repeated.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toLookupTable.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/replaceFileExtension.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toNamedList.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/reproducibleSample.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toPdf.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/resetRowNames.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/toPositiveIndices.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/resolve.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/underscoreToPercent.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/resolveAll.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/unmerge.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/revertListAssignments.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/user.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/right.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/warnIfEmpty.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/roundColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/warningDeprecated.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/rowOrColumnwisePercentage.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/windowsPath.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/rowwisePercentage.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/writeDictionary.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/runBatchfileInDirectory.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/writeText.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/runInDirectory.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_array.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safeColumnBind.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_call.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safeMerge.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_check.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safePath.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_conversion.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safeRowBind.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_crypto.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safeRowBindAll.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_data_frame.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/safeRowBindOfListElements.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_debug.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/selectColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_dictionary.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/selectElements.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_if.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/setColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_in_out.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/setLoaded.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_list.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/setMatrixColumns.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_logical.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/shorten.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_object.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/showPackageObjects.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_stats.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/sourceScripts.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_string.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/space.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_system.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/splitAlongDim.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_ungrouped.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/splitIntoFixSizedBlocks.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/functions_vector.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/splitIntoLines.html</loc>
   </url>
   <url>
-    <loc>https://kwb-r.github.io/kwb.utils/articles/overview.html</loc>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/startsToEnds.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/startsToRanges.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stopIfNotMatrix.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stringContains.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stringEndsWith.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stringList.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stringStartsWith.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stringToExpression.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/subExpressionMatches.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/substSpecialChars.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/tableLookup.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/tempSubdirectory.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/textToObject.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toConditional.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toFactor.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toFormula.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toInches.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toKeysAndValues.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toLookupClass.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toLookupList.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toLookupTable.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toNamedList.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toPdf.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/toPositiveIndices.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/underscoreToPercent.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/uniqueDirnames.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/unmerge.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/user.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/warnIfEmpty.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/warningDeprecated.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/windowsPath.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/writeDictionary.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/writeText.html</loc>
   </url>
 </urlset>
