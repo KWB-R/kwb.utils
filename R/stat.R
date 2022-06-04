@@ -346,21 +346,13 @@ colStatistics <- function(
   functionColumn = FALSE
 )
 {
-  statistics <- NULL
-  
-  for (FUN in functions) {
-    
-    functionStatistics <- colStatisticOneFunction(dataFrame, FUN, na.rm = na.rm)
-    
-    statistics <- if (is.null(statistics)) {
-      functionStatistics
-    } else {
-      cbind(statistics, functionStatistics)
-    }
-  } 
-  
-  statistics <- t(statistics)
-  
+  statistics <- t(do.call(cbind, lapply(
+    functions, 
+    FUN = colStatisticOneFunction, 
+    dataFrame = dataFrame, 
+    na.rm = na.rm
+  )))
+
   if (functionColumn) {
     
     rownames(statistics) <- NULL
