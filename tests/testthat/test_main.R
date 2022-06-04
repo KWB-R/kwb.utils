@@ -70,11 +70,6 @@ test_that("quotient() works", {
   expect_identical(quotient(1, 0, substitute.value = 999, warn = FALSE), 999)
 }) 
 
-test_that("getFunctionName() works", {
-  
-  #getFunctionName(base::min)
-})
-
 test_that("getOddNumbers() and getEvenNumbers() works", {
   
   expect_equal(getOddNumbers(1:10), c(1, 3, 5, 7, 9))

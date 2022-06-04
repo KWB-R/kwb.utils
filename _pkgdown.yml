@@ -330,7 +330,6 @@ reference:
       - arglist
       - callWith
       - callWithStringsAsFactors
-      - getFunctionName
       - getFunctionValueOrDefault
   - title: Cryptographic Functions
     contents:
