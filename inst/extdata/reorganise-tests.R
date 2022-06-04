@@ -20,7 +20,28 @@ if (FALSE)
   result <- lapply(result, kwb.utils::nameByElement, "name")
   
   # Extract tests into their own files and remove the original files...
+  
+  # Skip files that we have already looked at
+  result <- kwb.utils::removeElements(result, c(
+    "test_column.R", 
+    "test_encode_decode.R",
+    "test_io.R",
+    "test_linearCombination.R"
+  ))
 
+  # function names in kwb.utils
+  known_names <- kwb.utils::showPackageObjects()
+  
+  for (r in result) {
+    extract_tests_of_known_functions(x = r, known_names)
+  }
+  
+  extract_tests_of_known_functions(x = result$test_findChanges.R, known_names)
+  extract_tests_of_known_functions(x = result$test_get_homedir.R, known_names)
+  extract_tests_of_known_functions(x = result$test_io.R, known_names)
+  extract_tests_of_known_functions(x = result$test_linearCombination.R, known_names)
+  extract_tests_of_known_functions(x = result$test_list.R, known_names)
+  
   # test_encryption.R
   x1 <- result$test_encryption.R
   x2 <- extract_test(x1, "generateKeyFile")
@@ -148,6 +169,32 @@ read_test <- function(file)
     name <- kwb.utils::substSpecialChars(name)
     list(name = name, code = code, file = file)
   })
+}
+
+# extract_tests_of_known_functions ---------------------------------------------
+extract_tests_of_known_functions <- function(x, known_names)
+{
+  #x <- result$test_io.R
+  original_file <- x[[1L]]$file
+  
+  for (name in intersect(names(x), known_names)) {
+    x <- extract_test(x, name)
+  }
+  
+  if (length(x)) {
+    # Overwrite original file with remaining code
+    codes <- lapply(x, kwb.utils::selectElements, "code")
+    text <- do.call(c, lapply(unname(codes), function(xx) c("", xx)))
+    kwb.utils::catAndRun(
+      paste("Rewriting", original_file), 
+      writeLines(text, original_file)
+    )
+  } else {
+    kwb.utils::catAndRun(
+      paste("Removing", original_file), 
+      unlink(original_file)
+    )
+  }
 }
 
 # extract_test -----------------------------------------------------------------
