@@ -20,6 +20,25 @@ if (FALSE)
   result <- lapply(result, kwb.utils::nameByElement, "name")
   
   # Extract tests into their own files and remove the original files
+  x1 <- result$test_convert.R
+  x2 <- extract_test(x1, "intToNumeralSystem")
+  x3 <- extract_test(x2, "toFactor")
+  x4 <- extract_test(x3, "toPositiveIndices")
+  x5 <- extract_test(x4, "toInches")
+  x6 <- extract_test(x5, "limitToRange")
+  x7 <- extract_test(x6, "toKeysAndValues")
+  x8 <- extract_test(x7, "underscoreToPercent")
+  x9 <- extract_test(x8, "toFormula")
+  x10 <- extract_test(x9, "frenchToAscii")
+  x11 <- extract_test(x10, "revertListAssignments")
+  x12 <- extract_test(x11, "hsChrToNum")
+  x13 <- extract_test(x12, "hsValidValue")
+  x14 <- extract_test(x13, "hsStringToDouble")
+  x15 <- extract_test(x14, "hsStringToDate")
+  x15 # check if empty
+  unlink(x1[[1L]]$file)
+  
+  # test_column.R
   x1 <- result$test_column.R
   x2 <- extract_test(x1, "pasteColumns0")
   x3 <- extract_test(x2, "safeColumnBind")
