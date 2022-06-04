@@ -93,34 +93,27 @@ columns, respectively, that the output matrix shall contain</p></dd>
 <span class="r-in"><span class="co"># By default, the matrix has a random number of rows between 1 and 10 and</span></span>
 <span class="r-in"><span class="co"># a random number of columns between 1 and 10 and random values of 1:100</span></span>
 <span class="r-in"><span class="fu">randomMatrix</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       [,1] [,2] [,3] [,4] [,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,]   87   33    6    9   57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]   94   47   20   21   83</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]   27   73   41   46   38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]   42   56   98   40   68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]    6   72   53   85   45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]   92   32   12   94   42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]   44    8   99   42   23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]   86   69   17   72   52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]    8   15   56   72   62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   63   86   22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   63   23   19</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># You may specify the dimensions (here: 5 rows, 3 columns)...</span></span>
 <span class="r-in"><span class="fu">randomMatrix</span><span class="op">(</span>dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   14   12   89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   44   22   25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   82   12   99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   88    6   18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]   10   58   75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    7   43   71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   81   32   56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   84   23   33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   35   17   79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]    2   32   31</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># ... and the set of values to be used within the matrix</span></span>
 <span class="r-in"><span class="fu">randomMatrix</span><span class="op">(</span>dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span>, values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]  1.0   NA  1.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  0.5  1.0   NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  1.0  0.5  0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   NA   NA  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]  1.0   NA  0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    0  0.5    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    0  0.5    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]    0  0.0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]    1  1.0    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5,]    1  1.0   NA</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
