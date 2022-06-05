@@ -67,6 +67,7 @@ reference:
       - left
       - leftSubstringEquals
       - makeUnique
+      - maxStringLength
       - moveToFront
       - multiSubstitute
       - pairwise
@@ -350,6 +351,7 @@ reference:
   - title: Functions Returning Functions
     contents:
       - createAccessor
+      - createFunctionExtdataFile
       - toConditional
   - title: Further Hidden Functions (Why?)
     contents:
