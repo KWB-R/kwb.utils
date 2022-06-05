@@ -5,6 +5,7 @@ test_that("findChanges() works", {
   expect_null(f(character()))
   expect_null(f(integer()))
   expect_null(f(numeric()))
+  expect_error(f(NA))
   
   expect_identical(f(1:3),data.frame(
     starts_at = 1:3, 

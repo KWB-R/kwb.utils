@@ -4,5 +4,11 @@ test_that("assertFinalSlash() works", {
 
   expect_error(f())
 
-  expect_true(all(grepl("/$", f(c("a", "b/")))))
+  x <- c("a", "b/")
+  
+  results <- lapply(1:3, f, x = x)
+  
+  expect_true(all(sapply(results, function(x) {
+    all(hasFinalSlash(x))
+  })))
 })
