@@ -2,7 +2,7 @@
 % Please edit documentation in R/createFunctionExtdataFile.R
 \name{createFunctionExtdataFile}
 \alias{createFunctionExtdataFile}
-\title{"Create Function to Compose Path in Package}
+\title{Create Function to Compose Path in Package}
 \usage{
 createFunctionExtdataFile(package)
 }
@@ -12,10 +12,10 @@ createFunctionExtdataFile(package)
 }
 \value{
 This function returns a function that internally calls
-  \code{system.file("extdata", ..., package = package")}
+  \code{system.file("extdata", ..., package = package)}
 }
 \description{
-"Create Function to Compose Path in Package
+Create Function to Compose Path in Package
 }
 \examples{
 extdataFile <- createFunctionExtdataFile("kwb.utils")
