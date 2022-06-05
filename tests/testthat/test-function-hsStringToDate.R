@@ -1,11 +1,15 @@
 test_that("hsStringToDate() works", {
 
-  expect_s3_class(hsStringToDate("2018-05-22"), "Date")
-  expect_s3_class(hsStringToDate("22.05.2018", "%d.%m.%Y"), "Date")
+  f <- hsStringToDate
   
-  expect_error(hsStringToDate("22.05.2018"))
+  expect_s3_class(f("2018-05-22"), "Date")
+  expect_s3_class(f("22.05.2018", "%d.%m.%Y"), "Date")
   
-  expect_true(is.na(hsStringToDate(NA, "Y%-%m-%d")))
-  result <- hsStringToDate(c(NA, "14.01.1975"), "%d.%m.%Y")
+  expect_error(f("22.05.2018"))
+  
+  expect_true(is.na(f(NA, "Y%-%m-%d")))
+  result <- f(c(NA, "14.01.1975"), "%d.%m.%Y")
   expect_true(is.na(result[1L]), result[[2L]] == as.Date("1975-01-14"))
+  
+  expect_error(f("2022-06-04", dateFormat = "%d.%m.%Y"))
 })
