@@ -85,11 +85,11 @@ preparePdf <- function(
     }
   }
         
-  width.cm <- defaultIfNULL(width.cm, .defaultWidth(
+  width.cm <- defaultIfNULL(width.cm, defaultWidth(
     landscape, borderWidth.cm, borderHeight.cm
   ))
   
-  height.cm <- defaultIfNULL(height.cm, .defaultHeight(
+  height.cm <- defaultIfNULL(height.cm, defaultHeight(
     landscape, borderWidth.cm, borderHeight.cm
   ))
 
@@ -115,17 +115,17 @@ preparePdf <- function(
   pdfFile
 }
 
-# .defaultWidth ----------------------------------------------------------------
+# defaultWidth -----------------------------------------------------------------
 
-.defaultWidth <- function(landscape, borderWidth.cm, borderHeight.cm)
+defaultWidth <- function(landscape, borderWidth.cm, borderHeight.cm)
 {
   ifelse(landscape, DIN.A4()$height.cm, DIN.A4()$width.cm) - 
     ifelse(landscape, borderWidth.cm, borderHeight.cm)
 }
 
-# .defaultHeight ---------------------------------------------------------------
+# defaultHeight ----------------------------------------------------------------
 
-.defaultHeight <- function(landscape, borderWidth.cm, borderHeight.cm)
+defaultHeight <- function(landscape, borderWidth.cm, borderHeight.cm)
 {
   ifelse(landscape, DIN.A4()$width.cm, DIN.A4()$height.cm) - 
     ifelse(landscape, borderHeight.cm, borderWidth.cm)

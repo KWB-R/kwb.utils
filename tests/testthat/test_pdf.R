@@ -30,13 +30,13 @@ test_that(
   expect_identical(names(dev.list())[n], "pdf")
 })
 
-test_that(".defaultWidth() and .defaultHeight() work", {
+test_that("defaultWidth() and defaultHeight() work", {
 
-  expect_identical(.defaultWidth(landscape = TRUE, 0, 0), DIN.A4()$height.cm)
-  expect_identical(.defaultWidth(landscape = FALSE, 0, 0), DIN.A4()$width.cm)
+  expect_identical(defaultWidth(landscape = TRUE, 0, 0), DIN.A4()$height.cm)
+  expect_identical(defaultWidth(landscape = FALSE, 0, 0), DIN.A4()$width.cm)
   
-  expect_identical(.defaultHeight(landscape = TRUE, 0, 0), DIN.A4()$width.cm)
-  expect_identical(.defaultHeight(landscape = FALSE, 0, 0), DIN.A4()$height.cm)
+  expect_identical(defaultHeight(landscape = TRUE, 0, 0), DIN.A4()$width.cm)
+  expect_identical(defaultHeight(landscape = FALSE, 0, 0), DIN.A4()$height.cm)
 })
 
 test_that("DIN.A4() works", {

@@ -73,11 +73,11 @@ test_that(".readAndSplitRowInFile() works", {
   expect_identical(y_2, header_fields)
 })
 
-test_that(".defaultColumnDescription() works", {
+test_that("defaultColumnDescription() works", {
   
   headerFields <- c("a", "b", "c")
   
-  y <- .defaultColumnDescription(headerFields)
+  y <- defaultColumnDescription(headerFields)
 
   expect_is(y, "list")
   

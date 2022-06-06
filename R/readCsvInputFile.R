@@ -70,7 +70,7 @@ readCsvInputFile <- function(
 
   if (is.null(columnDescription)) {
     
-    columnDescription <- .defaultColumnDescription(headerFields)
+    columnDescription <- defaultColumnDescription(headerFields)
   }
 
   if (stopOnMissingColumns) {
@@ -164,9 +164,9 @@ msgAvailableFields <- function(x)
   as.character(as.matrix(fields))
 }
 
-# .defaultColumnDescription ----------------------------------------------------
+# defaultColumnDescription -----------------------------------------------------
 
-.defaultColumnDescription <- function(headerFields)
+defaultColumnDescription <- function(headerFields)
 {
   columnDescription <- list()
 

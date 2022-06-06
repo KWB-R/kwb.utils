@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".defaultStarts() works", {
+test_that("defaultStarts() works", {
 
-  f <- kwb.utils:::.defaultStarts
+  f <- kwb.utils:::defaultStarts
 
   expect_error(
     f()

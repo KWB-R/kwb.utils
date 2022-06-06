@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".defaultWidth() works", {
+test_that("defaultHeight() works", {
 
-  f <- kwb.utils:::.defaultWidth
+  f <- kwb.utils:::defaultHeight
 
   expect_error(
     f()

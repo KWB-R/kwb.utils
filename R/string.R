@@ -141,7 +141,7 @@ fileExtension <- function(x)
 #' # Same result as in the first example
 #' pairwise(x, split = "[._]")
 #' 
-pairwise <- function(x, starts = .defaultStarts(x, split), split = "_")
+pairwise <- function(x, starts = defaultStarts(x, split), split = "_")
 {
   # Generate column order so that duplicated columns appear next to each other
   columns <- character()
@@ -173,9 +173,9 @@ pairwise <- function(x, starts = .defaultStarts(x, split), split = "_")
   columns
 }
 
-# .defaultStarts ---------------------------------------------------------------
+# defaultStarts ----------------------------------------------------------------
 
-.defaultStarts <- function(x, split = "_")
+defaultStarts <- function(x, split = "_")
 {
   # split the strings
   parts <- strsplit(x, split)
