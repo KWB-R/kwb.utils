@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".cleanArglistConfig() works", {
+test_that("cleanArglistConfig() works", {
 
-  f <- kwb.utils:::.cleanArglistConfig
+  f <- kwb.utils:::cleanArglistConfig
 
   expect_error(
     f()

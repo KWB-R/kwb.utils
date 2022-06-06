@@ -23,7 +23,7 @@ readArglists <- function(
   
   names(configs) <- configTable[, 1]
   
-  configs <- lapply(configs, .cleanArglistConfig)
+  configs <- lapply(configs, cleanArglistConfig)
   
   # resolve "additional.args"
   indices <- which(sapply(configs, function(x) ! is.null(x$additional.args)))
@@ -55,9 +55,9 @@ readArglistsTable.csv <- function(file, dbg = FALSE)
   configTable
 }
 
-# .cleanArglistConfig ----------------------------------------------------------
+# cleanArglistConfig -----------------------------------------------------------
 
-.cleanArglistConfig <- function(config)
+cleanArglistConfig <- function(config)
 {
   lapply(config, function(x) {
     
