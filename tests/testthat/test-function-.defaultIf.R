@@ -5,12 +5,12 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".defaultIf() works", {
+test_that("defaultIf() works", {
 
-  f <- kwb.utils:::.defaultIf
+  f <- kwb.utils:::defaultIf
 
   expect_error(
-    kwb.utils:::.defaultIf()
+    f()
     # argument "x" is missing, with no default
   )
 
