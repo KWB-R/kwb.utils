@@ -6,7 +6,7 @@
 \usage{
 readArglists(
   file = NULL,
-  configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
+  configTable = readArglistsTable.csv(safePath(file), dbg = dbg),
   dbg = FALSE
 )
 }

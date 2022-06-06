@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".readArglistsTable.csv() works", {
+test_that("readArglistsTable.csv() works", {
 
-  f <- kwb.utils:::.readArglistsTable.csv
+  f <- kwb.utils:::readArglistsTable.csv
 
   expect_error(
     f()

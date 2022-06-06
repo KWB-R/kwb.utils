@@ -12,7 +12,7 @@
 #' @export
 #' 
 readArglists <- function(
-  file = NULL, configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
+  file = NULL, configTable = readArglistsTable.csv(safePath(file), dbg = dbg),
   dbg = FALSE
 )
 {
@@ -40,9 +40,9 @@ readArglists <- function(
   configs
 }
 
-# .readArglistsTable.csv -------------------------------------------------------
+# readArglistsTable.csv --------------------------------------------------------
 
-.readArglistsTable.csv <- function(file, dbg = FALSE)
+readArglistsTable.csv <- function(file, dbg = FALSE)
 {
   configTable <- utils::read.csv(file, stringsAsFactors = FALSE)
   
