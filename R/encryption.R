@@ -9,14 +9,14 @@
 #' @seealso \code{\link{createPasswordFile}}, \code{\link{getPassword}}
 generateKeyFile <- function(target)
 {
-  .checkNamespace("PKI", "generateKeyFile")
+  checkNamespace("PKI", "generateKeyFile")
   
   PKI::PKI.save.key(key = PKI::PKI.genRSAkey(), target = target) 
 }
 
-# .checkNamespace --------------------------------------------------------------
+# checkNamespace ---------------------------------------------------------------
 
-.checkNamespace <- function(packageName, functionName)
+checkNamespace <- function(packageName, functionName)
 {
   if (! requireNamespace(packageName, quietly = TRUE)) {
     
@@ -45,7 +45,7 @@ createPasswordFile <- function(
   account = NULL, keyFile, passwordFile, password = NULL
 )
 {
-  .checkNamespace("PKI", "createPasswordFile")
+  checkNamespace("PKI", "createPasswordFile")
   
   password <- defaultIfNULL(password, .askForPassword(account))
   
@@ -92,7 +92,7 @@ createPasswordFile <- function(
 #' @seealso \code{\link{generateKeyFile}}, \code{\link{createPasswordFile}}
 getPassword <- function(passwordFile, keyFile) 
 {
-  .checkNamespace("PKI", "getPassword")
+  checkNamespace("PKI", "getPassword")
   
   if (! file.exists(passwordFile)) {
     

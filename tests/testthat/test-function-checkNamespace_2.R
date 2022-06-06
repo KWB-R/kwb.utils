@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".checkNamespace() works", {
+test_that("checkNamespace() works", {
 
-  f <- kwb.utils:::.checkNamespace
+  f <- kwb.utils:::checkNamespace
 
   expect_error(
     f()
