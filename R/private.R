@@ -38,7 +38,7 @@ noSuchElements <- function(
 stopIsNotBut <- function(x, expected, name = deparse(substitute(x)))
 {
   stop(call. = FALSE, sprintf(
-    "%sis not a list but:\n%s",
+    "%s is not a list but:\n%s",
     name, paste(utils::capture.output(utils::str(x)), collapse = "\n")
   ))
 }
