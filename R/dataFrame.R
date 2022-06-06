@@ -434,24 +434,20 @@ rbindAll <- function(
     xnames <- names(x)
     
     if (is.null(xnames)) {
-      
-      xnames <- seq_len(length(x))
+      xnames <- seq_along(x)
     }
     
     times <- sapply(x, FUN = function(xx) {
-      
       if (is.null(xx)) 0 else if (is.null(dim(xx))) 1 else dim(xx)[1]
     })
     
     nameValues <- rep(xnames, times = times)
     
     if (namesAsFactor) {
-      
       nameValues <- as.factor(nameValues)
     }
     
     if (! is.data.frame(result)) {
-      
       result <- data.frame(result)
     }
     
@@ -459,7 +455,6 @@ rbindAll <- function(
   }
   
   if (remove.row.names) {
-    
     row.names(result) <- NULL
   }
   

@@ -118,7 +118,7 @@ mergeAll <- function(dataFrames, by, ..., dbg = TRUE)
   dataFrameNames <- names(dataFrames)
   
   if (is.null(dataFrameNames)) {
-    dataFrameNames <- as.character(seq_len(length(dataFrames)))
+    dataFrameNames <- as.character(seq_along(dataFrames))
   }
   
   # Generate column name suffixes

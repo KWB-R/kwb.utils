@@ -215,7 +215,7 @@ msgAvailableFields <- function(x)
 
 .numberedEnumeration <- function(x)
 {
-  paste0(seq_len(length(x)), ". ", hsQuoteChr(x), collapse = "\n  ")
+  paste0(seq_along(x), ". ", hsQuoteChr(x), collapse = "\n  ")
 }
 
 # .findColumnNumbersByMatchingPatterns -----------------------------------------

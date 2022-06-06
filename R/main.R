@@ -243,7 +243,7 @@ makeUnique <- function(x, warn = TRUE, sep = ".", simple = FALSE)
         indices <- indices[-1L]
       }
 
-      x[indices] <- paste(x[indices], seq_len(length(indices)), sep = sep)
+      x[indices] <- paste(x[indices], seq_along(indices), sep = sep)
     }
   }
 

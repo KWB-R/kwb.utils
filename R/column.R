@@ -346,7 +346,7 @@ insertColumns <- function(
     
   } else {
     
-    part1 <- Data[, 1:i, drop = FALSE]
+    part1 <- Data[, seq_len(i), drop = FALSE]
     
     part2 <- if (i == n.col) {
       
