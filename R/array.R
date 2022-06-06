@@ -136,7 +136,7 @@ dropDim <- function(x, dimension = which(dim(x) == 1))
 {
   stopifnot(is.array(x), is.numeric(dimension), all(dim(x)[dimension] == 1L))
   
-  dim_keep <- setdiff(seq_len(length(dim(x))), dimension)
+  dim_keep <- setdiff(seq_along(dim(x)), dimension)
   
   array(x, dim = dim(x)[dim_keep], dimnames = dimnames(x)[dim_keep])
 }

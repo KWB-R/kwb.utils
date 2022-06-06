@@ -232,7 +232,7 @@ listObjects <- function(files)
   objectsInFiles <- list()
   
   # Loop through .RData files
-  for (i in seq_len(length(files))) {
+  for (i in seq_along(files)) {
     
     cat(sprintf(
       "Loading %d/%d: %s... ", i, length(files), basename(files[i])
