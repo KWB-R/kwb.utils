@@ -47,7 +47,7 @@ createPasswordFile <- function(
 {
   checkNamespace("PKI", "createPasswordFile")
   
-  password <- defaultIfNULL(password, .askForPassword(account))
+  password <- defaultIfNULL(password, askForPassword(account))
   
   password.encrypted <- PKI::PKI.encrypt(
     charToRaw(password), key = PKI::PKI.load.key(file = keyFile)
@@ -56,9 +56,9 @@ createPasswordFile <- function(
   writeBin(password.encrypted, passwordFile)
 }
 
-# .askForPassword --------------------------------------------------------------
+# askForPassword ---------------------------------------------------------------
 
-.askForPassword <- function(account = NULL)
+askForPassword <- function(account = NULL)
 {
   clearConsole()
 

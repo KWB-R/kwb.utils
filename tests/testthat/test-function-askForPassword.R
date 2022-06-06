@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".askForPassword() works", {
+test_that("askForPassword() works", {
 
-  f <- kwb.utils:::.askForPassword
+  f <- kwb.utils:::askForPassword
 
   f()
 
