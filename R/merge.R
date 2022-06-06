@@ -65,7 +65,6 @@ unmerge <- function(z, by)
 }
 
 # splitDataFrame ---------------------------------------------------------------
-#' @export
 #' @keywords internal
 #' 
 splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
