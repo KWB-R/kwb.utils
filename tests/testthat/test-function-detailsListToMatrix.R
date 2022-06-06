@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".detailsListToMatrix() works", {
+test_that("detailsListToMatrix() works", {
 
-  f <- kwb.utils:::.detailsListToMatrix
+  f <- kwb.utils:::detailsListToMatrix
 
   expect_error(
     f()
