@@ -5,12 +5,12 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".splitDataFrame() works", {
+test_that("splitDataFrame() works", {
 
-  f <- kwb.utils:::.splitDataFrame
+  f <- kwb.utils:::splitDataFrame
 
   expect_error(
-    kwb.utils:::.splitDataFrame()
+    f()
     # argument "z" is missing, with no default
   )
 
