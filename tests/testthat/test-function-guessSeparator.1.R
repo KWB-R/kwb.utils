@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".guessSeparator.1() works", {
+test_that("guessSeparator.1() works", {
 
-  f <- kwb.utils:::.guessSeparator.1
+  f <- kwb.utils:::guessSeparator.1
 
   expect_error(
     f()

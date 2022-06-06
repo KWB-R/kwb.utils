@@ -21,7 +21,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
     textlines <- readLines(csvFile, n)
     
     # Try method 1
-    candidates <- .guessSeparator.1(textlines, separators)
+    candidates <- guessSeparator.1(textlines, separators)
     
     if (length(candidates) == 1) {
       
@@ -29,7 +29,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
     }
     
     # Try method 2
-    candidates <- .guessSeparator.2(textlines, separators)
+    candidates <- guessSeparator.2(textlines, separators)
     
     if (length(candidates) == 1) {
       
@@ -62,7 +62,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
   }
 }
 
-# .guessSeparator.1 ------------------------------------------------------------
+# guessSeparator.1 -------------------------------------------------------------
 
 #' Guess Column Separator (Version 1)
 #' 
@@ -71,7 +71,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 #'   to be checked for
 #' @param comment.char comment character
 #' 
-.guessSeparator.1 <- function(textlines, separators, comment.char = "#")
+guessSeparator.1 <- function(textlines, separators, comment.char = "#")
 {
   #
   # Method 1: 
@@ -103,7 +103,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
   separators[selected]  
 }
 
-# .guessSeparator.2 ------------------------------------------------------------
+# guessSeparator.2 -------------------------------------------------------------
 
 #' Guess Column Separator (Version 2)
 #' 
@@ -111,7 +111,7 @@ guessSeparator <- function(csvFile, n = 10, separators = c(";", ",", "\t"))
 #' @param separators vector of possible column separator characters the file is
 #'   to be checked for
 #'   
-.guessSeparator.2 <- function(textlines, separators)
+guessSeparator.2 <- function(textlines, separators)
 {
   # Which of the separators occurs most?
   characters <- strsplit(paste(textlines, collapse = ""), "")[[1]]
