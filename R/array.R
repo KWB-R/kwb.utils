@@ -56,7 +56,7 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
 
     if (check_dim) {
 
-      .checkDimensions(dimnames_a, dimnames_b = dim_names)
+      checkDimensions(dimnames_a, dimnames_b = dim_names)
     }
 
     b[as.matrix(do.call(expand.grid, dimnames_a))] <- a
@@ -65,9 +65,9 @@ mergeNamedArrays <- function(x, check_dim = TRUE)
   })
 }
 
-# .checkDimensions -------------------------------------------------------------
+# checkDimensions --------------------------------------------------------------
 
-.checkDimensions <- function(dimnames_a, dimnames_b)
+checkDimensions <- function(dimnames_a, dimnames_b)
 {
   # Define helper functions
   get_lengths <- function(x) sapply(x, length)

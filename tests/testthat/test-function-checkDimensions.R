@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".checkDimensions() works", {
+test_that("checkDimensions() works", {
 
-  f <- kwb.utils:::.checkDimensions
+  f <- kwb.utils:::checkDimensions
 
   expect_error(
     f()
