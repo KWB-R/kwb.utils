@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".mergeTwoLists() works", {
+test_that("mergeTwoLists() works", {
 
-  f <- kwb.utils:::.mergeTwoLists
+  f <- kwb.utils:::mergeTwoLists
 
   expect_error(
     f()
