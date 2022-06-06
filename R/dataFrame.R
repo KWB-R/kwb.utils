@@ -1,6 +1,6 @@
-# .frequencyTableList ----------------------------------------------------------
+# frequencyTableList -----------------------------------------------------------
 
-.frequencyTableList <- function(data, columns = names(data), useNA = "ifany")
+frequencyTableList <- function(data, columns = names(data), useNA = "ifany")
 {
   stopifnot(is.data.frame(data))
   checkForMissingColumns(data, columns)
@@ -298,7 +298,7 @@ frequencyTable <- function(
   useNA = c("no", "ifany", "always")[2]
 )
 {
-  L <- .frequencyTableList(data, columns = columns, useNA = useNA)
+  L <- frequencyTableList(data, columns = columns, useNA = useNA)
   
   if (isTRUE(orderByLeastLevels)) {
     

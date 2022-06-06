@@ -5,9 +5,9 @@
 # so that real cases are tested. You should then delete this comment.
 #
 
-test_that(".frequencyTableList() works", {
+test_that("frequencyTableList() works", {
 
-  f <- kwb.utils:::.frequencyTableList
+  f <- kwb.utils:::frequencyTableList
 
   expect_error(
     f()
