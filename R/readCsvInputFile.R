@@ -82,7 +82,7 @@ readCsvInputFile <- function(
     stopIfNotAllColumnsFound(newColumnDescription, headerFields)
   }
 
-  .warnOnMultipleMatches(newColumnDescription, headerFields)
+  warnOnMultipleMatches(newColumnDescription, headerFields)
 
   # if there is a duplicate caption, take only the first!
   colNumbers <- as.integer(
@@ -252,9 +252,9 @@ stopIfNotAllColumnsFound <- function(columnDescription, headerFields)
   }
 }
 
-# .warnOnMultipleMatches -------------------------------------------------------
+# warnOnMultipleMatches --------------------------------------------------------
 
-.warnOnMultipleMatches <- function(columnDescription, headerFields)
+warnOnMultipleMatches <- function(columnDescription, headerFields)
 {
   ambiguous <- sapply(
     columnDescription, FUN = function(x) { length(x$colNumber) > 1 }

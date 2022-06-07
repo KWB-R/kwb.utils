@@ -62,13 +62,3 @@ test_that("defaultColumnDescription() works", {
   
   expect_identical(names(y), headerFields)
 })
-
-test_that(".warnOnMultipleMatches() works", {
-
-  columnDescription <- list(
-    list(match = "^x", colNumber = 1),
-    list(match = "^y", colNumber = 2:3)
-  )
-  
-  expect_warning(.warnOnMultipleMatches(columnDescription, c("x", "y1", "y2")))
-})
