@@ -1,12 +1,4 @@
-text_file <- tempfile(fileext = ".txt")
-
-header_line <- "a,b,c"
-
-writeLines(con = text_file, c(
-  header_line,
-  "1,2,3",
-  "11,22,33"
-))
+text_file <- extdataFile("example-1.csv")
 
 test_that("columnDescriptor() works", {
   
@@ -58,19 +50,6 @@ test_that("readCsvInputFile() works", {
 test_that("msgAvailableFields() works", {
   
   expect_is(msgAvailableFields(1:3), "character")
-})
-
-test_that(".readAndSplitRowInFile() works", {
-  
-  arguments <- list(text_file, rowNumber = 1, sep = ",", encoding = "UTF-8")
-  
-  y_1 <- do.call(.readAndSplitRowInFile, c(arguments, version = 1))
-  y_2 <- do.call(.readAndSplitRowInFile, c(arguments, version = 2))
-
-  header_fields <- strsplit(header_line, ",")[[1]]
-  
-  expect_identical(y_1, header_fields)
-  expect_identical(y_2, header_fields)
 })
 
 test_that("defaultColumnDescription() works", {
