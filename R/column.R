@@ -191,14 +191,16 @@ firstPosixColumn <- function(x)
 #' 
 hsAddMissingCols <- function(dataFrame, colNames, fill.value = NA)
 {
-  n <- nrow(dataFrame)
+  missingColumns <- setdiff(colNames, names(dataFrame))
+
+  if (length(missingColumns) == 0L) {
+    return(dataFrame)
+  }  
   
-  for (col in colNames) {
-    
-    if (! col %in% names(dataFrame)) {
-      
-      dataFrame[[col]] <- rep(fill.value, n)
-    }
+  columnValues <- rep(fill.value, nrow(dataFrame))
+  
+  for (column in missingColumns) {
+    dataFrame[[column]] <- columnValues
   }
   
   dataFrame
@@ -292,7 +294,6 @@ insertColumns <- function(
   
   # Exactly one of before or after must be given
   if (sum(c(before, after) != "") != 1) {
-    
     stop("Exactly one of before and after must be given!")
   }
   
@@ -308,7 +309,6 @@ insertColumns <- function(
   
   if (is.null(columnNames) ||
       length(columnNames[columnNames != ""]) != length(newColumns)) {
-    
     stop(
       "All new columns must be named, i.e. given in the form 'name = values'"
     )
@@ -318,7 +318,6 @@ insertColumns <- function(
   equalLength <- (sapply(newColumns, length) == nrow(Data))
   
   if (! all(equalLength)) {
-    
     stop(
       "All new columns must have as many elements as Data has rows. ",
       "This is not the case for: ", commaCollapsed(columnNames[! equalLength])
@@ -334,11 +333,8 @@ insertColumns <- function(
   if (before != "") {
     
     part1 <- if (i == 1) {
-      
       partBetween
-      
     } else {
-      
       cbind(Data[, 1:(i-1), drop = FALSE], partBetween)
     }
     
@@ -346,14 +342,11 @@ insertColumns <- function(
     
   } else {
     
-    part1 <- Data[, 1:i, drop = FALSE]
+    part1 <- Data[, seq_len(i), drop = FALSE]
     
     part2 <- if (i == n.col) {
-      
       partBetween
-      
     } else {
-      
       cbind(
         partBetween,
         Data[, (i+1):n.col, drop = FALSE],

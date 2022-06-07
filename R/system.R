@@ -462,7 +462,7 @@ tempSubdirectory <- function(subdir)
 #' @export
 #' 
 hsOpenWindowsExplorer <- function(
-  startdir = tempdir(), use.shell.exec = ! .isNetworkPath(startdir)
+  startdir = tempdir(), use.shell.exec = ! isNetworkPath(startdir)
 )
 {
   if (use.shell.exec) {
@@ -475,16 +475,16 @@ hsOpenWindowsExplorer <- function(
   }
 }
 
-# .isNetworkPath ---------------------------------------------------------------
+# isNetworkPath ----------------------------------------------------------------
 
 #' Does the Path Represent a Network Path?
 #'
 #' @param x vector of character representing paths
 #' @export
 #' @examples 
-#' .isNetworkPath("//server/folder/file.txt")
+#' isNetworkPath("//server/folder/file.txt")
 #' 
-.isNetworkPath <- function(x)
+isNetworkPath <- function(x)
 {
   grepl("^(//|\\\\\\\\)", x)
 }
@@ -519,9 +519,9 @@ rStylePath <- function(path)
   gsub("\\\\", "/", path)
 }
 
-# .showCommand -----------------------------------------------------------------
+# showCommand ------------------------------------------------------------------
 
-.showCommand <- function(commandLine)
+showCommand <- function(commandLine)
 {
   cat(sprintf("Running command: >>>%s<<<\n", commandLine))
 }
@@ -536,8 +536,7 @@ rStylePath <- function(path)
 #' 
 hsSystem <- function(commandLine, ...)
 {
-  .showCommand(commandLine)
-  
+  showCommand(commandLine)
   system(command = commandLine, ...)
 }
 
@@ -551,7 +550,6 @@ hsSystem <- function(commandLine, ...)
 #' 
 hsShell <- function(commandLine, ...)
 {
-  .showCommand(commandLine)
-  
+  showCommand(commandLine)
   shell(commandLine, ...)
 }

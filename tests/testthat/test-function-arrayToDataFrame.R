@@ -22,4 +22,6 @@ test_that("arrayToDataFrame() works", {
   expect_identical(df$upper[1:3], dim_names[[1L]])
   expect_identical(df$lower[1:3], rep("x", 3L))
   expect_identical(df$number[1:6], rep("one", 6L))
+  
+  expect_error(arrayToDataFrame(unname(A)), "must be named")
 })

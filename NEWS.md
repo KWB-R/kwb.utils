@@ -1,5 +1,11 @@
 # Changes since last release
 
+- add createFunctionExtdataFile()
+- add extdataFile()
+- add maxStringLength()
+- add getListNode()
+- improve implementation of hsAddMissingCols()
+
 # [kwb.utils 0.13.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.13.0) <small>2022-06-04</small>
 
 * add arrayToDataFrame()

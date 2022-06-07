@@ -43,6 +43,7 @@ reference:
       - isNaInAllColumns
       - isNaInAllRows
       - isNaOrEmpty
+      - isNetworkPath
       - isNullOrEmpty
       - isOddNumber
       - isTryError
@@ -67,6 +68,7 @@ reference:
       - left
       - leftSubstringEquals
       - makeUnique
+      - maxStringLength
       - moveToFront
       - multiSubstitute
       - pairwise
@@ -107,7 +109,10 @@ reference:
       - clearConsole
       - columnDescriptor
       - createStorage
+      - extdataFile
       - guessSeparator
+      - guessSeparator.1
+      - guessSeparator.2
       - headtail
       - print.repro_sample
       - printable_chars
@@ -194,6 +199,7 @@ reference:
       - copyListElements
       - excludeNULL
       - getElementLengths
+      - getListNode
       - getPathsAndValuesFromRecursiveList
       - mergeLists
       - nameByElement
@@ -272,11 +278,13 @@ reference:
   - title: Shortcut Functions to if-statements
     contents:
       - catIf
+      - defaultIf
       - defaultIfNA
       - defaultIfNULL
       - defaultIfZero
   - title: Operating System Functions
     contents:
+      - .OStype
       - cmdLinePath
       - copyDirectoryStructure
       - createDirAndReturnPath
@@ -350,14 +358,8 @@ reference:
   - title: Functions Returning Functions
     contents:
       - createAccessor
+      - createFunctionExtdataFile
       - toConditional
-  - title: Further Hidden Functions (Why?)
-    contents:
-      - .OStype
-      - .defaultIf
-      - .guessSeparator.1
-      - .guessSeparator.2
-      - .isNetworkPath
   - title: Non-Categorised Functions
     contents: 
       - listToDepth

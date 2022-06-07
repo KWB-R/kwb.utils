@@ -79,7 +79,7 @@ if (FALSE)
   x1 <- result$test_encryption.R
   x2 <- extract_test(x1, "generateKeyFile")
   x3 <- extract_test(x2, "createPasswordFile")
-  x4 <- extract_test(x3, "_checkNamespace")
+  x4 <- extract_test(x3, "checkNamespace")
   # Remove original file. Remaining context() call not required
   x4
   unlink(x1[[1L]]$file)

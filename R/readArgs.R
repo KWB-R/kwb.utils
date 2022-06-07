@@ -12,7 +12,7 @@
 #' @export
 #' 
 readArglists <- function(
-  file = NULL, configTable = .readArglistsTable.csv(safePath(file), dbg = dbg),
+  file = NULL, configTable = readArglistsTable.csv(safePath(file), dbg = dbg),
   dbg = FALSE
 )
 {
@@ -23,7 +23,7 @@ readArglists <- function(
   
   names(configs) <- configTable[, 1]
   
-  configs <- lapply(configs, .cleanArglistConfig)
+  configs <- lapply(configs, cleanArglistConfig)
   
   # resolve "additional.args"
   indices <- which(sapply(configs, function(x) ! is.null(x$additional.args)))
@@ -40,9 +40,9 @@ readArglists <- function(
   configs
 }
 
-# .readArglistsTable.csv -------------------------------------------------------
+# readArglistsTable.csv --------------------------------------------------------
 
-.readArglistsTable.csv <- function(file, dbg = FALSE)
+readArglistsTable.csv <- function(file, dbg = FALSE)
 {
   configTable <- utils::read.csv(file, stringsAsFactors = FALSE)
   
@@ -55,9 +55,9 @@ readArglists <- function(
   configTable
 }
 
-# .cleanArglistConfig ----------------------------------------------------------
+# cleanArglistConfig -----------------------------------------------------------
 
-.cleanArglistConfig <- function(config)
+cleanArglistConfig <- function(config)
 {
   lapply(config, function(x) {
     

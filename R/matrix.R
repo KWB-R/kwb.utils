@@ -134,7 +134,7 @@ createMatrix <- function(
       defaultIfNULL(name.col, "")
     )
   }
-
+  
   matrix(
     data = rep(value, times = nrows * length(colNames)), 
     nrow = nrows,
@@ -246,8 +246,11 @@ assertRowsAndColumns <- function(
 stopIfNotMatrix <- function(x)
 {
   if (! is.matrix(x)) {
-    
-    stop("x ist not a matrix but:\n", utils::capture.output(utils::str(x)))
+    stop(
+      "x is not a matrix but:\n", 
+      utils::capture.output(utils::str(x)), 
+      call. = FALSE
+    )
   }
 }
 

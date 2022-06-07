@@ -13,6 +13,9 @@ test_that("extractRowRanges() works", {
   # Convert textLines to data frame. The function should be able to handle both.
   dataFrame <- read.table(text = textLines, sep = ",", stringsAsFactors = FALSE)
 
+  # Convert to matrix
+  m <- as.matrix(dataFrame)
+  
   # Define expected result
   expected <- list(
     data.frame(
@@ -26,24 +29,38 @@ test_that("extractRowRanges() works", {
       stringsAsFactors = FALSE
     )
   )
-  
+
+  # Expected matrices
+  expectedMatrices <- lapply(expected, as.matrix)
+
   arguments <- list(
     pattern = "Date", column = "V1", stopOffset = 2L
   )
   
-  y1 <- callWith(extractRowRanges, arguments, x = dataFrame)
-  y2 <- callWith(extractRowRanges, arguments, x = dataFrame, nameByMatch = TRUE)
+  f <- extractRowRanges
+  
+  y1 <- callWith(f, arguments, x = dataFrame)
+  y2 <- callWith(f, arguments, x = dataFrame, nameByMatch = TRUE)
 
   expect_identical(expected, y1)
   expect_named(y2)
   expect_identical(expected, unname(y2))
   
-  y3 <- callWith(extractRowRanges, arguments, x = textLines)
-  y4 <- callWith(extractRowRanges, arguments, x = textLines, nameByMatch = TRUE)
+  y3 <- callWith(f, arguments, x = textLines)
+  y4 <- callWith(f, arguments, x = textLines, nameByMatch = TRUE)
 
   expectedText <- lapply(expected, pasteColumns, sep = ",")
   
   expect_identical(expectedText, y3)
   expect_named(y4)
   expect_identical(expectedText, unname(y4))
+
+  y5 <- callWith(f, arguments, x = m)
+  y6 <- callWith(f, arguments, x = m, nameByMatch = TRUE)
+
+  expect_identical(expectedMatrices, y5)
+  expect_named(y6)
+  expect_identical(expectedMatrices, unname(y6))
+  
+  expect_identical(f(c("a", "b"), starts = 1:2), list(NULL, NULL))
 })
