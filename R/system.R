@@ -519,9 +519,9 @@ rStylePath <- function(path)
   gsub("\\\\", "/", path)
 }
 
-# .showCommand -----------------------------------------------------------------
+# showCommand ------------------------------------------------------------------
 
-.showCommand <- function(commandLine)
+showCommand <- function(commandLine)
 {
   cat(sprintf("Running command: >>>%s<<<\n", commandLine))
 }
@@ -536,8 +536,7 @@ rStylePath <- function(path)
 #' 
 hsSystem <- function(commandLine, ...)
 {
-  .showCommand(commandLine)
-  
+  showCommand(commandLine)
   system(command = commandLine, ...)
 }
 
@@ -551,7 +550,6 @@ hsSystem <- function(commandLine, ...)
 #' 
 hsShell <- function(commandLine, ...)
 {
-  .showCommand(commandLine)
-  
+  showCommand(commandLine)
   shell(commandLine, ...)
 }
