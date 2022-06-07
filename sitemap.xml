@@ -280,6 +280,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/decode.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIf.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/defaultIfNA.html</loc>
   </url>
   <url>
@@ -302,18 +305,6 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dot-OStype.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-defaultIf.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.1.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-guessSeparator.2.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/reference/dot-isNetworkPath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dot-log.html</loc>
@@ -344,6 +335,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/expandGrid.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/extdataFile.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/extendLimits.html</loc>
@@ -428,6 +422,12 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/get_homedir.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/guessSeparator.1.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/guessSeparator.2.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/guessSeparator.html</loc>
@@ -539,6 +539,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/isNaOrEmpty.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/isNetworkPath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/isNullOrEmpty.html</loc>

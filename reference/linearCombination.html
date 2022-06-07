@@ -93,12 +93,12 @@ calculation both of which should return the same!</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="randomMatrix.html">randomMatrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    8   48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   76    7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   65    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   83   61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    8    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   66   79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   76   94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   72   42</span>
 <span class="r-in"><span class="op">(</span><span class="va">coeffs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -1.2046349  0.5829902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.5662022 0.9705801</span>
 <span class="r-in">  </span>
 <span class="r-in"><span class="co"># Calculate the linear combination manually</span></span>
 <span class="r-in"><span class="va">LC1</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">coeffs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="va">coeffs</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
