@@ -44,7 +44,6 @@ readCsvInputFile <- function(
 )
 {
   if (! file.exists(csv)) {
-    
     stop("No such file: ", csv)
   }
 
@@ -57,24 +56,21 @@ readCsvInputFile <- function(
   }
 
   if (isNullOrEmpty(headerRow)) {
-    
     stop(
       "I could not find the header row within the first", maxRowToLookForHeader,
       "lines!\n  I was looking for: ", hsQuoteChr(headerPattern)
     )
   }
 
-  headerFields <- .readAndSplitRowInFile(
+  headerFields <- readAndSplitRowInFile(
     csv, headerRow, sep, encoding = encoding
   )
 
   if (is.null(columnDescription)) {
-    
     columnDescription <- defaultColumnDescription(headerFields)
   }
 
   if (stopOnMissingColumns) {
-    
     .stopIfNotEnoughColumns(headerFields, columnDescription, sep)
   }
 
@@ -83,7 +79,6 @@ readCsvInputFile <- function(
   )
 
   if (stopOnMissingColumns) {
-    
     .stopIfNotAllColumnsFound(newColumnDescription, headerFields)
   }
 
@@ -128,9 +123,9 @@ msgAvailableFields <- function(x)
   sprintf("\nAvailable columns:\n  %s", .numberedEnumeration(x))
 }
 
-# .readAndSplitRowInFile -------------------------------------------------------
+# readAndSplitRowInFile --------------------------------------------------------
 
-.readAndSplitRowInFile <- function(csv, rowNumber, sep, encoding, version = 2)
+readAndSplitRowInFile <- function(csv, rowNumber, sep, encoding, version = 2)
 {
   if (version == 1 ) {
 
