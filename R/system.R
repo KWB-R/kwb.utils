@@ -462,7 +462,7 @@ tempSubdirectory <- function(subdir)
 #' @export
 #' 
 hsOpenWindowsExplorer <- function(
-  startdir = tempdir(), use.shell.exec = ! .isNetworkPath(startdir)
+  startdir = tempdir(), use.shell.exec = ! isNetworkPath(startdir)
 )
 {
   if (use.shell.exec) {
@@ -475,16 +475,16 @@ hsOpenWindowsExplorer <- function(
   }
 }
 
-# .isNetworkPath ---------------------------------------------------------------
+# isNetworkPath ----------------------------------------------------------------
 
 #' Does the Path Represent a Network Path?
 #'
 #' @param x vector of character representing paths
 #' @export
 #' @examples 
-#' .isNetworkPath("//server/folder/file.txt")
+#' isNetworkPath("//server/folder/file.txt")
 #' 
-.isNetworkPath <- function(x)
+isNetworkPath <- function(x)
 {
   grepl("^(//|\\\\\\\\)", x)
 }

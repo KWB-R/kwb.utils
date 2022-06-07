@@ -357,9 +357,9 @@ reference:
     contents:
       - .OStype
       - defaultIf
-      - .guessSeparator.1
-      - .guessSeparator.2
-      - .isNetworkPath
+      - guessSeparator.1
+      - guessSeparator.2
+      - isNetworkPath
   - title: Non-Categorised Functions
     contents: 
       - listToDepth

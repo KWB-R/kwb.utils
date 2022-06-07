@@ -6,7 +6,7 @@
 \usage{
 hsOpenWindowsExplorer(
   startdir = tempdir(),
-  use.shell.exec = !.isNetworkPath(startdir)
+  use.shell.exec = !isNetworkPath(startdir)
 )
 }
 \arguments{
