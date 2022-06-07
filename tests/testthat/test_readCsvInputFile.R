@@ -63,13 +63,6 @@ test_that("defaultColumnDescription() works", {
   expect_identical(names(y), headerFields)
 })
 
-test_that(".numberedEnumeration() works", {
-  
-  y <- .numberedEnumeration(LETTERS[1:5])
-  
-  expect_is(y, "character")
-})
-
 test_that(".findColumnNumbersByMatchingPatterns() works", {
 
   columnDescription <- list(

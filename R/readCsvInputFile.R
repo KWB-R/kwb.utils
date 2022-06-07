@@ -120,7 +120,7 @@ readCsvInputFile <- function(
 #' 
 msgAvailableFields <- function(x)
 {
-  sprintf("\nAvailable columns:\n  %s", .numberedEnumeration(x))
+  sprintf("\nAvailable columns:\n  %s", numberedEnumeration(x))
 }
 
 # readAndSplitRowInFile --------------------------------------------------------
@@ -197,14 +197,14 @@ stopIfNotEnoughColumns <- function(headerFields, columnDescription, sep)
       paste("I found only %d of %d required column(s).",
             "Is '%s' the correct column separator?",
             "I read the following header fields:\n  %s"),
-      ncol, ncolRequired, sep, .numberedEnumeration(headerFields)
+      ncol, ncolRequired, sep, numberedEnumeration(headerFields)
     ))
   }
 }
 
-# .numberedEnumeration ---------------------------------------------------------
+# numberedEnumeration ----------------------------------------------------------
 
-.numberedEnumeration <- function(x)
+numberedEnumeration <- function(x)
 {
   paste0(seq_along(x), ". ", hsQuoteChr(x), collapse = "\n  ")
 }
