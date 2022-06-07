@@ -166,7 +166,7 @@ defaultColumnDescription <- function(headerFields)
     # ignore NA header fields
     if (!is.na(headerField)) {
 
-      columnDescription[[.toColumnName(headerField)]] <- columnDescriptor(
+      columnDescription[[toColumnName(headerField)]] <- columnDescriptor(
         match = headerField,
         fixed = TRUE
       )
@@ -176,9 +176,9 @@ defaultColumnDescription <- function(headerFields)
   columnDescription
 }
 
-# .toColumnName ----------------------------------------------------------------
+# toColumnName -----------------------------------------------------------------
 
-.toColumnName <- function(x)
+toColumnName <- function(x)
 {
   substSpecialChars(x)
 }

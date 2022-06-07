@@ -63,11 +63,6 @@ test_that("defaultColumnDescription() works", {
   expect_identical(names(y), headerFields)
 })
 
-test_that(".toColumnName() works", {
-  
-  expect_identical(.toColumnName("a b"), "a_b")
-})
-
 test_that(".stopIfNotEnoughColumns() works", {
   
   headerFields <- c("a", "b", "c")
