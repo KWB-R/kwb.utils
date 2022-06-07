@@ -14,5 +14,5 @@ test_that("createPasswordFile() and getPassword() work", {
   
   expect_error(getPassword("no_such_file"))
   
-  expect_output(.askForPassword("hauke"))
+  expect_output(askForPassword("hauke"))
 })

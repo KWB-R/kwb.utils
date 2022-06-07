@@ -93,7 +93,7 @@ defaultLevels <- function(x, step = 1)
 #'   
 defaultIfNULL <- function(x, default, count = FALSE)
 {
-  .defaultIf(is.null, x, default, count = count)
+  defaultIf(is.null, x, default, count = count)
 }
 
 # defaultIfNA ------------------------------------------------------------------
@@ -115,7 +115,7 @@ defaultIfNULL <- function(x, default, count = FALSE)
 #'
 defaultIfNA <- function(x, default, count = FALSE)
 {
-  .defaultIf(is.na, x, default, count = count)
+  defaultIf(is.na, x, default, count = count)
 }
 
 # defaultIfZero ----------------------------------------------------------------
@@ -142,10 +142,10 @@ defaultIfNA <- function(x, default, count = FALSE)
 #'   
 defaultIfZero <- function(x, default, count = FALSE)
 {
-  .defaultIf(function(x) x == 0, x, default, count = count)
+  defaultIf(function(x) x == 0, x, default, count = count)
 }
 
-# .defaultIf -------------------------------------------------------------------
+# defaultIf --------------------------------------------------------------------
 
 #' Return a Default Value for Values Meeting a Condition
 #' 
@@ -158,7 +158,7 @@ defaultIfZero <- function(x, default, count = FALSE)
 #'   replaced values is returned in the attributes \code{count}
 #' @export
 #' 
-.defaultIf <- function(FUN.test, x, default, count = FALSE)
+defaultIf <- function(FUN.test, x, default, count = FALSE)
 {
   selected <- if (length(x) > 1) {
     

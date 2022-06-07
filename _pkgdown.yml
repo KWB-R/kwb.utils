@@ -356,10 +356,10 @@ reference:
   - title: Further Hidden Functions (Why?)
     contents:
       - .OStype
-      - .defaultIf
-      - .guessSeparator.1
-      - .guessSeparator.2
-      - .isNetworkPath
+      - defaultIf
+      - guessSeparator.1
+      - guessSeparator.2
+      - isNetworkPath
   - title: Non-Categorised Functions
     contents: 
       - listToDepth

@@ -4,7 +4,7 @@
 \alias{pairwise}
 \title{Reorder Strings So That Matching Strings are Neighbours}
 \usage{
-pairwise(x, starts = .defaultStarts(x, split), split = "_")
+pairwise(x, starts = defaultStarts(x, split), split = "_")
 }
 \arguments{
 \item{x}{vector of character}

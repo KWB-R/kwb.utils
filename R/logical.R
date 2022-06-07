@@ -195,16 +195,16 @@ matchesCriteria <- function(
     
     selected <- structure(
       selected, 
-      details = .detailsListToMatrix(details, criteria)
+      details = detailsListToMatrix(details, criteria)
     )
   }
   
   selected
 }
 
-# .detailsListToMatrix ---------------------------------------------------------
+# detailsListToMatrix ----------------------------------------------------------
 
-.detailsListToMatrix <- function(x, criteria)
+detailsListToMatrix <- function(x, criteria)
 {
   out <- as.matrix(do.call(cbind, x))
   

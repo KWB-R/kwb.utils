@@ -169,7 +169,7 @@ mergeLists <- function(..., warn.on.NULL = TRUE)
     
   } else {
     
-    relisted <- .mergeTwoLists(lists[[1]], lists[[2]])
+    relisted <- mergeTwoLists(lists[[1]], lists[[2]])
 
     if (N > 2) {
       relisted <- do.call(mergeLists, c(list(relisted), lists[-(1:2)]))
@@ -179,9 +179,9 @@ mergeLists <- function(..., warn.on.NULL = TRUE)
   relisted
 }
 
-# .mergeTwoLists ---------------------------------------------------------------
+# mergeTwoLists ----------------------------------------------------------------
 
-.mergeTwoLists <- function(list.1, list.2)
+mergeTwoLists <- function(list.1, list.2)
 {
   stopifnot(is.list(list.1))
   

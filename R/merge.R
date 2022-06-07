@@ -61,14 +61,13 @@ unmerge <- function(z, by)
   
   xColumns <- c(by, fixColumns)
   
-  .splitDataFrame(z, xColumns, yColumns = c(by, setdiff(names(z), xColumns)))
+  splitDataFrame(z, xColumns, yColumns = c(by, setdiff(names(z), xColumns)))
 }
 
-# .splitDataFrame --------------------------------------------------------------
-#' @export
+# splitDataFrame ---------------------------------------------------------------
 #' @keywords internal
 #' 
-.splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
+splitDataFrame <- function(z, xColumns, yColumns, check = TRUE)
 {
   xdata <- unique(selectColumns(z, xColumns, drop = FALSE))
   ydata <- selectColumns(z, yColumns, drop = FALSE)

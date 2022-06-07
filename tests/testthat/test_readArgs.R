@@ -11,7 +11,7 @@ test_that("Argument lists are read correctly", {
   
   writeLines(content, temp_file)
   
-  x <- kwb.utils:::.readArglistsTable.csv(temp_file)
+  x <- kwb.utils:::readArglistsTable.csv(temp_file)
   
   expect_length(x, length(strsplit(content, ",")[[1]]))
   expect_equal(nrow(x), length(content) - 1)
