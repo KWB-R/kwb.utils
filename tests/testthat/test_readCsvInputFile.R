@@ -63,14 +63,6 @@ test_that("defaultColumnDescription() works", {
   expect_identical(names(y), headerFields)
 })
 
-test_that(".stopIfNotEnoughColumns() works", {
-  
-  headerFields <- c("a", "b", "c")
-  
-  expect_error(.stopIfNotEnoughColumns(headerFields, columnDescription_1, ","))
-  expect_silent(.stopIfNotEnoughColumns(headerFields, columnDescription_2, ","))
-})
-
 test_that(".numberedEnumeration() works", {
   
   y <- .numberedEnumeration(LETTERS[1:5])

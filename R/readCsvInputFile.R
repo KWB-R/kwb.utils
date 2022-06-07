@@ -71,7 +71,7 @@ readCsvInputFile <- function(
   }
 
   if (stopOnMissingColumns) {
-    .stopIfNotEnoughColumns(headerFields, columnDescription, sep)
+    stopIfNotEnoughColumns(headerFields, columnDescription, sep)
   }
 
   newColumnDescription <- .findColumnNumbersByMatchingPatterns(
@@ -183,9 +183,9 @@ toColumnName <- function(x)
   substSpecialChars(x)
 }
 
-# .stopIfNotEnoughColumns ------------------------------------------------------
+# stopIfNotEnoughColumns -------------------------------------------------------
 
-.stopIfNotEnoughColumns <- function(headerFields, columnDescription, sep)
+stopIfNotEnoughColumns <- function(headerFields, columnDescription, sep)
 {
   ncol <- length(headerFields)
   
