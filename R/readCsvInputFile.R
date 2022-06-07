@@ -107,15 +107,11 @@ readCsvInputFile <- function(
     return()
   }
 
-  myData <- utils::read.table(
+  data <- utils::read.table(
     csv, sep = sep, dec = dec, header = FALSE, skip = headerRow, ...
   )
   
-  myData <- myData[, colNumbers, drop = FALSE]
-
-  names(myData) <- colNames
-
-  myData
+  stats::setNames(data[, colNumbers, drop = FALSE], colNames)
 }
 
 # msgAvailableFields -----------------------------------------------------------
