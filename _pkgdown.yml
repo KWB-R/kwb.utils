@@ -199,6 +199,7 @@ reference:
       - copyListElements
       - excludeNULL
       - getElementLengths
+      - getListNode
       - getPathsAndValuesFromRecursiveList
       - mergeLists
       - nameByElement
