@@ -63,16 +63,6 @@ test_that("defaultColumnDescription() works", {
   expect_identical(names(y), headerFields)
 })
 
-test_that(".stopIfNotAllColumnsFound() works", {
-
-  columnDescription <- list(
-    x = list(match = "^x", colNumber = integer()),
-    y = list(match = "^y", colNumber = 2)
-  )
-
-  expect_error(.stopIfNotAllColumnsFound(columnDescription, c("a", "y")))
-})
-
 test_that(".warnOnMultipleMatches() works", {
 
   columnDescription <- list(

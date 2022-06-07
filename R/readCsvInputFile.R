@@ -79,7 +79,7 @@ readCsvInputFile <- function(
   )
 
   if (stopOnMissingColumns) {
-    .stopIfNotAllColumnsFound(newColumnDescription, headerFields)
+    stopIfNotAllColumnsFound(newColumnDescription, headerFields)
   }
 
   .warnOnMultipleMatches(newColumnDescription, headerFields)
@@ -229,9 +229,9 @@ findColumnNumbersByMatchingPatterns <- function(
   columnDescription
 }
 
-# .stopIfNotAllColumnsFound ----------------------------------------------------
+# stopIfNotAllColumnsFound -----------------------------------------------------
 
-.stopIfNotAllColumnsFound <- function(columnDescription, headerFields)
+stopIfNotAllColumnsFound <- function(columnDescription, headerFields)
 {
   notFound <- sapply(
     columnDescription, FUN = function(x) { length(x$colNumber) == 0 }
