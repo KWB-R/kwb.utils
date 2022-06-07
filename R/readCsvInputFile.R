@@ -74,7 +74,7 @@ readCsvInputFile <- function(
     stopIfNotEnoughColumns(headerFields, columnDescription, sep)
   }
 
-  newColumnDescription <- .findColumnNumbersByMatchingPatterns(
+  newColumnDescription <- findColumnNumbersByMatchingPatterns(
     headerFields, columnDescription
   )
 
@@ -209,9 +209,9 @@ numberedEnumeration <- function(x)
   paste0(seq_along(x), ". ", hsQuoteChr(x), collapse = "\n  ")
 }
 
-# .findColumnNumbersByMatchingPatterns -----------------------------------------
+# findColumnNumbersByMatchingPatterns ------------------------------------------
 
-.findColumnNumbersByMatchingPatterns <- function(
+findColumnNumbersByMatchingPatterns <- function(
   headerFields, columnDescription
 )
 {
