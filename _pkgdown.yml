@@ -33,6 +33,7 @@ reference:
       - atLeastOneRowIn
       - containsNulString
       - hasFinalSlash
+      - hasZeroLength
       - hsValidValue
       - inRange
       - is.unnamed
@@ -292,7 +293,9 @@ reference:
       - createDirectory
       - defaultWindowsProgramFolders
       - desktop
+      - directoryName
       - fileExtension
+      - fullWinPath
       - get_homedir
       - hsOpenWindowsExplorer
       - hsShell
@@ -327,6 +330,7 @@ reference:
       - assignPackageObjects
       - getGlobally
       - showPackageObjects
+      - stopFormatted
   - title: Compare Objects
     contents:
       - catChanges
