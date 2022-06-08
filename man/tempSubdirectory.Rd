@@ -19,5 +19,5 @@ full path to created directory
 Create and Return Path to Subdirectory in tempdir()
 }
 \examples{
-temp_subdir("my-folder/my-subfolder")
+tempSubdirectory("my-folder/my-subfolder")
 }

@@ -442,7 +442,7 @@ createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 #' @return full path to created directory
 #' @export
 #' @examples
-#' temp_subdir("my-folder/my-subfolder")
+#' tempSubdirectory("my-folder/my-subfolder")
 tempSubdirectory <- function(..., dbg = FALSE)
 {
   createDirectory(file.path(tempdir(), ...), dbg = FALSE)
