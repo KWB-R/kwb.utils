@@ -304,6 +304,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/diffrows.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/directoryName.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/dot-OStype.html</loc>
   </url>
   <url>
@@ -376,6 +379,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/frequencyTable.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/fullWinPath.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/fullySorted.html</loc>
   </url>
   <url>
@@ -437,6 +443,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/hasFinalSlash.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/hasZeroLength.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/headtail.html</loc>
@@ -875,6 +884,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/startsToRanges.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/stopFormatted.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/stopIfNotMatrix.html</loc>
