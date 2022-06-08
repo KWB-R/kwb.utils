@@ -20,7 +20,7 @@ For details on how to install KWB-R packages checkout our [installation tutorial
 ### See here why this might be important for you:
 ### https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat
 
-# Sys.setenv(GITHUB_PAT = "mysecret_access_token")
+# Sys.setenv(GITHUB_PAT = "my_secret_access_token")
 
 # Install package "remotes" from CRAN
 if (! require("remotes")) {
