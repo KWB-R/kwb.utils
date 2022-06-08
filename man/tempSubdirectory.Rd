@@ -2,16 +2,22 @@
 % Please edit documentation in R/system.R
 \name{tempSubdirectory}
 \alias{tempSubdirectory}
-\title{Create and Return Path of Subdirectory in temp()}
+\title{Create and Return Path to Subdirectory in tempdir()}
 \usage{
-tempSubdirectory(subdir)
+tempSubdirectory(..., dbg = FALSE)
 }
 \arguments{
-\item{subdir}{name of subdirectory to be created}
+\item{\dots}{parts of path to be created below \code{tempdir()}}
+
+\item{dbg}{if \code{TRUE} the directory creation is reported on. Default: 
+\code{FALSE}}
 }
 \value{
 full path to created directory
 }
 \description{
-Create and Return Path of Subdirectory in temp()
+Create and Return Path to Subdirectory in tempdir()
+}
+\examples{
+temp_subdir("my-folder/my-subfolder")
 }
