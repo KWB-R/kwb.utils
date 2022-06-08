@@ -8,7 +8,9 @@
 #' @return path to directory of file path given in \code{x}
 #' @export
 #' @examples 
+#' \dontrun{
 #' directoryName(repeated("verylongpath/", 50))
+#' }
 directoryName <- function(x)
 {
   if (!isTryError(result <- try(base::dirname(x), silent = TRUE))) {

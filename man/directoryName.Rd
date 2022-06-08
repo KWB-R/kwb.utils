@@ -18,5 +18,5 @@ long. This version checks if the call of \code{dirname()} failed and gives
 a clear error message.
 }
 \examples{
-directoryName(repeated("verylongpath/", 50))
+\dontrun{directoryName(repeated("verylongpath/", 50))}
 }
