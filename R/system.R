@@ -434,22 +434,18 @@ createDirectory <- function(dir.to.create, dbg = TRUE, confirm = FALSE)
 
 # tempSubdirectory -------------------------------------------------------------
 
-#' Create and Return Path of Subdirectory in temp()
+#' Create and Return Path to Subdirectory in tempdir()
 #'
-#' @param subdir name of subdirectory to be created
+#' @param \dots parts of path to be created below \code{tempdir()}
+#' @param dbg if \code{TRUE} the directory creation is reported on. Default: 
+#'   \code{FALSE}
 #' @return full path to created directory
 #' @export
-#' 
-tempSubdirectory <- function(subdir)
+#' @examples
+#' tempSubdirectory("my-folder/my-subfolder")
+tempSubdirectory <- function(..., dbg = FALSE)
 {
-  sdir <- file.path(tempdir(), subdir)
-
-  if (! file.exists(sdir)) {
-
-    dir.create(sdir)
-  }
-
-  sdir
+  createDirectory(file.path(tempdir(), ...), dbg = FALSE)
 }
 
 # hsOpenWindowsExplorer --------------------------------------------------------
