@@ -327,6 +327,7 @@ reference:
       - assignAll
       - assignArgumentDefaults
       - assignGlobally
+      - assignObjects
       - assignPackageObjects
       - getGlobally
       - showPackageObjects
@@ -363,6 +364,7 @@ reference:
     contents:
       - createAccessor
       - createFunctionExtdataFile
+      - createFunctionAssignObjects
       - toConditional
   - title: Non-Categorised Functions
     contents: 

@@ -1,5 +1,7 @@
 # Changes since last release
 
+- add assignObjects()
+- add createFunctionAssignObjects()
 - add createFunctionExtdataFile()
 - add directoryName()
 - add extdataFile()
