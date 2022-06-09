@@ -91,7 +91,7 @@
       <img src="" class="logo" alt=""><h1>Overview</h1>
                         <h4 data-toc-skip class="author">Hauke Sonnenberg</h4>
             
-            <h4 data-toc-skip class="date">2022-06-08</h4>
+            <h4 data-toc-skip class="date">2022-06-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kwb-r/kwb.utils/blob/HEAD/vignettes/overview.Rmd" class="external-link"><code>vignettes/overview.Rmd</code></a></small>
       <div class="d-none name"><code>overview.Rmd</code></div>
@@ -119,15 +119,15 @@
 <span class="co">#&gt;         assign(name, object, envir = .GlobalEnv)</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7f9dd5695b18&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fca4c00a588&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:kwb.utils&gt;</span></code></pre></div>
 <p>As the code reveals, the function loops through the values that are returned by <code>ls(getNamespace(package))</code> where <code>package</code> is the name of the package. This is exacly what we need. We can use this code to get the names of all objects in the “kwb.utils” package. Let’s store these names in the variable <code>object_names</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">object_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-reflect.html" class="external-link">getNamespace</a></span><span class="op">(</span><span class="st">"kwb.utils"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">object_names</span><span class="op">)</span>
-<span class="co">#&gt; [1] 330</span></code></pre></div>
-<p>Wow! There are 330 objects (functions) defined in this package. So where should I start?</p>
+<span class="co">#&gt; [1] 332</span></code></pre></div>
+<p>Wow! There are 332 objects (functions) defined in this package. So where should I start?</p>
 <p>To make it somehow scientific, let’s have a look at the distribution of the function names, grouped by their first letter:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">letter_distribution</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/substr.html" class="external-link">substr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">object_names</span><span class="op">)</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span>

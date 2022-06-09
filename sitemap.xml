@@ -136,6 +136,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/assignGlobally.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/assignObjects.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/assignPackageObjects.html</loc>
   </url>
   <url>
@@ -257,6 +260,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/createDirectory.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/createFunctionAssignObjects.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/createFunctionExtdataFile.html</loc>
