@@ -75,7 +75,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extdataFile</span><span class="op">(</span><span class="va">...</span>, must_exist <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extdataFile</span><span class="op">(</span><span class="va">...</span>, must_exist <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -83,13 +83,14 @@
     <dl><dt>...</dt>
 <dd><p>parts of the file path to be passed to <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></code></p></dd>
 <dt>must_exist</dt>
-<dd><p>if <code>TRUE</code> and the specified file does not exist, the 
-program stops with an error message</p></dd>
+<dd><p>if <code>TRUE</code> (the default) and the specified file does 
+not exist, the program stops with an error message</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>path to file in the package installation folder in the R library
-  or "" if the path does not exist</p>
+  or "" if the path does not exist
+path to the specified file</p>
     </div>
 
     <div class="section level2">
