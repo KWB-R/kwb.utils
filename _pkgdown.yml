@@ -327,8 +327,10 @@ reference:
       - assignAll
       - assignArgumentDefaults
       - assignGlobally
+      - assignObjects
       - assignPackageObjects
       - getGlobally
+      - noSuchElements
       - showPackageObjects
       - stopFormatted
   - title: Compare Objects
@@ -363,6 +365,7 @@ reference:
     contents:
       - createAccessor
       - createFunctionExtdataFile
+      - createFunctionAssignObjects
       - toConditional
   - title: Non-Categorised Functions
     contents: 
