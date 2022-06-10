@@ -23,17 +23,6 @@ hintNoSuch <- function(x, type = "element", sorted = TRUE, suffix = "")
   paste0("No such ", enumeration(x, type, sorted, suffix))
 }
 
-# noSuchElements ---------------------------------------------------------------
-noSuchElements <- function(
-  x, available, type = "element", sorted = TRUE, suffix = ""
-)
-{
-  paste0(
-    hintNoSuch(x, type, sorted, suffix),
-    hintAvailable(available, type, sorted)
-  )
-}
-
 # stopIsNotBut -----------------------------------------------------------------
 stopIsNotBut <- function(x, expected, name = deparse(substitute(x)))
 {

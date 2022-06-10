@@ -11,6 +11,7 @@
 - add maxStringLength()
 - add stopFormatted()
 - improve implementation of hsAddMissingCols()
+- export noSuchElements()
 
 # [kwb.utils 0.13.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.13.0) <small>2022-06-04</small>
 

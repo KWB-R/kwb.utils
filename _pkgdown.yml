@@ -330,6 +330,7 @@ reference:
       - assignObjects
       - assignPackageObjects
       - getGlobally
+      - noSuchElements
       - showPackageObjects
       - stopFormatted
   - title: Compare Objects
