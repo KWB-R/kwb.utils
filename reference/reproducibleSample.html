@@ -110,7 +110,7 @@ in the first call.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Take a sample</span></span>
 <span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">reproducibleSample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">x</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 60 20 82 86 28 64 36 53 63  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 63 83  4 48 33 58 11 15 91 75</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># The full seed vector is returned in the attribute "random_seed"</span></span>
 <span class="r-in"><span class="va">random_seed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"random_seed"</span><span class="op">)</span></span>
@@ -118,7 +118,7 @@ in the first call.</p>
 <span class="r-in"><span class="co"># Take a new sample, this time passing the seed vector</span></span>
 <span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">reproducibleSample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">10</span>, random_seed <span class="op">=</span> <span class="va">random_seed</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">y</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 60 20 82 86 28 64 36 53 63  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 63 83  4 48 33 58 11 15 91 75</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># The values are identical to the values of the first sampling</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>

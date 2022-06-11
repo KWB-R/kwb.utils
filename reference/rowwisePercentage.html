@@ -105,35 +105,35 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 <span class="r-in"></span>
 <span class="r-in"><span class="va">M1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 29 25 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 85 51 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 83 12 73</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 35 53 94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 13 86  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 36 51 96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 25 58 82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 12  6 18</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 39.7 34.2 26.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 48.9 29.3 21.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.4  7.1 43.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 19.2 29.1 51.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 12.5 82.7  4.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 19.7 27.9 52.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 15.2 35.2 49.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 33.3 16.7 50.0</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">M2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 29 25 NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B NA 51 38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 83 12 73</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D NA 53 94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 13 86  5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 36 51 96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C NA 58 NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 12 NA 18</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M2</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 53.7 46.3  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  0.0 57.3 42.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.4  7.1 43.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 36.1 63.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1     2    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 12.5  82.7  4.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 19.7  27.9 52.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C  0.0 100.0  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 40.0   0.0 60.0</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M2</span>, default <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 53.7 46.3  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  0.0 57.3 42.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.4  7.1 43.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 36.1 63.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1     2    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 12.5  82.7  4.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 19.7  27.9 52.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C  0.0 100.0  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 40.0   0.0 60.0</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
