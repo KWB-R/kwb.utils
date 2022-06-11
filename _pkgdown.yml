@@ -313,6 +313,7 @@ reference:
   - title: Check Functions
     contents:
       - assertRowsAndColumns
+      - catchWarning
       - checkForMissingColumns
       - msgAvailableFields
       - stopIfNotMatrix

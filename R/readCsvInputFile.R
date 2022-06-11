@@ -33,14 +33,14 @@ columnDescriptor <- function(match = ".*", fixed = FALSE)
 #'   looking for the header row
 #' @param stopOnMissingColumns if TRUE (default) the program stops if not all
 #'   columns defined in \emph{columnDescription} are found
+#' @param fileEncoding encoding of the input file
 #' @param encoding passed to readLines, "Latin-1" or "UTF-8"
 #' @param \dots further arguments passed to read.table
 #' @export
-#' 
 readCsvInputFile <- function(
   csv, sep, dec, headerRow = 1, headerPattern = "", columnDescription = NULL,
-  maxRowToLookForHeader = 10, stopOnMissingColumns = TRUE, encoding = "unknown",
-  ...
+  maxRowToLookForHeader = 10, stopOnMissingColumns = TRUE, 
+  fileEncoding = "UTF-8", encoding = "unknown", ...
 )
 {
   if (! file.exists(csv)) {
@@ -49,10 +49,22 @@ readCsvInputFile <- function(
 
   if (headerPattern != "") {
 
-    fileLines <- readLines(
-      csv, n = maxRowToLookForHeader, warn = FALSE, encoding = encoding)
+    fileLines <- kwb.utils::readLinesWithEncoding(
+      file = csv, 
+      fileEncoding = fileEncoding,
+      n = maxRowToLookForHeader, 
+      warn = FALSE, 
+      encoding = encoding
+    )
 
-    headerRow <- grep(headerPattern, fileLines)
+    headerRow <- catchWarning(grep(headerPattern, fileLines))
+    msg <- attr(headerRow, "warning_message")
+    if (!is.null(msg)) {
+      stop(
+        "There was a warning in grep(). Please have a look at it:\n", 
+        collapsed(msg, "\n"), call. = FALSE
+      )
+    }
   }
 
   if (isNullOrEmpty(headerRow)) {
