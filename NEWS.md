@@ -1,6 +1,7 @@
 # Changes since last release
 
 - add assignObjects()
+- add catchWarning()
 - add createFunctionAssignObjects()
 - add createFunctionExtdataFile()
 - add directoryName()
