@@ -1,7 +1,7 @@
 #' Return Warning Message in Attribute
 #' 
 #' This function evaluates an expression and returns, if warnings occurred, the
-#' warning message in the attribute "warning_message" of the returned object.
+#' warning message in the attribute "warningMessage" of the returned object.
 #' 
 #' @param expr expression to be evaluated
 #' @param dbg if \code{TRUE} (the default) the warning text is also printed on
@@ -18,7 +18,7 @@ catchWarning <- function(expr, dbg = TRUE)
     eval(expr),  
     warning = function(w) {
       kwb.utils::printIf(dbg, w$message, caption = "There was a warning")
-      structure(eval(expr), warning_message = w$message)
+      structure(eval(expr), warningMessage = w$message)
     }
   ))
   
