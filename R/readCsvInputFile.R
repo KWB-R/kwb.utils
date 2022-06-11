@@ -14,9 +14,7 @@ columnDescriptor <- function(match = ".*", fixed = FALSE)
 
 # readCsvInputFile -------------------------------------------------------------
 
-#' Read CSV File
-#' 
-#' Read CSV file giving column descriptions
+#' Read CSV File Giving Column Descriptions
 #' 
 #' @param csv full path to CSV file
 #' @param sep column separator
@@ -49,28 +47,29 @@ readCsvInputFile <- function(
 
   if (headerPattern != "") {
 
-    fileLines <- kwb.utils::readLinesWithEncoding(
+    fileLines <- catchWarning(readLinesWithEncoding(
       file = csv, 
       fileEncoding = fileEncoding,
       n = maxRowToLookForHeader, 
       warn = FALSE, 
       encoding = encoding
-    )
+    ))
+    
+    stopOnWarning(fileLines, where = "readLinesWithEncoding()")
 
     headerRow <- catchWarning(grep(headerPattern, fileLines))
-    msg <- attr(headerRow, "warning_message")
-    if (!is.null(msg)) {
-      stop(
-        "There was a warning in grep(). Please have a look at it:\n", 
-        collapsed(msg, "\n"), call. = FALSE
-      )
-    }
+    
+    stopOnWarning(headerRow, where = "grep()")
   }
 
   if (isNullOrEmpty(headerRow)) {
-    stop(
-      "I could not find the header row within the first", maxRowToLookForHeader,
-      "lines!\n  I was looking for: ", hsQuoteChr(headerPattern)
+    stopFormatted(
+      paste0(
+        "I could not find the header row within the first %d lines!\n", 
+        "I was looking for: '%s'"
+      ), 
+      maxRowToLookForHeader, 
+      headerPattern
     )
   }
 
@@ -119,6 +118,19 @@ readCsvInputFile <- function(
   )
   
   stats::setNames(data[, colNumbers, drop = FALSE], colNames)
+}
+
+# stopOnWarning ----------------------------------------------------------------
+stopOnWarning <- function(x, where = "where?")
+{
+  msg <- attr(x, "warningMessage")
+  
+  if (!is.null(msg)) {
+    stopFormatted(
+      "There was a warning in %s. Please have a look at it:\n", 
+      collapsed(msg, "\n"), call. = FALSE
+    )
+  }
 }
 
 # msgAvailableFields -----------------------------------------------------------

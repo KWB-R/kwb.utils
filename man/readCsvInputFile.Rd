@@ -2,7 +2,7 @@
 % Please edit documentation in R/readCsvInputFile.R
 \name{readCsvInputFile}
 \alias{readCsvInputFile}
-\title{Read CSV File}
+\title{Read CSV File Giving Column Descriptions}
 \usage{
 readCsvInputFile(
   csv,
@@ -49,5 +49,5 @@ columns defined in \emph{columnDescription} are found}
 \item{\dots}{further arguments passed to read.table}
 }
 \description{
-Read CSV file giving column descriptions
+Read CSV File Giving Column Descriptions
 }

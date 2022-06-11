@@ -14,7 +14,7 @@ the console, otherwise the warning message is suppressed.}
 }
 \description{
 This function evaluates an expression and returns, if warnings occurred, the
-warning message in the attribute "warning_message" of the returned object.
+warning message in the attribute "warningMessage" of the returned object.
 }
 \examples{
 catchWarning(as.numeric("1.23"))
