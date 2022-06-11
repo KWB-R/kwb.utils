@@ -13,6 +13,7 @@ readCsvInputFile(
   columnDescription = NULL,
   maxRowToLookForHeader = 10,
   stopOnMissingColumns = TRUE,
+  fileEncoding = "UTF-8",
   encoding = "unknown",
   ...
 )
@@ -40,6 +41,8 @@ looking for the header row}
 
 \item{stopOnMissingColumns}{if TRUE (default) the program stops if not all
 columns defined in \emph{columnDescription} are found}
+
+\item{fileEncoding}{encoding of the input file}
 
 \item{encoding}{passed to readLines, "Latin-1" or "UTF-8"}
 
