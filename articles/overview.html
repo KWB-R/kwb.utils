@@ -119,7 +119,7 @@
 <span class="co">#&gt;         assign(name, object, envir = .GlobalEnv)</span>
 <span class="co">#&gt;     }</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fccadbf3230&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fb737707d98&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:kwb.utils&gt;</span></code></pre></div>
 <p>As the code reveals, the function loops through the values that are returned by <code>ls(getNamespace(package))</code> where <code>package</code> is the name of the package. This is exacly what we need. We can use this code to get the names of all objects in the “kwb.utils” package. Let’s store these names in the variable <code>object_names</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
