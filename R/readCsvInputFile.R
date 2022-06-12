@@ -127,8 +127,9 @@ stopOnWarning <- function(x, where = "where?")
   
   if (!is.null(msg)) {
     stopFormatted(
-      "There was a warning in %s. Please have a look at it:\n", 
-      collapsed(msg, "\n"), call. = FALSE
+      "There was a warning in '%s'. Please have a look at it:\n%s\n", 
+      where, 
+      collapsed(msg, "\n")
     )
   }
 }
