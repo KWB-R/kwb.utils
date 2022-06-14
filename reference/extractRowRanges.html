@@ -93,38 +93,57 @@
     <dl><dt>x</dt>
 <dd><p>data frame or matrix or vector of character (representing e.g. the 
 rows read from a text file)</p></dd>
+
+
 <dt>pattern</dt>
 <dd><p>pattern to be searched for, either in <code>[, column]</code> (if
 <code>x</code> is a data frame or a matrix) or in <code>x</code> (if <code>x</code> is a 
 vector of character)</p></dd>
+
+
 <dt>column</dt>
 <dd><p>name of column in which to search for <em>pattern</em> if 
 <code>x</code> is a data frame or a matrix</p></dd>
+
+
 <dt>starts</dt>
 <dd><p>optional. Vector of indices representing the starts of the row
 ranges to be extracted. This argument overrides <code>pattern</code>. Instead of
 using the pattern to find the start indices, the indices given here are 
 used.</p></dd>
+
+
 <dt>startOffset</dt>
 <dd><p>row offset to be added to row number in which the pattern
 matches</p></dd>
+
+
 <dt>stopOffset</dt>
 <dd><p>row offset to be subtracted from row number in which the
 pattern matches</p></dd>
+
+
 <dt>nameByMatch</dt>
 <dd><p>logical. if <code>TRUE</code>, the elements in the result list
 are named by the matching values. Defaults to <code>FALSE</code>.</p></dd>
+
+
 <dt>nameColumnsByMatch</dt>
 <dd><p>if <code>TRUE</code> (default) the columns of the result
 data frames or matrices are named (if <code>x</code> is a data frame or a matrix)</p></dd>
+
+
 <dt>renumber</dt>
 <dd><p>if <code>TRUE</code> (default) and <code>x</code> is a data frame or a 
 matrix the row names of the result data frames or matrices are reset to 
 <code>NULL</code>, i.e. their rows are renumbered</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>list of data frames or list of matrices or list of vectors of
+    
+
+<p>list of data frames or list of matrices or list of vectors of
   character. Each list element represents one section of the input, found
   between two consecutive matches of <code>pattern</code>.</p>
     </div>
@@ -241,7 +260,7 @@ matrix the row names of the result data frames or matrices are reset to
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

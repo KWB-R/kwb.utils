@@ -85,22 +85,30 @@ identical in all columns</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>data</dt>
 <dd><p>data frame</p></dd>
+
+
 <dt>key_columns</dt>
 <dd><p>names of columns in <code>data</code> in which to look for
 duplicated (combined) values</p></dd>
+
+
 <dt>skip_columns</dt>
 <dd><p>names of columns to be skipped when looking for
 duplicated rows</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>NULL</code> if there are no rows in <code>data</code> that have identical
+    
+
+<p><code>NULL</code> if there are no rows in <code>data</code> that have identical
   values in the <code>key_columns</code> or if all groups of rows that have
   identical values in the <code>key_columns</code> are also identical in all the
   other columns (except for those named in <code>skip_columns</code>). Otherwise
   a list is returned with the one element per duplicate in the key columns.
-  The list elements are subsets of <code>data</code> representing the rows of
-<code>data</code> that are identical in the key columns but different in at least
+  The list elements are subsets of <code>data</code> representing the rows of</p>
+<p></p>
+<p><code>data</code> that are identical in the key columns but different in at least
   one of the other columns.</p>
     </div>
 
@@ -137,7 +145,7 @@ duplicated rows</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

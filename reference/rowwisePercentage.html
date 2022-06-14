@@ -85,12 +85,17 @@ each row</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>two dimensional numeric data structure</p></dd>
+
+
 <dt>default</dt>
 <dd><p>default value to be used if the calculated percentage is 
 <code>NA</code>.</p></dd>
+
+
 <dt>digits</dt>
 <dd><p>number of digits (default: 1) to which the resulting 
 percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></dd>
+
 </dl></div>
 
     <div class="section level2">
@@ -105,35 +110,35 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 <span class="r-in"></span>
 <span class="r-in"><span class="va">M1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 89 45 39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  7 25 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 54 26 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 42  6 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 16 62 79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B  3 84 59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 36 44 40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 85 25 51</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 51.4 26.0 22.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  9.3 33.3 57.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.5 23.9 26.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 70.0 10.0 20.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 10.2 39.5 50.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B  2.1 57.5 40.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 30.0 36.7 33.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 52.8 15.5 31.7</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">M2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A NA 45 NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  7 NA 43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 54 26 29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 42  6 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 16 62 79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B  3 NA 59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C NA 44 40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 85 NA 51</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M2</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1     2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A  0.0 100.0  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 14.0   0.0 86.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.5  23.9 26.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 70.0  10.0 20.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 10.2 39.5 50.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B  4.8  0.0 95.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C  0.0 52.4 47.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 62.5  0.0 37.5</span>
 <span class="r-in"><span class="fu">rowwisePercentage</span><span class="op">(</span><span class="va">M2</span>, default <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1     2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A  0.0 100.0  0.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 14.0   0.0 86.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 49.5  23.9 26.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 70.0  10.0 20.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 10.2 39.5 50.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B  4.8  0.0 95.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C  0.0 52.4 47.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 62.5  0.0 37.5</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
@@ -146,7 +151,7 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

@@ -82,23 +82,28 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>numeric matrix</p></dd>
+
+
 <dt>coeffs</dt>
 <dd><p>numeric vector of coefficients</p></dd>
+
+
 <dt>version</dt>
 <dd><p>1 or 2 (default: 1). Allows for two different versions of
 calculation both of which should return the same!</p></dd>
+
 </dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="randomMatrix.html">randomMatrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   20   66</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   14   42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   16   10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   50   64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   75    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    8   26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   81   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   12   66</span>
 <span class="r-in"><span class="op">(</span><span class="va">coeffs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1565097 1.0890824</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3754913 1.5379493</span>
 <span class="r-in">  </span>
 <span class="r-in"><span class="co"># Calculate the linear combination manually</span></span>
 <span class="r-in"><span class="va">LC1</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">coeffs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">*</span> <span class="va">coeffs</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
@@ -121,7 +126,7 @@ calculation both of which should return the same!</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>

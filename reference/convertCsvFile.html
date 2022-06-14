@@ -118,45 +118,80 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>file_in</dt>
 <dd><p>path to input file</p></dd>
+
+
 <dt>sep_in</dt>
 <dd><p>column separator in input file</p></dd>
+
+
 <dt>sep_out</dt>
 <dd><p>column separator in output file</p></dd>
+
+
 <dt>dec_in</dt>
 <dd><p>decimal character in input file</p></dd>
+
+
 <dt>dec_out</dt>
 <dd><p>decimal character inoutput file</p></dd>
+
+
 <dt>file_out</dt>
 <dd><p>path to output file</p></dd>
+
+
 <dt>header</dt>
 <dd><p>passed to <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code></p></dd>
+
+
 <dt>quote_in</dt>
 <dd><p>passed as <code>quote</code> to <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code></p></dd>
+
+
 <dt>quote_out</dt>
 <dd><p>passed as <code>quote</code> to <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code></p></dd>
+
+
 <dt>row.names_in</dt>
 <dd><p>passed as <code>row.names</code> to <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code></p></dd>
+
+
 <dt>col.names_in</dt>
 <dd><p>passed as <code>col.names</code> to <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code></p></dd>
+
+
 <dt>row.names_out</dt>
 <dd><p>passed as <code>row.names</code> to <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code></p></dd>
+
+
 <dt>col.names_out</dt>
 <dd><p>passed as <code>col.names</code> to <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code></p></dd>
+
+
 <dt>fileEncoding_in</dt>
 <dd><p>passed as <code>fileEncoding</code> to
 <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code></p></dd>
+
+
 <dt>fileEncoding_out</dt>
 <dd><p>passed as <code>fileEncoding</code> to
 <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code></p></dd>
+
+
 <dt>dbg</dt>
 <dd><p>if <code>TRUE</code> (default) debug messages are shown</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to either <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></code> or 
 <code><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.table</a></code></p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>path to the created CSV file</p>
+    
+
+<p>path to the created CSV file</p>
     </div>
 
     <div class="section level2">
@@ -176,8 +211,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Convert the column separator (from " " which was the default) to ";"</span></span>
 <span class="r-in"><span class="va">csv_out</span> <span class="op">&lt;-</span> <span class="fu">convertCsvFile</span><span class="op">(</span><span class="va">csv_in</span>, sep_out <span class="op">=</span> <span class="st">";"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpxKWpM9/file261785ae0f2.csv' ... ok.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpxKWpM9/file261785ae0f2_new.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphM0B6X/filea0a33afd4b5.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphM0B6X/filea0a33afd4b5_new.csv' ... ok.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Review the result</span></span>
 <span class="r-in"><span class="fu"><a href="catLines.html">catLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">csv_out</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
@@ -193,8 +228,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Convert the column separator and the decimal character</span></span>
 <span class="r-in"><span class="va">csv_out</span> <span class="op">&lt;-</span> <span class="fu">convertCsvFile</span><span class="op">(</span><span class="va">csv_in</span>, sep_out <span class="op">=</span> <span class="st">";"</span>, dec_out <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpxKWpM9/file261785ae0f2.csv' ... ok.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpxKWpM9/file261785ae0f2_new.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphM0B6X/filea0a33afd4b5.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmphM0B6X/filea0a33afd4b5_new.csv' ... ok.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Review the result</span></span>
 <span class="r-in"><span class="fu"><a href="catLines.html">catLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">csv_out</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
@@ -216,7 +251,7 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
     </footer></div>
