@@ -4,13 +4,16 @@
 \alias{extdataFile}
 \title{Path to File in Installed Package}
 \usage{
-extdataFile(..., must_exist = TRUE)
+extdataFile(..., must_exist = TRUE, dbg = FALSE)
 }
 \arguments{
 \item{\dots}{parts of the file path to be passed to \code{\link{system.file}}}
 
 \item{must_exist}{if \code{TRUE} (the default) and the specified file does 
 not exist, the program stops with an error message}
+
+\item{dbg}{if \code{TRUE} (the default is \code{FALSE}) debug messages are 
+shown}
 }
 \value{
 path to file in the package installation folder in the R library
