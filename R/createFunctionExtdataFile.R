@@ -14,14 +14,22 @@ createFunctionExtdataFile <- function(package)
 
     lib.loc = .libPaths()
     
-    packagePath <- find.package(package, lib.loc, quiet = FALSE, verbose = dbg)
+    packagePath <- find.package(package, lib.loc, quiet = TRUE, verbose = dbg)
     
     printIf(dbg, packagePath)
     
+    if (length(packagePath) == 0L) {
+      message(
+        "Package '", package, "' does not (yet) exist when being asked for ", 
+        "the path to the 'extdata' folder. Returning \"\"."
+      )
+      return("")
+    }
+
     extdata_dir <- system.file(
       "extdata", 
       package = package, 
-      lib.loc = lib.loc,
+      lib.loc = lib.loc, 
       mustWork = TRUE
     )
     
