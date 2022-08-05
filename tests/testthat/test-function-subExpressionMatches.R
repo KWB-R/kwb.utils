@@ -2,11 +2,13 @@ test_that("subExpressionMatches() works", {
   
   f <- kwb.utils::subExpressionMatches
   
-  y1 <- f(
-    pattern = "(\\d{4})-(\\d{2})-(\\d{2})", 
-    text = c("1975-01-14", "2003-01", "2015-08-20"),
-    match.names = c("year", "month", "day")
-  )
+  pattern <- "(\\d{4})-(\\d{2})-(\\d{2})"
+  text <- c("1975-01-14", "2003-01", "2015-08-20")
+  match.names <- c("year", "month", "day")
+  
+  y1 <- f(pattern = pattern, text = text, match.names = match.names)
+  
+  expect_error(f(regularExpression = pattern), "deprecated")
   
   expected1 <- list(
     list(year = "1975", month = "01", day = "14"),

@@ -9,7 +9,8 @@ subExpressionMatches(
   text,
   match.names = NULL,
   select = stats::setNames(seq_along(match.names), match.names),
-  simplify = TRUE
+  simplify = TRUE,
+  regularExpression = NULL
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ parentheses to be extracted.}
 
 \item{simplify}{if TRUE (default) and \emph{text} has only one element, the
 output structure will be a list instead a list of lists}
+
+\item{regularExpression}{deprecated. Use new argument \code{pattern} instead}
 }
 \value{
 If \code{length(text) > 1} a list is returned with as many elements

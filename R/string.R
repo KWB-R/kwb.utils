@@ -636,6 +636,7 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #'   parentheses to be extracted.
 #' @param simplify if TRUE (default) and \emph{text} has only one element, the
 #'   output structure will be a list instead a list of lists
+#' @param regularExpression deprecated. Use new argument \code{pattern} instead
 #' @return If \code{length(text) > 1} a list is returned with as many elements
 #'   as there are strings in \emph{text} each of which is itself a list
 #'   containing the strings matching the subpatterns (enclosed in parentheses in
@@ -659,11 +660,22 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #' cat(paste0("Today is ", x$day, "/", x$month, " of ", x$year, "\n"))
 #' 
 subExpressionMatches <- function(
-  pattern, text, match.names = NULL,
+  pattern, 
+  text, 
+  match.names = NULL,
   select = stats::setNames(seq_along(match.names), match.names),
-  simplify = TRUE
+  simplify = TRUE,
+  regularExpression = NULL
 )
 {
+  if ("regularExpression" %in% names(sys.call()[-1L])) {
+    stop(
+      "The argument 'regularExpression' is deprecated in ", 
+      "subExpressionMatches(). Please use the new argument 'pattern' instead.", 
+      call. = FALSE
+    )
+  }
+  
   matchInfos <- regexec(pattern, text)
   
   result <- lapply(regmatches(text, matchInfos), function(x) {
