@@ -76,17 +76,18 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subExpressionMatches</span><span class="op">(</span></span>
-<span>  <span class="va">regularExpression</span>,</span>
+<span>  <span class="va">pattern</span>,</span>
 <span>  <span class="va">text</span>,</span>
 <span>  match.names <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  select <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">match.names</span><span class="op">)</span>, <span class="va">match.names</span><span class="op">)</span>,</span>
-<span>  simplify <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  simplify <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  regularExpression <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>regularExpression</dt>
+    <dl><dt>pattern</dt>
 <dd><p>regular expression containing parts in parentheses
 that are to be extracted from <em>text</em></p></dd>
 
@@ -109,6 +110,10 @@ parentheses to be extracted.</p></dd>
 <dd><p>if TRUE (default) and <em>text</em> has only one element, the
 output structure will be a list instead a list of lists</p></dd>
 
+
+<dt>regularExpression</dt>
+<dd><p>deprecated. Use new argument <code>pattern</code> instead</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -118,7 +123,7 @@ output structure will be a list instead a list of lists</p></dd>
   as there are strings in <em>text</em> each of which is itself a list
   containing the strings matching the subpatterns (enclosed in parentheses in</p>
 <p></p>
-<p><em>regularExpression</em>) or NULL for strings that did not match. If</p>
+<p><em>pattern</em>) or NULL for strings that did not match. If</p>
 <p></p>
 <p><em>match.names</em> are given, the elements of these lists are named
   according to the names given in <em>match.names</em>. If <em>text</em> is of
@@ -135,7 +140,7 @@ output structure will be a list instead a list of lists</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># split date into year, month and day (give names to the resulting elements)</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">subExpressionMatches</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  regularExpression <span class="op">=</span> <span class="st">"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class="st">"2014-04-23"</span>,</span></span>
+<span class="r-in"><span>  pattern <span class="op">=</span> <span class="st">"(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})"</span>, <span class="st">"2014-04-23"</span>,</span></span>
 <span class="r-in"><span>  match.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
