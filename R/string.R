@@ -594,33 +594,32 @@ stringEndsWith <- function(x, endsWith)
 #' 
 #' # Name the sub expressions by naming their number in index (3rd argument)
 #' extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
-#' #   weekday subexp.2    month
-#' #   1 Thursday        8 December
-#' #   2  Tuesday       14  January
+#' #    weekday subexp.2    month
+#' # 1 Thursday        8 December
+#' # 2  Tuesday       14  January
 #' 
 extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 {
-  if (length(index) > 1) {
-    
-    names.index <- defaultIfNULL(names(index), rep("", length(index)))
-    
-    names.default <- paste0("subexp.", seq_along(index))
-    
-    isEmpty <- names.index == ""
-    
-    names.index[isEmpty] <- names.default[isEmpty]
-    
-    names(index) <- names.index
+  parts <- subExpressionMatches(pattern, x, simplify = FALSE)
+  
+  extract <- function(i) {
+    sapply(parts, function(p) defaultIfNULL(p[[i]], ""))
+  }
 
-    args <- lapply(index, extractSubstring, pattern = pattern, x = x)
+  if (length(index) > 1L) {
     
-    callWithStringsAsFactors(stringsAsFactors, data.frame, args)
+    # Make sure that all elements in index are named
+    index <- nameElements(index, prefix = "subexp.")
+
+    # Call extract() for each element in index
+    args <- lapply(index, extract)
+
+    # Arrange the result vectors in a data frame    
+    do.call(data.frame, c(args, list(stringsAsFactors = stringsAsFactors)))
     
   } else {
     
-    parts <- subExpressionMatches(pattern, x, simplify = FALSE)
-    
-    sapply(parts, function(p) defaultIfNULL(p[[index]], ""))
+    extract(index)
   }
 }
 
@@ -665,19 +664,17 @@ subExpressionMatches <- function(
   simplify = TRUE
 )
 {
-  match_infos <- regexec(regularExpression, text)
+  matchInfos <- regexec(regularExpression, text)
   
-  result <- lapply(regmatches(text, match_infos), function(x) {
+  result <- lapply(regmatches(text, matchInfos), function(x) {
     
     if (length(x)) {
       
-      x <- as.list(x[-1])
+      x <- as.list(x[-1L])
       
       # If numbers of subexpressions to select are given, select and name the
       # corresponding subexpressions
-      
       if (length(select)) {
-        
         x <- x[select]
       }
       
@@ -685,12 +682,23 @@ subExpressionMatches <- function(
     }
   })
 
-  if (simplify && length(result) == 1) {
-    
-    result[[1]]
-    
-  } else {
-    
-    result
+  if (simplify && length(result) == 1L) {
+    return(result[[1L]])
   }
+  
+  result
+}
+
+# nameElements -----------------------------------------------------------------
+nameElements <- function(
+  x, defaults = paste0(prefix, seq_along(x)), prefix = "x"
+)
+{
+  elementNames <- defaultIfNULL(names(x), rep("", length(x)))
+  
+  isEmpty <- elementNames == ""
+  
+  elementNames[isEmpty] <- defaults[isEmpty]
+  
+  stats::setNames(x, elementNames)
 }

@@ -50,8 +50,8 @@ extractSubstring(pattern, datestrings, 1:3)
 
 # Name the sub expressions by naming their number in index (3rd argument)
 extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
-#   weekday subexp.2    month
-#   1 Thursday        8 December
-#   2  Tuesday       14  January
+#    weekday subexp.2    month
+# 1 Thursday        8 December
+# 2  Tuesday       14  January
 
 }
