@@ -22,7 +22,7 @@ functions appear as two arguments &amp;lt;argument_name&amp;gt;_in and
     
     <a class="navbar-brand me-2" href="../index.html">kwb.utils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.13.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.14.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -211,8 +211,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Convert the column separator (from " " which was the default) to ";"</span></span></span>
 <span class="r-in"><span><span class="va">csv_out</span> <span class="op">&lt;-</span> <span class="fu">convertCsvFile</span><span class="op">(</span><span class="va">csv_in</span>, sep_out <span class="op">=</span> <span class="st">";"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYMrlZN/file11877a02a19a.csv' ... ok.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYMrlZN/file11877a02a19a_new.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYZmWPb/file12b8697836ad.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYZmWPb/file12b8697836ad_new.csv' ... ok.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Review the result</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="catLines.html">catLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">csv_out</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -228,8 +228,8 @@ functions appear as two arguments <code>&lt;argument_name&gt;_in</code> and
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Convert the column separator and the decimal character</span></span></span>
 <span class="r-in"><span><span class="va">csv_out</span> <span class="op">&lt;-</span> <span class="fu">convertCsvFile</span><span class="op">(</span><span class="va">csv_in</span>, sep_out <span class="op">=</span> <span class="st">";"</span>, dec_out <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYMrlZN/file11877a02a19a.csv' ... ok.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYMrlZN/file11877a02a19a_new.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Reading from '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYZmWPb/file12b8697836ad.csv' ... ok.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Writing to '/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpYZmWPb/file12b8697836ad_new.csv' ... ok.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Review the result</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="catLines.html">catLines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">csv_out</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
