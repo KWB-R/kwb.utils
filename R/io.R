@@ -39,7 +39,9 @@ catAndRun <- function(
 
   catIf(dbg, "ok. ")
   
-  catIf(dbg && log_time, sprintf("(%0.2fs) ", Sys.time() - start_time))
+  dt <- Sys.time() - start_time
+  
+  catIf(dbg && log_time, sprintf("(%0.2f %s) ", dt, attr(dt, "units")))
   
   catNewLineIf(dbg && bitwAnd(newLine, 2))
   
@@ -346,7 +348,15 @@ printIf <- function(condition, x, caption = deparse(substitute(x)))
 #' 
 readPackageFile <- function(file, package, stringsAsFactors = FALSE, ...)
 {
-  file <- safePath(system.file("extdata", package = package), file)
+  # If the package is not (yet) installed system.file() may not return the path
+  # to the installed package but the path to the where the package is developed!
+  path <- base::system.file("extdata", package = package)
+  
+  if (path == "") {
+    path <- base::system.file("inst", "extdata", package = package)
+  }
+  
+  file <- safePath(path, file)
 
   utils::read.csv(file = file, stringsAsFactors = stringsAsFactors, ...)
 }

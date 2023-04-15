@@ -119,30 +119,26 @@ parallelNonNA <- function(a, b)
 {
   stopifnot(length(a) == length(b))
 
-  result <- character(length(a))
+  # Create result vector of NA, as long as "a" and of same class as "a"
+  result <- `class<-`(rep(NA, length(a)), class(a))
 
-  selected <- ! is.na(a) & is.na(b)
+  onlyA <- !is.na(a) & is.na(b)
+  onlyB <- is.na(a) & !is.na(b)
   
-  result[selected] <- a[selected]
-
-  selected <- is.na(a) & !is.na(b)
+  aAndB <- !is.na(a) & !is.na(b)
+  aAndBAndEqual <- aAndB & (a == b)
+  aAndBAndDiffer <- aAndB & (a != b)
   
-  result[selected] <- b[selected]
+  result[onlyA] <- a[onlyA]
+  result[onlyB] <- b[onlyB]
+  result[aAndBAndEqual] <- a[aAndBAndEqual]
 
-  bothNotNA <- ! is.na(a) & ! is.na(b)
-
-  selected <- bothNotNA & (a == b)
-  
-  result[selected] <- a[selected]
-
-  selected <- bothNotNA & (a != b)
-
-  if (any(selected)) {
+  if (any(aAndBAndDiffer)) {
 
     attr(result, "invalid") <- data.frame(
-      index = which(selected),
-      a = a[selected],
-      b = b[selected]
+      index = which(aAndBAndDiffer),
+      a = a[aAndBAndDiffer],
+      b = b[aAndBAndDiffer]
     )
 
     warning("There are differences in parallel non-NA values ",

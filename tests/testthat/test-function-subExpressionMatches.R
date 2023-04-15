@@ -1,10 +1,14 @@
 test_that("subExpressionMatches() works", {
   
-  y1 <- subExpressionMatches(
-    regularExpression = "(\\d{4})-(\\d{2})-(\\d{2})", 
-    text = c("1975-01-14", "2003-01", "2015-08-20"),
-    match.names = c("year", "month", "day")
-  )
+  f <- kwb.utils::subExpressionMatches
+  
+  pattern <- "(\\d{4})-(\\d{2})-(\\d{2})"
+  text <- c("1975-01-14", "2003-01", "2015-08-20")
+  match.names <- c("year", "month", "day")
+  
+  y1 <- f(pattern = pattern, text = text, match.names = match.names)
+  
+  expect_error(f(regularExpression = pattern), "deprecated")
   
   expected1 <- list(
     list(year = "1975", month = "01", day = "14"),
@@ -12,8 +16,8 @@ test_that("subExpressionMatches() works", {
     list(year = "2015", month = "08", day = "20")
   )
   
-  y2 <- subExpressionMatches(
-    regularExpression = "^([^.]+)\\.([^.]+)@(.*)$",
+  y2 <- f(
+    pattern = "^([^.]+)\\.([^.]+)@(.*)$",
     text = c("hauke.sonnenberg@lernshow.de",
              "angela.merkel@germany.de"),
     match.names = c("firstName", "lastName", "host")
@@ -27,13 +31,13 @@ test_that("subExpressionMatches() works", {
   pattern <- "^(.*)\\.([^.]+)$"
   match.names = c("basename", "extension")
   
-  y3 <- subExpressionMatches(pattern, "file.txt", match.names)
-  y4 <- subExpressionMatches(pattern, "file.txt")
+  y3 <- f(pattern, "file.txt", match.names)
+  y4 <- f(pattern, "file.txt")
   
   expected3 <- list(basename = "file", extension = "txt")
   
-  y5 <- subExpressionMatches(
-    regularExpression = "(Spieler|Player)\\s+(\\d+)", 
+  y5 <- f(
+    pattern = "(Spieler|Player)\\s+(\\d+)", 
     text = c("Spieler 1", "Player 21", "Spieler 311"),
     select = c(playerID = 2)
   )

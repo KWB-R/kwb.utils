@@ -594,33 +594,32 @@ stringEndsWith <- function(x, endsWith)
 #' 
 #' # Name the sub expressions by naming their number in index (3rd argument)
 #' extractSubstring(pattern, datestrings, index = c(weekday = 1, 2, month = 3))
-#' #   weekday subexp.2    month
-#' #   1 Thursday        8 December
-#' #   2  Tuesday       14  January
+#' #    weekday subexp.2    month
+#' # 1 Thursday        8 December
+#' # 2  Tuesday       14  January
 #' 
 extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 {
-  if (length(index) > 1) {
-    
-    names.index <- defaultIfNULL(names(index), rep("", length(index)))
-    
-    names.default <- paste0("subexp.", seq_along(index))
-    
-    isEmpty <- names.index == ""
-    
-    names.index[isEmpty] <- names.default[isEmpty]
-    
-    names(index) <- names.index
+  parts <- subExpressionMatches(pattern, x, simplify = FALSE)
+  
+  extract <- function(i) {
+    sapply(parts, function(p) defaultIfNULL(p[[i]], ""))
+  }
 
-    args <- lapply(index, extractSubstring, pattern = pattern, x = x)
+  if (length(index) > 1L) {
     
-    callWithStringsAsFactors(stringsAsFactors, data.frame, args)
+    # Make sure that all elements in index are named
+    index <- nameElements(index, prefix = "subexp.")
+
+    # Call extract() for each element in index
+    args <- lapply(index, extract)
+
+    # Arrange the result vectors in a data frame    
+    do.call(data.frame, c(args, list(stringsAsFactors = stringsAsFactors)))
     
   } else {
     
-    parts <- subExpressionMatches(pattern, x, simplify = FALSE)
-    
-    sapply(parts, function(p) defaultIfNULL(p[[index]], ""))
+    extract(index)
   }
 }
 
@@ -628,7 +627,7 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 
 #' Find and Extract Regular Expressions from Strings
 #' 
-#' @param regularExpression regular expression containing parts in parentheses
+#' @param pattern regular expression containing parts in parentheses
 #'   that are to be extracted from \emph{text}
 #' @param text text to be matched against the regular expression
 #' @param match.names optional. Names that are to be given to the extracted
@@ -637,10 +636,11 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #'   parentheses to be extracted.
 #' @param simplify if TRUE (default) and \emph{text} has only one element, the
 #'   output structure will be a list instead a list of lists
+#' @param regularExpression deprecated. Use new argument \code{pattern} instead
 #' @return If \code{length(text) > 1} a list is returned with as many elements
 #'   as there are strings in \emph{text} each of which is itself a list
 #'   containing the strings matching the subpatterns (enclosed in parentheses in
-#'   \emph{regularExpression}) or NULL for strings that did not match. If
+#'   \emph{pattern}) or NULL for strings that did not match. If
 #'   \emph{match.names} are given, the elements of these lists are named
 #'   according to the names given in \emph{match.names}. If \emph{text} is of
 #'   length 1 and \emph{simplify} = TRUE (default) the top level list structure
@@ -653,31 +653,40 @@ extractSubstring <- function(pattern, x, index, stringsAsFactors = FALSE)
 #' 
 #' # split date into year, month and day (give names to the resulting elements)
 #' x <- subExpressionMatches(
-#'   regularExpression = "(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23",
+#'   pattern = "(\\\\d{4})\\\\-(\\\\d{2})\\\\-(\\\\d{2})", "2014-04-23",
 #'   match.names = c("year", "month", "day")
 #' )
 #' 
 #' cat(paste0("Today is ", x$day, "/", x$month, " of ", x$year, "\n"))
 #' 
 subExpressionMatches <- function(
-  regularExpression, text, match.names = NULL,
+  pattern, 
+  text, 
+  match.names = NULL,
   select = stats::setNames(seq_along(match.names), match.names),
-  simplify = TRUE
+  simplify = TRUE,
+  regularExpression = NULL
 )
 {
-  match_infos <- regexec(regularExpression, text)
+  if ("regularExpression" %in% names(sys.call()[-1L])) {
+    stop(
+      "The argument 'regularExpression' is deprecated in ", 
+      "subExpressionMatches(). Please use the new argument 'pattern' instead.", 
+      call. = FALSE
+    )
+  }
   
-  result <- lapply(regmatches(text, match_infos), function(x) {
+  matchInfos <- regexec(pattern, text)
+  
+  result <- lapply(regmatches(text, matchInfos), function(x) {
     
     if (length(x)) {
       
-      x <- as.list(x[-1])
+      x <- as.list(x[-1L])
       
       # If numbers of subexpressions to select are given, select and name the
       # corresponding subexpressions
-      
       if (length(select)) {
-        
         x <- x[select]
       }
       
@@ -685,12 +694,23 @@ subExpressionMatches <- function(
     }
   })
 
-  if (simplify && length(result) == 1) {
-    
-    result[[1]]
-    
-  } else {
-    
-    result
+  if (simplify && length(result) == 1L) {
+    return(result[[1L]])
   }
+  
+  result
+}
+
+# nameElements -----------------------------------------------------------------
+nameElements <- function(
+  x, defaults = paste0(prefix, seq_along(x)), prefix = "x"
+)
+{
+  elementNames <- defaultIfNULL(names(x), rep("", length(x)))
+  
+  isEmpty <- elementNames == ""
+  
+  elementNames[isEmpty] <- defaults[isEmpty]
+  
+  stats::setNames(x, elementNames)
 }

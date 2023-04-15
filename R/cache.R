@@ -41,7 +41,7 @@ get_cached <- function(name, dbg = TRUE)
 get_cached_file <- function(name = "")
 {
   cache_dir <- get_cache_dir()
-
+  
   createDirectory(cache_dir, dbg = FALSE)
   
   if (name == "") {
@@ -54,7 +54,13 @@ get_cached_file <- function(name = "")
 # get_cache_dir ----------------------------------------------------------------
 get_cache_dir <- function()
 {
-  Sys.getenv("KWB_UTILS_CACHE_DIR", file.path(tempdir(), "cache"))
+  Sys.getenv(
+    "KWB_UTILS_CACHE_DIR",
+    unset = Sys.getenv(
+      "TEMP",
+      unset = file.path(tempdir(), "cache")
+    )
+  )
 }
 
 # set_cache_dir ----------------------------------------------------------------
