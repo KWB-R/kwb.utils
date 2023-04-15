@@ -39,7 +39,9 @@ catAndRun <- function(
 
   catIf(dbg, "ok. ")
   
-  catIf(dbg && log_time, sprintf("(%0.2fs) ", Sys.time() - start_time))
+  dt <- Sys.time() - start_time
+  
+  catIf(dbg && log_time, sprintf("(%0.2f %s) ", dt, attr(dt, "units")))
   
   catNewLineIf(dbg && bitwAnd(newLine, 2))
   

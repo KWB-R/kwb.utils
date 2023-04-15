@@ -17,6 +17,7 @@
 - subexpressionMatches(): rename arg "regularExpression" to "pattern", improve
 - add nameElements()
 - parallelNonNA(): use class of input vector "a" as class of output vector
+- fix bug in catAndRun(): show an appropriate time unit, not always "seconds"
 
 # [kwb.utils 0.13.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.13.0) <small>2022-06-04</small>
 
