@@ -1,4 +1,4 @@
-# Changes since last release
+# [kwb.utils 0.14.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.14.0) <small>2023-04-15</small>
 
 - add assignObjects()
 - add catchWarning()
