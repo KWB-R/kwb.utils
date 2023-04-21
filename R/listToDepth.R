@@ -78,7 +78,7 @@ listToDepth <- function(
   }
 
   # We need a template just in case that no data could be retrieved
-  template <- defaultIfNULL(template, FUN(full_info = full_info))
+  template <- defaultIfNULL(template, FUN(full_info = full_info, ...))
   
   # kwb.utils::assignPackageObjects("kwb.utils")
   # kwb.utils::assignArgumentDefaults(listToDepth)
@@ -191,13 +191,15 @@ mergeFileInfos <- function(file_infos, template)
 }
 
 # listFiles --------------------------------------------------------------------
-listFiles <- function(path = ".", full_info = FALSE, ...)
+listFiles <- function(path = ".", full_info = FALSE, ..., silent = FALSE)
 {
-  message("listing ", path)
+  if (!silent) {
+    message("listing ", path)
+  }
   
   # Return empty data frame if path is empty
   if (length(path) == 0L) {
-    return(listFiles(full_info = full_info)[FALSE, ])
+    return(listFiles(full_info = full_info, silent = TRUE)[FALSE, ])
   }
   
   files <- dir(path, include.dirs = TRUE)

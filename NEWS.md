@@ -1,3 +1,8 @@
+# [kwb.utils 0.14.1](https://github.com/KWB-R/kwb.utils/releases/tag/v0.14.0) <small>2023-04-21</small>
+
+- Fix bug in listToDepth(): pass ... arguments to FUN also if pattern is NULL
+- Add argument "silent" to private function listFiles()
+
 # [kwb.utils 0.14.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.14.0) <small>2023-04-15</small>
 
 - add assignObjects()

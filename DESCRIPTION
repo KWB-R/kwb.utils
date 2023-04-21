@@ -1,6 +1,6 @@
 Package: kwb.utils
 Title: General Utility Functions Developed at KWB
-Version: 0.14.0
+Version: 0.14.1
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
@@ -30,4 +30,4 @@ Suggests:
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
