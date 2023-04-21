@@ -12,7 +12,7 @@ each column"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs
     
     <a class="navbar-brand me-2" href="../index.html">kwb.utils</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.14.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.14.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,35 +110,35 @@ percentages are to be rounded. Set to <code>NA</code> to suppress rounding</p></
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">M1</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 86 12 52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 15 26  7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 47 76 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 43 60 91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 41 12 21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 45 55 91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 77 23 47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 60 92 49</span>
 <span class="r-in"><span><span class="fu">columnwisePercentage</span><span class="op">(</span><span class="va">M1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 45.0  6.9 22.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B  7.9 14.9  3.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 24.6 43.7 35.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 22.5 34.5 38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 18.4  6.6 10.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 20.2 30.2 43.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 34.5 12.6 22.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 26.9 50.5 23.6</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">M2</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    1  2  3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A NA NA 52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 15 26  7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 47 76 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D NA 60 91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 41 12 21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 45 55 91</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 77 23 NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D NA 92 NA</span>
 <span class="r-in"><span><span class="fu">columnwisePercentage</span><span class="op">(</span><span class="va">M2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A  0.0  0.0 22.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 24.2 16.0  3.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 75.8 46.9 35.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 37.0 38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 25.2  6.6 18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 27.6 30.2 81.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 47.2 12.6  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 50.5  0.0</span>
 <span class="r-in"><span><span class="fu">columnwisePercentage</span><span class="op">(</span><span class="va">M2</span>, default <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1    2    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A  0.0  0.0 22.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 24.2 16.0  3.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 75.8 46.9 35.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 37.0 38.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 25.2  6.6 18.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 27.6 30.2 81.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 47.2 12.6  0.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D  0.0 50.5  0.0</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
