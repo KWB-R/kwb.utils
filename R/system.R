@@ -170,18 +170,18 @@ sourceScripts <- function(scripts, dbg = TRUE)
 {
   for (script in scripts) {
 
-    catIf(dbg, "loading functions from", basename(script), "... ")
-
-    if (file.exists(script)) {
-      
-      source(script)
-      
-    } else {
-      
-      warning("Skipping non-existing script: ", script)
-    }
-
-    catIf(dbg, "ok.\n")
+    catAndRun(
+      paste("Loading functions from", basename(script)),
+      dbg = dbg, 
+      expr = {
+        if (file.exists(script)) {
+          source(script)
+        } else {
+          warning("Skipping non-existing script: ", script)
+        }
+      }
+    )
+    
   }
 
   invisible(scripts)
