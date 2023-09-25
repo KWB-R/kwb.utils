@@ -1,3 +1,7 @@
+# Changes since last release
+
+- add loadFunctions()
+
 # [kwb.utils 0.14.1](https://github.com/KWB-R/kwb.utils/releases/tag/v0.14.0) <small>2023-04-21</small>
 
 - Fix bug in listToDepth(): pass ... arguments to FUN also if pattern is NULL
