@@ -133,6 +133,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignGlobally.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignObjects.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/assignPackageObjects.html</loc>
   </url>
   <url>
@@ -167,6 +170,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catNewLineIf.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/catchWarning.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/checkForMissingColumns.html</loc>
@@ -256,6 +262,12 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createDirectory.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createFunctionAssignObjects.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createFunctionExtdataFile.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/createIdAlong.html</loc>
   </url>
   <url>
@@ -272,6 +284,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/decode.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultIf.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/defaultIfNA.html</loc>
@@ -295,19 +310,10 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/diffrows.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/directoryName.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-OStype.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-defaultIf.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-guessSeparator.1.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-guessSeparator.2.html</loc>
-  </url>
-  <url>
-    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-isNetworkPath.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/dot-log.html</loc>
@@ -338,6 +344,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/expandGrid.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/extdataFile.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/extendLimits.html</loc>
@@ -376,6 +385,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/frequencyTable.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/fullWinPath.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/fullySorted.html</loc>
   </url>
   <url>
@@ -403,6 +415,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getKeywordPositions.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getListNode.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/getNamesOfObjectsInRDataFiles.html</loc>
   </url>
   <url>
@@ -424,10 +439,19 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/get_homedir.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/guessSeparator.1.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/guessSeparator.2.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/guessSeparator.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hasFinalSlash.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/hasZeroLength.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/headtail.html</loc>
@@ -535,6 +559,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNaOrEmpty.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNetworkPath.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/isNullOrEmpty.html</loc>
   </url>
   <url>
@@ -565,6 +592,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/listToDepth.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/loadFunctions.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/loadObject.html</loc>
   </url>
   <url>
@@ -578,6 +608,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/matrixToDataFrame.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/maxStringLength.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/mergeAll.html</loc>
@@ -629,6 +662,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/noFactorDataFrame.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/noSuchElements.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/objectSize.html</loc>
@@ -860,6 +896,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/startsToRanges.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stopFormatted.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/dev/reference/stopIfNotMatrix.html</loc>
