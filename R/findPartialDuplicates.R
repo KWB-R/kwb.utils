@@ -31,38 +31,27 @@
 #'
 findPartialDuplicates <- function(data, key_columns, skip_columns = NULL)
 {
-  keys <- selectColumns(data, key_columns, drop = FALSE)
-
-  # Columns to be considered in duplicate check
-  columns <- setdiff(names(data), skip_columns)
+  row_sets <- unname(split(
+    x = seq_len(nrow(data)), 
+    f = selectColumns(data, key_columns, drop = FALSE), 
+    drop = TRUE
+  ))
   
-  # Are the rows identical in all columns (except those in skip_columns)?
-  is_row_duplicate <- duplicated(data[, columns])
-
-  # Are the keys (combination of key values) duplicated?
-  is_key_duplicate <- duplicated(keys)
+  row_sets <- row_sets[lengths(row_sets) > 1L]
   
-  # Are the rows duplicated in the key columns but not fully duplicated rows?
-  is_partial_duplicate <- is_key_duplicate & ! is_row_duplicate
-
-  # For any partial duplicate, extract the differing values
-  if (any(is_partial_duplicate)) {
-    
-    lapply(which(is_partial_duplicate), function(index) {
-      
-      # Get the value(s) of the (composed) key
-      values <- keys[index, , drop = FALSE]
-      
-      # Which rows are matching in all key columns?
-      matches <- sapply(names(values), function(x) values[[x]] == keys[[x]])
-      match_indices <- which(rowSums(matches) == length(values))
-      
-      # Select the corresponding rows
-      result <- data[match_indices, , drop = FALSE]
-      
-      # Select only columns in which values are actually differing
-      columns <- c(key_columns, names(result)[! sapply(result, allAreEqual)])
-      result[, columns, drop = FALSE]
-    })
+  if (length(row_sets) == 0L) {
+    return(NULL)
   }
+  
+  row_sets <- row_sets[order(sapply(row_sets, "[", 1L))]
+  
+  columns_to_consider <- setdiff(names(data), skip_columns)
+  
+  result <- lapply(row_sets, function(rows) {
+    y <- data[rows, columns_to_consider]
+    differing_columns <- names(which(!sapply(y, kwb.utils::allAreEqual)))
+    y[, c(key_columns, differing_columns), drop = FALSE]
+  })
+  
+  stats::setNames(result, NULL)
 }
