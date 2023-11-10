@@ -115,6 +115,7 @@ reference:
       - guessSeparator.1
       - guessSeparator.2
       - headtail
+      - loadFunctions
       - print.repro_sample
       - printable_chars
       - printIf
