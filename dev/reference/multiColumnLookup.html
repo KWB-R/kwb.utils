@@ -75,7 +75,7 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">multiColumnLookup</span><span class="op">(</span><span class="va">data</span>, <span class="va">lookup</span>, value <span class="op">=</span> <span class="cn">NULL</span>, drop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">multiColumnLookup</span><span class="op">(</span><span class="va">data</span>, <span class="va">lookup</span>, value <span class="op">=</span> <span class="cn">NULL</span>, drop <span class="op">=</span> <span class="cn">TRUE</span>, includeKeys <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -99,6 +99,12 @@ looked up. Default: name of the last column in <code>lookup</code></p></dd>
 <dd><p>logical indicating whether or not to return a vector instead of
 a one-column data frame in case that there is only one value column. The
 default is <code>TRUE</code></p></dd>
+
+
+<dt>includeKeys</dt>
+<dd><p>logical indicating whether or not to include the key 
+column(s) in the returned data frame (for more than one <code>value</code> column
+or <code>drop = FALSE</code>). The default is <code>FALSE</code></p></dd>
 
 </dl></div>
     <div class="section level2">
