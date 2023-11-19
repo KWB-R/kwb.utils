@@ -11,6 +11,9 @@
 #' @param drop logical indicating whether or not to return a vector instead of
 #'   a one-column data frame in case that there is only one value column. The
 #'   default is \code{TRUE}
+#' @param includeKeys logical indicating whether or not to include the key 
+#'   column(s) in the returned data frame (for more than one \code{value} column
+#'   or \code{drop = FALSE}). The default is \code{FALSE}
 #' @return If \code{value} is of length one and \code{drop = TRUE}) a vector 
 #'   with as many elements as there are rows in \code{data} is returned. 
 #'   Otherwise a data frame with as many rows as there are rows in \code{data}
@@ -39,7 +42,9 @@
 #' # Add the coolness column
 #' cbind(persons, coolness)
 #' 
-multiColumnLookup <- function(data, lookup, value = NULL, drop = TRUE)
+multiColumnLookup <- function(
+    data, lookup, value = NULL, drop = TRUE, includeKeys = FALSE
+)
 {
   stopifnot(is.data.frame(data))
   stopifnot(is.data.frame(lookup))
@@ -87,7 +92,10 @@ multiColumnLookup <- function(data, lookup, value = NULL, drop = TRUE)
     )
   }
   
-  result <- lookup[indices, value, drop = drop]
+  result <- cbind(
+    if (includeKeys) data[names(keys)],
+    lookup[indices, value, drop = drop && !includeKeys]
+  )
   
   if (is.data.frame(result)) {
     resetRowNames(result)

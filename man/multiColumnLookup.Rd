@@ -4,7 +4,7 @@
 \alias{multiColumnLookup}
 \title{Lookup by Matching Values in Multiple Columns}
 \usage{
-multiColumnLookup(data, lookup, value = NULL, drop = TRUE)
+multiColumnLookup(data, lookup, value = NULL, drop = TRUE, includeKeys = FALSE)
 }
 \arguments{
 \item{data}{data frame for which to lookup values in the \code{lookup} table}
@@ -19,6 +19,10 @@ looked up. Default: name of the last column in \code{lookup}}
 \item{drop}{logical indicating whether or not to return a vector instead of
 a one-column data frame in case that there is only one value column. The
 default is \code{TRUE}}
+
+\item{includeKeys}{logical indicating whether or not to include the key 
+column(s) in the returned data frame (for more than one \code{value} column
+or \code{drop = FALSE}). The default is \code{FALSE}}
 }
 \value{
 If \code{value} is of length one and \code{drop = TRUE}) a vector 
