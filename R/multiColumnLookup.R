@@ -92,10 +92,11 @@ multiColumnLookup <- function(
     )
   }
   
-  result <- cbind(
-    if (includeKeys) data[names(keys)],
-    lookup[indices, value, drop = drop && !includeKeys]
-  )
+  result <- lookup[indices, value, drop = drop && !includeKeys]
+  
+  if (includeKeys) {
+    result <- cbind(data[names(keys)], result)
+  }
   
   if (is.data.frame(result)) {
     resetRowNames(result)
