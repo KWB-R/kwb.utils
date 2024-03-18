@@ -345,6 +345,7 @@ reference:
     contents:
       - arglist
       - callWith
+      - callWithData
       - callWithStringsAsFactors
       - getFunctionValueOrDefault
   - title: Cryptographic Functions

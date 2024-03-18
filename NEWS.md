@@ -1,6 +1,7 @@
 # Changes since last release
 
 - add loadFunctions()
+- add callWithData()
 - multiColumnLookup()
   - allow to lookup more than one value column
   - add arguments "drop", "includeKeys" 
