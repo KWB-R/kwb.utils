@@ -483,9 +483,8 @@ rbindAll <- function(
 #'
 resetRowNames <- function(x)
 {
-  if (length(dim(x)) != 2) {
-    
-    stop(deparse(substitute(x)), " must be have two dimensions", call. = FALSE)
+  if (length(dim(x)) != 2L) {
+    stop(deparse(substitute(x)), " must have two dimensions", call. = FALSE)
   }
 
   row.names(x) <- NULL

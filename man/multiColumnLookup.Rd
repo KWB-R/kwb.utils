@@ -4,7 +4,7 @@
 \alias{multiColumnLookup}
 \title{Lookup by Matching Values in Multiple Columns}
 \usage{
-multiColumnLookup(data, lookup, value = NULL)
+multiColumnLookup(data, lookup, value = NULL, drop = TRUE, includeKeys = FALSE)
 }
 \arguments{
 \item{data}{data frame for which to lookup values in the \code{lookup} table}
@@ -13,11 +13,22 @@ multiColumnLookup(data, lookup, value = NULL)
 the values in the corresponding columns in \code{data} and the 
 corresponding lookup values that are to be returned}
 
-\item{value}{name of column in \code{lookup} containing the value to be 
+\item{value}{name of column(s) in \code{lookup} containing the value(s) to be 
 looked up. Default: name of the last column in \code{lookup}}
+
+\item{drop}{logical indicating whether or not to return a vector instead of
+a one-column data frame in case that there is only one value column. The
+default is \code{TRUE}}
+
+\item{includeKeys}{logical indicating whether or not to include the key 
+column(s) in the returned data frame (for more than one \code{value} column
+or \code{drop = FALSE}). The default is \code{FALSE}}
 }
 \value{
-vector with as many elements as there are rows in \code{data}.
+If \code{value} is of length one and \code{drop = TRUE}) a vector 
+  with as many elements as there are rows in \code{data} is returned. 
+  Otherwise a data frame with as many rows as there are rows in \code{data}
+  and with the columns named in \code{value} is returned.
 }
 \description{
 Lookup by Matching Values in Multiple Columns
