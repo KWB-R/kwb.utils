@@ -154,6 +154,9 @@
     <loc>https://kwb-r.github.io/kwb.utils/reference/callWith.html</loc>
   </url>
   <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/callWithData.html</loc>
+  </url>
+  <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/callWithStringsAsFactors.html</loc>
   </url>
   <url>
@@ -593,6 +596,9 @@
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/listToDepth.html</loc>
+  </url>
+  <url>
+    <loc>https://kwb-r.github.io/kwb.utils/reference/loadFunctions.html</loc>
   </url>
   <url>
     <loc>https://kwb-r.github.io/kwb.utils/reference/loadObject.html</loc>
