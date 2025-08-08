@@ -1,3 +1,7 @@
+# Latest Changes
+
+- add whichExecutables()
+
 # [kwb.utils 0.15.0](https://github.com/KWB-R/kwb.utils/releases/tag/v0.15.0) <small>2024-03-28</small>
 
 - add loadFunctions() with private function
