@@ -5,6 +5,7 @@
 #' @param full.names if TRUE, the list items are the full paths, otherwise the
 #'   file names only
 #' @return list with one entry per directory from the PATH variable
+#' @export
 whichExecutables <- function(pattern = NULL, full.names = FALSE)
 {
   paths <- kwb.utils::rStylePath(strsplit(Sys.getenv("PATH"), ";")[[1]])
